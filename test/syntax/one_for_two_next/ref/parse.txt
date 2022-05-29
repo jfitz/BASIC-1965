@@ -2,19 +2,19 @@
  Remark:TEST PROGRAM
 20 FOR I = 1 TO 4
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:4"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:4"]
 30 IF MOD(I,2) = 0 THEN 70
  Variable:I -> _
- NumericConstant:2
+ NumericValue:2
  FunctionMod:MOD(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:70
 40 PRINT I;" IS ODD"
  Variable:I -> _
  CarriageControl:;
- TextConstant:" IS ODD"
+ TextValue:" IS ODD"
  CarriageControl:NL
 50 NEXT I
  Variable:I -> _
@@ -23,7 +23,7 @@
 70 PRINT I;" IS EVEN"
  Variable:I -> _
  CarriageControl:;
- TextConstant:" IS EVEN"
+ TextValue:" IS EVEN"
  CarriageControl:NL
 80 NEXT I
  Variable:I -> _

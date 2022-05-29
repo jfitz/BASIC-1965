@@ -1,24 +1,24 @@
 10 FOR D = 0 TO 5
  control: Variable:D -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:5"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:5"]
 20 LET N(D) = 0
  Variable:D -> _
  Variable:N(_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 30 NEXT D
  Variable:D -> _
 40 FOR I = 1 TO 10
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:10"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:10"]
 50 READ X
  Variable:X -> _
 60 LET D = INT(X/1E4)
  Variable:D -> _
  Variable:X -> _
- NumericConstant:1E4
+ NumericValue:1E4
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
@@ -27,34 +27,34 @@
  Variable:N(_) -> _
  Variable:D -> _
  Variable:N(_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 80 NEXT I
  Variable:I -> _
 100 PRINT "        INCOME"
- TextConstant:"        INCOME"
+ TextValue:"        INCOME"
  CarriageControl:NL
 110 PRINT "AT LEAST","BUT BELOW","NUMBER OF PEOPLE"
- TextConstant:"AT LEAST"
+ TextValue:"AT LEAST"
  CarriageControl:,
- TextConstant:"BUT BELOW"
+ TextValue:"BUT BELOW"
  CarriageControl:,
- TextConstant:"NUMBER OF PEOPLE"
+ TextValue:"NUMBER OF PEOPLE"
  CarriageControl:NL
 120 FOR D = 0 TO 5
  control: Variable:D -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:5"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:5"]
 130 PRINT D*1E4,(D+1)*1E4,N(D)
  Variable:D -> _
- NumericConstant:1E4
+ NumericValue:1E4
  BinaryOperatorMultiply:*(_,_) -> _
  CarriageControl:,
  Variable:D -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1E4
+ NumericValue:1E4
  BinaryOperatorMultiply:*(_,_) -> _
  CarriageControl:,
  Variable:D -> _
@@ -63,16 +63,16 @@
 140 NEXT D
  Variable:D -> _
 900 DATA 15000,22500,7350,32700,51000,8400,12700,8100,29000,35460
- NumericConstant:15000
- NumericConstant:22500
- NumericConstant:7350
- NumericConstant:32700
- NumericConstant:51000
- NumericConstant:8400
- NumericConstant:12700
- NumericConstant:8100
- NumericConstant:29000
- NumericConstant:35460
+ NumericValue:15000
+ NumericValue:22500
+ NumericValue:7350
+ NumericValue:32700
+ NumericValue:51000
+ NumericValue:8400
+ NumericValue:12700
+ NumericValue:8100
+ NumericValue:29000
+ NumericValue:35460
 999 END
  
 

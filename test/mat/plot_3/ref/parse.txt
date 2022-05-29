@@ -2,22 +2,22 @@
  Remark:TEST MAT PLOT
 20 MAT LET A = RND2(6,30)
  Variable:A(,) -> _(,)
- NumericConstant:6
- NumericConstant:30
+ NumericValue:6
+ NumericValue:30
  FunctionRnd2:RND2(_,_) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 22 MAT LET B = RND2(6,30,20)
  Variable:B(,) -> _(,)
- NumericConstant:6
- NumericConstant:30
- NumericConstant:20
+ NumericValue:6
+ NumericValue:30
+ NumericValue:20
  FunctionRnd2:RND2(_,_,_) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 24 MAT LET C = RND2(6,30,1000)
  Variable:C(,) -> _(,)
- NumericConstant:6
- NumericConstant:30
- NumericConstant:1000
+ NumericValue:6
+ NumericValue:30
+ NumericValue:1000
  FunctionRnd2:RND2(_,_,_) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 30 MAT PLOT A,B,C

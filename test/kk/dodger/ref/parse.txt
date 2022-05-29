@@ -2,12 +2,12 @@
  Remark:INITIALIZE
 110 FOR B = 1 TO 9
  control: Variable:B -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:9"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:9"]
 120    FOR R = 0 TO 3
  control: Variable:R -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:3"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:3"]
 130    READ P(B,R)
  Variable:B -> _
  Variable:R -> _
@@ -19,57 +19,57 @@
 160 DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
  WARNING: Line exceeds LIST width limit 72
  WARNING: Line exceeds PRETTY width limit 72
- NumericConstant:0.644
- NumericConstant:0.24
- NumericConstant:0.077
- NumericConstant:0.039
- NumericConstant:0.644
- NumericConstant:0.19
- NumericConstant:0.103
- NumericConstant:0.053
- NumericConstant:0.72
- NumericConstant:0.167
- NumericConstant:0.046
- NumericConstant:0.05
+ NumericValue:0.644
+ NumericValue:0.24
+ NumericValue:0.077
+ NumericValue:0.039
+ NumericValue:0.644
+ NumericValue:0.19
+ NumericValue:0.103
+ NumericValue:0.053
+ NumericValue:0.72
+ NumericValue:0.167
+ NumericValue:0.046
+ NumericValue:0.05
 170 DATA 0.641, 0.244, 0.05, 0.038, 0.673, 0.153, 0.073, 0.038, 0.651, 0.182, 0.106, 0.038
  WARNING: Line exceeds LIST width limit 72
  WARNING: Line exceeds PRETTY width limit 72
- NumericConstant:0.641
- NumericConstant:0.244
- NumericConstant:0.05
- NumericConstant:0.038
- NumericConstant:0.673
- NumericConstant:0.153
- NumericConstant:0.073
- NumericConstant:0.038
- NumericConstant:0.651
- NumericConstant:0.182
- NumericConstant:0.106
- NumericConstant:0.038
+ NumericValue:0.641
+ NumericValue:0.244
+ NumericValue:0.05
+ NumericValue:0.038
+ NumericValue:0.673
+ NumericValue:0.153
+ NumericValue:0.073
+ NumericValue:0.038
+ NumericValue:0.651
+ NumericValue:0.182
+ NumericValue:0.106
+ NumericValue:0.038
 180 DATA 0.704, 0.162, 0.079, 0.036, 0.709, 0.162, 0.071, 0.04, 0.836, 0.09, 0.053, 0.016
  WARNING: Line exceeds LIST width limit 72
  WARNING: Line exceeds PRETTY width limit 72
- NumericConstant:0.704
- NumericConstant:0.162
- NumericConstant:0.079
- NumericConstant:0.036
- NumericConstant:0.709
- NumericConstant:0.162
- NumericConstant:0.071
- NumericConstant:0.04
- NumericConstant:0.836
- NumericConstant:0.09
- NumericConstant:0.053
- NumericConstant:0.016
+ NumericValue:0.704
+ NumericValue:0.162
+ NumericValue:0.079
+ NumericValue:0.036
+ NumericValue:0.709
+ NumericValue:0.162
+ NumericValue:0.071
+ NumericValue:0.04
+ NumericValue:0.836
+ NumericValue:0.09
+ NumericValue:0.053
+ NumericValue:0.016
 190
 200 FOR R = 1 TO 4
  control: Variable:R -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:4"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:4"]
 210    FOR C = 0 TO 7
  control: Variable:C -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:7"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:7"]
 220       READ Q(R,C)
  Variable:R -> _
  Variable:C -> _
@@ -79,117 +79,117 @@
 240 NEXT R
  Variable:R -> _
 250 DATA 1, 5, 11, 15, 11, 15, 21, 25
- NumericConstant:1
- NumericConstant:5
- NumericConstant:11
- NumericConstant:15
- NumericConstant:11
- NumericConstant:15
- NumericConstant:21
- NumericConstant:25
+ NumericValue:1
+ NumericValue:5
+ NumericValue:11
+ NumericValue:15
+ NumericValue:11
+ NumericValue:15
+ NumericValue:21
+ NumericValue:25
 260 DATA 1, 3, 3, 7, 5, 7, 7, 17
- NumericConstant:1
- NumericConstant:3
- NumericConstant:3
- NumericConstant:7
- NumericConstant:5
- NumericConstant:7
- NumericConstant:7
- NumericConstant:17
+ NumericValue:1
+ NumericValue:3
+ NumericValue:3
+ NumericValue:7
+ NumericValue:5
+ NumericValue:7
+ NumericValue:7
+ NumericValue:17
 270 DATA 2, 12, 12, 22, 12, 22, 22, 32
- NumericConstant:2
- NumericConstant:12
- NumericConstant:12
- NumericConstant:22
- NumericConstant:12
- NumericConstant:22
- NumericConstant:22
- NumericConstant:32
+ NumericValue:2
+ NumericValue:12
+ NumericValue:12
+ NumericValue:22
+ NumericValue:12
+ NumericValue:22
+ NumericValue:22
+ NumericValue:32
 280 DATA 10, 20, 20, 30, 20, 30, 30, 40
- NumericConstant:10
- NumericConstant:20
- NumericConstant:20
- NumericConstant:30
- NumericConstant:20
- NumericConstant:30
- NumericConstant:30
- NumericConstant:40
+ NumericValue:10
+ NumericValue:20
+ NumericValue:20
+ NumericValue:30
+ NumericValue:20
+ NumericValue:30
+ NumericValue:30
+ NumericValue:40
 290
 300 LET S1 = 0
  Variable:S1 -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 310 LET B = 0
  Variable:B -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 320 LET H = 0
  Variable:H -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 330 LET L7 = 0
  Variable:L7 -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 340 LET I = 1
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 350
 360 FOR C = 0 TO 7
  control: Variable:C -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:7"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:7"]
 370    READ L(C)
  Variable:C -> _
  Variable:L(_) -> _
 380 NEXT C
  Variable:C -> _
 390 DATA 0, 1, 1, 2, 1, 2, 2, 3
- NumericConstant:0
- NumericConstant:1
- NumericConstant:1
- NumericConstant:2
- NumericConstant:1
- NumericConstant:2
- NumericConstant:2
- NumericConstant:3
+ NumericValue:0
+ NumericValue:1
+ NumericValue:1
+ NumericValue:2
+ NumericValue:1
+ NumericValue:2
+ NumericValue:2
+ NumericValue:3
 400
 410 REM NEW INNING
  Remark:NEW INNING
 430 PRINT "INNING" I
- TextConstant:"INNING"
+ TextValue:"INNING"
  CarriageControl:
  Variable:I -> _
  CarriageControl:NL
 450 LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 460 LET O = 0
  Variable:O -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 470 LET C = 0
  Variable:C -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 480
 490 REM NEW BATTER
  Remark:NEW BATTER
 500 IF B < 9 THEN 520
  Variable:B -> _
- NumericConstant:9
+ NumericValue:9
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:520
 510 LET B = 0
  Variable:B -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 520 LET B = B+1
  Variable:B -> _
  Variable:B -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 530
@@ -197,14 +197,14 @@
  Remark:DETERMINE OUTCOME
 550 LET X = RND(0)
  Variable:X -> _
- NumericConstant:0
+ NumericValue:0
  FunctionRnd:RND(_) -> _
  AssignmentOperator:= _ -> _
 560 FOR R = 0 TO 3
  WARNING: FORNEXT length exceeds limit 40
  control: Variable:R -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:3"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:3"]
 570 LET X = X - P(B,R)
  Variable:X -> _
  Variable:X -> _
@@ -215,78 +215,78 @@
  AssignmentOperator:= _ -> _
 580 IF X < 0 THEN 620
  Variable:X -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:620
 590 NEXT R
  Variable:R -> _
 600 LET R = 4
  Variable:R -> _
- NumericConstant:4
+ NumericValue:4
  AssignmentOperator:= =_ -> _
 610
 620 REM PRINT OUTCOME
  Remark:PRINT OUTCOME
 630 IF R > 0 THEN 660
  Variable:R -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:660
 640 PRINT "OUT   ";
- TextConstant:"OUT   "
+ TextValue:"OUT   "
  CarriageControl:;
 650 GOTO 770
  LineNumber:770
 660 IF R > 1 THEN 690
  Variable:R -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:690
 670 PRINT "SINGLE   ";
- TextConstant:"SINGLE   "
+ TextValue:"SINGLE   "
  CarriageControl:;
 680 GOTO 770
  LineNumber:770
 690 IF R > 2 THEN 720
  Variable:R -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:720
 700 PRINT "WALK   ";
- TextConstant:"WALK   "
+ TextValue:"WALK   "
  CarriageControl:;
 710 GOTO 770
  LineNumber:770
 720 IF R > 3 THEN 750
  Variable:R -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:750
 730 PRINT "DOUBLE   ";
- TextConstant:"DOUBLE   "
+ TextValue:"DOUBLE   "
  CarriageControl:;
 740 GOTO 770
  LineNumber:770
 750 PRINT "HOME RUN   ";
- TextConstant:"HOME RUN   "
+ TextValue:"HOME RUN   "
  CarriageControl:;
 760 
 770 REM DO BOOK-KEEPING
  Remark:DO BOOK-KEEPING
 780 IF R = 0 THEN 860
  Variable:R -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:860
 790 IF R = 2 THEN 810
  Variable:R -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:810
 800 LET H = H + 1
  Variable:H -> _
  Variable:H -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 810 LET X = Q(R,C)
@@ -298,7 +298,7 @@
 820 LET Y = INT(X/10)
  Variable:Y -> _
  Variable:X -> _
- NumericConstant:10
+ NumericValue:10
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
@@ -306,7 +306,7 @@
  Variable:C -> _
  Variable:X -> _
  Variable:Y -> _
- NumericConstant:10
+ NumericValue:10
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -320,13 +320,13 @@
  LineNumber:490
 860 IF O = 2 THEN 890
  Variable:O -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:890
 870 LET O = O+1
  Variable:O -> _
  Variable:O -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 880 GOTO 490
@@ -346,7 +346,7 @@
 910 PRINT S; "RUNS"
  Variable:S -> _
  CarriageControl:;
- TextConstant:"RUNS"
+ TextValue:"RUNS"
  CarriageControl:NL
 920 PRINT
  CarriageControl:NL
@@ -359,12 +359,12 @@
 940 LET I = I+1
  Variable:I -> _
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 945 IF I < 9 THEN 410
  Variable:I -> _
- NumericConstant:9
+ NumericValue:9
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:410
 950 
@@ -373,24 +373,24 @@
 960 PRINT
  CarriageControl:NL
 965 PRINT "GAME TOTALS:"
- TextConstant:"GAME TOTALS:"
+ TextValue:"GAME TOTALS:"
  CarriageControl:NL
 970 PRINT
  CarriageControl:NL
 975 PRINT S1; "RUNS SCORED"
  Variable:S1 -> _
  CarriageControl:;
- TextConstant:"RUNS SCORED"
+ TextValue:"RUNS SCORED"
  CarriageControl:NL
 980 PRINT L7; "MEN LEFT ON BASE"
  Variable:L7 -> _
  CarriageControl:;
- TextConstant:"MEN LEFT ON BASE"
+ TextValue:"MEN LEFT ON BASE"
  CarriageControl:NL
 985 PRINT H; "HITS"
  Variable:H -> _
  CarriageControl:;
- TextConstant:"HITS"
+ TextValue:"HITS"
  CarriageControl:NL
 990 END
  WARNING: Terminating statement in FOR/NEXT

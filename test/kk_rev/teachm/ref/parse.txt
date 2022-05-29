@@ -1,28 +1,28 @@
 Syntax error: Invalid line number '0'
 10 PRINT "BASIC IS A SIMPLE LANGUAGE. IT ENABLES ONE TO DESCRIBE"
- TextConstant:"BASIC IS A SIMPLE LANGUAGE. IT ENABLES ONE TO DESCRIBE"
+ TextValue:"BASIC IS A SIMPLE LANGUAGE. IT ENABLES ONE TO DESCRIBE"
  CarriageControl:NL
 30 PRINT "PROGRAMS TO THE COMPUTER WITH LITTLE LEARNING EFFORT."
- TextConstant:"PROGRAMS TO THE COMPUTER WITH LITTLE LEARNING EFFORT."
+ TextValue:"PROGRAMS TO THE COMPUTER WITH LITTLE LEARNING EFFORT."
  CarriageControl:NL
 40 PRINT "THIS PROGRAM WILL TRY TO TEACH YOU HOW TO PROGRAM IN BASIC."
- TextConstant:"THIS PROGRAM WILL TRY TO TEACH YOU HOW TO PROGRAM IN BASIC."
+ TextValue:"THIS PROGRAM WILL TRY TO TEACH YOU HOW TO PROGRAM IN BASIC."
  CarriageControl:NL
 99
 100 GOSUB 8100
  LineNumber:8100
 105 PRINT "BEFORE WE CAN HAVE THE COMPUTER WORK WITH DATA, WE MUST HAVE"
- TextConstant:"BEFORE WE CAN HAVE THE COMPUTER WORK WITH DATA, WE MUST HAVE"
+ TextValue:"BEFORE WE CAN HAVE THE COMPUTER WORK WITH DATA, WE MUST HAVE"
  CarriageControl:NL
 110 PRINT "THE DATA READ WITH A -----STATEMENT. "
- TextConstant:"THE DATA READ WITH A -----STATEMENT. "
+ TextValue:"THE DATA READ WITH A -----STATEMENT. "
  CarriageControl:NL
 120 PRINT "(1. READ  2. PRINT  3. DATA  4. NONE OF THESE.)"
- TextConstant:"(1. READ  2. PRINT  3. DATA  4. NONE OF THESE.)"
+ TextValue:"(1. READ  2. PRINT  3. DATA  4. NONE OF THESE.)"
  CarriageControl:NL
 130 LET C = 1
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 140 GOSUB 8000
  LineNumber:8000
@@ -32,7 +32,7 @@ Syntax error: Invalid line number '0'
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:200
 160 PRINT "LET'S TRY THAT ONE AGAIN."
- TextConstant:"LET'S TRY THAT ONE AGAIN."
+ TextValue:"LET'S TRY THAT ONE AGAIN."
  CarriageControl:NL
 170 GO TO 100
  LineNumber:100
@@ -40,17 +40,17 @@ Syntax error: Invalid line number '0'
 200 GOSUB 8100
  LineNumber:8100
 205 PRINT "ALL DATA THAT IS READ IN USING A READ STATEMENT MUST APPEAR"
- TextConstant:"ALL DATA THAT IS READ IN USING A READ STATEMENT MUST APPEAR"
+ TextValue:"ALL DATA THAT IS READ IN USING A READ STATEMENT MUST APPEAR"
  CarriageControl:NL
 210 PRINT "IN SOME ----- STATEMENT.  (1. INPUT  2. PRINT  3. DATA"
- TextConstant:"IN SOME ----- STATEMENT.  (1. INPUT  2. PRINT  3. DATA"
+ TextValue:"IN SOME ----- STATEMENT.  (1. INPUT  2. PRINT  3. DATA"
  CarriageControl:NL
 215 PRINT "4. NONE OF THESE.)"
- TextConstant:"4. NONE OF THESE.)"
+ TextValue:"4. NONE OF THESE.)"
  CarriageControl:NL
 220 LET C = 3
  Variable:C -> _
- NumericConstant:3
+ NumericValue:3
  AssignmentOperator:= =_ -> _
 230 GOSUB 8000
  LineNumber:8000
@@ -61,45 +61,45 @@ Syntax error: Invalid line number '0'
  LineNumber:300
 250 IF X = 1 THEN 280
  Variable:X -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:280
 260 PRINT "ANOTHER RETRY -- OKAY?"
- TextConstant:"ANOTHER RETRY -- OKAY?"
+ TextValue:"ANOTHER RETRY -- OKAY?"
  CarriageControl:NL
 270 GO TO 200
  LineNumber:200
 280 PRINT "THE INPUT STATEMENT IS SIMILAR TO THE READ STATEMENT, BUT"
- TextConstant:"THE INPUT STATEMENT IS SIMILAR TO THE READ STATEMENT, BUT"
+ TextValue:"THE INPUT STATEMENT IS SIMILAR TO THE READ STATEMENT, BUT"
  CarriageControl:NL
 285 PRINT "CALLS FOR THE INPUT TO BE MADE FROM THE TELETYPE MACHINE"
- TextConstant:"CALLS FOR THE INPUT TO BE MADE FROM THE TELETYPE MACHINE"
+ TextValue:"CALLS FOR THE INPUT TO BE MADE FROM THE TELETYPE MACHINE"
  CarriageControl:NL
 290 PRINT "RATHER THAN FROM DATA STATEMENTS.  READ AND DATA GO"
- TextConstant:"RATHER THAN FROM DATA STATEMENTS.  READ AND DATA GO"
+ TextValue:"RATHER THAN FROM DATA STATEMENTS.  READ AND DATA GO"
  CarriageControl:NL
 292 PRINT "TOGETHER."
- TextConstant:"TOGETHER."
+ TextValue:"TOGETHER."
  CarriageControl:NL
 295 GO TO 100
  LineNumber:100
 300 GOSUB 8100
  LineNumber:8100
 305 PRINT "TO PERFORM A COMPUTATION, WE HAVE A VARIABLE ON THE LEFT OF"
- TextConstant:"TO PERFORM A COMPUTATION, WE HAVE A VARIABLE ON THE LEFT OF"
+ TextValue:"TO PERFORM A COMPUTATION, WE HAVE A VARIABLE ON THE LEFT OF"
  CarriageControl:NL
 310 PRINT "THE EQUAL SIGN, AND A FORMULA ON THE RIGHT E.G., TO "
- TextConstant:"THE EQUAL SIGN, AND A FORMULA ON THE RIGHT E.G., TO "
+ TextValue:"THE EQUAL SIGN, AND A FORMULA ON THE RIGHT E.G., TO "
  CarriageControl:NL
 315 PRINT " ------ X = A + B   .  (1. COMPUTE  2. LET  3. VARIABLE"
- TextConstant:" ------ X = A + B   .  (1. COMPUTE  2. LET  3. VARIABLE"
+ TextValue:" ------ X = A + B   .  (1. COMPUTE  2. LET  3. VARIABLE"
  CarriageControl:NL
 340 PRINT "4. NONE OF THESE.)"
- TextConstant:"4. NONE OF THESE.)"
+ TextValue:"4. NONE OF THESE.)"
  CarriageControl:NL
 350 LET C = 2
  Variable:C -> _
- NumericConstant:2
+ NumericValue:2
  AssignmentOperator:= =_ -> _
 360 GOSUB 8000
  LineNumber:8000
@@ -110,30 +110,30 @@ Syntax error: Invalid line number '0'
  LineNumber:400
 375 IF X <> 1 THEN 390
  Variable:X -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorNotEqual:<>(_,_) -> ?
  LineNumber:390
 380 PRINT "BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
- TextConstant:"BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
+ TextValue:"BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
  CarriageControl:NL
 385 GO TO 300
  LineNumber:300
 390 PRINT "LET'S TRY THAT ONE AGAIN."
- TextConstant:"LET'S TRY THAT ONE AGAIN."
+ TextValue:"LET'S TRY THAT ONE AGAIN."
  CarriageControl:NL
 395 GO TO 300
  LineNumber:300
 400 GOSUB 8100
  LineNumber:8100
 405 PRINT "ONE OF THE FOLLOWING DOES NOT FOLLOW THE RULES. WHICH ONE?"
- TextConstant:"ONE OF THE FOLLOWING DOES NOT FOLLOW THE RULES. WHICH ONE?"
+ TextValue:"ONE OF THE FOLLOWING DOES NOT FOLLOW THE RULES. WHICH ONE?"
  CarriageControl:NL
 410 PRINT "(1. LET X = Y  2. LET Z = Z + 17  3. LET A + B = X )"
- TextConstant:"(1. LET X = Y  2. LET Z = Z + 17  3. LET A + B = X )"
+ TextValue:"(1. LET X = Y  2. LET Z = Z + 17  3. LET A + B = X )"
  CarriageControl:NL
 420 LET C = 3
  Variable:C -> _
- NumericConstant:3
+ NumericValue:3
  AssignmentOperator:= =_ -> _
 430 GOSUB 8000
  LineNumber:8000
@@ -144,22 +144,22 @@ Syntax error: Invalid line number '0'
  LineNumber:500
 450 IF X = 1 THEN 470
  Variable:X -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:470
 460 PRINT "THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
- TextConstant:"THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
+ TextValue:"THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
  CarriageControl:NL
 465 PRINT "NUMBER Z+17, AND REPLACING THE OLD VALUE OF Z WITH THIS VALUE"
- TextConstant:"NUMBER Z+17, AND REPLACING THE OLD VALUE OF Z WITH THIS VALUE"
+ TextValue:"NUMBER Z+17, AND REPLACING THE OLD VALUE OF Z WITH THIS VALUE"
  CarriageControl:NL
 466 PRINT "THUS, Z IS INCREASED BY 17 UNITS."
- TextConstant:"THUS, Z IS INCREASED BY 17 UNITS."
+ TextValue:"THUS, Z IS INCREASED BY 17 UNITS."
  CarriageControl:NL
 467 GO TO 400
  LineNumber:400
 470 PRINT "THIS IS OKAY, WS SIMPLY HAVE X TAKE ON THE VALUE OF Y."
- TextConstant:"THIS IS OKAY, WS SIMPLY HAVE X TAKE ON THE VALUE OF Y."
+ TextValue:"THIS IS OKAY, WS SIMPLY HAVE X TAKE ON THE VALUE OF Y."
  CarriageControl:NL
 480 GO TO 400
  LineNumber:400
@@ -167,17 +167,17 @@ Syntax error: Invalid line number '0'
 500 GOSUB 8100
  LineNumber:8100
 505 PRINT "TO INCREASE THE VALUE OF THE VARIABLE T BY X UNITS, WHICH OF"
- TextConstant:"TO INCREASE THE VALUE OF THE VARIABLE T BY X UNITS, WHICH OF"
+ TextValue:"TO INCREASE THE VALUE OF THE VARIABLE T BY X UNITS, WHICH OF"
  CarriageControl:NL
 510 PRINT "THE FOLLOWING DO WE USE?"
- TextConstant:"THE FOLLOWING DO WE USE?"
+ TextValue:"THE FOLLOWING DO WE USE?"
  CarriageControl:NL
 520 PRINT "(1. LET T = X + T  2. LET X = T + X  3. LET T - X = T )"
- TextConstant:"(1. LET T = X + T  2. LET X = T + X  3. LET T - X = T )"
+ TextValue:"(1. LET T = X + T  2. LET X = T + X  3. LET T - X = T )"
  CarriageControl:NL
 530 LET C = 1
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 540 GOSUB 8000
  LineNumber:8000
@@ -188,16 +188,16 @@ Syntax error: Invalid line number '0'
  LineNumber:600
 560 IF C = 3 THEN 580
  Variable:C -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:580
 570 PRINT "THIS ONE INCREASES THE VALUE OF X BY T UNITS."
- TextConstant:"THIS ONE INCREASES THE VALUE OF X BY T UNITS."
+ TextValue:"THIS ONE INCREASES THE VALUE OF X BY T UNITS."
  CarriageControl:NL
 575 GO TO 500
  LineNumber:500
 580 PRINT "THIS FORM IS ILLEGAL. LET'S BACK UP A BIT."
- TextConstant:"THIS FORM IS ILLEGAL. LET'S BACK UP A BIT."
+ TextValue:"THIS FORM IS ILLEGAL. LET'S BACK UP A BIT."
  CarriageControl:NL
 590 GO TO 400
  LineNumber:400
@@ -205,15 +205,15 @@ Syntax error: Invalid line number '0'
 600 GOSUB 8100
  LineNumber:8100
 605 PRINT "YOU HAVE COMPLETED YOUR FIRST COURSE IN BASIC."
- TextConstant:"YOU HAVE COMPLETED YOUR FIRST COURSE IN BASIC."
+ TextValue:"YOU HAVE COMPLETED YOUR FIRST COURSE IN BASIC."
  CarriageControl:NL
 610 PRINT "CONGRATULATIONS."
- TextConstant:"CONGRATULATIONS."
+ TextValue:"CONGRATULATIONS."
  CarriageControl:NL
 620 STOP
  
 8000 PRINT "YOUR ANSWER";
- TextConstant:"YOUR ANSWER"
+ TextValue:"YOUR ANSWER"
  CarriageControl:;
 8010 INPUT X
  Variable:X -> _
@@ -223,12 +223,12 @@ Syntax error: Invalid line number '0'
  BinaryOperatorNotEqual:<>(_,_) -> ?
  LineNumber:8050
 8030 PRINT "CORRECT"
- TextConstant:"CORRECT"
+ TextValue:"CORRECT"
  CarriageControl:NL
 8040 GO TO 8060
  LineNumber:8060
 8050 PRINT "INCORRECT. CORRECT ANSWER IS "; C
- TextConstant:"INCORRECT. CORRECT ANSWER IS "
+ TextValue:"INCORRECT. CORRECT ANSWER IS "
  CarriageControl:;
  Variable:C -> _
  CarriageControl:NL

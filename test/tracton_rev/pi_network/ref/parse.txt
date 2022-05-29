@@ -5,22 +5,22 @@
 30 REM IMPEDANCES
  Remark:IMPEDANCES
 40 PRINT "ENTER 1ST IMPEDANCE"
- TextConstant:"ENTER 1ST IMPEDANCE"
+ TextValue:"ENTER 1ST IMPEDANCE"
  CarriageControl:NL
 50 INPUT Z1
  Variable:Z1 -> _
 60 PRINT "ENTER 2ND IMPEDANCE"
- TextConstant:"ENTER 2ND IMPEDANCE"
+ TextValue:"ENTER 2ND IMPEDANCE"
  CarriageControl:NL
 70 INPUT Z2
  Variable:Z2 -> _
 80 PRINT "ENTER DESIRED SYSTEM Q"
- TextConstant:"ENTER DESIRED SYSTEM Q"
+ TextValue:"ENTER DESIRED SYSTEM Q"
  CarriageControl:NL
 90 INPUT Q
  Variable:Q -> _
 100 PRINT "ENTER OPERATING FREQUENCY"
- TextConstant:"ENTER OPERATING FREQUENCY"
+ TextValue:"ENTER OPERATING FREQUENCY"
  CarriageControl:NL
 110 INPUT F
  Variable:F -> _
@@ -36,12 +36,12 @@
  Variable:Z1 -> _
  BinaryOperatorDivide:/(_,_) -> _
  Variable:Q -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 140 LET B = Z2/SQR(C)
@@ -58,7 +58,7 @@
  Variable:B -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 160 LET D = E*((Q*Z1)/((Q^2) + 1))
@@ -68,20 +68,20 @@
  Variable:Z1 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Q -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 170 LET P = 6.28319
  Variable:P -> _
- NumericConstant:6.28319
+ NumericValue:6.28319
  AssignmentOperator:= =_ -> _
 180 LET C1 = 1/(P*F*A)
  Variable:C1 -> _
- NumericConstant:1
+ NumericValue:1
  Variable:P -> _
  Variable:F -> _
  BinaryOperatorMultiply:*(_,_) -> _
@@ -91,7 +91,7 @@
  AssignmentOperator:= _ -> _
 190 LET C2 = 1/(P*F*B)
  Variable:C2 -> _
- NumericConstant:1
+ NumericValue:1
  Variable:P -> _
  Variable:F -> _
  BinaryOperatorMultiply:*(_,_) -> _
@@ -108,33 +108,33 @@
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 210 PRINT "COMPONENTS OF PI-NETWORK"
- TextConstant:"COMPONENTS OF PI-NETWORK"
+ TextValue:"COMPONENTS OF PI-NETWORK"
  CarriageControl:NL
 220 PRINT "CAPACITOR 1 = ";C1
- TextConstant:"CAPACITOR 1 = "
+ TextValue:"CAPACITOR 1 = "
  CarriageControl:;
  Variable:C1 -> _
  CarriageControl:NL
 230 PRINT "CAPACITOR 2 = ";C2
- TextConstant:"CAPACITOR 2 = "
+ TextValue:"CAPACITOR 2 = "
  CarriageControl:;
  Variable:C2 -> _
  CarriageControl:NL
 240 PRINT "INDUCTOR = ";L
- TextConstant:"INDUCTOR = "
+ TextValue:"INDUCTOR = "
  CarriageControl:;
  Variable:L -> _
  CarriageControl:NL
 250 PRINT
  CarriageControl:NL
 260 PRINT "TO CONTINUE TYPE 1, IF NOT 0"
- TextConstant:"TO CONTINUE TYPE 1, IF NOT 0"
+ TextValue:"TO CONTINUE TYPE 1, IF NOT 0"
  CarriageControl:NL
 270 INPUT X
  Variable:X -> _
 280 IF X = 1 THEN 300
  Variable:X -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:300
 290 STOP

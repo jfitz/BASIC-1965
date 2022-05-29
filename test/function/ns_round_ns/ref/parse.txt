@@ -1,18 +1,18 @@
 10 REM This is a test
  Remark:This is a test
 15 PRINT "NUMBER","ROUNDED"
- TextConstant:"NUMBER"
+ TextValue:"NUMBER"
  CarriageControl:,
- TextConstant:"ROUNDED"
+ TextValue:"ROUNDED"
  CarriageControl:NL
 20 LET A=10.1234
  Variable:A -> _
- NumericConstant:10.1234
+ NumericValue:10.1234
  AssignmentOperator:= =_ -> _
 22 LET A1=ROUND(A,3)
  Variable:A1 -> _
  Variable:A -> _
- NumericConstant:3
+ NumericValue:3
  FunctionRound:ROUND(_,_) -> _
  AssignmentOperator:= _ -> _
 25 PRINT A,A1
@@ -22,13 +22,13 @@
  CarriageControl:NL
 30 LET B=-20.1234
  Variable:B -> _
- NumericConstant:20.1234
+ NumericValue:20.1234
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 32 LET B1=ROUND(B,2)
  Variable:B1 -> _
  Variable:B -> _
- NumericConstant:2
+ NumericValue:2
  FunctionRound:ROUND(_,_) -> _
  AssignmentOperator:= _ -> _
 35 PRINT B,B1
@@ -38,12 +38,12 @@
  CarriageControl:NL
 40 LET C=1234
  Variable:C -> _
- NumericConstant:1234
+ NumericValue:1234
  AssignmentOperator:= =_ -> _
 42 LET C1=ROUND(C,-1)
  Variable:C1 -> _
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
  FunctionRound:ROUND(_,_) -> _
  AssignmentOperator:= _ -> _

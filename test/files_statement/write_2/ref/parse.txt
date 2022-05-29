@@ -1,17 +1,17 @@
 10 REM This is a test
  Remark:This is a test
 20 DATA 10,20,30
- NumericConstant:10
- NumericConstant:20
- NumericConstant:30
+ NumericValue:10
+ NumericValue:20
+ NumericValue:30
 25 FILES "output.txt"
- TextConstant:"output.txt"
+ TextValue:"output.txt"
 30 READ A,B,C
  Variable:A -> _
  Variable:B -> _
  Variable:C -> _
 40 WRITE #1;A;B;C
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorHash:#(_) -> =FH
  Variable:A -> _
  CarriageControl:;
@@ -20,7 +20,7 @@
  Variable:C -> _
  CarriageControl:NL
 50 WRITE #1;A;B;C
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorHash:#(_) -> =FH
  Variable:A -> _
  CarriageControl:;

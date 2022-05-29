@@ -1,21 +1,21 @@
 10 DIM A(6,5)
- NumericConstant:6
- NumericConstant:5
+ NumericValue:6
+ NumericValue:5
  Declaration:A(,) -> _(,)
 20 FOR I = 0 TO 6
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:6"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:6"]
 30 FOR J = 0 TO 5
  control: Variable:J -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:5"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:5"]
 40 LET A(I,J) = I*10 + J
  Variable:I -> _
  Variable:J -> _
  Variable:A(_,_) -> _
  Variable:I -> _
- NumericConstant:10
+ NumericValue:10
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:J -> _
  BinaryOperatorPlus:+(_,_) -> _
@@ -25,7 +25,7 @@
 60 NEXT I
  Variable:I -> _
 70 PRINT "MATRIX A"
- TextConstant:"MATRIX A"
+ TextValue:"MATRIX A"
  CarriageControl:NL
 72 MAT PRINT A;
  Variable:A(,) -> _(,)
@@ -36,15 +36,15 @@
  FunctionTrn:TRN(_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 90 PRINT "MATRIX B"
- TextConstant:"MATRIX B"
+ TextValue:"MATRIX B"
  CarriageControl:NL
 92 MAT PRINT B;
  Variable:B(,) -> _(,)
  CarriageControl:;
 100 OPTION BASE 1
- NumericConstant:1
+ NumericValue:1
 170 PRINT "MATRIX A"
- TextConstant:"MATRIX A"
+ TextValue:"MATRIX A"
  CarriageControl:NL
 172 MAT PRINT A;
  Variable:A(,) -> _(,)
@@ -55,7 +55,7 @@
  FunctionTrn:TRN(_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 190 PRINT "MATRIX B"
- TextConstant:"MATRIX B"
+ TextValue:"MATRIX B"
  CarriageControl:NL
 192 MAT PRINT B;
  Variable:B(,) -> _(,)

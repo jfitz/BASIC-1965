@@ -1,9 +1,9 @@
 100 DIM A(2,3), B(3,4)
- NumericConstant:2
- NumericConstant:3
+ NumericValue:2
+ NumericValue:3
  Declaration:A(,) -> _(,)
- NumericConstant:3
- NumericConstant:4
+ NumericValue:3
+ NumericValue:4
  Declaration:B(,) -> _(,)
 110 MAT READ A, B
  Variable:A(,) -> _(,)
@@ -21,56 +21,56 @@
  AssignmentOperator:= _(,) -> _(,)
 140
 200 PRINT "FIRST MATRIX"
- TextConstant:"FIRST MATRIX"
+ TextValue:"FIRST MATRIX"
  CarriageControl:NL
 210 MAT PRINT A
  Variable:A(,) -> _(,)
  CarriageControl:NL
 220 PRINT "SECOND MATRIX"
- TextConstant:"SECOND MATRIX"
+ TextValue:"SECOND MATRIX"
  CarriageControl:NL
 230 MAT PRINT B
  Variable:B(,) -> _(,)
  CarriageControl:NL
 240 PRINT "PRODUCT"
- TextConstant:"PRODUCT"
+ TextValue:"PRODUCT"
  CarriageControl:NL
 250 MAT PRINT P
  Variable:P(,) -> _(,)
  CarriageControl:NL
 260 PRINT "TRANSPOSE OF FIRST MATRIX"
- TextConstant:"TRANSPOSE OF FIRST MATRIX"
+ TextValue:"TRANSPOSE OF FIRST MATRIX"
  CarriageControl:NL
 270 MAT PRINT T
  Variable:T(,) -> _(,)
  CarriageControl:NL
 280
 900 DATA 1, 4, -2, 2, -1, 3
- NumericConstant:1
- NumericConstant:4
- NumericConstant:2
+ NumericValue:1
+ NumericValue:4
+ NumericValue:2
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:2
- NumericConstant:1
+ NumericValue:2
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:3
+ NumericValue:3
 910 DATA 1, -3, 4, -1,6, -1, 3, -5, 7, 0, 2, 0
- NumericConstant:1
- NumericConstant:3
+ NumericValue:1
+ NumericValue:3
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:4
- NumericConstant:1
+ NumericValue:4
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:6
- NumericConstant:1
+ NumericValue:6
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:3
- NumericConstant:5
+ NumericValue:3
+ NumericValue:5
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:7
- NumericConstant:0
- NumericConstant:2
- NumericConstant:0
+ NumericValue:7
+ NumericValue:0
+ NumericValue:2
+ NumericValue:0
 999 END
  
 

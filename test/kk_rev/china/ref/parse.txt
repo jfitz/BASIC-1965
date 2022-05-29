@@ -4,15 +4,15 @@
  Variable:P -> _
 20 FOR I = 2 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:2"]
+ start:   ["NumericValue:2"]
  end:     ["Variable:N -> _"]
 30    READ A,M
  Variable:A -> _
  Variable:M -> _
 40       FOR K = 0 TO M-1
  control: Variable:K -> _
- start:   ["NumericConstant:0"]
- end:     ["Variable:M -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ start:   ["NumericValue:0"]
+ end:     ["Variable:M -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
 50       LET X = B + K*P
  Variable:X -> _
  Variable:B -> _
@@ -36,7 +36,7 @@
 70    NEXT K
  Variable:K -> _
 80    PRINT "ERROR"
- TextConstant:"ERROR"
+ TextValue:"ERROR"
  CarriageControl:NL
 90    STOP
  WARNING: Terminating statement in FOR/NEXT
@@ -54,25 +54,25 @@
 120 NEXT I
  Variable:I -> _
 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P
- TextConstant:"X  IS CONGRUENT TO "
+ TextValue:"X  IS CONGRUENT TO "
  CarriageControl:
  Variable:B -> _
  CarriageControl:;
- TextConstant:" MODULO "
+ TextValue:" MODULO "
  CarriageControl:
  Variable:P -> _
  CarriageControl:NL
 900 DATA 4
- NumericConstant:4
+ NumericValue:4
 910 DATA 2,3, 19,100, 4,31, 25,101
- NumericConstant:2
- NumericConstant:3
- NumericConstant:19
- NumericConstant:100
- NumericConstant:4
- NumericConstant:31
- NumericConstant:25
- NumericConstant:101
+ NumericValue:2
+ NumericValue:3
+ NumericValue:19
+ NumericValue:100
+ NumericValue:4
+ NumericValue:31
+ NumericValue:25
+ NumericValue:101
 999 END
  WARNING: Terminating statement in FOR/NEXT
  

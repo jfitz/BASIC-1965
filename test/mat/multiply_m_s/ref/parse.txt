@@ -1,17 +1,17 @@
 10 REM MATRIX ASSIGNMENT
  Remark:MATRIX ASSIGNMENT
 20 DIM A(5,5)
- NumericConstant:5
- NumericConstant:5
+ NumericValue:5
+ NumericValue:5
  Declaration:A(,) -> _(,)
 30 FOR I = 1 TO 5
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:5"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:5"]
 40 FOR J = 1 TO 5
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:5"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:5"]
 50 LET A(I,J) = I+J
  Variable:I -> _
  Variable:J -> _
@@ -27,17 +27,17 @@
 100 MAT B = A * 2
  Variable:B(,) -> _(,)
  Variable:A(,) -> _(,)
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorMultiply:*(_(,),_) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 110 PRINT "MATRIX A"
- TextConstant:"MATRIX A"
+ TextValue:"MATRIX A"
  CarriageControl:NL
 120 MAT PRINT A
  Variable:A(,) -> _(,)
  CarriageControl:NL
 130 PRINT "MATRIX B"
- TextConstant:"MATRIX B"
+ TextValue:"MATRIX B"
  CarriageControl:NL
 140 MAT PRINT B
  Variable:B(,) -> _(,)

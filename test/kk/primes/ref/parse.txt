@@ -1,52 +1,52 @@
 10 DIM N(1000)
- NumericConstant:1000
+ NumericValue:1000
  Declaration:N() -> _()
 11 DIM P(350)
- NumericConstant:350
+ NumericValue:350
  Declaration:P() -> _()
 20 FOR I = 1 TO 1000
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:1000"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:1000"]
 21    LET N(I) = 0
  Variable:I -> _
  Variable:N(_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 22 NEXT I
  Variable:I -> _
 25 LET P(0) = 2
- NumericConstant:0
+ NumericValue:0
  Variable:P(_) -> _
- NumericConstant:2
+ NumericValue:2
  AssignmentOperator:= =_ -> _
 26 LET K = 0
  Variable:K -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 30 FOR P = 3 TO 2000 STEP 2
  control: Variable:P -> _
- start:   ["NumericConstant:3"]
- end:     ["NumericConstant:2000"]
- step:    ["NumericConstant:2"]
+ start:   ["NumericValue:3"]
+ end:     ["NumericValue:2000"]
+ step:    ["NumericValue:2"]
 35    LET X = (P-1)/2
  Variable:X -> _
  Variable:P -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 40    IF N(X) < 0 THEN 90
  Variable:X -> _
  Variable:N(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:90
 50    LET K = K+1
  Variable:K -> _
  Variable:K -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 55    LET P(K) = P
@@ -56,27 +56,27 @@
  AssignmentOperator:= _ -> _
 56    IF P > SQR(2000) THEN 90
  Variable:P -> _
- NumericConstant:2000
+ NumericValue:2000
  FunctionSqr:SQR(_) -> =_
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:90
 60    FOR I = P TO 2000 STEP 2*P
  control: Variable:I -> _
  start:   ["Variable:P -> _"]
- end:     ["NumericConstant:2000"]
- step:    ["NumericConstant:2", "Variable:P -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
+ end:     ["NumericValue:2000"]
+ step:    ["NumericValue:2", "Variable:P -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
 65       LET X = (I-1)/2
  Variable:X -> _
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 70       LET N(X) = -1
  Variable:X -> _
  Variable:N(_) -> _
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 80    NEXT I
@@ -85,7 +85,7 @@
  Variable:P -> _
 100 FOR I = 0 TO K
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:K -> _"]
 110    PRINT P(I);
  Variable:I -> _

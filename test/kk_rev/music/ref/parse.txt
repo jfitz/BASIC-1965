@@ -1,30 +1,30 @@
 10 DIM S(4,100), P(6,6), M(100)
- NumericConstant:4
- NumericConstant:100
+ NumericValue:4
+ NumericValue:100
  Declaration:S(,) -> _(,)
- NumericConstant:6
- NumericConstant:6
+ NumericValue:6
+ NumericValue:6
  Declaration:P(,) -> _(,)
- NumericConstant:100
+ NumericValue:100
  Declaration:M() -> _()
 20 DEF FNC(X) = X-7*INT(X/7)
  UserFunctionName:FNC -> _
  VariableName:X -> _
  Variable:X -> _
- NumericConstant:7
+ NumericValue:7
  Variable:X -> _
- NumericConstant:7
+ NumericValue:7
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
 30 PRINT "NOTE NUMBER", "CHORD",
- TextConstant:"NOTE NUMBER"
+ TextValue:"NOTE NUMBER"
  CarriageControl:,
- TextConstant:"CHORD"
+ TextValue:"CHORD"
  CarriageControl:,
 40 PRINT " S     A     T     B"
- TextConstant:" S     A     T     B"
+ TextValue:" S     A     T     B"
  CarriageControl:NL
 50 PRINT
  CarriageControl:NL
@@ -32,90 +32,90 @@
 100 REM  INITIALIZE.
  Remark: INITIALIZE.
 105 OPTION BASE 1
- NumericConstant:1
+ NumericValue:1
 110 MAT READ P
  Variable:P(,) -> _(,)
 111 DATA 5,4,1,6,2,3, 6,4,2,1,5,3, 6,4,3,1,2,5
- NumericConstant:5
- NumericConstant:4
- NumericConstant:1
- NumericConstant:6
- NumericConstant:2
- NumericConstant:3
- NumericConstant:6
- NumericConstant:4
- NumericConstant:2
- NumericConstant:1
- NumericConstant:5
- NumericConstant:3
- NumericConstant:6
- NumericConstant:4
- NumericConstant:3
- NumericConstant:1
- NumericConstant:2
- NumericConstant:5
+ NumericValue:5
+ NumericValue:4
+ NumericValue:1
+ NumericValue:6
+ NumericValue:2
+ NumericValue:3
+ NumericValue:6
+ NumericValue:4
+ NumericValue:2
+ NumericValue:1
+ NumericValue:5
+ NumericValue:3
+ NumericValue:6
+ NumericValue:4
+ NumericValue:3
+ NumericValue:1
+ NumericValue:2
+ NumericValue:5
 112 DATA 1,5,4,6,3,2, 2,6,5,4,1,3, 1,5,3,6,2,4
- NumericConstant:1
- NumericConstant:5
- NumericConstant:4
- NumericConstant:6
- NumericConstant:3
- NumericConstant:2
- NumericConstant:2
- NumericConstant:6
- NumericConstant:5
- NumericConstant:4
- NumericConstant:1
- NumericConstant:3
- NumericConstant:1
- NumericConstant:5
- NumericConstant:3
- NumericConstant:6
- NumericConstant:2
- NumericConstant:4
+ NumericValue:1
+ NumericValue:5
+ NumericValue:4
+ NumericValue:6
+ NumericValue:3
+ NumericValue:2
+ NumericValue:2
+ NumericValue:6
+ NumericValue:5
+ NumericValue:4
+ NumericValue:1
+ NumericValue:3
+ NumericValue:1
+ NumericValue:5
+ NumericValue:3
+ NumericValue:6
+ NumericValue:2
+ NumericValue:4
 120 READ N9
  Variable:N9 -> _
 130 MAT READ M(N9)
  Variable:N9 -> _
  Variable:M(_) -> _(,)
 140 DATA 28
- NumericConstant:28
+ NumericValue:28
 150 DATA 2,1,0,2,1,0,7,5,7,4,2,0,1
- NumericConstant:2
- NumericConstant:1
- NumericConstant:0
- NumericConstant:2
- NumericConstant:1
- NumericConstant:0
- NumericConstant:7
- NumericConstant:5
- NumericConstant:7
- NumericConstant:4
- NumericConstant:2
- NumericConstant:0
- NumericConstant:1
+ NumericValue:2
+ NumericValue:1
+ NumericValue:0
+ NumericValue:2
+ NumericValue:1
+ NumericValue:0
+ NumericValue:7
+ NumericValue:5
+ NumericValue:7
+ NumericValue:4
+ NumericValue:2
+ NumericValue:0
+ NumericValue:1
 160 DATA 2,1,0,2,1,0,7,5,7,4,2,0,1,1,0
- NumericConstant:2
- NumericConstant:1
- NumericConstant:0
- NumericConstant:2
- NumericConstant:1
- NumericConstant:0
- NumericConstant:7
- NumericConstant:5
- NumericConstant:7
- NumericConstant:4
- NumericConstant:2
- NumericConstant:0
- NumericConstant:1
- NumericConstant:1
- NumericConstant:0
+ NumericValue:2
+ NumericValue:1
+ NumericValue:0
+ NumericValue:2
+ NumericValue:1
+ NumericValue:0
+ NumericValue:7
+ NumericValue:5
+ NumericValue:7
+ NumericValue:4
+ NumericValue:2
+ NumericValue:0
+ NumericValue:1
+ NumericValue:1
+ NumericValue:0
 170 OPTION BASE 0
- NumericConstant:0
+ NumericValue:0
 190 FOR V = 0 TO 4
  control: Variable:V -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:4"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:4"]
 200    READ S(V,N9)
  Variable:V -> _
  Variable:N9 -> _
@@ -123,25 +123,25 @@
 210 NEXT V
  Variable:V -> _
 220 DATA 1,0,-3,-5,-7
- NumericConstant:1
- NumericConstant:0
- NumericConstant:3
+ NumericValue:1
+ NumericValue:0
+ NumericValue:3
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:5
+ NumericValue:5
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:7
+ NumericValue:7
  UnaryOperatorMinus:-(_) -> =_
 240 LET C2 = 1
  Variable:C2 -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 250
 450 FOR N = N9 TO 1 STEP -1
  WARNING: FORNEXT length exceeds limit 40
  control: Variable:N -> _
  start:   ["Variable:N9 -> _"]
- end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
+ end:     ["NumericValue:1"]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
 460 IF N = N9 THEN 6000
  Variable:N -> _
  Variable:N9 -> _
@@ -151,14 +151,14 @@
  Remark: TEST CHORDS.
 505 LET I1 = 1
  Variable:I1 -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 510 FOR I = I1 TO 6
  WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:I -> _
  start:   ["Variable:I1 -> _"]
- end:     ["NumericConstant:6"]
+ end:     ["NumericValue:6"]
 520 LET C2 = P(C1,I)
  Variable:C2 -> _
  Variable:C1 -> _
@@ -166,7 +166,7 @@
  Variable:P(_,_) -> _
  AssignmentOperator:= _ -> _
 525 LET S(0,N) = C2
- NumericConstant:0
+ NumericValue:0
  Variable:N -> _
  Variable:S(_,_) -> _
  Variable:C2 -> _
@@ -177,7 +177,7 @@
  Variable:M(_) -> _
  AssignmentOperator:= _ -> _
 540 LET S(1,N) = S
- NumericConstant:1
+ NumericValue:1
  Variable:N -> _
  Variable:S(_,_) -> _
  Variable:S -> _
@@ -186,24 +186,24 @@
 545 REM  FIX ROOT
  Remark: FIX ROOT
 550 LET D(1) = C2-8
- NumericConstant:1
+ NumericValue:1
  Variable:D(_) -> _
  Variable:C2 -> _
- NumericConstant:8
+ NumericValue:8
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 560 LET D(2) = C2-15
- NumericConstant:2
+ NumericValue:2
  Variable:D(_) -> _
  Variable:C2 -> _
- NumericConstant:15
+ NumericValue:15
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 565 LET D = S(4,N+1)
  Variable:D -> _
- NumericConstant:4
+ NumericValue:4
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -211,20 +211,20 @@
  WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:2"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:2"]
 580 IF ABS(D(J)-D) <= 5 THEN 610
  Variable:J -> _
  Variable:D(_) -> _
  Variable:D -> _
  BinaryOperatorMinus:-(_,_) -> _
  FunctionAbs:ABS(_) -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:610
 590 LET R = D(3-J)
  Variable:R -> _
- NumericConstant:3
+ NumericValue:3
  Variable:J -> _
  BinaryOperatorMinus:-(_,_) -> _
  Variable:D(_) -> _
@@ -235,27 +235,27 @@
  Variable:J -> _
 620 IF S > S(1,N+1) THEN 650
  Variable:S -> _
- NumericConstant:1
+ NumericValue:1
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:650
 630 LET R = D(1)
  Variable:R -> _
- NumericConstant:1
+ NumericValue:1
  Variable:D(_) -> _
  AssignmentOperator:= _ -> _
 640 GOTO 660
  LineNumber:660
 650 LET R = D(2)
  Variable:R -> _
- NumericConstant:2
+ NumericValue:2
  Variable:D(_) -> _
  AssignmentOperator:= _ -> _
 660 LET S(4,N) = R
- NumericConstant:4
+ NumericValue:4
  Variable:N -> _
  Variable:S(_,_) -> _
  Variable:R -> _
@@ -265,14 +265,14 @@
  Remark: FIND OTHER NOTES
 705 LET J = 1
  Variable:J -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 710 FOR K = 0 TO 4 STEP 2
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:K -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:4"]
- step:    ["NumericConstant:2"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:4"]
+ step:    ["NumericValue:2"]
 720 IF FNC(S-(R+K))=0 THEN 750
  Variable:S -> _
  Variable:R -> _
@@ -280,7 +280,7 @@
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  UserFunction:FNC(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:750
 730 LET B(J) = R+K
@@ -293,60 +293,60 @@
 740 LET J = J+1
  Variable:J -> _
  Variable:J -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 750 NEXT K
  Variable:K -> _
 760 IF J > 3 THEN 4000
  Variable:J -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:4000
 770
 800 FOR L = 0 TO 6
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:L -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:6"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:6"]
 810 LET A = B(1)
  Variable:A -> _
- NumericConstant:1
+ NumericValue:1
  Variable:B(_) -> _
  AssignmentOperator:= _ -> _
 820 LET B = B(2)
  Variable:B -> _
- NumericConstant:2
+ NumericValue:2
  Variable:B(_) -> _
  AssignmentOperator:= _ -> _
 830 LET W(0,L) = 0
- NumericConstant:0
+ NumericValue:0
  Variable:L -> _
  Variable:W(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 840 LET W(2,L) = B
- NumericConstant:2
+ NumericValue:2
  Variable:L -> _
  Variable:W(_,_) -> _
  Variable:B -> _
  AssignmentOperator:= _ -> _
 850 LET W(3,L) = A
- NumericConstant:3
+ NumericValue:3
  Variable:L -> _
  Variable:W(_,_) -> _
  Variable:A -> _
  AssignmentOperator:= _ -> _
 860 LET B(1) = B
- NumericConstant:1
+ NumericValue:1
  Variable:B(_) -> _
  Variable:B -> _
  AssignmentOperator:= _ -> _
 870 LET B(2) = A+7
- NumericConstant:2
+ NumericValue:2
  Variable:B(_) -> _
  Variable:A -> _
- NumericConstant:7
+ NumericValue:7
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 880 NEXT L
@@ -357,14 +357,14 @@
 1010 FOR L = 0 TO 6
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:L -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:6"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:6"]
 1020 FOR V = 2 TO 3
  WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V -> _
- start:   ["NumericConstant:2"]
- end:     ["NumericConstant:3"]
+ start:   ["NumericValue:2"]
+ end:     ["NumericValue:3"]
 1030 LET B = W(V,L)
  Variable:B -> _
  Variable:V -> _
@@ -375,18 +375,18 @@
  Variable:B -> _
  Variable:V -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  FunctionAbs:ABS(_) -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:1260
 1050 IF B > 17-4*V THEN 1260
  Variable:B -> _
- NumericConstant:17
- NumericConstant:4
+ NumericValue:17
+ NumericValue:4
  Variable:V -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -394,8 +394,8 @@
  LineNumber:1260
 1060 IF B < 5-4*V THEN 1260
  Variable:B -> _
- NumericConstant:5
- NumericConstant:4
+ NumericValue:5
+ NumericValue:4
  Variable:V -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -408,17 +408,17 @@
  Variable:B -> _
  AssignmentOperator:= _ -> _
 1080 IF S(2*V-3,N) <= S(2*V-2,N) THEN 1260
- NumericConstant:2
+ NumericValue:2
  Variable:V -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  Variable:S(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  Variable:V -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
  Variable:S(_,_) -> _
@@ -438,24 +438,24 @@
  WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V1 -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:4"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:4"]
 1110 FOR V2 = V1+1 TO 4
  WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V2 -> _
- start:   ["Variable:V1 -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
- end:     ["NumericConstant:4"]
+ start:   ["Variable:V1 -> _", "NumericValue:1", "BinaryOperatorPlus:+(_,_) -> _"]
+ end:     ["NumericValue:4"]
 1115 LET D = S(V1,N+1)-S(V2,N+1)
  Variable:D -> _
  Variable:V1 -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  Variable:V2 -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -463,13 +463,13 @@
 1120 IF FNC(D) = 0 THEN 1145
  Variable:D -> _
  UserFunction:FNC(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:1145
 1130 IF FNC(D) = 4 THEN 1145
  Variable:D -> _
  UserFunction:FNC(_) -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:1145
 1140 GOTO 1160
@@ -481,7 +481,7 @@
  Variable:S(_,_) -> _
  Variable:V1 -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -493,7 +493,7 @@
  Variable:S(_,_) -> _
  Variable:V2 -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -513,8 +513,8 @@
 1210 FOR V = 2 TO 3
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V -> _
- start:   ["NumericConstant:2"]
- end:     ["NumericConstant:3"]
+ start:   ["NumericValue:2"]
+ end:     ["NumericValue:3"]
 1220 LET D(V) = ABS(S(V,N)-S(V,N+1))
  Variable:V -> _
  Variable:D(_) -> _
@@ -523,7 +523,7 @@
  Variable:S(_,_) -> _
  Variable:V -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -532,22 +532,22 @@
 1230 NEXT V
  Variable:V -> _
 1240 LET W(0,L) = D(2)+D(3)
- NumericConstant:0
+ NumericValue:0
  Variable:L -> _
  Variable:W(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  Variable:D(_) -> _
- NumericConstant:3
+ NumericValue:3
  Variable:D(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 1250 GOTO 1261
  LineNumber:1261
 1260 LET W(0,L) = 999
- NumericConstant:0
+ NumericValue:0
  Variable:L -> _
  Variable:W(_,_) -> _
- NumericConstant:999
+ NumericValue:999
  AssignmentOperator:= =_ -> _
 1261 NEXT L
  Variable:L -> _
@@ -556,16 +556,16 @@
  Remark: SELECT CHORD
 1510 LET M = 999
  Variable:M -> _
- NumericConstant:999
+ NumericValue:999
  AssignmentOperator:= =_ -> _
 1520 FOR L = 0 TO 6
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:L -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:6"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:6"]
 1530 LET M1 = W(0,L)
  Variable:M1 -> _
- NumericConstant:0
+ NumericValue:0
  Variable:L -> _
  Variable:W(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -586,22 +586,22 @@
  Variable:L -> _
 1600 IF M = 999 THEN 4000
  Variable:M -> _
- NumericConstant:999
+ NumericValue:999
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:4000
 1610 LET S(2,N) = W(2,L9)
- NumericConstant:2
+ NumericValue:2
  Variable:N -> _
  Variable:S(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  Variable:L9 -> _
  Variable:W(_,_) -> _
  AssignmentOperator:= _ -> _
 1620 LET S(3,N) = W(3,L9)
- NumericConstant:3
+ NumericValue:3
  Variable:N -> _
  Variable:S(_,_) -> _
- NumericConstant:3
+ NumericValue:3
  Variable:L9 -> _
  Variable:W(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -617,7 +617,7 @@
 5005 LET N = N+1
  Variable:N -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 5010 IF N <> N9 THEN 5100
@@ -626,22 +626,22 @@
  BinaryOperatorNotEqual:<>(_,_) -> ?
  LineNumber:5100
 5020 PRINT "STUCK"
- TextConstant:"STUCK"
+ TextValue:"STUCK"
  CarriageControl:NL
 5030 STOP
  WARNING: Terminating statement in FOR/NEXT
  
 5100 LET C2 = S(0,N)
  Variable:C2 -> _
- NumericConstant:0
+ NumericValue:0
  Variable:N -> _
  Variable:S(_,_) -> _
  AssignmentOperator:= _ -> _
 5110 LET C1 = S(0,N+1)
  Variable:C1 -> _
- NumericConstant:0
+ NumericValue:0
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -649,8 +649,8 @@
  WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:6"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:6"]
 5130 IF C2 = P(C1,I) THEN 5200
  Variable:C2 -> _
  Variable:C1 -> _
@@ -663,7 +663,7 @@
 5200 LET I1 = I+1
  Variable:I1 -> _
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 5210 GOTO 510
@@ -674,23 +674,23 @@
 6001 PRINT N, S(0,N), S(1,N);S(2,N);S(3,N);S(4,N)
  Variable:N -> _
  CarriageControl:,
- NumericConstant:0
+ NumericValue:0
  Variable:N -> _
  Variable:S(_,_) -> _
  CarriageControl:,
- NumericConstant:1
+ NumericValue:1
  Variable:N -> _
  Variable:S(_,_) -> _
  CarriageControl:;
- NumericConstant:2
+ NumericValue:2
  Variable:N -> _
  Variable:S(_,_) -> _
  CarriageControl:;
- NumericConstant:3
+ NumericValue:3
  Variable:N -> _
  Variable:S(_,_) -> _
  CarriageControl:;
- NumericConstant:4
+ NumericValue:4
  Variable:N -> _
  Variable:S(_,_) -> _
  CarriageControl:NL

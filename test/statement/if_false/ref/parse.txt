@@ -2,18 +2,18 @@
  Remark:TEST IF WITH COMMENT ON NEXT LINE
 20 LET A = 0
  Variable:A -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 50 IF A = 1 THEN 90
  Variable:A -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:90
 60 PRINT "PIE IS NOT READY"
- TextConstant:"PIE IS NOT READY"
+ TextValue:"PIE IS NOT READY"
  CarriageControl:NL
 90 PRINT "DONE"
- TextConstant:"DONE"
+ TextValue:"DONE"
  CarriageControl:NL
 99 END
  

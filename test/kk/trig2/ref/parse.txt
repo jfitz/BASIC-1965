@@ -2,16 +2,16 @@
  UserFunctionName:FNR -> _
  VariableName:X -> _
  Variable:X -> _
- NumericConstant:1000
+ NumericValue:1000
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:0.5
+ NumericValue:0.5
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
- NumericConstant:1000
+ NumericValue:1000
  BinaryOperatorDivide:/(_,_) -> _
 10 LET P = 3.14159625
  Variable:P -> _
- NumericConstant:3.14159625
+ NumericValue:3.14159625
  AssignmentOperator:= =_ -> _
 20 DEF FND(X) = X*P/180
  UserFunctionName:FND -> _
@@ -19,7 +19,7 @@
  Variable:X -> _
  Variable:P -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:180
+ NumericValue:180
  BinaryOperatorDivide:/(_,_) -> _
 30 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS -> _
@@ -34,17 +34,17 @@
  UserFunction:FND(_) -> _
  FunctionCos:COS(_) -> _
 50 PRINT "DEGREES", "SINE", "COSINE"
- TextConstant:"DEGREES"
+ TextValue:"DEGREES"
  CarriageControl:,
- TextConstant:"SINE"
+ TextValue:"SINE"
  CarriageControl:,
- TextConstant:"COSINE"
+ TextValue:"COSINE"
  CarriageControl:NL
 60 FOR X = 0 TO 90 STEP 10
  control: Variable:X -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:90"]
- step:    ["NumericConstant:10"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:90"]
+ step:    ["NumericValue:10"]
 70     PRINT X, FNR(FNS(X)), FNR(FNC(X))
  Variable:X -> _
  CarriageControl:,

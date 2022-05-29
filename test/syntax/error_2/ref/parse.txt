@@ -1,19 +1,19 @@
 10 REM SYNTAX ERROR
  Remark:SYNTAX ERROR
 20 PRINT "Hello world"
- TextConstant:"Hello world"
+ TextValue:"Hello world"
  CarriageControl:NL
 25 FOR I = 1 TO 10
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:10"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:10"]
 30 PRINT x
  ERROR: Syntax error: "x" Token 'InvalidToken:x' is not a value or operator
  CarriageControl:NL
 35 NEXT I
  Variable:I -> _
 40 PRINT "Done"
- TextConstant:"Done"
+ TextValue:"Done"
  CarriageControl:NL
 99 END
  

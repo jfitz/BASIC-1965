@@ -1,35 +1,35 @@
 10 REM ARRAY ASSIGNMENT
  Remark:ARRAY ASSIGNMENT
 20 DIM A(6), B(6)
- NumericConstant:6
+ NumericValue:6
  Declaration:A() -> _()
- NumericConstant:6
+ NumericValue:6
  Declaration:B() -> _()
 30 DATA 1,2,3,4,5,6
- NumericConstant:1
- NumericConstant:2
- NumericConstant:3
- NumericConstant:4
- NumericConstant:5
- NumericConstant:6
+ NumericValue:1
+ NumericValue:2
+ NumericValue:3
+ NumericValue:4
+ NumericValue:5
+ NumericValue:6
 40 DATA 7,8,9,10,11,12
- NumericConstant:7
- NumericConstant:8
- NumericConstant:9
- NumericConstant:10
- NumericConstant:11
- NumericConstant:12
+ NumericValue:7
+ NumericValue:8
+ NumericValue:9
+ NumericValue:10
+ NumericValue:11
+ NumericValue:12
 100 FOR I = 0 TO 5
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:5"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:5"]
 120 READ A(I)
  Variable:I -> _
  Variable:A(_) -> _
 140 NEXT I
  Variable:I -> _
 150 PRINT "ARRAY A"
- TextConstant:"ARRAY A"
+ TextValue:"ARRAY A"
  CarriageControl:NL
 160 ARR PRINT A;
  Variable:A() -> _()
@@ -38,15 +38,15 @@
  CarriageControl:NL
 200 FOR I = 0 TO 5
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:5"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:5"]
 220 READ B(I)
  Variable:I -> _
  Variable:B(_) -> _
 240 NEXT I
  Variable:I -> _
 250 PRINT "ARRAY B"
- TextConstant:"ARRAY B"
+ TextValue:"ARRAY B"
  CarriageControl:NL
 260 ARR PRINT B;
  Variable:B() -> _()
@@ -60,7 +60,7 @@
  BinaryOperatorMultiply:*(_(),_()) -> _()
  AssignmentOperator:= _() -> _()
 310 PRINT "ARRAY C"
- TextConstant:"ARRAY C"
+ TextValue:"ARRAY C"
  CarriageControl:NL
 320 ARR PRINT C;
  Variable:C() -> _()

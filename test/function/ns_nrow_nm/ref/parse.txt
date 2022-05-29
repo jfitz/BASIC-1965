@@ -1,95 +1,95 @@
 10 REM LENGTH OF ARRAY
  Remark:LENGTH OF ARRAY
 20 OPTION BASE 0
- NumericConstant:0
+ NumericValue:0
 22 LET B = 0
  Variable:B -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 50 DATA 1, 2
- NumericConstant:1
- NumericConstant:2
+ NumericValue:1
+ NumericValue:2
 52 DATA 3, 4, 8, 10, 4, 5
- NumericConstant:3
- NumericConstant:4
- NumericConstant:8
- NumericConstant:10
- NumericConstant:4
- NumericConstant:5
+ NumericValue:3
+ NumericValue:4
+ NumericValue:8
+ NumericValue:10
+ NumericValue:4
+ NumericValue:5
 60 GOSUB 400
  LineNumber:400
 70 DATA 3, 4
- NumericConstant:3
- NumericConstant:4
+ NumericValue:3
+ NumericValue:4
 72 DATA 1, 0, 2, -1, 3, 0, 0, 5, 2, 1, 4, -3, 1, 0, 5, 0, 1, 1, 1, 1
- NumericConstant:1
- NumericConstant:0
- NumericConstant:2
- NumericConstant:1
+ NumericValue:1
+ NumericValue:0
+ NumericValue:2
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:3
- NumericConstant:0
- NumericConstant:0
- NumericConstant:5
- NumericConstant:2
- NumericConstant:1
- NumericConstant:4
- NumericConstant:3
+ NumericValue:3
+ NumericValue:0
+ NumericValue:0
+ NumericValue:5
+ NumericValue:2
+ NumericValue:1
+ NumericValue:4
+ NumericValue:3
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
- NumericConstant:0
- NumericConstant:5
- NumericConstant:0
- NumericConstant:1
- NumericConstant:1
- NumericConstant:1
- NumericConstant:1
+ NumericValue:1
+ NumericValue:0
+ NumericValue:5
+ NumericValue:0
+ NumericValue:1
+ NumericValue:1
+ NumericValue:1
+ NumericValue:1
 80 GOSUB 400
  LineNumber:400
 120 OPTION BASE 1
- NumericConstant:1
+ NumericValue:1
 122 LET B = 1
  Variable:B -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 150 DATA 2, 3
- NumericConstant:2
- NumericConstant:3
+ NumericValue:2
+ NumericValue:3
 152 DATA 9, 3, 4, 8, 4, 5
- NumericConstant:9
- NumericConstant:3
- NumericConstant:4
- NumericConstant:8
- NumericConstant:4
- NumericConstant:5
+ NumericValue:9
+ NumericValue:3
+ NumericValue:4
+ NumericValue:8
+ NumericValue:4
+ NumericValue:5
 160 GOSUB 400
  LineNumber:400
 170 DATA 4, 5
- NumericConstant:4
- NumericConstant:5
+ NumericValue:4
+ NumericValue:5
 172 DATA 4, 1, 0, 2, -1, 3, 0, 0, 5, 2, 1, 4, -3, 1, 0, 5, 1, 1, 1, 1
- NumericConstant:4
- NumericConstant:1
- NumericConstant:0
- NumericConstant:2
- NumericConstant:1
+ NumericValue:4
+ NumericValue:1
+ NumericValue:0
+ NumericValue:2
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:3
- NumericConstant:0
- NumericConstant:0
- NumericConstant:5
- NumericConstant:2
- NumericConstant:1
- NumericConstant:4
- NumericConstant:3
+ NumericValue:3
+ NumericValue:0
+ NumericValue:0
+ NumericValue:5
+ NumericValue:2
+ NumericValue:1
+ NumericValue:4
+ NumericValue:3
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
- NumericConstant:0
- NumericConstant:5
- NumericConstant:1
- NumericConstant:1
- NumericConstant:1
- NumericConstant:1
+ NumericValue:1
+ NumericValue:0
+ NumericValue:5
+ NumericValue:1
+ NumericValue:1
+ NumericValue:1
+ NumericValue:1
 180 GOSUB 400
  LineNumber:400
 199 STOP
@@ -102,7 +102,7 @@
  Variable:C -> _
  Variable:M(_,_) -> _(,)
 460 PRINT "MATRIX:"
- TextConstant:"MATRIX:"
+ TextValue:"MATRIX:"
  CarriageControl:NL
 470 MAT PRINT M
  Variable:M(,) -> _(,)
@@ -113,7 +113,7 @@
  FunctionNrow:NROW(_(,)) -> _
  AssignmentOperator:= _ -> _
 490 PRINT "ROWS:" R1
- TextConstant:"ROWS:"
+ TextValue:"ROWS:"
  CarriageControl:
  Variable:R1 -> _
  CarriageControl:NL

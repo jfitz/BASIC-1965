@@ -2,9 +2,9 @@
  Remark:TEST
 20 MAT M = CON(4) * -1
  Variable:M(,) -> _(,)
- NumericConstant:4
+ NumericValue:4
  FunctionCon2:CON(_) -> =_(,)
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
  BinaryOperatorMultiply:*(_(,),_) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)
@@ -13,10 +13,10 @@
  CarriageControl:NL
 40 MAT M2 = CON(4,3) * -3
  Variable:M2(,) -> _(,)
- NumericConstant:4
- NumericConstant:3
+ NumericValue:4
+ NumericValue:3
  FunctionCon2:CON(_,_) -> =_(,)
- NumericConstant:3
+ NumericValue:3
  UnaryOperatorMinus:-(_) -> =_
  BinaryOperatorMultiply:*(_(,),_) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)

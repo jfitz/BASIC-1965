@@ -4,7 +4,7 @@
  Remark:THE LIMITS A AND B OF F(X)
 30 LET C1 = .238619
  Variable:C1 -> _
- NumericConstant:.238619
+ NumericValue:.238619
  AssignmentOperator:= =_ -> _
 40 LET C2 = C1
  Variable:C2 -> _
@@ -12,7 +12,7 @@
  AssignmentOperator:= _ -> _
 50 LET C3 = .661209
  Variable:C3 -> _
- NumericConstant:.661209
+ NumericValue:.661209
  AssignmentOperator:= =_ -> _
 60 LET C4 = C3
  Variable:C4 -> _
@@ -20,7 +20,7 @@
  AssignmentOperator:= _ -> _
 70 LET C5 = .932470
  Variable:C5 -> _
- NumericConstant:.932470
+ NumericValue:.932470
  AssignmentOperator:= =_ -> _
 80 LET C6 = C5
  Variable:C6 -> _
@@ -28,22 +28,22 @@
  AssignmentOperator:= _ -> _
 90 LET D1 = .467914
  Variable:D1 -> _
- NumericConstant:.467914
+ NumericValue:.467914
  AssignmentOperator:= =_ -> _
 100 LET D2 = .360762
  Variable:D2 -> _
- NumericConstant:.360762
+ NumericValue:.360762
  AssignmentOperator:= =_ -> _
 110 LET D3 = .171324
  Variable:D3 -> _
- NumericConstant:.171324
+ NumericValue:.171324
  AssignmentOperator:= =_ -> _
 120 LET J = 0
  Variable:J -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 130 PRINT "ENTER ENDPOINTS A,B"
- TextConstant:"ENTER ENDPOINTS A,B"
+ TextValue:"ENTER ENDPOINTS A,B"
  CarriageControl:NL
 140 INPUT A,B
  Variable:A -> _
@@ -67,7 +67,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Z -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 180 GOSUB 500
@@ -91,7 +91,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Z -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 220 GOSUB 500
@@ -115,7 +115,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Z -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 260 GOSUB 500
@@ -139,7 +139,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Z -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 300 GOSUB 500
@@ -163,7 +163,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Z -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 340 GOSUB 500
@@ -187,7 +187,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Z -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 380 GOSUB 500
@@ -207,26 +207,26 @@
 410 LET G = (Y/2)*J
  Variable:G -> _
  Variable:Y -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  Variable:J -> _
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 420 PRINT "INTEGRAL = ";G
- TextConstant:"INTEGRAL = "
+ TextValue:"INTEGRAL = "
  CarriageControl:;
  Variable:G -> _
  CarriageControl:NL
 430 PRINT
  CarriageControl:NL
 440 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 450 INPUT L
  Variable:L -> _
 460 IF L = 1 THEN 480
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:480
 470 STOP
@@ -237,21 +237,21 @@
  LineNumber:120
 500 LET Q = 13*X^2 - 6*X^2 + SIN(X) + 1/X
  Variable:Q -> _
- NumericConstant:13
+ NumericValue:13
  Variable:X -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:6
+ NumericValue:6
  Variable:X -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  Variable:X -> _
  FunctionSin:SIN(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  Variable:X -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _

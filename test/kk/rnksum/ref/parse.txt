@@ -1,11 +1,11 @@
 100 DIM X(100), Y(100), Z(200), T(200)
- NumericConstant:100
+ NumericValue:100
  Declaration:X() -> _()
- NumericConstant:100
+ NumericValue:100
  Declaration:Y() -> _()
- NumericConstant:200
+ NumericValue:200
  Declaration:Z() -> _()
- NumericConstant:200
+ NumericValue:200
  Declaration:T() -> _()
 110
 140 READ M, N
@@ -13,7 +13,7 @@
  Variable:N -> _
 150 FOR I = 1 TO M
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:M -> _"]
 160    READ X(I)
  Variable:I -> _
@@ -22,7 +22,7 @@
  Variable:I -> _
 180 FOR J = 1 TO N
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 190    READ Y(J)
  Variable:J -> _
@@ -32,7 +32,7 @@
 210
 250 FOR K = 1 TO M
  control: Variable:K -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:M -> _"]
 260    LET Z(K) = X(K)
  Variable:K -> _
@@ -43,14 +43,14 @@
 270    LET T(K) = +1
  Variable:K -> _
  Variable:T(_) -> _
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorPlus:+(_) -> =_
  AssignmentOperator:= =_ -> _
 280 NEXT K
  Variable:K -> _
 290 FOR K = 1 TO N
  control: Variable:K -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 300    LET Z(M+K) = Y(K)
  Variable:M -> _
@@ -65,18 +65,18 @@
  Variable:K -> _
  BinaryOperatorPlus:+(_,_) -> _
  Variable:T(_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 320 NEXT K
  Variable:K -> _
 330
 360 FOR K = 1 TO M+N-1
  control: Variable:K -> _
- start:   ["NumericConstant:1"]
- end:     ["Variable:M -> _", "Variable:N -> _", "BinaryOperatorPlus:+(_,_) -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ start:   ["NumericValue:1"]
+ end:     ["Variable:M -> _", "Variable:N -> _", "BinaryOperatorPlus:+(_,_) -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
 370    FOR L = K+1 TO M+N
  control: Variable:L -> _
- start:   ["Variable:K -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
+ start:   ["Variable:K -> _", "NumericValue:1", "BinaryOperatorPlus:+(_,_) -> _"]
  end:     ["Variable:M -> _", "Variable:N -> _", "BinaryOperatorPlus:+(_,_) -> _"]
 380       IF Z(K) <= Z(L) THEN 450
  Variable:K -> _
@@ -124,11 +124,11 @@
 470
 500 LET J = 1
  Variable:J -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 510 LET K = 1
  Variable:K -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 520 LET B = J
  Variable:B -> _
@@ -141,7 +141,7 @@
 540 LET J = J+1
  Variable:J -> _
  Variable:J -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 550 IF J > M+N THEN 600
@@ -167,7 +167,7 @@
 580 LET K = K+1
  Variable:K -> _
  Variable:K -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 590 GO TO 540
@@ -175,7 +175,7 @@
 600 FOR L = B TO J-1
  control: Variable:L -> _
  start:   ["Variable:B -> _"]
- end:     ["Variable:J -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:J -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
 610    LET Z(L) = T/K
  Variable:L -> _
  Variable:Z(_) -> _
@@ -194,18 +194,18 @@
  LineNumber:510
 640
 740 LET S(0) = 0
- NumericConstant:0
+ NumericValue:0
  Variable:S(_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 750 LET S(1) = 0
- NumericConstant:1
+ NumericValue:1
  Variable:S(_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 760 FOR K = 1 TO M+N
  control: Variable:K -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:M -> _", "Variable:N -> _", "BinaryOperatorPlus:+(_,_) -> _"]
 770    LET S(T(K)) = S(T(K)) + Z(K)
  Variable:K -> _
@@ -221,32 +221,32 @@
 790 NEXT K
  Variable:K -> _
 800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
- TextConstant:"RANK SUM FOR X IS"
+ TextValue:"RANK SUM FOR X IS"
  CarriageControl:;
- NumericConstant:1
+ NumericValue:1
  Variable:S(_) -> _
  CarriageControl:,
- TextConstant:"FOR Y IS"
+ TextValue:"FOR Y IS"
  CarriageControl:;
- NumericConstant:0
+ NumericValue:0
  Variable:S(_) -> _
  CarriageControl:NL
 810
 900 DATA 6, 4
- NumericConstant:6
- NumericConstant:4
+ NumericValue:6
+ NumericValue:4
 910 DATA 117, 145, 147, 120, 150, 120
- NumericConstant:117
- NumericConstant:145
- NumericConstant:147
- NumericConstant:120
- NumericConstant:150
- NumericConstant:120
+ NumericValue:117
+ NumericValue:145
+ NumericValue:147
+ NumericValue:120
+ NumericValue:150
+ NumericValue:120
 920 DATA 160, 160, 140, 190
- NumericConstant:160
- NumericConstant:160
- NumericConstant:140
- NumericConstant:190
+ NumericValue:160
+ NumericValue:160
+ NumericValue:140
+ NumericValue:190
 999 END
  
 

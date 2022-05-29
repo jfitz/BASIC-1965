@@ -1,48 +1,48 @@
 10 REM COMPOUNDED AMOUNTS
  Remark:COMPOUNDED AMOUNTS
 20 PRINT "FUTURE VALUE (1)"
- TextConstant:"FUTURE VALUE (1)"
+ TextValue:"FUTURE VALUE (1)"
  CarriageControl:NL
 30 PRINT "PRESENT VALUE (2)"
- TextConstant:"PRESENT VALUE (2)"
+ TextValue:"PRESENT VALUE (2)"
  CarriageControl:NL
 40 PRINT "INTEREST (3)"
- TextConstant:"INTEREST (3)"
+ TextValue:"INTEREST (3)"
  CarriageControl:NL
 50 PRINT "PERIOD INTEREST RATE (4)"
- TextConstant:"PERIOD INTEREST RATE (4)"
+ TextValue:"PERIOD INTEREST RATE (4)"
  CarriageControl:NL
 60 PRINT "NUMBER OF TIME PERIODS (5)"
- TextConstant:"NUMBER OF TIME PERIODS (5)"
+ TextValue:"NUMBER OF TIME PERIODS (5)"
  CarriageControl:NL
 70 PRINT "ENTER 1 TO 5"
- TextConstant:"ENTER 1 TO 5"
+ TextValue:"ENTER 1 TO 5"
  CarriageControl:NL
 80 INPUT A
  Variable:A -> _
 90 IF A = 1 THEN 100
  Variable:A -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:100
 91 IF A = 2 THEN 160
  Variable:A -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:160
 92 IF A = 3 THEN 220
  Variable:A -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:220
 93 IF A = 4 THEN 280
  Variable:A -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:280
 94 IF A = 5 THEN 340
  Variable:A -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:340
 95 GOTO 70
@@ -56,7 +56,7 @@
 130 LET X = Y*((1 + I)^N)
  Variable:X -> _
  Variable:Y -> _
- NumericConstant:1
+ NumericValue:1
  Variable:I -> _
  BinaryOperatorPlus:+(_,_) -> _
  Variable:N -> _
@@ -64,7 +64,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 140 PRINT "FUTURE VALUE = ";X
- TextConstant:"FUTURE VALUE = "
+ TextValue:"FUTURE VALUE = "
  CarriageControl:;
  Variable:X -> _
  CarriageControl:NL
@@ -79,7 +79,7 @@
 190 LET Y = X*((1 + I)^N)
  Variable:Y -> _
  Variable:X -> _
- NumericConstant:1
+ NumericValue:1
  Variable:I -> _
  BinaryOperatorPlus:+(_,_) -> _
  Variable:N -> _
@@ -87,7 +87,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 200 PRINT "PRESENT VALUE = ";Y
- TextConstant:"PRESENT VALUE = "
+ TextValue:"PRESENT VALUE = "
  CarriageControl:;
  Variable:Y -> _
  CarriageControl:NL
@@ -102,17 +102,17 @@
 250 LET L = Y*((1 + I^N) - 1)
  Variable:L -> _
  Variable:Y -> _
- NumericConstant:1
+ NumericValue:1
  Variable:I -> _
  Variable:N -> _
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 260 PRINT "INTEREST = ";L
- TextConstant:"INTEREST = "
+ TextValue:"INTEREST = "
  CarriageControl:;
  Variable:L -> _
  CarriageControl:NL
@@ -129,15 +129,15 @@
  Variable:X -> _
  Variable:Y -> _
  BinaryOperatorDivide:/(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPower:^(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 320 PRINT "INTEREST RATE = ";I
- TextConstant:"INTEREST RATE = "
+ TextValue:"INTEREST RATE = "
  CarriageControl:;
  Variable:I -> _
  CarriageControl:NL
@@ -155,27 +155,27 @@
  Variable:Y -> _
  BinaryOperatorDivide:/(_,_) -> _
  FunctionLog:LOG(_) -> _
- NumericConstant:1
+ NumericValue:1
  Variable:I -> _
  BinaryOperatorPlus:+(_,_) -> _
  FunctionLog:LOG(_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 380 PRINT "NUMBER OF TIME PERIODS = ";N
- TextConstant:"NUMBER OF TIME PERIODS = "
+ TextValue:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
  Variable:N -> _
  CarriageControl:NL
 390 PRINT
  CarriageControl:NL
 400 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 401 INPUT L
  Variable:L -> _
 402 IF L = 1 THEN 404
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:404
 403 STOP
@@ -185,28 +185,28 @@
 405 GOTO 70
  LineNumber:70
 410 PRINT "PRESENT VALUE = ";
- TextConstant:"PRESENT VALUE = "
+ TextValue:"PRESENT VALUE = "
  CarriageControl:;
 420 INPUT Y
  Variable:Y -> _
 430 RETURN
  
 440 PRINT "INTEREST RATE = ";
- TextConstant:"INTEREST RATE = "
+ TextValue:"INTEREST RATE = "
  CarriageControl:;
 450 INPUT I
  Variable:I -> _
 460 RETURN
  
 470 PRINT "NUMBER OF TIME PERIODS = ";
- TextConstant:"NUMBER OF TIME PERIODS = "
+ TextValue:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
 480 INPUT N
  Variable:N -> _
 490 RETURN
  
 500 PRINT "FUTURE VALUE = ";
- TextConstant:"FUTURE VALUE = "
+ TextValue:"FUTURE VALUE = "
  CarriageControl:;
 510 INPUT X
  Variable:X -> _

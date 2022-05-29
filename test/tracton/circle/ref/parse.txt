@@ -3,19 +3,19 @@
 20 REM OF A CIRCLE FROM 3 NON-COLINEAR POINTS
  Remark:OF A CIRCLE FROM 3 NON-COLINEAR POINTS
 30 PRINT "INPUT X1,Y1";
- TextConstant:"INPUT X1,Y1"
+ TextValue:"INPUT X1,Y1"
  CarriageControl:;
 40 INPUT X1, Y1
  Variable:X1 -> _
  Variable:Y1 -> _
 50 PRINT "INPUT X2,Y2";
- TextConstant:"INPUT X2,Y2"
+ TextValue:"INPUT X2,Y2"
  CarriageControl:;
 60 INPUT X2, Y2
  Variable:X2 -> _
  Variable:Y2 -> _
 70 PRINT "INPUT X3,Y2";
- TextConstant:"INPUT X3,Y2"
+ TextValue:"INPUT X3,Y2"
  CarriageControl:;
 80 INPUT X3, Y3
  Variable:X3 -> _
@@ -61,7 +61,7 @@
 120 LET D = C/(2*(X2 - X1))
  Variable:D -> _
  Variable:C -> _
- NumericConstant:2
+ NumericValue:2
  Variable:X2 -> _
  Variable:X1 -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -89,7 +89,7 @@
 140 LET F = E/(2*(X3 - X1))
  Variable:F -> _
  Variable:E -> _
- NumericConstant:2
+ NumericValue:2
  Variable:X3 -> _
  Variable:X1 -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -119,40 +119,40 @@
  Variable:X3 -> _
  Variable:X0 -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  Variable:Y3 -> _
  Variable:Y0 -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  FunctionSqr:SQR(_) -> _
  AssignmentOperator:= _ -> _
 180 PRINT "CENTER X0,Y0 = ";X0;",";Y0
- TextConstant:"CENTER X0,Y0 = "
+ TextValue:"CENTER X0,Y0 = "
  CarriageControl:;
  Variable:X0 -> _
  CarriageControl:;
- TextConstant:","
+ TextValue:","
  CarriageControl:;
  Variable:Y0 -> _
  CarriageControl:NL
 190 PRINT "RADIUS = ";R
- TextConstant:"RADIUS = "
+ TextValue:"RADIUS = "
  CarriageControl:;
  Variable:R -> _
  CarriageControl:NL
 200 PRINT
  CarriageControl:NL
 210 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
- TextConstant:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
+ TextValue:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 220 INPUT L
  Variable:L -> _
 230 IF L = 1 THEN 250
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:250
 240 STOP

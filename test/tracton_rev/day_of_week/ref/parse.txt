@@ -3,7 +3,7 @@
 20 REM RESTRICTION: THE DATE MUST BE AFTER 1752
  Remark:RESTRICTION: THE DATE MUST BE AFTER 1752
 100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
- TextConstant:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
+ TextValue:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
  CarriageControl:NL
 110 INPUT D,M,Y
  Variable:D -> _
@@ -11,18 +11,18 @@
  Variable:Y -> _
 120 IF Y > 1752 THEN 150
  Variable:Y -> _
- NumericConstant:1752
+ NumericValue:1752
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:150
 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
- TextConstant:"YEAR MUST NOT BE PRIOR TO 1753"
+ TextValue:"YEAR MUST NOT BE PRIOR TO 1753"
  CarriageControl:NL
 140 GOTO 100
  LineNumber:100
 150 LET K = INT(0.6 + (1/M))
  Variable:K -> _
- NumericConstant:0.6
- NumericConstant:1
+ NumericValue:0.6
+ NumericValue:1
  Variable:M -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
@@ -37,7 +37,7 @@
 170 LET O = M + 12*K
  Variable:O -> _
  Variable:M -> _
- NumericConstant:12
+ NumericValue:12
  Variable:K -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
@@ -45,13 +45,13 @@
 180 LET P = L/100
  Variable:P -> _
  Variable:L -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 190 LET Z1 = INT(P/4)
  Variable:Z1 -> _
  Variable:P -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
@@ -62,21 +62,21 @@
  AssignmentOperator:= _ -> _
 210 LET Z3 = INT((5*L)/4)
  Variable:Z3 -> _
- NumericConstant:5
+ NumericValue:5
  Variable:L -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
 220 LET Z4 = INT (13*(O + 1)/5)
  Variable:Z4 -> _
- NumericConstant:13
+ NumericValue:13
  Variable:O -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
@@ -91,49 +91,49 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:D -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 240 LET Z=Z - (7*INT(Z/7)) + 1
  Variable:Z -> _
  Variable:Z -> _
- NumericConstant:7
+ NumericValue:7
  Variable:Z -> _
- NumericConstant:7
+ NumericValue:7
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 250 PRINT "THE DAY OF THE WEEK IS ";
- TextConstant:"THE DAY OF THE WEEK IS "
+ TextValue:"THE DAY OF THE WEEK IS "
  CarriageControl:;
 251 GOSUB 400
  LineNumber:400
 260 PRINT
  CarriageControl:NL
 270 PRINT "FOR NEXT DATE TYPE IN 1,"
- TextConstant:"FOR NEXT DATE TYPE IN 1,"
+ TextValue:"FOR NEXT DATE TYPE IN 1,"
  CarriageControl:NL
 280 PRINT "IF NOT TYPE 0"
- TextConstant:"IF NOT TYPE 0"
+ TextValue:"IF NOT TYPE 0"
  CarriageControl:NL
 290 INPUT L
  Variable:L -> _
 300 IF L = 1 THEN 340
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:340
 310 IF L = 0 THEN 360
  Variable:L -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:360
 320 PRINT "INVALID COMMAND"
- TextConstant:"INVALID COMMAND"
+ TextValue:"INVALID COMMAND"
  CarriageControl:NL
 330 GOTO 270
  LineNumber:270
@@ -142,77 +142,77 @@
 350 GOTO 100
  LineNumber:100
 360 PRINT "DAY OF THE WEEK SAYS GOOD-BYE"
- TextConstant:"DAY OF THE WEEK SAYS GOOD-BYE"
+ TextValue:"DAY OF THE WEEK SAYS GOOD-BYE"
  CarriageControl:NL
 370 STOP
  
 400 IF Z = 1 THEN 470
  Variable:Z -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:470
 410 IF Z = 2 THEN 490
  Variable:Z -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:490
 420 IF Z = 3 THEN 510
  Variable:Z -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:510
 430 IF Z = 4 THEN 530
  Variable:Z -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:530
 440 IF Z = 5 THEN 550
  Variable:Z -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:550
 450 IF Z = 6 THEN 570
  Variable:Z -> _
- NumericConstant:6
+ NumericValue:6
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:570
 460 IF Z = 7 THEN 590
  Variable:Z -> _
- NumericConstant:7
+ NumericValue:7
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:590
 470 PRINT "SUNDAY"
- TextConstant:"SUNDAY"
+ TextValue:"SUNDAY"
  CarriageControl:NL
 480 GOTO 600
  LineNumber:600
 490 PRINT "MONDAY"
- TextConstant:"MONDAY"
+ TextValue:"MONDAY"
  CarriageControl:NL
 500 GOTO 600
  LineNumber:600
 510 PRINT "TUESDAY"
- TextConstant:"TUESDAY"
+ TextValue:"TUESDAY"
  CarriageControl:NL
 520 GOTO 600
  LineNumber:600
 530 PRINT "WEDNESDAY"
- TextConstant:"WEDNESDAY"
+ TextValue:"WEDNESDAY"
  CarriageControl:NL
 540 GOTO 600
  LineNumber:600
 550 PRINT "THURSDAY"
- TextConstant:"THURSDAY"
+ TextValue:"THURSDAY"
  CarriageControl:NL
 560 GOTO 600
  LineNumber:600
 570 PRINT "FRIDAY"
- TextConstant:"FRIDAY"
+ TextValue:"FRIDAY"
  CarriageControl:NL
 580 GOTO 600
  LineNumber:600
 590 PRINT "SATURDAY"
- TextConstant:"SATURDAY"
+ TextValue:"SATURDAY"
  CarriageControl:NL
 600 RETURN
  

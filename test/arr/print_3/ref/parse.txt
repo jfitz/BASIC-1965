@@ -1,12 +1,12 @@
 10 DIM A(6), B(3)
- NumericConstant:6
+ NumericValue:6
  Declaration:A() -> _()
- NumericConstant:3
+ NumericValue:3
  Declaration:B() -> _()
 20 FOR I = 0 TO 6
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:6"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:6"]
 40 LET A(I) = I
  Variable:I -> _
  Variable:A(_) -> _
@@ -16,8 +16,8 @@
  Variable:I -> _
 70 FOR I = 0 TO 3
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:3"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:3"]
 90 LET B(I) = I
  Variable:I -> _
  Variable:B(_) -> _

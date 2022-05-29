@@ -1,13 +1,13 @@
 20 PRINT "ANGLE","ARCTAN"
- TextConstant:"ANGLE"
+ TextValue:"ANGLE"
  CarriageControl:,
- TextConstant:"ARCTAN"
+ TextValue:"ARCTAN"
  CarriageControl:NL
 30 FOR I = 0 TO 2 STEP 0.1
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:2"]
- step:    ["NumericConstant:0.1"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:2"]
+ step:    ["NumericValue:0.1"]
 50 LET S = ATN(I)
  Variable:S -> _
  Variable:I -> _

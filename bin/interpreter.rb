@@ -42,7 +42,7 @@ class ForToControl < AbstractForControl
   end
 
   def front_terminated?(_)
-    zero = NumericConstant.new(0)
+    zero = NumericValue.new(0)
 
     if @step > zero
       @start > @end
@@ -54,7 +54,7 @@ class ForToControl < AbstractForControl
   end
 
   def terminated?(interpreter)
-    zero = NumericConstant.new(0)
+    zero = NumericValue.new(0)
     current_value = interpreter.get_value(@control)
 
     if @step > zero
@@ -85,7 +85,7 @@ class ForUntilControl < AbstractForControl
     result = values[0]
 
     raise(BASICExpressionError, 'Expression error') unless
-      result.class.to_s == 'BooleanConstant'
+      result.class.to_s == 'BooleanValue'
 
     result.value
   end
@@ -98,7 +98,7 @@ class ForUntilControl < AbstractForControl
     result = values[0]
 
     raise(BASICExpressionError, 'Expression error') unless
-      result.class.to_s == 'BooleanConstant'
+      result.class.to_s == 'BooleanValue'
 
     result.value
   end
@@ -122,7 +122,7 @@ class ForWhileControl < AbstractForControl
     result = values[0]
 
     raise(BASICExpressionError, 'Expression error') unless
-      result.class.to_s == 'BooleanConstant'
+      result.class.to_s == 'BooleanValue'
 
     !result.value
   end
@@ -135,7 +135,7 @@ class ForWhileControl < AbstractForControl
     result = values[0]
 
     raise(BASICExpressionError, 'Expression error') unless
-      result.class.to_s == 'BooleanConstant'
+      result.class.to_s == 'BooleanValue'
 
     !result.value
   end
@@ -637,7 +637,7 @@ class Interpreter
       tokens_lists.each do |tokens_list|
         if tokens_list.size == 1
           begin
-            number = IntegerConstant.new(tokens_list[0])
+            number = IntegerValue.new(tokens_list[0])
             line_number = LineNumber.new(number)
             @line_breakpoints[line_number] = ''
           rescue BASICSyntaxError
@@ -646,7 +646,7 @@ class Interpreter
           end
         else # tokens_list.size > 1
           begin
-            number = IntegerConstant.new(tokens_list[0])
+            number = IntegerValue.new(tokens_list[0])
             line_number = LineNumber.new(number)
 
             raise(BASICSyntaxError, 'Invalid expression') unless
@@ -693,7 +693,7 @@ class Interpreter
       tokens_lists.each do |tokens_list|
         if tokens_list.size == 1
           begin
-            number = IntegerConstant.new(tokens_list[0])
+            number = IntegerValue.new(tokens_list[0])
             line_number = LineNumber.new(number)
             # TODO: distinguish between line and condition breakpoints
             @line_breakpoints.delete(line_number)
@@ -927,7 +927,7 @@ class Interpreter
         wrapped += span if wrapped < lower
       end
 
-      wrapped_subscripts << NumericConstant.new(wrapped)
+      wrapped_subscripts << NumericValue.new(wrapped)
     end
 
     wrapped_subscripts
@@ -978,7 +978,7 @@ class Interpreter
     if @dimensions.key?(variable_name)
       @dimensions[variable_name]
     else
-      Array.new(count, NumericConstant.new(10))
+      Array.new(count, NumericValue.new(10))
     end
   end
 
@@ -995,7 +995,7 @@ class Interpreter
 
     # lower bound
     lower_value = $options['base'].value
-    lower = NumericConstant.new(lower_value)
+    lower = NumericValue.new(lower_value)
 
     ss = subscripts
     ss = wrapped_subscripts if $options['wrap'].value
@@ -1043,7 +1043,7 @@ class Interpreter
         @variables[var] =
           {
             'provenance' => @current_line_stmt_mod,
-            'value' => NumericConstant.new(0)
+            'value' => NumericValue.new(0)
           }
       end
 
@@ -1206,7 +1206,7 @@ class Interpreter
         vname1 = VariableName.new(vtoken1)
         # convert subscript to numeric
         sub1_token = NumericLiteralToken.new(subs_s)
-        sub1 = NumericConstant.new(sub1_token)
+        sub1 = NumericValue.new(sub1_token)
         subscripts = [sub1]
         # don't wrap subscripts for FORGET
         wsubscripts = subscripts
@@ -1237,9 +1237,9 @@ class Interpreter
         sub1_s, sub2_s = subs_s.split(',')
         # convert subscripts to numerics
         sub1_token = NumericLiteralToken.new(sub1_s)
-        sub1 = NumericConstant.new(sub1_token)
+        sub1 = NumericValue.new(sub1_token)
         sub2_token = NumericLiteralToken.new(sub2_s)
-        sub2 = NumericConstant.new(sub2_token)
+        sub2 = NumericValue.new(sub2_token)
         subscripts = [sub1, sub2]
         # don't wrap subscripts for FORGET
         wsubscripts = subscripts

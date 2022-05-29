@@ -2,12 +2,12 @@
  Remark:TEST PROGRAM
 20 LET F = 0
  Variable:F -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 30 FOR I = 1 TO 4
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:4"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:4"]
 40 PRINT I
  Variable:I -> _
  CarriageControl:NL
@@ -15,12 +15,12 @@
  LineNumber:90
 60 LET F = 1
  Variable:F -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 70 FOR I = 10 TO 14
  control: Variable:I -> _
- start:   ["NumericConstant:10"]
- end:     ["NumericConstant:14"]
+ start:   ["NumericValue:10"]
+ end:     ["NumericValue:14"]
 80 PRINT I
  Variable:I -> _
  CarriageControl:NL
@@ -28,7 +28,7 @@
  Variable:I -> _
 100 IF F = 0 THEN 60
  Variable:F -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:60
 900 END

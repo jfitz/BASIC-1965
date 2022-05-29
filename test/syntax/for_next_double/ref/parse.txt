@@ -1,33 +1,33 @@
 10 PRINT "HELLO"
- TextConstant:"HELLO"
+ TextValue:"HELLO"
  CarriageControl:NL
 20 FOR I = 1 TO 4
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:4"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:4"]
 30 PRINT "I =";I
- TextConstant:"I ="
+ TextValue:"I ="
  CarriageControl:;
  Variable:I -> _
  CarriageControl:NL
 40 FOR I = 1 TO 3
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:3"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:3"]
 50 PRINT "I =";I
- TextConstant:"I ="
+ TextValue:"I ="
  CarriageControl:;
  Variable:I -> _
  CarriageControl:NL
 60 NEXT I
  Variable:I -> _
 70 PRINT "ALMOST DONE"
- TextConstant:"ALMOST DONE"
+ TextValue:"ALMOST DONE"
  CarriageControl:NL
 80 NEXT I
  Variable:I -> _
 90 PRINT "DONE"
- TextConstant:"DONE"
+ TextValue:"DONE"
  CarriageControl:NL
 99 END
  

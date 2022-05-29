@@ -1,52 +1,52 @@
 10 DIM N(1000)
- NumericConstant:1000
+ NumericValue:1000
  Declaration:N() -> _()
 11 DIM P(350)
- NumericConstant:350
+ NumericValue:350
  Declaration:P() -> _()
 20 FOR I = 1 TO 1000
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:1000"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:1000"]
 21    LET N(I) = 0
  Variable:I -> _
  Variable:N(_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 22 NEXT I
  Variable:I -> _
 25 LET P(0) = 2
- NumericConstant:0
+ NumericValue:0
  Variable:P(_) -> _
- NumericConstant:2
+ NumericValue:2
  AssignmentOperator:= =_ -> _
 26 LET K = 0
  Variable:K -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 30 FOR P = 3 TO 2000 STEP 2
  control: Variable:P -> _
- start:   ["NumericConstant:3"]
- end:     ["NumericConstant:2000"]
- step:    ["NumericConstant:2"]
+ start:   ["NumericValue:3"]
+ end:     ["NumericValue:2000"]
+ step:    ["NumericValue:2"]
 35    LET X = (P-1)/2
  Variable:X -> _
  Variable:P -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 40    IF N(X) < 0 THEN 90
  Variable:X -> _
  Variable:N(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:90
 50    LET K = K+1
  Variable:K -> _
  Variable:K -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 55    LET P(K) = P
@@ -56,27 +56,27 @@
  AssignmentOperator:= _ -> _
 56    IF P > SQR(2000) THEN 90
  Variable:P -> _
- NumericConstant:2000
+ NumericValue:2000
  FunctionSqr:SQR(_) -> =_
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:90
 60    FOR I = P TO 2000 STEP 2*P
  control: Variable:I -> _
  start:   ["Variable:P -> _"]
- end:     ["NumericConstant:2000"]
- step:    ["NumericConstant:2", "Variable:P -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
+ end:     ["NumericValue:2000"]
+ step:    ["NumericValue:2", "Variable:P -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
 65       LET X = (I-1)/2
  Variable:X -> _
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 70       LET N(X) = -1
  Variable:X -> _
  Variable:N(_) -> _
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 80    NEXT I
@@ -86,28 +86,28 @@
 100 REM READ LEADING DIGITS
  Remark:READ LEADING DIGITS
 110 PRINT "SEARCH FOR PRIMES OF THE FORM A*1000 + B, 0 < B < 2000."
- TextConstant:"SEARCH FOR PRIMES OF THE FORM A*1000 + B, 0 < B < 2000."
+ TextValue:"SEARCH FOR PRIMES OF THE FORM A*1000 + B, 0 < B < 2000."
  CarriageControl:NL
 115 PRINT
  CarriageControl:NL
 116 PRINT "A = ";
- TextConstant:"A = "
+ TextValue:"A = "
  CarriageControl:;
 120 INPUT A
  Variable:A -> _
 125 LET S = SQR((A+2)*1E3)
  Variable:S -> _
  Variable:A -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1E3
+ NumericValue:1E3
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionSqr:SQR(_) -> _
  AssignmentOperator:= _ -> _
 130 PRINT
  CarriageControl:NL
 140 PRINT "B = "
- TextConstant:"B = "
+ TextValue:"B = "
  CarriageControl:NL
 150 PRINT
  CarriageControl:NL
@@ -116,18 +116,18 @@
  Remark:TEST PRIMES TO 2000
 205 FOR I = 1 TO 1000
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:1000"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:1000"]
 206    LET N(I) = 0
  Variable:I -> _
  Variable:N(_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 207 NEXT I
  Variable:I -> _
 210 FOR I = 1 TO K
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:K -> _"]
 220    LET F = P(I)
  Variable:F -> _
@@ -138,18 +138,18 @@
  LineNumber:800
 239    IF Z > 999 THEN 270
  Variable:Z -> _
- NumericConstant:999
+ NumericValue:999
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:270
 240    FOR J = Z TO 999 STEP F
  control: Variable:J -> _
  start:   ["Variable:Z -> _"]
- end:     ["NumericConstant:999"]
+ end:     ["NumericValue:999"]
  step:    ["Variable:F -> _"]
 250       LET N(J) = -1
  Variable:J -> _
  Variable:N(_) -> _
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 260    NEXT J
@@ -161,23 +161,23 @@
  Remark:TEST REMAINING NUMBERS
 405 LET D = 2
  Variable:D -> _
- NumericConstant:2
+ NumericValue:2
  AssignmentOperator:= =_ -> _
 410 LET F = 2003
  Variable:F -> _
- NumericConstant:2003
+ NumericValue:2003
  AssignmentOperator:= =_ -> _
 420    GOSUB 800
  LineNumber:800
 430    IF Z > 999 THEN 450
  Variable:Z -> _
- NumericConstant:999
+ NumericValue:999
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:450
 440    LET N(Z) = -1
  Variable:Z -> _
  Variable:N(_) -> _
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 450 LET F = F+D
@@ -188,7 +188,7 @@
  AssignmentOperator:= _ -> _
 460 LET D = 6-D
  Variable:D -> _
- NumericConstant:6
+ NumericValue:6
  Variable:D -> _
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -202,29 +202,29 @@
  Remark:PRINT RESULT
 702 LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 705 FOR I = 0 TO 999
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:999"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:999"]
 710    IF N(I) < 0 THEN 730
  Variable:I -> _
  Variable:N(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:730
 720    PRINT 2*I + 1;
- NumericConstant:2
+ NumericValue:2
  Variable:I -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  CarriageControl:;
 725    LET S = S+1
  Variable:S -> _
  Variable:S -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 730 NEXT I
@@ -234,50 +234,50 @@
 733 PRINT
  CarriageControl:NL
 735 PRINT "THERE ARE " S; "PRIMES IN THE RANGE."
- TextConstant:"THERE ARE "
+ TextValue:"THERE ARE "
  CarriageControl:
  Variable:S -> _
  CarriageControl:;
- TextConstant:"PRIMES IN THE RANGE."
+ TextValue:"PRIMES IN THE RANGE."
  CarriageControl:NL
 740 PRINT
  CarriageControl:NL
 745 PRINT
  CarriageControl:NL
 750 PRINT "TWIN PRIMES:"
- TextConstant:"TWIN PRIMES:"
+ TextValue:"TWIN PRIMES:"
  CarriageControl:NL
 752 PRINT
  CarriageControl:NL
 755 FOR I = 0 TO 998
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:998"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:998"]
 760    IF N(I) < 0 THEN 780
  Variable:I -> _
  Variable:N(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:780
 765    IF N(I+1) < 0 THEN 780
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:N(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:780
 770    PRINT 2*I+1, 2*I+3
- NumericConstant:2
+ NumericValue:2
  Variable:I -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  CarriageControl:,
- NumericConstant:2
+ NumericValue:2
  Variable:I -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorPlus:+(_,_) -> _
  CarriageControl:NL
 780 NEXT I
@@ -301,7 +301,7 @@
 820 LET Y = A*1E3
  Variable:Y -> _
  Variable:A -> _
- NumericConstant:1E3
+ NumericValue:1E3
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 830 LET X = F - (Y - F*INT(Y/F))
@@ -319,9 +319,9 @@
  AssignmentOperator:= _ -> _
 840 IF X <> 2*INT(X/2) THEN 860
  Variable:X -> _
- NumericConstant:2
+ NumericValue:2
  Variable:X -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
@@ -336,9 +336,9 @@
 860 LET Z = (X-1)/2
  Variable:Z -> _
  Variable:X -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 870 RETURN

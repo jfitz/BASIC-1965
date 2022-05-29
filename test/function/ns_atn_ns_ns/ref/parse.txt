@@ -1,11 +1,11 @@
 10 REM TEST ARCTAN 2 ARGS
  Remark:TEST ARCTAN 2 ARGS
 20 PRINT "Y","X","ARCTAN"
- TextConstant:"Y"
+ TextValue:"Y"
  CarriageControl:,
- TextConstant:"X"
+ TextValue:"X"
  CarriageControl:,
- TextConstant:"ARCTAN"
+ TextValue:"ARCTAN"
  CarriageControl:NL
 30 READ Y,X
  Variable:Y -> _
@@ -35,31 +35,31 @@
 60 GOTO 30
  LineNumber:30
 90 DATA -0,-1, -1,-1, -1,0, -1,1, 0,1, 1,1, 1,0, 1,-1, 0,0
- NumericConstant:0
+ NumericValue:0
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:0
- NumericConstant:1
+ NumericValue:0
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
- NumericConstant:0
- NumericConstant:1
- NumericConstant:1
- NumericConstant:1
- NumericConstant:1
- NumericConstant:0
- NumericConstant:1
- NumericConstant:1
+ NumericValue:1
+ NumericValue:0
+ NumericValue:1
+ NumericValue:1
+ NumericValue:1
+ NumericValue:1
+ NumericValue:0
+ NumericValue:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:0
- NumericConstant:0
+ NumericValue:0
+ NumericValue:0
 99 END
  
 

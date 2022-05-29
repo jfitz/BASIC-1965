@@ -11,22 +11,22 @@
 60 REM USE A STEP STATEMENT WITH THE FOR STATEMENTS
  Remark:USE A STEP STATEMENT WITH THE FOR STATEMENTS
 70 PRINT "STARTING VALUE OF X = ";
- TextConstant:"STARTING VALUE OF X = "
+ TextValue:"STARTING VALUE OF X = "
  CarriageControl:;
 80 INPUT X
  Variable:X -> _
 90 PRINT "END VALUE OF X = ";
- TextConstant:"END VALUE OF X = "
+ TextValue:"END VALUE OF X = "
  CarriageControl:;
 100 INPUT W
  Variable:W -> _
 110 PRINT "TABLE"
- TextConstant:"TABLE"
+ TextValue:"TABLE"
  CarriageControl:NL
 120 PRINT "X","Y"
- TextConstant:"X"
+ TextValue:"X"
  CarriageControl:,
- TextConstant:"Y"
+ TextValue:"Y"
  CarriageControl:NL
 130 FOR I = X TO W
  control: Variable:I -> _
@@ -34,10 +34,10 @@
  end:     ["Variable:W -> _"]
 140 LET Y = 2*I + 6
  Variable:Y -> _
- NumericConstant:2
+ NumericValue:2
  Variable:I -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:6
+ NumericValue:6
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 150 PRINT I,Y
@@ -50,13 +50,13 @@
 170 PRINT
  CarriageControl:NL
 180 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 190 INPUT L
  Variable:L -> _
 200 IF L = 1 THEN 220
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:220
 210 STOP

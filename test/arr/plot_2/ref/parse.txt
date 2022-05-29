@@ -1,25 +1,25 @@
 10 ARR LET A = RND1(40, 400)
  Variable:A() -> _()
- NumericConstant:40
- NumericConstant:400
+ NumericValue:40
+ NumericValue:400
  FunctionRnd1:RND1(_,_) -> _()
  AssignmentOperator:= _() -> _()
 20 ARR LET A1 = A - 100
  Variable:A1() -> _()
  Variable:A() -> _()
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorMinus:-(_(),_) -> _()
  AssignmentOperator:= _() -> _()
 30 ARR LET A2 = A - 390
  Variable:A2() -> _()
  Variable:A() -> _()
- NumericConstant:390
+ NumericValue:390
  BinaryOperatorMinus:-(_(),_) -> _()
  AssignmentOperator:= _() -> _()
 40 ARR LET A3 = A - 700
  Variable:A3() -> _()
  Variable:A() -> _()
- NumericConstant:700
+ NumericValue:700
  BinaryOperatorMinus:-(_(),_) -> _()
  AssignmentOperator:= _() -> _()
 90 ARR PLOT A, A1, A2, A3

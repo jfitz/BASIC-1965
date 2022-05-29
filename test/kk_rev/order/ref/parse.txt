@@ -1,11 +1,11 @@
 5  DIM S(100)
- NumericConstant:100
+ NumericValue:100
  Declaration:S() -> _()
 10 READ N
  Variable:N -> _
 20 FOR I = 1 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 30    READ S(I)
  Variable:I -> _
@@ -15,12 +15,12 @@
 50
 100 FOR I = 1 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 200    FOR J = 1 TO N-1
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
- end:     ["Variable:N -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ start:   ["NumericValue:1"]
+ end:     ["Variable:N -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
 210       LET X = S(J)
  Variable:X -> _
  Variable:J -> _
@@ -29,7 +29,7 @@
 220       LET Y = S(J+1)
  Variable:Y -> _
  Variable:J -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_) -> _
  AssignmentOperator:= _ -> _
@@ -45,7 +45,7 @@
  AssignmentOperator:= _ -> _
 250       LET S(J+1) = X
  Variable:J -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:S(_) -> _
  Variable:X -> _
@@ -56,7 +56,7 @@
  Variable:I -> _
 400 FOR I = 1 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 410    PRINT S(I);
  Variable:I -> _
@@ -65,28 +65,28 @@
 420 NEXT I
  Variable:I -> _
 900 DATA 20
- NumericConstant:20
+ NumericValue:20
 910 DATA 5,2,7,3,8,1,9,11,3,15,20,4,0,10,2,16,2,8,9,1
- NumericConstant:5
- NumericConstant:2
- NumericConstant:7
- NumericConstant:3
- NumericConstant:8
- NumericConstant:1
- NumericConstant:9
- NumericConstant:11
- NumericConstant:3
- NumericConstant:15
- NumericConstant:20
- NumericConstant:4
- NumericConstant:0
- NumericConstant:10
- NumericConstant:2
- NumericConstant:16
- NumericConstant:2
- NumericConstant:8
- NumericConstant:9
- NumericConstant:1
+ NumericValue:5
+ NumericValue:2
+ NumericValue:7
+ NumericValue:3
+ NumericValue:8
+ NumericValue:1
+ NumericValue:9
+ NumericValue:11
+ NumericValue:3
+ NumericValue:15
+ NumericValue:20
+ NumericValue:4
+ NumericValue:0
+ NumericValue:10
+ NumericValue:2
+ NumericValue:16
+ NumericValue:2
+ NumericValue:8
+ NumericValue:9
+ NumericValue:1
 999 END
  
 

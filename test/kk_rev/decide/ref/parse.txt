@@ -1,23 +1,23 @@
 10 DIM T(100,10), V(100)
- NumericConstant:100
- NumericConstant:10
+ NumericValue:100
+ NumericValue:10
  Declaration:T(,) -> _(,)
- NumericConstant:100
+ NumericValue:100
  Declaration:V() -> _()
 20 FOR I = 0 TO 100
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:100"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:100"]
 30    READ K
  Variable:K -> _
 40    IF K = 999 THEN 100
  Variable:K -> _
- NumericConstant:999
+ NumericValue:999
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:100
 50    LET T(I,0) = K
  Variable:I -> _
- NumericConstant:0
+ NumericValue:0
  Variable:T(_,_) -> _
  Variable:K -> _
  AssignmentOperator:= _ -> _
@@ -28,8 +28,8 @@
  AssignmentOperator:= _ -> _
 70    FOR J = 1 TO 2*K1 + 1 - SGN(K1)
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:2", "Variable:K1 -> _", "BinaryOperatorMultiply:*(_,_) -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _", "Variable:K1 -> _", "FunctionSgn:SGN(_) -> _", "BinaryOperatorMinus:-(_,_) -> _"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:2", "Variable:K1 -> _", "BinaryOperatorMultiply:*(_,_) -> _", "NumericValue:1", "BinaryOperatorPlus:+(_,_) -> _", "Variable:K1 -> _", "FunctionSgn:SGN(_) -> _", "BinaryOperatorMinus:-(_,_) -> _"]
 80       READ T(I,J)
  Variable:I -> _
  Variable:J -> _
@@ -40,47 +40,47 @@
  Variable:I -> _
 99
 100 PRINT "SELECTED ACTS: ";
- TextConstant:"SELECTED ACTS: "
+ TextValue:"SELECTED ACTS: "
  CarriageControl:;
 105 FOR I = I-1 TO 0 STEP -1
  control: Variable:I -> _
- start:   ["Variable:I -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
- end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
+ start:   ["Variable:I -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["NumericValue:0"]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
 110    LET K = T(I,0)
  Variable:K -> _
  Variable:I -> _
- NumericConstant:0
+ NumericValue:0
  Variable:T(_,_) -> _
  AssignmentOperator:= _ -> _
 120    IF K > 0 THEN 200
  Variable:K -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:200
 130    IF K < 0 THEN 300
  Variable:K -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:300
 140    LET V(I) = T(I,1)
  Variable:I -> _
  Variable:V(_) -> _
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  Variable:T(_,_) -> _
  AssignmentOperator:= _ -> _
 150    GOTO 399
  LineNumber:399
 200    LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 210    FOR J = 2 TO 2*K STEP 2
  control: Variable:J -> _
- start:   ["NumericConstant:2"]
- end:     ["NumericConstant:2", "Variable:K -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
- step:    ["NumericConstant:2"]
+ start:   ["NumericValue:2"]
+ end:     ["NumericValue:2", "Variable:K -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
+ step:    ["NumericValue:2"]
 220       LET B = T(I,J)
  Variable:B -> _
  Variable:I -> _
@@ -92,7 +92,7 @@
  Variable:S -> _
  Variable:I -> _
  Variable:J -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  Variable:T(_,_) -> _
  Variable:B -> _
@@ -111,14 +111,14 @@
  LineNumber:399
 300    LET M = -999999999
  Variable:M -> _
- NumericConstant:999999999
+ NumericValue:999999999
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 310    FOR J = 2 TO 2*ABS(K) STEP 2
  control: Variable:J -> _
- start:   ["NumericConstant:2"]
- end:     ["NumericConstant:2", "Variable:K -> _", "FunctionAbs:ABS(_) -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
- step:    ["NumericConstant:2"]
+ start:   ["NumericValue:2"]
+ end:     ["NumericValue:2", "Variable:K -> _", "FunctionAbs:ABS(_) -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
+ step:    ["NumericValue:2"]
 320       LET V = V(T(I,J))
  Variable:V -> _
  Variable:I -> _
@@ -139,7 +139,7 @@
  Variable:A -> _
  Variable:I -> _
  Variable:J -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  Variable:T(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -160,154 +160,154 @@
 410 PRINT
  CarriageControl:NL
 420 PRINT "EXPECTED GAIN = $" V(0)
- TextConstant:"EXPECTED GAIN = $"
+ TextValue:"EXPECTED GAIN = $"
  CarriageControl:
- NumericConstant:0
+ NumericValue:0
  Variable:V(_) -> _
  CarriageControl:NL
 430
 900 DATA -3,1,1,2,2,3,3
- NumericConstant:3
+ NumericValue:3
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
- NumericConstant:1
- NumericConstant:2
- NumericConstant:2
- NumericConstant:3
- NumericConstant:3
+ NumericValue:1
+ NumericValue:1
+ NumericValue:2
+ NumericValue:2
+ NumericValue:3
+ NumericValue:3
 901 DATA 2,.5,4,0.5,5
- NumericConstant:2
- NumericConstant:.5
- NumericConstant:4
- NumericConstant:0.5
- NumericConstant:5
+ NumericValue:2
+ NumericValue:.5
+ NumericValue:4
+ NumericValue:0.5
+ NumericValue:5
 902 DATA 0,0
- NumericConstant:0
- NumericConstant:0
+ NumericValue:0
+ NumericValue:0
 903 DATA 3,0.333,6,0.167,7,0.5,8
- NumericConstant:3
- NumericConstant:0.333
- NumericConstant:6
- NumericConstant:0.167
- NumericConstant:7
- NumericConstant:0.5
- NumericConstant:8
+ NumericValue:3
+ NumericValue:0.333
+ NumericValue:6
+ NumericValue:0.167
+ NumericValue:7
+ NumericValue:0.5
+ NumericValue:8
 904 DATA 0,100
- NumericConstant:0
- NumericConstant:100
+ NumericValue:0
+ NumericValue:100
 905 DATA -2,4,9,5,10
- NumericConstant:2
+ NumericValue:2
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:4
- NumericConstant:9
- NumericConstant:5
- NumericConstant:10
+ NumericValue:4
+ NumericValue:9
+ NumericValue:5
+ NumericValue:10
 906 DATA 2,0.5,11,0.5,12
- NumericConstant:2
- NumericConstant:0.5
- NumericConstant:11
- NumericConstant:0.5
- NumericConstant:12
+ NumericValue:2
+ NumericValue:0.5
+ NumericValue:11
+ NumericValue:0.5
+ NumericValue:12
 907 DATA 0,-10
- NumericConstant:0
- NumericConstant:10
+ NumericValue:0
+ NumericValue:10
  UnaryOperatorMinus:-(_) -> =_
 908 DATA 2,0.75,13,0.25,14
- NumericConstant:2
- NumericConstant:0.75
- NumericConstant:13
- NumericConstant:0.25
- NumericConstant:14
+ NumericValue:2
+ NumericValue:0.75
+ NumericValue:13
+ NumericValue:0.25
+ NumericValue:14
 909 DATA 3,0.167,15,0.333,16,0.5,17
- NumericConstant:3
- NumericConstant:0.167
- NumericConstant:15
- NumericConstant:0.333
- NumericConstant:16
- NumericConstant:0.5
- NumericConstant:17
+ NumericValue:3
+ NumericValue:0.167
+ NumericValue:15
+ NumericValue:0.333
+ NumericValue:16
+ NumericValue:0.5
+ NumericValue:17
 910 DATA 0,-100
- NumericConstant:0
- NumericConstant:100
+ NumericValue:0
+ NumericValue:100
  UnaryOperatorMinus:-(_) -> =_
 911 DATA 0,90
- NumericConstant:0
- NumericConstant:90
+ NumericValue:0
+ NumericValue:90
 912 DATA -2,6,18,7,19
- NumericConstant:2
+ NumericValue:2
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:6
- NumericConstant:18
- NumericConstant:7
- NumericConstant:19
+ NumericValue:6
+ NumericValue:18
+ NumericValue:7
+ NumericValue:19
 913 DATA 0,90
- NumericConstant:0
- NumericConstant:90
+ NumericValue:0
+ NumericValue:90
 914 DATA -2,8,20,9,21
- NumericConstant:2
+ NumericValue:2
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:8
- NumericConstant:20
- NumericConstant:9
- NumericConstant:21
+ NumericValue:8
+ NumericValue:20
+ NumericValue:9
+ NumericValue:21
 915 DATA 0,100
- NumericConstant:0
- NumericConstant:100
+ NumericValue:0
+ NumericValue:100
 916 DATA 0,0
- NumericConstant:0
- NumericConstant:0
+ NumericValue:0
+ NumericValue:0
 917 DATA 0,-100
- NumericConstant:0
- NumericConstant:100
+ NumericValue:0
+ NumericValue:100
  UnaryOperatorMinus:-(_) -> =_
 918 DATA 3,0.167,22,0.333,23,0.5,24
- NumericConstant:3
- NumericConstant:0.167
- NumericConstant:22
- NumericConstant:0.333
- NumericConstant:23
- NumericConstant:0.5
- NumericConstant:24
+ NumericValue:3
+ NumericValue:0.167
+ NumericValue:22
+ NumericValue:0.333
+ NumericValue:23
+ NumericValue:0.5
+ NumericValue:24
 919 DATA 0,-110
- NumericConstant:0
- NumericConstant:110
+ NumericValue:0
+ NumericValue:110
  UnaryOperatorMinus:-(_) -> =_
 920 DATA 3,0.167,25,0.333,26,0.5,27
- NumericConstant:3
- NumericConstant:0.167
- NumericConstant:25
- NumericConstant:0.333
- NumericConstant:26
- NumericConstant:0.5
- NumericConstant:27
+ NumericValue:3
+ NumericValue:0.167
+ NumericValue:25
+ NumericValue:0.333
+ NumericValue:26
+ NumericValue:0.5
+ NumericValue:27
 921 DATA 0,-110
- NumericConstant:0
- NumericConstant:110
+ NumericValue:0
+ NumericValue:110
  UnaryOperatorMinus:-(_) -> =_
 922 DATA 0,90
- NumericConstant:0
- NumericConstant:90
+ NumericValue:0
+ NumericValue:90
 923 DATA 0,-10
- NumericConstant:0
- NumericConstant:10
+ NumericValue:0
+ NumericValue:10
  UnaryOperatorMinus:-(_) -> =_
 924 DATA 0,-110
- NumericConstant:0
- NumericConstant:110
+ NumericValue:0
+ NumericValue:110
  UnaryOperatorMinus:-(_) -> =_
 925 DATA 0,90
- NumericConstant:0
- NumericConstant:90
+ NumericValue:0
+ NumericValue:90
 926 DATA 0,-10
- NumericConstant:0
- NumericConstant:10
+ NumericValue:0
+ NumericValue:10
  UnaryOperatorMinus:-(_) -> =_
 927 DATA 0,-110
- NumericConstant:0
- NumericConstant:110
+ NumericValue:0
+ NumericValue:110
  UnaryOperatorMinus:-(_) -> =_
 998 DATA 999
- NumericConstant:999
+ NumericValue:999
 999 END
  
 

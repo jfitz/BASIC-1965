@@ -3,7 +3,7 @@
 20 REM OF A FUNCTION ENTERED BY THE USER
  Remark:OF A FUNCTION ENTERED BY THE USER
 30 PRINT "VALUE OF X = ";
- TextConstant:"VALUE OF X = "
+ TextValue:"VALUE OF X = "
  CarriageControl:;
 40 INPUT X
  Variable:X -> _
@@ -14,9 +14,9 @@
 60 LET Z = (X*(1E-04))/2
  Variable:Z -> _
  Variable:X -> _
- NumericConstant:1E-04
+ NumericValue:1E-04
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 70 LET W = X + Z
@@ -66,35 +66,35 @@
  Variable:A -> _
  Variable:B -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  Variable:Z -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 190 PRINT "IF X = ";Y,"THEN F(X) = ";C
- TextConstant:"IF X = "
+ TextValue:"IF X = "
  CarriageControl:;
  Variable:Y -> _
  CarriageControl:,
- TextConstant:"THEN F(X) = "
+ TextValue:"THEN F(X) = "
  CarriageControl:;
  Variable:C -> _
  CarriageControl:NL
 200 PRINT "AND F'(X) = ";F
- TextConstant:"AND F'(X) = "
+ TextValue:"AND F'(X) = "
  CarriageControl:;
  Variable:F -> _
  CarriageControl:NL
 210 PRINT
  CarriageControl:NL
 220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
  Variable:L -> _
 240 IF L = 1 THEN 260
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:260
 250 STOP
@@ -106,7 +106,7 @@
 280 LET P = X^2
  Variable:P -> _
  Variable:X -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  AssignmentOperator:= _ -> _
 290 RETURN

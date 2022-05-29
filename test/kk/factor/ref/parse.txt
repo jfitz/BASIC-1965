@@ -1,5 +1,5 @@
 100 PRINT "NUMBER TO BE FACTORED:";
- TextConstant:"NUMBER TO BE FACTORED:"
+ TextValue:"NUMBER TO BE FACTORED:"
  CarriageControl:;
 110 INPUT N
  Variable:N -> _
@@ -7,37 +7,37 @@
  CarriageControl:NL
 130 IF N = 0 THEN 999
  Variable:N -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:999
 140 IF N = 2 THEN 250
  Variable:N -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:250
 150 LET Z = 0
  Variable:Z -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 160
 170 LET F = 2
  Variable:F -> _
- NumericConstant:2
+ NumericValue:2
  AssignmentOperator:= =_ -> _
 180 GOSUB 300
  LineNumber:300
 190 FOR F = 3 TO SQR(N)+1 STEP 2
  control: Variable:F -> _
- start:   ["NumericConstant:3"]
- end:     ["Variable:N -> _", "FunctionSqr:SQR(_) -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
- step:    ["NumericConstant:2"]
+ start:   ["NumericValue:3"]
+ end:     ["Variable:N -> _", "FunctionSqr:SQR(_) -> _", "NumericValue:1", "BinaryOperatorPlus:+(_,_) -> _"]
+ step:    ["NumericValue:2"]
 200 GOSUB 300
  LineNumber:300
 210 NEXT F
  Variable:F -> _
 220 IF Z = 0 THEN 250
  Variable:Z -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:250
 230 PRINT N;
@@ -48,7 +48,7 @@
 250 PRINT N; "IS PRIME."
  Variable:N -> _
  CarriageControl:;
- TextConstant:"IS PRIME."
+ TextValue:"IS PRIME."
  CarriageControl:NL
 260 GOTO 500
  LineNumber:500
@@ -68,20 +68,20 @@
  LineNumber:410
 330 IF Z > 0 THEN 370
  Variable:Z -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:370
 340 PRINT N; "HAS THE FACTORS:"
  Variable:N -> _
  CarriageControl:;
- TextConstant:"HAS THE FACTORS:"
+ TextValue:"HAS THE FACTORS:"
  CarriageControl:NL
 350 PRINT "     ";
- TextConstant:"     "
+ TextValue:"     "
  CarriageControl:;
 360 LET Z = 1
  Variable:Z -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 370 PRINT F;
  Variable:F -> _
@@ -94,7 +94,7 @@
  AssignmentOperator:= _ -> _
 390 IF N = 1 THEN 500
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:500
 400 GOTO 310

@@ -1,15 +1,15 @@
 10 PRINT " X", "EXP(X)", "LOG(X)"
- TextConstant:" X"
+ TextValue:" X"
  CarriageControl:,
- TextConstant:"EXP(X)"
+ TextValue:"EXP(X)"
  CarriageControl:,
- TextConstant:"LOG(X)"
+ TextValue:"LOG(X)"
  CarriageControl:NL
 20 FOR X = 1 TO 3.5 STEP 0.5
  control: Variable:X -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:3.5"]
- step:    ["NumericConstant:0.5"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:3.5"]
+ step:    ["NumericValue:0.5"]
 30 PRINT X, EXP(X), LOG(X)
  Variable:X -> _
  CarriageControl:,

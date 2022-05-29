@@ -3,11 +3,11 @@
  Variable:C -> _
 20 FOR I = 1 TO R
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:R -> _"]
 30 FOR J = 1 TO C
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:C -> _"]
 40 READ T(I,J)
  Variable:I -> _
@@ -19,15 +19,15 @@
  Variable:I -> _
 70 FOR I = 1 TO R
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:R -> _"]
 80 LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 90 FOR J = 1 TO C
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:C -> _"]
 100 LET S = S + T(I,J)
  Variable:S -> _
@@ -40,11 +40,11 @@
 110 NEXT J
  Variable:J -> _
 120 PRINT "SUM OF ROW" I; "EQUALS" S
- TextConstant:"SUM OF ROW"
+ TextValue:"SUM OF ROW"
  CarriageControl:
  Variable:I -> _
  CarriageControl:;
- TextConstant:"EQUALS"
+ TextValue:"EQUALS"
  CarriageControl:
  Variable:S -> _
  CarriageControl:NL
@@ -54,15 +54,15 @@
  CarriageControl:NL
 150 FOR J = 1 TO C
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:C -> _"]
 160 LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 170 FOR I = 1 TO R
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:R -> _"]
 180 LET S = S + T(I,J)
  Variable:S -> _
@@ -75,37 +75,37 @@
 190 NEXT I
  Variable:I -> _
 200 PRINT "SUM OF COLUMN" J; "EQUALS" S
- TextConstant:"SUM OF COLUMN"
+ TextValue:"SUM OF COLUMN"
  CarriageControl:
  Variable:J -> _
  CarriageControl:;
- TextConstant:"EQUALS"
+ TextValue:"EQUALS"
  CarriageControl:
  Variable:S -> _
  CarriageControl:NL
 210 NEXT J
  Variable:J -> _
 220 DATA 3,5
- NumericConstant:3
- NumericConstant:5
+ NumericValue:3
+ NumericValue:5
 230 DATA 1,2,3,4,5
- NumericConstant:1
- NumericConstant:2
- NumericConstant:3
- NumericConstant:4
- NumericConstant:5
+ NumericValue:1
+ NumericValue:2
+ NumericValue:3
+ NumericValue:4
+ NumericValue:5
 240 DATA 5,4,3,2,1
- NumericConstant:5
- NumericConstant:4
- NumericConstant:3
- NumericConstant:2
- NumericConstant:1
+ NumericValue:5
+ NumericValue:4
+ NumericValue:3
+ NumericValue:2
+ NumericValue:1
 250 DATA 2,0,5,2,1
- NumericConstant:2
- NumericConstant:0
- NumericConstant:5
- NumericConstant:2
- NumericConstant:1
+ NumericValue:2
+ NumericValue:0
+ NumericValue:5
+ NumericValue:2
+ NumericValue:1
 260 END
  
 

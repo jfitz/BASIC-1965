@@ -3,26 +3,26 @@
 20 REM TRANSLATION AND/OR ROTATION
  Remark:TRANSLATION AND/OR ROTATION
 30 PRINT "ANGLE OF ROTATION IN DEGREES = ";
- TextConstant:"ANGLE OF ROTATION IN DEGREES = "
+ TextValue:"ANGLE OF ROTATION IN DEGREES = "
  CarriageControl:;
 40 INPUT A
  Variable:A -> _
 50 LET B = (A*3.14159)/180
  Variable:B -> _
  Variable:A -> _
- NumericConstant:3.14159
+ NumericValue:3.14159
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:180
+ NumericValue:180
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 60 PRINT "COORDINATES OF NEW ORIGIN (X0,Y0) =";
- TextConstant:"COORDINATES OF NEW ORIGIN (X0,Y0) ="
+ TextValue:"COORDINATES OF NEW ORIGIN (X0,Y0) ="
  CarriageControl:;
 70 INPUT X,Y
  Variable:X -> _
  Variable:Y -> _
 80 PRINT "OLD COORDINATES OF DATA POINT (X1,Y1) =";
- TextConstant:"OLD COORDINATES OF DATA POINT (X1,Y1) ="
+ TextValue:"OLD COORDINATES OF DATA POINT (X1,Y1) ="
  CarriageControl:;
 90 INPUT F,C
  Variable:F -> _
@@ -67,33 +67,33 @@
 140 PRINT
  CarriageControl:NL
 150 PRINT "SPECIFIED ROTATION =";A
- TextConstant:"SPECIFIED ROTATION ="
+ TextValue:"SPECIFIED ROTATION ="
  CarriageControl:;
  Variable:A -> _
  CarriageControl:NL
 160 PRINT "NEW COORDINATES OF DATA POINT"
- TextConstant:"NEW COORDINATES OF DATA POINT"
+ TextValue:"NEW COORDINATES OF DATA POINT"
  CarriageControl:NL
 170 PRINT "X2 = ";D
- TextConstant:"X2 = "
+ TextValue:"X2 = "
  CarriageControl:;
  Variable:D -> _
  CarriageControl:NL
 180 PRINT "Y2 = ";E
- TextConstant:"Y2 = "
+ TextValue:"Y2 = "
  CarriageControl:;
  Variable:E -> _
  CarriageControl:NL
 190 PRINT
  CarriageControl:NL
 200 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
  Variable:L -> _
 220 IF L = 1 THEN 240
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:240
 230 STOP

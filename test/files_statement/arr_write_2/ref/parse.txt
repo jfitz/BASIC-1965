@@ -1,29 +1,29 @@
 10 REM This is a test
  Remark:This is a test
 15 DIM A(3),B(5)
- NumericConstant:3
+ NumericValue:3
  Declaration:A() -> _()
- NumericConstant:5
+ NumericValue:5
  Declaration:B() -> _()
 20 DATA 10,20,30,40
- NumericConstant:10
- NumericConstant:20
- NumericConstant:30
- NumericConstant:40
+ NumericValue:10
+ NumericValue:20
+ NumericValue:30
+ NumericValue:40
 21 DATA 11,12,13,14,15,16
- NumericConstant:11
- NumericConstant:12
- NumericConstant:13
- NumericConstant:14
- NumericConstant:15
- NumericConstant:16
+ NumericValue:11
+ NumericValue:12
+ NumericValue:13
+ NumericValue:14
+ NumericValue:15
+ NumericValue:16
 25 FILES "output.txt"
- TextConstant:"output.txt"
+ TextValue:"output.txt"
 30 ARR READ A,B
  Variable:A() -> _()
  Variable:B() -> _()
 40 ARR WRITE #1;A,B
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorHash:#(_) -> =FH
  Variable:A() -> _()
  CarriageControl:,

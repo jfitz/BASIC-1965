@@ -1,16 +1,16 @@
 10 DIM A(100), X(100), T(100,2)
- NumericConstant:100
+ NumericValue:100
  Declaration:A() -> _()
- NumericConstant:100
+ NumericValue:100
  Declaration:X() -> _()
- NumericConstant:100
- NumericConstant:2
+ NumericValue:100
+ NumericValue:2
  Declaration:T(,) -> _(,)
 20 READ N
  Variable:N -> _
 30 FOR I = 0 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:N -> _"]
 40 READ A(I)
  Variable:I -> _
@@ -21,7 +21,7 @@
  Variable:X9 -> _
 70 FOR J = 1 TO X9
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:X9 -> _"]
 80 READ X(J)
  Variable:J -> _
@@ -33,7 +33,7 @@
  Remark: MAIN ROUTINE.
 110 LET K = 0
  Variable:K -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 120 GOSUB 500
  LineNumber:500
@@ -41,7 +41,7 @@
  LineNumber:2000
 140 LET K = 1
  Variable:K -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 150 GOSUB 500
  LineNumber:500
@@ -49,7 +49,7 @@
  LineNumber:2000
 170 LET K = 2
  Variable:K -> _
- NumericConstant:2
+ NumericValue:2
  AssignmentOperator:= =_ -> _
 180 GOSUB 500
  LineNumber:500
@@ -57,34 +57,34 @@
 200 REM  PRINT ANSWERS.
  Remark: PRINT ANSWERS.
 210 PRINT " X", "POLY.", "1ST DER.", "2D DER."
- TextConstant:" X"
+ TextValue:" X"
  CarriageControl:,
- TextConstant:"POLY."
+ TextValue:"POLY."
  CarriageControl:,
- TextConstant:"1ST DER."
+ TextValue:"1ST DER."
  CarriageControl:,
- TextConstant:"2D DER."
+ TextValue:"2D DER."
  CarriageControl:NL
 220 PRINT
  CarriageControl:NL
 230 FOR J = 1 TO X9
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:X9 -> _"]
 240 PRINT X(J), T(J,0), T(J,1), T(J,2)
  Variable:J -> _
  Variable:X(_) -> _
  CarriageControl:,
  Variable:J -> _
- NumericConstant:0
+ NumericValue:0
  Variable:T(_,_) -> _
  CarriageControl:,
  Variable:J -> _
- NumericConstant:1
+ NumericValue:1
  Variable:T(_,_) -> _
  CarriageControl:,
  Variable:J -> _
- NumericConstant:2
+ NumericValue:2
  Variable:T(_,_) -> _
  CarriageControl:NL
 250 NEXT J
@@ -96,7 +96,7 @@
  Remark: RUN THROUGH X-VALUES
 510 FOR J = 1 TO X9
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:X9 -> _"]
 520 LET X = X(J)
  Variable:X -> _
@@ -120,11 +120,11 @@
  Remark: EVALUATE.
 1010 LET Y = 0
  Variable:Y -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 1020 FOR I = 0 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:N -> _"]
 1030 LET Y = Y*X + A(I)
  Variable:Y -> _
@@ -144,7 +144,7 @@
  Remark: DIFFERENTIATE.
 2010 FOR I = 0 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:N -> _"]
 2020 LET A(I) = A(I)*(N-I)
  Variable:I -> _
@@ -161,30 +161,30 @@
 2040 LET N = N-1
  Variable:N -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 2050 RETURN
  
 2060
 9000 DATA 2, 2, -3, 1
- NumericConstant:2
- NumericConstant:2
- NumericConstant:3
+ NumericValue:2
+ NumericValue:2
+ NumericValue:3
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
+ NumericValue:1
 9100 DATA 8, -3, -1, 0, 0.5, 0.75, 1, 2.5, 5
- NumericConstant:8
- NumericConstant:3
+ NumericValue:8
+ NumericValue:3
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:0
- NumericConstant:0.5
- NumericConstant:0.75
- NumericConstant:1
- NumericConstant:2.5
- NumericConstant:5
+ NumericValue:0
+ NumericValue:0.5
+ NumericValue:0.75
+ NumericValue:1
+ NumericValue:2.5
+ NumericValue:5
 9999 END
  
 

@@ -1,11 +1,11 @@
 10 FOR I = 1 TO 3
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:3"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:3"]
 20 FOR J = 1 TO 2
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:2"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:2"]
 30 LET A(I,J) = I * J
  Variable:I -> _
  Variable:J -> _
@@ -19,20 +19,20 @@
 50 NEXT I
  Variable:I -> _
 55 PRINT "I","J","PRODUCT"
- TextConstant:"I"
+ TextValue:"I"
  CarriageControl:,
- TextConstant:"J"
+ TextValue:"J"
  CarriageControl:,
- TextConstant:"PRODUCT"
+ TextValue:"PRODUCT"
  CarriageControl:NL
 60 FOR I = 1 TO 3
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:3"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:3"]
 70 FOR J = 1 TO 2
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:2"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:2"]
 80 PRINT I, J, A(I,J)
  Variable:I -> _
  CarriageControl:,

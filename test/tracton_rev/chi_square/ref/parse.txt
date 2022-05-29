@@ -6,21 +6,21 @@
  Remark:EXPECTED FREQUENCIES
 40 LET J = 0
  Variable:J -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 50 PRINT "OBSERVED FREQUENCIES = "
- TextConstant:"OBSERVED FREQUENCIES = "
+ TextValue:"OBSERVED FREQUENCIES = "
  CarriageControl:NL
 60 INPUT D
  Variable:D -> _
 70 PRINT "EXPECTED FREQUENCIES = "
- TextConstant:"EXPECTED FREQUENCIES = "
+ TextValue:"EXPECTED FREQUENCIES = "
  CarriageControl:NL
 80 INPUT E
  Variable:E -> _
 90 IF E = 0 THEN 130
  Variable:E -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:130
 100 LET K = ((D - E)^2)/E
@@ -28,7 +28,7 @@
  Variable:D -> _
  Variable:E -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  Variable:E -> _
  BinaryOperatorDivide:/(_,_) -> _
@@ -42,21 +42,21 @@
 120 GOTO 50
  LineNumber:50
 130 PRINT "CHI-SQUARE = ";J
- TextConstant:"CHI-SQUARE = "
+ TextValue:"CHI-SQUARE = "
  CarriageControl:;
  Variable:J -> _
  CarriageControl:NL
 140 PRINT "*****************"
- TextConstant:"*****************"
+ TextValue:"*****************"
  CarriageControl:NL
 150 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 160 INPUT L
  Variable:L -> _
 170 IF L = 1 THEN 190
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:190
 180 STOP

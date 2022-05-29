@@ -1,20 +1,20 @@
 10 REM TEST TARGET LINE NUMBER PRECHECK
  Remark:TEST TARGET LINE NUMBER PRECHECK
 20 PRINT "START PROGRAM"
- TextConstant:"START PROGRAM"
+ TextValue:"START PROGRAM"
  CarriageControl:NL
 30 LET A = 20
  Variable:A -> _
- NumericConstant:20
+ NumericValue:20
  AssignmentOperator:= =_ -> _
 80 IF A=10 THEN 100
  ERROR: Line number 100 not found
  Variable:A -> _
- NumericConstant:10
+ NumericValue:10
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:100
 90 PRINT "END PROGRAM"
- TextConstant:"END PROGRAM"
+ TextValue:"END PROGRAM"
  CarriageControl:NL
 99 END
  

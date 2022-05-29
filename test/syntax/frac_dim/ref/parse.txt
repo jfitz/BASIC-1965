@@ -1,37 +1,37 @@
 10 REM TEST FRACTIONAL DIMENSIONS
  Remark:TEST FRACTIONAL DIMENSIONS
 20 LET A(2.3)=2
- NumericConstant:2.3
+ NumericValue:2.3
  Variable:A(_) -> _
- NumericConstant:2
+ NumericValue:2
  AssignmentOperator:= =_ -> _
 30 LET A(3.7)=3
- NumericConstant:3.7
+ NumericValue:3.7
  Variable:A(_) -> _
- NumericConstant:3
+ NumericValue:3
  AssignmentOperator:= =_ -> _
 40 PRINT "A(2):";A(2)
- TextConstant:"A(2):"
+ TextValue:"A(2):"
  CarriageControl:;
- NumericConstant:2
+ NumericValue:2
  Variable:A(_) -> _
  CarriageControl:NL
 50 PRINT "A(2.3):";A(2.3)
- TextConstant:"A(2.3):"
+ TextValue:"A(2.3):"
  CarriageControl:;
- NumericConstant:2.3
+ NumericValue:2.3
  Variable:A(_) -> _
  CarriageControl:NL
 60 PRINT "A(3):";A(3)
- TextConstant:"A(3):"
+ TextValue:"A(3):"
  CarriageControl:;
- NumericConstant:3
+ NumericValue:3
  Variable:A(_) -> _
  CarriageControl:NL
 70 PRINT "A(3.7):";A(3.7)
- TextConstant:"A(3.7):"
+ TextValue:"A(3.7):"
  CarriageControl:;
- NumericConstant:3.7
+ NumericValue:3.7
  Variable:A(_) -> _
  CarriageControl:NL
 99 END

@@ -1,12 +1,12 @@
 5 OPTION BASE 1
- NumericConstant:1
+ NumericValue:1
 10 DIM A(6)
- NumericConstant:6
+ NumericValue:6
  Declaration:A() -> _()
 20 FOR I = 1 TO 6
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:6"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:6"]
 40 LET A(I) = I
  Variable:I -> _
  Variable:A(_) -> _

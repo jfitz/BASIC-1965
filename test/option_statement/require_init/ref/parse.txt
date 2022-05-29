@@ -1,12 +1,12 @@
 10 REM TEST OF REQUIRE-INIT
  Remark:TEST OF REQUIRE-INIT
 20 OPTION REQUIRE_INITIALIZED FALSE
- BooleanConstant:false
+ BooleanValue:false
 30 PRINT A
  Variable:A -> _
  CarriageControl:NL
 40 OPTION REQUIRE_INITIALIZED TRUE
- BooleanConstant:true
+ BooleanValue:true
 50 PRINT B
  Variable:B -> _
  CarriageControl:NL

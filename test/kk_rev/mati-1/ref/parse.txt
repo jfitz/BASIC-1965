@@ -1,13 +1,13 @@
 100 DIM A(6), B(2)
- NumericConstant:6
+ NumericValue:6
  Declaration:A() -> _()
- NumericConstant:2
+ NumericValue:2
  Declaration:B() -> _()
 120 MAT READ A,B
  Variable:A(,) -> _(,)
  Variable:B(,) -> _(,)
 130 PRINT "EXAMPLE 1"
- TextConstant:"EXAMPLE 1"
+ TextValue:"EXAMPLE 1"
  CarriageControl:NL
 140 PRINT
  CarriageControl:NL
@@ -17,14 +17,14 @@
  Variable:B(,) -> _(,)
  CarriageControl:NL
 900 DATA 21,22,23,24,25,26, 11,12
- NumericConstant:21
- NumericConstant:22
- NumericConstant:23
- NumericConstant:24
- NumericConstant:25
- NumericConstant:26
- NumericConstant:11
- NumericConstant:12
+ NumericValue:21
+ NumericValue:22
+ NumericValue:23
+ NumericValue:24
+ NumericValue:25
+ NumericValue:26
+ NumericValue:11
+ NumericValue:12
 999 END
  
 

@@ -22,7 +22,7 @@ class AbstractCompound
 
     (base..dims[0].to_i).each do |col|
       coords = AbstractElement.make_coord(col)
-      values[coords] = NumericConstant.new_rand(interpreter, upper_bound)
+      values[coords] = NumericValue.new_rand(interpreter, upper_bound)
     end
 
     values
@@ -51,7 +51,7 @@ class AbstractCompound
     (base..dims[0].to_i).each do |row|
       (base..dims[1].to_i).each do |col|
         coords = AbstractElement.make_coords(row, col)
-        values[coords] = NumericConstant.new_rand(interpreter, upper_bound)
+        values[coords] = NumericValue.new_rand(interpreter, upper_bound)
       end
     end
 
@@ -128,14 +128,14 @@ class AbstractCompound
     coords = AbstractElement.make_coord(col)
     return @values[coords] if @values.key?(coords)
 
-    NumericConstant.new(0)
+    NumericValue.new(0)
   end
 
   def get_value_2(row, col)
     coords = AbstractElement.make_coords(row, col)
     return @values[coords] if @values.key?(coords)
 
-    NumericConstant.new(0)
+    NumericValue.new(0)
   end
 
   def values_1
@@ -425,7 +425,7 @@ class AbstractCompound
 
       text += plot_text
 
-      tc = TextConstant.new(text.rstrip)
+      tc = TextValue.new(text.rstrip)
       tc.print(printer)
       printer.newline
     end
@@ -533,7 +533,7 @@ class AbstractCompound
 
       text += plot_text
 
-      tc = TextConstant.new(text.rstrip)
+      tc = TextValue.new(text.rstrip)
       tc.print(printer)
       printer.newline
     end
@@ -581,11 +581,11 @@ class BASICArray < AbstractCompound
   end
 
   def max
-    NumericConstant.new(max_1)
+    NumericValue.new(max_1)
   end
 
   def min
-    NumericConstant.new(min_1)
+    NumericValue.new(min_1)
   end
 
   def median
@@ -757,8 +757,8 @@ end
 # Matrix with values
 class Matrix < AbstractCompound
   def self.identity_values(dimensions)
-    new_values = make_matrix(dimensions, NumericConstant.new(0))
-    one = NumericConstant.new(1)
+    new_values = make_matrix(dimensions, NumericValue.new(0))
+    one = NumericValue.new(1)
 
     base = $options['base'].value
 
@@ -819,13 +819,13 @@ class Matrix < AbstractCompound
   end
 
   def max
-    NumericConstant.new(max_1) if @dimensions.size == 1
-    NumericConstant.new(max_2) if @dimensions.size == 2
+    NumericValue.new(max_1) if @dimensions.size == 1
+    NumericValue.new(max_2) if @dimensions.size == 2
   end
 
   def min
-    NumericConstant.new(min_1) if @dimensions.size == 1
-    NumericConstant.new(min_2) if @dimensions.size == 2
+    NumericValue.new(min_1) if @dimensions.size == 1
+    NumericValue.new(min_2) if @dimensions.size == 2
   end
 
   def to_s
@@ -1060,9 +1060,9 @@ class Matrix < AbstractCompound
   end
 
   def determinant_n
-    minus_one = NumericConstant.new(-1)
-    sign = NumericConstant.new(1)
-    det = NumericConstant.new(0)
+    minus_one = NumericValue.new(-1)
+    sign = NumericValue.new(1)
+    det = NumericValue.new(0)
 
     base = $options['base'].value
 
@@ -1081,7 +1081,7 @@ class Matrix < AbstractCompound
   end
 
   def submatrix(exclude_row, exclude_col)
-    one = NumericConstant.new(1)
+    one = NumericValue.new(1)
     r = @dimensions[0].subtract(one)
     c = @dimensions[1].subtract(one)
     new_dims = [r, c]
@@ -1765,13 +1765,13 @@ class Expression
 
         if element.array?
           token = NumericLiteralToken.new('0')
-          constant = NumericConstant.new(token)
+          constant = NumericValue.new(token)
           arguments = [constant]
         end
 
         if element.matrix?
           token = NumericLiteralToken.new('0')
-          constant = NumericConstant.new(token)
+          constant = NumericValue.new(token)
           arguments = [constant, constant]
         end
 
@@ -2043,11 +2043,11 @@ class AbstractExpressionSet
       BinaryOperatorLessEqual,
       BinaryOperatorGreater,
       BinaryOperatorGreaterEqual,
-      BooleanConstant,
-      NumericConstant,
+      BooleanValue,
+      NumericValue,
       UserFunctionName,
       VariableName,
-      TextConstant
+      TextValue
     ]
   end
 
@@ -2061,11 +2061,11 @@ class AbstractExpressionSet
       UnaryOperatorPlus,
       UnaryOperatorMinus,
       UnaryOperatorHash,
-      BooleanConstant,
-      NumericConstant,
+      BooleanValue,
+      NumericValue,
       UserFunctionName,
       VariableName,
-      TextConstant
+      TextValue
     ]
   end
 end

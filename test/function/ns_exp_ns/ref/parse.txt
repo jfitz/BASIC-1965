@@ -1,13 +1,13 @@
 10 PRINT "VALUE","EXP"
- TextConstant:"VALUE"
+ TextValue:"VALUE"
  CarriageControl:,
- TextConstant:"EXP"
+ TextValue:"EXP"
  CarriageControl:NL
 20 FOR I = 0 TO 2 STEP 0.1
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:2"]
- step:    ["NumericConstant:0.1"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:2"]
+ step:    ["NumericValue:0.1"]
 30 LET E = EXP(I)
  Variable:E -> _
  Variable:I -> _

@@ -1,19 +1,19 @@
 10 REM Test the FORGET statement
  Remark:Test the FORGET statement
 11 OPTION BASE 1
- NumericConstant:1
+ NumericValue:1
 20 DIM A(3,4)
- NumericConstant:3
- NumericConstant:4
+ NumericValue:3
+ NumericValue:4
  Declaration:A(,) -> _(,)
 21 FOR I = 1 TO 3
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:3"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:3"]
 22 FOR J = 1 TO 4
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:4"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:4"]
 23 LET A(I,J) = I*J
  Variable:I -> _
  Variable:J -> _
@@ -27,17 +27,17 @@
 25 NEXT I
  Variable:I -> _
 30 DIM A1(2,6)
- NumericConstant:2
- NumericConstant:6
+ NumericValue:2
+ NumericValue:6
  Declaration:A1(,) -> _(,)
 31 FOR I = 1 TO 2
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:2"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:2"]
 32 FOR J = 1 TO 6
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:6"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:6"]
 33 LET A1(I,J) = I/J
  Variable:I -> _
  Variable:J -> _

@@ -1,15 +1,15 @@
 100 LET P = 3.14159265
  Variable:P -> _
- NumericConstant:3.14159265
+ NumericValue:3.14159265
  AssignmentOperator:= =_ -> _
 110 LET C = 0
  Variable:C -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 120 FOR N = 1 TO 1000
  control: Variable:N -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:1000"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:1000"]
 130    LET Y = RND(Z)
  Variable:Y -> _
  Variable:Z -> _
@@ -24,8 +24,8 @@
  Variable:A -> _
  Variable:P -> _
  Variable:R -> _
- NumericConstant:1
- NumericConstant:2
+ NumericValue:1
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> =_
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
@@ -59,7 +59,7 @@
 190    LET C = C+1
  Variable:C -> _
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 200 NEXT N
@@ -71,14 +71,14 @@
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 220 PRINT "FRACTION OF CROSSINGS = " F
- TextConstant:"FRACTION OF CROSSINGS = "
+ TextValue:"FRACTION OF CROSSINGS = "
  CarriageControl:
  Variable:F -> _
  CarriageControl:NL
 230 PRINT "ESTIMATE OF PI = " 2/F
- TextConstant:"ESTIMATE OF PI = "
+ TextValue:"ESTIMATE OF PI = "
  CarriageControl:
- NumericConstant:2
+ NumericValue:2
  Variable:F -> _
  BinaryOperatorDivide:/(_,_) -> _
  CarriageControl:NL

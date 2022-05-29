@@ -1,10 +1,10 @@
 10 REM BLACKJACK
  Remark:BLACKJACK
 20 PRINT "IF INSTRUCTIONS ARE REQUIRED TYPE YES"
- TextConstant:"IF INSTRUCTIONS ARE REQUIRED TYPE YES"
+ TextValue:"IF INSTRUCTIONS ARE REQUIRED TYPE YES"
  CarriageControl:NL
 30 PRINT "IF NOT TYPE NO"
- TextConstant:"IF NOT TYPE NO"
+ TextValue:"IF NOT TYPE NO"
  CarriageControl:NL
 40 INPUT C$
  ERROR: Syntax error: "C$" Token 'InvalidToken:$' is not a value or operator
@@ -15,84 +15,84 @@
  ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:340
 70 PRINT "INVALID RESPONSE"
- TextConstant:"INVALID RESPONSE"
+ TextValue:"INVALID RESPONSE"
  CarriageControl:NL
 80 GOTO 20
  LineNumber:20
 90 PRINT
  CarriageControl:NL
 100 PRINT "***************BLACKJACK***************"
- TextConstant:"***************BLACKJACK***************"
+ TextValue:"***************BLACKJACK***************"
  CarriageControl:NL
 110 PRINT
  CarriageControl:NL
 120 PRINT "THE COMPUTER AS THE DEALER, DEALS TWO CARDS TO ITSELF"
- TextConstant:"THE COMPUTER AS THE DEALER, DEALS TWO CARDS TO ITSELF"
+ TextValue:"THE COMPUTER AS THE DEALER, DEALS TWO CARDS TO ITSELF"
  CarriageControl:NL
 130 PRINT "AND TWO CARDS TO THE PLAYER. THE PLAYER'S TWO CARDS"
- TextConstant:"AND TWO CARDS TO THE PLAYER. THE PLAYER'S TWO CARDS"
+ TextValue:"AND TWO CARDS TO THE PLAYER. THE PLAYER'S TWO CARDS"
  CarriageControl:NL
 140 PRINT "ARE SHOWN FACE UP, WHILE ONLY ONE OF THE DEALER'S"
- TextConstant:"ARE SHOWN FACE UP, WHILE ONLY ONE OF THE DEALER'S"
+ TextValue:"ARE SHOWN FACE UP, WHILE ONLY ONE OF THE DEALER'S"
  CarriageControl:NL
 150 PRINT "CARDS IS SHOWN. BOTH THE DEALER AND THE PLAYER"
- TextConstant:"CARDS IS SHOWN. BOTH THE DEALER AND THE PLAYER"
+ TextValue:"CARDS IS SHOWN. BOTH THE DEALER AND THE PLAYER"
  CarriageControl:NL
 160 PRINT "MAY DRAW ADDITIONAL CARDS."
- TextConstant:"MAY DRAW ADDITIONAL CARDS."
+ TextValue:"MAY DRAW ADDITIONAL CARDS."
  CarriageControl:NL
 170 PRINT "THE PLAYER'S GOAL IS TO REACH 21 OR LESS, BUT"
- TextConstant:"THE PLAYER'S GOAL IS TO REACH 21 OR LESS, BUT"
+ TextValue:"THE PLAYER'S GOAL IS TO REACH 21 OR LESS, BUT"
  CarriageControl:NL
 180 PRINT "BE CLOSER TO 21 THAN THE DEALER'S HAND."
- TextConstant:"BE CLOSER TO 21 THAN THE DEALER'S HAND."
+ TextValue:"BE CLOSER TO 21 THAN THE DEALER'S HAND."
  CarriageControl:NL
 190 PRINT "IF THE PLAYER'S OR THE DEALER'S HAND TOTALS"
- TextConstant:"IF THE PLAYER'S OR THE DEALER'S HAND TOTALS"
+ TextValue:"IF THE PLAYER'S OR THE DEALER'S HAND TOTALS"
  CarriageControl:NL
 200 PRINT "GREATER THAN 21 HE IS BUSTED! THE KING"
- TextConstant:"GREATER THAN 21 HE IS BUSTED! THE KING"
+ TextValue:"GREATER THAN 21 HE IS BUSTED! THE KING"
  CarriageControl:NL
 210 PRINT "THE QUEEN AND THE JACK ALL COUNT AS 10 POINTS."
- TextConstant:"THE QUEEN AND THE JACK ALL COUNT AS 10 POINTS."
+ TextValue:"THE QUEEN AND THE JACK ALL COUNT AS 10 POINTS."
  CarriageControl:NL
 220 PRINT "ALL OTHER CARDS EXCEPT THE ACE COUNT AS THEIR FACE"
- TextConstant:"ALL OTHER CARDS EXCEPT THE ACE COUNT AS THEIR FACE"
+ TextValue:"ALL OTHER CARDS EXCEPT THE ACE COUNT AS THEIR FACE"
  CarriageControl:NL
 230 PRINT "VALUE SHOWS. THE ACE COUNTS AS 11 UNLESS THIS"
- TextConstant:"VALUE SHOWS. THE ACE COUNTS AS 11 UNLESS THIS"
+ TextValue:"VALUE SHOWS. THE ACE COUNTS AS 11 UNLESS THIS"
  CarriageControl:NL
 240 PRINT "WOULD CAUSE THE HAND TO BE OVER 21, IN THAT"
- TextConstant:"WOULD CAUSE THE HAND TO BE OVER 21, IN THAT"
+ TextValue:"WOULD CAUSE THE HAND TO BE OVER 21, IN THAT"
  CarriageControl:NL
 250 PRINT "CASE THE ACE COUNTS AS 1."
- TextConstant:"CASE THE ACE COUNTS AS 1."
+ TextValue:"CASE THE ACE COUNTS AS 1."
  CarriageControl:NL
 260 PRINT "IF BOTH THE DEALER AND THE PLAYER GET BLACKJACK"
- TextConstant:"IF BOTH THE DEALER AND THE PLAYER GET BLACKJACK"
+ TextValue:"IF BOTH THE DEALER AND THE PLAYER GET BLACKJACK"
  CarriageControl:NL
 270 PRINT "WHICH IS A TWO CARD HAND TOTALING 21"
- TextConstant:"WHICH IS A TWO CARD HAND TOTALING 21"
+ TextValue:"WHICH IS A TWO CARD HAND TOTALING 21"
  CarriageControl:NL
 280 PRINT "NEITHER WINS, IT IS A PUSH"
- TextConstant:"NEITHER WINS, IT IS A PUSH"
+ TextValue:"NEITHER WINS, IT IS A PUSH"
  CarriageControl:NL
 290 PRINT "IF THE DEALER'S HAND IS BELOW OR EQUAL TO 16"
- TextConstant:"IF THE DEALER'S HAND IS BELOW OR EQUAL TO 16"
+ TextValue:"IF THE DEALER'S HAND IS BELOW OR EQUAL TO 16"
  CarriageControl:NL
 300 PRINT "HE MUST DRAW, AFTER 17 THE DEALER MUST STAND"
- TextConstant:"HE MUST DRAW, AFTER 17 THE DEALER MUST STAND"
+ TextValue:"HE MUST DRAW, AFTER 17 THE DEALER MUST STAND"
  CarriageControl:NL
 310 PRINT "TO RECEIVE A CARD YOU WANT A HIT-"
- TextConstant:"TO RECEIVE A CARD YOU WANT A HIT-"
+ TextValue:"TO RECEIVE A CARD YOU WANT A HIT-"
  CarriageControl:NL
 320 PRINT "TO STOP WHERE YOU ARE YOU STAND-"
- TextConstant:"TO STOP WHERE YOU ARE YOU STAND-"
+ TextValue:"TO STOP WHERE YOU ARE YOU STAND-"
  CarriageControl:NL
 330 PRINT
  CarriageControl:NL
 340 PRINT "***GOOD-LUCK-----MAY THE BEST ONE WIN***"
- TextConstant:"***GOOD-LUCK-----MAY THE BEST ONE WIN***"
+ TextValue:"***GOOD-LUCK-----MAY THE BEST ONE WIN***"
  CarriageControl:NL
 350 REM 1ST HAND
  Remark:1ST HAND
@@ -101,7 +101,7 @@
  Unimplemented
 360 LET D = 0
  Variable:D -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 370 LET P = D
  Variable:P -> _
@@ -134,23 +134,23 @@
 460 PRINT
  CarriageControl:NL
 470 PRINT "THE DEALER HAS A ";D1;" SHOWING"
- TextConstant:"THE DEALER HAS A "
+ TextValue:"THE DEALER HAS A "
  CarriageControl:;
  Variable:D1 -> _
  CarriageControl:;
- TextConstant:" SHOWING"
+ TextValue:" SHOWING"
  CarriageControl:NL
 480 PRINT "YOU HAVE A ";P1;" AND A ";P2
- TextConstant:"YOU HAVE A "
+ TextValue:"YOU HAVE A "
  CarriageControl:;
  Variable:P1 -> _
  CarriageControl:;
- TextConstant:" AND A "
+ TextValue:" AND A "
  CarriageControl:;
  Variable:P2 -> _
  CarriageControl:NL
 490 PRINT "YOUR TOTAL IS ";P1 + P2
- TextConstant:"YOUR TOTAL IS "
+ TextValue:"YOUR TOTAL IS "
  CarriageControl:;
  Variable:P1 -> _
  Variable:P2 -> _
@@ -170,28 +170,28 @@
  AssignmentOperator:= _ -> _
 520 IF P = 21 THEN 640
  Variable:P -> _
- NumericConstant:21
+ NumericValue:21
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:640
 530 GOSUB 960
  LineNumber:960
 540 IF L = 1 THEN 690
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:690
 550 IF D <= 16 THEN 740
  Variable:D -> _
- NumericConstant:16
+ NumericValue:16
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:740
 560 PRINT "THE DEALER HAS ";D
- TextConstant:"THE DEALER HAS "
+ TextValue:"THE DEALER HAS "
  CarriageControl:;
  Variable:D -> _
  CarriageControl:NL
 570 PRINT "YOU HAVE ";P
- TextConstant:"YOU HAVE "
+ TextValue:"YOU HAVE "
  CarriageControl:;
  Variable:P -> _
  CarriageControl:NL
@@ -203,34 +203,34 @@
 590 REM WIN OR LOSS STATEMENTS
  Remark:WIN OR LOSS STATEMENTS
 600 PRINT "THE DEALER HAS WON!!!"
- TextConstant:"THE DEALER HAS WON!!!"
+ TextValue:"THE DEALER HAS WON!!!"
  CarriageControl:NL
 610 GOTO 1060
  LineNumber:1060
 620 PRINT "YOU HAVE WON!!!"
- TextConstant:"YOU HAVE WON!!!"
+ TextValue:"YOU HAVE WON!!!"
  CarriageControl:NL
 630 GOTO 1060
  LineNumber:1060
 640 PRINT "***YOU HAVE BLACKJACK***"
- TextConstant:"***YOU HAVE BLACKJACK***"
+ TextValue:"***YOU HAVE BLACKJACK***"
  CarriageControl:NL
 650 IF D = 21 THEN 670
  Variable:D -> _
- NumericConstant:21
+ NumericValue:21
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:670
 660 GOTO 560
  LineNumber:560
 670 PRINT "THE DEALER ALSO HAS BLACKJACK, SORRY NO WINNER"
- TextConstant:"THE DEALER ALSO HAS BLACKJACK, SORRY NO WINNER"
+ TextValue:"THE DEALER ALSO HAS BLACKJACK, SORRY NO WINNER"
  CarriageControl:NL
 680 GOTO 1060
  LineNumber:1060
 690 GOSUB 890
  LineNumber:890
 700 PRINT "YOUR CARD IS ";C
- TextConstant:"YOUR CARD IS "
+ TextValue:"YOUR CARD IS "
  CarriageControl:;
  Variable:C -> _
  CarriageControl:NL
@@ -242,13 +242,13 @@
  AssignmentOperator:= _ -> _
 720 IF P > 21 THEN 600
  Variable:P -> _
- NumericConstant:21
+ NumericValue:21
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:600
 730 GOTO 530
  LineNumber:530
 740 PRINT "THE DEALER HAS ";D
- TextConstant:"THE DEALER HAS "
+ TextValue:"THE DEALER HAS "
  CarriageControl:;
  Variable:D -> _
  CarriageControl:NL
@@ -261,31 +261,31 @@
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 770 PRINT "THE DEALER DRAWS A ";C
- TextConstant:"THE DEALER DRAWS A "
+ TextValue:"THE DEALER DRAWS A "
  CarriageControl:;
  Variable:C -> _
  CarriageControl:NL
 780 PRINT "HIS TOTAL IS ";D
- TextConstant:"HIS TOTAL IS "
+ TextValue:"HIS TOTAL IS "
  CarriageControl:;
  Variable:D -> _
  CarriageControl:NL
 790 IF D > 21 THEN 620
  Variable:D -> _
- NumericConstant:21
+ NumericValue:21
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:620
 800 IF D <= 17 THEN 750
  Variable:D -> _
- NumericConstant:17
+ NumericValue:17
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:750
 810 GOTO 560
  LineNumber:560
 820 LET C = 1 + INT(11*RND)
  Variable:C -> _
- NumericConstant:1
- NumericConstant:11
+ NumericValue:1
+ NumericValue:11
  FunctionRnd:RND -> _
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
@@ -300,21 +300,21 @@
  Variable:D -> _
  Variable:C -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:21
+ NumericValue:21
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:870
 860 GOTO 880
  LineNumber:880
 870 LET C = 1
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 880 RETURN
  
 890 LET C = 1 + INT(11*RND)
  Variable:C -> _
- NumericConstant:1
- NumericConstant:11
+ NumericValue:1
+ NumericValue:11
  FunctionRnd:RND -> _
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
@@ -322,7 +322,7 @@
  AssignmentOperator:= _ -> _
 900 IF C = 11 THEN 920
  Variable:C -> _
- NumericConstant:11
+ NumericValue:11
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:920
 910 GOTO 950
@@ -331,20 +331,20 @@
  Variable:P -> _
  Variable:C -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:21
+ NumericValue:21
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:940
 930 GOTO 950
  LineNumber:950
 940 LET C = 1
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 950 RETURN
  
 960 PRINT "DO YOU WANT A HIT, OR DO YOU STAND"
  WARNING: Inconsistent GOSUB origins
- TextConstant:"DO YOU WANT A HIT, OR DO YOU STAND"
+ TextValue:"DO YOU WANT A HIT, OR DO YOU STAND"
  CarriageControl:NL
 970 INPUT Q$
  ERROR: Syntax error: "Q$" Token 'InvalidToken:$' is not a value or operator
@@ -355,29 +355,29 @@
  ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:1040
 1000 PRINT "INVALID RESPONSE"
- TextConstant:"INVALID RESPONSE"
+ TextValue:"INVALID RESPONSE"
  CarriageControl:NL
 1010 GOTO 960
  LineNumber:960
 1020 LET L = 1
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 1030 GOTO 1050
  LineNumber:1050
 1040 LET L = 0
  Variable:L -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 1050 RETURN
  
 1060 PRINT
  CarriageControl:NL
 1070 PRINT "DO YOU WISH TO PLAY AGAIN"
- TextConstant:"DO YOU WISH TO PLAY AGAIN"
+ TextValue:"DO YOU WISH TO PLAY AGAIN"
  CarriageControl:NL
 1080 PRINT "TYPE YES OR NO"
- TextConstant:"TYPE YES OR NO"
+ TextValue:"TYPE YES OR NO"
  CarriageControl:NL
 1090 INPUT L$
  ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
@@ -385,7 +385,7 @@
  ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:1130
 1110 PRINT "BLACKJACK SAYS GOOD-BYE"
- TextConstant:"BLACKJACK SAYS GOOD-BYE"
+ TextValue:"BLACKJACK SAYS GOOD-BYE"
  CarriageControl:NL
 1120 STOP
  

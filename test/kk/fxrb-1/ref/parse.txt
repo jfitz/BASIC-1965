@@ -8,29 +8,29 @@
  Variable:T9 -> _
  Variable:P -> _
 120 DIM G(60,20)
- NumericConstant:60
- NumericConstant:20
+ NumericValue:60
+ NumericValue:20
  Declaration:G(,) -> _(,)
 130 MAT G = ZER
  Variable:G(,) -> _(,)
  FunctionZer2:ZER -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 140 DATA 4,2,1,3
- NumericConstant:4
- NumericConstant:2
- NumericConstant:1
- NumericConstant:3
+ NumericValue:4
+ NumericValue:2
+ NumericValue:1
+ NumericValue:3
 150 DATA .01,2,30
- NumericConstant:.01
- NumericConstant:2
- NumericConstant:30
+ NumericValue:.01
+ NumericValue:2
+ NumericValue:30
 160 DEF FNR(X) = INT(4*X+.5)
  UserFunctionName:FNR -> _
  VariableName:X -> _
- NumericConstant:4
+ NumericValue:4
  Variable:X -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:.5
+ NumericValue:.5
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
 170
@@ -39,21 +39,21 @@
  Variable:Y -> _
 210 LET G(FNR(X*1.5),FNR(Y)) = 1
  Variable:X -> _
- NumericConstant:1.5
+ NumericValue:1.5
  BinaryOperatorMultiply:*(_,_) -> _
  UserFunction:FNR(_) -> _
  Variable:Y -> _
  UserFunction:FNR(_) -> _
  Variable:G(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 220 FOR I = 1 TO P
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:P -> _"]
 230 FOR T = 0 TO T9/P STEP T8
  control: Variable:T -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:T9 -> _", "Variable:P -> _", "BinaryOperatorDivide:/(_,_) -> _"]
  step:    ["Variable:T8 -> _"]
 240 LET X = X + (A*X - B*X*Y)*T8
@@ -92,31 +92,31 @@
  Variable:T -> _
 270 LET G(FNR(X*1.5),FNR(Y)) = 1
  Variable:X -> _
- NumericConstant:1.5
+ NumericValue:1.5
  BinaryOperatorMultiply:*(_,_) -> _
  UserFunction:FNR(_) -> _
  Variable:Y -> _
  UserFunction:FNR(_) -> _
  Variable:G(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 280 NEXT I
  Variable:I -> _
 290
 300 FOR J = 20 TO 1 STEP -1
  control: Variable:J -> _
- start:   ["NumericConstant:20"]
- end:     ["NumericConstant:1"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
+ start:   ["NumericValue:20"]
+ end:     ["NumericValue:1"]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
 310 FOR I = 1 TO 60
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:60"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:60"]
 320 IF G(I,J) > 0 THEN 360
  Variable:I -> _
  Variable:J -> _
  Variable:G(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:360
 330 NEXT I
@@ -127,33 +127,33 @@
  LineNumber:470
 360 FOR I = 1 TO 60
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:60"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:60"]
 370 IF G(I,J) > 0 THEN 400
  Variable:I -> _
  Variable:J -> _
  Variable:G(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:400
 380 PRINT " ";
- TextConstant:" "
+ TextValue:" "
  CarriageControl:;
 390 GOTO 450
  LineNumber:450
 400 PRINT "*";
- TextConstant:"*"
+ TextValue:"*"
  CarriageControl:;
 410 FOR K = I+1 TO 60
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:K -> _
- start:   ["Variable:I -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
- end:     ["NumericConstant:60"]
+ start:   ["Variable:I -> _", "NumericValue:1", "BinaryOperatorPlus:+(_,_) -> _"]
+ end:     ["NumericValue:60"]
 420 IF G(K,J) > 0 THEN 450
  Variable:K -> _
  Variable:J -> _
  Variable:G(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:450
 430 NEXT K
@@ -168,8 +168,8 @@
  Variable:J -> _
 480
 900 DATA 3,.5
- NumericConstant:3
- NumericConstant:.5
+ NumericValue:3
+ NumericValue:.5
 999 END
  WARNING: Terminating statement in FOR/NEXT
  

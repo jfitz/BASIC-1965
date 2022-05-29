@@ -1,9 +1,9 @@
 100 PRINT "TABLE","   ","CHI-SQUARE"
- TextConstant:"TABLE"
+ TextValue:"TABLE"
  CarriageControl:,
- TextConstant:"   "
+ TextValue:"   "
  CarriageControl:,
- TextConstant:"CHI-SQUARE"
+ TextValue:"CHI-SQUARE"
  CarriageControl:NL
 110
 120 PRINT
@@ -34,7 +34,7 @@
  BinaryOperatorMinus:-(_,_) -> _
  FunctionAbs:ABS(_) -> _
  Variable:N -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -78,14 +78,14 @@
 200 GO TO 120
  LineNumber:120
 900 DATA 6, 0, 2, 6, 6, 0, 1, 3
- NumericConstant:6
- NumericConstant:0
- NumericConstant:2
- NumericConstant:6
- NumericConstant:6
- NumericConstant:0
- NumericConstant:1
- NumericConstant:3
+ NumericValue:6
+ NumericValue:0
+ NumericValue:2
+ NumericValue:6
+ NumericValue:6
+ NumericValue:0
+ NumericValue:1
+ NumericValue:3
 999 END
  
 

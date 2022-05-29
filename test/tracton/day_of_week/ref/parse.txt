@@ -17,7 +17,7 @@
 90 LET J$(7) = "SATURDAY"
  ERROR: Token 'InvalidToken:$' is not a value or operator
 100 PRINT "ENTER DAY(D), MONTH(M) AND YEAR(Y)"
- TextConstant:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
+ TextValue:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
  CarriageControl:NL
 110 INPUT D,M,Y
  Variable:D -> _
@@ -25,18 +25,18 @@
  Variable:Y -> _
 120 IF Y > 1752 THEN 150
  Variable:Y -> _
- NumericConstant:1752
+ NumericValue:1752
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:150
 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
- TextConstant:"YEAR MUST NOT BE PRIOR TO 1753"
+ TextValue:"YEAR MUST NOT BE PRIOR TO 1753"
  CarriageControl:NL
 140 GOTO 100
  LineNumber:100
 150 LET K = INT(0.6 + (1/M))
  Variable:K -> _
- NumericConstant:0.6
- NumericConstant:1
+ NumericValue:0.6
+ NumericValue:1
  Variable:M -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
@@ -51,7 +51,7 @@
 170 LET O = M + 12*K
  Variable:O -> _
  Variable:M -> _
- NumericConstant:12
+ NumericValue:12
  Variable:K -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
@@ -59,13 +59,13 @@
 180 LET P = L/100
  Variable:P -> _
  Variable:L -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 190 LET Z1 = INT(P/4)
  Variable:Z1 -> _
  Variable:P -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
@@ -76,21 +76,21 @@
  AssignmentOperator:= _ -> _
 210 LET Z3 = INT((5*L)/4)
  Variable:Z3 -> _
- NumericConstant:5
+ NumericValue:5
  Variable:L -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
 220 LET Z4 = INT (13*(O + 1)/5)
  Variable:Z4 -> _
- NumericConstant:13
+ NumericValue:13
  Variable:O -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
@@ -105,33 +105,33 @@
  BinaryOperatorPlus:+(_,_) -> _
  Variable:D -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 240 LET Z=Z - (7*INT(Z/7)) + 1
  Variable:Z -> _
  Variable:Z -> _
- NumericConstant:7
+ NumericValue:7
  Variable:Z -> _
- NumericConstant:7
+ NumericValue:7
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
  ERROR: Syntax error: "J$(Z)" Token 'InvalidToken:$' is not a value or operator
- TextConstant:"THE DAY OF THE WEEK IS "
+ TextValue:"THE DAY OF THE WEEK IS "
  CarriageControl:;
 260 PRINT
  CarriageControl:NL
 270 PRINT "FOR NEXT DATE TYPE IN YES, IF NOT"
- TextConstant:"FOR NEXT DATE TYPE IN YES, IF NOT"
+ TextValue:"FOR NEXT DATE TYPE IN YES, IF NOT"
  CarriageControl:NL
 280 PRINT "TYPE NO"
- TextConstant:"TYPE NO"
+ TextValue:"TYPE NO"
  CarriageControl:NL
 290 INPUT L$
  ERROR: Syntax error: "L$" Token 'InvalidToken:$' is not a value or operator
@@ -142,7 +142,7 @@
  ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:360
 320 PRINT "INVALID COMMAND"
- TextConstant:"INVALID COMMAND"
+ TextValue:"INVALID COMMAND"
  CarriageControl:NL
 330 GOTO 270
  LineNumber:270
@@ -151,7 +151,7 @@
 350 GOTO 30
  LineNumber:30
 360 PRINT "DAY OF THE WEEK SAYS GOOD-BYE"
- TextConstant:"DAY OF THE WEEK SAYS GOOD-BYE"
+ TextValue:"DAY OF THE WEEK SAYS GOOD-BYE"
  CarriageControl:NL
 370 END
  

@@ -8,7 +8,7 @@
  VariableName:X -> _
  Variable:X -> _
  FunctionLog:LOG(_) -> _
- NumericConstant:10
+ NumericValue:10
  FunctionLog:LOG(_) -> =_
  BinaryOperatorDivide:/(_,_) -> _
 110 READ A,B,S
@@ -29,11 +29,11 @@
  AssignmentOperator:= _ -> _
 140 IF N <= 50 THEN 180
  Variable:N -> _
- NumericConstant:50
+ NumericValue:50
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:180
 150 PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
- TextConstant:"ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
+ TextValue:"ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
  CarriageControl:NL
 160 STOP
  
@@ -41,38 +41,38 @@
  UserFunctionName:FNR -> _
  VariableName:X -> _
  Variable:X -> _
- NumericConstant:0.5
+ NumericValue:0.5
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
 180 PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
- TextConstant:"Y-AXIS:  FROM "
+ TextValue:"Y-AXIS:  FROM "
  CarriageControl:
  Variable:C -> _
  CarriageControl:;
- TextConstant:"TO "
+ TextValue:"TO "
  CarriageControl:
  Variable:D -> _
  CarriageControl:;
- TextConstant:"IN STEPS OF "
+ TextValue:"IN STEPS OF "
  CarriageControl:
  Variable:H -> _
  CarriageControl:NL
 190 PRINT
  CarriageControl:NL
 200 PRINT "'";
- TextConstant:"'"
+ TextValue:"'"
  CarriageControl:;
 210 FOR I = 1 TO N-1
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["Variable:N -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ start:   ["NumericValue:1"]
+ end:     ["Variable:N -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
 220 PRINT "-";
- TextConstant:"-"
+ TextValue:"-"
  CarriageControl:;
 230 NEXT I
  Variable:I -> _
 240 PRINT "'"
- TextConstant:"'"
+ TextValue:"'"
  CarriageControl:NL
 250 FOR X = A TO B STEP S
  control: Variable:X -> _
@@ -109,7 +109,7 @@
  AssignmentOperator:= _ -> _
 290 FOR I = 0 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:N -> _"]
 292 IF I = Y1 THEN 302
  Variable:I -> _
@@ -122,22 +122,22 @@
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:304
 300 PRINT " ";
- TextConstant:" "
+ TextValue:" "
  CarriageControl:;
 301 GOTO 310
  LineNumber:310
 302 PRINT "*";
- TextConstant:"*"
+ TextValue:"*"
  CarriageControl:;
 303 GOTO 310
  LineNumber:310
 304 PRINT "+";
- TextConstant:"+"
+ TextValue:"+"
  CarriageControl:;
 310 NEXT I
  Variable:I -> _
 315 PRINT "   ";
- TextConstant:"   "
+ TextValue:"   "
  CarriageControl:;
 320 PRINT X
  Variable:X -> _
@@ -145,14 +145,14 @@
 330 NEXT X
  Variable:X -> _
 340 DATA 1,10.01,0.3
- NumericConstant:1
- NumericConstant:10.01
- NumericConstant:0.3
+ NumericValue:1
+ NumericValue:10.01
+ NumericValue:0.3
 350 DATA -1,1,50
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:1
- NumericConstant:50
+ NumericValue:1
+ NumericValue:50
 360 END
  
 

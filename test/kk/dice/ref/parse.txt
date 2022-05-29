@@ -1,27 +1,27 @@
 10 FOR G = 1 TO 10
  control: Variable:G -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:10"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:10"]
 20    GOSUB 500
  LineNumber:500
 30    IF D < 4 THEN 300
  Variable:D -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:300
 40    IF D = 12 THEN 300
  Variable:D -> _
- NumericConstant:12
+ NumericValue:12
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:300
 50    IF D = 7 THEN 400
  Variable:D -> _
- NumericConstant:7
+ NumericValue:7
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:400
 60    IF D = 11 THEN 400
  Variable:D -> _
- NumericConstant:11
+ NumericValue:11
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:400
 70    LET D9 = D
@@ -37,28 +37,28 @@
  LineNumber:200
 120   IF D = 7 THEN 250
  Variable:D -> _
- NumericConstant:7
+ NumericValue:7
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:250
 130   GOTO 100
  LineNumber:100
 200   PRINT "YOU WIN -- BY MAKING YOUR POINT"
- TextConstant:"YOU WIN -- BY MAKING YOUR POINT"
+ TextValue:"YOU WIN -- BY MAKING YOUR POINT"
  CarriageControl:NL
 210   GOTO 410
  LineNumber:410
 250   PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
- TextConstant:"YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
+ TextValue:"YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
  CarriageControl:NL
 260   GOTO 410
  LineNumber:410
 300   PRINT "YOU LOSE ON FIRST ROLL"
- TextConstant:"YOU LOSE ON FIRST ROLL"
+ TextValue:"YOU LOSE ON FIRST ROLL"
  CarriageControl:NL
 310   GOTO 410
  LineNumber:410
 400   PRINT "YOU WIN ON FIRST ROLL"
- TextConstant:"YOU WIN ON FIRST ROLL"
+ TextValue:"YOU WIN ON FIRST ROLL"
  CarriageControl:NL
 410 NEXT G
  Variable:G -> _
@@ -69,26 +69,26 @@
  Remark:ROLL DICE
 510 LET D1 = INT(6*RND(1)+1)
  Variable:D1 -> _
- NumericConstant:6
- NumericConstant:1
+ NumericValue:6
+ NumericValue:1
  FunctionRnd:RND(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
 520 LET D2 = INT(6*RND(1)+1)
  Variable:D2 -> _
- NumericConstant:6
- NumericConstant:1
+ NumericValue:6
+ NumericValue:1
  FunctionRnd:RND(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
 525 PRINT "YOUR ROLL IS "; D1;D2
- TextConstant:"YOUR ROLL IS "
+ TextValue:"YOUR ROLL IS "
  CarriageControl:;
  Variable:D1 -> _
  CarriageControl:;

@@ -3,14 +3,14 @@
 20 REM OF TWO VECTORS
  Remark:OF TWO VECTORS
 30 PRINT "ENTER 1ST VECTOR (A1,A2,A3)"
- TextConstant:"ENTER 1ST VECTOR (A1,A2,A3)"
+ TextValue:"ENTER 1ST VECTOR (A1,A2,A3)"
  CarriageControl:NL
 40 INPUT A1,A2,A3
  Variable:A1 -> _
  Variable:A2 -> _
  Variable:A3 -> _
 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
- TextConstant:"ENTER 2ND VECTOR (B1,B2,B3)"
+ TextValue:"ENTER 2ND VECTOR (B1,B2,B3)"
  CarriageControl:NL
 60 INPUT B1,B2,B3
  Variable:B1 -> _
@@ -47,32 +47,32 @@
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 100 PRINT "VECTOR CROSS PRODUCT"
- TextConstant:"VECTOR CROSS PRODUCT"
+ TextValue:"VECTOR CROSS PRODUCT"
  CarriageControl:NL
 110 PRINT "X = ";X,"Y = ";Y,"Z = ";Z
- TextConstant:"X = "
+ TextValue:"X = "
  CarriageControl:;
  Variable:X -> _
  CarriageControl:,
- TextConstant:"Y = "
+ TextValue:"Y = "
  CarriageControl:;
  Variable:Y -> _
  CarriageControl:,
- TextConstant:"Z = "
+ TextValue:"Z = "
  CarriageControl:;
  Variable:Z -> _
  CarriageControl:NL
 120 PRINT "++++++++++++++++++++"
- TextConstant:"++++++++++++++++++++"
+ TextValue:"++++++++++++++++++++"
  CarriageControl:NL
 130 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 140 INPUT L
  Variable:L -> _
 150 IF L = 1 THEN 170
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:170
 160 STOP

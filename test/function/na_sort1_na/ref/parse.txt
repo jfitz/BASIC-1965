@@ -1,8 +1,8 @@
 10 DIM A(6)
- NumericConstant:6
+ NumericValue:6
  Declaration:A() -> _()
 20 OPTION BASE 0
- NumericConstant:0
+ NumericValue:0
 30 ARR READ A
  Variable:A() -> _()
 40 ARR B = SORT1(A)
@@ -15,7 +15,7 @@
 100 RESTORE
  
 120 OPTION BASE 1
- NumericConstant:1
+ NumericValue:1
 130 ARR READ A
  Variable:A() -> _()
 140 ARR B = SORT1(A)
@@ -30,13 +30,13 @@
 800 REM PROCEDURE A
  Remark:PROCEDURE A
 810 PRINT "ARRAY A"
- TextConstant:"ARRAY A"
+ TextValue:"ARRAY A"
  CarriageControl:NL
 820 ARR PRINT A
  Variable:A() -> _()
  CarriageControl:NL
 830 PRINT "ARRAY B"
- TextConstant:"ARRAY B"
+ TextValue:"ARRAY B"
  CarriageControl:NL
 840 ARR PRINT B
  Variable:B() -> _()
@@ -44,13 +44,13 @@
 890 RETURN
  
 900 DATA 10,20,10,20,30,40,50
- NumericConstant:10
- NumericConstant:20
- NumericConstant:10
- NumericConstant:20
- NumericConstant:30
- NumericConstant:40
- NumericConstant:50
+ NumericValue:10
+ NumericValue:20
+ NumericValue:10
+ NumericValue:20
+ NumericValue:30
+ NumericValue:40
+ NumericValue:50
 999 END
  
 

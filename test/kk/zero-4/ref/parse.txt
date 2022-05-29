@@ -2,15 +2,15 @@
  UserFunctionName:FNF -> _
  VariableName:X -> _
  Variable:X -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorPower:^(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  Variable:X -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
  Remark:DEF FNF(X) = -3*X^5 + X^3 + 1
@@ -26,14 +26,14 @@
 22 GOSUB 200
  LineNumber:200
 26 LET X(1+S) = A
- NumericConstant:1
+ NumericValue:1
  Variable:S -> _
  BinaryOperatorPlus:+(_,_) -> _
  Variable:X(_) -> _
  Variable:A -> _
  AssignmentOperator:= _ -> _
 28 LET X(1-S) = B
- NumericConstant:1
+ NumericValue:1
  Variable:S -> _
  BinaryOperatorMinus:-(_,_) -> _
  Variable:X(_) -> _
@@ -41,12 +41,12 @@
  AssignmentOperator:= _ -> _
 30 LET X = (X(0)+X(2))/2
  Variable:X -> _
- NumericConstant:0
+ NumericValue:0
  Variable:X(_) -> _
- NumericConstant:2
+ NumericValue:2
  Variable:X(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 35 LET F = SGN(FNF(X))
@@ -57,38 +57,38 @@
  AssignmentOperator:= _ -> _
 40 IF F = 0 THEN 100
  Variable:F -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:100
 50 LET X(1+F) = X
- NumericConstant:1
+ NumericValue:1
  Variable:F -> _
  BinaryOperatorPlus:+(_,_) -> _
  Variable:X(_) -> _
  Variable:X -> _
  AssignmentOperator:= _ -> _
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
- NumericConstant:0
+ NumericValue:0
  Variable:X(_) -> _
- NumericConstant:2
+ NumericValue:2
  Variable:X(_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  FunctionAbs:ABS(_) -> _
- NumericConstant:0
+ NumericValue:0
  Variable:X(_) -> _
  FunctionAbs:ABS(_) -> _
- NumericConstant:2
+ NumericValue:2
  Variable:X(_) -> _
  FunctionAbs:ABS(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- NumericConstant:0.0000005
+ NumericValue:0.0000005
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:100
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
- TextConstant:"ONE ZERO AT"
+ TextValue:"ONE ZERO AT"
  CarriageControl:
  Variable:X -> _
  CarriageControl:NL
@@ -111,14 +111,14 @@
  Variable:S -> _
  Variable:T -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:400
 230 IF S*T > 0 THEN 300
  Variable:S -> _
  Variable:T -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:300
 240 RETURN
@@ -131,8 +131,8 @@
  AssignmentOperator:= _ -> _
 310 FOR I = 1 TO 1000
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:1000"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:1000"]
 320 LET X = A + RND()*L
  Variable:X -> _
  Variable:A -> _
@@ -147,13 +147,13 @@
  UserFunction:FNF(_) -> _
  FunctionSgn:SGN(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:370
 340 NEXT I
  Variable:I -> _
 350 PRINT "NO CHANGE OF SIGN FOUND"
- TextConstant:"NO CHANGE OF SIGN FOUND"
+ TextValue:"NO CHANGE OF SIGN FOUND"
  CarriageControl:NL
 360 STOP
  WARNING: Terminating statement in GOSUB
@@ -166,7 +166,7 @@
  
 400 IF S = 0 THEN 430
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:430
 410 LET X = B
@@ -186,8 +186,8 @@
 900 REM DATA 0,1
  Remark:DATA 0,1
 910 DATA 0,1
- NumericConstant:0
- NumericConstant:1
+ NumericValue:0
+ NumericValue:1
 999 END
  
 

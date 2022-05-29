@@ -2,17 +2,17 @@
  Remark:TEST OF CONSTANT EXPRESSION
 20 IF 3 < 7 THEN 90
  WARNING: Constant expression
- NumericConstant:3
- NumericConstant:7
+ NumericValue:3
+ NumericValue:7
  BinaryOperatorLess:<(_,_) -> =?
  LineNumber:90
 30 PRINT "FAILURE"
- TextConstant:"FAILURE"
+ TextValue:"FAILURE"
  CarriageControl:NL
 80 GOTO 99
  LineNumber:99
 90 PRINT "SUCCESS"
- TextConstant:"SUCCESS"
+ TextValue:"SUCCESS"
  CarriageControl:NL
 99 END
  

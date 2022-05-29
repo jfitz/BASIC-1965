@@ -2,15 +2,15 @@
  UserFunctionName:FNF -> _
  VariableName:X -> _
  Variable:X -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorPower:^(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  Variable:X -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
  Remark:DEF FNF(X) = -3*X^5 + X^3 + 1
@@ -20,7 +20,7 @@
 25 IF FNF(A) > 0 THEN 230
  Variable:A -> _
  UserFunction:FNF(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:230
 30 LET X = (A+B)/2
@@ -28,19 +28,19 @@
  Variable:A -> _
  Variable:B -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 40 IF FNF(A) = 0 THEN 100
  Variable:A -> _
  UserFunction:FNF(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:100
 50 IF FNF(A) < 0 THEN 70
  Variable:A -> _
  UserFunction:FNF(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:70
 60 LET B = X
@@ -64,13 +64,13 @@
  FunctionAbs:ABS(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- NumericConstant:0.0000005
+ NumericValue:0.0000005
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:100
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
- TextConstant:"ONE ZERO AT"
+ TextValue:"ONE ZERO AT"
  CarriageControl:
  Variable:X -> _
  CarriageControl:NL
@@ -82,19 +82,19 @@
  Variable:A -> _
  Variable:B -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 240 IF FNF(X) = 0 THEN 100
  Variable:X -> _
  UserFunction:FNF(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:100
 250 IF FNF(X) < 0 THEN 270
  Variable:X -> _
  UserFunction:FNF(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:270
 260 LET A = X
@@ -118,15 +118,15 @@
  FunctionAbs:ABS(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- NumericConstant:0.0000005
+ NumericValue:0.0000005
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:100
 290 GOTO 230
  LineNumber:230
 300
 900 DATA 0,1
- NumericConstant:0
- NumericConstant:1
+ NumericValue:0
+ NumericValue:1
 999 END
  
 

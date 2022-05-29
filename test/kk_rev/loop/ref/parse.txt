@@ -1,10 +1,10 @@
 10 LET I = 1
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 20 IF I > 1000 THEN 60
  Variable:I -> _
- NumericConstant:1000
+ NumericValue:1000
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:60
 30 PRINT I
@@ -13,7 +13,7 @@
 40 LET I = I + 1
  Variable:I -> _
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 50 GOTO 20

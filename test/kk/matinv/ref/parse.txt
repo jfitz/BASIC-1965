@@ -1,36 +1,36 @@
 100 MAT A = ZER(3,3)
  Variable:A(,) -> _(,)
- NumericConstant:3
- NumericConstant:3
+ NumericValue:3
+ NumericValue:3
  FunctionZer2:ZER(_,_) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)
 110 MAT B = CON(3,3)
  Variable:B(,) -> _(,)
- NumericConstant:3
- NumericConstant:3
+ NumericValue:3
+ NumericValue:3
  FunctionCon2:CON(_,_) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)
 120 MAT C = IDN(3,3)
  Variable:C(,) -> _(,)
- NumericConstant:3
- NumericConstant:3
+ NumericValue:3
+ NumericValue:3
  FunctionIdn:IDN(_,_) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)
 130
 200 PRINT "ALL ZEROES"
- TextConstant:"ALL ZEROES"
+ TextValue:"ALL ZEROES"
  CarriageControl:NL
 210 MAT PRINT A
  Variable:A(,) -> _(,)
  CarriageControl:NL
 220 PRINT "ALL ONES"
- TextConstant:"ALL ONES"
+ TextValue:"ALL ONES"
  CarriageControl:NL
 230 MAT PRINT B
  Variable:B(,) -> _(,)
  CarriageControl:NL
 240 PRINT "IDENTITY MATRIX"
- TextConstant:"IDENTITY MATRIX"
+ TextValue:"IDENTITY MATRIX"
  CarriageControl:NL
 250 MAT PRINT C
  Variable:C(,) -> _(,)
@@ -39,7 +39,7 @@
 300 MAT READ A
  Variable:A(,) -> _(,)
 310 PRINT "SQUARE MATRIX"
- TextConstant:"SQUARE MATRIX"
+ TextValue:"SQUARE MATRIX"
  CarriageControl:NL
 320 MAT PRINT A
  Variable:A(,) -> _(,)
@@ -50,7 +50,7 @@
  FunctionInv:INV(_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 340 PRINT "ITS INVERSE"
- TextConstant:"ITS INVERSE"
+ TextValue:"ITS INVERSE"
  CarriageControl:NL
 350 MAT PRINT B
  Variable:B(,) -> _(,)
@@ -69,22 +69,22 @@
  BinaryOperatorMinus:-(_(,),_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 420 PRINT "ROUNDOFF ERRORS"
- TextConstant:"ROUNDOFF ERRORS"
+ TextValue:"ROUNDOFF ERRORS"
  CarriageControl:NL
 430 MAT PRINT R
  Variable:R(,) -> _(,)
  CarriageControl:NL
 440
 900 DATA 1, 0.5, 0.333333, 0.5, 0.333333, 0.25, 0.333333, 0.25, 0.5
- NumericConstant:1
- NumericConstant:0.5
- NumericConstant:0.333333
- NumericConstant:0.5
- NumericConstant:0.333333
- NumericConstant:0.25
- NumericConstant:0.333333
- NumericConstant:0.25
- NumericConstant:0.5
+ NumericValue:1
+ NumericValue:0.5
+ NumericValue:0.333333
+ NumericValue:0.5
+ NumericValue:0.333333
+ NumericValue:0.25
+ NumericValue:0.333333
+ NumericValue:0.25
+ NumericValue:0.5
 999 END
  
 

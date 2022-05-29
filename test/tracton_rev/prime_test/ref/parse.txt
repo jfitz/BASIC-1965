@@ -3,7 +3,7 @@
 20 REM IT CONTINUES TO CYCLE UNTIL ZERO IS ENTERED
  Remark:IT CONTINUES TO CYCLE UNTIL ZERO IS ENTERED
 30 PRINT "ENTER THE TEST NUMBER, ZERO TO STOP"
- TextConstant:"ENTER THE TEST NUMBER, ZERO TO STOP"
+ TextValue:"ENTER THE TEST NUMBER, ZERO TO STOP"
  CarriageControl:NL
 40 INPUT N
  Variable:N -> _
@@ -14,21 +14,21 @@
  AssignmentOperator:= _ -> _
 60 IF N = 0 THEN 220
  Variable:N -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:220
 70 IF N < 4 THEN 180
  Variable:N -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:180
 80 LET I = 0
  Variable:I -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 90 LET T = 2
  Variable:T -> _
- NumericConstant:2
+ NumericValue:2
  AssignmentOperator:= =_ -> _
 100 LET J = INT(N/T)
  Variable:J -> _
@@ -51,7 +51,7 @@
 130 LET I = I + 1
  Variable:I -> _
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 140 LET L = T*T
@@ -68,9 +68,9 @@
 160 LET T = (I*2) + 1
  Variable:T -> _
  Variable:I -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 170 GOTO 100
@@ -78,23 +78,23 @@
 180 PRINT N;"IS A PRIME"
  Variable:N -> _
  CarriageControl:;
- TextConstant:"IS A PRIME"
+ TextValue:"IS A PRIME"
  CarriageControl:NL
 190 GOTO 30
  LineNumber:30
 200 PRINT N;"IS NOT A PRIME:";T;"IS THE SMALLEST FACTOR"
  Variable:N -> _
  CarriageControl:;
- TextConstant:"IS NOT A PRIME:"
+ TextValue:"IS NOT A PRIME:"
  CarriageControl:;
  Variable:T -> _
  CarriageControl:;
- TextConstant:"IS THE SMALLEST FACTOR"
+ TextValue:"IS THE SMALLEST FACTOR"
  CarriageControl:NL
 210 GOTO 30
  LineNumber:30
 220 PRINT "GOOD-BYE FROM THE PRIME TESTER"
- TextConstant:"GOOD-BYE FROM THE PRIME TESTER"
+ TextValue:"GOOD-BYE FROM THE PRIME TESTER"
  CarriageControl:NL
 230 END
  

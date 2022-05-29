@@ -1,7 +1,7 @@
 10 REM THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
  Remark:THIS PROGRAM COMPUTES 3 X 3 MATRIX OPERATIONS
 20 PRINT "ENTER 3 X 3 MATRIX"
- TextConstant:"ENTER 3 X 3 MATRIX"
+ TextValue:"ENTER 3 X 3 MATRIX"
  CarriageControl:NL
 30 INPUT A,B,C,D,E,F,G,H,I
  Variable:A -> _
@@ -168,7 +168,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 170 PRINT "ORIGINAL MATRIX"
- TextConstant:"ORIGINAL MATRIX"
+ TextValue:"ORIGINAL MATRIX"
  CarriageControl:NL
 180 PRINT A,B,C
  Variable:A -> _
@@ -194,14 +194,14 @@
 210 PRINT
  CarriageControl:NL
 220 PRINT "DETERMINANT = ";N
- TextConstant:"DETERMINANT = "
+ TextValue:"DETERMINANT = "
  CarriageControl:;
  Variable:N -> _
  CarriageControl:NL
 230 PRINT
  CarriageControl:NL
 240 PRINT "INVERSE OF MATRIX"
- TextConstant:"INVERSE OF MATRIX"
+ TextValue:"INVERSE OF MATRIX"
  CarriageControl:NL
 250 PRINT O,R,U
  Variable:O -> _
@@ -227,13 +227,13 @@
 280 PRINT
  CarriageControl:NL
 290 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 300 INPUT L
  Variable:L -> _
 310 IF L = 1 THEN 20
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:20
 320 STOP

@@ -13,12 +13,12 @@
  Variable:X1 -> _
  Variable:Y1 -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  Variable:X2 -> _
  Variable:Y2 -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  FunctionSqr:SQR(_) -> _
@@ -28,9 +28,9 @@
  UserFunctionName:FNR -> _
  VariableName:D -> _
  Variable:D -> _
- NumericConstant:180
+ NumericValue:180
  BinaryOperatorDivide:/(_,_) -> _
- NumericConstant:3.1415926
+ NumericValue:3.1415926
  BinaryOperatorMultiply:*(_,_) -> _
 100 REM POINT A
  Remark:POINT A
@@ -63,12 +63,12 @@
  Variable:A1 -> _
  Variable:D1 -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 202 LET B2=0
  Variable:B2 -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 203 LET I1=D1+D5
  Variable:I1 -> _
@@ -78,23 +78,23 @@
  AssignmentOperator:= _ -> _
 204 LET I2=0
  Variable:I2 -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 217 PRINT "IDENTIFYING POINT B"
- TextConstant:"IDENTIFYING POINT B"
+ TextValue:"IDENTIFYING POINT B"
  CarriageControl:NL
 218 PRINT "B","AC/BC","AI/BI","Z"
- TextConstant:"B"
+ TextValue:"B"
  CarriageControl:,
- TextConstant:"AC/BC"
+ TextValue:"AC/BC"
  CarriageControl:,
- TextConstant:"AI/BI"
+ TextValue:"AI/BI"
  CarriageControl:,
- TextConstant:"Z"
+ TextValue:"Z"
  CarriageControl:NL
 219 LET Z=1
  Variable:Z -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 220 REM RATIO OF AC/BC
  Remark:RATIO OF AC/BC
@@ -192,70 +192,70 @@
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:220
 248 PRINT "CANNOT RESOLVE POINT B"
- TextConstant:"CANNOT RESOLVE POINT B"
+ TextValue:"CANNOT RESOLVE POINT B"
  CarriageControl:NL
 249 STOP
  
 300 REM PRINT DEFINED VALUES
  Remark:PRINT DEFINED VALUES
 301 PRINT "POINT C    :";C1;C2
- TextConstant:"POINT C    :"
+ TextValue:"POINT C    :"
  CarriageControl:;
  Variable:C1 -> _
  CarriageControl:;
  Variable:C2 -> _
  CarriageControl:NL
 302 PRINT "POINT B    :";B1;B2
- TextConstant:"POINT B    :"
+ TextValue:"POINT B    :"
  CarriageControl:;
  Variable:B1 -> _
  CarriageControl:;
  Variable:B2 -> _
  CarriageControl:NL
 303 PRINT "DISTANCE BC:";F2
- TextConstant:"DISTANCE BC:"
+ TextValue:"DISTANCE BC:"
  CarriageControl:;
  Variable:F2 -> _
  CarriageControl:NL
 304 PRINT "POINT A    :";A1;A2
- TextConstant:"POINT A    :"
+ TextValue:"POINT A    :"
  CarriageControl:;
  Variable:A1 -> _
  CarriageControl:;
  Variable:A2 -> _
  CarriageControl:NL
 305 PRINT "DISTANCE AC:";F1
- TextConstant:"DISTANCE AC:"
+ TextValue:"DISTANCE AC:"
  CarriageControl:;
  Variable:F1 -> _
  CarriageControl:NL
 306 PRINT "RATIO AC/BC:";R0
- TextConstant:"RATIO AC/BC:"
+ TextValue:"RATIO AC/BC:"
  CarriageControl:;
  Variable:R0 -> _
  CarriageControl:NL
 400 REM PICK VALUES ON CIRCLE D
  Remark:PICK VALUES ON CIRCLE D
 401 PRINT "ANGLE","POINT"," ","DISTANCES"," ","RATIO","DIFFERENCE"
- TextConstant:"ANGLE"
+ TextValue:"ANGLE"
  CarriageControl:,
- TextConstant:"POINT"
+ TextValue:"POINT"
  CarriageControl:,
- TextConstant:" "
+ TextValue:" "
  CarriageControl:,
- TextConstant:"DISTANCES"
+ TextValue:"DISTANCES"
  CarriageControl:,
- TextConstant:" "
+ TextValue:" "
  CarriageControl:,
- TextConstant:"RATIO"
+ TextValue:"RATIO"
  CarriageControl:,
- TextConstant:"DIFFERENCE"
+ TextValue:"DIFFERENCE"
  CarriageControl:NL
 410 FOR I = 0 TO 365 STEP 5
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:365"]
- step:    ["NumericConstant:5"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:365"]
+ step:    ["NumericValue:5"]
 420 REM PICK POINT ON CIRCLE D
  Remark:PICK POINT ON CIRCLE D
 421 LET T = FNR(I)
@@ -327,15 +327,15 @@
 900 REM DATA - POINT A, POINT D, POINT C
  Remark:DATA - POINT A, POINT D, POINT C
 901 DATA 0,0,100,0,75,0,0.00001,0.995,0.00001
- NumericConstant:0
- NumericConstant:0
- NumericConstant:100
- NumericConstant:0
- NumericConstant:75
- NumericConstant:0
- NumericConstant:0.00001
- NumericConstant:0.995
- NumericConstant:0.00001
+ NumericValue:0
+ NumericValue:0
+ NumericValue:100
+ NumericValue:0
+ NumericValue:75
+ NumericValue:0
+ NumericValue:0.00001
+ NumericValue:0.995
+ NumericValue:0.00001
 999 END
  
 

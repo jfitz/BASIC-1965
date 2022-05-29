@@ -1,9 +1,9 @@
 10 FOR I = 1 TO 30
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:30"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:30"]
 20    PRINT RND(1),
- NumericConstant:1
+ NumericValue:1
  FunctionRnd:RND(_) -> _
  CarriageControl:,
 30 NEXT I

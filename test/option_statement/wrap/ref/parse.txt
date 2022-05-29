@@ -1,9 +1,9 @@
 10 REM TEST THE OPTION STATEMENT
  Remark:TEST THE OPTION STATEMENT
 20 OPTION BASE 1
- NumericConstant:1
+ NumericValue:1
 30 DIM A(5)
- NumericConstant:5
+ NumericValue:5
  Declaration:A() -> _()
 40 ARR READ A
  Variable:A() -> _()
@@ -11,37 +11,37 @@
  Variable:A() -> _()
  CarriageControl:NL
 100 OPTION WRAP TRUE
- BooleanConstant:true
+ BooleanValue:true
 110 PRINT "LAST: ";A(0);" FIRST: ";A(6)
- TextConstant:"LAST: "
+ TextValue:"LAST: "
  CarriageControl:;
- NumericConstant:0
+ NumericValue:0
  Variable:A(_) -> _
  CarriageControl:;
- TextConstant:" FIRST: "
+ TextValue:" FIRST: "
  CarriageControl:;
- NumericConstant:6
+ NumericValue:6
  Variable:A(_) -> _
  CarriageControl:NL
 120 OPTION WRAP FALSE
- BooleanConstant:false
+ BooleanValue:false
 130 PRINT "LAST: ";A(0);" FIRST: ";A(6)
- TextConstant:"LAST: "
+ TextValue:"LAST: "
  CarriageControl:;
- NumericConstant:0
+ NumericValue:0
  Variable:A(_) -> _
  CarriageControl:;
- TextConstant:" FIRST: "
+ TextValue:" FIRST: "
  CarriageControl:;
- NumericConstant:6
+ NumericValue:6
  Variable:A(_) -> _
  CarriageControl:NL
 190 DATA 1,2,3,4,5
- NumericConstant:1
- NumericConstant:2
- NumericConstant:3
- NumericConstant:4
- NumericConstant:5
+ NumericValue:1
+ NumericValue:2
+ NumericValue:3
+ NumericValue:4
+ NumericValue:5
 199 END
  
 

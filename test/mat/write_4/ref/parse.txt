@@ -1,15 +1,15 @@
 10 DIM A(6)
- NumericConstant:6
+ NumericValue:6
  Declaration:A() -> _()
 20 FOR I = 1 TO 6
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:6"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:6"]
 40 LET A(I) = I*3
  Variable:I -> _
  Variable:A(_) -> _
  Variable:I -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 60 NEXT I

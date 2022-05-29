@@ -1,7 +1,7 @@
 10 DATA 10,20,30
- NumericConstant:10
- NumericConstant:20
- NumericConstant:30
+ NumericValue:10
+ NumericValue:20
+ NumericValue:30
 20 READ A,B,C
  Variable:A -> _
  Variable:B -> _
@@ -15,7 +15,7 @@
  CarriageControl:NL
 40 IF A=10 THEN 70
  Variable:A -> _
- NumericConstant:10
+ NumericValue:10
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:70
 50 PRINT A

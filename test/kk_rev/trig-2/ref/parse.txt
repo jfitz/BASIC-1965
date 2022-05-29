@@ -2,7 +2,7 @@
  Remark:ANGLE-SIDE-ANGLE
 110 LET P = 3.14159625
  Variable:P -> _
- NumericConstant:3.14159625
+ NumericValue:3.14159625
  AssignmentOperator:= =_ -> _
 120 DEF FND(X) = X*P/180
  UserFunctionName:FND -> _
@@ -10,7 +10,7 @@
  Variable:X -> _
  Variable:P -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:180
+ NumericValue:180
  BinaryOperatorDivide:/(_,_) -> _
 130 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS -> _
@@ -19,15 +19,15 @@
  UserFunction:FND(_) -> _
  FunctionSin:SIN(_) -> _
 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
- TextConstant:"ANGLE"
+ TextValue:"ANGLE"
  CarriageControl:,
- TextConstant:"SIDE"
+ TextValue:"SIDE"
  CarriageControl:,
- TextConstant:"ANGLE"
+ TextValue:"ANGLE"
  CarriageControl:,
- TextConstant:"SECOND SIDE"
+ TextValue:"SECOND SIDE"
  CarriageControl:,
- TextConstant:"THIRD SIDE"
+ TextValue:"THIRD SIDE"
  CarriageControl:NL
 150 READ A,X,B
  Variable:A -> _
@@ -35,7 +35,7 @@
  Variable:B -> _
 160 LET C = 180 - A - B
  Variable:C -> _
- NumericConstant:180
+ NumericValue:180
  Variable:A -> _
  BinaryOperatorMinus:-(_,_) -> _
  Variable:B -> _
@@ -75,15 +75,15 @@
 200 GOTO 150
  LineNumber:150
 210 DATA 60,5,60, 60,5,90, 15,10,63
- NumericConstant:60
- NumericConstant:5
- NumericConstant:60
- NumericConstant:60
- NumericConstant:5
- NumericConstant:90
- NumericConstant:15
- NumericConstant:10
- NumericConstant:63
+ NumericValue:60
+ NumericValue:5
+ NumericValue:60
+ NumericValue:60
+ NumericValue:5
+ NumericValue:90
+ NumericValue:15
+ NumericValue:10
+ NumericValue:63
 220 END
  
 

@@ -5,27 +5,27 @@
  Variable:M1 -> _
  Variable:M -> _
  Variable:C -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 120 LET I = M1 * 39.37
  Variable:I -> _
  Variable:M1 -> _
- NumericConstant:39.37
+ NumericValue:39.37
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 130 LET F = INT(I/12)
  Variable:F -> _
  Variable:I -> _
- NumericConstant:12
+ NumericValue:12
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
 140 LET I = I - 12*F
  Variable:I -> _
  Variable:I -> _
- NumericConstant:12
+ NumericValue:12
  Variable:F -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -33,29 +33,29 @@
 150 PRINT M, "METERS", C, "CENTIMETERS"
  Variable:M -> _
  CarriageControl:,
- TextConstant:"METERS"
+ TextValue:"METERS"
  CarriageControl:,
  Variable:C -> _
  CarriageControl:,
- TextConstant:"CENTIMETERS"
+ TextValue:"CENTIMETERS"
  CarriageControl:NL
 160 PRINT "CONVERTS TO"
- TextConstant:"CONVERTS TO"
+ TextValue:"CONVERTS TO"
  CarriageControl:NL
 170 IF F = 0 THEN 190
  Variable:F -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:190
 180 PRINT F, "FEET",
  Variable:F -> _
  CarriageControl:,
- TextConstant:"FEET"
+ TextValue:"FEET"
  CarriageControl:,
 190 PRINT I, "INCHES"
  Variable:I -> _
  CarriageControl:,
- TextConstant:"INCHES"
+ TextValue:"INCHES"
  CarriageControl:NL
 200 PRINT
  CarriageControl:NL
@@ -66,15 +66,15 @@
 230 GOTO 100
  LineNumber:100
 400 DATA 1, 0
- NumericConstant:1
- NumericConstant:0
+ NumericValue:1
+ NumericValue:0
 410 DATA 0, 2.54, 0, 60, 2, 5
- NumericConstant:0
- NumericConstant:2.54
- NumericConstant:0
- NumericConstant:60
- NumericConstant:2
- NumericConstant:5
+ NumericValue:0
+ NumericValue:2.54
+ NumericValue:0
+ NumericValue:60
+ NumericValue:2
+ NumericValue:5
 490 RETURN
  
 999 END

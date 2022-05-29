@@ -3,15 +3,15 @@
  Variable:N -> _
 120 FOR I = 1 TO M
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:M -> _"]
 130    LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 140    FOR J = 1 TO N
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 150       READ O(I,J)
  Variable:I -> _
@@ -37,19 +37,19 @@
 200
 210 LET S1 = 0
  Variable:S1 -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 220 FOR J = 1 TO N
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 230    LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 240    FOR I = 1 TO M
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:M -> _"]
 250       LET S = S + O(I,J)
  Variable:S -> _
@@ -79,15 +79,15 @@
  CarriageControl:NL
 320 LET C = 0
  Variable:C -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 330 FOR I = 1 TO M
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:M -> _"]
 340    FOR J = 1 TO N
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 350       LET E = R(I)*C(J)/S1
  Variable:E -> _
@@ -107,7 +107,7 @@
  Variable:O(_,_) -> _
  Variable:E -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  Variable:E -> _
  BinaryOperatorDivide:/(_,_) -> _
@@ -128,33 +128,33 @@
  CarriageControl:NL
 420 PRINT "CHI-SQUARE EQUALS";C;"ON";(M-1)*(N-1);"DEGREES OF FREEDOM"
  WARNING: Line exceeds PRETTY width limit 72
- TextConstant:"CHI-SQUARE EQUALS"
+ TextValue:"CHI-SQUARE EQUALS"
  CarriageControl:;
  Variable:C -> _
  CarriageControl:;
- TextConstant:"ON"
+ TextValue:"ON"
  CarriageControl:;
  Variable:M -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  CarriageControl:;
- TextConstant:"DEGREES OF FREEDOM"
+ TextValue:"DEGREES OF FREEDOM"
  CarriageControl:NL
 430
 900 DATA 3,2
- NumericConstant:3
- NumericConstant:2
+ NumericValue:3
+ NumericValue:2
 910 DATA 17,42,50,50,114,61
- NumericConstant:17
- NumericConstant:42
- NumericConstant:50
- NumericConstant:50
- NumericConstant:114
- NumericConstant:61
+ NumericValue:17
+ NumericValue:42
+ NumericValue:50
+ NumericValue:50
+ NumericValue:114
+ NumericValue:61
 999 END
  
 

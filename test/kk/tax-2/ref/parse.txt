@@ -1,5 +1,5 @@
 10 DIM D(20)
- NumericConstant:20
+ NumericValue:20
  Declaration:D() -> _()
 20 READ A,Y
  Variable:A -> _
@@ -8,13 +8,13 @@
  Variable:T -> _
  Variable:R -> _
 40 PRINT "YEAR", "SAVING"
- TextConstant:"YEAR"
+ TextValue:"YEAR"
  CarriageControl:,
- TextConstant:"SAVING"
+ TextValue:"SAVING"
  CarriageControl:NL
 100 FOR Y1 = 1 TO Y
  control: Variable:Y1 -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:Y -> _"]
 105    PRINT Y1,
  Variable:Y1 -> _
@@ -25,13 +25,13 @@
  AssignmentOperator:= _ -> _
 110    FOR I = 1 TO Y1-1
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["Variable:Y1 -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ start:   ["NumericValue:1"]
+ end:     ["Variable:Y1 -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
 120       LET D(I) = A1*2/Y
  Variable:I -> _
  Variable:D(_) -> _
  Variable:A1 -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Y -> _
  BinaryOperatorDivide:/(_,_) -> _
@@ -51,7 +51,7 @@
  Variable:Y -> _
  Variable:Y1 -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -68,11 +68,11 @@
  Variable:I -> _
 200    LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 210    FOR I = 1 TO Y
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:Y -> _"]
 220       LET S = S + D(I)*(T/100)*(1+R/100)^(Y-I)
  Variable:S -> _
@@ -80,12 +80,12 @@
  Variable:I -> _
  Variable:D(_) -> _
  Variable:T -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  Variable:R -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  Variable:Y -> _
@@ -103,11 +103,11 @@
 290 NEXT Y1
  Variable:Y1 -> _
 900 DATA 5000,7
- NumericConstant:5000
- NumericConstant:7
+ NumericValue:5000
+ NumericValue:7
 910 DATA 48,4.5
- NumericConstant:48
- NumericConstant:4.5
+ NumericValue:48
+ NumericValue:4.5
 999 END
  
 

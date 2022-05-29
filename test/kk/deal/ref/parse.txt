@@ -2,8 +2,8 @@
  LineNumber:1000
 20 FOR C = 1 TO 5
  control: Variable:C -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:5"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:5"]
 30    GOSUB 2000
  LineNumber:2000
 40    GOSUB 3000
@@ -16,12 +16,12 @@
 1000 REM SET UP DECK
  Remark:SET UP DECK
 1010 DIM L(51)
- NumericConstant:51
+ NumericValue:51
  Declaration:L() -> _()
 1020 FOR I = 0 TO 51
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:51"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:51"]
 1030    LET L(I) = I
  Variable:I -> _
  Variable:L(_) -> _
@@ -37,8 +37,8 @@
 2010 LET I = INT(52*RND(1))
  WARNING: Inconsistent GOSUB origins
  Variable:I -> _
- NumericConstant:52
- NumericConstant:1
+ NumericValue:52
+ NumericValue:1
  FunctionRnd:RND(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
@@ -50,13 +50,13 @@
  AssignmentOperator:= _ -> _
 2030 IF X < 0 THEN 2010
  Variable:X -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:2010
 2040 LET L(I) = -1
  Variable:I -> _
  Variable:L(_) -> _
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 2050 RETURN
@@ -67,96 +67,96 @@
 3010 LET S = INT(X/13)
  Variable:S -> _
  Variable:X -> _
- NumericConstant:13
+ NumericValue:13
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
 3020 LET V = X - 13*S
  Variable:V -> _
  Variable:X -> _
- NumericConstant:13
+ NumericValue:13
  Variable:S -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 3030 IF S > 0 THEN 3060
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:3060
 3040 PRINT "CLUB  ";
- TextConstant:"CLUB  "
+ TextValue:"CLUB  "
  CarriageControl:;
 3050 GOTO 3500
  LineNumber:3500
 3060 IF S > 1 THEN 3090
  Variable:S -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:3090
 3070 PRINT "DIAMOND  ";
- TextConstant:"DIAMOND  "
+ TextValue:"DIAMOND  "
  CarriageControl:;
 3080 GOTO 3500
  LineNumber:3500
 3090 IF S > 2 THEN 3120
  Variable:S -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:3120
 3100 PRINT "HEART  ";
- TextConstant:"HEART  "
+ TextValue:"HEART  "
  CarriageControl:;
 3110 GOTO 3500
  LineNumber:3500
 3120 PRINT "SPADE  ";
- TextConstant:"SPADE  "
+ TextValue:"SPADE  "
  CarriageControl:;
 3130
 3500 IF V > 8 THEN 3530
  Variable:V -> _
- NumericConstant:8
+ NumericValue:8
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:3530
 3510 PRINT V + 2
  Variable:V -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPlus:+(_,_) -> _
  CarriageControl:NL
 3520 RETURN
  
 3530 IF V > 9 THEN 3560
  Variable:V -> _
- NumericConstant:9
+ NumericValue:9
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:3560
 3540 PRINT "JACK"
- TextConstant:"JACK"
+ TextValue:"JACK"
  CarriageControl:NL
 3550 RETURN
  
 3560 IF V > 10 THEN 3590
  Variable:V -> _
- NumericConstant:10
+ NumericValue:10
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:3590
 3570 PRINT "QUEEN"
- TextConstant:"QUEEN"
+ TextValue:"QUEEN"
  CarriageControl:NL
 3580 RETURN
  
 3590 IF V > 11 THEN 3620
  Variable:V -> _
- NumericConstant:11
+ NumericValue:11
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:3620
 3600 PRINT "KING"
- TextConstant:"KING"
+ TextValue:"KING"
  CarriageControl:NL
 3610 RETURN
  
 3620 PRINT "ACE"
- TextConstant:"ACE"
+ TextValue:"ACE"
  CarriageControl:NL
 3630 RETURN
  

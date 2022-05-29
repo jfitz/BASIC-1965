@@ -1,7 +1,7 @@
 10 REM This is a test
  Remark:This is a test
 20 ARR READ A(3)
- NumericConstant:3
+ NumericValue:3
  Variable:A(_) -> _()
 30 LET B=PROD(A)
  Variable:B -> _
@@ -9,16 +9,16 @@
  FunctionProd:PROD(_()) -> _
  AssignmentOperator:= _ -> _
 40 PRINT "PRODUCT IS "; B
- TextConstant:"PRODUCT IS "
+ TextValue:"PRODUCT IS "
  CarriageControl:;
  Variable:B -> _
  CarriageControl:NL
 90 DATA 10.2,5.5,-1.8,17
- NumericConstant:10.2
- NumericConstant:5.5
- NumericConstant:1.8
+ NumericValue:10.2
+ NumericValue:5.5
+ NumericValue:1.8
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:17
+ NumericValue:17
 99 END
  
 

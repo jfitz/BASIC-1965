@@ -3,12 +3,12 @@
 20 REM BY THE STRAIGHT LINE METHOD
  Remark:BY THE STRAIGHT LINE METHOD
 30 PRINT "ORIGINAL VALUE = ";
- TextConstant:"ORIGINAL VALUE = "
+ TextValue:"ORIGINAL VALUE = "
  CarriageControl:;
 40 INPUT A
  Variable:A -> _
 50 PRINT "LIFETIME IN YEARS = ";
- TextConstant:"LIFETIME IN YEARS = "
+ TextValue:"LIFETIME IN YEARS = "
  CarriageControl:;
 60 INPUT B
  Variable:B -> _
@@ -19,25 +19,25 @@
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 80 PRINT "YEARLY DEPRECIATION = ";C
- TextConstant:"YEARLY DEPRECIATION = "
+ TextValue:"YEARLY DEPRECIATION = "
  CarriageControl:;
  Variable:C -> _
  CarriageControl:NL
 90 PRINT
  CarriageControl:NL
 100 PRINT "YEAR","VALUE"
- TextConstant:"YEAR"
+ TextValue:"YEAR"
  CarriageControl:,
- TextConstant:"VALUE"
+ TextValue:"VALUE"
  CarriageControl:NL
 110 LET X = 0
  Variable:X -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 120 LET X = X + 1
  Variable:X -> _
  Variable:X -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 130 LET A = A - C
@@ -48,14 +48,14 @@
  AssignmentOperator:= _ -> _
 140 IF A < 0 THEN 160
  Variable:A -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:160
 150 GOTO 170
  LineNumber:170
 160 LET A = 0
  Variable:A -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 170 PRINT X,A
  Variable:X -> _
@@ -68,16 +68,16 @@
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:120
 190 PRINT "********************"
- TextConstant:"********************"
+ TextValue:"********************"
  CarriageControl:NL
 200 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 210 INPUT L
  Variable:L -> _
 220 IF L = 1 THEN 240
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:240
 230 STOP

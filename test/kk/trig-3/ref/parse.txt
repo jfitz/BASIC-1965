@@ -2,7 +2,7 @@
  Remark:ANGLE-SIDE-SIDE
 110 LET P = 3.14159265
  Variable:P -> _
- NumericConstant:3.14159265
+ NumericValue:3.14159265
  AssignmentOperator:= =_ -> _
 120 DEF FND(X) = X*P/180
  UserFunctionName:FND -> _
@@ -10,7 +10,7 @@
  Variable:X -> _
  Variable:P -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:180
+ NumericValue:180
  BinaryOperatorDivide:/(_,_) -> _
 130 DEF FNS(X) = SIN(FND(X))
  UserFunctionName:FNS -> _
@@ -21,24 +21,24 @@
 135 DEF FNR(X) = INT(100*X+0.5)/100
  UserFunctionName:FNR -> _
  VariableName:X -> _
- NumericConstant:100
+ NumericValue:100
  Variable:X -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:0.5
+ NumericValue:0.5
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
 140 PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
- TextConstant:"ANGLE"
+ TextValue:"ANGLE"
  CarriageControl:,
- TextConstant:"SIDE"
+ TextValue:"SIDE"
  CarriageControl:,
- TextConstant:"SIDE"
+ TextValue:"SIDE"
  CarriageControl:,
- TextConstant:"THIRD SIDE"
+ TextValue:"THIRD SIDE"
  CarriageControl:,
- TextConstant:"CASE 2"
+ TextValue:"CASE 2"
  CarriageControl:NL
 150 READ B,X,Y
  Variable:B -> _
@@ -62,13 +62,13 @@
  AssignmentOperator:= _ -> _
 180 IF S > 1 THEN 290
  Variable:S -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:290
 190 IF FNR(S) = 1 THEN 320
  Variable:S -> _
  UserFunction:FNR(_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:320
 195
@@ -77,9 +77,9 @@
 210 LET T = S/SQR(1-S^2)
  Variable:T -> _
  Variable:S -> _
- NumericConstant:1
+ NumericValue:1
  Variable:S -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  FunctionSqr:SQR(_) -> _
@@ -89,14 +89,14 @@
  Variable:C -> _
  Variable:T -> _
  FunctionArcTan:ATN(_) -> _
- NumericConstant:180
+ NumericValue:180
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:P -> _
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 230 LET A = 180 - B - C
  Variable:A -> _
- NumericConstant:180
+ NumericValue:180
  Variable:B -> _
  BinaryOperatorMinus:-(_,_) -> _
  Variable:C -> _
@@ -106,13 +106,13 @@
  LineNumber:370
 250 LET C = 180 - C
  Variable:C -> _
- NumericConstant:180
+ NumericValue:180
  Variable:C -> _
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 260 LET A = 180 - B - C
  Variable:A -> _
- NumericConstant:180
+ NumericValue:180
  Variable:B -> _
  BinaryOperatorMinus:-(_,_) -> _
  Variable:C -> _
@@ -128,9 +128,9 @@
 290 REM NO POINT OF INTERSECTION
  Remark:NO POINT OF INTERSECTION
 300 PRINT "NONE", "NONE"
- TextConstant:"NONE"
+ TextValue:"NONE"
  CarriageControl:,
- TextConstant:"NONE"
+ TextValue:"NONE"
  CarriageControl:NL
 310 GOTO 150
  LineNumber:150
@@ -139,14 +139,14 @@
  Remark:ONE POINT OF INTERSECTION
 330 LET A = 90 - B
  Variable:A -> _
- NumericConstant:90
+ NumericValue:90
  Variable:B -> _
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 340 GOSUB 370
  LineNumber:370
 350 PRINT "NONE"
- TextConstant:"NONE"
+ TextValue:"NONE"
  CarriageControl:NL
 360 GOTO 150
  LineNumber:150
@@ -164,11 +164,11 @@
  AssignmentOperator:= _ -> _
 390 IF Z >= 0 THEN 420
  Variable:Z -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreaterEqual:>=(_,_) -> ?
  LineNumber:420
 400 PRINT "NONE",
- TextConstant:"NONE"
+ TextValue:"NONE"
  CarriageControl:,
 410 RETURN
  
@@ -179,34 +179,34 @@
  
 440
 450 DATA 60,10,8, 60,10,9, 60,10,11, 120,10,8, 120,10,9
- NumericConstant:60
- NumericConstant:10
- NumericConstant:8
- NumericConstant:60
- NumericConstant:10
- NumericConstant:9
- NumericConstant:60
- NumericConstant:10
- NumericConstant:11
- NumericConstant:120
- NumericConstant:10
- NumericConstant:8
- NumericConstant:120
- NumericConstant:10
- NumericConstant:9
+ NumericValue:60
+ NumericValue:10
+ NumericValue:8
+ NumericValue:60
+ NumericValue:10
+ NumericValue:9
+ NumericValue:60
+ NumericValue:10
+ NumericValue:11
+ NumericValue:120
+ NumericValue:10
+ NumericValue:8
+ NumericValue:120
+ NumericValue:10
+ NumericValue:9
 460 DATA 120,10,11, 90,3,5, 60,5,5, 30,10,5
- NumericConstant:120
- NumericConstant:10
- NumericConstant:11
- NumericConstant:90
- NumericConstant:3
- NumericConstant:5
- NumericConstant:60
- NumericConstant:5
- NumericConstant:5
- NumericConstant:30
- NumericConstant:10
- NumericConstant:5
+ NumericValue:120
+ NumericValue:10
+ NumericValue:11
+ NumericValue:90
+ NumericValue:3
+ NumericValue:5
+ NumericValue:60
+ NumericValue:5
+ NumericValue:5
+ NumericValue:30
+ NumericValue:10
+ NumericValue:5
 470 END
  
 

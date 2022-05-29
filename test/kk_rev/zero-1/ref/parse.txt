@@ -2,15 +2,15 @@
  UserFunctionName:FNF -> _
  VariableName:X -> _
  Variable:X -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorPower:^(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  Variable:X -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
 20 READ A,B
  Variable:A -> _
@@ -20,19 +20,19 @@
  Variable:A -> _
  Variable:B -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 40 IF FNF(X) = 0 THEN 100
  Variable:X -> _
  UserFunction:FNF(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:100
 50 IF FNF(X) < 0 THEN 70
  Variable:X -> _
  UserFunction:FNF(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:70
 60 LET B = X
@@ -56,19 +56,19 @@
  FunctionAbs:ABS(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
- NumericConstant:0.000005
+ NumericValue:0.000005
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:100
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
- TextConstant:"ONE ZERO AT"
+ TextValue:"ONE ZERO AT"
  CarriageControl:
  Variable:X -> _
  CarriageControl:NL
 900 DATA 0,1
- NumericConstant:0
- NumericConstant:1
+ NumericValue:0
+ NumericValue:1
 999 END
  
 

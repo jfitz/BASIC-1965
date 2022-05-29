@@ -1,37 +1,37 @@
 10 REM ARRAY ASSIGNMENT
  Remark:ARRAY ASSIGNMENT
 15 OPTION BASE 1
- NumericConstant:1
+ NumericValue:1
 20 DIM A(6)
- NumericConstant:6
+ NumericValue:6
  Declaration:A() -> _()
 30 DATA 0,1,2,3,4,5,6
- NumericConstant:0
- NumericConstant:1
- NumericConstant:2
- NumericConstant:3
- NumericConstant:4
- NumericConstant:5
- NumericConstant:6
+ NumericValue:0
+ NumericValue:1
+ NumericValue:2
+ NumericValue:3
+ NumericValue:4
+ NumericValue:5
+ NumericValue:6
 40 DATA 7,8,9,10,11
- NumericConstant:7
- NumericConstant:8
- NumericConstant:9
- NumericConstant:10
- NumericConstant:11
+ NumericValue:7
+ NumericValue:8
+ NumericValue:9
+ NumericValue:10
+ NumericValue:11
 100 ARR READ A
  Variable:A() -> _()
 150 PRINT "ARRAY A"
- TextConstant:"ARRAY A"
+ TextValue:"ARRAY A"
  CarriageControl:NL
 160 ARR PRINT A
  Variable:A() -> _()
  CarriageControl:NL
 200 ARR READ B(6)
- NumericConstant:6
+ NumericValue:6
  Variable:B(_) -> _()
 250 PRINT "ARRAY B"
- TextConstant:"ARRAY B"
+ TextValue:"ARRAY B"
  CarriageControl:NL
 260 ARR PRINT B
  Variable:B() -> _()

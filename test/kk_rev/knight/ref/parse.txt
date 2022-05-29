@@ -11,32 +11,32 @@
  Variable:I0 -> _
  Variable:J0 -> _
 160 PRINT "RANK  ";"FILE  ";"LENGTH"
- TextConstant:"RANK  "
+ TextValue:"RANK  "
  CarriageControl:;
- TextConstant:"FILE  "
+ TextValue:"FILE  "
  CarriageControl:;
- TextConstant:"LENGTH"
+ TextValue:"LENGTH"
  CarriageControl:NL
 180
 182 LET Z0 = 0
  Variable:Z0 -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 190 REMARK WE ZERO THE BOARD AND INITIALIZE
  Remark:WE ZERO THE BOARD AND INITIALIZE
 200 FOR I = 1 TO 8
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:8"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:8"]
 210    FOR J = 1 TO 8
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:8"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:8"]
 220       LET B(I,J) = 0
  Variable:I -> _
  Variable:J -> _
  Variable:B(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 230    NEXT J
  Variable:J -> _
@@ -52,13 +52,13 @@
  AssignmentOperator:= _ -> _
 270 LET M = 1
  Variable:M -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 280 LET B(I,J) = -1
  Variable:I -> _
  Variable:J -> _
  Variable:B(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 290
@@ -66,32 +66,32 @@
  Remark:WE NOW START THE SERIES OF MOVES
 310 LET C1 = 9
  Variable:C1 -> _
- NumericConstant:9
+ NumericValue:9
  AssignmentOperator:= =_ -> _
 320 LET C = 0
  Variable:C -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 330 FOR I1 = I - 2 TO I + 2
  control: Variable:I1 -> _
- start:   ["Variable:I -> _", "NumericConstant:2", "BinaryOperatorMinus:-(_,_) -> _"]
- end:     ["Variable:I -> _", "NumericConstant:2", "BinaryOperatorPlus:+(_,_) -> _"]
+ start:   ["Variable:I -> _", "NumericValue:2", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:I -> _", "NumericValue:2", "BinaryOperatorPlus:+(_,_) -> _"]
 340    IF I1 = 1 THEN 480
  Variable:I1 -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:480
 350    IF ABS(I1 - 4.5) > 4 THEN 480
  Variable:I1 -> _
- NumericConstant:4.5
+ NumericValue:4.5
  BinaryOperatorMinus:-(_,_) -> _
  FunctionAbs:ABS(_) -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:480
 360    LET D1 = 3 - ABS(I1 - I)
  Variable:D1 -> _
- NumericConstant:3
+ NumericValue:3
  Variable:I1 -> _
  Variable:I -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -102,26 +102,26 @@
  control: Variable:J1 -> _
  start:   ["Variable:J -> _", "Variable:D1 -> _", "BinaryOperatorMinus:-(_,_) -> _"]
  end:     ["Variable:J -> _", "Variable:D1 -> _", "BinaryOperatorPlus:+(_,_) -> _"]
- step:    ["NumericConstant:2", "Variable:D1 -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
+ step:    ["NumericValue:2", "Variable:D1 -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
 380       IF ABS(J1 - 4.5) > 4 THEN 470
  Variable:J1 -> _
- NumericConstant:4.5
+ NumericValue:4.5
  BinaryOperatorMinus:-(_,_) -> _
  FunctionAbs:ABS(_) -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:470
 390       IF B(I1,J1) < 0 THEN 470
  Variable:I1 -> _
  Variable:J1 -> _
  Variable:B(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:470
 400       LET C = C + 1
  Variable:C -> _
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 410       IF C <> C1 THEN 470
@@ -141,13 +141,13 @@
  Variable:I -> _
  Variable:J -> _
  Variable:B(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 450       LET M = M + 1
  Variable:M -> _
  Variable:M -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 460       GOTO 310
@@ -158,7 +158,7 @@
  Variable:I1 -> _
 490 IF C = 0 THEN 600
  Variable:C -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:600
 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
@@ -169,7 +169,7 @@
  FunctionRnd:RND(_) -> _
  Variable:C -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
@@ -187,12 +187,12 @@
 612 LET Z0 = Z0+1
  Variable:Z0 -> _
  Variable:Z0 -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 620 IF Z0 < 40 THEN 200
  Variable:Z0 -> _
- NumericConstant:40
+ NumericValue:40
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:200
 630 REMARK WE GO FOR ANOTHER TRIAL
@@ -201,8 +201,8 @@
 890 REMARK THE DATA FOR THE STARTING POSITION
  Remark:THE DATA FOR THE STARTING POSITION
 900 DATA 1, 1
- NumericConstant:1
- NumericConstant:1
+ NumericValue:1
+ NumericValue:1
 999 END
  WARNING: Terminating statement in FOR/NEXT
  

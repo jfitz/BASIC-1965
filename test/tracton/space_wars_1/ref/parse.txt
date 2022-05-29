@@ -8,10 +8,10 @@
  ERROR: Unknown statement 'RANDOMIZE'
  Unimplemented
 50 PRINT "ARE INSTRUCTIONS REQUIRED? TYPE EITHER"
- TextConstant:"ARE INSTRUCTIONS REQUIRED? TYPE EITHER"
+ TextValue:"ARE INSTRUCTIONS REQUIRED? TYPE EITHER"
  CarriageControl:NL
 60 PRINT "YES OR NO"
- TextConstant:"YES OR NO"
+ TextValue:"YES OR NO"
  CarriageControl:NL
 70 INPUT A$
  ERROR: Syntax error: "A$" Token 'InvalidToken:$' is not a value or operator
@@ -22,7 +22,7 @@
  ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:250
 100 PRINT "INVALID RESPONSE"
- TextConstant:"INVALID RESPONSE"
+ TextValue:"INVALID RESPONSE"
  CarriageControl:NL
 110 GOTO 50
  WARNING: Branch to line before GOSUB start
@@ -30,43 +30,43 @@
 120 PRINT
  CarriageControl:NL
 130 PRINT "THERE ARE 5 EXECUTIVE COMMANDS; TURN THE"
- TextConstant:"THERE ARE 5 EXECUTIVE COMMANDS; TURN THE"
+ TextValue:"THERE ARE 5 EXECUTIVE COMMANDS; TURN THE"
  CarriageControl:NL
 140 PRINT "SHIP(1), MOVE(2), FIRE LASER CANNON(3),"
- TextConstant:"SHIP(1), MOVE(2), FIRE LASER CANNON(3),"
+ TextValue:"SHIP(1), MOVE(2), FIRE LASER CANNON(3),"
  CarriageControl:NL
 150 PRINT "FIRE LASER(4), AND SELF-DESTRUCT(5)"
- TextConstant:"FIRE LASER(4), AND SELF-DESTRUCT(5)"
+ TextValue:"FIRE LASER(4), AND SELF-DESTRUCT(5)"
  CarriageControl:NL
 160 PRINT "THE CANNON MUST BE FIRED WITH 10 DEGREES"
- TextConstant:"THE CANNON MUST BE FIRED WITH 10 DEGREES"
+ TextValue:"THE CANNON MUST BE FIRED WITH 10 DEGREES"
  CarriageControl:NL
 170 PRINT "OF 90 TO BE EFFECTIVE. NEGATIVE DEG TURNS TOWARDS"
- TextConstant:"OF 90 TO BE EFFECTIVE. NEGATIVE DEG TURNS TOWARDS"
+ TextValue:"OF 90 TO BE EFFECTIVE. NEGATIVE DEG TURNS TOWARDS"
  CarriageControl:NL
 180 PRINT "0 AND POSITIVE DEG TOWARDS 180. ENTERING NEGATIVE KM"
- TextConstant:"0 AND POSITIVE DEG TOWARDS 180. ENTERING NEGATIVE KM"
+ TextValue:"0 AND POSITIVE DEG TOWARDS 180. ENTERING NEGATIVE KM"
  CarriageControl:NL
 190 PRINT "MOVES YOU TOWARDS THE ENEMY, WHILE POSITIVE MOVES"
- TextConstant:"MOVES YOU TOWARDS THE ENEMY, WHILE POSITIVE MOVES"
+ TextValue:"MOVES YOU TOWARDS THE ENEMY, WHILE POSITIVE MOVES"
  CarriageControl:NL
 200 PRINT "YOU AWAY. LASER EFFECTIVENESS IS RANDOM, DUE TO"
- TextConstant:"YOU AWAY. LASER EFFECTIVENESS IS RANDOM, DUE TO"
+ TextValue:"YOU AWAY. LASER EFFECTIVENESS IS RANDOM, DUE TO"
  CarriageControl:NL
 210 PRINT "SHIELDING, DISTANCE, AND INTERSTELLAR DEBRIS"
- TextConstant:"SHIELDING, DISTANCE, AND INTERSTELLAR DEBRIS"
+ TextValue:"SHIELDING, DISTANCE, AND INTERSTELLAR DEBRIS"
  CarriageControl:NL
 220 PRINT
  CarriageControl:NL
 230 PRINT "***************GOOD-LUCK***************"
- TextConstant:"***************GOOD-LUCK***************"
+ TextValue:"***************GOOD-LUCK***************"
  CarriageControl:NL
 240 PRINT "MAY THE FORCE BE WITH YOU"
- TextConstant:"MAY THE FORCE BE WITH YOU"
+ TextValue:"MAY THE FORCE BE WITH YOU"
  CarriageControl:NL
 250 LET E1 = 1E04
  Variable:E1 -> _
- NumericConstant:1E04
+ NumericValue:1E04
  AssignmentOperator:= =_ -> _
 260 LET E2 = E1
  Variable:E2 -> _
@@ -74,8 +74,8 @@
  AssignmentOperator:= _ -> _
 270 LET D = 1E03 + INT(5E05*RND)
  Variable:D -> _
- NumericConstant:1E03
- NumericConstant:5E05
+ NumericValue:1E03
+ NumericValue:5E05
  FunctionRnd:RND -> _
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
@@ -83,8 +83,8 @@
  AssignmentOperator:= _ -> _
 280 LET B = 1 + INT(180*RND)
  Variable:B -> _
- NumericConstant:1
- NumericConstant:180
+ NumericValue:1
+ NumericValue:180
  FunctionRnd:RND -> _
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
@@ -106,55 +106,55 @@
  LineNumber:690
 340 IF D >= 1E05 THEN 370
  Variable:D -> _
- NumericConstant:1E05
+ NumericValue:1E05
  BinaryOperatorGreaterEqual:>=(_,_) -> ?
  LineNumber:370
 350 LET L = 1
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 360 GOTO 380
  LineNumber:380
 370 LET L = 0
  Variable:L -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 380 RETURN
  
 390 IF L = 0 THEN 440
  Variable:L -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:440
 400 LET H2 = (1 + INT(100*RND))/100
  Variable:H2 -> _
- NumericConstant:1
- NumericConstant:100
+ NumericValue:1
+ NumericValue:100
  FunctionRnd:RND -> _
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 410 LET D1 = 500*H2
  Variable:D1 -> _
- NumericConstant:500
+ NumericValue:500
  Variable:H2 -> _
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 420 LET E2 = E2 - 500
  Variable:E2 -> _
  Variable:E2 -> _
- NumericConstant:500
+ NumericValue:500
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 430 GOTO 490
  LineNumber:490
 440 LET M1 = 1 + INT(2*RND)
  Variable:M1 -> _
- NumericConstant:1
- NumericConstant:2
+ NumericValue:1
+ NumericValue:2
  FunctionRnd:RND -> _
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
@@ -162,19 +162,19 @@
  AssignmentOperator:= _ -> _
 450 IF M1 = 1 THEN 470
  Variable:M1 -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:470
 460 GOTO 480
  LineNumber:480
 470 LET D1 = 0
  Variable:D1 -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 480 LET E2 = E2 - 1000
  Variable:E2 -> _
  Variable:E2 -> _
- NumericConstant:1000
+ NumericValue:1000
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 490 RETURN
@@ -183,71 +183,71 @@
  WARNING: GOSUB length exceeds limit 40
  CarriageControl:NL
 510 PRINT "DISTANCE TO ENEMY";D;"KM"
- TextConstant:"DISTANCE TO ENEMY"
+ TextValue:"DISTANCE TO ENEMY"
  CarriageControl:;
  Variable:D -> _
  CarriageControl:;
- TextConstant:"KM"
+ TextValue:"KM"
  CarriageControl:NL
 520 PRINT "BEARING IS";B;"DEGREES"
- TextConstant:"BEARING IS"
+ TextValue:"BEARING IS"
  CarriageControl:;
  Variable:B -> _
  CarriageControl:;
- TextConstant:"DEGREES"
+ TextValue:"DEGREES"
  CarriageControl:NL
 530 IF L = 1 THEN 560
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:560
 540 PRINT "THE SKY FIGHTER HAS FIRED THE LASER CANNON"
- TextConstant:"THE SKY FIGHTER HAS FIRED THE LASER CANNON"
+ TextValue:"THE SKY FIGHTER HAS FIRED THE LASER CANNON"
  CarriageControl:NL
 550 GOTO 570
  LineNumber:570
 560 PRINT "THE SKY FIGHTER HAS FIRED HIS LASER"
- TextConstant:"THE SKY FIGHTER HAS FIRED HIS LASER"
+ TextValue:"THE SKY FIGHTER HAS FIRED HIS LASER"
  CarriageControl:NL
 570 PRINT "YOUR TOTAL ENERGY IS NOW";E1;"UNITS"
- TextConstant:"YOUR TOTAL ENERGY IS NOW"
+ TextValue:"YOUR TOTAL ENERGY IS NOW"
  CarriageControl:;
  Variable:E1 -> _
  CarriageControl:;
- TextConstant:"UNITS"
+ TextValue:"UNITS"
  CarriageControl:NL
 580 PRINT "THE ENEMY HAS";E2;"UNITS OF ENERGY LEFT"
- TextConstant:"THE ENEMY HAS"
+ TextValue:"THE ENEMY HAS"
  CarriageControl:;
  Variable:E2 -> _
  CarriageControl:;
- TextConstant:"UNITS OF ENERGY LEFT"
+ TextValue:"UNITS OF ENERGY LEFT"
  CarriageControl:NL
 590 IF E1 <= 0 THEN 620
  Variable:E1 -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:620
 600 IF E2 <= 0 THEN 650
  Variable:E2 -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:650
 610 GOTO 680
  LineNumber:680
 620 PRINT "YOUR ENERGY LEVEL IS ZERO, THE ENEMY"
- TextConstant:"YOUR ENERGY LEVEL IS ZERO, THE ENEMY"
+ TextValue:"YOUR ENERGY LEVEL IS ZERO, THE ENEMY"
  CarriageControl:NL
 630 PRINT "HAS WON, YOU HAVE BECOME ONE WITH THE FORCE!"
- TextConstant:"HAS WON, YOU HAVE BECOME ONE WITH THE FORCE!"
+ TextValue:"HAS WON, YOU HAVE BECOME ONE WITH THE FORCE!"
  CarriageControl:NL
 640 GOTO 1180
  LineNumber:1180
 650 PRINT "THE ENEMY HAS RUN OUT OF ENERGY, YOU"
- TextConstant:"THE ENEMY HAS RUN OUT OF ENERGY, YOU"
+ TextValue:"THE ENEMY HAS RUN OUT OF ENERGY, YOU"
  CarriageControl:NL
 660 PRINT "HAVE WON"
- TextConstant:"HAVE WON"
+ TextValue:"HAVE WON"
  CarriageControl:NL
 670 GOTO 1180
  LineNumber:1180
@@ -256,7 +256,7 @@
 690 PRINT
  CarriageControl:NL
 700 PRINT "WHICH COMMAND DO YOU WISH TO EXECUTE"
- TextConstant:"WHICH COMMAND DO YOU WISH TO EXECUTE"
+ TextValue:"WHICH COMMAND DO YOU WISH TO EXECUTE"
  CarriageControl:NL
 710 INPUT C
  Variable:C -> _
@@ -264,7 +264,7 @@
  ERROR: Unknown statement 'ON C GOTO 730, 840, 1010, 1100, 1140'
  Unimplemented
 730 PRINT "HOW MANY DEGREES OF ROTATION"
- TextConstant:"HOW MANY DEGREES OF ROTATION"
+ TextValue:"HOW MANY DEGREES OF ROTATION"
  CarriageControl:NL
 740 INPUT B1
  Variable:B1 -> _
@@ -272,14 +272,14 @@
  Variable:B -> _
  Variable:B1 -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:800
 760 IF B + B1 > 180 THEN 820
  Variable:B -> _
  Variable:B1 -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:180
+ NumericValue:180
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:820
 770 LET B = B + B1
@@ -291,7 +291,7 @@
 780 LET E1 = E1 - (10*ABS(B1))
  Variable:E1 -> _
  Variable:E1 -> _
- NumericConstant:10
+ NumericValue:10
  Variable:B1 -> _
  FunctionAbs:ABS(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
@@ -301,17 +301,17 @@
  WARNING: Branch to line before GOSUB start
  LineNumber:290
 800 PRINT "YOUR RESULT ANGLE MUST BE AT LEAST ZERO DEGREES"
- TextConstant:"YOUR RESULT ANGLE MUST BE AT LEAST ZERO DEGREES"
+ TextValue:"YOUR RESULT ANGLE MUST BE AT LEAST ZERO DEGREES"
  CarriageControl:NL
 810 GOTO 730
  LineNumber:730
 820 PRINT "YOUR RESULT ANGLE MUST BE AT MOST 180 DEGREES"
- TextConstant:"YOUR RESULT ANGLE MUST BE AT MOST 180 DEGREES"
+ TextValue:"YOUR RESULT ANGLE MUST BE AT MOST 180 DEGREES"
  CarriageControl:NL
 830 GOTO 730
  LineNumber:730
 840 PRINT "HOW MANY KM TO TRAVERSE"
- TextConstant:"HOW MANY KM TO TRAVERSE"
+ TextValue:"HOW MANY KM TO TRAVERSE"
  CarriageControl:NL
 850 INPUT K
  Variable:K -> _
@@ -319,14 +319,14 @@
  Variable:D -> _
  Variable:K -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:910
 870 IF D + K > 1E6 THEN 960
  Variable:D -> _
  Variable:K -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1E6
+ NumericValue:1E6
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:960
 880 LET D = D + K
@@ -340,69 +340,69 @@
  Variable:E1 -> _
  Variable:K -> _
  FunctionAbs:ABS(_) -> _
- NumericConstant:1000
+ NumericValue:1000
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 900 GOTO 290
  LineNumber:290
 910 PRINT "YOU HAVE TRIED TO CLOSE THE DISTANCE TO LESS THAN ZERO"
- TextConstant:"YOU HAVE TRIED TO CLOSE THE DISTANCE TO LESS THAN ZERO"
+ TextValue:"YOU HAVE TRIED TO CLOSE THE DISTANCE TO LESS THAN ZERO"
  CarriageControl:NL
 920 PRINT "BETWEEN YOU AND THE ENEMY, THE ON-BOARD"
- TextConstant:"BETWEEN YOU AND THE ENEMY, THE ON-BOARD"
+ TextValue:"BETWEEN YOU AND THE ENEMY, THE ON-BOARD"
  CarriageControl:NL
 930 PRINT "COMMAND COMPUTER WILL NOT EXECUTE THIS MANEUVER"
- TextConstant:"COMMAND COMPUTER WILL NOT EXECUTE THIS MANEUVER"
+ TextValue:"COMMAND COMPUTER WILL NOT EXECUTE THIS MANEUVER"
  CarriageControl:NL
 940 PRINT
  CarriageControl:NL
 950 GOTO 840
  LineNumber:840
 960 PRINT "YOU HAVE TRIED TO EXCEED THE DISTANCE WHERE"
- TextConstant:"YOU HAVE TRIED TO EXCEED THE DISTANCE WHERE"
+ TextValue:"YOU HAVE TRIED TO EXCEED THE DISTANCE WHERE"
  CarriageControl:NL
 970 PRINT "ANY OF YOUR WEAPONS ARE EFFECTIVE"
- TextConstant:"ANY OF YOUR WEAPONS ARE EFFECTIVE"
+ TextValue:"ANY OF YOUR WEAPONS ARE EFFECTIVE"
  CarriageControl:NL
 980 PRINT "THE ON-BOARD COMPUTER WILL NOT"
- TextConstant:"THE ON-BOARD COMPUTER WILL NOT"
+ TextValue:"THE ON-BOARD COMPUTER WILL NOT"
  CarriageControl:NL
 990 PRINT "EXECUTE THIS MANEUVER"
- TextConstant:"EXECUTE THIS MANEUVER"
+ TextValue:"EXECUTE THIS MANEUVER"
  CarriageControl:NL
 1000 GOTO 840
  LineNumber:840
 1010 LET E1 = E1 - 1000
  Variable:E1 -> _
  Variable:E1 -> _
- NumericConstant:1000
+ NumericValue:1000
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 1020 IF B >= 80 THEN 1050
  Variable:B -> _
- NumericConstant:80
+ NumericValue:80
  BinaryOperatorGreaterEqual:>=(_,_) -> ?
  LineNumber:1050
 1030 PRINT "YOUR ANGLE IS TOO SMALL, YOU HAVE MISSED"
- TextConstant:"YOUR ANGLE IS TOO SMALL, YOU HAVE MISSED"
+ TextValue:"YOUR ANGLE IS TOO SMALL, YOU HAVE MISSED"
  CarriageControl:NL
 1040 GOTO 290
  LineNumber:290
 1050 IF B <= 100 THEN 1080
  Variable:B -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:1080
 1060 PRINT "YOUR ANGLE IS TOO GREAT, YOU HAVE MISSED"
- TextConstant:"YOUR ANGLE IS TOO GREAT, YOU HAVE MISSED"
+ TextValue:"YOUR ANGLE IS TOO GREAT, YOU HAVE MISSED"
  CarriageControl:NL
 1070 GOTO 290
  LineNumber:290
 1080 LET E2 = E2 - 1000
  Variable:E2 -> _
  Variable:E2 -> _
- NumericConstant:1000
+ NumericValue:1000
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 1090 GOTO 290
@@ -410,17 +410,17 @@
 1100 LET E1 = E1 - 500
  Variable:E1 -> _
  Variable:E1 -> _
- NumericConstant:500
+ NumericValue:500
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 1110 LET D2 = (1 + INT(100*RND)/100)
  Variable:D2 -> _
- NumericConstant:1
- NumericConstant:100
+ NumericValue:1
+ NumericValue:100
  FunctionRnd:RND -> _
  BinaryOperatorMultiply:*(_,_) -> _
  FunctionInt:INT(_) -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -428,49 +428,49 @@
  Variable:E2 -> _
  Variable:E2 -> _
  Variable:D2 -> _
- NumericConstant:500
+ NumericValue:500
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 1130 GOTO 290
  LineNumber:290
 1140 PRINT "YOU HAVE INSTRUCTED THE ON-BOARD COMPUTER"
- TextConstant:"YOU HAVE INSTRUCTED THE ON-BOARD COMPUTER"
+ TextValue:"YOU HAVE INSTRUCTED THE ON-BOARD COMPUTER"
  CarriageControl:NL
 1150 PRINT "TO SELF-DESTRUCT, THE REACTOR HAS GONE"
- TextConstant:"TO SELF-DESTRUCT, THE REACTOR HAS GONE"
+ TextValue:"TO SELF-DESTRUCT, THE REACTOR HAS GONE"
  CarriageControl:NL
 1160 PRINT "CRITICAL, YOU HAVE GONE TO MEET THE FORCE"
- TextConstant:"CRITICAL, YOU HAVE GONE TO MEET THE FORCE"
+ TextValue:"CRITICAL, YOU HAVE GONE TO MEET THE FORCE"
  CarriageControl:NL
 1170 IF D <= 500 THEN 1200
  Variable:D -> _
- NumericConstant:500
+ NumericValue:500
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:1200
 1180 PRINT "SPACE WARS IS OVER"
- TextConstant:"SPACE WARS IS OVER"
+ TextValue:"SPACE WARS IS OVER"
  CarriageControl:NL
 1190 GOTO 1240
  LineNumber:1240
 1200 PRINT "YOUR DESTRUCTION HAS ALSO DESTROYED"
- TextConstant:"YOUR DESTRUCTION HAS ALSO DESTROYED"
+ TextValue:"YOUR DESTRUCTION HAS ALSO DESTROYED"
  CarriageControl:NL
 1210 PRINT "THE SKY FIGHTER, YOU WILL BE REMEMBERED"
- TextConstant:"THE SKY FIGHTER, YOU WILL BE REMEMBERED"
+ TextValue:"THE SKY FIGHTER, YOU WILL BE REMEMBERED"
  CarriageControl:NL
 1220 PRINT "AS A HERO"
- TextConstant:"AS A HERO"
+ TextValue:"AS A HERO"
  CarriageControl:NL
 1230 GOTO 1180
  LineNumber:1180
 1240 PRINT
  CarriageControl:NL
 1250 PRINT "TO PLAY SPACE WARS AGAIN TYPE GO"
- TextConstant:"TO PLAY SPACE WARS AGAIN TYPE GO"
+ TextValue:"TO PLAY SPACE WARS AGAIN TYPE GO"
  CarriageControl:NL
 1260 PRINT "OTHERWISE TYPE NO"
- TextConstant:"OTHERWISE TYPE NO"
+ TextValue:"OTHERWISE TYPE NO"
  CarriageControl:NL
 1270 INPUT Z$
  ERROR: Syntax error: "Z$" Token 'InvalidToken:$' is not a value or operator
@@ -478,7 +478,7 @@
  ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:1310
 1290 PRINT "SPACE WARS SAYS GOOD-BYE"
- TextConstant:"SPACE WARS SAYS GOOD-BYE"
+ TextValue:"SPACE WARS SAYS GOOD-BYE"
  CarriageControl:NL
 1300 STOP
  WARNING: Terminating statement in GOSUB

@@ -6,12 +6,12 @@
  Variable:M(_,_) -> _(,)
 30 FOR I = 1 TO 4
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:4"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:4"]
 40 PRINT "POWER : " 2^I
- TextConstant:"POWER : "
+ TextValue:"POWER : "
  CarriageControl:
- NumericConstant:2
+ NumericValue:2
  Variable:I -> _
  BinaryOperatorPower:^(_,_) -> _
  CarriageControl:NL
@@ -31,17 +31,17 @@
 80 NEXT I
  Variable:I -> _
 90 DATA 3
- NumericConstant:3
+ NumericValue:3
 91 DATA 0.5, 0.25, 0.25, 0.5, 0, 0.5, 0.25, 0.25, 0.5
- NumericConstant:0.5
- NumericConstant:0.25
- NumericConstant:0.25
- NumericConstant:0.5
- NumericConstant:0
- NumericConstant:0.5
- NumericConstant:0.25
- NumericConstant:0.25
- NumericConstant:0.5
+ NumericValue:0.5
+ NumericValue:0.25
+ NumericValue:0.25
+ NumericValue:0.5
+ NumericValue:0
+ NumericValue:0.5
+ NumericValue:0.25
+ NumericValue:0.25
+ NumericValue:0.5
 99 END
  
 

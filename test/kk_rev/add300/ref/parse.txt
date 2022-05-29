@@ -1,11 +1,11 @@
 10   DIM A(100),B(100),C(200),X(100)
- NumericConstant:100
+ NumericValue:100
  Declaration:A() -> _()
- NumericConstant:100
+ NumericValue:100
  Declaration:B() -> _()
- NumericConstant:200
+ NumericValue:200
  Declaration:C() -> _()
- NumericConstant:100
+ NumericValue:100
  Declaration:X() -> _()
 100  REM READ, PRINT A,B
  Remark:READ, PRINT A,B
@@ -15,7 +15,7 @@
  LineNumber:2000
 130  FOR I = 0 TO L
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:L -> _"]
 140      LET A(I) = C(I)
  Variable:I -> _
@@ -30,7 +30,7 @@
  Variable:L -> _
  AssignmentOperator:= _ -> _
 170  PRINT "PLUS"
- TextConstant:"PLUS"
+ TextValue:"PLUS"
  CarriageControl:NL
 180  PRINT
  CarriageControl:NL
@@ -40,7 +40,7 @@
  LineNumber:2000
 230  FOR I = 0 TO L
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:L -> _"]
 240      LET B(I) = C(I)
  Variable:I -> _
@@ -55,7 +55,7 @@
  Variable:L -> _
  AssignmentOperator:= _ -> _
 270  PRINT "EQUALS"
- TextConstant:"EQUALS"
+ TextValue:"EQUALS"
  CarriageControl:NL
 280  PRINT
  CarriageControl:NL
@@ -73,12 +73,12 @@
  AssignmentOperator:= _ -> _
 330  FOR I = L2+1 TO L
  control: Variable:I -> _
- start:   ["Variable:L2 -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
+ start:   ["Variable:L2 -> _", "NumericValue:1", "BinaryOperatorPlus:+(_,_) -> _"]
  end:     ["Variable:L -> _"]
 340      LET B(I) = 0
  Variable:I -> _
  Variable:B(_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 350  NEXT I
  Variable:I -> _
@@ -90,18 +90,18 @@
  AssignmentOperator:= _ -> _
 430  FOR I = L1+1 TO L
  control: Variable:I -> _
- start:   ["Variable:L1 -> _", "NumericConstant:1", "BinaryOperatorPlus:+(_,_) -> _"]
+ start:   ["Variable:L1 -> _", "NumericValue:1", "BinaryOperatorPlus:+(_,_) -> _"]
  end:     ["Variable:L -> _"]
 440      LET A(I) = 0
  Variable:I -> _
  Variable:A(_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 450  NEXT I
  Variable:I -> _
 500  FOR I = 0 TO L
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:L -> _"]
 510      LET C(I) = A(I) + B(I)
  Variable:I -> _
@@ -128,15 +128,15 @@
  Remark:READ A NUMBER C
 1010 FOR I = 0 TO 100
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:100"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:100"]
 1020     READ X(I)
  Variable:I -> _
  Variable:X(_) -> _
 1030     IF X(I) < 0 THEN 1100
  Variable:I -> _
  Variable:X(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:1100
 1040 NEXT I
@@ -146,12 +146,12 @@
 1100 LET L = I-1
  Variable:L -> _
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 1110 FOR I = 0 TO L
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:L -> _"]
 1120     LET C(I) = X(L-I)
  Variable:I -> _
@@ -166,7 +166,7 @@
 1140 RETURN
  
 1200 PRINT "NUMBER TOO LONG"
- TextConstant:"NUMBER TOO LONG"
+ TextValue:"NUMBER TOO LONG"
  CarriageControl:NL
 1210 STOP
  WARNING: Terminating statement in GOSUB
@@ -177,31 +177,31 @@
 2010 IF C(L) >= 100 THEN 2200
  Variable:L -> _
  Variable:C(_) -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorGreaterEqual:>=(_,_) -> ?
  LineNumber:2200
 2020 PRINT "      ";
- TextConstant:"      "
+ TextValue:"      "
  CarriageControl:;
 2030 IF C(L) >= 10 THEN 2100
  Variable:L -> _
  Variable:C(_) -> _
- NumericConstant:10
+ NumericValue:10
  BinaryOperatorGreaterEqual:>=(_,_) -> ?
  LineNumber:2100
 2040 PRINT "      ";
- TextConstant:"      "
+ TextValue:"      "
  CarriageControl:;
 2050 PRINT C(L); ",   ";
  Variable:L -> _
  Variable:C(_) -> _
  CarriageControl:;
- TextConstant:",   "
+ TextValue:",   "
  CarriageControl:;
 2060 LET L9 = L-1
  Variable:L9 -> _
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 2070 GOTO 2210
@@ -210,7 +210,7 @@
  Variable:M -> _
  Variable:L -> _
  Variable:C(_) -> _
- NumericConstant:10
+ NumericValue:10
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
@@ -219,7 +219,7 @@
  Variable:C(_) -> _
  Variable:L -> _
  Variable:C(_) -> _
- NumericConstant:10
+ NumericValue:10
  Variable:M -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -236,8 +236,8 @@
 2210 FOR I = L9 TO 0 STEP -1
  control: Variable:I -> _
  start:   ["Variable:L9 -> _"]
- end:     ["NumericConstant:0"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
+ end:     ["NumericValue:0"]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
 2220     LET N = C(I)
  Variable:N -> _
  Variable:I -> _
@@ -245,12 +245,12 @@
  AssignmentOperator:= _ -> _
 2230     LET Q = 100
  Variable:Q -> _
- NumericConstant:100
+ NumericValue:100
  AssignmentOperator:= =_ -> _
 2240         FOR J = 1 TO 3
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
- end:     ["NumericConstant:3"]
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:3"]
 2250         LET M = INT(N/Q)
  Variable:M -> _
  Variable:N -> _
@@ -269,7 +269,7 @@
 2270         LET Q = Q/10
  Variable:Q -> _
  Variable:Q -> _
- NumericConstant:10
+ NumericValue:10
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 2280         PRINT M;
@@ -279,11 +279,11 @@
  Variable:J -> _
 2300     IF I = 0 THEN 2400
  Variable:I -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:2400
 2310     PRINT ",   ";
- TextConstant:",   "
+ TextValue:",   "
  CarriageControl:;
 2320 NEXT I
  Variable:I -> _
@@ -298,14 +298,14 @@
  Remark:CARRY IS IN NUMBER C
 3010 LET C(L+1) = 0
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:C(_) -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 3020 FOR I = 0 TO L
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
+ start:   ["NumericValue:0"]
  end:     ["Variable:L -> _"]
 3030     LET N = C(I)
  Variable:N -> _
@@ -315,7 +315,7 @@
 3040     LET M = INT(N/1000)
  Variable:M -> _
  Variable:N -> _
- NumericConstant:1000
+ NumericValue:1000
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  AssignmentOperator:= _ -> _
@@ -323,18 +323,18 @@
  Variable:I -> _
  Variable:C(_) -> _
  Variable:N -> _
- NumericConstant:1000
+ NumericValue:1000
  Variable:M -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 3060     LET C(I+1) = C(I+1) + M
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:C(_) -> _
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  Variable:C(_) -> _
  Variable:M -> _
@@ -344,31 +344,31 @@
  Variable:I -> _
 3080 IF M = 0 THEN 3100
  Variable:M -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:3100
 3090 LET L = L+1
  Variable:L -> _
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 3100 RETURN
  
 3110
 9000 DATA 123,456,789,333,-1
- NumericConstant:123
- NumericConstant:456
- NumericConstant:789
- NumericConstant:333
- NumericConstant:1
+ NumericValue:123
+ NumericValue:456
+ NumericValue:789
+ NumericValue:333
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
 9010 DATA 987,654,321,000,-1
- NumericConstant:987
- NumericConstant:654
- NumericConstant:321
- NumericConstant:000
- NumericConstant:1
+ NumericValue:987
+ NumericValue:654
+ NumericValue:321
+ NumericValue:000
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
 9999 END
  

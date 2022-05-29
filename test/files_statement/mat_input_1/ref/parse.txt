@@ -1,15 +1,15 @@
 10 REM This is a test
  Remark:This is a test
 12 OPTION BASE 1
- NumericConstant:1
+ NumericValue:1
 15 DIM A(3,4)
- NumericConstant:3
- NumericConstant:4
+ NumericValue:3
+ NumericValue:4
  Declaration:A(,) -> _(,)
 20 FILES "input.txt"
- TextConstant:"input.txt"
+ TextValue:"input.txt"
 30 MAT INPUT #1;A
- NumericConstant:1
+ NumericValue:1
  UnaryOperatorHash:#(_) -> =FH
  Variable:A() -> _()
 40 MAT PRINT A

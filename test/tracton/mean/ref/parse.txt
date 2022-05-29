@@ -4,35 +4,35 @@
  Remark:DEVIATION AND STANDARD ERROR FOR GROUPED DATA
 30 LET A = 0
  Variable:A -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 40 LET B = 0
  Variable:B -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 50 LET C = 0
  Variable:C -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 60 LET D = 0
  Variable:D -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 70 PRINT "ENTER SAMPLE VALUE AND FREQUENCY";
- TextConstant:"ENTER SAMPLE VALUE AND FREQUENCY"
+ TextValue:"ENTER SAMPLE VALUE AND FREQUENCY"
  CarriageControl:;
 80 INPUT X,F
  Variable:X -> _
  Variable:F -> _
 90 IF F <= 0 THEN 170
  Variable:F -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:170
 100 LET A = A + 1
  Variable:A -> _
  Variable:A -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 110 LET B = B + F
@@ -56,7 +56,7 @@
 140 LET E = (X^2)*F
  Variable:E -> _
  Variable:X -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  Variable:F -> _
  BinaryOperatorMultiply:*(_,_) -> _
@@ -80,7 +80,7 @@
  Variable:D -> _
  Variable:B -> _
  Variable:H -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -96,35 +96,35 @@
 200 PRINT
  CarriageControl:NL
 210 PRINT "NUMBER OF SAMPLES ENTERED = ";A
- TextConstant:"NUMBER OF SAMPLES ENTERED = "
+ TextValue:"NUMBER OF SAMPLES ENTERED = "
  CarriageControl:;
  Variable:A -> _
  CarriageControl:NL
 220 PRINT "MEAN = ";H
- TextConstant:"MEAN = "
+ TextValue:"MEAN = "
  CarriageControl:;
  Variable:H -> _
  CarriageControl:NL
 230 PRINT "STANDARD DEVIATION = ";I
- TextConstant:"STANDARD DEVIATION = "
+ TextValue:"STANDARD DEVIATION = "
  CarriageControl:;
  Variable:I -> _
  CarriageControl:NL
 240 PRINT "STANDARD ERROR = ";J
- TextConstant:"STANDARD ERROR = "
+ TextValue:"STANDARD ERROR = "
  CarriageControl:;
  Variable:J -> _
  CarriageControl:NL
 250 PRINT
  CarriageControl:NL
 260 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 270 INPUT L
  Variable:L -> _
 280 IF L = 1 THEN 300
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:300
 290 STOP

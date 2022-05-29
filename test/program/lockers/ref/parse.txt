@@ -2,7 +2,7 @@
  Remark:TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
 20 LET N = 1000
  Variable:N -> _
- NumericConstant:1000
+ NumericValue:1000
  AssignmentOperator:= =_ -> _
 30 DIM L(N)
  Variable:N -> _
@@ -10,15 +10,15 @@
 100 REM INITIALIZE LOCKERS TO OPEN
  Remark:INITIALIZE LOCKERS TO OPEN
 110 PRINT "INITIALIZING";N;" LOCKERS..."
- TextConstant:"INITIALIZING"
+ TextValue:"INITIALIZING"
  CarriageControl:;
  Variable:N -> _
  CarriageControl:;
- TextConstant:" LOCKERS..."
+ TextValue:" LOCKERS..."
  CarriageControl:NL
 130 FOR I = 1 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 140 FOR J = I TO N STEP I
  control: Variable:J -> _
@@ -28,7 +28,7 @@
 150 LET L(J) = 1 - L(J)
  Variable:J -> _
  Variable:L(_) -> _
- NumericConstant:1
+ NumericValue:1
  Variable:J -> _
  Variable:L(_) -> _
  BinaryOperatorMinus:-(_,_) -> _
@@ -40,16 +40,16 @@
 200 REM PRINT LOCKER STATES
  Remark:PRINT LOCKER STATES
 310 PRINT "OPEN LOCKERS:";
- TextConstant:"OPEN LOCKERS:"
+ TextValue:"OPEN LOCKERS:"
  CarriageControl:;
 320 FOR I = 1 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 330 IF L(I) = 0 THEN 350
  Variable:I -> _
  Variable:L(_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:350
 340 PRINT I;

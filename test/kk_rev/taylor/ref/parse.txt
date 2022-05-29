@@ -3,22 +3,22 @@
  Variable:N -> _
 20 LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 25 LET F = 1
  Variable:F -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 30 FOR I = 1 TO N
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:N -> _"]
 40 LET K = 2*I-1
  Variable:K -> _
- NumericConstant:2
+ NumericValue:2
  Variable:I -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 50 LET S = S + F*X^K/K
@@ -41,11 +41,11 @@
 70 NEXT I
  Variable:I -> _
 80 PRINT "ATN OF " X; "= " ATN(X)
- TextConstant:"ATN OF "
+ TextValue:"ATN OF "
  CarriageControl:
  Variable:X -> _
  CarriageControl:;
- TextConstant:"= "
+ TextValue:"= "
  CarriageControl:
  Variable:X -> _
  FunctionArcTan:ATN(_) -> _
@@ -53,7 +53,7 @@
 85 PRINT N; "TERMS OF THE SERIES YIELD " S
  Variable:N -> _
  CarriageControl:;
- TextConstant:"TERMS OF THE SERIES YIELD "
+ TextValue:"TERMS OF THE SERIES YIELD "
  CarriageControl:
  Variable:S -> _
  CarriageControl:NL
@@ -62,17 +62,17 @@
 91 GOTO 10
  LineNumber:10
 95 DATA 0.5, 2, 0.5, 5, 0.5, 10, -0.75, 10, 0.99, 10
- NumericConstant:0.5
- NumericConstant:2
- NumericConstant:0.5
- NumericConstant:5
- NumericConstant:0.5
- NumericConstant:10
- NumericConstant:0.75
+ NumericValue:0.5
+ NumericValue:2
+ NumericValue:0.5
+ NumericValue:5
+ NumericValue:0.5
+ NumericValue:10
+ NumericValue:0.75
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:10
- NumericConstant:0.99
- NumericConstant:10
+ NumericValue:10
+ NumericValue:0.99
+ NumericValue:10
 99 END
  
 

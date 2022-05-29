@@ -19,24 +19,24 @@
 100 LET I = N - 1
  Variable:I -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  AssignmentOperator:= _ -> _
 110 FOR J = 1 TO I
  control: Variable:J -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:I -> _"]
 120 LET K = J + 1
  Variable:K -> _
  Variable:J -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 130 FOR L = N TO K STEP -1
  control: Variable:L -> _
  start:   ["Variable:N -> _"]
  end:     ["Variable:K -> _"]
- step:    ["NumericConstant:1", "UnaryOperatorMinus:-(_) -> =_"]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
 140 IF Z(L) > Z(J) THEN 210
  Variable:L -> _
  Variable:Z(_) -> _

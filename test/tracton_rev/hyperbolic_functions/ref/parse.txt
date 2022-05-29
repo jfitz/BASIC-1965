@@ -1,56 +1,56 @@
 10 REM THIS PROGRAM COMPUTES HYPERBOLIC FUNCTIONS
  Remark:THIS PROGRAM COMPUTES HYPERBOLIC FUNCTIONS
 20 PRINT "SINH (1)"
- TextConstant:"SINH (1)"
+ TextValue:"SINH (1)"
  CarriageControl:NL
 30 PRINT "COSH (2)"
- TextConstant:"COSH (2)"
+ TextValue:"COSH (2)"
  CarriageControl:NL
 40 PRINT "TANH (3)"
- TextConstant:"TANH (3)"
+ TextValue:"TANH (3)"
  CarriageControl:NL
 50 PRINT "CSCH (4)"
- TextConstant:"CSCH (4)"
+ TextValue:"CSCH (4)"
  CarriageControl:NL
 60 PRINT "SECH (5)"
- TextConstant:"SECH (5)"
+ TextValue:"SECH (5)"
  CarriageControl:NL
 70 PRINT "COTH (6)"
- TextConstant:"COTH (6)"
+ TextValue:"COTH (6)"
  CarriageControl:NL
 80 PRINT "TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
- TextConstant:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
+ TextValue:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
  CarriageControl:NL
 90 INPUT C
  Variable:C -> _
 100 IF C = 1 THEN 110
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:110
 101 IF C = 2 THEN 160
  Variable:C -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:160
 102 IF C = 3 THEN 210
  Variable:C -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:210
 103 IF C = 4 THEN 270
  Variable:C -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:270
 104 IF C = 5 THEN 320
  Variable:C -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:320
 105 IF C = 6 THEN 370
  Variable:C -> _
- NumericConstant:6
+ NumericValue:6
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:370
 106 GOTO 80
@@ -62,15 +62,15 @@
 130 LET Z = Y/2
  Variable:Z -> _
  Variable:Y -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 140 PRINT "SINH";X;" =";Z
- TextConstant:"SINH"
+ TextValue:"SINH"
  CarriageControl:;
  Variable:X -> _
  CarriageControl:;
- TextConstant:" ="
+ TextValue:" ="
  CarriageControl:;
  Variable:Z -> _
  CarriageControl:NL
@@ -83,15 +83,15 @@
 180 LET Z = B/2
  Variable:Z -> _
  Variable:B -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 190 PRINT "COSH";X;" =";Z
- TextConstant:"COSH"
+ TextValue:"COSH"
  CarriageControl:;
  Variable:X -> _
  CarriageControl:;
- TextConstant:" ="
+ TextValue:" ="
  CarriageControl:;
  Variable:Z -> _
  CarriageControl:NL
@@ -110,11 +110,11 @@
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 250 PRINT "TANH";X;" =";Z
- TextConstant:"TANH"
+ TextValue:"TANH"
  CarriageControl:;
  Variable:X -> _
  CarriageControl:;
- TextConstant:" ="
+ TextValue:" ="
  CarriageControl:;
  Variable:Z -> _
  CarriageControl:NL
@@ -126,18 +126,18 @@
  LineNumber:520
 290 LET Z = 1/(Y/2)
  Variable:Z -> _
- NumericConstant:1
+ NumericValue:1
  Variable:Y -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 300 PRINT "CSCH";X;" =";Z
- TextConstant:"CSCH"
+ TextValue:"CSCH"
  CarriageControl:;
  Variable:X -> _
  CarriageControl:;
- TextConstant:" ="
+ TextValue:" ="
  CarriageControl:;
  Variable:Z -> _
  CarriageControl:NL
@@ -149,18 +149,18 @@
  LineNumber:540
 340 LET Z = 1/(B/2)
  Variable:Z -> _
- NumericConstant:1
+ NumericValue:1
  Variable:B -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 350 PRINT "SECH";X;" =";Z
- TextConstant:"SECH"
+ TextValue:"SECH"
  CarriageControl:;
  Variable:X -> _
  CarriageControl:;
- TextConstant:" ="
+ TextValue:" ="
  CarriageControl:;
  Variable:Z -> _
  CarriageControl:NL
@@ -174,31 +174,31 @@
  LineNumber:540
 400 LET Z = 1/(Y/B)
  Variable:Z -> _
- NumericConstant:1
+ NumericValue:1
  Variable:Y -> _
  Variable:B -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 410 PRINT "COTH";X;" =";Z
- TextConstant:"COTH"
+ TextValue:"COTH"
  CarriageControl:;
  Variable:X -> _
  CarriageControl:;
- TextConstant:" ="
+ TextValue:" ="
  CarriageControl:;
  Variable:Z -> _
  CarriageControl:NL
 420 PRINT
  CarriageControl:NL
 430 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 440 INPUT L
  Variable:L -> _
 450 IF L = 1 THEN 470
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:470
 460 STOP
@@ -208,7 +208,7 @@
 480 GOTO 80
  LineNumber:80
 490 PRINT "X = "
- TextConstant:"X = "
+ TextValue:"X = "
  CarriageControl:NL
 500 INPUT X
  Variable:X -> _

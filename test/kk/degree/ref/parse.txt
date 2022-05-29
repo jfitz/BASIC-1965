@@ -1,20 +1,20 @@
 100 PRINT "FAHRENHEIT";
- TextConstant:"FAHRENHEIT"
+ TextValue:"FAHRENHEIT"
  CarriageControl:;
 110 INPUT F
  Variable:F -> _
 120 LET C = (F-32)*5/9
  Variable:C -> _
  Variable:F -> _
- NumericConstant:32
+ NumericValue:32
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:9
+ NumericValue:9
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 130 PRINT "CENTIGRADE:" C
- TextConstant:"CENTIGRADE:"
+ TextValue:"CENTIGRADE:"
  CarriageControl:
  Variable:C -> _
  CarriageControl:NL

@@ -1,13 +1,13 @@
 100 DIM A(20,20), C(20,20), B(20), X(20)
- NumericConstant:20
- NumericConstant:20
+ NumericValue:20
+ NumericValue:20
  Declaration:A(,) -> _(,)
- NumericConstant:20
- NumericConstant:20
+ NumericValue:20
+ NumericValue:20
  Declaration:C(,) -> _(,)
- NumericConstant:20
+ NumericValue:20
  Declaration:B() -> _()
- NumericConstant:20
+ NumericValue:20
  Declaration:X() -> _()
 110
 120 READ N
@@ -37,26 +37,26 @@
  CarriageControl:NL
 200
 210 DATA 3
- NumericConstant:3
+ NumericValue:3
 220 DATA 2, -4, 3
- NumericConstant:2
- NumericConstant:4
+ NumericValue:2
+ NumericValue:4
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:3
+ NumericValue:3
 230 DATA 3, 0, -1
- NumericConstant:3
- NumericConstant:0
- NumericConstant:1
+ NumericValue:3
+ NumericValue:0
+ NumericValue:1
  UnaryOperatorMinus:-(_) -> =_
 240 DATA 2, 5, 1
- NumericConstant:2
- NumericConstant:5
- NumericConstant:1
+ NumericValue:2
+ NumericValue:5
+ NumericValue:1
 250 DATA -9, 4, 11
- NumericConstant:9
+ NumericValue:9
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:4
- NumericConstant:11
+ NumericValue:4
+ NumericValue:11
 999 END
  
 

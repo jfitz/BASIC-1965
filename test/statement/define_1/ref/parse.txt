@@ -9,9 +9,9 @@
  BinaryOperatorDivide:/(_,_) -> _
 20 FOR N = 2 TO 10 STEP 2
  control: Variable:N -> _
- start:   ["NumericConstant:2"]
- end:     ["NumericConstant:10"]
- step:    ["NumericConstant:2"]
+ start:   ["NumericValue:2"]
+ end:     ["NumericValue:10"]
+ step:    ["NumericValue:2"]
 30 PRINT N, LOG(N), FNL(N,10)
  Variable:N -> _
  CarriageControl:,
@@ -19,7 +19,7 @@
  FunctionLog:LOG(_) -> _
  CarriageControl:,
  Variable:N -> _
- NumericConstant:10
+ NumericValue:10
  UserFunction:FNL(_,_) -> _
  CarriageControl:NL
 40 NEXT N

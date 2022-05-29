@@ -5,19 +5,19 @@
 30 REM L-PAD OF MINIMUM LOSS
  Remark:L-PAD OF MINIMUM LOSS
 40 PRINT "1ST IMPEDANCE"
- TextConstant:"1ST IMPEDANCE"
+ TextValue:"1ST IMPEDANCE"
  CarriageControl:NL
 50 INPUT Z1
  Variable:Z1 -> _
 60 PRINT "2ND IMPEDANCE"
- TextConstant:"2ND IMPEDANCE"
+ TextValue:"2ND IMPEDANCE"
  CarriageControl:NL
 70 INPUT Z2
  Variable:Z2 -> _
 80 LET R1 = Z1*SQR(1 - (Z2/Z1))
  Variable:R1 -> _
  Variable:Z1 -> _
- NumericConstant:1
+ NumericValue:1
  Variable:Z2 -> _
  Variable:Z1 -> _
  BinaryOperatorDivide:/(_,_) -> _
@@ -28,7 +28,7 @@
 90 LET R2 = Z2/SQR(1 - (Z2/Z1))
  Variable:R2 -> _
  Variable:Z2 -> _
- NumericConstant:1
+ NumericValue:1
  Variable:Z2 -> _
  Variable:Z1 -> _
  BinaryOperatorDivide:/(_,_) -> _
@@ -45,49 +45,49 @@
  Variable:Z1 -> _
  Variable:Z2 -> _
  BinaryOperatorDivide:/(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  FunctionSqr:SQR(_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 110 LET L = 20*(LOG(M)/LOG(10))
  Variable:L -> _
- NumericConstant:20
+ NumericValue:20
  Variable:M -> _
  FunctionLog:LOG(_) -> _
- NumericConstant:10
+ NumericValue:10
  FunctionLog:LOG(_) -> =_
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 120 PRINT "COMPONENTS OF THE L-PAD"
- TextConstant:"COMPONENTS OF THE L-PAD"
+ TextValue:"COMPONENTS OF THE L-PAD"
  CarriageControl:NL
 130 PRINT "RESISTOR 1 = ";R1
- TextConstant:"RESISTOR 1 = "
+ TextValue:"RESISTOR 1 = "
  CarriageControl:;
  Variable:R1 -> _
  CarriageControl:NL
 140 PRINT "RESISTOR 2 = ";R2
- TextConstant:"RESISTOR 2 = "
+ TextValue:"RESISTOR 2 = "
  CarriageControl:;
  Variable:R2 -> _
  CarriageControl:NL
 150 PRINT "LOSS IN DECIBELS = ";L
- TextConstant:"LOSS IN DECIBELS = "
+ TextValue:"LOSS IN DECIBELS = "
  CarriageControl:;
  Variable:L -> _
  CarriageControl:NL
 160 PRINT
  CarriageControl:NL
 170 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT X
  Variable:X -> _
 190 IF X = 1 THEN 210
  Variable:X -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:210
 200 STOP

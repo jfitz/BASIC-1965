@@ -1,10 +1,10 @@
 10 REM This is a test
  Remark:This is a test
 20 ARR READ A(6)
- NumericConstant:6
+ NumericValue:6
  Variable:A(_) -> _()
 22 PRINT "ARRAY IS:";
- TextConstant:"ARRAY IS:"
+ TextValue:"ARRAY IS:"
  CarriageControl:;
 23 ARR PRINT A
  Variable:A() -> _()
@@ -15,7 +15,7 @@
  FunctionSort1:SORT1(_()) -> _()
  AssignmentOperator:= _() -> _()
 32 PRINT "SORTED IS:";
- TextConstant:"SORTED IS:"
+ TextValue:"SORTED IS:"
  CarriageControl:;
 33 ARR PRINT B
  Variable:B() -> _()
@@ -26,21 +26,21 @@
  FunctionMedian:MEDIAN(_()) -> _
  AssignmentOperator:= _ -> _
 42 PRINT "MEDIAN IS "; M
- TextConstant:"MEDIAN IS "
+ TextValue:"MEDIAN IS "
  CarriageControl:;
  Variable:M -> _
  CarriageControl:NL
 89 STOP
  
 90 DATA 10.2,5.5,1.8,22,17,-19,7
- NumericConstant:10.2
- NumericConstant:5.5
- NumericConstant:1.8
- NumericConstant:22
- NumericConstant:17
- NumericConstant:19
+ NumericValue:10.2
+ NumericValue:5.5
+ NumericValue:1.8
+ NumericValue:22
+ NumericValue:17
+ NumericValue:19
  UnaryOperatorMinus:-(_) -> =_
- NumericConstant:7
+ NumericValue:7
 99 END
  
 

@@ -2,24 +2,24 @@
  UserFunctionName:FNF -> _
  VariableName:X -> _
  Variable:X -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
- NumericConstant:3
+ NumericValue:3
  Variable:X -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
 20 READ A, B, E
  Variable:A -> _
  Variable:B -> _
  Variable:E -> _
 30 PRINT "TRAPEZOID", "MIDPOINT", "SIMPSON"
- TextConstant:"TRAPEZOID"
+ TextValue:"TRAPEZOID"
  CarriageControl:,
- TextConstant:"MIDPOINT"
+ TextValue:"MIDPOINT"
  CarriageControl:,
- TextConstant:"SIMPSON"
+ TextValue:"SIMPSON"
  CarriageControl:NL
 40 LET H = B-A
  Variable:H -> _
@@ -39,23 +39,23 @@
  AssignmentOperator:= _ -> _
 60 LET M = 0
  Variable:M -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 100 LET T = (T+M)/2
  Variable:T -> _
  Variable:T -> _
  Variable:M -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 120 LET M = 0
  Variable:M -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 130 FOR X = A+H/2 TO B STEP H
  control: Variable:X -> _
- start:   ["Variable:A -> _", "Variable:H -> _", "NumericConstant:2", "BinaryOperatorDivide:/(_,_) -> _", "BinaryOperatorPlus:+(_,_) -> _"]
+ start:   ["Variable:A -> _", "Variable:H -> _", "NumericValue:2", "BinaryOperatorDivide:/(_,_) -> _", "BinaryOperatorPlus:+(_,_) -> _"]
  end:     ["Variable:B -> _"]
  step:    ["Variable:H -> _"]
 140 LET M = M + FNF(X)
@@ -76,11 +76,11 @@
 170 LET S = (T + 2*M)/3
  Variable:S -> _
  Variable:T -> _
- NumericConstant:2
+ NumericValue:2
  Variable:M -> _
  BinaryOperatorMultiply:*(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 180 PRINT T, M, S
@@ -93,7 +93,7 @@
 185 LET H = H/2
  Variable:H -> _
  Variable:H -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 190 IF ABS(T-M)/ABS(S) > E THEN 100
@@ -108,10 +108,10 @@
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:100
 900 DATA 1, 5
- NumericConstant:1
- NumericConstant:5
+ NumericValue:1
+ NumericValue:5
 910 DATA 1E-6
- NumericConstant:1E-6
+ NumericValue:1E-6
 999 END
  
 

@@ -1,52 +1,52 @@
 10 REM THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
  Remark:THIS PROGRAM COMPUTES ARITHMETIC PROGRESSION
 20 PRINT "FIRST TERM = ";
- TextConstant:"FIRST TERM = "
+ TextValue:"FIRST TERM = "
  CarriageControl:;
 30 INPUT A
  Variable:A -> _
 40 PRINT "COMMON DIFFERENCE = ";
- TextConstant:"COMMON DIFFERENCE = "
+ TextValue:"COMMON DIFFERENCE = "
  CarriageControl:;
 50 INPUT D
  Variable:D -> _
 60 PRINT "NUMBER OF TERMS = ";
- TextConstant:"NUMBER OF TERMS = "
+ TextValue:"NUMBER OF TERMS = "
  CarriageControl:;
 70 INPUT N
  Variable:N -> _
 80 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0";
- TextConstant:"FOR TABLE TYPE 1, IF NOT TYPE 0"
+ TextValue:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:;
 90 INPUT C
  Variable:C -> _
 100 IF C = 1 THEN 120
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:120
 110 GOTO 140
  LineNumber:140
 120 PRINT "ARITHMETIC PROGRESSION"
- TextConstant:"ARITHMETIC PROGRESSION"
+ TextValue:"ARITHMETIC PROGRESSION"
  CarriageControl:NL
 130 PRINT "TERM NUMBER", "TERM VALUE"
- TextConstant:"TERM NUMBER"
+ TextValue:"TERM NUMBER"
  CarriageControl:,
- TextConstant:"TERM VALUE"
+ TextValue:"TERM VALUE"
  CarriageControl:NL
 140 LET J = 0
  Variable:J -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 150 FOR I = 0 TO N - 1
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["Variable:N -> _", "NumericConstant:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ start:   ["NumericValue:0"]
+ end:     ["Variable:N -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
 160 LET K = I + 1
  Variable:K -> _
  Variable:I -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 170 LET L = A + (I*D)
@@ -65,7 +65,7 @@
  AssignmentOperator:= _ -> _
 190 IF C = 1 THEN 210
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:210
 200 GOTO 220
@@ -78,20 +78,20 @@
 220 NEXT I
  Variable:I -> _
 230 PRINT "SUM = ";J
- TextConstant:"SUM = "
+ TextValue:"SUM = "
  CarriageControl:;
  Variable:J -> _
  CarriageControl:NL
 240 PRINT
  CarriageControl:NL
 250 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 260 INPUT X
  Variable:X -> _
 270 IF X = 1 THEN 290
  Variable:X -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:290
 290 STOP

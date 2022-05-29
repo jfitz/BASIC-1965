@@ -4,32 +4,32 @@
  Remark:OF SAMPLES ENTERED BY THE USER
 30 LET Z = 0
  Variable:Z -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 40 LET N = 0
  Variable:N -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 50 PRINT "SAMPLE = ";
- TextConstant:"SAMPLE = "
+ TextValue:"SAMPLE = "
  CarriageControl:;
 60 INPUT X
  Variable:X -> _
 70 IF X = 0 THEN 130
  Variable:X -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:130
 80 LET N = N + 1
  Variable:N -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 90 LET Z = Z + (1/X)
  Variable:Z -> _
  Variable:Z -> _
- NumericConstant:1
+ NumericValue:1
  Variable:X -> _
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
@@ -41,15 +41,15 @@
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 110 PRINT "N = ";N,"SAMPLE = ";X,"CURRENT MEAN = ";H
- TextConstant:"N = "
+ TextValue:"N = "
  CarriageControl:;
  Variable:N -> _
  CarriageControl:,
- TextConstant:"SAMPLE = "
+ TextValue:"SAMPLE = "
  CarriageControl:;
  Variable:X -> _
  CarriageControl:,
- TextConstant:"CURRENT MEAN = "
+ TextValue:"CURRENT MEAN = "
  CarriageControl:;
  Variable:H -> _
  CarriageControl:NL
@@ -58,13 +58,13 @@
 130 PRINT
  CarriageControl:NL
 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
  Variable:L -> _
 160 IF L = 1 THEN 180
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:180
 170 STOP

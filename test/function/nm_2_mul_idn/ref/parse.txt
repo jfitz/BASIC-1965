@@ -1,85 +1,85 @@
 10 REM MATRIX FUNCTION IDN
  Remark:MATRIX FUNCTION IDN
 15 DIM D(4,4)
- NumericConstant:4
- NumericConstant:4
+ NumericValue:4
+ NumericValue:4
  Declaration:D(,) -> _(,)
 20 MAT A = 2 * IDN(3)
  Variable:A(,) -> _(,)
- NumericConstant:2
- NumericConstant:3
+ NumericValue:2
+ NumericValue:3
  FunctionIdn:IDN(_) -> =_(,)
  BinaryOperatorMultiply:*(_,_(,)) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)
 30 MAT B = 2 * IDN(5,5)
  Variable:B(,) -> _(,)
- NumericConstant:2
- NumericConstant:5
- NumericConstant:5
+ NumericValue:2
+ NumericValue:5
+ NumericValue:5
  FunctionIdn:IDN(_,_) -> =_(,)
  BinaryOperatorMultiply:*(_,_(,)) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)
 35 MAT D = 2 * IDN
  Variable:D(,) -> _(,)
- NumericConstant:2
+ NumericValue:2
  FunctionIdn:IDN -> _(,)
  BinaryOperatorMultiply:*(_,_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 40 PRINT "MATRIX A"
- TextConstant:"MATRIX A"
+ TextValue:"MATRIX A"
  CarriageControl:NL
 50 MAT PRINT A;
  Variable:A(,) -> _(,)
  CarriageControl:;
 60 PRINT "MATRIX B"
- TextConstant:"MATRIX B"
+ TextValue:"MATRIX B"
  CarriageControl:NL
 70 MAT PRINT B;
  Variable:B(,) -> _(,)
  CarriageControl:;
 80 PRINT "MATRIX D"
- TextConstant:"MATRIX D"
+ TextValue:"MATRIX D"
  CarriageControl:NL
 90 MAT PRINT D;
  Variable:D(,) -> _(,)
  CarriageControl:;
 100 OPTION BASE 1
- NumericConstant:1
+ NumericValue:1
 120 MAT A = 3 * IDN(3)
  Variable:A(,) -> _(,)
- NumericConstant:3
- NumericConstant:3
+ NumericValue:3
+ NumericValue:3
  FunctionIdn:IDN(_) -> =_(,)
  BinaryOperatorMultiply:*(_,_(,)) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)
 130 MAT B = 3 * IDN(5,5)
  Variable:B(,) -> _(,)
- NumericConstant:3
- NumericConstant:5
- NumericConstant:5
+ NumericValue:3
+ NumericValue:5
+ NumericValue:5
  FunctionIdn:IDN(_,_) -> =_(,)
  BinaryOperatorMultiply:*(_,_(,)) -> =_(,)
  AssignmentOperator:= =_(,) -> _(,)
 135 MAT D = 3 * IDN()
  Variable:D(,) -> _(,)
- NumericConstant:3
+ NumericValue:3
  FunctionIdn:IDN() -> _(,)
  BinaryOperatorMultiply:*(_,_(,)) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 140 PRINT "MATRIX A"
- TextConstant:"MATRIX A"
+ TextValue:"MATRIX A"
  CarriageControl:NL
 150 MAT PRINT A;
  Variable:A(,) -> _(,)
  CarriageControl:;
 160 PRINT "MATRIX B"
- TextConstant:"MATRIX B"
+ TextValue:"MATRIX B"
  CarriageControl:NL
 170 MAT PRINT B;
  Variable:B(,) -> _(,)
  CarriageControl:;
 180 PRINT "MATRIX D"
- TextConstant:"MATRIX D"
+ TextValue:"MATRIX D"
  CarriageControl:NL
 190 MAT PRINT D;
  Variable:D(,) -> _(,)

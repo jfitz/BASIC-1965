@@ -5,12 +5,12 @@
 30 REM BASE Y
  Remark:BASE Y
 40 PRINT "BASE = "
- TextConstant:"BASE = "
+ TextValue:"BASE = "
  CarriageControl:NL
 50 INPUT Y
  Variable:Y -> _
 60 PRINT "X = "
- TextConstant:"X = "
+ TextValue:"X = "
  CarriageControl:NL
 70 INPUT X
  Variable:X -> _
@@ -23,22 +23,22 @@
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 90 PRINT "LOG";X;" = ";J
- TextConstant:"LOG"
+ TextValue:"LOG"
  CarriageControl:;
  Variable:X -> _
  CarriageControl:;
- TextConstant:" = "
+ TextValue:" = "
  CarriageControl:;
  Variable:J -> _
  CarriageControl:NL
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 110 INPUT L
  Variable:L -> _
 120 IF L =1 THEN 140
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:140
 130 STOP

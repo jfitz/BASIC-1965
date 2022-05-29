@@ -17,9 +17,9 @@
  Variable:Y0 -> _
  Variable:H -> _
 110 PRINT " X", " Y"
- TextConstant:" X"
+ TextValue:" X"
  CarriageControl:,
- TextConstant:" Y"
+ TextValue:" Y"
  CarriageControl:NL
 120 PRINT
  CarriageControl:NL
@@ -54,7 +54,7 @@
  Variable:D1 -> _
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -62,7 +62,7 @@
  Variable:D2 -> _
  Variable:X -> _
  Variable:H -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  Variable:Y -> _
@@ -87,11 +87,11 @@
  Variable:X -> _
 240
 900 DATA 0, 1, 1
- NumericConstant:0
- NumericConstant:1
- NumericConstant:1
+ NumericValue:0
+ NumericValue:1
+ NumericValue:1
 910 DATA 0.1
- NumericConstant:0.1
+ NumericValue:0.1
 999 END
  
 

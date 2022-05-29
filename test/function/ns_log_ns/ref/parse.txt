@@ -1,15 +1,15 @@
 10 REM TEST LOG() FUNCTION
  Remark:TEST LOG() FUNCTION
 20 PRINT "I","LOG(I)"
- TextConstant:"I"
+ TextValue:"I"
  CarriageControl:,
- TextConstant:"LOG(I)"
+ TextValue:"LOG(I)"
  CarriageControl:NL
 30 FOR I = 0.5 TO 10.5 STEP 0.1
  control: Variable:I -> _
- start:   ["NumericConstant:0.5"]
- end:     ["NumericConstant:10.5"]
- step:    ["NumericConstant:0.1"]
+ start:   ["NumericValue:0.5"]
+ end:     ["NumericValue:10.5"]
+ step:    ["NumericValue:0.1"]
 40 PRINT I, LOG(I)
  Variable:I -> _
  CarriageControl:,

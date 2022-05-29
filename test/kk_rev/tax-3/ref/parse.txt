@@ -1,5 +1,5 @@
 10 DIM D(20)
- NumericConstant:20
+ NumericValue:20
  Declaration:D() -> _()
 20 READ A,Y,T,R
  Variable:A -> _
@@ -7,23 +7,23 @@
  Variable:T -> _
  Variable:R -> _
 30 PRINT "YEAR", "DEPRECIATE"
- TextConstant:"YEAR"
+ TextValue:"YEAR"
  CarriageControl:,
- TextConstant:"DEPRECIATE"
+ TextValue:"DEPRECIATE"
  CarriageControl:NL
 40 LET Y9 = Y*(Y+1)/2
  Variable:Y9 -> _
  Variable:Y -> _
  Variable:Y -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 100 FOR I = 1 TO Y
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:Y -> _"]
 110    LET D(I) = A*(Y-I+1)/Y9
  Variable:I -> _
@@ -32,7 +32,7 @@
  Variable:Y -> _
  Variable:I -> _
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:Y9 -> _
@@ -50,11 +50,11 @@
  CarriageControl:NL
 200 LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 210 FOR I = 1 TO Y
  control: Variable:I -> _
- start:   ["NumericConstant:1"]
+ start:   ["NumericValue:1"]
  end:     ["Variable:Y -> _"]
 220    LET S = S + D(I)*(T/100)*(1+R/100)^(Y-1)
  Variable:S -> _
@@ -62,16 +62,16 @@
  Variable:I -> _
  Variable:D(_) -> _
  Variable:T -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  Variable:R -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  Variable:Y -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
@@ -80,15 +80,15 @@
 230 NEXT I
  Variable:I -> _
 240 PRINT "SAVING = $" S
- TextConstant:"SAVING = $"
+ TextValue:"SAVING = $"
  CarriageControl:
  Variable:S -> _
  CarriageControl:NL
 900 DATA 5000,7,48,4.5
- NumericConstant:5000
- NumericConstant:7
- NumericConstant:48
- NumericConstant:4.5
+ NumericValue:5000
+ NumericValue:7
+ NumericValue:48
+ NumericValue:4.5
 999 END
  
 

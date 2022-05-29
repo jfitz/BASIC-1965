@@ -2,16 +2,16 @@
  Remark:TEST INFINITE LOOP CHECK
 14 LET B = 1
  Variable:B -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 15 LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 20 FOR I = B TO 10 STEP S
  control: Variable:I -> _
  start:   ["Variable:B -> _"]
- end:     ["NumericConstant:10"]
+ end:     ["NumericValue:10"]
  step:    ["Variable:S -> _"]
 30 PRINT I
  Variable:I -> _

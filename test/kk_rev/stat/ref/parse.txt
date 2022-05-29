@@ -1,27 +1,27 @@
 100 LET N = 0
  Variable:N -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 110 LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 120 LET S2 = 0
  Variable:S2 -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 130
 140 READ X
  Variable:X -> _
 150 IF X = 999999 THEN 210
  Variable:X -> _
- NumericConstant:999999
+ NumericValue:999999
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:210
 160 LET N = N + 1
  Variable:N -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 170 LET S = S + X
@@ -59,7 +59,7 @@
  Variable:N -> _
  BinaryOperatorDivide:/(_,_) -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -70,7 +70,7 @@
  AssignmentOperator:= _ -> _
 240 LET P = .6745*D
  Variable:P -> _
- NumericConstant:.6745
+ NumericValue:.6745
  Variable:D -> _
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
@@ -89,15 +89,15 @@
  AssignmentOperator:= _ -> _
 270
 280 PRINT "NUMBER", "SUM", "SUM-SQUARES", "MEAN", "VARIANCE"
- TextConstant:"NUMBER"
+ TextValue:"NUMBER"
  CarriageControl:,
- TextConstant:"SUM"
+ TextValue:"SUM"
  CarriageControl:,
- TextConstant:"SUM-SQUARES"
+ TextValue:"SUM-SQUARES"
  CarriageControl:,
- TextConstant:"MEAN"
+ TextValue:"MEAN"
  CarriageControl:,
- TextConstant:"VARIANCE"
+ TextValue:"VARIANCE"
  CarriageControl:NL
 290 PRINT N, S, S2, M, V
  Variable:N -> _
@@ -113,13 +113,13 @@
 300 PRINT
  CarriageControl:NL
 310 PRINT "STD. DEV.", "PROB. ERR.", "STD.ERR. MN.", "COEFF. VAR."
- TextConstant:"STD. DEV."
+ TextValue:"STD. DEV."
  CarriageControl:,
- TextConstant:"PROB. ERR."
+ TextValue:"PROB. ERR."
  CarriageControl:,
- TextConstant:"STD.ERR. MN."
+ TextValue:"STD.ERR. MN."
  CarriageControl:,
- TextConstant:"COEFF. VAR."
+ TextValue:"COEFF. VAR."
  CarriageControl:NL
 320 PRINT D, P, E, C
  Variable:D -> _
@@ -137,46 +137,46 @@
 350
 360 LET N = 0
  Variable:N -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 370 LET S = 0
  Variable:S -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 380 LET S2 = 0
  Variable:S2 -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 390 READ X
  Variable:X -> _
 400 IF X <> 999999 THEN 160
  Variable:X -> _
- NumericConstant:999999
+ NumericValue:999999
  BinaryOperatorNotEqual:<>(_,_) -> ?
  LineNumber:160
 410
 900 DATA 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 999999
- NumericConstant:1
- NumericConstant:2
- NumericConstant:3
- NumericConstant:4
- NumericConstant:5
- NumericConstant:6
- NumericConstant:7
- NumericConstant:8
- NumericConstant:9
- NumericConstant:10
- NumericConstant:999999
+ NumericValue:1
+ NumericValue:2
+ NumericValue:3
+ NumericValue:4
+ NumericValue:5
+ NumericValue:6
+ NumericValue:7
+ NumericValue:8
+ NumericValue:9
+ NumericValue:10
+ NumericValue:999999
 910 DATA 4, 3, 9, 15, 21, 6, 999999
- NumericConstant:4
- NumericConstant:3
- NumericConstant:9
- NumericConstant:15
- NumericConstant:21
- NumericConstant:6
- NumericConstant:999999
+ NumericValue:4
+ NumericValue:3
+ NumericValue:9
+ NumericValue:15
+ NumericValue:21
+ NumericValue:6
+ NumericValue:999999
 998 DATA 999999
- NumericConstant:999999
+ NumericValue:999999
 999 END
  
 

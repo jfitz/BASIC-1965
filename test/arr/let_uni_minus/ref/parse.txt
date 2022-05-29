@@ -1,12 +1,12 @@
 10 REM ARRAY ASSIGNMENT
  Remark:ARRAY ASSIGNMENT
 20 DIM A(5)
- NumericConstant:5
+ NumericValue:5
  Declaration:A() -> _()
 30 FOR I = 0 TO 5
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:5"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:5"]
 50 LET A(I) = I
  Variable:I -> _
  Variable:A(_) -> _

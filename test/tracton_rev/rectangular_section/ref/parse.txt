@@ -3,12 +3,12 @@
 20 REM CONNECTED WITH A RECTANGULAR SECTION
  Remark:CONNECTED WITH A RECTANGULAR SECTION
 30 PRINT "BASE = ";
- TextConstant:"BASE = "
+ TextValue:"BASE = "
  CarriageControl:;
 40 INPUT B
  Variable:B -> _
 50 PRINT "HEIGHT = ";
- TextConstant:"HEIGHT = "
+ TextValue:"HEIGHT = "
  CarriageControl:;
 60 INPUT H
  Variable:H -> _
@@ -16,10 +16,10 @@
  Variable:I -> _
  Variable:B -> _
  Variable:H -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:12
+ NumericValue:12
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 80 LET J = (B*H*(B^2 + H^2))/12
@@ -28,14 +28,14 @@
  Variable:H -> _
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:B -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  Variable:H -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPower:^(_,_) -> _
  BinaryOperatorPlus:+(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:12
+ NumericValue:12
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 90 LET A = B*H
@@ -45,30 +45,30 @@
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 100 PRINT "MOMENT OF INERTIA = ";I
- TextConstant:"MOMENT OF INERTIA = "
+ TextValue:"MOMENT OF INERTIA = "
  CarriageControl:;
  Variable:I -> _
  CarriageControl:NL
 110 PRINT "POLAR MOMENT OF INERTIA = ";J
- TextConstant:"POLAR MOMENT OF INERTIA = "
+ TextValue:"POLAR MOMENT OF INERTIA = "
  CarriageControl:;
  Variable:J -> _
  CarriageControl:NL
 120 PRINT "AREA OF SECTION = ";A
- TextConstant:"AREA OF SECTION = "
+ TextValue:"AREA OF SECTION = "
  CarriageControl:;
  Variable:A -> _
  CarriageControl:NL
 130 PRINT
  CarriageControl:NL
 140 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
- TextConstant:"TYPE 1 TO CONTINUE, 0 TO STOP"
+ TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
  Variable:L -> _
 160 IF L = 1 THEN 180
  Variable:L -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:180
 170 STOP

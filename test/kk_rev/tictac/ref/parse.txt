@@ -17,11 +17,11 @@
  UserFunctionName:FNM -> _
  VariableName:X -> _
  Variable:X -> _
- NumericConstant:8
+ NumericValue:8
  Variable:X -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
- NumericConstant:8
+ NumericValue:8
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
@@ -36,7 +36,7 @@
  CarriageControl:NL
 230 LET A = 9
  Variable:A -> _
- NumericConstant:9
+ NumericValue:9
  AssignmentOperator:= =_ -> _
 240 LET M = A
  Variable:M -> _
@@ -51,7 +51,7 @@
 270 LET B = FNM(P+1)
  Variable:B -> _
  Variable:P -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  AssignmentOperator:= _ -> _
@@ -68,7 +68,7 @@
 310 IF Q = FNM(B+4) THEN 360
  Variable:Q -> _
  Variable:B -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  BinaryOperatorEqual:=(_,_) -> ?
@@ -76,7 +76,7 @@
 320    LET C = FNM(B+4)
  Variable:C -> _
  Variable:B -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  AssignmentOperator:= _ -> _
@@ -91,7 +91,7 @@
 360 LET C = FNM(B+2)
  Variable:C -> _
  Variable:B -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  AssignmentOperator:= _ -> _
@@ -108,7 +108,7 @@
 400 IF R = FNM(C+4) THEN 450
  Variable:R -> _
  Variable:C -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  BinaryOperatorEqual:=(_,_) -> ?
@@ -116,7 +116,7 @@
 410    LET D = FNM(C+4)
  Variable:D -> _
  Variable:C -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  AssignmentOperator:= _ -> _
@@ -130,10 +130,10 @@
  LineNumber:730
 450 IF P/2 <> INT(P/2) THEN 500
  Variable:P -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  Variable:P -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  FunctionInt:INT(_) -> _
  BinaryOperatorNotEqual:<>(_,_) -> ?
@@ -141,7 +141,7 @@
 460    LET D = FNM(C+7)
  Variable:D -> _
  Variable:C -> _
- NumericConstant:7
+ NumericValue:7
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  AssignmentOperator:= _ -> _
@@ -156,7 +156,7 @@
 500 LET D = FNM(C+3)
  Variable:D -> _
  Variable:C -> _
- NumericConstant:3
+ NumericValue:3
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  AssignmentOperator:= _ -> _
@@ -173,7 +173,7 @@
 540 IF S = FNM(D+4) THEN 590
  Variable:S -> _
  Variable:D -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  BinaryOperatorEqual:=(_,_) -> ?
@@ -181,7 +181,7 @@
 550    LET E = FNM(D+4)
  Variable:E -> _
  Variable:D -> _
- NumericConstant:4
+ NumericValue:4
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  AssignmentOperator:= _ -> _
@@ -196,7 +196,7 @@
 590 LET E = FNM(D+6)
  Variable:E -> _
  Variable:D -> _
- NumericConstant:6
+ NumericValue:6
  BinaryOperatorPlus:+(_,_) -> _
  UserFunction:FNM(_) -> _
  AssignmentOperator:= _ -> _
@@ -207,7 +207,7 @@
 610 GOSUB 700
  LineNumber:700
 620 PRINT "THE GAME IS DRAWN."
- TextConstant:"THE GAME IS DRAWN."
+ TextValue:"THE GAME IS DRAWN."
  CarriageControl:NL
 630 GO TO 210
  LineNumber:210
@@ -215,7 +215,7 @@
 650 GOSUB 700
  LineNumber:700
 660 PRINT "YOUR MOVE";
- TextConstant:"YOUR MOVE"
+ TextValue:"YOUR MOVE"
  CarriageControl:;
 670 INPUT M
  Variable:M -> _
@@ -223,7 +223,7 @@
  
 690
 700 PRINT "COMPUTER MOVES"; M
- TextConstant:"COMPUTER MOVES"
+ TextValue:"COMPUTER MOVES"
  CarriageControl:;
  Variable:M -> _
  CarriageControl:NL
@@ -231,7 +231,7 @@
  
 720
 730 PRINT "AND WINS ********"
- TextConstant:"AND WINS ********"
+ TextValue:"AND WINS ********"
  CarriageControl:NL
 740 GO TO 210
  LineNumber:210

@@ -10,11 +10,11 @@
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM";A;"TO";B
- TextConstant:"COMPUTING WONDEROUS NUMBERS FROM"
+ TextValue:"COMPUTING WONDEROUS NUMBERS FROM"
  CarriageControl:;
  Variable:A -> _
  CarriageControl:;
- TextConstant:"TO"
+ TextValue:"TO"
  CarriageControl:;
  Variable:B -> _
  CarriageControl:NL
@@ -39,26 +39,26 @@
 410 PRINT N0;":";
  Variable:N0 -> _
  CarriageControl:;
- TextConstant:":"
+ TextValue:":"
  CarriageControl:;
 420 IF N0 = 1 THEN 490
  Variable:N0 -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:490
 430 IF MOD(N0,2) = 0 THEN 460
  Variable:N0 -> _
- NumericConstant:2
+ NumericValue:2
  FunctionMod:MOD(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:460
 440 LET N0 = 3*N0 + 1
  Variable:N0 -> _
- NumericConstant:3
+ NumericValue:3
  Variable:N0 -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 450 GOTO 470
@@ -66,7 +66,7 @@
 460 LET N0 = N0/2
  Variable:N0 -> _
  Variable:N0 -> _
- NumericConstant:2
+ NumericValue:2
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 470 PRINT N0;
@@ -79,8 +79,8 @@
 500 RETURN
  
 900 DATA 1, 998
- NumericConstant:1
- NumericConstant:998
+ NumericValue:1
+ NumericValue:998
 999 END
  
 

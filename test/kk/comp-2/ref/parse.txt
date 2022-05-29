@@ -1,7 +1,7 @@
 5  PRINT
  CarriageControl:NL
 10 PRINT "A, B, P, R, Y, T";
- TextConstant:"A, B, P, R, Y, T"
+ TextValue:"A, B, P, R, Y, T"
  CarriageControl:;
 20 INPUT A, B, P, R, Y, T
  Variable:A -> _
@@ -12,57 +12,57 @@
  Variable:T -> _
 21 IF A < 0 THEN 800
  Variable:A -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:800
 22 IF B < 0 THEN 800
  Variable:B -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:800
 23 IF R <= 0 THEN 800
  Variable:R -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:800
 24 IF Y <= 0 THEN 800
  Variable:Y -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:800
 25 IF T <= 0 THEN 800
  Variable:T -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:800
 26 IF T = 999 THEN 9999
  Variable:T -> _
- NumericConstant:999
+ NumericValue:999
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:9999
 30 IF A = 999 THEN 100
  Variable:A -> _
- NumericConstant:999
+ NumericValue:999
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:100
 40 IF B = 999 THEN 200
  Variable:B -> _
- NumericConstant:999
+ NumericValue:999
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:200
 50 IF P = 999 THEN 300
  Variable:P -> _
- NumericConstant:999
+ NumericValue:999
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:300
 60 IF Y = 999 THEN 400
  Variable:Y -> _
- NumericConstant:999
+ NumericValue:999
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:400
 70 IF R = 999 THEN 500
  Variable:R -> _
- NumericConstant:999
+ NumericValue:999
  BinaryOperatorEqual:=(_,_) -> ?
  LineNumber:500
 80
@@ -82,11 +82,11 @@
  AssignmentOperator:= _ -> _
 125 IF A < 0 THEN 850
  Variable:A -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:850
 130 PRINT "ORIGINAL AMOUNT = $" A
- TextConstant:"ORIGINAL AMOUNT = $"
+ TextValue:"ORIGINAL AMOUNT = $"
  CarriageControl:
  Variable:A -> _
  CarriageControl:NL
@@ -109,11 +109,11 @@
  AssignmentOperator:= _ -> _
 225 IF B < 0 THEN 850
  Variable:B -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLess:<(_,_) -> ?
  LineNumber:850
 230 PRINT "FINAL AMOUNT = $" B
- TextConstant:"FINAL AMOUNT = $"
+ TextValue:"FINAL AMOUNT = $"
  CarriageControl:
  Variable:B -> _
  CarriageControl:NL
@@ -134,12 +134,12 @@
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorMultiply:*(_,_) -> _
  Variable:R2 -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorMinus:-(_,_) -> _
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 330 PRINT "PAYMENT = $" P
- TextConstant:"PAYMENT = $"
+ TextValue:"PAYMENT = $"
  CarriageControl:
  Variable:P -> _
  CarriageControl:NL
@@ -162,14 +162,14 @@
  AssignmentOperator:= _ -> _
 416 IF Q <= 1 THEN 850
  Variable:Q -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:850
 420 LET Y = LOG(Q)/LOG(1+R1)/T
  Variable:Y -> _
  Variable:Q -> _
  FunctionLog:LOG(_) -> _
- NumericConstant:1
+ NumericValue:1
  Variable:R1 -> _
  BinaryOperatorPlus:+(_,_) -> _
  FunctionLog:LOG(_) -> _
@@ -178,7 +178,7 @@
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 430 PRINT "NUMBER OF YEARS = " Y
- TextConstant:"NUMBER OF YEARS = "
+ TextValue:"NUMBER OF YEARS = "
  CarriageControl:
  Variable:Y -> _
  CarriageControl:NL
@@ -202,9 +202,9 @@
 510 FOR R = 0.1 TO 100 STEP 0.1
  WARNING: FORNEXT length exceeds limit 40
  control: Variable:R -> _
- start:   ["NumericConstant:0.1"]
- end:     ["NumericConstant:100"]
- step:    ["NumericConstant:0.1"]
+ start:   ["NumericValue:0.1"]
+ end:     ["NumericValue:100"]
+ step:    ["NumericValue:0.1"]
 520    GOSUB 1000
  LineNumber:1000
 530    LET S1 = B - ((A+P1)*R2 - P1)
@@ -223,7 +223,7 @@
  Variable:S -> _
  Variable:S1 -> _
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:550
 536    LET S = S1
@@ -233,22 +233,22 @@
 540 NEXT R
  Variable:R -> _
 545 PRINT "NO ANSWER FOUND"
- TextConstant:"NO ANSWER FOUND"
+ TextValue:"NO ANSWER FOUND"
  CarriageControl:NL
 546 GOTO 5
  LineNumber:5
 550 PRINT "ANNUAL INTEREST IS BETWEEN " R-0.1; "AND " R; "PERCENT"
- TextConstant:"ANNUAL INTEREST IS BETWEEN "
+ TextValue:"ANNUAL INTEREST IS BETWEEN "
  CarriageControl:
  Variable:R -> _
- NumericConstant:0.1
+ NumericValue:0.1
  BinaryOperatorMinus:-(_,_) -> _
  CarriageControl:;
- TextConstant:"AND "
+ TextValue:"AND "
  CarriageControl:
  Variable:R -> _
  CarriageControl:;
- TextConstant:"PERCENT"
+ TextValue:"PERCENT"
  CarriageControl:NL
 560 GOTO 5
  LineNumber:5
@@ -256,12 +256,12 @@
 800 REM ERROR ROUTINE
  Remark:ERROR ROUTINE
 810 PRINT "INCORRECT DATA. PLEASE RETYPE."
- TextConstant:"INCORRECT DATA. PLEASE RETYPE."
+ TextValue:"INCORRECT DATA. PLEASE RETYPE."
  CarriageControl:NL
 820 GOTO 5
  LineNumber:5
 850 PRINT "ANSWER IS NEGATIVE."
- TextConstant:"ANSWER IS NEGATIVE."
+ TextValue:"ANSWER IS NEGATIVE."
  CarriageControl:NL
 860 GOTO 5
  LineNumber:5
@@ -277,7 +277,7 @@
 1020 LET R1 = R/100/T
  Variable:R1 -> _
  Variable:R -> _
- NumericConstant:100
+ NumericValue:100
  BinaryOperatorDivide:/(_,_) -> _
  Variable:T -> _
  BinaryOperatorDivide:/(_,_) -> _
@@ -290,7 +290,7 @@
  AssignmentOperator:= _ -> _
 1040 LET R2 = (1+R1)^N
  Variable:R2 -> _
- NumericConstant:1
+ NumericValue:1
  Variable:R1 -> _
  BinaryOperatorPlus:+(_,_) -> _
  Variable:N -> _

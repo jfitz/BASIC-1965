@@ -1,14 +1,14 @@
 10 REM ARRAY ASSIGNMENT
  Remark:ARRAY ASSIGNMENT
 20 DIM A(5),B(5)
- NumericConstant:5
+ NumericValue:5
  Declaration:A() -> _()
- NumericConstant:5
+ NumericValue:5
  Declaration:B() -> _()
 30 FOR I = 0 TO 5
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:5"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:5"]
 50 LET A(I) = I
  Variable:I -> _
  Variable:A(_) -> _
@@ -28,7 +28,7 @@
  BinaryOperatorPower:^(_(),_()) -> _()
  AssignmentOperator:= _() -> _()
 110 PRINT "ARRAY A"
- TextConstant:"ARRAY A"
+ TextValue:"ARRAY A"
  CarriageControl:NL
 120 ARR PRINT A;
  Variable:A() -> _()
@@ -36,7 +36,7 @@
 122 PRINT
  CarriageControl:NL
 130 PRINT "ARRAY B"
- TextConstant:"ARRAY B"
+ TextValue:"ARRAY B"
  CarriageControl:NL
 140 ARR PRINT B;
  Variable:B() -> _()
@@ -44,7 +44,7 @@
 142 PRINT
  CarriageControl:NL
 150 PRINT "ARRAY C"
- TextConstant:"ARRAY C"
+ TextValue:"ARRAY C"
  CarriageControl:NL
 160 ARR PRINT C;
  Variable:C() -> _()

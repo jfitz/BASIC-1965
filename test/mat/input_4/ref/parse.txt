@@ -1,13 +1,13 @@
 10 REM MATRIX ASSIGNMENT
  Remark:MATRIX ASSIGNMENT
 20 DIM A(6,2)
- NumericConstant:6
- NumericConstant:2
+ NumericValue:6
+ NumericValue:2
  Declaration:A(,) -> _(,)
 100 MAT INPUT A
  Variable:A() -> _()
 150 PRINT "MATRIX A"
- TextConstant:"MATRIX A"
+ TextValue:"MATRIX A"
  CarriageControl:NL
 160 MAT PRINT A
  Variable:A(,) -> _(,)

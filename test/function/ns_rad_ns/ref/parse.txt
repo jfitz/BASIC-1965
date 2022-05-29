@@ -2,18 +2,18 @@
  Remark:TEST DEG() FUNCTION
 20 LET P = 3.1415629
  Variable:P -> _
- NumericConstant:3.1415629
+ NumericValue:3.1415629
  AssignmentOperator:= =_ -> _
 30 PRINT "DEGREES","RADIANS"
- TextConstant:"DEGREES"
+ TextValue:"DEGREES"
  CarriageControl:,
- TextConstant:"RADIANS"
+ TextValue:"RADIANS"
  CarriageControl:NL
 40 FOR I = 0 TO 360 STEP 15
  control: Variable:I -> _
- start:   ["NumericConstant:0"]
- end:     ["NumericConstant:360"]
- step:    ["NumericConstant:15"]
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:360"]
+ step:    ["NumericValue:15"]
 50 LET R = RAD(I)
  Variable:R -> _
  Variable:I -> _

@@ -2,11 +2,11 @@
  Remark:Test different values
 20 LET A0 = 10{M}
  Variable:A0 -> _
- NumericConstant:10{M}
+ NumericValue:10{M}
  AssignmentOperator:= =_ -> _
 21 LET A1 = 20
  Variable:A1 -> _
- NumericConstant:20
+ NumericValue:20
  AssignmentOperator:= =_ -> _
 22 LET A2 = A0 * A1
  Variable:A2 -> _
@@ -15,7 +15,7 @@
  BinaryOperatorMultiply:*(_,_) -> _
  AssignmentOperator:= _ -> _
 23 PRINT "A2="; A2
- TextConstant:"A2="
+ TextValue:"A2="
  CarriageControl:;
  Variable:A2 -> _
  CarriageControl:NL

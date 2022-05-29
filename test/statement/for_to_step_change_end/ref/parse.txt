@@ -2,15 +2,15 @@
  Remark:TEST FOR/NEXT STATEMENTS
 20 LET B = 1
  Variable:B -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 30 LET E = 5
  Variable:E -> _
- NumericConstant:5
+ NumericValue:5
  AssignmentOperator:= =_ -> _
 40 LET S = 1
  Variable:S -> _
- NumericConstant:1
+ NumericValue:1
  AssignmentOperator:= =_ -> _
 50 FOR I = B TO E STEP S
  control: Variable:I -> _
@@ -23,7 +23,7 @@
 70 LET E = E + 1
  Variable:E -> _
  Variable:E -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 80 NEXT I

@@ -1,25 +1,25 @@
 10 MAT LET A = RND2(15,20)
  Variable:A(,) -> _(,)
- NumericConstant:15
- NumericConstant:20
+ NumericValue:15
+ NumericValue:20
  FunctionRnd2:RND2(_,_) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 20 MAT LET A1 = A - 0.5
  Variable:A1(,) -> _(,)
  Variable:A(,) -> _(,)
- NumericConstant:0.5
+ NumericValue:0.5
  BinaryOperatorMinus:-(_(,),_) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 30 MAT LET A2 = A - 0.9
  Variable:A2(,) -> _(,)
  Variable:A(,) -> _(,)
- NumericConstant:0.9
+ NumericValue:0.9
  BinaryOperatorMinus:-(_(,),_) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 40 MAT LET A3 = A - 20
  Variable:A3(,) -> _(,)
  Variable:A(,) -> _(,)
- NumericConstant:20
+ NumericValue:20
  BinaryOperatorMinus:-(_(,),_) -> _(,)
  AssignmentOperator:= _(,) -> _(,)
 90 MAT PLOT A,A1,A2,A3

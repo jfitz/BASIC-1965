@@ -1,9 +1,9 @@
 10 PRINT " A", " B", "G.C.D."
- TextConstant:" A"
+ TextValue:" A"
  CarriageControl:,
- TextConstant:" B"
+ TextValue:" B"
  CarriageControl:,
- TextConstant:"G.C.D."
+ TextValue:"G.C.D."
  CarriageControl:NL
 20 READ A,B
  Variable:A -> _
@@ -38,7 +38,7 @@
  AssignmentOperator:= _ -> _
 60 IF R > 0 THEN 40
  Variable:R -> _
- NumericConstant:0
+ NumericValue:0
  BinaryOperatorGreater:>(_,_) -> ?
  LineNumber:40
 70 PRINT A
@@ -47,12 +47,12 @@
 80 GOTO 20
  LineNumber:20
 90 DATA 130,169, 243,256, 123456789,987654321
- NumericConstant:130
- NumericConstant:169
- NumericConstant:243
- NumericConstant:256
- NumericConstant:123456789
- NumericConstant:987654321
+ NumericValue:130
+ NumericValue:169
+ NumericValue:243
+ NumericValue:256
+ NumericValue:123456789
+ NumericValue:987654321
 99 END
  
 

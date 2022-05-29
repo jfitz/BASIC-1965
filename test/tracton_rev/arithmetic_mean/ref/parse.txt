@@ -4,21 +4,21 @@
  Remark:MEAN
 30 LET X = 0
  Variable:X -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 40 LET N = 0
  Variable:N -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 50 PRINT "ENTER SAMPLE";
- TextConstant:"ENTER SAMPLE"
+ TextValue:"ENTER SAMPLE"
  CarriageControl:;
 60 INPUT W
  Variable:W -> _
 70 LET N = N + 1
  Variable:N -> _
  Variable:N -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 80 LET X = X + W
@@ -34,15 +34,15 @@
  BinaryOperatorDivide:/(_,_) -> _
  AssignmentOperator:= _ -> _
 100 PRINT "N = "; N, "SAMPLE ="; W,"CURRENT MEAN = ";A
- TextConstant:"N = "
+ TextValue:"N = "
  CarriageControl:;
  Variable:N -> _
  CarriageControl:,
- TextConstant:"SAMPLE ="
+ TextValue:"SAMPLE ="
  CarriageControl:;
  Variable:W -> _
  CarriageControl:,
- TextConstant:"CURRENT MEAN = "
+ TextValue:"CURRENT MEAN = "
  CarriageControl:;
  Variable:A -> _
  CarriageControl:NL

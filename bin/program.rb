@@ -5,7 +5,7 @@ class LineNumber
   attr_reader :line_number
 
   def initialize(line_number)
-    legals = %(IntegerConstant NilClass)
+    legals = %(IntegerValue NilClass)
 
     unless legals.include?(line_number.class.to_s)
       raise BASICSyntaxError,
@@ -546,7 +546,7 @@ class LineListSpec
   private
 
   def make_single(token, program_line_numbers)
-    number = IntegerConstant.new(token)
+    number = IntegerValue.new(token)
     line_number = LineNumber.new(number)
 
     @line_numbers << line_number if
@@ -556,9 +556,9 @@ class LineListSpec
   end
 
   def make_range(tokens, program_line_numbers)
-    start_number = IntegerConstant.new(tokens[0])
+    start_number = IntegerValue.new(tokens[0])
     start = LineNumber.new(start_number)
-    end_number = IntegerConstant.new(tokens[2])
+    end_number = IntegerValue.new(tokens[2])
     endline = LineNumber.new(end_number)
     range = LineNumberRange.new(start, endline, program_line_numbers)
     @line_numbers = range.list
@@ -566,10 +566,10 @@ class LineListSpec
   end
 
   def make_count_range(tokens, program_line_numbers)
-    start_number = IntegerConstant.new(tokens[0])
+    start_number = IntegerValue.new(tokens[0])
     start = LineNumber.new(start_number)
     count = 20
-    count = NumericConstant.new(tokens[2]).to_i if tokens.size > 2
+    count = NumericValue.new(tokens[2]).to_i if tokens.size > 2
     range = LineNumberCountRange.new(start, count, program_line_numbers)
     @line_numbers = range.list
     @range_type = :range
@@ -1999,7 +1999,7 @@ class Program
 
     @lines.keys.sort.each do |line_number|
       token = NumericLiteralToken.new(new_number.to_s)
-      number = IntegerConstant.new(token)
+      number = IntegerValue.new(token)
       new_line_number = LineNumber.new(number)
       renumber_map[line_number] = new_line_number
       new_number += step

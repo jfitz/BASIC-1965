@@ -1,22 +1,22 @@
 10 REM Convert Celcius to Fahrenheit
  Remark:Convert Celcius to Fahrenheit
 20 PRINT "Celcius", "Fahrenheit"
- TextConstant:"Celcius"
+ TextValue:"Celcius"
  CarriageControl:,
- TextConstant:"Fahrenheit"
+ TextValue:"Fahrenheit"
  CarriageControl:NL
 30 LET C=0
  Variable:C -> _
- NumericConstant:0
+ NumericValue:0
  AssignmentOperator:= =_ -> _
 40 LET F=C*9/5+32
  Variable:F -> _
  Variable:C -> _
- NumericConstant:9
+ NumericValue:9
  BinaryOperatorMultiply:*(_,_) -> _
- NumericConstant:5
+ NumericValue:5
  BinaryOperatorDivide:/(_,_) -> _
- NumericConstant:32
+ NumericValue:32
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 50 PRINT C,F
@@ -27,12 +27,12 @@
 60 LET C=C+1
  Variable:C -> _
  Variable:C -> _
- NumericConstant:1
+ NumericValue:1
  BinaryOperatorPlus:+(_,_) -> _
  AssignmentOperator:= _ -> _
 70 IF C<=10 THEN 40
  Variable:C -> _
- NumericConstant:10
+ NumericValue:10
  BinaryOperatorLessEqual:<=(_,_) -> ?
  LineNumber:40
 900 STOP

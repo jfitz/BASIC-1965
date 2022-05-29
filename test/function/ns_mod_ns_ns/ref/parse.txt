@@ -1,19 +1,19 @@
 10 REM This is a test
  Remark:This is a test
 15 PRINT "NUMBERS","QUOTIENT","MODULUS"
- TextConstant:"NUMBERS"
+ TextValue:"NUMBERS"
  CarriageControl:,
- TextConstant:"QUOTIENT"
+ TextValue:"QUOTIENT"
  CarriageControl:,
- TextConstant:"MODULUS"
+ TextValue:"MODULUS"
  CarriageControl:NL
 20 LET A=12
  Variable:A -> _
- NumericConstant:12
+ NumericValue:12
  AssignmentOperator:= =_ -> _
 21 LET B=7
  Variable:B -> _
- NumericConstant:7
+ NumericValue:7
  AssignmentOperator:= =_ -> _
 22 LET Q=A/B
  Variable:Q -> _
@@ -38,12 +38,12 @@
  CarriageControl:NL
 30 LET A=-12
  Variable:A -> _
- NumericConstant:12
+ NumericValue:12
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 31 LET B=7
  Variable:B -> _
- NumericConstant:7
+ NumericValue:7
  AssignmentOperator:= =_ -> _
 32 LET Q=A/B
  Variable:Q -> _
@@ -68,11 +68,11 @@
  CarriageControl:NL
 40 LET A=12
  Variable:A -> _
- NumericConstant:12
+ NumericValue:12
  AssignmentOperator:= =_ -> _
 41 LET B=-7
  Variable:B -> _
- NumericConstant:7
+ NumericValue:7
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 42 LET Q=A/B
@@ -98,12 +98,12 @@
  CarriageControl:NL
 50 LET A=-12
  Variable:A -> _
- NumericConstant:12
+ NumericValue:12
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 51 LET B=-7
  Variable:B -> _
- NumericConstant:7
+ NumericValue:7
  UnaryOperatorMinus:-(_) -> =_
  AssignmentOperator:= =_ -> _
 52 LET Q=A/B
