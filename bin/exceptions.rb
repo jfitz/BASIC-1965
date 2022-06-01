@@ -88,7 +88,8 @@ $error_codes = {
   te_option_no_run: 230,
   te_units_no_match: 240,
   te_power_not_int: 241,
-  te_power_not_pure: 242
+  te_power_not_pure: 242,
+  te_power_not_even: 243
 }
 
 $error_messages = {
@@ -145,5 +146,6 @@ $error_messages = {
   te_option_no_run: 'Cannot set option',
   te_units_no_match: 'Units do not match',
   te_power_not_int: 'Unit power must be integer',
-  te_power_not_pure: 'Power must be pure number'
+  te_power_not_pure: 'Power must be pure number',
+  te_power_not_even: 'Power must be even'
 }

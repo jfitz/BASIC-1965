@@ -1,0 +1,33 @@
+10 REM Test different values
+ Remark:Test different values
+20 LET A0 = 17{M2}
+ Variable:A0 -> _
+ NumericValue:17{M2}
+ AssignmentOperator:= =_ -> _
+21 LET A1 = SQR(A0)
+ Variable:A1 -> _
+ Variable:A0 -> _
+ FunctionSqr:SQR(_) -> _
+ AssignmentOperator:= _ -> _
+23 PRINT "A1="; A1
+ TextValue:"A1="
+ CarriageControl:;
+ Variable:A1 -> _
+ CarriageControl:NL
+30 LET B0 = 3.4{M1}
+ Variable:B0 -> _
+ NumericValue:3.4{M1}
+ AssignmentOperator:= =_ -> _
+31 LET B1 = SQR(B0)
+ Variable:B1 -> _
+ Variable:B0 -> _
+ FunctionSqr:SQR(_) -> _
+ AssignmentOperator:= _ -> _
+33 PRINT "B1="; B1
+ TextValue:"B1="
+ CarriageControl:;
+ Variable:B1 -> _
+ CarriageControl:NL
+99 END
+ 
+

@@ -1,0 +1,9 @@
+10 REM Test different values
+20 LET A0 = 17{M2}
+21 LET A1 = SQR(A0)
+23 PRINT "A1="; A1
+30 LET B0 = 3.4{M1}
+31 LET B1 = SQR(B0)
+33 PRINT "B1="; B1
+99 END
+

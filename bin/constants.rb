@@ -396,6 +396,14 @@ class Units
     @values.empty?
   end
 
+  def even?
+    even = true
+
+    @values.each { |name, power| even &&= power.even? }
+    
+    even
+  end
+    
   def to_s
     units_t = ''
 
@@ -480,6 +488,16 @@ class Units
 
     @values.each do |name, pow|
       new_values[name] = pow * p_i
+    end
+
+    Units.new(new_values, nil)
+  end
+
+  def sqrt
+    new_values = {}
+
+    @values.each do |name, pow|
+      new_values[name] = pow / 2
     end
 
     Units.new(new_values, nil)
@@ -941,8 +959,13 @@ class NumericValue < AbstractValue
   end
 
   def sqrt
+    raise BASICRuntimeError, :te_power_not_even unless
+      @units.even?
+
     value = @value.positive? ? Math.sqrt(@value) : 0
-    NumericValue.new(value)
+    units = @units.sqrt
+
+    NumericValue.new_2(value, units)
   end
 
   def sin
@@ -1298,8 +1321,13 @@ class IntegerValue < AbstractValue
   end
 
   def sqrt
+    raise BASICRuntimeError, :te_power_not_even unless
+      @units.even?
+
     value = @value.positive? ? Math.sqrt(@value) : 0
-    IntegerValue.new(value)
+    units = @units.sqrt
+
+    IntegerValue.new_2(value, units)
   end
 
   def sin

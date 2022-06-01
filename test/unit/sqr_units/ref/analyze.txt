@@ -1,0 +1,50 @@
+Statistics:
+
+Number of lines: 8
+Number of valid statements: 7
+Number of comments: 1
+Number of executable statements: 7
+
+Complexity:
+
+Comment density: 0.143
+Comprehension effort: 22
+McCabe complexity: 1
+Halstead complexity:
+ length: 20
+ volume: 55.452
+ difficulty: 2.000
+ effort: 110.904
+ language: 13.863
+ intelligence: 27.726
+ time: 0.103
+
+10 (0 1) REM Test different values
+  Origs: 
+  Dests: 
+20 (0 3) LET A0 = 17{M2}
+  Origs: :start
+  Dests: 21:auto
+21 (0 4) LET A1 = SQR(A0)
+  Origs: 20:auto
+  Dests: 23:auto
+23 (0 3) PRINT "A1="; A1
+  Origs: 21:auto
+  Dests: 30:auto
+30 (0 3) LET B0 = 3.4{M}
+  Origs: 23:auto
+  Dests: 31:auto
+31 (0 4) LET B1 = SQR(B0)
+  Origs: 30:auto
+  Dests: 33:auto
+33 (0 3) PRINT "B1="; B1
+  Origs: 31:auto
+  Dests: 99:auto
+99 (0 1) END
+  Origs: 33:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+
