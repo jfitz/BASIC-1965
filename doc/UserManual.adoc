@@ -632,10 +632,11 @@ Exponents may be signed or unsigned.
 
 Numeric literals may contain units.
 Units are specified after the value, in braces.
-Each unit is a text followed by an optional number.
-The text of units is defined by the programmer.
-Any arbitrary text may be used.
+Each unit is a name followed by an optional number.
+The name a unit is defined by the programmer.
+Any alphabetic text may be used.
 BASIC does not care about the text value, only that the values match during operations.
+Numeric values with no units are 'pure'.
 
 |==========
 |Numeric literal |Valid or reason not valid
@@ -1980,6 +1981,7 @@ ABS(n)
 ~~~~~~
 
 Computes the absolute value of n.
+Keeps units assigned to n.
 
 ARCCOS(n)
 ~~~~~~~~~
@@ -2008,12 +2010,14 @@ ATN(n)
 ~~~~~~
 
 Synonym for ARCTAN(n).
+The returned value is a pure number, with no units.
 
 
 ATN(y,x)
 ~~~~~~~~
 
 Synonym for ARCTAN(y,x).
+The returned value is a pure number, with no units.
 
 
 AVG(a)
@@ -2060,16 +2064,19 @@ COS(r)
 ~~~~~~
 
 Computes the cosine of r, where r is in radians.
+The returned value is a pure number, with no units.
 
 COT(r)
 ~~~~~~
 
 Computes the cotangent of r, where r is in radians.
+The returned value is a pure number, with no units.
 
 CSC(r)
 ~~~~~~
 
 Computes the cosecant of r, where r is in radians.
+The returned value is a pure number, with no units.
 
 DEG(r)
 ~~~~~~
@@ -2086,18 +2093,21 @@ EXP(x)
 ~~~~~~
 
 Computes e to the x power.
+The returned value is a pure number, with no units.
 
 FIX(n)
 ~~~~~~
 
 Returns the integer part of a number.
 Truncates towards negative infinity.
+Keeps units assigned to n.
 
 FRAC(n)
 ~~~~~~~
 
 Return the fraction part of a numeric value.
 Retains the sign of the original value.
+Keeps units assigned to n.
 
 IDN(n)
 ~~~~~~
@@ -2125,6 +2135,7 @@ INT(x)
 
 Return the integer part of a numeric value.
 Truncates towards zero.
+Keeps units assigned to x.
 
 INV(m)
 ~~~~~~
@@ -2136,12 +2147,14 @@ LOG(x)
 
 Computes the natural log of x.
 A value of zero or a negative value for x will cause an error.
+The returned value is a pure number, with no units.
 
 LOG(x,b)
 ~~~~~~~~
 
 Computes the base-b log of x.
 A value of zero or a negative value for x will cause an error.
+The returned value is a pure number, with no units.
 
 MAXA(a)
 ~~~~~~~
@@ -2190,16 +2203,19 @@ NCOL(m)
 ~~~~~~~
 
 Number of columns in matrix m.
+The returned value is a pure number, with no units.
 
 NELEM(a)
 ~~~~~~~~
 
 Number of elements in array a.
+The returned value is a pure number, with no units.
 
 NROW(m)
 ~~~~~~~
 
 Number of rows in matrix m.
+The returned value is a pure number, with no units.
 
 PROD(a)
 ~~~~~~~
@@ -2262,16 +2278,19 @@ SEC(r)
 ~~~~~~
 
 Computes the secant of r, where r is in radians.
+The returned value is a pure number, with no units.
 
 SGN(n)
 ~~~~~~
 
 Returns 1, 0, or -1, for positive, zero, or negative values of n.
+The returned value is a pure number, with no units.
 
 SIN(r)
 ~~~~~~
 
 Computes the sine of r, where r is in radians.
+The returned value is a pure number, with no units.
 
 SORT1(a)
 ~~~~~~~~
