@@ -86,10 +86,13 @@ $error_codes = {
   te_func_alr: 211,
   te_no_chain: 220,
   te_option_no_run: 230,
-  te_units_no_match: 240,
-  te_power_not_int: 241,
-  te_power_not_pure: 242,
-  te_power_not_even: 243
+  te_not_pure: 240,
+  te_units_no_match: 241,
+  te_power_not_int: 242,
+  te_base_not_pure: 243,
+  te_power_not_pure: 244,
+  te_power_not_even: 245,
+  te_divisor_not_pure: 246
 }
 
 $error_messages = {
@@ -144,8 +147,11 @@ $error_messages = {
   te_func_alr: 'Function already defined',
   te_no_chain: 'Cannot chain to file',
   te_option_no_run: 'Cannot set option',
+  te_not_pure: 'Must be pure number',
   te_units_no_match: 'Units do not match',
   te_power_not_int: 'Unit power must be integer',
+  te_base_not_pure: 'Base must be pure number',
   te_power_not_pure: 'Power must be pure number',
-  te_power_not_even: 'Power must be even'
+  te_power_not_even: 'Power must be even',
+  te_divisor_not_pure: 'Divisor must be pure integer'
 }

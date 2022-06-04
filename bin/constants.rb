@@ -478,11 +478,22 @@ class Units
     Units.new(new_values, nil)
   end
 
-  def power(p)
-    p_i = p.to_i
+  def power(other)
+    # other is a NumericValue or IntegerValue, not a Units
+    other_units = other.units
 
-    raise BASICRuntimeError, :te_power_not_int unless
-      @values.empty? || p_i == p
+    raise BASICRuntimeError, :te_power_not_pure unless
+      other_units.empty?
+
+    # a value with units must use integer power
+    # a pure value may have fractional power
+    unless @values.empty?
+      p = other.to_numeric.to_v
+      p_i = p.to_i
+
+      raise BASICRuntimeError, :te_power_not_int unless
+        p_i == p
+    end
 
     new_values = {}
 
@@ -494,6 +505,8 @@ class Units
   end
 
   def sqrt
+    raise BASICRuntimeError, :te_power_not_even unless even?
+
     new_values = {}
 
     @values.each do |name, pow|
@@ -501,6 +514,38 @@ class Units
     end
 
     Units.new(new_values, nil)
+  end
+
+  def exp
+    raise BASICRuntimeError, :te_not_pure unless
+      @values.empty?
+
+    # result is always pure
+    Units.new({}, nil)
+  end
+
+  def log
+    raise BASICRuntimeError, :te_not_pure unless
+      @values.empty?
+
+    # result is always pure
+    Units.new({}, nil)
+  end
+
+  def logb(other)
+    raise BASICRuntimeError, :te_not_pure unless
+      @values.empty?
+
+    # result is always pure
+    Units.new({}, nil)
+  end
+
+  def mod(other)
+    raise BASICRuntimeError, :te_divisor_not_pure unless
+      other.empty?
+
+    # units after mod() are the same as original
+    Units.new(@values, nil)
   end
 
   private
@@ -909,11 +954,9 @@ class NumericValue < AbstractValue
       "Type mismatch (#{content_type}/#{other.content_type}) in power()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
-    raise BASICRuntimeError, :te_power_not_pure unless
-      @units.empty? || other.units.empty?
 
     value = @value**other.to_numeric.to_v
-    units = @units.power(other.to_numeric.to_v)
+    units = @units.power(other)
 
     NumericValue.new_2(value, units)
   end
@@ -931,33 +974,46 @@ class NumericValue < AbstractValue
   end
 
   def exp
-    raise BASICRuntimeError, :te_power_not_pure unless @units.empty?
-
     value = Math.exp(@value)
+    units = @units.exp
 
-    NumericValue.new(value)
+    NumericValue.new_2(value, units)
   end
 
   def log
-    raise BASICRuntimeError, :te_power_not_pure unless @units.empty?
-
     value = @value.positive? ? Math.log(@value) : 0
+    units = @units.log
 
-    NumericValue.new(value)
+    NumericValue.new_2(value, units)
   end
 
   def logb(lbase)
-    raise BASICRuntimeError, :te_power_not_pure unless @units.empty?
-
     lbase_v = lbase.to_v
     value = @value.positive? ? Math.log(@value, lbase_v) : 0
+    units = @units.log
 
-    NumericValue.new(value)
+    NumericValue.new_2(value, units)
+  end
+
+  def log10
+    value = @value.positive? ? Math.log10(@value) : 0
+    units = @units.log
+
+    NumericValue.new_2(value, units)
+  end
+
+  def log2
+    value = @value.positive? ? Math.log2(@value) : 0
+    units = @units.log
+
+    NumericValue.new_2(value, units)
   end
 
   def mod(other)
     value = other.to_v.zero? ? 0 : @value % other.to_v
-    NumericValue.new(value)
+    units = @units.mod(other.units)
+
+    NumericValue.new_2(value, units)
   end
 
   def abs
@@ -969,13 +1025,10 @@ class NumericValue < AbstractValue
   def round(places)
     value = @value.round(places.to_i)
 
-    NumericValue.new(value, @units)
+    NumericValue.new_2(value, @units)
   end
 
   def sqrt
-    raise BASICRuntimeError, :te_power_not_even unless
-      @units.even?
-
     value = @value.positive? ? Math.sqrt(@value) : 0
     units = @units.sqrt
 
@@ -1216,11 +1269,11 @@ class IntegerValue < AbstractValue
   end
 
   def posate
-    NumericValue.new(@value)
+    NumericValue.new_2(@value, @units)
   end
 
   def negate
-    IntegerValue.new(-@value)
+    IntegerValue.new_2(-@value, @units)
   end
 
   def filehandle
@@ -1287,11 +1340,9 @@ class IntegerValue < AbstractValue
       "Type mismatch (#{content_type}/#{other.content_type}) in power()"
 
     raise(BASICExpressionError, message) unless compatible?(other)
-    raise BASICRuntimeError, :te_power_not_pure unless
-      @units.empty? || other.units.empty?
 
     value = @value**other.to_numeric.to_v
-    units = @units.power(other.to_numeric.to_v)
+    units = @units.power(other)
 
     IntegerValue.new_2(value, units)
   end
@@ -1307,36 +1358,38 @@ class IntegerValue < AbstractValue
   end
 
   def exp
-    raise BASICRuntimeError, :te_power_not_pure unless @units.empty?
-
     value = Math.exp(@value)
-    IntegerValue.new(value)
+    units = @units.exp
+
+    IntegerValue.new_2(value, units)
   end
 
   def log
-    raise BASICRuntimeError, :te_power_not_pure unless @units.empty?
-
     value = @value.positive? ? Math.log(@value) : 0
-    IntegerValue.new(value)
+    units = @units.log
+
+    IntegerValue.new_2(value, units)
   end
 
   def log10
-    raise BASICRuntimeError, :te_power_not_pure unless @units.empty?
-
     value = @value.positive? ? Math.log10(@value) : 0
-    IntegerValue.new(value)
+    units = @units.log
+
+    IntegerValue.new_2(value, units)
   end
 
   def log2
-    raise BASICRuntimeError, :te_power_not_pure unless @units.empty?
-
     value = @value.positive? ? Math.log2(@value) : 0
-    IntegerValue.new(value)
+    units = @units.log
+
+    IntegerValue.new_2(value, units)
   end
 
   def mod(other)
     value = other.to_numeric.zero? ? 0 : @value % other.to_numeric.to_v
-    IntegerValue.new(value)
+    units = @units.mod(other.units)
+
+    IntegerValue.new_2(value, units)
   end
 
   def abs
@@ -1346,9 +1399,6 @@ class IntegerValue < AbstractValue
   end
 
   def sqrt
-    raise BASICRuntimeError, :te_power_not_even unless
-      @units.even?
-
     value = @value.positive? ? Math.sqrt(@value) : 0
     units = @units.sqrt
 
