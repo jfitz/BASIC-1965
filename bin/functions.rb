@@ -788,9 +788,7 @@ class FunctionDeg < AbstractFunction
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature1)
 
-    v = args[0].to_v
-    v1 = v * 180 / 3.14156926
-    res = NumericValue.new(v1)
+    res = args[0].to_degrees
 
     @cached = res if @constant && $options['cache_const_expr']
     res
@@ -1420,9 +1418,7 @@ class FunctionRad < AbstractFunction
     raise BASICRuntimeError.new(:te_args_no_match, @name) unless
       match_args_to_signature(args, @signature1)
 
-    v = args[0].to_v
-    v1 = v * 3.14156926 / 180
-    res = NumericValue.new(v1)
+    res = args[0].to_radians
 
     @cached = res if @constant && $options['cache_const_expr']
     res

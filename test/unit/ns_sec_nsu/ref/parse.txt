@@ -1,0 +1,131 @@
+10 REM TEST TRIG FUNCTIONS WITH UNITS
+ Remark:TEST TRIG FUNCTIONS WITH UNITS
+100 PRINT "TRIG_REQUIRE_UNITS FALSE"
+ TextValue:"TRIG_REQUIRE_UNITS FALSE"
+ CarriageControl:NL
+105 OPTION TRIG_REQUIRE_UNITS FALSE
+ BooleanValue:false
+110 LET A1 = 45{DEG}
+ Variable:A1 -> _
+ NumericValue:45{DEG}
+ AssignmentOperator:= =_ -> _
+111 PRINT "A1 ="; A1
+ TextValue:"A1 ="
+ CarriageControl:;
+ Variable:A1 -> _
+ CarriageControl:NL
+112 LET S1 = SEC(A1)
+ Variable:S1 -> _
+ Variable:A1 -> _
+ FunctionSec:SEC(_) -> _
+ AssignmentOperator:= _ -> _
+114 PRINT "S1 ="; S1
+ TextValue:"S1 ="
+ CarriageControl:;
+ Variable:S1 -> _
+ CarriageControl:NL
+120 LET A2 = RAD(45)
+ Variable:A2 -> _
+ NumericValue:45
+ FunctionRad:RAD(_) -> =_
+ AssignmentOperator:= =_ -> _
+121 PRINT "A2 ="; A2
+ TextValue:"A2 ="
+ CarriageControl:;
+ Variable:A2 -> _
+ CarriageControl:NL
+122 LET S2 = SEC(A2)
+ Variable:S2 -> _
+ Variable:A2 -> _
+ FunctionSec:SEC(_) -> _
+ AssignmentOperator:= _ -> _
+124 PRINT "S2 ="; S2
+ TextValue:"S2 ="
+ CarriageControl:;
+ Variable:S2 -> _
+ CarriageControl:NL
+130 LET A3 = 45
+ Variable:A3 -> _
+ NumericValue:45
+ AssignmentOperator:= =_ -> _
+131 PRINT "A3 ="; A3
+ TextValue:"A3 ="
+ CarriageControl:;
+ Variable:A3 -> _
+ CarriageControl:NL
+132 LET S3 = SEC(A3)
+ Variable:S3 -> _
+ Variable:A3 -> _
+ FunctionSec:SEC(_) -> _
+ AssignmentOperator:= _ -> _
+134 PRINT "S3 ="; S3
+ TextValue:"S3 ="
+ CarriageControl:;
+ Variable:S3 -> _
+ CarriageControl:NL
+200 PRINT "TRIG_REQUIRE_UNITS TRUE"
+ TextValue:"TRIG_REQUIRE_UNITS TRUE"
+ CarriageControl:NL
+205 OPTION TRIG_REQUIRE_UNITS TRUE
+ BooleanValue:true
+210 LET A1 = 45{DEG}
+ Variable:A1 -> _
+ NumericValue:45{DEG}
+ AssignmentOperator:= =_ -> _
+211 PRINT "A1 ="; A1
+ TextValue:"A1 ="
+ CarriageControl:;
+ Variable:A1 -> _
+ CarriageControl:NL
+212 LET S1 = SEC(A1)
+ Variable:S1 -> _
+ Variable:A1 -> _
+ FunctionSec:SEC(_) -> _
+ AssignmentOperator:= _ -> _
+214 PRINT "S1 ="; S1
+ TextValue:"S1 ="
+ CarriageControl:;
+ Variable:S1 -> _
+ CarriageControl:NL
+220 LET A2 = RAD(45)
+ Variable:A2 -> _
+ NumericValue:45
+ FunctionRad:RAD(_) -> =_
+ AssignmentOperator:= =_ -> _
+221 PRINT "A2 ="; A2
+ TextValue:"A2 ="
+ CarriageControl:;
+ Variable:A2 -> _
+ CarriageControl:NL
+222 LET S2 = SEC(A2)
+ Variable:S2 -> _
+ Variable:A2 -> _
+ FunctionSec:SEC(_) -> _
+ AssignmentOperator:= _ -> _
+224 PRINT "S2 ="; S2
+ TextValue:"S2 ="
+ CarriageControl:;
+ Variable:S2 -> _
+ CarriageControl:NL
+230 LET A3 = 45
+ Variable:A3 -> _
+ NumericValue:45
+ AssignmentOperator:= =_ -> _
+231 PRINT "A3 ="; A3
+ TextValue:"A3 ="
+ CarriageControl:;
+ Variable:A3 -> _
+ CarriageControl:NL
+232 LET S3 = SEC(A3)
+ Variable:S3 -> _
+ Variable:A3 -> _
+ FunctionSec:SEC(_) -> _
+ AssignmentOperator:= _ -> _
+234 PRINT "S3 ="; S3
+ TextValue:"S3 ="
+ CarriageControl:;
+ Variable:S3 -> _
+ CarriageControl:NL
+999 END
+ 
+

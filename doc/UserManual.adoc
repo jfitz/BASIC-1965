@@ -457,6 +457,7 @@ The OPTION command overrides the command-line setting.
 |REQUIRE_INITIALIZED |NLP |TRUE or FALSE |FALSE |Variables must be initialized before use
 |TIMING |NLP |TRUE or FALSE |TRUE |After running a program, display time to execute (user time and system time)
 |TRACE |NLP |TRUE or FALSE |FALSE |When running a program, display each line prior to execution
+|TRIG_REQUIRE_UNITS |NLP |TRUE or FALSE |FALSE |Trig functions require units for arguments
 |WARN_FORNEXT_LENGTH |NL |40 |numeric |Sets the limit for number of statements in a FOR/NEXT block; 0 disables warnings
 |WARN_FORNEXT_LEVEL |NL |3 |numeric |Sets the level to warn about nested FOR loops; 0 disables warnings
 |WARN_GOSUB_LENGTH |NL |40 |numeric |Sets the limit for number of statements in a GOSUB block; 0 disables warnings
@@ -1986,38 +1987,56 @@ Keeps units assigned to n.
 ARCCOS(n)
 ~~~~~~~~~
 
-Computes the arccosine of n, providing the answer in radians.
+Computes the arccosine of n.
+The value n must be a pure number.
+
+The returned value is in radians.
+When the option TRIG_REQUIRE_UNITS is TRUE, the returned value has the units 'RAD'.
+Otherwise the returned value is a pure number.
 
 ARCSIN(n)
 ~~~~~~~~~
 
-Computes the arcsine of n, providing the answer in radians.
+Computes the arcsine of n.
+The value n must be a pure number.
+
+The returned value is in radians.
+When the option TRIG_REQUIRE_UNITS is TRUE, the returned value has the units 'RAD'.
+Otherwise the returned value is a pure number.
 
 
 ARCTAN(n)
 ~~~~~~~~~
 
-Computes the arctangent of n, providing the answer in radians.
+Computes the arctangent of n.
 Provides inexact answers for small n; use ARCTAN(y, x) for small angles.
+The value n must be a pure number.
+
+The returned value is in radians.
+When the option TRIG_REQUIRE_UNITS is TRUE, the returned value has the units 'RAD'.
+Otherwise the returned value is a pure number.
 
 ARCTAN(y,x)
 ~~~~~~~~~~~
 
-Computes the arctangent of y and x, providing the answer in radians.
+Computes the arctangent of y and x.
+The values y and x must be pure numbers.
+
+The returned value is in radians.
+When the option TRIG_REQUIRE_UNITS is TRUE, the returned value has the units 'RAD'.
+Otherwise the returned value is a pure number.
 
 
 ATN(n)
 ~~~~~~
 
 Synonym for ARCTAN(n).
-The returned value is a pure number, with no units.
 
 
 ATN(y,x)
 ~~~~~~~~
 
 Synonym for ARCTAN(y,x).
-The returned value is a pure number, with no units.
 
 
 AVG(a)
@@ -2063,25 +2082,41 @@ Special form of CON().
 COS(r)
 ~~~~~~
 
-Computes the cosine of r, where r is in radians.
+Computes the cosine of r.
+If r has units, they must be 'DEG' or 'RAD'.
+If r is pure, it is taken as radians.
+When the TRIG_REQUIRE_UNITS option is TRUE, a unit is required.
+
 The returned value is a pure number, with no units.
 
 COT(r)
 ~~~~~~
 
-Computes the cotangent of r, where r is in radians.
+Computes the cotangent of r.
+If r has units, they must be 'DEG' or 'RAD'.
+If r is pure, it is taken as radians.
+When the TRIG_REQUIRE_UNITS option is TRUE, a unit is required.
+
 The returned value is a pure number, with no units.
 
 CSC(r)
 ~~~~~~
 
-Computes the cosecant of r, where r is in radians.
+Computes the cosecant of r.
+If r has units, they must be 'DEG' or 'RAD'.
+If r is pure, it is taken as radians.
+When the TRIG_REQUIRE_UNITS option is TRUE, a unit is required.
+
 The returned value is a pure number, with no units.
 
 DEG(r)
 ~~~~~~
 
 Converts r from radians to degrees.
+If r has units, they must be 'RAD'.
+If r is pure, it is taken as radians.
+When the TRIG_REQUIRE_UNITS option is TRUE, a unit is required.
+
 
 DET(m)
 ~~~~~~
@@ -2093,6 +2128,7 @@ EXP(x)
 ~~~~~~
 
 Computes e to the x power.
+
 The returned value is a pure number, with no units.
 
 FIX(n)
@@ -2147,6 +2183,7 @@ LOG(x)
 
 Computes the natural log of x.
 A value of zero or a negative value for x will cause an error.
+
 The returned value is a pure number, with no units.
 
 LOG(x,b)
@@ -2154,26 +2191,21 @@ LOG(x,b)
 
 Computes the base-b log of x.
 A value of zero or a negative value for x will cause an error.
+
 The returned value is a pure number, with no units.
 
 MAXA(a)
 ~~~~~~~
-
-numeric
 
 Returns maximum value of elements in array.
 
 MAXM(m)
 ~~~~~~~
 
-numeric
-
 Returns maximum value of elements in matrix.
 
 MEDIAN(a)
 ~~~~~~~~~
-
-numeric
 
 Sorts the array (internally) and returns the middle value.
 If the array contains an even number of elements, it returns the average of the two center elements.
@@ -2183,14 +2215,10 @@ An array of zero elements raises an error.
 MINA(a)
 ~~~~~~~
 
-numeric
-
 Returns minimum value of elements in array.
 
 MINM(m)
 ~~~~~~~
-
-numeric
 
 Returns minimum value of elements in matrix.
 
@@ -2209,12 +2237,14 @@ NELEM(a)
 ~~~~~~~~
 
 Number of elements in array a.
+
 The returned value is a pure number, with no units.
 
 NROW(m)
 ~~~~~~~
 
 Number of rows in matrix m.
+
 The returned value is a pure number, with no units.
 
 PROD(a)
@@ -2226,6 +2256,10 @@ RAD(d)
 ~~~~~~
 
 Converts d from degrees to radians.
+If d has units, they must be 'DEG'.
+If d is pure, it is taken as degrees.
+When the TRIG_REQUIRE_UNITS option is TRUE, a unit is required.
+
 
 RND(x)
 ~~~~~~
@@ -2245,7 +2279,7 @@ RND
 Special form of RND, equivalent to RND(1).
 
 RND1(n)
-~~~~~~~~~
+~~~~~~~
 
 Creates an array containing random values from zero to one, with n elements.
 
@@ -2277,7 +2311,11 @@ Rounds the value x to p places.
 SEC(r)
 ~~~~~~
 
-Computes the secant of r, where r is in radians.
+Computes the secant of r.
+If r has units, they must be 'DEG' or 'RAD'.
+If r is pure, it is taken as radians.
+When the TRIG_REQUIRE_UNITS option is TRUE, a unit is required.
+
 The returned value is a pure number, with no units.
 
 SGN(n)
@@ -2289,7 +2327,11 @@ The returned value is a pure number, with no units.
 SIN(r)
 ~~~~~~
 
-Computes the sine of r, where r is in radians.
+Computes the sine of r.
+If r has units, they must be 'DEG' or 'RAD'.
+If r is pure, it is taken as radians.
+When the TRIG_REQUIRE_UNITS option is TRUE, a unit is required.
+
 The returned value is a pure number, with no units.
 
 SORT1(a)
@@ -2319,7 +2361,12 @@ Computes sum of elements in array.
 TAN(r)
 ~~~~~~
 
-Computes the tangent of r, where r is in radians.
+Computes the tangent of r.
+If r has units, they must be 'DEG' or 'RAD'.
+If r is pure, it is taken as radians.
+When the TRIG_REQUIRE_UNITS option is TRUE, a unit is required.
+
+The returned value is a pure number, with no units.
 
 TRN(m)
 ~~~~~~

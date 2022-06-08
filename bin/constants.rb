@@ -396,6 +396,10 @@ class Units
     @values.empty?
   end
 
+  def size
+    @values.size
+  end
+
   def even?
     even = true
 
@@ -403,7 +407,11 @@ class Units
     
     even
   end
-    
+
+  def key?(name)
+    @values.key?(name)
+  end
+
   def to_s
     units_t = ''
 
@@ -1035,60 +1043,228 @@ class NumericValue < AbstractValue
     NumericValue.new_2(value, units)
   end
 
+  def to_rad(d)
+    d * 3.14156926 / 180
+  end
+
+  def to_radians
+    new_units = Units.new({}, '')
+    
+    if $options['trig_require_units'].value
+      unit = {'RAD' => 1}
+      new_units = Units.new(unit, '')
+    end
+
+    new_value = to_rad(@value)
+    NumericValue.new_2(new_value, new_units)
+  end
+
+  def to_deg(r)
+     r * 180 / 3.14156926
+  end
+
+  def to_degrees
+    new_units = Units.new({}, '')
+    
+    if $options['trig_require_units'].value
+      unit = {'DEG' => 1}
+      new_units = Units.new(unit, '')
+    end
+
+    new_value = to_deg(@value)
+    NumericValue.new_2(new_value, new_units)
+  end
+
   def sin
-    value = Math.sin(@value)
-    NumericValue.new(value)
+    if $options['trig_require_units'].value
+      raise BASICRuntimeError.new(:te_require_units, @name) if
+        @units.empty?
+
+      raise BASICRuntimeError.new(:te_wrong_units, @name) unless
+        @units.size == 1 && (@units.key?('RAD') || @units.key?('DEG'))
+    end
+
+    angle_in_radians = @value
+
+    if @units.key?('DEG')
+      angle_in_radians = to_rad(@value)
+    end
+
+    new_value = Math.sin(angle_in_radians)
+
+    NumericValue.new(new_value)
   end
 
   def arcsin
-    return 0 if @value < -1.0 || @value > 1.0
+    raise BASICRuntimeError.new(:te_not_pure, @name) unless @units.empty?
 
-    NumericValue.new(Math.asin(@value))
+    new_units = Units.new({}, '')
+    
+    if $options['trig_require_units'].value
+      unit = {'RAD' => 1}
+      new_units = Units.new(unit, '')
+    end
+
+    new_value = 0
+
+    if @value >= -1.0 && @value <= 1.0
+      new_value = Math.asin(@value)
+    end
+
+    NumericValue.new_2(new_value, new_units)
   end
 
   def cos
-    value = Math.cos(@value)
-    NumericValue.new(value)
+    if $options['trig_require_units'].value
+      raise BASICRuntimeError.new(:te_require_units, @name) if
+        @units.empty?
+
+      raise BASICRuntimeError.new(:te_wrong_units, @name) unless
+        @units.size == 1 && (@units.key?('RAD') || @units.key?('DEG'))
+    end
+
+    angle_in_radians = @value
+
+    if @units.key?('DEG')
+      angle_in_radians = to_rad(@value)
+    end
+
+    new_value = Math.cos(angle_in_radians)
+
+    NumericValue.new(new_value)
   end
 
   def arccos
-    return 0 if @value < -1.0 || @value > 1.0
+    raise BASICRuntimeError.new(:te_not_pure, @name) unless @units.empty?
 
-    NumericValue.new(Math.acos(@value))
+    new_units = Units.new({}, '')
+    
+    if $options['trig_require_units'].value
+      unit = {'RAD' => 1}
+      new_units = Units.new(unit, '')
+    end
+
+    new_value = 0
+
+    if @value >= -1.0 && @value <= 1.0
+      new_value = Math.acos(@value)
+    end
+
+    NumericValue.new_2(new_value, new_units)
   end
 
   def tan
-    value = @value >= 0 ? Math.tan(@value) : 0
-    NumericValue.new(value)
-  end
+    if $options['trig_require_units'].value
+      raise BASICRuntimeError.new(:te_require_units, @name) if
+        @units.empty?
 
-  def cot
-    cos = Math.cos(@value)
-    sin = Math.sin(@value)
-    cot = Float::INFINITY
-    cot = cos / sin if sin.nonzero?
-    NumericValue.new(cot)
+      raise BASICRuntimeError.new(:te_wrong_units, @name) unless
+        @units.size == 1 && (@units.key?('RAD') || @units.key?('DEG'))
+    end
+
+    angle_in_radians = @value
+
+    if @units.key?('DEG')
+      angle_in_radians = to_rad(@value)
+    end
+
+    new_value = angle_in_radians >= 0 ? Math.tan(angle_in_radians) : 0
+
+    NumericValue.new(new_value)
   end
 
   def atn
-    value = Math.atan(@value)
-    NumericValue.new(value)
+    raise BASICRuntimeError.new(:te_not_pure, @name) unless @units.empty?
+
+    new_units = Units.new({}, '')
+    
+    if $options['trig_require_units'].value
+      unit = {'RAD' => 1}
+      new_units = Units.new(unit, '')
+    end
+
+    new_value = Math.atan(@value)
+
+    NumericValue.new_2(new_value, new_units)
   end
 
   def atn2(a2)
-    value = Math.atan2(@value, a2.to_f)
-    NumericValue.new(value)
+    raise BASICRuntimeError.new(:te_not_pure, @name) unless @units.empty?
+
+    raise BASICRuntimeError.new(:te_not_pure, @name) unless a2.units.empty?
+
+    new_units = Units.new({}, '')
+    
+    if $options['trig_require_units'].value
+      unit = {'RAD' => 1}
+      new_units = Units.new(unit, '')
+    end
+
+    new_value = Math.atan2(@value, a2.to_f)
+
+    NumericValue.new_2(new_value, new_units)
+  end
+
+  def cot
+    if $options['trig_require_units'].value
+      raise BASICRuntimeError.new(:te_require_units, @name) if
+        @units.empty?
+
+      raise BASICRuntimeError.new(:te_wrong_units, @name) unless
+        @units.size == 1 && (@units.key?('RAD') || @units.key?('DEG'))
+    end
+
+    angle_in_radians = @value
+
+    if @units.key?('DEG')
+      angle_in_radians = to_rad(@value)
+    end
+
+    cos = Math.cos(angle_in_radians)
+    sin = Math.sin(angle_in_radians)
+    cot = Float::INFINITY
+    cot = cos / sin if sin.nonzero?
+
+    NumericValue.new(cot)
   end
 
   def sec
-    cos = Math.cos(@value)
+    if $options['trig_require_units'].value
+      raise BASICRuntimeError.new(:te_require_units, @name) if
+        @units.empty?
+
+      raise BASICRuntimeError.new(:te_wrong_units, @name) unless
+        @units.size == 1 && (@units.key?('RAD') || @units.key?('DEG'))
+    end
+
+    angle_in_radians = @value
+
+    if @units.key?('DEG')
+      angle_in_radians = to_rad(@value)
+    end
+
+    cos = Math.cos(angle_in_radians)
     sec = Float::INFINITY
     sec = 1 / cos if cos.nonzero?
     NumericValue.new(sec)
   end
 
   def csc
-    sin = Math.sin(@value)
+    if $options['trig_require_units'].value
+      raise BASICRuntimeError.new(:te_require_units, @name) if
+        @units.empty?
+
+      raise BASICRuntimeError.new(:te_wrong_units, @name) unless
+        @units.size == 1 && (@units.key?('RAD') || @units.key?('DEG'))
+    end
+
+    angle_in_radians = @value
+
+    if @units.key?('DEG')
+      angle_in_radians = to_rad(@value)
+    end
+
+    sin = Math.sin(angle_in_radians)
     csc = Float::INFINITY
     csc = 1 / sin if sin.nonzero?
     NumericValue.new(csc)

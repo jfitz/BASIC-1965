@@ -1,0 +1,65 @@
+Statistics:
+
+Number of lines: 13
+Number of valid statements: 13
+Number of comments: 0
+Number of executable statements: 13
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 35
+McCabe complexity: 1
+Halstead complexity:
+ length: 28
+ volume: 71.819
+ difficulty: 4.000
+ effort: 287.274
+ language: 4.489
+ intelligence: 17.955
+ time: 0.266
+
+100 (0 2) PRINT "TRIG_REQUIRE_UNITS FALSE"
+  Origs: :start
+  Dests: 102:auto
+102 (0 2) OPTION TRIG_REQUIRE_UNITS FALSE
+  Origs: 100:auto
+  Dests: 110:auto
+110 (0 3) LET C = 0.707
+  Origs: 102:auto
+  Dests: 112:auto
+112 (0 3) PRINT "C ="; C
+  Origs: 110:auto
+  Dests: 120:auto
+120 (0 4) LET A = ARCCOS(C)
+  Origs: 112:auto
+  Dests: 122:auto
+122 (0 3) PRINT "A ="; A
+  Origs: 120:auto
+  Dests: 200:auto
+200 (0 2) PRINT "TRIG_REQUIRE_UNITS TRUE"
+  Origs: 122:auto
+  Dests: 202:auto
+202 (0 2) OPTION TRIG_REQUIRE_UNITS TRUE
+  Origs: 200:auto
+  Dests: 210:auto
+210 (0 3) LET C = 0.707
+  Origs: 202:auto
+  Dests: 212:auto
+212 (0 3) PRINT "C ="; C
+  Origs: 210:auto
+  Dests: 220:auto
+220 (0 4) LET A = ARCCOS(C)
+  Origs: 212:auto
+  Dests: 222:auto
+222 (0 3) PRINT "A ="; A
+  Origs: 220:auto
+  Dests: 999:auto
+999 (0 1) END
+  Origs: 222:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

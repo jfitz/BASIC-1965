@@ -1,0 +1,51 @@
+100 PRINT "TRIG_REQUIRE_UNITS FALSE"
+ TextValue:"TRIG_REQUIRE_UNITS FALSE"
+ CarriageControl:NL
+102 OPTION TRIG_REQUIRE_UNITS FALSE
+ BooleanValue:false
+110 LET C = 0.707
+ Variable:C -> _
+ NumericValue:0.707
+ AssignmentOperator:= =_ -> _
+112 PRINT "C ="; C
+ TextValue:"C ="
+ CarriageControl:;
+ Variable:C -> _
+ CarriageControl:NL
+120 LET A = ARCSIN(C)
+ Variable:A -> _
+ Variable:C -> _
+ FunctionArcSin:ARCSIN(_) -> _
+ AssignmentOperator:= _ -> _
+122 PRINT "A ="; A
+ TextValue:"A ="
+ CarriageControl:;
+ Variable:A -> _
+ CarriageControl:NL
+200 PRINT "TRIG_REQUIRE_UNITS TRUE"
+ TextValue:"TRIG_REQUIRE_UNITS TRUE"
+ CarriageControl:NL
+202 OPTION TRIG_REQUIRE_UNITS TRUE
+ BooleanValue:true
+210 LET C = 0.707
+ Variable:C -> _
+ NumericValue:0.707
+ AssignmentOperator:= =_ -> _
+212 PRINT "C ="; C
+ TextValue:"C ="
+ CarriageControl:;
+ Variable:C -> _
+ CarriageControl:NL
+220 LET A = ARCSIN(C)
+ Variable:A -> _
+ Variable:C -> _
+ FunctionArcSin:ARCSIN(_) -> _
+ AssignmentOperator:= _ -> _
+222 PRINT "A ="; A
+ TextValue:"A ="
+ CarriageControl:;
+ Variable:A -> _
+ CarriageControl:NL
+999 END
+ 
+
