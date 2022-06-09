@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# class for all constant classes
+# class for all element classes
 class AbstractElement
   def self.make_coord(c)
     [NumericValue.new(c)]
@@ -361,11 +361,7 @@ class Units
     @values.hash
   end
 
-  def ==(other)
-    @values == other.values
-  end
-
-  def eq(other)
+  def eql?(other)
     @values == other.values
   end
 
@@ -390,6 +386,10 @@ class Units
 
     # units are the same
     0
+  end
+
+  def ==(other)
+    @values == other.values
   end
 
   def empty?
@@ -586,16 +586,12 @@ class AbstractValue < AbstractElement
     @warnings = []
   end
 
-  def dump
-    "#{self.class}:#{self}"
+  def hash
+    @value.hash
   end
 
   def eql?(other)
     @value == other.to_v
-  end
-
-  def hash
-    @value.hash
   end
 
   def <=>(other)
@@ -723,6 +719,10 @@ class AbstractValue < AbstractElement
 
   def power(_)
     raise(BASICExpressionError, 'Invalid operator power')
+  end
+
+  def dump
+    "#{self.class}:#{self}"
   end
 
   def keyword?
@@ -853,22 +853,22 @@ class NumericValue < AbstractValue
     @units = units
   end
 
-  def eql?(other)
-    @value == other.to_v
-  end
-
-  def ==(other)
-    @value == other.to_v
-  end
-
   def hash
     @value.hash + @symbol_text.hash
+  end
+
+  def eql?(other)
+    @value == other.to_v
   end
 
   def <=>(other)
     return @value <=> other.value if @value != other.value
 
     @units <=> other.units
+  end
+
+  def ==(other)
+    @value == other.to_v
   end
 
   def >(other)
@@ -885,14 +885,6 @@ class NumericValue < AbstractValue
 
   def <=(other)
     @value <= other.to_v
-  end
-
-  def dump
-    "#{self.class}:#{@symbol_text}"
-  end
-
-  def zero?
-    @value.zero?
   end
 
   def posate
@@ -981,6 +973,10 @@ class NumericValue < AbstractValue
     NumericValue.new_2(value, @units)
   end
 
+  def to_int
+    IntegerValue.new_2(to_i, @units)
+  end
+
   def exp
     value = Math.exp(@value)
     units = @units.exp
@@ -1018,7 +1014,7 @@ class NumericValue < AbstractValue
   end
 
   def mod(other)
-    value = other.to_v.zero? ? 0 : @value % other.to_v
+    value = other.to_numeric.to_v.zero? ? 0 : @value % other.to_numeric.to_v
     units = @units.mod(other.units)
 
     NumericValue.new_2(value, units)
@@ -1278,6 +1274,14 @@ class NumericValue < AbstractValue
     NumericValue.new(result)
   end
 
+  def dump
+    "#{self.class}:#{@symbol_text}"
+  end
+
+  def zero?
+    @value.zero?
+  end
+
   def to_i
     @value.to_i
   end
@@ -1348,13 +1352,15 @@ class IntegerValue < AbstractValue
     IntegerValue.new(v.to_i)
   end
 
+  attr_reader :value
   attr_reader :symbol_text
   attr_reader :units
 
   def initialize(obj)
     super()
 
-    numeric_classes = %w[Fixnum Integer Bignum Float NumericLiteralToken]
+    numeric_classes = %w[Fixnum Integer Bignum Float IntegerLiteralToken]
+
     f = nil
     f = obj.to_i if numeric_classes.include?(obj.class.to_s)
     f = obj.to_f.to_i if obj.class.to_s == 'NumericLiteralToken'
@@ -1371,7 +1377,7 @@ class IntegerValue < AbstractValue
     @numeric_constant = true
     @units = Units.new({}, '{}')
 
-    @units = obj.units if obj.class.to_s == 'NumericLiteralToken'
+    @units = obj.units if obj.class.to_s == 'IntegerLiteralToken'
   end
 
   def set_content_type(type_stack)
@@ -1390,26 +1396,22 @@ class IntegerValue < AbstractValue
     @units = units
   end
 
-  def zero?
-    @value.zero?
+  def hash
+    @value.hash + @symbol_text.hash
   end
 
   def eql?(other)
     @value == other.to_v
   end
 
-  def ==(other)
-    @value == other.to_v
-  end
-
-  def hash
-    @value.hash + @symbol_text.hash
-  end
-
   def <=>(other)
     return @value <=> other.value if @value != other.value
 
     @units <=> other.units
+  end
+
+  def ==(other)
+    @value == other.to_v
   end
 
   def >(other)
@@ -1530,7 +1532,7 @@ class IntegerValue < AbstractValue
   end
 
   def floor
-    IntegerValue.new(@value, @units)
+    IntegerValue.new_2(@value, @units)
   end
 
   def exp
@@ -1571,7 +1573,7 @@ class IntegerValue < AbstractValue
   def abs
     value = @value >= 0 ? @value : -@value
 
-    IntegerValue.new(value, @units)
+    IntegerValue.new_2(value, @units)
   end
 
   def sqrt
@@ -1607,6 +1609,10 @@ class IntegerValue < AbstractValue
     result = -1 if @value.negative?
 
     IntegerValue.new(result)
+  end
+
+  def zero?
+    @value.zero?
   end
 
   def to_i
@@ -1662,7 +1668,8 @@ class TextValue < AbstractValue
     classes.include?(token.class.to_s)
   end
 
-  attr_reader :value, :symbol_text
+  attr_reader :value
+  attr_reader :symbol_text
 
   def initialize(text)
     super()
@@ -1671,7 +1678,7 @@ class TextValue < AbstractValue
     @value = text if text.class.to_s == 'String'
     @value = text.value if text.class.to_s == 'TextLiteralToken'
 
-    raise(BASICSyntaxError, "'#{text}' is not a text constant") if @value.nil?
+    raise BASICSyntaxError, "'#{text}' is not a text constant" if @value.nil?
 
     @content_type = :string
     @shape = :scalar
@@ -1692,20 +1699,20 @@ class TextValue < AbstractValue
     constant_stack.push(@constant)
   end
 
-  def eql?(other)
-    @value == other.to_v
-  end
-
-  def ==(other)
-    @value == other.to_v
-  end
-
   def hash
     @value.hash
   end
 
+  def eql?(other)
+    @value == other.to_v
+  end
+
   def <=>(other)
     @value <=> other.to_v
+  end
+
+  def ==(other)
+    @value == other.to_v
   end
 
   def >(other)
@@ -1767,7 +1774,8 @@ class BooleanValue < AbstractValue
     classes.include?(token.class.to_s)
   end
 
-  attr_reader :value, :symbol_text
+  attr_reader :value
+  attr_reader :symbol_text
 
   def initialize(obj)
     super()
@@ -1801,36 +1809,36 @@ class BooleanValue < AbstractValue
     constant_stack.push(@constant)
   end
 
-  def eql?(other)
-    @value == other.to_v
-  end
-
-  def ==(other)
-    @value == other.to_v
-  end
-
   def hash
     @value.hash
+  end
+
+  def eql?(other)
+    to_i == other.to_i
   end
 
   def <=>(other)
     to_i <=> other.to_i
   end
 
+  def ==(other)
+    to_i == other.to_i
+  end
+
   def >(other)
-    @value > other.to_v
+    to_i > other.to_i
   end
 
   def >=(other)
-    @value >= other.to_v
+    to_i >= other.to_i
   end
 
   def <(other)
-    @value < other.to_v
+    to_i < other.to_i
   end
 
   def <=(other)
-    @value <= other.to_v
+    to_i <= other.to_i
   end
 
   def b_and(other)
@@ -1862,7 +1870,7 @@ class BooleanValue < AbstractValue
   end
 
   def to_numeric
-    @value ? NumericValue.new(-1) : NumericConstant.new(0)
+    @value ? NumericValue.new(-1) : NumericValue.new(0)
   end
 
   def print(printer)
@@ -2077,16 +2085,16 @@ class VariableName < AbstractElement
     constant_stack.push(@constant)
   end
 
+  def hash
+    @name.hash
+  end
+
   def eql?(other)
     to_s == other.to_s
   end
 
   def ==(other)
     to_s == other.to_s
-  end
-
-  def hash
-    @name.hash
   end
 
   def scalar?
@@ -2160,16 +2168,16 @@ class UserFunctionName < AbstractElement
     constant_stack.push(@constant)
   end
 
+  def hash
+    @name.hash
+  end
+
   def eql?(other)
     to_s == other.to_s
   end
 
   def ==(other)
     to_s == other.to_s
-  end
-
-  def hash
-    @name.hash
   end
 
   def scalar?
@@ -2271,16 +2279,16 @@ class Variable < AbstractElement
     constant_stack.push(@constant)
   end
 
+  def hash
+    @variable_name.hash && @subscripts.hash
+  end
+
   def eql?(other)
     @variable_name == other.name && @subscripts == other.subscripts
   end
 
   def ==(other)
     @variable_name == other.name && @subscripts == other.subscripts
-  end
-
-  def hash
-    @variable_name.hash && @subscripts.hash
   end
 
   def signature
