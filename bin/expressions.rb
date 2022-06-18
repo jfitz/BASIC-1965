@@ -2008,21 +2008,20 @@ class AbstractExpressionSet
   end
 
   def token_to_element(token, follows_operand)
-    return FunctionFactory.make(token.to_s) if
-      FunctionFactory.valid?(token.to_s)
-
     element = nil
 
+    if FunctionFactory.valid?(token.to_s)
+      element = FunctionFactory.make(token.to_s)
+      return element unless element.nil?
+    end
+
     (follows_operand ? binary_classes : unary_classes).each do |c|
-      element = c.new(token) if element.nil? && c.accept?(token)
+      element = c.new(token) if c.accept?(token)
+      return element unless element.nil?
     end
 
-    if element.nil?
-      raise(BASICExpressionError,
-            "Token '#{token.class}:#{token}' is not a value or operator")
-    end
-
-    element
+    raise(BASICExpressionError,
+          "Token '#{token.class}:#{token}' is not a value or operator")
   end
 
   def binary_classes
