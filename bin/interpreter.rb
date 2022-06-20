@@ -378,18 +378,12 @@ class Interpreter
     @function_stack[-1][0]
   end
 
-  def find_user_function(function_signature)
-    @program.user_function_line(function_signature)
-  end
-
   def run_user_function(function_signature)
     line_index = @program.user_function_line(function_signature)
 
-    raise(BASICSyntaxError, "Function #{function_signature} not defined") if
-      line_index.nil?
-
     @function_stack.push [function_signature, @current_line_stmt_mod,
                           @next_line_stmt_mod]
+
     @previous_stack.push @previous_line_indexes
     @previous_line_indexes = []
 

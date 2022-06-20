@@ -341,12 +341,15 @@ class UserFunction < AbstractFunction
 
     begin
       expression = definition.expression
+
       if expression.nil?
+        # no expression => multiline function
         signature = UserFunctionSignature.new(@name, sigils)
         interpreter.run_user_function(signature)
 
         results = [interpreter.get_value(signature)]
       else
+        # expression => that is the function
         results = expression.evaluate(interpreter)
       end
     rescue BASICRuntimeError => e
@@ -2213,8 +2216,10 @@ class FunctionFactory
     @functions.key?(text)
   end
 
-  def self.make(text)
-    @functions[text].new(text) if @functions.key?(text)
+  def self.make(token)
+    text = token.to_s
+    cls = @functions[text]
+    cls.new(text) unless cls.nil?
   end
 
   def self.function_names

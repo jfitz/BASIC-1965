@@ -960,7 +960,12 @@ class Program
   end
 
   def user_function_line(function_signature)
-    @user_function_start_lines[function_signature]
+    line_index = @user_function_start_lines[function_signature]
+
+    raise(BASICSyntaxError, "Function #{function_signature} not defined") if
+      line_index.nil?
+
+    line_index
   end
 
   def list(args, list_tokens)
