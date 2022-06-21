@@ -2010,10 +2010,8 @@ class AbstractExpressionSet
   def token_to_element(token, follows_operand)
     element = nil
 
-    if FunctionFactory.valid?(token.to_s)
-      element = FunctionFactory.make(token)
-      return element unless element.nil?
-    end
+    element = FunctionFactory.make(token)
+    return element unless element.nil?
 
     (follows_operand ? binary_classes : unary_classes).each do |c|
       element = c.new(token) if c.accept?(token)
