@@ -321,10 +321,13 @@ end
 
 # function token
 class FunctionToken < AbstractToken
+  attr_reader :content_type
+
   def initialize(text)
     super
 
     @is_function = true
+    @content_type = :numeric
   end
 
   def ==(other)

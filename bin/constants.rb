@@ -2111,19 +2111,11 @@ class VariableName < AbstractElement
 end
 
 # Hold a function name
-class UserFunctionName < AbstractElement
-  def self.accept?(token)
-    classes = %w[UserFunctionToken]
-    classes.include?(token.class.to_s)
-  end
-
+class AbstractFunctionName < AbstractElement
   attr_reader :name, :content_type, :shape, :constant, :warnings
 
   def initialize(token)
     super()
-
-    raise(BASICSyntaxError, "'#{token}' is not a function name") unless
-      token.class.to_s == 'UserFunctionToken'
 
     @name = token
     @function = true
@@ -2155,8 +2147,28 @@ class UserFunctionName < AbstractElement
     to_s == other.to_s
   end
 
+  def <=>(other)
+    to_s <=> other.to_s
+  end
+
   def ==(other)
     to_s == other.to_s
+  end
+
+  def <(other)
+    to_s < other.to_s
+  end
+
+  def <=(other)
+    to_s <= other.to_s
+  end
+
+  def >(other)
+    to_s > other.to_s
+  end
+
+  def >=(other)
+    to_s >= other.to_s
   end
 
   def scalar?
@@ -2192,6 +2204,38 @@ class UserFunctionName < AbstractElement
 
   def to_s
     @name.to_s
+  end
+end
+
+class FunctionName < AbstractFunctionName
+  def self.accept?(token)
+    classes = %w[FunctionToken]
+    classes.include?(token.class.to_s)
+  end
+
+  def initialize(token)
+    super
+
+    raise(BASICSyntaxError, "'#{token}' is not a function name") unless
+      token.class.to_s == 'FunctionToken'
+
+    @user_function = false
+  end
+end
+
+class UserFunctionName < AbstractFunctionName
+  def self.accept?(token)
+    classes = %w[UserFunctionToken]
+    classes.include?(token.class.to_s)
+  end
+
+  def initialize(token)
+    super
+
+    raise(BASICSyntaxError, "'#{token}' is not a function name") unless
+      token.class.to_s == 'UserFunctionToken'
+
+    @user_function = true
   end
 end
 
