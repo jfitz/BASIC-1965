@@ -1,34 +1,34 @@
 100 REM ANGLE-SIDE-SIDE
  Remark:ANGLE-SIDE-SIDE
 110 LET P = 3.14159265
- Variable:P -> _
+ Variable:P -> .
  NumericValue:3.14159265
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 120 DEF FND(X) = X*P/180
- UserFunctionName:FND -> _
- VariableName:X -> _
- Variable:X -> _
- Variable:P -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ UserFunctionName:FND -> .
+ VariableName:X -> .
+ Variable:X -> .
+ Variable:P -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
 130 DEF FNS(X) = SIN(FND(X))
- UserFunctionName:FNS -> _
- VariableName:X -> _
- Variable:X -> _
- UserFunction:FND(_) -> _
- FunctionSin:SIN(_) -> _
+ UserFunctionName:FNS -> .
+ VariableName:X -> .
+ Variable:X -> .
+ UserFunction:FND(.) -> .
+ FunctionSin:SIN(.) -> .
 135 DEF FNR(X) = INT(100*X+0.5)/100
- UserFunctionName:FNR -> _
- VariableName:X -> _
+ UserFunctionName:FNR -> .
+ VariableName:X -> .
  NumericValue:100
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:0.5
- BinaryOperatorPlus:+(_,_) -> _
- FunctionInt:INT(_) -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionInt:INT(.) -> .
  NumericValue:100
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
 140 PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
  TextValue:"ANGLE"
  CarriageControl:,
@@ -41,83 +41,83 @@
  TextValue:"CASE 2"
  CarriageControl:NL
 150 READ B,X,Y
- Variable:B -> _
- Variable:X -> _
- Variable:Y -> _
+ Variable:B -> .
+ Variable:X -> .
+ Variable:Y -> .
 160 PRINT B,X,Y,
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:,
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:,
 170 LET S = X*FNS(B)/Y
- Variable:S -> _
- Variable:X -> _
- Variable:B -> _
- UserFunction:FNS(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:X -> .
+ Variable:B -> .
+ UserFunction:FNS(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 180 IF S > 1 THEN 290
- Variable:S -> _
+ Variable:S -> .
  NumericValue:1
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:290
 190 IF FNR(S) = 1 THEN 320
- Variable:S -> _
- UserFunction:FNR(_) -> _
+ Variable:S -> .
+ UserFunction:FNR(.) -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:320
 195
 200 REM TWO POINTS OF INTERSECTION
  Remark:TWO POINTS OF INTERSECTION
 210 LET T = S/SQR(1-S^2)
- Variable:T -> _
- Variable:S -> _
+ Variable:T -> .
+ Variable:S -> .
  NumericValue:1
- Variable:S -> _
+ Variable:S -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 220 LET C = ATN(T)*180/P
- Variable:C -> _
- Variable:T -> _
- FunctionArcTan:ATN(_) -> _
+ Variable:C -> .
+ Variable:T -> .
+ FunctionArcTan:ATN(.) -> .
  NumericValue:180
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:P -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:P -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 230 LET A = 180 - B - C
- Variable:A -> _
+ Variable:A -> .
  NumericValue:180
- Variable:B -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:C -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:C -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 240 GOSUB 370
  LineNumber:370
 250 LET C = 180 - C
- Variable:C -> _
+ Variable:C -> .
  NumericValue:180
- Variable:C -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 260 LET A = 180 - B - C
- Variable:A -> _
+ Variable:A -> .
  NumericValue:180
- Variable:B -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:C -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:C -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 270 GOSUB 370
  LineNumber:370
 275 PRINT
@@ -138,11 +138,11 @@
 320 REM ONE POINT OF INTERSECTION
  Remark:ONE POINT OF INTERSECTION
 330 LET A = 90 - B
- Variable:A -> _
+ Variable:A -> .
  NumericValue:90
- Variable:B -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 340 GOSUB 370
  LineNumber:370
 350 PRINT "NONE"
@@ -154,18 +154,18 @@
 370 REM ANGLE-SIDE-ANGLE ROUTINE
  Remark:ANGLE-SIDE-ANGLE ROUTINE
 380 LET Z = X*FNS(A)/S
- Variable:Z -> _
- Variable:X -> _
- Variable:A -> _
- UserFunction:FNS(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:S -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ Variable:X -> .
+ Variable:A -> .
+ UserFunction:FNS(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:S -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 390 IF Z >= 0 THEN 420
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:0
- BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ BinaryOperatorGreaterEqual:>=(.,.) -> ?
  LineNumber:420
 400 PRINT "NONE",
  TextValue:"NONE"
@@ -173,7 +173,7 @@
 410 RETURN
  
 420 PRINT Z,
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:,
 430 RETURN
  

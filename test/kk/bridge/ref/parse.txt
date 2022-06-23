@@ -1,84 +1,84 @@
 10 DIM H(13)
  NumericValue:13
- Declaration:H() -> _()
+ Declaration:H() -> .()
 20 GOSUB 1000
  LineNumber:1000
 30 FOR C = 1 TO 13
- control: Variable:C -> _
+ control: Variable:C -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:13"]
 40    GOSUB 2000
  LineNumber:2000
 50    LET H(C) = X
- Variable:C -> _
- Variable:H(_) -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:C -> .
+ Variable:H(.) -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 60 NEXT C
- Variable:C -> _
+ Variable:C -> .
 70
 100 FOR I = 1 TO 13
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:13"]
 109    IF I > 13-I THEN 180
- Variable:I -> _
+ Variable:I -> .
  NumericValue:13
- Variable:I -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorGreater:>(_,_) -> ?
+ Variable:I -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:180
 110    FOR J = I TO 13-I
- control: Variable:J -> _
- start:   ["Variable:I -> _"]
- end:     ["NumericValue:13", "Variable:I -> _", "BinaryOperatorMinus:-(_,_) -> _"]
+ control: Variable:J -> .
+ start:   ["Variable:I -> ."]
+ end:     ["NumericValue:13", "Variable:I -> .", "BinaryOperatorMinus:-(.,.) -> ."]
 120       LET X = H(J)
- Variable:X -> _
- Variable:J -> _
- Variable:H(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:J -> .
+ Variable:H(.) -> .
+ AssignmentOperator:= . -> .
 130       LET Y = H(J+1)
- Variable:Y -> _
- Variable:J -> _
+ Variable:Y -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- Variable:H(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:H(.) -> .
+ AssignmentOperator:= . -> .
 140       IF X > Y THEN 170
- Variable:X -> _
- Variable:Y -> _
- BinaryOperatorGreater:>(_,_) -> ?
+ Variable:X -> .
+ Variable:Y -> .
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:170
 150       LET H(J) = Y
- Variable:J -> _
- Variable:H(_) -> _
- Variable:Y -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:H(.) -> .
+ Variable:Y -> .
+ AssignmentOperator:= . -> .
 160       LET H(J+1) = X
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- Variable:H(_) -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:H(.) -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 170    NEXT J
- Variable:J -> _
+ Variable:J -> .
 180 NEXT I
- Variable:I -> _
+ Variable:I -> .
 190
 200 FOR C = 1 TO 13
- control: Variable:C -> _
+ control: Variable:C -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:13"]
 210    LET X = H(C)
- Variable:X -> _
- Variable:C -> _
- Variable:H(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:C -> .
+ Variable:H(.) -> .
+ AssignmentOperator:= . -> .
 220    GOSUB 3000
  LineNumber:3000
 230 NEXT C
- Variable:C -> _
+ Variable:C -> .
 240 STOP
  
 250
@@ -86,18 +86,18 @@
  Remark:SET UP DECK
 1010 DIM L(51)
  NumericValue:51
- Declaration:L() -> _()
+ Declaration:L() -> .()
 1020 FOR I = 0 TO 51
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:51"]
 1030    LET L(I) = I
- Variable:I -> _
- Variable:L(_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:L(.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 1040 NEXT I
- Variable:I -> _
+ Variable:I -> .
 1050 RETURN
  
 1060
@@ -105,53 +105,53 @@
  Remark:DEAL A CARD
 2010 LET I = INT(52*RND(1))
  WARNING: Inconsistent GOSUB origins
- Variable:I -> _
+ Variable:I -> .
  NumericValue:52
  NumericValue:1
- FunctionRnd:RND(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRnd:RND(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 2020 LET X = L(I)
- Variable:X -> _
- Variable:I -> _
- Variable:L(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:I -> .
+ Variable:L(.) -> .
+ AssignmentOperator:= . -> .
 2030 IF X < 0 THEN 2010
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:2010
 2040 LET L(I) = -1
- Variable:I -> _
- Variable:L(_) -> _
+ Variable:I -> .
+ Variable:L(.) -> .
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
- AssignmentOperator:= =_ -> _
+ UnaryOperatorMinus:-(.) -> =.
+ AssignmentOperator:= =. -> .
 2050 RETURN
  
 2060
 3000 REM PRINT A CARD
  Remark:PRINT A CARD
 3010 LET S = INT(X/13)
- Variable:S -> _
- Variable:X -> _
+ Variable:S -> .
+ Variable:X -> .
  NumericValue:13
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 3020 LET V = X - 13*S
- Variable:V -> _
- Variable:X -> _
+ Variable:V -> .
+ Variable:X -> .
  NumericValue:13
- Variable:S -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 3030 IF S > 0 THEN 3060
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:3060
 3040 PRINT "CLUB  ";
  TextValue:"CLUB  "
@@ -159,9 +159,9 @@
 3050 GOTO 3500
  LineNumber:3500
 3060 IF S > 1 THEN 3090
- Variable:S -> _
+ Variable:S -> .
  NumericValue:1
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:3090
 3070 PRINT "DIAMOND  ";
  TextValue:"DIAMOND  "
@@ -169,9 +169,9 @@
 3080 GOTO 3500
  LineNumber:3500
 3090 IF S > 2 THEN 3120
- Variable:S -> _
+ Variable:S -> .
  NumericValue:2
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:3120
 3100 PRINT "HEART  ";
  TextValue:"HEART  "
@@ -183,21 +183,21 @@
  CarriageControl:;
 3130
 3500 IF V > 8 THEN 3530
- Variable:V -> _
+ Variable:V -> .
  NumericValue:8
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:3530
 3510 PRINT V + 2
- Variable:V -> _
+ Variable:V -> .
  NumericValue:2
- BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorPlus:+(.,.) -> .
  CarriageControl:NL
 3520 RETURN
  
 3530 IF V > 9 THEN 3560
- Variable:V -> _
+ Variable:V -> .
  NumericValue:9
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:3560
 3540 PRINT "JACK"
  TextValue:"JACK"
@@ -205,9 +205,9 @@
 3550 RETURN
  
 3560 IF V > 10 THEN 3590
- Variable:V -> _
+ Variable:V -> .
  NumericValue:10
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:3590
 3570 PRINT "QUEEN"
  TextValue:"QUEEN"
@@ -215,9 +215,9 @@
 3580 RETURN
  
 3590 IF V > 11 THEN 3620
- Variable:V -> _
+ Variable:V -> .
  NumericValue:11
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:3620
 3600 PRINT "KING"
  TextValue:"KING"

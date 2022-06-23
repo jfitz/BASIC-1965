@@ -5,37 +5,37 @@
 30 REM AND THE GENERALIZED FACTORIALS
  Remark:AND THE GENERALIZED FACTORIALS
 40 LET A = 0.57717
- Variable:A -> _
+ Variable:A -> .
  NumericValue:0.57717
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 50 LET B = 0.98821
- Variable:B -> _
+ Variable:B -> .
  NumericValue:0.98821
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 60 LET C = 0.89706
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0.89706
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 70 LET D = 0.91821
- Variable:D -> _
+ Variable:D -> .
  NumericValue:0.91821
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 80 LET E = 0.7567
- Variable:E -> _
+ Variable:E -> .
  NumericValue:0.7567
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 90 LET F = 0.4822
- Variable:F -> _
+ Variable:F -> .
  NumericValue:0.4822
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 100 LET G = 0.19353
- Variable:G -> _
+ Variable:G -> .
  NumericValue:0.19353
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 110 LET H = 0.03587
- Variable:H -> _
+ Variable:H -> .
  NumericValue:0.03587
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 120 PRINT "TYPE 1 FOR GAMMA FUNCTION OR"
  TextValue:"TYPE 1 FOR GAMMA FUNCTION OR"
  CarriageControl:NL
@@ -43,16 +43,16 @@
  TextValue:"TYPE 2 FOR THE GENERALIZED FACTORIAL"
  CarriageControl:NL
 140 INPUT A
- Variable:A -> _
+ Variable:A -> .
 150 IF A = 1 THEN 190
- Variable:A -> _
+ Variable:A -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:190
 160 IF A = 2 THEN 300
- Variable:A -> _
+ Variable:A -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:300
 170 PRINT "INVALID RESPONSE"
  TextValue:"INVALID RESPONSE"
@@ -63,21 +63,21 @@
  TextValue:"ENTER VALUE OF X"
  CarriageControl:NL
 200 INPUT X
- Variable:X -> _
+ Variable:X -> .
 210 LET K = X
- Variable:K -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 220 LET K = K - 1
- Variable:K -> _
- Variable:K -> _
+ Variable:K -> .
+ Variable:K -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 230 IF K > = 0 THEN 260
- Variable:K -> _
+ Variable:K -> .
  NumericValue:0
- BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ BinaryOperatorGreaterEqual:>=(.,.) -> ?
  LineNumber:260
 240 PRINT "X MUST BE EQUAL TO OR GREATER THAN 1"
  TextValue:"X MUST BE EQUAL TO OR GREATER THAN 1"
@@ -87,14 +87,14 @@
 260 GOSUB 490
  LineNumber:490
 270 IF (X - 1) = INT(X - 1) THEN 410
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- Variable:X -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:X -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:410
 280 GOSUB 570
  LineNumber:570
@@ -104,15 +104,15 @@
  TextValue:"ENTER VALUE OF X"
  CarriageControl:NL
 310 INPUT X
- Variable:X -> _
+ Variable:X -> .
 320 LET K = X
- Variable:K -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 330 IF K > = 0 THEN 360
- Variable:K -> _
+ Variable:K -> .
  NumericValue:0
- BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ BinaryOperatorGreaterEqual:>=(.,.) -> ?
  LineNumber:360
 340 PRINT "X MUST BE GREATER THAN OR EQUAL TO 0"
  TextValue:"X MUST BE GREATER THAN OR EQUAL TO 0"
@@ -122,30 +122,30 @@
 360 GOSUB 490
  LineNumber:490
 370 IF X = INT(X) THEN 390
- Variable:X -> _
- Variable:X -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:X -> .
+ Variable:X -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:390
 380 GOSUB 570
  LineNumber:570
 390 PRINT X;"! = ";K
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:"! = "
  CarriageControl:;
- Variable:K -> _
+ Variable:K -> .
  CarriageControl:NL
 400 GOTO 420
  LineNumber:420
 410 PRINT "GAMMA (";X;") = ";K
  TextValue:"GAMMA ("
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:") = "
  CarriageControl:;
- Variable:K -> _
+ Variable:K -> .
  CarriageControl:NL
 420 PRINT
  CarriageControl:NL
@@ -153,11 +153,11 @@
  TextValue:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 440 INPUT L
- Variable:L -> _
+ Variable:L -> .
 450 IF L = 1 THEN 470
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:470
 460 STOP
  
@@ -166,102 +166,102 @@
 480 GOTO 120
  LineNumber:120
 490 LET J = 1
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 500 LET J = J*K
- Variable:J -> _
- Variable:J -> _
- Variable:K -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J -> .
+ Variable:K -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 510 LET K = K - 1
- Variable:K -> _
- Variable:K -> _
+ Variable:K -> .
+ Variable:K -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 520 IF K < 1 THEN 540
- Variable:K -> _
+ Variable:K -> .
  NumericValue:1
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:540
 530 GOTO 500
  LineNumber:500
 540 LET L = K
- Variable:L -> _
- Variable:K -> _
- AssignmentOperator:= _ -> _
+ Variable:L -> .
+ Variable:K -> .
+ AssignmentOperator:= . -> .
 550 LET K = J
- Variable:K -> _
- Variable:J -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:J -> .
+ AssignmentOperator:= . -> .
 560 RETURN
  
 570 LET A1 = 1 + (A*L) + (B*(L^2)) + (C*(L^3))
- Variable:A1 -> _
+ Variable:A1 -> .
  NumericValue:1
- Variable:A -> _
- Variable:L -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:B -> _
- Variable:L -> _
+ Variable:A -> .
+ Variable:L -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:B -> .
+ Variable:L -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:C -> _
- Variable:L -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:C -> .
+ Variable:L -> .
  NumericValue:3
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 580 LET A1 = A1 + (D*(L^4)) + (E*(L^5)) + (F*(L^6))
- Variable:A1 -> _
- Variable:A1 -> _
- Variable:D -> _
- Variable:L -> _
+ Variable:A1 -> .
+ Variable:A1 -> .
+ Variable:D -> .
+ Variable:L -> .
  NumericValue:4
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:E -> _
- Variable:L -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:E -> .
+ Variable:L -> .
  NumericValue:5
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:F -> _
- Variable:L -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:F -> .
+ Variable:L -> .
  NumericValue:6
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 590 LET A1 = A1 + (G*(L^7)) + (H*(L^8))
- Variable:A1 -> _
- Variable:A1 -> _
- Variable:G -> _
- Variable:L -> _
+ Variable:A1 -> .
+ Variable:A1 -> .
+ Variable:G -> .
+ Variable:L -> .
  NumericValue:7
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:H -> _
- Variable:L -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:H -> .
+ Variable:L -> .
  NumericValue:8
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 600 LET K = A1*K
- Variable:K -> _
- Variable:A1 -> _
- Variable:K -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:A1 -> .
+ Variable:K -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 610 RETURN
  
 620 END

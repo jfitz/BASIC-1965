@@ -9,71 +9,71 @@
 120 PRINT
  CarriageControl:NL
 130 READ A,B,C,D
- Variable:A -> _
- Variable:B -> _
- Variable:C -> _
- Variable:D -> _
+ Variable:A -> .
+ Variable:B -> .
+ Variable:C -> .
+ Variable:D -> .
 140 LET N = A+B+C+D
- Variable:N -> _
- Variable:A -> _
- Variable:B -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:C -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:D -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:N -> .
+ Variable:A -> .
+ Variable:B -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:C -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:D -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 150 LET E = ABS(A*D - B*C) - N/2
- Variable:E -> _
- Variable:A -> _
- Variable:D -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:B -> _
- Variable:C -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionAbs:ABS(_) -> _
- Variable:N -> _
+ Variable:E -> .
+ Variable:A -> .
+ Variable:D -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:B -> .
+ Variable:C -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionAbs:ABS(.) -> .
+ Variable:N -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 160 LET X = N*E*E/((A+B)*(C+D)*(A+C)*(B+D))
- Variable:X -> _
- Variable:N -> _
- Variable:E -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:E -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:A -> _
- Variable:B -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:C -> _
- Variable:D -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:A -> _
- Variable:C -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:B -> _
- Variable:D -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:N -> .
+ Variable:E -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:E -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:A -> .
+ Variable:B -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:C -> .
+ Variable:D -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:A -> .
+ Variable:C -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:B -> .
+ Variable:D -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 170
 180 PRINT A,B
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 190 PRINT C,D,X
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:,
- Variable:D -> _
+ Variable:D -> .
  CarriageControl:,
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:NL
 200 GO TO 120
  LineNumber:120

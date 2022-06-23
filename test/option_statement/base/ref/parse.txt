@@ -2,46 +2,46 @@
  Remark:TEST THE OPTION STATEMENT
 20 DIM A(10)
  NumericValue:10
- Declaration:A() -> _()
+ Declaration:A() -> .()
 30 FOR I = 1 TO 10
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:10"]
 40 LET A(I) = I
- Variable:I -> _
- Variable:A(_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:A(.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 50 NEXT I
- Variable:I -> _
+ Variable:I -> .
 100 OPTION BASE 0
  NumericValue:0
 110 FOR I = 0 TO 10
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:10"]
 120 PRINT I;A(I)
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:;
- Variable:I -> _
- Variable:A(_) -> _
+ Variable:I -> .
+ Variable:A(.) -> .
  CarriageControl:NL
 130 NEXT I
- Variable:I -> _
+ Variable:I -> .
 200 OPTION BASE 1
  NumericValue:1
 210 FOR I = 0 TO 10
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:10"]
 220 PRINT I;A(I)
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:;
- Variable:I -> _
- Variable:A(_) -> _
+ Variable:I -> .
+ Variable:A(.) -> .
  CarriageControl:NL
 230 NEXT I
- Variable:I -> _
+ Variable:I -> .
 999 END
  
 

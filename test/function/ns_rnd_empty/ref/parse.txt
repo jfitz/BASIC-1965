@@ -1,20 +1,20 @@
 10 REM PRINT RANDOM NUMBERS
  Remark:PRINT RANDOM NUMBERS
 20 FOR I = 1 TO 10
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:10"]
 30 LET A = 100*RND()
- Variable:A -> _
+ Variable:A -> .
  NumericValue:100
- FunctionRnd:RND() -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRnd:RND() -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 40 PRINT A
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:NL
 50 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 

@@ -1,67 +1,67 @@
 10 READ N
- Variable:N -> _
+ Variable:N -> .
 20 FOR I = 1 TO N-1
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:N -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 30 FOR J = 1 TO N-1
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:N -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 40 LET P(I,J) = I*J - INT(I*J/N)*N
- Variable:I -> _
- Variable:J -> _
- Variable:P(_,_) -> _
- Variable:I -> _
- Variable:J -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:I -> _
- Variable:J -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:N -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- Variable:N -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:P(.,.) -> .
+ Variable:I -> .
+ Variable:J -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:I -> .
+ Variable:J -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:N -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ Variable:N -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 50 NEXT J
- Variable:J -> _
+ Variable:J -> .
 60 NEXT I
- Variable:I -> _
+ Variable:I -> .
 70 FOR I = 1 TO N-1
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:N -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 80 FOR J = 1 TO N-1
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:N -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 90 IF P(I,J) = 1 THEN 140
- Variable:I -> _
- Variable:J -> _
- Variable:P(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:P(.,.) -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:140
 100 NEXT J
- Variable:J -> _
+ Variable:J -> .
 110 PRINT I; "DOES NOT HAVE AN INVERSE"
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:;
  TextValue:"DOES NOT HAVE AN INVERSE"
  CarriageControl:NL
 120 NEXT I
- Variable:I -> _
+ Variable:I -> .
 130 STOP
  WARNING: Terminating statement in FOR/NEXT
  
 140 PRINT I; "HAS AN INVERSE" J
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:;
  TextValue:"HAS AN INVERSE"
  CarriageControl:
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 150 GOTO 120
  LineNumber:120

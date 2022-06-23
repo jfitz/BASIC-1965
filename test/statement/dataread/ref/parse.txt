@@ -1,21 +1,21 @@
 10 REM This is a test
  Remark:This is a test
 20 READ A,B,C
- Variable:A -> _
- Variable:B -> _
- Variable:C -> _
+ Variable:A -> .
+ Variable:B -> .
+ Variable:C -> .
 30 PRINT A,B,C
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:,
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:NL
 40 DATA 10,20,-30
  NumericValue:10
  NumericValue:20
  NumericValue:30
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 90 STOP
  
 99 END

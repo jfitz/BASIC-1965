@@ -22,36 +22,36 @@
  TextValue:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
  CarriageControl:NL
 90 INPUT C
- Variable:C -> _
+ Variable:C -> .
 100 IF C = 1 THEN 110
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:110
 101 IF C = 2 THEN 150
- Variable:C -> _
+ Variable:C -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:150
 102 IF C = 3 THEN 190
- Variable:C -> _
+ Variable:C -> .
  NumericValue:3
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:190
 103 IF C = 4 THEN 230
- Variable:C -> _
+ Variable:C -> .
  NumericValue:4
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:230
 104 IF C = 5 THEN 280
- Variable:C -> _
+ Variable:C -> .
  NumericValue:5
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:280
 105 IF C = 6 THEN 330
- Variable:C -> _
+ Variable:C -> .
  NumericValue:6
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:330
 106 GOTO 80
  LineNumber:80
@@ -62,11 +62,11 @@
 130 PRINT "SINH - 1";X;" = ";Z
  TextValue:"SINH - 1"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" = "
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 140 GOTO 370
  LineNumber:370
@@ -77,11 +77,11 @@
 170 PRINT "COSH - 1";X;" = ";Z
  TextValue:"COSH - 1"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" = "
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 180 GOTO 370
  LineNumber:370
@@ -92,11 +92,11 @@
 210 PRINT "TANH - 1";X;" = ";Z
  TextValue:"TANH - 1"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" = "
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 220 GOTO 370
  LineNumber:370
@@ -105,17 +105,17 @@
 240 GOSUB 470
  LineNumber:470
 250 LET X = A
- Variable:X -> _
- Variable:A -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:A -> .
+ AssignmentOperator:= . -> .
 260 PRINT "CSCH - 1";X;" = ";Z
  TextValue:"CSCH - 1"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" = "
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 270 GOTO 370
  LineNumber:370
@@ -124,17 +124,17 @@
 290 GOSUB 490
  LineNumber:490
 300 LET X = A
- Variable:X -> _
- Variable:A -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:A -> .
+ AssignmentOperator:= . -> .
 310 PRINT "SECH - 1";X;" = ";Z
  TextValue:"SECH - 1"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" = "
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 320 GOTO 370
  LineNumber:370
@@ -143,17 +143,17 @@
 340 GOSUB 510
  LineNumber:510
 350 LET X = A
- Variable:X -> _
- Variable:A -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:A -> .
+ AssignmentOperator:= . -> .
 360 PRINT "COTH - 1";X;" = ";Z
  TextValue:"COTH - 1"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" = "
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 370 PRINT
  CarriageControl:NL
@@ -161,11 +161,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 390 INPUT L
- Variable:L -> _
+ Variable:L -> .
 400 IF L = 1 THEN 420
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:420
 410 STOP
  
@@ -177,67 +177,67 @@
  TextValue:"X = "
  CarriageControl:;
 450 INPUT X
- Variable:X -> _
+ Variable:X -> .
 460 RETURN
  
 470 LET Z = LOG(X + SQR((X^2) + 1))
- Variable:Z -> _
- Variable:X -> _
- Variable:X -> _
+ Variable:Z -> .
+ Variable:X -> .
+ Variable:X -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionLog:LOG(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionLog:LOG(.) -> .
+ AssignmentOperator:= . -> .
 480 RETURN
  
 490 LET Z = LOG(X + SQR((X^2) - 1))
- Variable:Z -> _
- Variable:X -> _
- Variable:X -> _
+ Variable:Z -> .
+ Variable:X -> .
+ Variable:X -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionLog:LOG(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionLog:LOG(.) -> .
+ AssignmentOperator:= . -> .
 500 RETURN
  
 510 LET Z = (LOG((1 + X)/(1 - X)))/2
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:1
- Variable:X -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:X -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:1
- Variable:X -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionLog:LOG(_) -> _
+ Variable:X -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionLog:LOG(.) -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 520 RETURN
  
 530 PRINT "X = ";
  TextValue:"X = "
  CarriageControl:;
 540 INPUT X
- Variable:X -> _
+ Variable:X -> .
 550 LET A = X
- Variable:A -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 560 LET X = 1/X
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1
- Variable:X -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 570 RETURN
  
 580 END

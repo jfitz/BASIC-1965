@@ -6,51 +6,51 @@
  TextValue:"ROUNDED"
  CarriageControl:NL
 20 LET A=10.1234
- Variable:A -> _
+ Variable:A -> .
  NumericValue:10.1234
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 22 LET A1=ROUND(A,3)
- Variable:A1 -> _
- Variable:A -> _
+ Variable:A1 -> .
+ Variable:A -> .
  NumericValue:3
- FunctionRound:ROUND(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRound:ROUND(.,.) -> .
+ AssignmentOperator:= . -> .
 25 PRINT A,A1
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:A1 -> _
+ Variable:A1 -> .
  CarriageControl:NL
 30 LET B=-20.1234
- Variable:B -> _
+ Variable:B -> .
  NumericValue:20.1234
- UnaryOperatorMinus:-(_) -> =_
- AssignmentOperator:= =_ -> _
+ UnaryOperatorMinus:-(.) -> =.
+ AssignmentOperator:= =. -> .
 32 LET B1=ROUND(B,2)
- Variable:B1 -> _
- Variable:B -> _
+ Variable:B1 -> .
+ Variable:B -> .
  NumericValue:2
- FunctionRound:ROUND(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRound:ROUND(.,.) -> .
+ AssignmentOperator:= . -> .
 35 PRINT B,B1
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:,
- Variable:B1 -> _
+ Variable:B1 -> .
  CarriageControl:NL
 40 LET C=1234
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1234
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 42 LET C1=ROUND(C,-1)
- Variable:C1 -> _
- Variable:C -> _
+ Variable:C1 -> .
+ Variable:C -> .
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
- FunctionRound:ROUND(_,_) -> _
- AssignmentOperator:= _ -> _
+ UnaryOperatorMinus:-(.) -> =.
+ FunctionRound:ROUND(.,.) -> .
+ AssignmentOperator:= . -> .
 45 PRINT C,C1
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:,
- Variable:C1 -> _
+ Variable:C1 -> .
  CarriageControl:NL
 90 STOP
  

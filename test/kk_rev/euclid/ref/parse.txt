@@ -6,43 +6,43 @@
  TextValue:"G.C.D."
  CarriageControl:NL
 20 READ A,B
- Variable:A -> _
- Variable:B -> _
+ Variable:A -> .
+ Variable:B -> .
 30 PRINT A,B,
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:,
 40 LET Q = INT(A/B)
- Variable:Q -> _
- Variable:A -> _
- Variable:B -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Q -> .
+ Variable:A -> .
+ Variable:B -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 45 LET R = A - Q*B
- Variable:R -> _
- Variable:A -> _
- Variable:Q -> _
- Variable:B -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R -> .
+ Variable:A -> .
+ Variable:Q -> .
+ Variable:B -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 50 LET A = B
- Variable:A -> _
- Variable:B -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:B -> .
+ AssignmentOperator:= . -> .
 55 LET B = R
- Variable:B -> _
- Variable:R -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:R -> .
+ AssignmentOperator:= . -> .
 60 IF R > 0 THEN 40
- Variable:R -> _
+ Variable:R -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:40
 70 PRINT A
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:NL
 80 GOTO 20
  LineNumber:20

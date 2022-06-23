@@ -5,7 +5,7 @@
 15 DIM A(3,4)
  NumericValue:3
  NumericValue:4
- Declaration:A(,) -> _(,)
+ Declaration:A(,) -> .(,)
 20 DATA 11,12,13,14,21,22,23,24,31,32,33,34
  NumericValue:11
  NumericValue:12
@@ -22,11 +22,11 @@
 25 FILES "output.txt"
  TextValue:"output.txt"
 30 MAT READ A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
 40 MAT PRINT #1;A
  NumericValue:1
- UnaryOperatorHash:#(_) -> =FH
- Variable:A(,) -> _(,)
+ UnaryOperatorHash:#(.) -> =FH
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 90 STOP
  

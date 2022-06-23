@@ -4,17 +4,17 @@
  TextValue:"ENTER FIRST TERM"
  CarriageControl:NL
 30 INPUT A
- Variable:A -> _
+ Variable:A -> .
 40 PRINT "ENTER SECOND TERM"
  TextValue:"ENTER SECOND TERM"
  CarriageControl:NL
 50 INPUT B
- Variable:B -> _
+ Variable:B -> .
 60 PRINT "MAXIMUM NUMBER OF TERMS = "
  TextValue:"MAXIMUM NUMBER OF TERMS = "
  CarriageControl:NL
 70 INPUT N
- Variable:N -> _
+ Variable:N -> .
 80 PRINT
  CarriageControl:NL
 90 PRINT "TABLE OF FIBONACCI NUMBERS"
@@ -26,52 +26,52 @@
  TextValue:"FIBONACCI NUMBER"
  CarriageControl:NL
 110 LET K = 1
- Variable:K -> _
+ Variable:K -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 120 PRINT K,A
- Variable:K -> _
+ Variable:K -> .
  CarriageControl:,
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:NL
 130 LET K = 2
- Variable:K -> _
+ Variable:K -> .
  NumericValue:2
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 140 PRINT K,B
- Variable:K -> _
+ Variable:K -> .
  CarriageControl:,
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 150 LET K = K + 1
- Variable:K -> _
- Variable:K -> _
+ Variable:K -> .
+ Variable:K -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 160 LET Q = A + B
- Variable:Q -> _
- Variable:A -> _
- Variable:B -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Q -> .
+ Variable:A -> .
+ Variable:B -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 170 PRINT K,Q
- Variable:K -> _
+ Variable:K -> .
  CarriageControl:,
- Variable:Q -> _
+ Variable:Q -> .
  CarriageControl:NL
 180 LET A = B
- Variable:A -> _
- Variable:B -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:B -> .
+ AssignmentOperator:= . -> .
 190 LET B = Q
- Variable:B -> _
- Variable:Q -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:Q -> .
+ AssignmentOperator:= . -> .
 200 IF K > = N THEN 220
- Variable:K -> _
- Variable:N -> _
- BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ Variable:K -> .
+ Variable:N -> .
+ BinaryOperatorGreaterEqual:>=(.,.) -> ?
  LineNumber:220
 210 GOTO 150
  LineNumber:150
@@ -84,11 +84,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 250 INPUT L
- Variable:L -> _
+ Variable:L -> .
 260 IF L = 1 THEN 280
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:280
 270 STOP
  

@@ -1,21 +1,21 @@
 10 DEF FNF(X,Y) = SQR(X*X + Y*Y)
- UserFunctionName:FNF -> _
- VariableName:X -> _
- VariableName:Y -> _
- Variable:X -> _
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
+ UserFunctionName:FNF -> .
+ VariableName:X -> .
+ VariableName:Y -> .
+ Variable:X -> .
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
 20
 100 READ X0, X1, Y0, H
- Variable:X0 -> _
- Variable:X1 -> _
- Variable:Y0 -> _
- Variable:H -> _
+ Variable:X0 -> .
+ Variable:X1 -> .
+ Variable:Y0 -> .
+ Variable:H -> .
 110 PRINT " X", " Y"
  TextValue:" X"
  CarriageControl:,
@@ -24,67 +24,67 @@
 120 PRINT
  CarriageControl:NL
 130 PRINT X0, Y0
- Variable:X0 -> _
+ Variable:X0 -> .
  CarriageControl:,
- Variable:Y0 -> _
+ Variable:Y0 -> .
  CarriageControl:NL
 140 LET Y = Y0
- Variable:Y -> _
- Variable:Y0 -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:Y0 -> .
+ AssignmentOperator:= . -> .
 150
 160 FOR X = X0 TO X1-H STEP H
- control: Variable:X -> _
- start:   ["Variable:X0 -> _"]
- end:     ["Variable:X1 -> _", "Variable:H -> _", "BinaryOperatorMinus:-(_,_) -> _"]
- step:    ["Variable:H -> _"]
+ control: Variable:X -> .
+ start:   ["Variable:X0 -> ."]
+ end:     ["Variable:X1 -> .", "Variable:H -> .", "BinaryOperatorMinus:-(.,.) -> ."]
+ step:    ["Variable:H -> ."]
 170 LET D1 = FNF(X,Y)
- Variable:D1 -> _
- Variable:X -> _
- Variable:Y -> _
- UserFunction:FNF(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:D1 -> .
+ Variable:X -> .
+ Variable:Y -> .
+ UserFunction:FNF(.,.) -> .
+ AssignmentOperator:= . -> .
 180 LET Y1 = Y
- Variable:Y1 -> _
- Variable:Y -> _
- AssignmentOperator:= _ -> _
+ Variable:Y1 -> .
+ Variable:Y -> .
+ AssignmentOperator:= . -> .
 190 LET Y = Y + D1*H/2
- Variable:Y -> _
- Variable:Y -> _
- Variable:D1 -> _
- Variable:H -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Y -> .
+ Variable:Y -> .
+ Variable:D1 -> .
+ Variable:H -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 200 LET D2 = FNF(X+H/2,Y)
- Variable:D2 -> _
- Variable:X -> _
- Variable:H -> _
+ Variable:D2 -> .
+ Variable:X -> .
+ Variable:H -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:Y -> _
- UserFunction:FNF(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:Y -> .
+ UserFunction:FNF(.,.) -> .
+ AssignmentOperator:= . -> .
 210 LET Y = Y1 + D2*H
- Variable:Y -> _
- Variable:Y1 -> _
- Variable:D2 -> _
- Variable:H -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:Y1 -> .
+ Variable:D2 -> .
+ Variable:H -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 220 PRINT X+H, Y
- Variable:X -> _
- Variable:H -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:X -> .
+ Variable:H -> .
+ BinaryOperatorPlus:+(.,.) -> .
  CarriageControl:,
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 230 NEXT X
- Variable:X -> _
+ Variable:X -> .
 240
 900 DATA 0, 1, 1
  NumericValue:0

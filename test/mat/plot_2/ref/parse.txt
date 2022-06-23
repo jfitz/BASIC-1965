@@ -1,36 +1,36 @@
 10 MAT LET A = RND2(4, 40, 400)
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  NumericValue:4
  NumericValue:40
  NumericValue:400
- FunctionRnd2:RND2(_,_,_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionRnd2:RND2(.,.,.) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 20 MAT LET A1 = A - 100
- Variable:A1(,) -> _(,)
- Variable:A(,) -> _(,)
+ Variable:A1(,) -> .(,)
+ Variable:A(,) -> .(,)
  NumericValue:100
- BinaryOperatorMinus:-(_(,),_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ BinaryOperatorMinus:-(.(,),.) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 30 MAT LET A2 = A - 390
- Variable:A2(,) -> _(,)
- Variable:A(,) -> _(,)
+ Variable:A2(,) -> .(,)
+ Variable:A(,) -> .(,)
  NumericValue:390
- BinaryOperatorMinus:-(_(,),_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ BinaryOperatorMinus:-(.(,),.) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 40 MAT LET A3 = A - 700
- Variable:A3(,) -> _(,)
- Variable:A(,) -> _(,)
+ Variable:A3(,) -> .(,)
+ Variable:A(,) -> .(,)
  NumericValue:700
- BinaryOperatorMinus:-(_(,),_) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ BinaryOperatorMinus:-(.(,),.) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 90 MAT PLOT A, A1, A2, A3
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:
- Variable:A1(,) -> _(,)
+ Variable:A1(,) -> .(,)
  CarriageControl:
- Variable:A2(,) -> _(,)
+ Variable:A2(,) -> .(,)
  CarriageControl:
- Variable:A3(,) -> _(,)
+ Variable:A3(,) -> .(,)
 99 END
  
 

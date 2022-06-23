@@ -19,14 +19,14 @@
  NumericValue:3
  NumericValue:2
  NumericValue:5
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:1
  NumericValue:3
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:2
  NumericValue:5
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:4
 80 GOSUB 400
  LineNumber:400
@@ -41,44 +41,44 @@
 199 STOP
  
 400 READ R,C
- Variable:R -> _
- Variable:C -> _
+ Variable:R -> .
+ Variable:C -> .
 405 DIM M1(R,C)
- Variable:R -> _
- Variable:C -> _
- Declaration:M1(,) -> _(,)
+ Variable:R -> .
+ Variable:C -> .
+ Declaration:M1(,) -> .(,)
 410 FOR I = 1 TO R
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:R -> _"]
+ end:     ["Variable:R -> ."]
 420 FOR J = 1 TO C
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:C -> _"]
+ end:     ["Variable:C -> ."]
 430 READ M1(I,J)
- Variable:I -> _
- Variable:J -> _
- Variable:M1(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:M1(.,.) -> .
 440 NEXT J
- Variable:J -> _
+ Variable:J -> .
 450 NEXT I
- Variable:I -> _
+ Variable:I -> .
 460 PRINT "MATRIX:"
  TextValue:"MATRIX:"
  CarriageControl:NL
 470 MAT PRINT M1;
- Variable:M1(,) -> _(,)
+ Variable:M1(,) -> .(,)
  CarriageControl:;
 480 MAT M2 = INV(M1)
- Variable:M2(,) -> _(,)
- Variable:M1(,) -> _(,)
- FunctionInv:INV(_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:M2(,) -> .(,)
+ Variable:M1(,) -> .(,)
+ FunctionInv:INV(.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 490 PRINT "INVERSE:"
  TextValue:"INVERSE:"
  CarriageControl:NL
 492 MAT PRINT M2;
- Variable:M2(,) -> _(,)
+ Variable:M2(,) -> .(,)
  CarriageControl:;
 495 PRINT
  CarriageControl:NL

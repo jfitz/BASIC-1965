@@ -3,277 +3,277 @@
 20 REM AND INFINITY BY GAUSSIAN QUADRATURE
  Remark:AND INFINITY BY GAUSSIAN QUADRATURE
 30 LET C1 = .238619
- Variable:C1 -> _
+ Variable:C1 -> .
  NumericValue:.238619
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 40 LET C2 = - C1
- Variable:C2 -> _
- Variable:C1 -> _
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C2 -> .
+ Variable:C1 -> .
+ UnaryOperatorMinus:-(.) -> .
+ AssignmentOperator:= . -> .
 50 LET C3 = .661209
- Variable:C3 -> _
+ Variable:C3 -> .
  NumericValue:.661209
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 60 LET C4 = - C3
- Variable:C4 -> _
- Variable:C3 -> _
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C4 -> .
+ Variable:C3 -> .
+ UnaryOperatorMinus:-(.) -> .
+ AssignmentOperator:= . -> .
 70 LET C5 = .932470
- Variable:C5 -> _
+ Variable:C5 -> .
  NumericValue:.932470
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 80 LET C6 = - C5
- Variable:C6 -> _
- Variable:C5 -> _
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C6 -> .
+ Variable:C5 -> .
+ UnaryOperatorMinus:-(.) -> .
+ AssignmentOperator:= . -> .
 90 LET D1 = .467914
- Variable:D1 -> _
+ Variable:D1 -> .
  NumericValue:.467914
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 100 LET D2 = .360762
- Variable:D2 -> _
+ Variable:D2 -> .
  NumericValue:.360762
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 110 LET D3 = .171324
- Variable:D3 -> _
+ Variable:D3 -> .
  NumericValue:.171324
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 120 LET J = 0
- Variable:J -> _
+ Variable:J -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 130 PRINT "ENDPOINT A = ";
  TextValue:"ENDPOINT A = "
  CarriageControl:;
 140 INPUT A
- Variable:A -> _
+ Variable:A -> .
 150 LET X = (2/(1 + C1)) + (A - 1)
- Variable:X -> _
+ Variable:X -> .
  NumericValue:2
  NumericValue:1
- Variable:C1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:A -> _
+ Variable:C1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:A -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 160 GOSUB 470
  LineNumber:470
 170 LET N = ((4*D1)/(1 + C1)^2)*Q
- Variable:N -> _
+ Variable:N -> .
  NumericValue:4
- Variable:D1 -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:D1 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- Variable:C1 -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:C1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:Q -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:Q -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 180 LET J = J + N
- Variable:J -> _
- Variable:J -> _
- Variable:N -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J -> .
+ Variable:N -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 190 LET X = (2/(1 + C2)) + (A - 1)
- Variable:X -> _
+ Variable:X -> .
  NumericValue:2
  NumericValue:1
- Variable:C2 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:A -> _
+ Variable:C2 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:A -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 200 GOSUB 470
  LineNumber:470
 210 LET N = ((4*D1)/(1 + C2)^2)*Q
- Variable:N -> _
+ Variable:N -> .
  NumericValue:4
- Variable:D1 -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:D1 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- Variable:C2 -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:C2 -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:Q -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:Q -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 220 LET J = J + N
- Variable:J -> _
- Variable:J -> _
- Variable:N -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J -> .
+ Variable:N -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 230 LET X = (2/(1 + C3)) + (A - 1)
- Variable:X -> _
+ Variable:X -> .
  NumericValue:2
  NumericValue:1
- Variable:C3 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:A -> _
+ Variable:C3 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:A -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 240 GOSUB 470
  LineNumber:470
 250 LET N = ((4*D2)/(1 + C3)^2)*Q
- Variable:N -> _
+ Variable:N -> .
  NumericValue:4
- Variable:D2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:D2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- Variable:C3 -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:C3 -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:Q -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:Q -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 260 LET J = J + N
- Variable:J -> _
- Variable:J -> _
- Variable:N -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J -> .
+ Variable:N -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 270 LET X = (2/(1 + C4)) + (A - 1)
- Variable:X -> _
+ Variable:X -> .
  NumericValue:2
  NumericValue:1
- Variable:C4 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:A -> _
+ Variable:C4 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:A -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 280 GOSUB 470
  LineNumber:470
 290 LET N = ((4*D2)/(1 + C4)^2)*Q
- Variable:N -> _
+ Variable:N -> .
  NumericValue:4
- Variable:D2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:D2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- Variable:C4 -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:C4 -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:Q -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:Q -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 300 LET J = J + N
- Variable:J -> _
- Variable:J -> _
- Variable:N -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J -> .
+ Variable:N -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 310 LET X = (2/(1 + C5)) + (A - 1)
- Variable:X -> _
+ Variable:X -> .
  NumericValue:2
  NumericValue:1
- Variable:C5 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:A -> _
+ Variable:C5 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:A -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 320 GOSUB 470
  LineNumber:470
 330 LET N = ((4*D3)/(1 + C5)^2)*Q
- Variable:N -> _
+ Variable:N -> .
  NumericValue:4
- Variable:D3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:D3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- Variable:C5 -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:C5 -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:Q -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:Q -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 340 LET J = J + N
- Variable:J -> _
- Variable:J -> _
- Variable:N -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J -> .
+ Variable:N -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 350 LET X = (2/(1 + C6)) + (A - 1)
- Variable:X -> _
+ Variable:X -> .
  NumericValue:2
  NumericValue:1
- Variable:C6 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:A -> _
+ Variable:C6 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:A -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 360 GOSUB 470
  LineNumber:470
 370 LET N = ((4*D3)/(1 + C6)^2)*Q
- Variable:N -> _
+ Variable:N -> .
  NumericValue:4
- Variable:D3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:D3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- Variable:C6 -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:C6 -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:Q -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:Q -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 380 LET J = J + N
- Variable:J -> _
- Variable:J -> _
- Variable:N -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J -> .
+ Variable:N -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 390 LET G = J/2
- Variable:G -> _
- Variable:J -> _
+ Variable:G -> .
+ Variable:J -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 400 PRINT "INTEGRAL = ";G
  TextValue:"INTEGRAL = "
  CarriageControl:;
- Variable:G -> _
+ Variable:G -> .
  CarriageControl:NL
 410 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 420 INPUT L
- Variable:L -> _
+ Variable:L -> .
 430 IF L = 1 THEN 450
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:450
 440 STOP
  
@@ -282,13 +282,13 @@
 460 GOTO 120
  LineNumber:120
 470 LET Q = 2*X + 5
- Variable:Q -> _
+ Variable:Q -> .
  NumericValue:2
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:5
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 480 RETURN
  
 490 END

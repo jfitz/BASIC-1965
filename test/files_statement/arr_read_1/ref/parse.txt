@@ -2,15 +2,15 @@
  Remark:This is a test
 15 DIM A(3)
  NumericValue:3
- Declaration:A() -> _()
+ Declaration:A() -> .()
 20 FILES "input.txt"
  TextValue:"input.txt"
 30 ARR READ #1;A
  NumericValue:1
- UnaryOperatorHash:#(_) -> =FH
- Variable:A() -> _()
+ UnaryOperatorHash:#(.) -> =FH
+ Variable:A() -> .()
 40 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 90 STOP
  

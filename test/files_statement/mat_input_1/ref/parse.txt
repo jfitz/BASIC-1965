@@ -5,15 +5,15 @@
 15 DIM A(3,4)
  NumericValue:3
  NumericValue:4
- Declaration:A(,) -> _(,)
+ Declaration:A(,) -> .(,)
 20 FILES "input.txt"
  TextValue:"input.txt"
 30 MAT INPUT #1;A
  NumericValue:1
- UnaryOperatorHash:#(_) -> =FH
- Variable:A() -> _()
+ UnaryOperatorHash:#(.) -> =FH
+ Variable:A() -> .()
 40 MAT PRINT A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 90 STOP
  

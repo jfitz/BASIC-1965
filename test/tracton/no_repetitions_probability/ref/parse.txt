@@ -9,40 +9,40 @@
  TextValue:"TOTAL POPULATION"
  CarriageControl:NL
 40 INPUT M
- Variable:M -> _
+ Variable:M -> .
 50 PRINT "SIZE OF SAMPLE"
  TextValue:"SIZE OF SAMPLE"
  CarriageControl:NL
 60 INPUT N
- Variable:N -> _
+ Variable:N -> .
 70 LET J = 1
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 80 FOR I = 1 TO N - 1
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:N -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 90 LET K = 1 - (I/M)
- Variable:K -> _
+ Variable:K -> .
  NumericValue:1
- Variable:I -> _
- Variable:M -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:M -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 100 LET J = J*K
- Variable:J -> _
- Variable:J -> _
- Variable:K -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J -> .
+ Variable:K -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 110 NEXT I
- Variable:I -> _
+ Variable:I -> .
 120 PRINT "PROBABILITY = ";J
  TextValue:"PROBABILITY = "
  CarriageControl:;
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 130 PRINT
  CarriageControl:NL
@@ -50,11 +50,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Variable:L -> _
+ Variable:L -> .
 160 IF L = 1 THEN 30
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:30
 170 STOP
  

@@ -2,20 +2,20 @@
  NumericValue:1
 10 DIM A(6)
  NumericValue:6
- Declaration:A() -> _()
+ Declaration:A() -> .()
 20 FOR I = 1 TO 6
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:6"]
 40 LET A(I) = I
- Variable:I -> _
- Variable:A(_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:A(.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 60 NEXT I
- Variable:I -> _
+ Variable:I -> .
 70 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 99 END
  

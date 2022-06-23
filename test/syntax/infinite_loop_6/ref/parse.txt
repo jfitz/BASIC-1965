@@ -1,23 +1,23 @@
 10 REM TEST INFINITE LOOP CHECK
  Remark:TEST INFINITE LOOP CHECK
 14 LET B = 1
- Variable:B -> _
+ Variable:B -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 15 LET S = 0
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 20 FOR I = B TO 10 STEP S
- control: Variable:I -> _
- start:   ["Variable:B -> _"]
+ control: Variable:I -> .
+ start:   ["Variable:B -> ."]
  end:     ["NumericValue:10"]
- step:    ["Variable:S -> _"]
+ step:    ["Variable:S -> ."]
 30 PRINT I
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 40 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 

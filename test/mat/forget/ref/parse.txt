@@ -5,34 +5,34 @@
 20 DIM A(3,4)
  NumericValue:3
  NumericValue:4
- Declaration:A(,) -> _(,)
+ Declaration:A(,) -> .(,)
 21 FOR I = 1 TO 3
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
 22 FOR J = 1 TO 4
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:4"]
 23 LET A(I,J) = I*J
- Variable:I -> _
- Variable:J -> _
- Variable:A(_,_) -> _
- Variable:I -> _
- Variable:J -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:A(.,.) -> .
+ Variable:I -> .
+ Variable:J -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 24 NEXT J
- Variable:J -> _
+ Variable:J -> .
 25 NEXT I
- Variable:I -> _
+ Variable:I -> .
 30 MAT PRINT A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 40 MAT FORGET A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
 90 MAT PRINT A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 99 END
  

@@ -1,70 +1,70 @@
 10 DEF FNF(X) = X^5 + 2*X^3 -1
- UserFunctionName:FNF -> _
- VariableName:X -> _
- Variable:X -> _
+ UserFunctionName:FNF -> .
+ VariableName:X -> .
+ Variable:X -> .
  NumericValue:5
- BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
  NumericValue:2
- Variable:X -> _
+ Variable:X -> .
  NumericValue:3
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
 20 READ A,B
- Variable:A -> _
- Variable:B -> _
+ Variable:A -> .
+ Variable:B -> .
 30 LET X = (A+B)/2
- Variable:X -> _
- Variable:A -> _
- Variable:B -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:X -> .
+ Variable:A -> .
+ Variable:B -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 40 IF FNF(X) = 0 THEN 100
- Variable:X -> _
- UserFunction:FNF(_) -> _
+ Variable:X -> .
+ UserFunction:FNF(.) -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:100
 50 IF FNF(X) < 0 THEN 70
- Variable:X -> _
- UserFunction:FNF(_) -> _
+ Variable:X -> .
+ UserFunction:FNF(.) -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:70
 60 LET B = X
- Variable:B -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 65 GOTO 80
  LineNumber:80
 70 LET A = X
- Variable:A -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 80 IF ABS(A-B)/(ABS(A)+ABS(B)) < 0.000005 THEN 100
- Variable:A -> _
- Variable:B -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionAbs:ABS(_) -> _
- Variable:A -> _
- FunctionAbs:ABS(_) -> _
- Variable:B -> _
- FunctionAbs:ABS(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
+ Variable:A -> .
+ Variable:B -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionAbs:ABS(.) -> .
+ Variable:A -> .
+ FunctionAbs:ABS(.) -> .
+ Variable:B -> .
+ FunctionAbs:ABS(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
  NumericValue:0.000005
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:100
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
  TextValue:"ONE ZERO AT"
  CarriageControl:
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:NL
 900 DATA 0,1
  NumericValue:0

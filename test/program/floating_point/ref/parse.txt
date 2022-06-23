@@ -1,50 +1,50 @@
 10 REM TEST OF FLOATING POINT ERRORS
  Remark:TEST OF FLOATING POINT ERRORS
 20 LET A=0.1
- Variable:A -> _
+ Variable:A -> .
  NumericValue:0.1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 21 LET A = A + 0.2
- Variable:A -> _
- Variable:A -> _
+ Variable:A -> .
+ Variable:A -> .
  NumericValue:0.2
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 22 LET A = A - 0.3
- Variable:A -> _
- Variable:A -> _
+ Variable:A -> .
+ Variable:A -> .
  NumericValue:0.3
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 30 FOR I = 1 TO 500
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:500"]
 40 IF A < 1.0 THEN 50
- Variable:A -> _
+ Variable:A -> .
  NumericValue:1.0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:50
 42 PRINT "ERROR IN ITERATION"; I
  TextValue:"ERROR IN ITERATION"
  CarriageControl:;
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 49 STOP
  WARNING: Terminating statement in FOR/NEXT
  
 50 LET A = A + A
- Variable:A -> _
- Variable:A -> _
- Variable:A -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:A -> .
+ Variable:A -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 60 NEXT I
- Variable:I -> _
+ Variable:I -> .
 80 PRINT "NO ERROR AFTER";I;"ITERATIONS"
  TextValue:"NO ERROR AFTER"
  CarriageControl:;
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:;
  TextValue:"ITERATIONS"
  CarriageControl:NL

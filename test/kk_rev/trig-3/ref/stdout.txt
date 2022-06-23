@@ -12,9 +12,9 @@ Error 103 Out of data in line 150
 
 100 (0) REM ANGLE-SIDE-SIDE
 110 (1) LET P = 3.14159
-120 FND(_) (0) DEF FND(X) = X * P / 180
-130 FNS(_) (0) DEF FNS(X) = SIN(FND(X))
-135 FNR(_) (0) DEF FNR(X) = INT(100 * X + 0.5) / 100
+120 FND(.) (0) DEF FND(X) = X * P / 180
+130 FNS(.) (0) DEF FNS(X) = SIN(FND(X))
+135 FNR(.) (0) DEF FNR(X) = INT(100 * X + 0.5) / 100
 140 (1) PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
 150 (9) READ B, X, Y
 160 (9) PRINT B, X, Y,

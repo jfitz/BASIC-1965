@@ -1,16 +1,16 @@
 10 REM This is a test
  Remark:This is a test
 20 READ A
- Variable:A -> _
+ Variable:A -> .
 30 LET B=FIX(A)
- Variable:B -> _
- Variable:A -> _
- FunctionFix:FIX(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:A -> .
+ FunctionFix:FIX(.) -> .
+ AssignmentOperator:= . -> .
 40 PRINT A,B
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 50 GOTO 20
  LineNumber:20
@@ -20,11 +20,11 @@
  NumericValue:1.8
  NumericValue:0
  NumericValue:1.8
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:5.5
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:10.2
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 99 END
  
 

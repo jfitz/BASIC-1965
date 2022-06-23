@@ -6,142 +6,142 @@
  TextValue:"INPUT X1,Y1"
  CarriageControl:;
 40 INPUT X1, Y1
- Variable:X1 -> _
- Variable:Y1 -> _
+ Variable:X1 -> .
+ Variable:Y1 -> .
 50 PRINT "INPUT X2,Y2";
  TextValue:"INPUT X2,Y2"
  CarriageControl:;
 60 INPUT X2, Y2
- Variable:X2 -> _
- Variable:Y2 -> _
+ Variable:X2 -> .
+ Variable:Y2 -> .
 70 PRINT "INPUT X3,Y2";
  TextValue:"INPUT X3,Y2"
  CarriageControl:;
 80 INPUT X3, Y3
- Variable:X3 -> _
- Variable:Y3 -> _
+ Variable:X3 -> .
+ Variable:Y3 -> .
 90 LET A = (Y2 - Y1)/(X2 - X1)
- Variable:A -> _
- Variable:Y2 -> _
- Variable:Y1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:X2 -> _
- Variable:X1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:Y2 -> .
+ Variable:Y1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:X2 -> .
+ Variable:X1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 100 LET B = (Y3 - Y1)/(X3 - X1)
- Variable:B -> _
- Variable:Y3 -> _
- Variable:Y1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:X3 -> _
- Variable:X1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:Y3 -> .
+ Variable:Y1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:X3 -> .
+ Variable:X1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 110 LET C = ((X2 - X1)*(X2 + X1)) + ((Y2 - Y1)*(Y2 + Y1))
- Variable:C -> _
- Variable:X2 -> _
- Variable:X1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:X2 -> _
- Variable:X1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y2 -> _
- Variable:Y1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:Y2 -> _
- Variable:Y1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C -> .
+ Variable:X2 -> .
+ Variable:X1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:X2 -> .
+ Variable:X1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y2 -> .
+ Variable:Y1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:Y2 -> .
+ Variable:Y1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 120 LET D = C/(2*(X2 - X1))
- Variable:D -> _
- Variable:C -> _
+ Variable:D -> .
+ Variable:C -> .
  NumericValue:2
- Variable:X2 -> _
- Variable:X1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X2 -> .
+ Variable:X1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 130 LET E = ((X3 - X1)*(X3 + X1)) + ((Y3 - Y1)*(Y3 + Y1))
- Variable:E -> _
- Variable:X3 -> _
- Variable:X1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:X3 -> _
- Variable:X1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y3 -> _
- Variable:Y1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:Y3 -> _
- Variable:Y1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:E -> .
+ Variable:X3 -> .
+ Variable:X1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:X3 -> .
+ Variable:X1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y3 -> .
+ Variable:Y1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:Y3 -> .
+ Variable:Y1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 140 LET F = E/(2*(X3 - X1))
- Variable:F -> _
- Variable:E -> _
+ Variable:F -> .
+ Variable:E -> .
  NumericValue:2
- Variable:X3 -> _
- Variable:X1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X3 -> .
+ Variable:X1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 150 LET Y0 = (F - D)/(B - A)
- Variable:Y0 -> _
- Variable:F -> _
- Variable:D -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:B -> _
- Variable:A -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y0 -> .
+ Variable:F -> .
+ Variable:D -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:B -> .
+ Variable:A -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 160 LET X0 = F - (B*Y0)
- Variable:X0 -> _
- Variable:F -> _
- Variable:B -> _
- Variable:Y0 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X0 -> .
+ Variable:F -> .
+ Variable:B -> .
+ Variable:Y0 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 170 LET R = SQR((X3 - X0)^2 + (Y3 - Y0)^2)
- Variable:R -> _
- Variable:X3 -> _
- Variable:X0 -> _
- BinaryOperatorMinus:-(_,_) -> _
+ Variable:R -> .
+ Variable:X3 -> .
+ Variable:X0 -> .
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- Variable:Y3 -> _
- Variable:Y0 -> _
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ Variable:Y3 -> .
+ Variable:Y0 -> .
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 180 PRINT "CENTER X0,Y0 = ";X0;",";Y0
  TextValue:"CENTER X0,Y0 = "
  CarriageControl:;
- Variable:X0 -> _
+ Variable:X0 -> .
  CarriageControl:;
  TextValue:","
  CarriageControl:;
- Variable:Y0 -> _
+ Variable:Y0 -> .
  CarriageControl:NL
 190 PRINT "RADIUS = ";R
  TextValue:"RADIUS = "
  CarriageControl:;
- Variable:R -> _
+ Variable:R -> .
  CarriageControl:NL
 200 PRINT
  CarriageControl:NL
@@ -149,11 +149,11 @@
  TextValue:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 220 INPUT L
- Variable:L -> _
+ Variable:L -> .
 230 IF L = 1 THEN 250
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:250
 240 STOP
  

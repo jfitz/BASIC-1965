@@ -8,39 +8,39 @@
 21 OPTION FORGET_FORNEXT FALSE
  BooleanValue:false
 22 FOR I = 1 TO 3
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
 23 PRINT I
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 24 NEXT I
- Variable:I -> _
+ Variable:I -> .
 25 PRINT "I IS NOW";I
  TextValue:"I IS NOW"
  CarriageControl:;
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 26 FORGET I
- Variable:I -> _
+ Variable:I -> .
 30 PRINT "OPTION FORGET_FORNEXT TRUE"
  TextValue:"OPTION FORGET_FORNEXT TRUE"
  CarriageControl:NL
 31 OPTION FORGET_FORNEXT TRUE
  BooleanValue:true
 32 FOR I = 1 TO 3
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
 33 PRINT I
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 34 NEXT I
- Variable:I -> _
+ Variable:I -> .
 35 PRINT "I IS NOW";I
  TextValue:"I IS NOW"
  CarriageControl:;
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 99 END
  

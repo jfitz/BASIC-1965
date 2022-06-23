@@ -4,14 +4,14 @@
  TextValue:"START PROGRAM"
  CarriageControl:NL
 30 LET A = 20
- Variable:A -> _
+ Variable:A -> .
  NumericValue:20
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 80 IF A=10 THEN 100
  ERROR: Line number 100 not found
- Variable:A -> _
+ Variable:A -> .
  NumericValue:10
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:100
 90 PRINT "END PROGRAM"
  TextValue:"END PROGRAM"

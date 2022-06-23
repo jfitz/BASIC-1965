@@ -2,110 +2,110 @@
  Remark:ARRAY FUNCTION CON
 15 DIM D(3)
  NumericValue:3
- Declaration:D() -> _()
+ Declaration:D() -> .()
 20 ARR A = 2 * CON1(5)
- Variable:A() -> _()
+ Variable:A() -> .()
  NumericValue:2
  NumericValue:5
- FunctionCon1:CON1(_) -> =_()
- BinaryOperatorMultiply:*(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionCon1:CON1(.) -> =.()
+ BinaryOperatorMultiply:*(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 30 ARR B = 2 * CON1(3)
- Variable:B() -> _()
+ Variable:B() -> .()
  NumericValue:2
  NumericValue:3
- FunctionCon1:CON1(_) -> =_()
- BinaryOperatorMultiply:*(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionCon1:CON1(.) -> =.()
+ BinaryOperatorMultiply:*(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 40 ARR C = 2 * CON1(4)
- Variable:C() -> _()
+ Variable:C() -> .()
  NumericValue:2
  NumericValue:4
- FunctionCon1:CON1(_) -> =_()
- BinaryOperatorMultiply:*(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionCon1:CON1(.) -> =.()
+ BinaryOperatorMultiply:*(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 45 ARR D = 2 * CON1
- Variable:D() -> _()
+ Variable:D() -> .()
  NumericValue:2
- FunctionCon1:CON1 -> _()
- BinaryOperatorMultiply:*(_,_()) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionCon1:CON1 -> .()
+ BinaryOperatorMultiply:*(.,.()) -> .()
+ AssignmentOperator:= .() -> .()
 50 PRINT "ARRAY A"
  TextValue:"ARRAY A"
  CarriageControl:NL
 60 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 70 PRINT "ARRAY B"
  TextValue:"ARRAY B"
  CarriageControl:NL
 80 ARR PRINT B
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:NL
 90 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 100 ARR PRINT C
- Variable:C() -> _()
+ Variable:C() -> .()
  CarriageControl:NL
 110 PRINT "ARRAY D"
  TextValue:"ARRAY D"
  CarriageControl:NL
 120 ARR PRINT D
- Variable:D() -> _()
+ Variable:D() -> .()
  CarriageControl:NL
 200 OPTION BASE 1
  NumericValue:1
 220 ARR A = 3 * CON1(5)
- Variable:A() -> _()
+ Variable:A() -> .()
  NumericValue:3
  NumericValue:5
- FunctionCon1:CON1(_) -> =_()
- BinaryOperatorMultiply:*(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionCon1:CON1(.) -> =.()
+ BinaryOperatorMultiply:*(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 230 ARR B = 3 * CON1(3)
- Variable:B() -> _()
+ Variable:B() -> .()
  NumericValue:3
  NumericValue:3
- FunctionCon1:CON1(_) -> =_()
- BinaryOperatorMultiply:*(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionCon1:CON1(.) -> =.()
+ BinaryOperatorMultiply:*(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 240 ARR C = 3 * CON1(4)
- Variable:C() -> _()
+ Variable:C() -> .()
  NumericValue:3
  NumericValue:4
- FunctionCon1:CON1(_) -> =_()
- BinaryOperatorMultiply:*(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionCon1:CON1(.) -> =.()
+ BinaryOperatorMultiply:*(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 245 ARR D = 3 * CON1()
- Variable:D() -> _()
+ Variable:D() -> .()
  NumericValue:3
- FunctionCon1:CON1() -> _()
- BinaryOperatorMultiply:*(_,_()) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionCon1:CON1() -> .()
+ BinaryOperatorMultiply:*(.,.()) -> .()
+ AssignmentOperator:= .() -> .()
 250 PRINT "ARRAY A"
  TextValue:"ARRAY A"
  CarriageControl:NL
 260 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 270 PRINT "ARRAY B"
  TextValue:"ARRAY B"
  CarriageControl:NL
 280 ARR PRINT B
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:NL
 290 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 300 ARR PRINT C
- Variable:C() -> _()
+ Variable:C() -> .()
  CarriageControl:NL
 310 PRINT "ARRAY D"
  TextValue:"ARRAY D"
  CarriageControl:NL
 320 ARR PRINT D
- Variable:D() -> _()
+ Variable:D() -> .()
  CarriageControl:NL
 999 END
  

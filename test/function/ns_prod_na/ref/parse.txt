@@ -2,22 +2,22 @@
  Remark:This is a test
 20 ARR READ A(3)
  NumericValue:3
- Variable:A(_) -> _()
+ Variable:A(.) -> .()
 30 LET B=PROD(A)
- Variable:B -> _
- Variable:A() -> _()
- FunctionProd:PROD(_()) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:A() -> .()
+ FunctionProd:PROD(.()) -> .
+ AssignmentOperator:= . -> .
 40 PRINT "PRODUCT IS "; B
  TextValue:"PRODUCT IS "
  CarriageControl:;
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 90 DATA 10.2,5.5,-1.8,17
  NumericValue:10.2
  NumericValue:5.5
  NumericValue:1.8
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:17
 99 END
  

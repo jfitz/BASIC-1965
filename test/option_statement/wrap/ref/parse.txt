@@ -4,11 +4,11 @@
  NumericValue:1
 30 DIM A(5)
  NumericValue:5
- Declaration:A() -> _()
+ Declaration:A() -> .()
 40 ARR READ A
- Variable:A() -> _()
+ Variable:A() -> .()
 50 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 100 OPTION WRAP TRUE
  BooleanValue:true
@@ -16,12 +16,12 @@
  TextValue:"LAST: "
  CarriageControl:;
  NumericValue:0
- Variable:A(_) -> _
+ Variable:A(.) -> .
  CarriageControl:;
  TextValue:" FIRST: "
  CarriageControl:;
  NumericValue:6
- Variable:A(_) -> _
+ Variable:A(.) -> .
  CarriageControl:NL
 120 OPTION WRAP FALSE
  BooleanValue:false
@@ -29,12 +29,12 @@
  TextValue:"LAST: "
  CarriageControl:;
  NumericValue:0
- Variable:A(_) -> _
+ Variable:A(.) -> .
  CarriageControl:;
  TextValue:" FIRST: "
  CarriageControl:;
  NumericValue:6
- Variable:A(_) -> _
+ Variable:A(.) -> .
  CarriageControl:NL
 190 DATA 1,2,3,4,5
  NumericValue:1

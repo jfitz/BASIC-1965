@@ -12,158 +12,158 @@
  TextValue:"ENTER THE 1ST EQUATION (A,B,C,D)"
  CarriageControl:NL
 60 INPUT A1,B1,C1,D1
- Variable:A1 -> _
- Variable:B1 -> _
- Variable:C1 -> _
- Variable:D1 -> _
+ Variable:A1 -> .
+ Variable:B1 -> .
+ Variable:C1 -> .
+ Variable:D1 -> .
 70 PRINT "ENTER THE 2ND EQUATION (A,B,C,D)"
  TextValue:"ENTER THE 2ND EQUATION (A,B,C,D)"
  CarriageControl:NL
 80 INPUT A2,B2,C2,D2
- Variable:A2 -> _
- Variable:B2 -> _
- Variable:C2 -> _
- Variable:D2 -> _
+ Variable:A2 -> .
+ Variable:B2 -> .
+ Variable:C2 -> .
+ Variable:D2 -> .
 90 PRINT "ENTER THE 3RD EQUATION (A,B,C,D)"
  TextValue:"ENTER THE 3RD EQUATION (A,B,C,D)"
  CarriageControl:NL
 100 INPUT A3,B3,C3,D3
- Variable:A3 -> _
- Variable:B3 -> _
- Variable:C3 -> _
- Variable:D3 -> _
+ Variable:A3 -> .
+ Variable:B3 -> .
+ Variable:C3 -> .
+ Variable:D3 -> .
 110 LET E1 = ((B1*A2)/A1) - B2
- Variable:E1 -> _
- Variable:B1 -> _
- Variable:A2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:A1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:B2 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:E1 -> .
+ Variable:B1 -> .
+ Variable:A2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:A1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:B2 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 120 LET E2 = ((C1*A2)/A1) - C2
- Variable:E2 -> _
- Variable:C1 -> _
- Variable:A2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:A1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:C2 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:E2 -> .
+ Variable:C1 -> .
+ Variable:A2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:A1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:C2 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 130 LET E3 = ((B1*A3)/A1) - B3
- Variable:E3 -> _
- Variable:B1 -> _
- Variable:A3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:A1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:B3 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:E3 -> .
+ Variable:B1 -> .
+ Variable:A3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:A1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:B3 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 140 LET E4 = ((C1*A3)/A1) - C3
- Variable:E4 -> _
- Variable:C1 -> _
- Variable:A3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:A1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:C3 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:E4 -> .
+ Variable:C1 -> .
+ Variable:A3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:A1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:C3 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 150 LET E5 = ((E1*E4) - (E2*E3))
- Variable:E5 -> _
- Variable:E1 -> _
- Variable:E4 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:E2 -> _
- Variable:E3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:E5 -> .
+ Variable:E1 -> .
+ Variable:E4 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:E2 -> .
+ Variable:E3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 160 IF E5 = 0 THEN 250
- Variable:E5 -> _
+ Variable:E5 -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:250
 170 LET E6 = ((D1*A2)/A1) - D2
- Variable:E6 -> _
- Variable:D1 -> _
- Variable:A2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:A1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:D2 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:E6 -> .
+ Variable:D1 -> .
+ Variable:A2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:A1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:D2 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 180 LET E7 = ((D1*A3)/A1) - D3
- Variable:E7 -> _
- Variable:D1 -> _
- Variable:A3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:A1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:D3 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:E7 -> .
+ Variable:D1 -> .
+ Variable:A3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:A1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:D3 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 190 LET Y = ((E6*E4) - (E2*E7))/E5
- Variable:Y -> _
- Variable:E6 -> _
- Variable:E4 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:E2 -> _
- Variable:E7 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:E5 -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:E6 -> .
+ Variable:E4 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:E2 -> .
+ Variable:E7 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:E5 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 200 LET Z = ((E1*E7) - (E6*E3))/E5
- Variable:Z -> _
- Variable:E1 -> _
- Variable:E7 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:E6 -> _
- Variable:E3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:E5 -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ Variable:E1 -> .
+ Variable:E7 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:E6 -> .
+ Variable:E3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:E5 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 210 LET X = (D1/A1) - (B1/A1*Y) - ((C1/A1)*Z)
- Variable:X -> _
- Variable:D1 -> _
- Variable:A1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:B1 -> _
- Variable:A1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:C1 -> _
- Variable:A1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:Z -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:D1 -> .
+ Variable:A1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:B1 -> .
+ Variable:A1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:C1 -> .
+ Variable:A1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:Z -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 220 PRINT "SOLUTION"
  TextValue:"SOLUTION"
  CarriageControl:NL
 230 PRINT "X = ";X,"Y = ";Y,"Z = ";Z
  TextValue:"X = "
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
  TextValue:"Y = "
  CarriageControl:;
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:,
  TextValue:"Z = "
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 240 GOTO 260
  LineNumber:260
@@ -176,11 +176,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 280 INPUT L
- Variable:L -> _
+ Variable:L -> .
 290 IF L = 1 THEN 310
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:310
 300 STOP
  

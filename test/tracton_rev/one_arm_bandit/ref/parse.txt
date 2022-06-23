@@ -9,16 +9,16 @@
  TextValue:"TYPE EITHER 1 OR 0"
  CarriageControl:NL
 50 INPUT L
- Variable:L -> _
+ Variable:L -> .
 60 IF L = 1 THEN 100
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:100
 70 IF L = 0 THEN 170
- Variable:L -> _
+ Variable:L -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:170
 80 PRINT "INVALID COMMAND"
  TextValue:"INVALID COMMAND"
@@ -47,143 +47,143 @@
  TextValue:"EARN $10. EACH TURN COSTS $1. GOOD-LUCK"
  CarriageControl:NL
 170 LET J = 0
- Variable:J -> _
+ Variable:J -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 180 PRINT
  CarriageControl:NL
 190 GOSUB 590
  LineNumber:590
 200 LET S1 = S
- Variable:S1 -> _
- Variable:S -> _
- AssignmentOperator:= _ -> _
+ Variable:S1 -> .
+ Variable:S -> .
+ AssignmentOperator:= . -> .
 210 GOSUB 590
  LineNumber:590
 220 LET S2 = S
- Variable:S2 -> _
- Variable:S -> _
- AssignmentOperator:= _ -> _
+ Variable:S2 -> .
+ Variable:S -> .
+ AssignmentOperator:= . -> .
 230 GOSUB 590
  LineNumber:590
 240 LET S3 = S
- Variable:S3 -> _
- Variable:S -> _
- AssignmentOperator:= _ -> _
+ Variable:S3 -> .
+ Variable:S -> .
+ AssignmentOperator:= . -> .
 250 LET S = S1
- Variable:S -> _
- Variable:S1 -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S1 -> .
+ AssignmentOperator:= . -> .
 340 IF S1 = 1 THEN 380
- Variable:S1 -> _
+ Variable:S1 -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:380
 350 IF S1 = 2 THEN 420
- Variable:S1 -> _
+ Variable:S1 -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:420
 360 IF S1 = S2 THEN 440
- Variable:S1 -> _
- Variable:S2 -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:S1 -> .
+ Variable:S2 -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:440
 370 GOTO 460
  LineNumber:460
 380 IF S1 = S2 THEN 400
- Variable:S1 -> _
- Variable:S2 -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:S1 -> .
+ Variable:S2 -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:400
 390 GOTO 460
  LineNumber:460
 400 IF S2 = S3 THEN 480
- Variable:S2 -> _
- Variable:S3 -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:S2 -> .
+ Variable:S3 -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:480
 410 GOTO 460
  LineNumber:460
 420 IF S1 = S2 THEN 500
- Variable:S1 -> _
- Variable:S2 -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:S1 -> .
+ Variable:S2 -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:500
 430 GOTO 520
  LineNumber:520
 440 IF S2 = S3 THEN 540
- Variable:S2 -> _
- Variable:S3 -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:S2 -> .
+ Variable:S3 -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:540
 450 IF S3 = 1 THEN 540
- Variable:S3 -> _
+ Variable:S3 -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:540
 460 LET J = J - 1
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 470 GOTO 550
  LineNumber:550
 480 LET J = J + 89
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:89
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 490 GOTO 550
  LineNumber:550
 500 LET J = J + 2
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:2
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 510 GOTO 550
  LineNumber:550
 520 LET J = J + 1
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 530 GOTO 550
  LineNumber:550
 540 LET J = J + 9
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:9
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 550 PRINT
  CarriageControl:NL
 560 LET S = S1
- Variable:S -> _
- Variable:S1 -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S1 -> .
+ AssignmentOperator:= . -> .
 561 GOSUB 610
  LineNumber:610
 562 PRINT " ";
  TextValue:" "
  CarriageControl:;
 563 LET S = S2
- Variable:S -> _
- Variable:S2 -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S2 -> .
+ AssignmentOperator:= . -> .
 564 GOSUB 610
  LineNumber:610
 565 PRINT " ";
  TextValue:" "
  CarriageControl:;
 566 LET S = S3
- Variable:S -> _
- Variable:S3 -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S3 -> .
+ AssignmentOperator:= . -> .
 567 GOSUB 610
  LineNumber:610
 568 PRINT
@@ -191,45 +191,45 @@
 570 PRINT "YOUR EARNINGS ARE NOW $";J
  TextValue:"YOUR EARNINGS ARE NOW $"
  CarriageControl:;
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 580 GOTO 720
  LineNumber:720
 590 LET S = 1 + INT(5*RND)
- Variable:S -> _
+ Variable:S -> .
  NumericValue:1
  NumericValue:5
- FunctionRnd:RND -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRnd:RND -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 600 RETURN
  
 610 IF S = 1 THEN 620
- Variable:S -> _
+ Variable:S -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:620
 611 IF S = 2 THEN 640
- Variable:S -> _
+ Variable:S -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:640
 612 IF S = 3 THEN 660
- Variable:S -> _
+ Variable:S -> .
  NumericValue:3
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:660
 613 IF S = 4 THEN 680
- Variable:S -> _
+ Variable:S -> .
  NumericValue:4
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:680
 614 IF S = 5 THEN 700
- Variable:S -> _
+ Variable:S -> .
  NumericValue:5
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:700
 620 PRINT "CHERRY";
  TextValue:"CHERRY"
@@ -262,11 +262,11 @@
  TextValue:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 740 INPUT Z
- Variable:Z -> _
+ Variable:Z -> .
 750 IF Z = 1 THEN 780
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:780
 760 PRINT "ONE-ARM BANDIT SAYS GOOD-BYE"
  TextValue:"ONE-ARM BANDIT SAYS GOOD-BYE"

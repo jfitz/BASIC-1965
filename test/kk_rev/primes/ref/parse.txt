@@ -1,98 +1,98 @@
 10 DIM N(1000)
  NumericValue:1000
- Declaration:N() -> _()
+ Declaration:N() -> .()
 11 DIM P(350)
  NumericValue:350
- Declaration:P() -> _()
+ Declaration:P() -> .()
 20 FOR I = 1 TO 1000
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:1000"]
 21    LET N(I) = 0
- Variable:I -> _
- Variable:N(_) -> _
+ Variable:I -> .
+ Variable:N(.) -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 22 NEXT I
- Variable:I -> _
+ Variable:I -> .
 25 LET P(0) = 2
  NumericValue:0
- Variable:P(_) -> _
+ Variable:P(.) -> .
  NumericValue:2
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 26 LET K = 0
- Variable:K -> _
+ Variable:K -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 30 FOR P = 3 TO 2000 STEP 2
- control: Variable:P -> _
+ control: Variable:P -> .
  start:   ["NumericValue:3"]
  end:     ["NumericValue:2000"]
  step:    ["NumericValue:2"]
 35    LET X = (P-1)/2
- Variable:X -> _
- Variable:P -> _
+ Variable:X -> .
+ Variable:P -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 40    IF N(X) < 0 THEN 90
- Variable:X -> _
- Variable:N(_) -> _
+ Variable:X -> .
+ Variable:N(.) -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:90
 50    LET K = K+1
- Variable:K -> _
- Variable:K -> _
+ Variable:K -> .
+ Variable:K -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 55    LET P(K) = P
- Variable:K -> _
- Variable:P(_) -> _
- Variable:P -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:P(.) -> .
+ Variable:P -> .
+ AssignmentOperator:= . -> .
 56    IF P > SQR(2000) THEN 90
- Variable:P -> _
+ Variable:P -> .
  NumericValue:2000
- FunctionSqr:SQR(_) -> =_
- BinaryOperatorGreater:>(_,_) -> ?
+ FunctionSqr:SQR(.) -> =.
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:90
 60    FOR I = P TO 2000 STEP 2*P
- control: Variable:I -> _
- start:   ["Variable:P -> _"]
+ control: Variable:I -> .
+ start:   ["Variable:P -> ."]
  end:     ["NumericValue:2000"]
- step:    ["NumericValue:2", "Variable:P -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
+ step:    ["NumericValue:2", "Variable:P -> .", "BinaryOperatorMultiply:*(.,.) -> ."]
 65       LET X = (I-1)/2
- Variable:X -> _
- Variable:I -> _
+ Variable:X -> .
+ Variable:I -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 70       LET N(X) = -1
- Variable:X -> _
- Variable:N(_) -> _
+ Variable:X -> .
+ Variable:N(.) -> .
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
- AssignmentOperator:= =_ -> _
+ UnaryOperatorMinus:-(.) -> =.
+ AssignmentOperator:= =. -> .
 80    NEXT I
- Variable:I -> _
+ Variable:I -> .
 90 NEXT P
- Variable:P -> _
+ Variable:P -> .
 100 FOR I = 0 TO K
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
- end:     ["Variable:K -> _"]
+ end:     ["Variable:K -> ."]
 110    PRINT P(I);
- Variable:I -> _
- Variable:P(_) -> _
+ Variable:I -> .
+ Variable:P(.) -> .
  CarriageControl:;
 120 NEXT I
- Variable:I -> _
+ Variable:I -> .
 999 END
  
 

@@ -3,114 +3,114 @@
 15 DIM D(2,3)
  NumericValue:2
  NumericValue:3
- Declaration:D(,) -> _(,)
+ Declaration:D(,) -> .(,)
 20 MAT A = 2 + ZER2(3,5)
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  NumericValue:2
  NumericValue:3
  NumericValue:5
- FunctionZer2:ZER2(_,_) -> =_(,)
- BinaryOperatorPlus:+(_,_(,)) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER2(.,.) -> =.(,)
+ BinaryOperatorPlus:+(.,.(,)) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 30 MAT B = 2 + ZER2(5,3)
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  NumericValue:2
  NumericValue:5
  NumericValue:3
- FunctionZer2:ZER2(_,_) -> =_(,)
- BinaryOperatorPlus:+(_,_(,)) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER2(.,.) -> =.(,)
+ BinaryOperatorPlus:+(.,.(,)) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 40 MAT C = 2 + ZER2(4)
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  NumericValue:2
  NumericValue:4
- FunctionZer2:ZER2(_) -> =_(,)
- BinaryOperatorPlus:+(_,_(,)) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER2(.) -> =.(,)
+ BinaryOperatorPlus:+(.,.(,)) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 45 MAT D = 2 + ZER2
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  NumericValue:2
- FunctionZer2:ZER2 -> _(,)
- BinaryOperatorPlus:+(_,_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionZer2:ZER2 -> .(,)
+ BinaryOperatorPlus:+(.,.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 50 PRINT "MATRIX A"
  TextValue:"MATRIX A"
  CarriageControl:NL
 60 MAT PRINT A;
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:;
 70 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 80 MAT PRINT B;
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:;
 90 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 100 MAT PRINT C;
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  CarriageControl:;
 110 PRINT "MATRIX D"
  TextValue:"MATRIX D"
  CarriageControl:NL
 120 MAT PRINT D;
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  CarriageControl:;
 200 OPTION BASE 1
  NumericValue:1
 220 MAT A = 3 + ZER2(3,5)
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  NumericValue:3
  NumericValue:3
  NumericValue:5
- FunctionZer2:ZER2(_,_) -> =_(,)
- BinaryOperatorPlus:+(_,_(,)) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER2(.,.) -> =.(,)
+ BinaryOperatorPlus:+(.,.(,)) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 230 MAT B = 3 + ZER2(5,3)
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  NumericValue:3
  NumericValue:5
  NumericValue:3
- FunctionZer2:ZER2(_,_) -> =_(,)
- BinaryOperatorPlus:+(_,_(,)) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER2(.,.) -> =.(,)
+ BinaryOperatorPlus:+(.,.(,)) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 240 MAT C = 3 + ZER2(4)
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  NumericValue:3
  NumericValue:4
- FunctionZer2:ZER2(_) -> =_(,)
- BinaryOperatorPlus:+(_,_(,)) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER2(.) -> =.(,)
+ BinaryOperatorPlus:+(.,.(,)) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 245 MAT D = 3 + ZER2()
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  NumericValue:3
- FunctionZer2:ZER2() -> _(,)
- BinaryOperatorPlus:+(_,_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionZer2:ZER2() -> .(,)
+ BinaryOperatorPlus:+(.,.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 250 PRINT "MATRIX A"
  TextValue:"MATRIX A"
  CarriageControl:NL
 260 MAT PRINT A;
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:;
 270 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 280 MAT PRINT B;
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:;
 290 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 300 MAT PRINT C;
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  CarriageControl:;
 310 PRINT "MATRIX D"
  TextValue:"MATRIX D"
  CarriageControl:NL
 320 MAT PRINT D;
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  CarriageControl:;
 999 END
  

@@ -20,13 +20,13 @@
  TextValue:"ENTER DAY(D), MONTH(M) AND YEAR(Y)"
  CarriageControl:NL
 110 INPUT D,M,Y
- Variable:D -> _
- Variable:M -> _
- Variable:Y -> _
+ Variable:D -> .
+ Variable:M -> .
+ Variable:Y -> .
 120 IF Y > 1752 THEN 150
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:1752
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:150
 130 PRINT "YEAR MUST NOT BE PRIOR TO 1753"
  TextValue:"YEAR MUST NOT BE PRIOR TO 1753"
@@ -34,93 +34,93 @@
 140 GOTO 100
  LineNumber:100
 150 LET K = INT(0.6 + (1/M))
- Variable:K -> _
+ Variable:K -> .
  NumericValue:0.6
  NumericValue:1
- Variable:M -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:M -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 160 LET L = Y - K
- Variable:L -> _
- Variable:Y -> _
- Variable:K -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:L -> .
+ Variable:Y -> .
+ Variable:K -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 170 LET O = M + 12*K
- Variable:O -> _
- Variable:M -> _
+ Variable:O -> .
+ Variable:M -> .
  NumericValue:12
- Variable:K -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 180 LET P = L/100
- Variable:P -> _
- Variable:L -> _
+ Variable:P -> .
+ Variable:L -> .
  NumericValue:100
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 190 LET Z1 = INT(P/4)
- Variable:Z1 -> _
- Variable:P -> _
+ Variable:Z1 -> .
+ Variable:P -> .
  NumericValue:4
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 200 LET Z2 = INT(P)
- Variable:Z2 -> _
- Variable:P -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z2 -> .
+ Variable:P -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 210 LET Z3 = INT((5*L)/4)
- Variable:Z3 -> _
+ Variable:Z3 -> .
  NumericValue:5
- Variable:L -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:L -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:4
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 220 LET Z4 = INT (13*(O + 1)/5)
- Variable:Z4 -> _
+ Variable:Z4 -> .
  NumericValue:13
- Variable:O -> _
+ Variable:O -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:5
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 230 LET Z = Z4 + Z3 - Z2 + Z1 + D - 1
- Variable:Z -> _
- Variable:Z4 -> _
- Variable:Z3 -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:Z2 -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:Z1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:D -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:Z -> .
+ Variable:Z4 -> .
+ Variable:Z3 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:Z2 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:Z1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:D -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 240 LET Z=Z - (7*INT(Z/7)) + 1
- Variable:Z -> _
- Variable:Z -> _
+ Variable:Z -> .
+ Variable:Z -> .
  NumericValue:7
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:7
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 250 PRINT "THE DAY OF THE WEEK IS ";J$(Z)
  ERROR: Syntax error: "J$(Z)" Token 'InvalidToken:$' is not a value or operator
  TextValue:"THE DAY OF THE WEEK IS "

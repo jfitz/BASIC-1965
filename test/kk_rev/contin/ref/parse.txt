@@ -1,146 +1,146 @@
 110 READ M,N
- Variable:M -> _
- Variable:N -> _
+ Variable:M -> .
+ Variable:N -> .
 120 FOR I = 1 TO M
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:M -> _"]
+ end:     ["Variable:M -> ."]
 130    LET S = 0
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 140    FOR J = 1 TO N
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 150       READ O(I,J)
- Variable:I -> _
- Variable:J -> _
- Variable:O(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:O(.,.) -> .
 160       LET S = S + O(I,J)
- Variable:S -> _
- Variable:S -> _
- Variable:I -> _
- Variable:J -> _
- Variable:O(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S -> .
+ Variable:I -> .
+ Variable:J -> .
+ Variable:O(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 170    NEXT J
- Variable:J -> _
+ Variable:J -> .
 180    LET R(I) = S
- Variable:I -> _
- Variable:R(_) -> _
- Variable:S -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:R(.) -> .
+ Variable:S -> .
+ AssignmentOperator:= . -> .
 190 NEXT I
- Variable:I -> _
+ Variable:I -> .
 200
 210 LET S1 = 0
- Variable:S1 -> _
+ Variable:S1 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 220 FOR J = 1 TO N
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 230    LET S = 0
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 240    FOR I = 1 TO M
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:M -> _"]
+ end:     ["Variable:M -> ."]
 250       LET S = S + O(I,J)
- Variable:S -> _
- Variable:S -> _
- Variable:I -> _
- Variable:J -> _
- Variable:O(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S -> .
+ Variable:I -> .
+ Variable:J -> .
+ Variable:O(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 260    NEXT I
- Variable:I -> _
+ Variable:I -> .
 270    LET C(J) = S
- Variable:J -> _
- Variable:C(_) -> _
- Variable:S -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:C(.) -> .
+ Variable:S -> .
+ AssignmentOperator:= . -> .
 280    LET S1 = S1 + S
- Variable:S1 -> _
- Variable:S1 -> _
- Variable:S -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S1 -> .
+ Variable:S1 -> .
+ Variable:S -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 290 NEXT J
- Variable:J -> _
+ Variable:J -> .
 300
 310 PRINT
  CarriageControl:NL
 320 LET C = 0
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 330 FOR I = 1 TO M
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:M -> _"]
+ end:     ["Variable:M -> ."]
 340    FOR J = 1 TO N
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 350       LET E = R(I)*C(J)/S1
- Variable:E -> _
- Variable:I -> _
- Variable:R(_) -> _
- Variable:J -> _
- Variable:C(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:S1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:E -> .
+ Variable:I -> .
+ Variable:R(.) -> .
+ Variable:J -> .
+ Variable:C(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:S1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 360       LET C = C + (O(I,J) - E)^2/E
- Variable:C -> _
- Variable:C -> _
- Variable:I -> _
- Variable:J -> _
- Variable:O(_,_) -> _
- Variable:E -> _
- BinaryOperatorMinus:-(_,_) -> _
+ Variable:C -> .
+ Variable:C -> .
+ Variable:I -> .
+ Variable:J -> .
+ Variable:O(.,.) -> .
+ Variable:E -> .
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- Variable:E -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ Variable:E -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 370       PRINT O(I,J),
- Variable:I -> _
- Variable:J -> _
- Variable:O(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:O(.,.) -> .
  CarriageControl:,
 380    NEXT J
- Variable:J -> _
+ Variable:J -> .
 390    PRINT
  CarriageControl:NL
 400 NEXT I
- Variable:I -> _
+ Variable:I -> .
 410 PRINT
  CarriageControl:NL
 420 PRINT "CHI-SQUARE EQUALS";C;"ON";(M-1)*(N-1);"DEGREES OF FREEDOM"
  WARNING: Line exceeds PRETTY width limit 72
  TextValue:"CHI-SQUARE EQUALS"
  CarriageControl:;
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:;
  TextValue:"ON"
  CarriageControl:;
- Variable:M -> _
+ Variable:M -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- Variable:N -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  CarriageControl:;
  TextValue:"DEGREES OF FREEDOM"
  CarriageControl:NL

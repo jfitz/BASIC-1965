@@ -35,90 +35,90 @@
  TextValue:"YOU LOSE AUTOMATICALLY"
  CarriageControl:NL
 140 LET J = 0
- Variable:J -> _
+ Variable:J -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 150 GOSUB 460
  LineNumber:460
 160 LET D1 = N
- Variable:D1 -> _
- Variable:N -> _
- AssignmentOperator:= _ -> _
+ Variable:D1 -> .
+ Variable:N -> .
+ AssignmentOperator:= . -> .
 170 GOSUB 460
  LineNumber:460
 180 LET D2 = N
- Variable:D2 -> _
- Variable:N -> _
- AssignmentOperator:= _ -> _
+ Variable:D2 -> .
+ Variable:N -> .
+ AssignmentOperator:= . -> .
 190 LET D3 = D1 + D2
- Variable:D3 -> _
- Variable:D1 -> _
- Variable:D2 -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:D3 -> .
+ Variable:D1 -> .
+ Variable:D2 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 200 LET J = J + 1
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 210 IF J = 1 THEN 260
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:260
 220 IF D3 = D4 THEN 420
- Variable:D3 -> _
- Variable:D4 -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:D3 -> .
+ Variable:D4 -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:420
 230 IF D3 = 7 THEN 440
- Variable:D3 -> _
+ Variable:D3 -> .
  NumericValue:7
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:440
 240 PRINT "YOU THROW A ";D3
  TextValue:"YOU THROW A "
  CarriageControl:;
- Variable:D3 -> _
+ Variable:D3 -> .
  CarriageControl:NL
 250 GOTO 150
  LineNumber:150
 260 IF D3 = 7 THEN 320
- Variable:D3 -> _
+ Variable:D3 -> .
  NumericValue:7
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:320
 270 IF D3 = 2 THEN 340
- Variable:D3 -> _
+ Variable:D3 -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:340
 280 IF D3 = 3 THEN 340
- Variable:D3 -> _
+ Variable:D3 -> .
  NumericValue:3
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:340
 290 IF D3 = 12 THEN 340
- Variable:D3 -> _
+ Variable:D3 -> .
  NumericValue:12
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:340
 300 IF D3 = 11 THEN 320
- Variable:D3 -> _
+ Variable:D3 -> .
  NumericValue:11
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:320
 310 LET D4 = D3
- Variable:D4 -> _
- Variable:D3 -> _
- AssignmentOperator:= _ -> _
+ Variable:D4 -> .
+ Variable:D3 -> .
+ AssignmentOperator:= . -> .
 315 GOTO 240
  LineNumber:240
 320 PRINT "YOU THROW A ";D3;" YOU WIN"
  TextValue:"YOU THROW A "
  CarriageControl:;
- Variable:D3 -> _
+ Variable:D3 -> .
  CarriageControl:;
  TextValue:" YOU WIN"
  CarriageControl:NL
@@ -127,7 +127,7 @@
 340 PRINT "YOU THROW A ";D3;" YOU LOSE"
  TextValue:"YOU THROW A "
  CarriageControl:;
- Variable:D3 -> _
+ Variable:D3 -> .
  CarriageControl:;
  TextValue:" YOU LOSE"
  CarriageControl:NL
@@ -150,7 +150,7 @@
 420 PRINT "YOU THROW A ";D3;"YOU WIN BY MATCHING"
  TextValue:"YOU THROW A "
  CarriageControl:;
- Variable:D3 -> _
+ Variable:D3 -> .
  CarriageControl:;
  TextValue:"YOU WIN BY MATCHING"
  CarriageControl:NL
@@ -159,21 +159,21 @@
 440 PRINT "YOU THROW A ";D3;" SORRY YOU LOSE"
  TextValue:"YOU THROW A "
  CarriageControl:;
- Variable:D3 -> _
+ Variable:D3 -> .
  CarriageControl:;
  TextValue:" SORRY YOU LOSE"
  CarriageControl:NL
 450 GOTO 350
  LineNumber:350
 460 LET N = 1 + INT(6*RND)
- Variable:N -> _
+ Variable:N -> .
  NumericValue:1
  NumericValue:6
- FunctionRnd:RND -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRnd:RND -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 470 RETURN
  
 480 END

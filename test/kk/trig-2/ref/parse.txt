@@ -1,23 +1,23 @@
 100 REM ANGLE-SIDE-ANGLE
  Remark:ANGLE-SIDE-ANGLE
 110 LET P = 3.14159625
- Variable:P -> _
+ Variable:P -> .
  NumericValue:3.14159625
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 120 DEF FND(X) = X*P/180
- UserFunctionName:FND -> _
- VariableName:X -> _
- Variable:X -> _
- Variable:P -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ UserFunctionName:FND -> .
+ VariableName:X -> .
+ Variable:X -> .
+ Variable:P -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
 130 DEF FNS(X) = SIN(FND(X))
- UserFunctionName:FNS -> _
- VariableName:X -> _
- Variable:X -> _
- UserFunction:FND(_) -> _
- FunctionSin:SIN(_) -> _
+ UserFunctionName:FNS -> .
+ VariableName:X -> .
+ Variable:X -> .
+ UserFunction:FND(.) -> .
+ FunctionSin:SIN(.) -> .
 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
  TextValue:"ANGLE"
  CarriageControl:,
@@ -30,47 +30,47 @@
  TextValue:"THIRD SIDE"
  CarriageControl:NL
 150 READ A,X,B
- Variable:A -> _
- Variable:X -> _
- Variable:B -> _
+ Variable:A -> .
+ Variable:X -> .
+ Variable:B -> .
 160 LET C = 180 - A - B
- Variable:C -> _
+ Variable:C -> .
  NumericValue:180
- Variable:A -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:B -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:B -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 170 LET Y = X*FNS(B)/FNS(C)
- Variable:Y -> _
- Variable:X -> _
- Variable:B -> _
- UserFunction:FNS(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:C -> _
- UserFunction:FNS(_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:X -> .
+ Variable:B -> .
+ UserFunction:FNS(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:C -> .
+ UserFunction:FNS(.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 180 LET Z = X*FNS(A)/FNS(C)
- Variable:Z -> _
- Variable:X -> _
- Variable:A -> _
- UserFunction:FNS(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:C -> _
- UserFunction:FNS(_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ Variable:X -> .
+ Variable:A -> .
+ UserFunction:FNS(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:C -> .
+ UserFunction:FNS(.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 190 PRINT A,X,B,Y,Z
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:,
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:,
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 200 GOTO 150
  LineNumber:150

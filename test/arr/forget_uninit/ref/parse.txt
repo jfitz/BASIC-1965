@@ -6,25 +6,25 @@
  BooleanValue:true
 20 DIM A(10)
  NumericValue:10
- Declaration:A() -> _()
+ Declaration:A() -> .()
 21 FOR I = 1 TO 10
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:10"]
 22 LET A(I) = I
- Variable:I -> _
- Variable:A(_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:A(.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 23 NEXT I
- Variable:I -> _
+ Variable:I -> .
 30 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 40 ARR FORGET B
- Variable:B() -> _()
+ Variable:B() -> .()
 90 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 99 END
  

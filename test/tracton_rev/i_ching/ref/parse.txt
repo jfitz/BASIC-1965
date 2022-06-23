@@ -6,72 +6,72 @@
  TextValue:"ENTER DATE AS M,D,Y"
  CarriageControl:NL
 40 INPUT M,D,Y
- Variable:M -> _
- Variable:D -> _
- Variable:Y -> _
+ Variable:M -> .
+ Variable:D -> .
+ Variable:Y -> .
 50 PRINT "ENTER TIME AS H,M(24 HOUR CLOCK)"
  TextValue:"ENTER TIME AS H,M(24 HOUR CLOCK)"
  CarriageControl:NL
 60 INPUT H,M1
- Variable:H -> _
- Variable:M1 -> _
+ Variable:H -> .
+ Variable:M1 -> .
 70 LET N = M + (D/30) + (Y/100) + H + (M1/60)
- Variable:N -> _
- Variable:M -> _
- Variable:D -> _
+ Variable:N -> .
+ Variable:M -> .
+ Variable:D -> .
  NumericValue:30
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:Y -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:Y -> .
  NumericValue:100
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:H -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:M1 -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:H -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:M1 -> .
  NumericValue:60
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 80 FOR I = 1 TO 6
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:6"]
 90 LET K = N*RND(0)
- Variable:K -> _
- Variable:N -> _
+ Variable:K -> .
+ Variable:N -> .
  NumericValue:0
- FunctionRnd:RND(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRnd:RND(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 100 LET K = K - INT(K)
- Variable:K -> _
- Variable:K -> _
- Variable:K -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:K -> .
+ Variable:K -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 110 LET C(I) = 1 + INT(2*K)
- Variable:I -> _
- Variable:C(_) -> _
+ Variable:I -> .
+ Variable:C(.) -> .
  NumericValue:1
  NumericValue:2
- Variable:K -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 120 NEXT I
- Variable:I -> _
+ Variable:I -> .
 130 FOR I = 1 TO 6
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:6"]
 140 IF C(I) = 1 THEN 170
- Variable:I -> _
- Variable:C(_) -> _
+ Variable:I -> .
+ Variable:C(.) -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:170
 150 PRINT "---"
  TextValue:"---"
@@ -82,18 +82,18 @@
  TextValue:"- -"
  CarriageControl:NL
 180 NEXT I
- Variable:I -> _
+ Variable:I -> .
 190 PRINT
  CarriageControl:NL
 200 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"
  TextValue:"TO CONTINUE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 210 INPUT L
- Variable:L -> _
+ Variable:L -> .
 220 IF L = 1 THEN 250
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:250
 230 PRINT "THE I CHING SAYS GOOD-BYE"
  TextValue:"THE I CHING SAYS GOOD-BYE"

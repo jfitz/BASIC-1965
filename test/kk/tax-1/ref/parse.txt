@@ -1,82 +1,82 @@
 10 DIM D(20)
  NumericValue:20
- Declaration:D() -> _()
+ Declaration:D() -> .()
 20 READ A,Y
- Variable:A -> _
- Variable:Y -> _
+ Variable:A -> .
+ Variable:Y -> .
 100 FOR Y1 = 1 TO Y STEP 2
- control: Variable:Y1 -> _
+ control: Variable:Y1 -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:Y -> _"]
+ end:     ["Variable:Y -> ."]
  step:    ["NumericValue:2"]
 105    PRINT "CHANGE IN YEAR " Y1
  TextValue:"CHANGE IN YEAR "
  CarriageControl:
- Variable:Y1 -> _
+ Variable:Y1 -> .
  CarriageControl:NL
 108    LET A1 = A
- Variable:A1 -> _
- Variable:A -> _
- AssignmentOperator:= _ -> _
+ Variable:A1 -> .
+ Variable:A -> .
+ AssignmentOperator:= . -> .
 110    FOR I = 1 TO Y1-1
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:Y1 -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:Y1 -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 120       LET D(I) = A1*2/Y
- Variable:I -> _
- Variable:D(_) -> _
- Variable:A1 -> _
+ Variable:I -> .
+ Variable:D(.) -> .
+ Variable:A1 -> .
  NumericValue:2
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 130       LET A1 = A1 - D(I)
- Variable:A1 -> _
- Variable:A1 -> _
- Variable:I -> _
- Variable:D(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A1 -> .
+ Variable:A1 -> .
+ Variable:I -> .
+ Variable:D(.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 140       PRINT I;D(I)
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:;
- Variable:I -> _
- Variable:D(_) -> _
+ Variable:I -> .
+ Variable:D(.) -> .
  CarriageControl:NL
 150    NEXT I
- Variable:I -> _
+ Variable:I -> .
 160    LET D = A1/(Y-Y1+1)
- Variable:D -> _
- Variable:A1 -> _
- Variable:Y -> _
- Variable:Y1 -> _
- BinaryOperatorMinus:-(_,_) -> _
+ Variable:D -> .
+ Variable:A1 -> .
+ Variable:Y -> .
+ Variable:Y1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 170    FOR I = Y1 TO Y
- control: Variable:I -> _
- start:   ["Variable:Y1 -> _"]
- end:     ["Variable:Y -> _"]
+ control: Variable:I -> .
+ start:   ["Variable:Y1 -> ."]
+ end:     ["Variable:Y -> ."]
 180       LET D(I) = D
- Variable:I -> _
- Variable:D(_) -> _
- Variable:D -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:D(.) -> .
+ Variable:D -> .
+ AssignmentOperator:= . -> .
 185       PRINT I;D(I)
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:;
- Variable:I -> _
- Variable:D(_) -> _
+ Variable:I -> .
+ Variable:D(.) -> .
  CarriageControl:NL
 190    NEXT I
- Variable:I -> _
+ Variable:I -> .
 195    PRINT
  CarriageControl:NL
 290 NEXT Y1
- Variable:Y1 -> _
+ Variable:Y1 -> .
 900 DATA 5000,7
  NumericValue:5000
  NumericValue:7

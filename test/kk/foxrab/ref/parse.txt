@@ -1,12 +1,12 @@
 100 READ A, B, C, D
- Variable:A -> _
- Variable:B -> _
- Variable:C -> _
- Variable:D -> _
+ Variable:A -> .
+ Variable:B -> .
+ Variable:C -> .
+ Variable:D -> .
 110 READ T8, T9, P
- Variable:T8 -> _
- Variable:T9 -> _
- Variable:P -> _
+ Variable:T8 -> .
+ Variable:T9 -> .
+ Variable:P -> .
 140 DATA 4, 2, 1, 3
  NumericValue:4
  NumericValue:2
@@ -17,9 +17,9 @@
  NumericValue:4
  NumericValue:35
 160 LET T1 = 0
- Variable:T1 -> _
+ Variable:T1 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 170
 180 PRINT "TIME", " X", " Y"
  TextValue:"TIME"
@@ -31,73 +31,73 @@
 190 PRINT
  CarriageControl:NL
 200 READ X, Y
- Variable:X -> _
- Variable:Y -> _
+ Variable:X -> .
+ Variable:Y -> .
 210 PRINT 0, X, Y
  NumericValue:0
  CarriageControl:,
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 220 FOR I = 1 TO P
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:P -> _"]
+ end:     ["Variable:P -> ."]
 230 FOR T = 0 TO T9/P STEP T8
- control: Variable:T -> _
+ control: Variable:T -> .
  start:   ["NumericValue:0"]
- end:     ["Variable:T9 -> _", "Variable:P -> _", "BinaryOperatorDivide:/(_,_) -> _"]
- step:    ["Variable:T8 -> _"]
+ end:     ["Variable:T9 -> .", "Variable:P -> .", "BinaryOperatorDivide:/(.,.) -> ."]
+ step:    ["Variable:T8 -> ."]
 240 LET X = X + (A*X - B*X*Y)*T8
- Variable:X -> _
- Variable:X -> _
- Variable:A -> _
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:B -> _
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:T8 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:X -> .
+ Variable:A -> .
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:B -> .
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:T8 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 250 LET Y = Y + (C*X*Y - D*Y)*T8
- Variable:Y -> _
- Variable:Y -> _
- Variable:C -> _
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:D -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:T8 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:Y -> .
+ Variable:C -> .
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:D -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:T8 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 255 LET T1 = T1 + T8
- Variable:T1 -> _
- Variable:T1 -> _
- Variable:T8 -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:T1 -> .
+ Variable:T1 -> .
+ Variable:T8 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 260 NEXT T
- Variable:T -> _
+ Variable:T -> .
 270 PRINT T1, X, Y
- Variable:T1 -> _
+ Variable:T1 -> .
  CarriageControl:,
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 280 NEXT I
- Variable:I -> _
+ Variable:I -> .
 290
 900 DATA 3,.5
  NumericValue:3

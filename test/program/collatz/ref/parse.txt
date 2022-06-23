@@ -1,76 +1,76 @@
 10 REM COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
  Remark:COMPUTE WONDROUS NUMBERS (FROM HOFSTADTER)
 20 READ A, A0
- Variable:A -> _
- Variable:A0 -> _
+ Variable:A -> .
+ Variable:A0 -> .
 30 LET B = A + A0
- Variable:B -> _
- Variable:A -> _
- Variable:A0 -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:A -> .
+ Variable:A0 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 40 PRINT "COMPUTING WONDEROUS NUMBERS FROM";A;"TO";B
  TextValue:"COMPUTING WONDEROUS NUMBERS FROM"
  CarriageControl:;
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:;
  TextValue:"TO"
  CarriageControl:;
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 50 PRINT
  CarriageControl:NL
 100 FOR N = A TO B
- control: Variable:N -> _
- start:   ["Variable:A -> _"]
- end:     ["Variable:B -> _"]
+ control: Variable:N -> .
+ start:   ["Variable:A -> ."]
+ end:     ["Variable:B -> ."]
 110 LET N0 = N
- Variable:N0 -> _
- Variable:N -> _
- AssignmentOperator:= _ -> _
+ Variable:N0 -> .
+ Variable:N -> .
+ AssignmentOperator:= . -> .
 120 GOSUB 400
  LineNumber:400
 130 NEXT N
- Variable:N -> _
+ Variable:N -> .
 140 STOP
  
 400 REM PRINT INFO FOR ONE NUMBER
  Remark:PRINT INFO FOR ONE NUMBER
 410 PRINT N0;":";
- Variable:N0 -> _
+ Variable:N0 -> .
  CarriageControl:;
  TextValue:":"
  CarriageControl:;
 420 IF N0 = 1 THEN 490
- Variable:N0 -> _
+ Variable:N0 -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:490
 430 IF MOD(N0,2) = 0 THEN 460
- Variable:N0 -> _
+ Variable:N0 -> .
  NumericValue:2
- FunctionMod:MOD(_,_) -> _
+ FunctionMod:MOD(.,.) -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:460
 440 LET N0 = 3*N0 + 1
- Variable:N0 -> _
+ Variable:N0 -> .
  NumericValue:3
- Variable:N0 -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:N0 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 450 GOTO 470
  LineNumber:470
 460 LET N0 = N0/2
- Variable:N0 -> _
- Variable:N0 -> _
+ Variable:N0 -> .
+ Variable:N0 -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 470 PRINT N0;
- Variable:N0 -> _
+ Variable:N0 -> .
  CarriageControl:;
 480 GOTO 420
  LineNumber:420

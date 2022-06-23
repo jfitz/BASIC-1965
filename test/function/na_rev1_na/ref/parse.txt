@@ -2,34 +2,34 @@
  NumericValue:0
 20 DIM A(6)
  NumericValue:6
- Declaration:A() -> _()
+ Declaration:A() -> .()
 30 FOR I = 0 TO 6
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:6"]
 40 LET A(I) = I*10
- Variable:I -> _
- Variable:A(_) -> _
- Variable:I -> _
+ Variable:I -> .
+ Variable:A(.) -> .
+ Variable:I -> .
  NumericValue:10
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 50 NEXT I
- Variable:I -> _
+ Variable:I -> .
 100 ARR B = REV1(A)
- Variable:B() -> _()
- Variable:A() -> _()
- FunctionRev1:REV1(_()) -> _()
- AssignmentOperator:= _() -> _()
+ Variable:B() -> .()
+ Variable:A() -> .()
+ FunctionRev1:REV1(.()) -> .()
+ AssignmentOperator:= .() -> .()
 110 GOSUB 800
  LineNumber:800
 120 OPTION BASE 1
  NumericValue:1
 130 ARR B = REV1(A)
- Variable:B() -> _()
- Variable:A() -> _()
- FunctionRev1:REV1(_()) -> _()
- AssignmentOperator:= _() -> _()
+ Variable:B() -> .()
+ Variable:A() -> .()
+ FunctionRev1:REV1(.()) -> .()
+ AssignmentOperator:= .() -> .()
 140 OPTION BASE 0
  NumericValue:0
 150 GOSUB 800
@@ -42,13 +42,13 @@
  TextValue:"ARRAY A"
  CarriageControl:NL
 820 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 830 PRINT "ARRAY B"
  TextValue:"ARRAY B"
  CarriageControl:NL
 840 ARR PRINT B
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:NL
 890 RETURN
  

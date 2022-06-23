@@ -1,44 +1,44 @@
 10 FOR G = 1 TO 10
- control: Variable:G -> _
+ control: Variable:G -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:10"]
 20    GOSUB 500
  LineNumber:500
 30    IF D < 4 THEN 300
- Variable:D -> _
+ Variable:D -> .
  NumericValue:4
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:300
 40    IF D = 12 THEN 300
- Variable:D -> _
+ Variable:D -> .
  NumericValue:12
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:300
 50    IF D = 7 THEN 400
- Variable:D -> _
+ Variable:D -> .
  NumericValue:7
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:400
 60    IF D = 11 THEN 400
- Variable:D -> _
+ Variable:D -> .
  NumericValue:11
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:400
 70    LET D9 = D
- Variable:D9 -> _
- Variable:D -> _
- AssignmentOperator:= _ -> _
+ Variable:D9 -> .
+ Variable:D -> .
+ AssignmentOperator:= . -> .
 100   GOSUB 500
  LineNumber:500
 110   IF D = D9 THEN 200
- Variable:D -> _
- Variable:D9 -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:D -> .
+ Variable:D9 -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:200
 120   IF D = 7 THEN 250
- Variable:D -> _
+ Variable:D -> .
  NumericValue:7
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:250
 130   GOTO 100
  LineNumber:100
@@ -61,45 +61,45 @@
  TextValue:"YOU WIN ON FIRST ROLL"
  CarriageControl:NL
 410 NEXT G
- Variable:G -> _
+ Variable:G -> .
 420 STOP
  
 499
 500 REM ROLL DICE
  Remark:ROLL DICE
 510 LET D1 = INT(6*RND(1)+1)
- Variable:D1 -> _
+ Variable:D1 -> .
  NumericValue:6
  NumericValue:1
- FunctionRnd:RND(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ FunctionRnd:RND(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 520 LET D2 = INT(6*RND(1)+1)
- Variable:D2 -> _
+ Variable:D2 -> .
  NumericValue:6
  NumericValue:1
- FunctionRnd:RND(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ FunctionRnd:RND(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 525 PRINT "YOUR ROLL IS "; D1;D2
  TextValue:"YOUR ROLL IS "
  CarriageControl:;
- Variable:D1 -> _
+ Variable:D1 -> .
  CarriageControl:;
- Variable:D2 -> _
+ Variable:D2 -> .
  CarriageControl:NL
 530 LET D = D1 + D2
- Variable:D -> _
- Variable:D1 -> _
- Variable:D2 -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:D -> .
+ Variable:D1 -> .
+ Variable:D2 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 540 RETURN
  
 999 END

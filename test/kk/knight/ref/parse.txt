@@ -8,8 +8,8 @@
 140 REMARK WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
  Remark:WE READ IN THE INITIAL PLACEMENT OF THE KNIGHT
 150 READ I0, J0
- Variable:I0 -> _
- Variable:J0 -> _
+ Variable:I0 -> .
+ Variable:J0 -> .
 160 PRINT "RANK  ";"FILE  ";"LENGTH"
  TextValue:"RANK  "
  CarriageControl:;
@@ -19,181 +19,181 @@
  CarriageControl:NL
 180
 182 LET Z0 = 0
- Variable:Z0 -> _
+ Variable:Z0 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 190 REMARK WE ZERO THE BOARD AND INITIALIZE
  Remark:WE ZERO THE BOARD AND INITIALIZE
 200 FOR I = 1 TO 8
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:8"]
 210    FOR J = 1 TO 8
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:8"]
 220       LET B(I,J) = 0
- Variable:I -> _
- Variable:J -> _
- Variable:B(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:B(.,.) -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 230    NEXT J
- Variable:J -> _
+ Variable:J -> .
 240 NEXT I
- Variable:I -> _
+ Variable:I -> .
 250 LET I = I0
- Variable:I -> _
- Variable:I0 -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:I0 -> .
+ AssignmentOperator:= . -> .
 260 LET J = J0
- Variable:J -> _
- Variable:J0 -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J0 -> .
+ AssignmentOperator:= . -> .
 270 LET M = 1
- Variable:M -> _
+ Variable:M -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 280 LET B(I,J) = -1
- Variable:I -> _
- Variable:J -> _
- Variable:B(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:B(.,.) -> .
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
- AssignmentOperator:= =_ -> _
+ UnaryOperatorMinus:-(.) -> =.
+ AssignmentOperator:= =. -> .
 290
 300 REMARK WE NOW START THE SERIES OF MOVES
  Remark:WE NOW START THE SERIES OF MOVES
 310 LET C1 = 9
- Variable:C1 -> _
+ Variable:C1 -> .
  NumericValue:9
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 320 LET C = 0
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 330 FOR I1 = I - 2 TO I + 2
- control: Variable:I1 -> _
- start:   ["Variable:I -> _", "NumericValue:2", "BinaryOperatorMinus:-(_,_) -> _"]
- end:     ["Variable:I -> _", "NumericValue:2", "BinaryOperatorPlus:+(_,_) -> _"]
+ control: Variable:I1 -> .
+ start:   ["Variable:I -> .", "NumericValue:2", "BinaryOperatorMinus:-(.,.) -> ."]
+ end:     ["Variable:I -> .", "NumericValue:2", "BinaryOperatorPlus:+(.,.) -> ."]
 340    IF I1 = 1 THEN 480
- Variable:I1 -> _
+ Variable:I1 -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:480
 350    IF ABS(I1 - 4.5) > 4 THEN 480
- Variable:I1 -> _
+ Variable:I1 -> .
  NumericValue:4.5
- BinaryOperatorMinus:-(_,_) -> _
- FunctionAbs:ABS(_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionAbs:ABS(.) -> .
  NumericValue:4
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:480
 360    LET D1 = 3 - ABS(I1 - I)
- Variable:D1 -> _
+ Variable:D1 -> .
  NumericValue:3
- Variable:I1 -> _
- Variable:I -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionAbs:ABS(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I1 -> .
+ Variable:I -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionAbs:ABS(.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 370    FOR J1 = J - D1 TO J + D1 STEP 2*D1
- control: Variable:J1 -> _
- start:   ["Variable:J -> _", "Variable:D1 -> _", "BinaryOperatorMinus:-(_,_) -> _"]
- end:     ["Variable:J -> _", "Variable:D1 -> _", "BinaryOperatorPlus:+(_,_) -> _"]
- step:    ["NumericValue:2", "Variable:D1 -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
+ control: Variable:J1 -> .
+ start:   ["Variable:J -> .", "Variable:D1 -> .", "BinaryOperatorMinus:-(.,.) -> ."]
+ end:     ["Variable:J -> .", "Variable:D1 -> .", "BinaryOperatorPlus:+(.,.) -> ."]
+ step:    ["NumericValue:2", "Variable:D1 -> .", "BinaryOperatorMultiply:*(.,.) -> ."]
 380       IF ABS(J1 - 4.5) > 4 THEN 470
- Variable:J1 -> _
+ Variable:J1 -> .
  NumericValue:4.5
- BinaryOperatorMinus:-(_,_) -> _
- FunctionAbs:ABS(_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionAbs:ABS(.) -> .
  NumericValue:4
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:470
 390       IF B(I1,J1) < 0 THEN 470
- Variable:I1 -> _
- Variable:J1 -> _
- Variable:B(_,_) -> _
+ Variable:I1 -> .
+ Variable:J1 -> .
+ Variable:B(.,.) -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:470
 400       LET C = C + 1
- Variable:C -> _
- Variable:C -> _
+ Variable:C -> .
+ Variable:C -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 410       IF C <> C1 THEN 470
- Variable:C -> _
- Variable:C1 -> _
- BinaryOperatorNotEqual:<>(_,_) -> ?
+ Variable:C -> .
+ Variable:C1 -> .
+ BinaryOperatorNotEqual:<>(.,.) -> ?
  LineNumber:470
 420       LET I = I1
- Variable:I -> _
- Variable:I1 -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:I1 -> .
+ AssignmentOperator:= . -> .
 430       LET J = J1
- Variable:J -> _
- Variable:J1 -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J1 -> .
+ AssignmentOperator:= . -> .
 440       LET B(I,J) = -1
- Variable:I -> _
- Variable:J -> _
- Variable:B(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:B(.,.) -> .
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
- AssignmentOperator:= =_ -> _
+ UnaryOperatorMinus:-(.) -> =.
+ AssignmentOperator:= =. -> .
 450       LET M = M + 1
- Variable:M -> _
- Variable:M -> _
+ Variable:M -> .
+ Variable:M -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 460       GOTO 310
  LineNumber:310
 470    NEXT J1
- Variable:J1 -> _
+ Variable:J1 -> .
 480 NEXT I1
- Variable:I1 -> _
+ Variable:I1 -> .
 490 IF C = 0 THEN 600
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:600
 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
  Remark:NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
 510 LET C1 = INT(RND(Z)*C + 1)
- Variable:C1 -> _
- Variable:Z -> _
- FunctionRnd:RND(_) -> _
- Variable:C -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C1 -> .
+ Variable:Z -> .
+ FunctionRnd:RND(.) -> .
+ Variable:C -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 520 GOTO 320
  LineNumber:320
 600 REMARK WE HAVE GONE AS FAR AS WE CAN
  Remark:WE HAVE GONE AS FAR AS WE CAN
 610 PRINT I; J; M
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:;
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:;
- Variable:M -> _
+ Variable:M -> .
  CarriageControl:NL
 612 LET Z0 = Z0+1
- Variable:Z0 -> _
- Variable:Z0 -> _
+ Variable:Z0 -> .
+ Variable:Z0 -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 620 IF Z0 < 40 THEN 200
- Variable:Z0 -> _
+ Variable:Z0 -> .
  NumericValue:40
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:200
 630 REMARK WE GO FOR ANOTHER TRIAL
  Remark:WE GO FOR ANOTHER TRIAL

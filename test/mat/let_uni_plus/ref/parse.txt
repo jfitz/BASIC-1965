@@ -3,34 +3,34 @@
 20 DIM A(5,5)
  NumericValue:5
  NumericValue:5
- Declaration:A(,) -> _(,)
+ Declaration:A(,) -> .(,)
 30 FOR I = 1 TO 5
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:5"]
 40 FOR J = 1 TO 5
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:5"]
 50 LET A(I,J) = I+J
- Variable:I -> _
- Variable:J -> _
- Variable:A(_,_) -> _
- Variable:I -> _
- Variable:J -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:A(.,.) -> .
+ Variable:I -> .
+ Variable:J -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 60 NEXT J
- Variable:J -> _
+ Variable:J -> .
 70 NEXT I
- Variable:I -> _
+ Variable:I -> .
 100 MAT B = +A
- Variable:B(,) -> _(,)
- Variable:A(,) -> _(,)
- UnaryOperatorPlus:+(_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:B(,) -> .(,)
+ Variable:A(,) -> .(,)
+ UnaryOperatorPlus:+(.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 110 MAT PRINT B
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:NL
 999 END
  

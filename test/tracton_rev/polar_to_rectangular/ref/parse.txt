@@ -9,45 +9,45 @@
  TextValue:"ANGLE IN DEGREES = "
  CarriageControl:;
 50 INPUT W
- Variable:W -> _
+ Variable:W -> .
 60 LET W = (W*3.14159)/180
- Variable:W -> _
- Variable:W -> _
+ Variable:W -> .
+ Variable:W -> .
  NumericValue:3.14159
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 70 PRINT "MAGNITUDE R = ";
  TextValue:"MAGNITUDE R = "
  CarriageControl:;
 80 INPUT R
- Variable:R -> _
+ Variable:R -> .
 90 LET X = R*COS(W)
- Variable:X -> _
- Variable:R -> _
- Variable:W -> _
- FunctionCos:COS(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:R -> .
+ Variable:W -> .
+ FunctionCos:COS(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 100 LET Y = R*SIN(W)
- Variable:Y -> _
- Variable:R -> _
- Variable:W -> _
- FunctionSin:SIN(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:R -> .
+ Variable:W -> .
+ FunctionSin:SIN(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 110 PRINT "RECTANGULAR COORDINATES"
  TextValue:"RECTANGULAR COORDINATES"
  CarriageControl:NL
 120 PRINT "X = ";X,"Y = ";Y
  TextValue:"X = "
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
  TextValue:"Y = "
  CarriageControl:;
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 130 PRINT
  CarriageControl:NL
@@ -55,11 +55,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Variable:L -> _
+ Variable:L -> .
 160 IF L = 1 THEN 180
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:180
 170 STOP
  

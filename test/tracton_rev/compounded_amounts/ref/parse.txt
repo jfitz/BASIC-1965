@@ -19,31 +19,31 @@
  TextValue:"ENTER 1 TO 5"
  CarriageControl:NL
 80 INPUT A
- Variable:A -> _
+ Variable:A -> .
 90 IF A = 1 THEN 100
- Variable:A -> _
+ Variable:A -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:100
 91 IF A = 2 THEN 160
- Variable:A -> _
+ Variable:A -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:160
 92 IF A = 3 THEN 220
- Variable:A -> _
+ Variable:A -> .
  NumericValue:3
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:220
 93 IF A = 4 THEN 280
- Variable:A -> _
+ Variable:A -> .
  NumericValue:4
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:280
 94 IF A = 5 THEN 340
- Variable:A -> _
+ Variable:A -> .
  NumericValue:5
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:340
 95 GOTO 70
  LineNumber:70
@@ -54,19 +54,19 @@
 120 GOSUB 470
  LineNumber:470
 130 LET X = Y*((1 + I)^N)
- Variable:X -> _
- Variable:Y -> _
+ Variable:X -> .
+ Variable:Y -> .
  NumericValue:1
- Variable:I -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:N -> _
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:N -> .
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 140 PRINT "FUTURE VALUE = ";X
  TextValue:"FUTURE VALUE = "
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:NL
 150 GOTO 390
  LineNumber:390
@@ -77,19 +77,19 @@
 180 GOSUB 470
  LineNumber:470
 190 LET Y = X*((1 + I)^N)
- Variable:Y -> _
- Variable:X -> _
+ Variable:Y -> .
+ Variable:X -> .
  NumericValue:1
- Variable:I -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:N -> _
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:N -> .
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 200 PRINT "PRESENT VALUE = ";Y
  TextValue:"PRESENT VALUE = "
  CarriageControl:;
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 210 GOTO 390
  LineNumber:390
@@ -100,21 +100,21 @@
 240 GOSUB 470
  LineNumber:470
 250 LET L = Y*((1 + I^N) - 1)
- Variable:L -> _
- Variable:Y -> _
+ Variable:L -> .
+ Variable:Y -> .
  NumericValue:1
- Variable:I -> _
- Variable:N -> _
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:I -> .
+ Variable:N -> .
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 260 PRINT "INTEREST = ";L
  TextValue:"INTEREST = "
  CarriageControl:;
- Variable:L -> _
+ Variable:L -> .
  CarriageControl:NL
 270 GOTO 390
  LineNumber:390
@@ -125,21 +125,21 @@
 300 GOSUB 470
  LineNumber:470
 310 LET I = ((X/Y)^(1/N)) - 1
- Variable:I -> _
- Variable:X -> _
- Variable:Y -> _
- BinaryOperatorDivide:/(_,_) -> _
+ Variable:I -> .
+ Variable:X -> .
+ Variable:Y -> .
+ BinaryOperatorDivide:/(.,.) -> .
  NumericValue:1
- Variable:N -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPower:^(_,_) -> _
+ Variable:N -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPower:^(.,.) -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 320 PRINT "INTEREST RATE = ";I
  TextValue:"INTEREST RATE = "
  CarriageControl:;
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 330 GOTO 390
  LineNumber:390
@@ -150,21 +150,21 @@
 360 GOSUB 440
  LineNumber:440
 370 LET N = (LOG(X/Y))/(LOG(1 + I))
- Variable:N -> _
- Variable:X -> _
- Variable:Y -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionLog:LOG(_) -> _
+ Variable:N -> .
+ Variable:X -> .
+ Variable:Y -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionLog:LOG(.) -> .
  NumericValue:1
- Variable:I -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionLog:LOG(_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionLog:LOG(.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 380 PRINT "NUMBER OF TIME PERIODS = ";N
  TextValue:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:NL
 390 PRINT
  CarriageControl:NL
@@ -172,11 +172,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 401 INPUT L
- Variable:L -> _
+ Variable:L -> .
 402 IF L = 1 THEN 404
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:404
 403 STOP
  
@@ -188,28 +188,28 @@
  TextValue:"PRESENT VALUE = "
  CarriageControl:;
 420 INPUT Y
- Variable:Y -> _
+ Variable:Y -> .
 430 RETURN
  
 440 PRINT "INTEREST RATE = ";
  TextValue:"INTEREST RATE = "
  CarriageControl:;
 450 INPUT I
- Variable:I -> _
+ Variable:I -> .
 460 RETURN
  
 470 PRINT "NUMBER OF TIME PERIODS = ";
  TextValue:"NUMBER OF TIME PERIODS = "
  CarriageControl:;
 480 INPUT N
- Variable:N -> _
+ Variable:N -> .
 490 RETURN
  
 500 PRINT "FUTURE VALUE = ";
  TextValue:"FUTURE VALUE = "
  CarriageControl:;
 510 INPUT X
- Variable:X -> _
+ Variable:X -> .
 520 RETURN
  
 530 END

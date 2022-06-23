@@ -2,9 +2,9 @@
  Remark:ARRAY ASSIGNMENT
 20 DIM A(6), B(6)
  NumericValue:6
- Declaration:A() -> _()
+ Declaration:A() -> .()
  NumericValue:6
- Declaration:B() -> _()
+ Declaration:B() -> .()
 30 DATA 1,2,3,4,5,6
  NumericValue:1
  NumericValue:2
@@ -20,50 +20,50 @@
  NumericValue:11
  NumericValue:12
 100 FOR I = 0 TO 5
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:5"]
 120 READ A(I)
- Variable:I -> _
- Variable:A(_) -> _
+ Variable:I -> .
+ Variable:A(.) -> .
 140 NEXT I
- Variable:I -> _
+ Variable:I -> .
 150 PRINT "ARRAY A"
  TextValue:"ARRAY A"
  CarriageControl:NL
 160 ARR PRINT A;
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:;
 162 PRINT
  CarriageControl:NL
 200 FOR I = 0 TO 5
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:5"]
 220 READ B(I)
- Variable:I -> _
- Variable:B(_) -> _
+ Variable:I -> .
+ Variable:B(.) -> .
 240 NEXT I
- Variable:I -> _
+ Variable:I -> .
 250 PRINT "ARRAY B"
  TextValue:"ARRAY B"
  CarriageControl:NL
 260 ARR PRINT B;
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:;
 262 PRINT
  CarriageControl:NL
 300 ARR C = A*B
- Variable:C() -> _()
- Variable:A() -> _()
- Variable:B() -> _()
- BinaryOperatorMultiply:*(_(),_()) -> _()
- AssignmentOperator:= _() -> _()
+ Variable:C() -> .()
+ Variable:A() -> .()
+ Variable:B() -> .()
+ BinaryOperatorMultiply:*(.(),.()) -> .()
+ AssignmentOperator:= .() -> .()
 310 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 320 ARR PRINT C;
- Variable:C() -> _()
+ Variable:C() -> .()
  CarriageControl:;
 322 PRINT
  CarriageControl:NL

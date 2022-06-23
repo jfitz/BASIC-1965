@@ -2,110 +2,110 @@
  Remark:ARRAY FUNCTION ZER
 15 DIM D(3)
  NumericValue:3
- Declaration:D() -> _()
+ Declaration:D() -> .()
 20 ARR A = 2 + ZER1(5)
- Variable:A() -> _()
+ Variable:A() -> .()
  NumericValue:2
  NumericValue:5
- FunctionZer1:ZER1(_) -> =_()
- BinaryOperatorPlus:+(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionZer1:ZER1(.) -> =.()
+ BinaryOperatorPlus:+(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 30 ARR B = 2 + ZER1(3)
- Variable:B() -> _()
+ Variable:B() -> .()
  NumericValue:2
  NumericValue:3
- FunctionZer1:ZER1(_) -> =_()
- BinaryOperatorPlus:+(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionZer1:ZER1(.) -> =.()
+ BinaryOperatorPlus:+(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 40 ARR C = 2 + ZER1(4)
- Variable:C() -> _()
+ Variable:C() -> .()
  NumericValue:2
  NumericValue:4
- FunctionZer1:ZER1(_) -> =_()
- BinaryOperatorPlus:+(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionZer1:ZER1(.) -> =.()
+ BinaryOperatorPlus:+(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 45 ARR D = 2 + ZER1
- Variable:D() -> _()
+ Variable:D() -> .()
  NumericValue:2
- FunctionZer1:ZER1 -> _()
- BinaryOperatorPlus:+(_,_()) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionZer1:ZER1 -> .()
+ BinaryOperatorPlus:+(.,.()) -> .()
+ AssignmentOperator:= .() -> .()
 50 PRINT "ARRAY A"
  TextValue:"ARRAY A"
  CarriageControl:NL
 60 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 70 PRINT "ARRAY B"
  TextValue:"ARRAY B"
  CarriageControl:NL
 80 ARR PRINT B
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:NL
 90 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 100 ARR PRINT C
- Variable:C() -> _()
+ Variable:C() -> .()
  CarriageControl:NL
 110 PRINT "ARRAY D"
  TextValue:"ARRAY D"
  CarriageControl:NL
 120 ARR PRINT D
- Variable:D() -> _()
+ Variable:D() -> .()
  CarriageControl:NL
 200 OPTION BASE 1
  NumericValue:1
 220 ARR A = 3 + ZER1(5)
- Variable:A() -> _()
+ Variable:A() -> .()
  NumericValue:3
  NumericValue:5
- FunctionZer1:ZER1(_) -> =_()
- BinaryOperatorPlus:+(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionZer1:ZER1(.) -> =.()
+ BinaryOperatorPlus:+(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 230 ARR B = 3 + ZER1(3)
- Variable:B() -> _()
+ Variable:B() -> .()
  NumericValue:3
  NumericValue:3
- FunctionZer1:ZER1(_) -> =_()
- BinaryOperatorPlus:+(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionZer1:ZER1(.) -> =.()
+ BinaryOperatorPlus:+(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 240 ARR C = 3 + ZER1(4)
- Variable:C() -> _()
+ Variable:C() -> .()
  NumericValue:3
  NumericValue:4
- FunctionZer1:ZER1(_) -> =_()
- BinaryOperatorPlus:+(_,_()) -> =_()
- AssignmentOperator:= =_() -> _()
+ FunctionZer1:ZER1(.) -> =.()
+ BinaryOperatorPlus:+(.,.()) -> =.()
+ AssignmentOperator:= =.() -> .()
 245 ARR D = 3 + ZER1()
- Variable:D() -> _()
+ Variable:D() -> .()
  NumericValue:3
- FunctionZer1:ZER1() -> _()
- BinaryOperatorPlus:+(_,_()) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionZer1:ZER1() -> .()
+ BinaryOperatorPlus:+(.,.()) -> .()
+ AssignmentOperator:= .() -> .()
 250 PRINT "ARRAY A"
  TextValue:"ARRAY A"
  CarriageControl:NL
 260 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 270 PRINT "ARRAY B"
  TextValue:"ARRAY B"
  CarriageControl:NL
 280 ARR PRINT B
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:NL
 290 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 300 ARR PRINT C
- Variable:C() -> _()
+ Variable:C() -> .()
  CarriageControl:NL
 310 PRINT "ARRAY D"
  TextValue:"ARRAY D"
  CarriageControl:NL
 320 ARR PRINT D
- Variable:D() -> _()
+ Variable:D() -> .()
  CarriageControl:NL
 999 END
  

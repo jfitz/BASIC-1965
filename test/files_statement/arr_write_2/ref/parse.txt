@@ -2,9 +2,9 @@
  Remark:This is a test
 15 DIM A(3),B(5)
  NumericValue:3
- Declaration:A() -> _()
+ Declaration:A() -> .()
  NumericValue:5
- Declaration:B() -> _()
+ Declaration:B() -> .()
 20 DATA 10,20,30,40
  NumericValue:10
  NumericValue:20
@@ -20,14 +20,14 @@
 25 FILES "output.txt"
  TextValue:"output.txt"
 30 ARR READ A,B
- Variable:A() -> _()
- Variable:B() -> _()
+ Variable:A() -> .()
+ Variable:B() -> .()
 40 ARR WRITE #1;A,B
  NumericValue:1
- UnaryOperatorHash:#(_) -> =FH
- Variable:A() -> _()
+ UnaryOperatorHash:#(.) -> =FH
+ Variable:A() -> .()
  CarriageControl:,
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:NL
 90 STOP
  

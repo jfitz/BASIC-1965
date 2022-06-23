@@ -3,13 +3,13 @@
 11 OPTION CACHE_CONST_EXPR TRUE
  BooleanValue:true
 12 DEF FNR(D) = D * 3.1415 / 180
- UserFunctionName:FNR -> _
- VariableName:D -> _
- Variable:D -> _
+ UserFunctionName:FNR -> .
+ VariableName:D -> .
+ Variable:D -> .
  NumericValue:3.1415
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
 20 PRINT "PRECISION 7"
  TextValue:"PRECISION 7"
  CarriageControl:NL
@@ -31,98 +31,98 @@
 100 REM PROC A
  Remark:PROC A
 110 LET S1 = SIN(30 * 3.1415 / 180)
- Variable:S1 -> _
+ Variable:S1 -> .
  NumericValue:30
  NumericValue:3.1415
- BinaryOperatorMultiply:*(_,_) -> =_
+ BinaryOperatorMultiply:*(.,.) -> =.
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> =_
- FunctionSin:SIN(_) -> =_
- AssignmentOperator:= =_ -> _
+ BinaryOperatorDivide:/(.,.) -> =.
+ FunctionSin:SIN(.) -> =.
+ AssignmentOperator:= =. -> .
 120 LET S2 = SIN(45 * 3.1415 / 180)
- Variable:S2 -> _
+ Variable:S2 -> .
  NumericValue:45
  NumericValue:3.1415
- BinaryOperatorMultiply:*(_,_) -> =_
+ BinaryOperatorMultiply:*(.,.) -> =.
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> =_
- FunctionSin:SIN(_) -> =_
- AssignmentOperator:= =_ -> _
+ BinaryOperatorDivide:/(.,.) -> =.
+ FunctionSin:SIN(.) -> =.
+ AssignmentOperator:= =. -> .
 130 LET S3 = SIN(60 * 3.1415 / 180)
- Variable:S3 -> _
+ Variable:S3 -> .
  NumericValue:60
  NumericValue:3.1415
- BinaryOperatorMultiply:*(_,_) -> =_
+ BinaryOperatorMultiply:*(.,.) -> =.
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> =_
- FunctionSin:SIN(_) -> =_
- AssignmentOperator:= =_ -> _
+ BinaryOperatorDivide:/(.,.) -> =.
+ FunctionSin:SIN(.) -> =.
+ AssignmentOperator:= =. -> .
 140 LET S4 = SIN(90 * 3.1415 / 180)
- Variable:S4 -> _
+ Variable:S4 -> .
  NumericValue:90
  NumericValue:3.1415
- BinaryOperatorMultiply:*(_,_) -> =_
+ BinaryOperatorMultiply:*(.,.) -> =.
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> =_
- FunctionSin:SIN(_) -> =_
- AssignmentOperator:= =_ -> _
+ BinaryOperatorDivide:/(.,.) -> =.
+ FunctionSin:SIN(.) -> =.
+ AssignmentOperator:= =. -> .
 150 PRINT S1, S2, S3, S4
- Variable:S1 -> _
+ Variable:S1 -> .
  CarriageControl:,
- Variable:S2 -> _
+ Variable:S2 -> .
  CarriageControl:,
- Variable:S3 -> _
+ Variable:S3 -> .
  CarriageControl:,
- Variable:S4 -> _
+ Variable:S4 -> .
  CarriageControl:NL
 190 RETURN
  
 200 REM PROC B
  Remark:PROC B
 210 LET S1 = SIN(30 * 3.1415 / 180)
- Variable:S1 -> _
+ Variable:S1 -> .
  NumericValue:30
  NumericValue:3.1415
- BinaryOperatorMultiply:*(_,_) -> =_
+ BinaryOperatorMultiply:*(.,.) -> =.
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> =_
- FunctionSin:SIN(_) -> =_
- AssignmentOperator:= =_ -> _
+ BinaryOperatorDivide:/(.,.) -> =.
+ FunctionSin:SIN(.) -> =.
+ AssignmentOperator:= =. -> .
 220 LET S2 = SIN(45 * 3.1415 / 180)
- Variable:S2 -> _
+ Variable:S2 -> .
  NumericValue:45
  NumericValue:3.1415
- BinaryOperatorMultiply:*(_,_) -> =_
+ BinaryOperatorMultiply:*(.,.) -> =.
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> =_
- FunctionSin:SIN(_) -> =_
- AssignmentOperator:= =_ -> _
+ BinaryOperatorDivide:/(.,.) -> =.
+ FunctionSin:SIN(.) -> =.
+ AssignmentOperator:= =. -> .
 230 LET S3 = SIN(60 * 3.1415 / 180)
- Variable:S3 -> _
+ Variable:S3 -> .
  NumericValue:60
  NumericValue:3.1415
- BinaryOperatorMultiply:*(_,_) -> =_
+ BinaryOperatorMultiply:*(.,.) -> =.
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> =_
- FunctionSin:SIN(_) -> =_
- AssignmentOperator:= =_ -> _
+ BinaryOperatorDivide:/(.,.) -> =.
+ FunctionSin:SIN(.) -> =.
+ AssignmentOperator:= =. -> .
 240 LET S4 = SIN(90 * 3.1415 / 180)
- Variable:S4 -> _
+ Variable:S4 -> .
  NumericValue:90
  NumericValue:3.1415
- BinaryOperatorMultiply:*(_,_) -> =_
+ BinaryOperatorMultiply:*(.,.) -> =.
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> =_
- FunctionSin:SIN(_) -> =_
- AssignmentOperator:= =_ -> _
+ BinaryOperatorDivide:/(.,.) -> =.
+ FunctionSin:SIN(.) -> =.
+ AssignmentOperator:= =. -> .
 250 PRINT S1, S2, S3, S4
- Variable:S1 -> _
+ Variable:S1 -> .
  CarriageControl:,
- Variable:S2 -> _
+ Variable:S2 -> .
  CarriageControl:,
- Variable:S3 -> _
+ Variable:S3 -> .
  CarriageControl:,
- Variable:S4 -> _
+ Variable:S4 -> .
  CarriageControl:NL
 290 RETURN
  

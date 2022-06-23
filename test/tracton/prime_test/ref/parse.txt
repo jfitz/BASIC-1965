@@ -6,88 +6,88 @@
  TextValue:"ENTER THE TEST NUMBER, ZERO TO STOP"
  CarriageControl:NL
 40 INPUT N
- Variable:N -> _
+ Variable:N -> .
 50 LET N = INT(N)
- Variable:N -> _
- Variable:N -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:N -> .
+ Variable:N -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 60 IF N = 0 THEN 220
- Variable:N -> _
+ Variable:N -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:220
 70 IF N < 4 THEN 180
- Variable:N -> _
+ Variable:N -> .
  NumericValue:4
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:180
 80 LET I = 0
- Variable:I -> _
+ Variable:I -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 90 LET T = 2
- Variable:T -> _
+ Variable:T -> .
  NumericValue:2
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 100 LET J = INT(N/T)
- Variable:J -> _
- Variable:N -> _
- Variable:T -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:N -> .
+ Variable:T -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 110 LET K = J*T
- Variable:K -> _
- Variable:J -> _
- Variable:T -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:J -> .
+ Variable:T -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 120 IF N = K THEN 200
- Variable:N -> _
- Variable:K -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:N -> .
+ Variable:K -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:200
 130 LET I = I + 1
- Variable:I -> _
- Variable:I -> _
+ Variable:I -> .
+ Variable:I -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 140 LET L = T*T
- Variable:L -> _
- Variable:T -> _
- Variable:T -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:L -> .
+ Variable:T -> .
+ Variable:T -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 150 IF L > N THEN 180
- Variable:L -> _
- Variable:N -> _
- BinaryOperatorGreater:>(_,_) -> ?
+ Variable:L -> .
+ Variable:N -> .
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:180
 160 LET T = (I*2) + 1
- Variable:T -> _
- Variable:I -> _
+ Variable:T -> .
+ Variable:I -> .
  NumericValue:2
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 170 GOTO 100
  LineNumber:100
 180 PRINT N;"IS A PRIME"
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:;
  TextValue:"IS A PRIME"
  CarriageControl:NL
 190 GOTO 30
  LineNumber:30
 200 PRINT N;"IS NOT A PRIME:";T;"IS THE SMALLEST FACTOR"
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:;
  TextValue:"IS NOT A PRIME:"
  CarriageControl:;
- Variable:T -> _
+ Variable:T -> .
  CarriageControl:;
  TextValue:"IS THE SMALLEST FACTOR"
  CarriageControl:NL

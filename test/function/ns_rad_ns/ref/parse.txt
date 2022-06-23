@@ -1,37 +1,37 @@
 10 REM TEST DEG() FUNCTION
  Remark:TEST DEG() FUNCTION
 20 LET P = 3.1415629
- Variable:P -> _
+ Variable:P -> .
  NumericValue:3.1415629
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 30 PRINT "DEGREES","RADIANS"
  TextValue:"DEGREES"
  CarriageControl:,
  TextValue:"RADIANS"
  CarriageControl:NL
 40 FOR I = 0 TO 360 STEP 15
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:360"]
  step:    ["NumericValue:15"]
 50 LET R = RAD(I)
- Variable:R -> _
- Variable:I -> _
- FunctionRad:RAD(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R -> .
+ Variable:I -> .
+ FunctionRad:RAD(.) -> .
+ AssignmentOperator:= . -> .
 60 LET R2 = R / P
- Variable:R2 -> _
- Variable:R -> _
- Variable:P -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R2 -> .
+ Variable:R -> .
+ Variable:P -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 70 PRINT I, R2
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:,
- Variable:R2 -> _
+ Variable:R2 -> .
  CarriageControl:NL
 80 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 

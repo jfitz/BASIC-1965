@@ -22,36 +22,36 @@
  TextValue:"TYPE A NUMBER 1 TO 6 FOR FUNCTION DESIRED"
  CarriageControl:NL
 90 INPUT C
- Variable:C -> _
+ Variable:C -> .
 100 IF C = 1 THEN 110
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:110
 101 IF C = 2 THEN 160
- Variable:C -> _
+ Variable:C -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:160
 102 IF C = 3 THEN 210
- Variable:C -> _
+ Variable:C -> .
  NumericValue:3
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:210
 103 IF C = 4 THEN 270
- Variable:C -> _
+ Variable:C -> .
  NumericValue:4
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:270
 104 IF C = 5 THEN 320
- Variable:C -> _
+ Variable:C -> .
  NumericValue:5
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:320
 105 IF C = 6 THEN 370
- Variable:C -> _
+ Variable:C -> .
  NumericValue:6
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:370
 106 GOTO 80
  LineNumber:80
@@ -60,19 +60,19 @@
 120 GOSUB 520
  LineNumber:520
 130 LET Z = Y/2
- Variable:Z -> _
- Variable:Y -> _
+ Variable:Z -> .
+ Variable:Y -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 140 PRINT "SINH";X;" =";Z
  TextValue:"SINH"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" ="
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 150 GOTO 420
  LineNumber:420
@@ -81,19 +81,19 @@
 170 GOSUB 540
  LineNumber:540
 180 LET Z = B/2
- Variable:Z -> _
- Variable:B -> _
+ Variable:Z -> .
+ Variable:B -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 190 PRINT "COSH";X;" =";Z
  TextValue:"COSH"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" ="
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 200 GOTO 420
  LineNumber:420
@@ -104,19 +104,19 @@
 230 GOSUB 540
  LineNumber:540
 240 LET Z = Y/B
- Variable:Z -> _
- Variable:Y -> _
- Variable:B -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ Variable:Y -> .
+ Variable:B -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 250 PRINT "TANH";X;" =";Z
  TextValue:"TANH"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" ="
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 260 GOTO 420
  LineNumber:420
@@ -125,21 +125,21 @@
 280 GOSUB 520
  LineNumber:520
 290 LET Z = 1/(Y/2)
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:1
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 300 PRINT "CSCH";X;" =";Z
  TextValue:"CSCH"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" ="
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 310 GOTO 420
  LineNumber:420
@@ -148,21 +148,21 @@
 330 GOSUB 540
  LineNumber:540
 340 LET Z = 1/(B/2)
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:1
- Variable:B -> _
+ Variable:B -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 350 PRINT "SECH";X;" =";Z
  TextValue:"SECH"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" ="
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 360 GOTO 420
  LineNumber:420
@@ -173,21 +173,21 @@
 390 GOSUB 540
  LineNumber:540
 400 LET Z = 1/(Y/B)
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:1
- Variable:Y -> _
- Variable:B -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:B -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 410 PRINT "COTH";X;" =";Z
  TextValue:"COTH"
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:" ="
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 420 PRINT
  CarriageControl:NL
@@ -195,11 +195,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 440 INPUT L
- Variable:L -> _
+ Variable:L -> .
 450 IF L = 1 THEN 470
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:470
 460 STOP
  
@@ -211,29 +211,29 @@
  TextValue:"X = "
  CarriageControl:NL
 500 INPUT X
- Variable:X -> _
+ Variable:X -> .
 510 RETURN
  
 520 LET Y = EXP(X) - EXP(-X)
- Variable:Y -> _
- Variable:X -> _
- FunctionExp:EXP(_) -> _
- Variable:X -> _
- UnaryOperatorMinus:-(_) -> _
- FunctionExp:EXP(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:X -> .
+ FunctionExp:EXP(.) -> .
+ Variable:X -> .
+ UnaryOperatorMinus:-(.) -> .
+ FunctionExp:EXP(.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 530 RETURN
  
 540 LET B = EXP(X) + EXP(-X)
- Variable:B -> _
- Variable:X -> _
- FunctionExp:EXP(_) -> _
- Variable:X -> _
- UnaryOperatorMinus:-(_) -> _
- FunctionExp:EXP(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:X -> .
+ FunctionExp:EXP(.) -> .
+ Variable:X -> .
+ UnaryOperatorMinus:-(.) -> .
+ FunctionExp:EXP(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 550 RETURN
  
 560 END

@@ -11,34 +11,34 @@
 220 DIM B(10,10)
  NumericValue:10
  NumericValue:10
- Declaration:B(,) -> _(,)
+ Declaration:B(,) -> .(,)
 230 REM *** INITIAL PATTERN
  Remark:*** INITIAL PATTERN
 240 LET B(4,4)=1
  NumericValue:4
  NumericValue:4
- Variable:B(_,_) -> _
+ Variable:B(.,.) -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 241 LET B(4,5)=1
  NumericValue:4
  NumericValue:5
- Variable:B(_,_) -> _
+ Variable:B(.,.) -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 242 LET B(4,6)=1
  NumericValue:4
  NumericValue:6
- Variable:B(_,_) -> _
+ Variable:B(.,.) -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 300 REM *** DISPLAY BOARD
  Remark:*** DISPLAY BOARD
 310 PRINT "********************"
  TextValue:"********************"
  CarriageControl:NL
 320 MAT PRINT B;
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:;
 330 PRINT "********************"
  TextValue:"********************"
@@ -46,150 +46,150 @@
 340 PRINT
  CarriageControl:NL
 350 INPUT "CONTINUE (1=YES)", A
- Variable:A -> _
+ Variable:A -> .
 360 IF A <> 1 THEN 999
- Variable:A -> _
+ Variable:A -> .
  NumericValue:1
- BinaryOperatorNotEqual:<>(_,_) -> ?
+ BinaryOperatorNotEqual:<>(.,.) -> ?
  LineNumber:999
 400 REM *** CALCULATE NEIGHBORS
  Remark:*** CALCULATE NEIGHBORS
 410 MAT N=ZER(10,10)
- Variable:N(,) -> _(,)
+ Variable:N(,) -> .(,)
  NumericValue:10
  NumericValue:10
- FunctionZer2:ZER(_,_) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER(.,.) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 415 OPTION BASE 0
  NumericValue:0
 420 DIM B(11,11)
  NumericValue:11
  NumericValue:11
- Declaration:B(,) -> _(,)
+ Declaration:B(,) -> .(,)
 430 FOR I=1 TO 10
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:10"]
 440 FOR J=1 TO 10
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:10"]
 442 LET C = 0
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 450 FOR I0=-1 TO 1
- control: Variable:I0 -> _
- start:   ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
+ control: Variable:I0 -> .
+ start:   ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
  end:     ["NumericValue:1"]
 460 FOR J0=-1 TO 1
  WARNING: FOR/NEXT nesting exceeds limit 3
- control: Variable:J0 -> _
- start:   ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
+ control: Variable:J0 -> .
+ start:   ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
  end:     ["NumericValue:1"]
 470 IF ABS(I0)+ABS(J0) = 0 THEN 500
- Variable:I0 -> _
- FunctionAbs:ABS(_) -> _
- Variable:J0 -> _
- FunctionAbs:ABS(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:I0 -> .
+ FunctionAbs:ABS(.) -> .
+ Variable:J0 -> .
+ FunctionAbs:ABS(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:500
 480 IF B(I+I0,J+J0) = 0 THEN 500
- Variable:I -> _
- Variable:I0 -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:J -> _
- Variable:J0 -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:B(_,_) -> _
+ Variable:I -> .
+ Variable:I0 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:J -> .
+ Variable:J0 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:B(.,.) -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:500
 490 LET C = C + 1
- Variable:C -> _
- Variable:C -> _
+ Variable:C -> .
+ Variable:C -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 500 NEXT J0
- Variable:J0 -> _
+ Variable:J0 -> .
 510 NEXT I0
- Variable:I0 -> _
+ Variable:I0 -> .
 512 LET N(I,J)=C
- Variable:I -> _
- Variable:J -> _
- Variable:N(_,_) -> _
- Variable:C -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:N(.,.) -> .
+ Variable:C -> .
+ AssignmentOperator:= . -> .
 520 NEXT J
- Variable:J -> _
+ Variable:J -> .
 530 NEXT I
- Variable:I -> _
+ Variable:I -> .
 535 OPTION BASE 1
  NumericValue:1
 540 DIM B(10,10)
  NumericValue:10
  NumericValue:10
- Declaration:B(,) -> _(,)
+ Declaration:B(,) -> .(,)
 600 REM *** CALCULATE NEW BOARD
  Remark:*** CALCULATE NEW BOARD
 610 FOR I=1 TO 10
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:10"]
 620 FOR J=1 TO 10
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:10"]
 630 IF N(I,J)<2 THEN 660
- Variable:I -> _
- Variable:J -> _
- Variable:N(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:N(.,.) -> .
  NumericValue:2
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:660
 640 IF N(I,J)=2 THEN 720
- Variable:I -> _
- Variable:J -> _
- Variable:N(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:N(.,.) -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:720
 650 IF N(I,J)=3 THEN 690
- Variable:I -> _
- Variable:J -> _
- Variable:N(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:N(.,.) -> .
  NumericValue:3
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:690
 660 REM * CELL DIES
  Remark:* CELL DIES
 670 LET B(I,J)=0
- Variable:I -> _
- Variable:J -> _
- Variable:B(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:B(.,.) -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 680 GOTO 730
  LineNumber:730
 690 REM * CELL IS BORN
  Remark:* CELL IS BORN
 700 LET B(I,J)=1
- Variable:I -> _
- Variable:J -> _
- Variable:B(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:B(.,.) -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 710 GOTO 730
  LineNumber:730
 720 REM * CELL REMAINS UNCHANGED
  Remark:* CELL REMAINS UNCHANGED
 730 NEXT J
- Variable:J -> _
+ Variable:J -> .
 740 NEXT I
- Variable:I -> _
+ Variable:I -> .
 800 REM *** NEXT ITERATION
  Remark:*** NEXT ITERATION
 810 GOTO 300

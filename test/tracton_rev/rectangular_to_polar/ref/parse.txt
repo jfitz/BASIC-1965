@@ -9,130 +9,130 @@
  TextValue:"X = "
  CarriageControl:;
 50 INPUT X
- Variable:X -> _
+ Variable:X -> .
 60 PRINT "Y = ";
  TextValue:"Y = "
  CarriageControl:;
 70 INPUT Y
- Variable:Y -> _
+ Variable:Y -> .
 80 IF X + Y = 0 THEN 180
- Variable:X -> _
- Variable:Y -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:X -> .
+ Variable:Y -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:180
 90 IF X = 0 THEN 180
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:180
 100 IF Y = 0 THEN 250
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:250
 110 LET W = ATN(Y/X)
- Variable:W -> _
- Variable:Y -> _
- Variable:X -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionArcTan:ATN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:W -> .
+ Variable:Y -> .
+ Variable:X -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionArcTan:ATN(.) -> .
+ AssignmentOperator:= . -> .
 120 LET W = (W*180)/3.14159
- Variable:W -> _
- Variable:W -> _
+ Variable:W -> .
+ Variable:W -> .
  NumericValue:180
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:3.14159
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 130 LET R = SQR(X^2 + Y^2)
- Variable:R -> _
- Variable:X -> _
+ Variable:R -> .
+ Variable:X -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- Variable:Y -> _
+ BinaryOperatorPower:^(.,.) -> .
+ Variable:Y -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 140 GOTO 310
  LineNumber:310
 150 LET W = 0
- Variable:W -> _
+ Variable:W -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 160 LET R = 0
- Variable:R -> _
+ Variable:R -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 170 GOTO 310
  LineNumber:310
 180 IF Y > 0 THEN 220
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:220
 190 LET W = - 90
- Variable:W -> _
+ Variable:W -> .
  NumericValue:90
- UnaryOperatorMinus:-(_) -> =_
- AssignmentOperator:= =_ -> _
+ UnaryOperatorMinus:-(.) -> =.
+ AssignmentOperator:= =. -> .
 200 LET R = ABS(Y)
- Variable:R -> _
- Variable:Y -> _
- FunctionAbs:ABS(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R -> .
+ Variable:Y -> .
+ FunctionAbs:ABS(.) -> .
+ AssignmentOperator:= . -> .
 210 GOTO 310
  LineNumber:310
 220 LET W = 90
- Variable:W -> _
+ Variable:W -> .
  NumericValue:90
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 230 LET R = Y
- Variable:R -> _
- Variable:Y -> _
- AssignmentOperator:= _ -> _
+ Variable:R -> .
+ Variable:Y -> .
+ AssignmentOperator:= . -> .
 240 GOTO 310
  LineNumber:310
 250 IF X > 0 THEN 290
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:290
 260 LET W = 180
- Variable:W -> _
+ Variable:W -> .
  NumericValue:180
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 270 LET R = ABS(X)
- Variable:R -> _
- Variable:X -> _
- FunctionAbs:ABS(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R -> .
+ Variable:X -> .
+ FunctionAbs:ABS(.) -> .
+ AssignmentOperator:= . -> .
 280 GOTO 310
  LineNumber:310
 290 LET W = 0
- Variable:W -> _
+ Variable:W -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 300 LET R = X
- Variable:R -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:R -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 310 PRINT "POLAR COORDINATES"
  TextValue:"POLAR COORDINATES"
  CarriageControl:NL
 320 PRINT "ANGLE IN DEGREES = ";W
  TextValue:"ANGLE IN DEGREES = "
  CarriageControl:;
- Variable:W -> _
+ Variable:W -> .
  CarriageControl:NL
 330 PRINT "MAGNITUDE = ";R
  TextValue:"MAGNITUDE = "
  CarriageControl:;
- Variable:R -> _
+ Variable:R -> .
  CarriageControl:NL
 340 PRINT "********************"
  TextValue:"********************"
@@ -141,11 +141,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 360 INPUT L
- Variable:L -> _
+ Variable:L -> .
 370 IF L = 1 THEN 390
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:390
 380 STOP
  

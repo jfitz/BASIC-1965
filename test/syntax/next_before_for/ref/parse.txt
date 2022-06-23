@@ -3,16 +3,16 @@
 20 GOTO 50
  LineNumber:50
 30 NEXT I
- Variable:I -> _
+ Variable:I -> .
 40 GOTO 90
  LineNumber:90
 50 FOR I = 1 TO 4
  ERROR: Cannot find NEXT for I
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:4"]
 60 PRINT I
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 70 GOTO 30
  LineNumber:30

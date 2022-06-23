@@ -1,28 +1,28 @@
 10 REM TEST FOR LOOP
  Remark:TEST FOR LOOP
 20 LET B = 10
- Variable:B -> _
+ Variable:B -> .
  NumericValue:10
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 21 LET E = 1
- Variable:E -> _
+ Variable:E -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 22 LET S = -1
- Variable:S -> _
+ Variable:S -> .
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
- AssignmentOperator:= =_ -> _
+ UnaryOperatorMinus:-(.) -> =.
+ AssignmentOperator:= =. -> .
 30 FOR I = B TO E STEP S
- control: Variable:I -> _
- start:   ["Variable:B -> _"]
- end:     ["Variable:E -> _"]
- step:    ["Variable:S -> _"]
+ control: Variable:I -> .
+ start:   ["Variable:B -> ."]
+ end:     ["Variable:E -> ."]
+ step:    ["Variable:S -> ."]
 40 PRINT I
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 50 NEXT I
- Variable:I -> _
+ Variable:I -> .
 90 STOP
  
 99 END

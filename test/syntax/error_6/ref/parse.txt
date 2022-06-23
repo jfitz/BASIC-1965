@@ -1,13 +1,13 @@
 10 REM SYNTAX ERROR
  Remark:SYNTAX ERROR
 20 FOR I = 1 TO 5
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:5"]
 30 READ N
- Variable:N -> _
+ Variable:N -> .
 40 NEXT I
- Variable:I -> _
+ Variable:I -> .
 80 DATA 1,2,3,STOP,5
  ERROR: Syntax error
 99 END

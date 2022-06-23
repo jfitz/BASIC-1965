@@ -3,16 +3,16 @@
 12 OPTION LOCK_FORNEXT TRUE
  BooleanValue:true
 20 FOR I = 1 TO 5
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:5"]
 30 PRINT I
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 40 FORGET I
- Variable:I -> _
+ Variable:I -> .
 90 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 

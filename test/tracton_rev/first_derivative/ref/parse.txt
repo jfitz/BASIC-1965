@@ -6,84 +6,84 @@
  TextValue:"VALUE OF X = "
  CarriageControl:;
 40 INPUT X
- Variable:X -> _
+ Variable:X -> .
 50 LET Y = X
- Variable:Y -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 60 LET Z = (X*(1E-04))/2
- Variable:Z -> _
- Variable:X -> _
+ Variable:Z -> .
+ Variable:X -> .
  NumericValue:1E-04
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 70 LET W = X + Z
- Variable:W -> _
- Variable:X -> _
- Variable:Z -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:W -> .
+ Variable:X -> .
+ Variable:Z -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 80 LET V = X - Z
- Variable:V -> _
- Variable:X -> _
- Variable:Z -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:V -> .
+ Variable:X -> .
+ Variable:Z -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 90 LET X = W
- Variable:X -> _
- Variable:W -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:W -> .
+ AssignmentOperator:= . -> .
 100 GOSUB 280
  LineNumber:280
 110 LET A = P
- Variable:A -> _
- Variable:P -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:P -> .
+ AssignmentOperator:= . -> .
 120 LET X = V
- Variable:X -> _
- Variable:V -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:V -> .
+ AssignmentOperator:= . -> .
 130 GOSUB 280
  LineNumber:280
 140 LET B = P
- Variable:B -> _
- Variable:P -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:P -> .
+ AssignmentOperator:= . -> .
 150 LET X = Y
- Variable:X -> _
- Variable:Y -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:Y -> .
+ AssignmentOperator:= . -> .
 160 GOSUB 280
  LineNumber:280
 170 LET C = P
- Variable:C -> _
- Variable:P -> _
- AssignmentOperator:= _ -> _
+ Variable:C -> .
+ Variable:P -> .
+ AssignmentOperator:= . -> .
 180 LET F = (A - B)/(2*Z)
- Variable:F -> _
- Variable:A -> _
- Variable:B -> _
- BinaryOperatorMinus:-(_,_) -> _
+ Variable:F -> .
+ Variable:A -> .
+ Variable:B -> .
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:2
- Variable:Z -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 190 PRINT "IF X = ";Y,"THEN F(X) = ";C
  TextValue:"IF X = "
  CarriageControl:;
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:,
  TextValue:"THEN F(X) = "
  CarriageControl:;
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:NL
 200 PRINT "AND F'(X) = ";F
  TextValue:"AND F'(X) = "
  CarriageControl:;
- Variable:F -> _
+ Variable:F -> .
  CarriageControl:NL
 210 PRINT
  CarriageControl:NL
@@ -91,11 +91,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- Variable:L -> _
+ Variable:L -> .
 240 IF L = 1 THEN 260
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:260
 250 STOP
  
@@ -104,11 +104,11 @@
 270 GOTO 40
  LineNumber:40
 280 LET P = X^2
- Variable:P -> _
- Variable:X -> _
+ Variable:P -> .
+ Variable:X -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ AssignmentOperator:= . -> .
 290 RETURN
  
 300 END

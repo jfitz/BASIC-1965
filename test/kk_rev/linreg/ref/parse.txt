@@ -1,161 +1,161 @@
 100 LET X1 = 0
- Variable:X1 -> _
+ Variable:X1 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 110 LET X2 = 0
- Variable:X2 -> _
+ Variable:X2 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 120 LET Y1 = 0
- Variable:Y1 -> _
+ Variable:Y1 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 130 LET Y2 = 0
- Variable:Y2 -> _
+ Variable:Y2 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 140 LET Z = 0
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 150
 160 READ N
- Variable:N -> _
+ Variable:N -> .
 170 FOR I = 1 TO N
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 180    READ X, Y
- Variable:X -> _
- Variable:Y -> _
+ Variable:X -> .
+ Variable:Y -> .
 190    LET X1 = X1 + X
- Variable:X1 -> _
- Variable:X1 -> _
- Variable:X -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X1 -> .
+ Variable:X1 -> .
+ Variable:X -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 200    LET Y1 = Y1 + Y
- Variable:Y1 -> _
- Variable:Y1 -> _
- Variable:Y -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y1 -> .
+ Variable:Y1 -> .
+ Variable:Y -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 210    LET X2 = X2 + X*X
- Variable:X2 -> _
- Variable:X2 -> _
- Variable:X -> _
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X2 -> .
+ Variable:X2 -> .
+ Variable:X -> .
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 220    LET Y2 = Y2 + Y*Y
- Variable:Y2 -> _
- Variable:Y2 -> _
- Variable:Y -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y2 -> .
+ Variable:Y2 -> .
+ Variable:Y -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 230    LET Z = Z + X*Y
- Variable:Z -> _
- Variable:Z -> _
- Variable:X -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ Variable:Z -> .
+ Variable:X -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 240 NEXT I
- Variable:I -> _
+ Variable:I -> .
 250
 260 LET X3 = X1/N
- Variable:X3 -> _
- Variable:X1 -> _
- Variable:N -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X3 -> .
+ Variable:X1 -> .
+ Variable:N -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 265 LET Y3 = Y1/N
- Variable:Y3 -> _
- Variable:Y1 -> _
- Variable:N -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y3 -> .
+ Variable:Y1 -> .
+ Variable:N -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 270 LET S1 = X2 - X1*X3
- Variable:S1 -> _
- Variable:X2 -> _
- Variable:X1 -> _
- Variable:X3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S1 -> .
+ Variable:X2 -> .
+ Variable:X1 -> .
+ Variable:X3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 280 LET S2 = Y2 - Y1*Y3
- Variable:S2 -> _
- Variable:Y2 -> _
- Variable:Y1 -> _
- Variable:Y3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S2 -> .
+ Variable:Y2 -> .
+ Variable:Y1 -> .
+ Variable:Y3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 290 LET S = Z - X1*Y3
- Variable:S -> _
- Variable:Z -> _
- Variable:X1 -> _
- Variable:Y3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:Z -> .
+ Variable:X1 -> .
+ Variable:Y3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 300 LET B = S/S1
- Variable:B -> _
- Variable:S -> _
- Variable:S1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:S -> .
+ Variable:S1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 310 LET B1 = Y3 - B*X3
- Variable:B1 -> _
- Variable:Y3 -> _
- Variable:B -> _
- Variable:X3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B1 -> .
+ Variable:Y3 -> .
+ Variable:B -> .
+ Variable:X3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 320 LET S3 = S2 - B*S
- Variable:S3 -> _
- Variable:S2 -> _
- Variable:B -> _
- Variable:S -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S3 -> .
+ Variable:S2 -> .
+ Variable:B -> .
+ Variable:S -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 330 LET S4 = S3/(N-2)
- Variable:S4 -> _
- Variable:S3 -> _
- Variable:N -> _
+ Variable:S4 -> .
+ Variable:S3 -> .
+ Variable:N -> .
  NumericValue:2
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 340
 350 PRINT "NUMBER = "N
  TextValue:"NUMBER = "
  CarriageControl:
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:NL
 360 PRINT "MEAN OF X = "X3, "OF Y "Y3
  TextValue:"MEAN OF X = "
  CarriageControl:
- Variable:X3 -> _
+ Variable:X3 -> .
  CarriageControl:,
  TextValue:"OF Y "
  CarriageControl:
- Variable:Y3 -> _
+ Variable:Y3 -> .
  CarriageControl:NL
 370 PRINT "SLOPE = "B, "Y-INTERCEPT = "B1
  TextValue:"SLOPE = "
  CarriageControl:
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:,
  TextValue:"Y-INTERCEPT = "
  CarriageControl:
- Variable:B1 -> _
+ Variable:B1 -> .
  CarriageControl:NL
 375 PRINT
  CarriageControl:NL
@@ -164,32 +164,32 @@
  CarriageControl:,
  TextValue:"TOTAL"
  CarriageControl:,
- Variable:Y2 -> _
+ Variable:Y2 -> .
  CarriageControl:NL
 390 PRINT "    ", "MEAN", Y3*Y1
  TextValue:"    "
  CarriageControl:,
  TextValue:"MEAN"
  CarriageControl:,
- Variable:Y3 -> _
- Variable:Y1 -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:Y3 -> .
+ Variable:Y1 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  CarriageControl:NL
 400 PRINT "    ", "SLOPE", B*S
  TextValue:"    "
  CarriageControl:,
  TextValue:"SLOPE"
  CarriageControl:,
- Variable:B -> _
- Variable:S -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:B -> .
+ Variable:S -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  CarriageControl:NL
 410 PRINT "    ", "RESIDUAL", S3
  TextValue:"    "
  CarriageControl:,
  TextValue:"RESIDUAL"
  CarriageControl:,
- Variable:S3 -> _
+ Variable:S3 -> .
  CarriageControl:NL
 415 PRINT
  CarriageControl:NL
@@ -201,91 +201,91 @@
  CarriageControl:,
  TextValue:"X  "
  CarriageControl:,
- Variable:S1 -> _
- Variable:N -> _
+ Variable:S1 -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionSqr:SQR(_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionSqr:SQR(.) -> .
  CarriageControl:NL
 440 PRINT "    ", "Y  ", SQR(S2/(N-1))
  TextValue:"    "
  CarriageControl:,
  TextValue:"Y  "
  CarriageControl:,
- Variable:S2 -> _
- Variable:N -> _
+ Variable:S2 -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionSqr:SQR(_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionSqr:SQR(.) -> .
  CarriageControl:NL
 450 PRINT "    ", "ERROR", SQR(S4)
  TextValue:"    "
  CarriageControl:,
  TextValue:"ERROR"
  CarriageControl:,
- Variable:S4 -> _
- FunctionSqr:SQR(_) -> _
+ Variable:S4 -> .
+ FunctionSqr:SQR(.) -> .
  CarriageControl:NL
 460 PRINT "    ", "Y-BAR", SQR(S4/N)
  TextValue:"    "
  CarriageControl:,
  TextValue:"Y-BAR"
  CarriageControl:,
- Variable:S4 -> _
- Variable:N -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionSqr:SQR(_) -> _
+ Variable:S4 -> .
+ Variable:N -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionSqr:SQR(.) -> .
  CarriageControl:NL
 470 PRINT "    ", "SLOPE", SQR(S4/S1)
  TextValue:"    "
  CarriageControl:,
  TextValue:"SLOPE"
  CarriageControl:,
- Variable:S4 -> _
- Variable:S1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionSqr:SQR(_) -> _
+ Variable:S4 -> .
+ Variable:S1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionSqr:SQR(.) -> .
  CarriageControl:NL
 480 PRINT "    ", "Y-INTER.", SQR(S4*(1/N + X3*X3/S1))
  TextValue:"    "
  CarriageControl:,
  TextValue:"Y-INTER."
  CarriageControl:,
- Variable:S4 -> _
+ Variable:S4 -> .
  NumericValue:1
- Variable:N -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:X3 -> _
- Variable:X3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:S1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionSqr:SQR(_) -> _
+ Variable:N -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:X3 -> .
+ Variable:X3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:S1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionSqr:SQR(.) -> .
  CarriageControl:NL
 485 PRINT
  CarriageControl:NL
 490 PRINT "F-RATIO FOR SLOPE = " B*S/S4
  TextValue:"F-RATIO FOR SLOPE = "
  CarriageControl:
- Variable:B -> _
- Variable:S -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:S4 -> _
- BinaryOperatorDivide:/(_,_) -> _
+ Variable:B -> .
+ Variable:S -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:S4 -> .
+ BinaryOperatorDivide:/(.,.) -> .
  CarriageControl:NL
 500 PRINT "CORRELATION COEFFICIENT = " S/SQR(S1*S2)
  TextValue:"CORRELATION COEFFICIENT = "
  CarriageControl:
- Variable:S -> _
- Variable:S1 -> _
- Variable:S2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorDivide:/(_,_) -> _
+ Variable:S -> .
+ Variable:S1 -> .
+ Variable:S2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
  CarriageControl:NL
 510
 900 DATA 5

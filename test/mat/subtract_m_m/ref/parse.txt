@@ -3,61 +3,61 @@
 20 DIM A(5,5),B(5,5)
  NumericValue:5
  NumericValue:5
- Declaration:A(,) -> _(,)
+ Declaration:A(,) -> .(,)
  NumericValue:5
  NumericValue:5
- Declaration:B(,) -> _(,)
+ Declaration:B(,) -> .(,)
 30 FOR I = 1 TO 5
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:5"]
 40 FOR J = 1 TO 5
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:5"]
 50 LET A(I,J) = I+J
- Variable:I -> _
- Variable:J -> _
- Variable:A(_,_) -> _
- Variable:I -> _
- Variable:J -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:A(.,.) -> .
+ Variable:I -> .
+ Variable:J -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 52 LET B(I,J) = I*J
- Variable:I -> _
- Variable:J -> _
- Variable:B(_,_) -> _
- Variable:I -> _
- Variable:J -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:B(.,.) -> .
+ Variable:I -> .
+ Variable:J -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 60 NEXT J
- Variable:J -> _
+ Variable:J -> .
 70 NEXT I
- Variable:I -> _
+ Variable:I -> .
 100 MAT C = A - B
- Variable:C(,) -> _(,)
- Variable:A(,) -> _(,)
- Variable:B(,) -> _(,)
- BinaryOperatorMinus:-(_(,),_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:C(,) -> .(,)
+ Variable:A(,) -> .(,)
+ Variable:B(,) -> .(,)
+ BinaryOperatorMinus:-(.(,),.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 110 PRINT "MATRIX A"
  TextValue:"MATRIX A"
  CarriageControl:NL
 120 MAT PRINT A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 130 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 140 MAT PRINT B
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:NL
 150 PRINT "MATRIX C"
  TextValue:"MATRIX C"
  CarriageControl:NL
 160 MAT PRINT C
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  CarriageControl:NL
 999 END
  

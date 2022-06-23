@@ -6,26 +6,26 @@
  TextValue:"FIRST TERM = "
  CarriageControl:;
 40 INPUT A
- Variable:A -> _
+ Variable:A -> .
 50 PRINT "RATIO OF TERMS = ";
  TextValue:"RATIO OF TERMS = "
  CarriageControl:;
 60 INPUT R
- Variable:R -> _
+ Variable:R -> .
 70 PRINT "NUMBER OF TERMS = ";
  TextValue:"NUMBER OF TERMS = "
  CarriageControl:;
 80 INPUT N
- Variable:N -> _
+ Variable:N -> .
 90 PRINT "FOR TABLE TYPE 1, IF NOT TYPE 0"
  TextValue:"FOR TABLE TYPE 1, IF NOT TYPE 0"
  CarriageControl:NL
 100 INPUT C
- Variable:C -> _
+ Variable:C -> .
 110 IF C = 1 THEN 130
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:130
 120 GOTO 160
  LineNumber:160
@@ -40,51 +40,51 @@
  TextValue:"TERM VALUE"
  CarriageControl:NL
 160 LET J = 0
- Variable:J -> _
+ Variable:J -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 170 FOR I = 0 TO N - 1
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
- end:     ["Variable:N -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:N -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 180 LET K = I + 1
- Variable:K -> _
- Variable:I -> _
+ Variable:K -> .
+ Variable:I -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 190 LET L = A*(R^I)
- Variable:L -> _
- Variable:A -> _
- Variable:R -> _
- Variable:I -> _
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:L -> .
+ Variable:A -> .
+ Variable:R -> .
+ Variable:I -> .
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 200 LET J = J + L
- Variable:J -> _
- Variable:J -> _
- Variable:L -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J -> .
+ Variable:L -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 210 IF C = 1 THEN 230
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:230
 220 GOTO 240
  LineNumber:240
 230 PRINT K,L
- Variable:K -> _
+ Variable:K -> .
  CarriageControl:,
- Variable:L -> _
+ Variable:L -> .
  CarriageControl:NL
 240 NEXT I
- Variable:I -> _
+ Variable:I -> .
 250 PRINT "SUM = ";J
  TextValue:"SUM = "
  CarriageControl:;
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 260 PRINT
  CarriageControl:NL
@@ -92,11 +92,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 280 INPUT X
- Variable:X -> _
+ Variable:X -> .
 290 IF X = 1 THEN 310
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:310
 300 STOP
  

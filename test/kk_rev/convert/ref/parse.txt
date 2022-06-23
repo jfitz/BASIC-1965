@@ -1,41 +1,41 @@
 100 READ M, C
- Variable:M -> _
- Variable:C -> _
+ Variable:M -> .
+ Variable:C -> .
 110 LET M1 = M + C/100
- Variable:M1 -> _
- Variable:M -> _
- Variable:C -> _
+ Variable:M1 -> .
+ Variable:M -> .
+ Variable:C -> .
  NumericValue:100
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 120 LET I = M1 * 39.37
- Variable:I -> _
- Variable:M1 -> _
+ Variable:I -> .
+ Variable:M1 -> .
  NumericValue:39.37
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 130 LET F = INT(I/12)
- Variable:F -> _
- Variable:I -> _
+ Variable:F -> .
+ Variable:I -> .
  NumericValue:12
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 140 LET I = I - 12*F
- Variable:I -> _
- Variable:I -> _
+ Variable:I -> .
+ Variable:I -> .
  NumericValue:12
- Variable:F -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:F -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 150 PRINT M, "METERS", C, "CENTIMETERS"
- Variable:M -> _
+ Variable:M -> .
  CarriageControl:,
  TextValue:"METERS"
  CarriageControl:,
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:,
  TextValue:"CENTIMETERS"
  CarriageControl:NL
@@ -43,17 +43,17 @@
  TextValue:"CONVERTS TO"
  CarriageControl:NL
 170 IF F = 0 THEN 190
- Variable:F -> _
+ Variable:F -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:190
 180 PRINT F, "FEET",
- Variable:F -> _
+ Variable:F -> .
  CarriageControl:,
  TextValue:"FEET"
  CarriageControl:,
 190 PRINT I, "INCHES"
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:,
  TextValue:"INCHES"
  CarriageControl:NL

@@ -1,23 +1,23 @@
 100 REM SIDE-ANGLE-SIDE
  Remark:SIDE-ANGLE-SIDE
 110 LET P = 3.14159265
- Variable:P -> _
+ Variable:P -> .
  NumericValue:3.14159265
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 120 DEF FND(X)=X*P/180
- UserFunctionName:FND -> _
- VariableName:X -> _
- Variable:X -> _
- Variable:P -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ UserFunctionName:FND -> .
+ VariableName:X -> .
+ Variable:X -> .
+ Variable:P -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
 130 DEF FNC(X)=COS(FND(X))
- UserFunctionName:FNC -> _
- VariableName:X -> _
- Variable:X -> _
- UserFunction:FND(_) -> _
- FunctionCos:COS(_) -> _
+ UserFunctionName:FNC -> .
+ VariableName:X -> .
+ Variable:X -> .
+ UserFunction:FND(.) -> .
+ FunctionCos:COS(.) -> .
 140 PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
  TextValue:"SIDE"
  CarriageControl:,
@@ -28,37 +28,37 @@
  TextValue:"THIRD SIDE"
  CarriageControl:NL
 150 READ X,A,Y
- Variable:X -> _
- Variable:A -> _
- Variable:Y -> _
+ Variable:X -> .
+ Variable:A -> .
+ Variable:Y -> .
 160 LET Z = SQR(X^2 + Y^2 - 2*X*Y*FNC(A))
- Variable:Z -> _
- Variable:X -> _
+ Variable:Z -> .
+ Variable:X -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- Variable:Y -> _
+ BinaryOperatorPower:^(.,.) -> .
+ Variable:Y -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:A -> _
- UserFunction:FNC(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:A -> .
+ UserFunction:FNC(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 170 PRINT X,A,Y,Z
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:,
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 180 GOTO 150
  LineNumber:150

@@ -8,172 +8,172 @@
  TextValue:"INPUT RESISTANCE R(IN) = "
  CarriageControl:;
 50 INPUT R1
- Variable:R1 -> _
+ Variable:R1 -> .
 60 PRINT "OUTPUT RESISTANCE R(OUT) = ";
  TextValue:"OUTPUT RESISTANCE R(OUT) = "
  CarriageControl:;
 70 INPUT R9
- Variable:R9 -> _
+ Variable:R9 -> .
 80 LET Z = R1/R9
- Variable:Z -> _
- Variable:R1 -> _
- Variable:R9 -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ Variable:R1 -> .
+ Variable:R9 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 90 LET Q = (SQR(Z) + SQR(Z - 1))^2
- Variable:Q -> _
- Variable:Z -> _
- FunctionSqr:SQR(_) -> _
- Variable:Z -> _
+ Variable:Q -> .
+ Variable:Z -> .
+ FunctionSqr:SQR(.) -> .
+ Variable:Z -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ AssignmentOperator:= . -> .
 100 LET M = 10*(LOG(Q)/LOG(10))
- Variable:M -> _
+ Variable:M -> .
  NumericValue:10
- Variable:Q -> _
- FunctionLog:LOG(_) -> _
+ Variable:Q -> .
+ FunctionLog:LOG(.) -> .
  NumericValue:10
- FunctionLog:LOG(_) -> =_
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionLog:LOG(.) -> =.
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 110 PRINT "MINIMUM SYSTEM LOSS IN DECIBELS = ";M
  TextValue:"MINIMUM SYSTEM LOSS IN DECIBELS = "
  CarriageControl:;
- Variable:M -> _
+ Variable:M -> .
  CarriageControl:NL
 120 PRINT "ENTERED DESIRED LOSS IN DECIBELS";
  TextValue:"ENTERED DESIRED LOSS IN DECIBELS"
  CarriageControl:;
 130 INPUT N
- Variable:N -> _
+ Variable:N -> .
 135 LET N = INT(N)
- Variable:N -> _
- Variable:N -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:N -> .
+ Variable:N -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 140 REM COMPUTE T NETWORK
  Remark:COMPUTE T NETWORK
 150 LET T3 = 2*(SQR(N*R1*R9))/(N-1)
- Variable:T3 -> _
+ Variable:T3 -> .
  NumericValue:2
- Variable:N -> _
- Variable:R1 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:R9 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:N -> _
+ Variable:N -> .
+ Variable:R1 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:R9 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 160 LET T1 = R1*((N+1)/(N-1)) - T3
- Variable:T1 -> _
- Variable:R1 -> _
- Variable:N -> _
+ Variable:T1 -> .
+ Variable:R1 -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- Variable:N -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:T3 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:T3 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 170 LET T2 = R9*((N+1)/(N-1)) - T3
- Variable:T2 -> _
- Variable:R9 -> _
- Variable:N -> _
+ Variable:T2 -> .
+ Variable:R9 -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- Variable:N -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:T3 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:T3 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 180 REM COMPUTE PI NETWORK
  Remark:COMPUTE PI NETWORK
 190 LET P3 = 0.5*(N-1)*SQR((R1*R9)/N)
- Variable:P3 -> _
+ Variable:P3 -> .
  NumericValue:0.5
- Variable:N -> _
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:R1 -> _
- Variable:R9 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:N -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:R1 -> .
+ Variable:R9 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:N -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 200 LET P1 = 1/(1/R1*((N+1)/(N-1)) - (1/P3))
- Variable:P1 -> _
+ Variable:P1 -> .
  NumericValue:1
  NumericValue:1
- Variable:R1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:N -> _
+ Variable:R1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- Variable:N -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- Variable:P3 -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:P3 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 210 LET P2 = 1/(1/R9*((N+1)/(N-1)) - (1/P3))
- Variable:P2 -> _
+ Variable:P2 -> .
  NumericValue:1
  NumericValue:1
- Variable:R9 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:N -> _
+ Variable:R9 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- Variable:N -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- Variable:P3 -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:P3 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 220 REM REPORT
  Remark:REPORT
 230 PRINT "R(IN) = ";R1,"R(OUT) = ";R9
  TextValue:"R(IN) = "
  CarriageControl:;
- Variable:R1 -> _
+ Variable:R1 -> .
  CarriageControl:,
  TextValue:"R(OUT) = "
  CarriageControl:;
- Variable:R9 -> _
+ Variable:R9 -> .
  CarriageControl:NL
 240 PRINT "DESIRED LOSS = ";N
  TextValue:"DESIRED LOSS = "
  CarriageControl:;
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:NL
 250 PRINT
  CarriageControl:NL
@@ -183,17 +183,17 @@
 270 PRINT "RESISTOR 1 = ";T1
  TextValue:"RESISTOR 1 = "
  CarriageControl:;
- Variable:T1 -> _
+ Variable:T1 -> .
  CarriageControl:NL
 280 PRINT "RESISTOR 2 = ";T2
  TextValue:"RESISTOR 2 = "
  CarriageControl:;
- Variable:T2 -> _
+ Variable:T2 -> .
  CarriageControl:NL
 290 PRINT "RESISTOR 3 = ";T3
  TextValue:"RESISTOR 3 = "
  CarriageControl:;
- Variable:T3 -> _
+ Variable:T3 -> .
  CarriageControl:NL
 300 PRINT
  CarriageControl:NL
@@ -203,17 +203,17 @@
 320 PRINT "RESISTOR 1 = ";P1
  TextValue:"RESISTOR 1 = "
  CarriageControl:;
- Variable:P1 -> _
+ Variable:P1 -> .
  CarriageControl:NL
 330 PRINT "RESISTOR 2 = ";P2
  TextValue:"RESISTOR 2 = "
  CarriageControl:;
- Variable:P2 -> _
+ Variable:P2 -> .
  CarriageControl:NL
 340 PRINT "RESISTOR 3 = ";P3
  TextValue:"RESISTOR 3 = "
  CarriageControl:;
- Variable:P3 -> _
+ Variable:P3 -> .
  CarriageControl:NL
 350 PRINT
  CarriageControl:NL
@@ -221,11 +221,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 370 INPUT Q
- Variable:Q -> _
+ Variable:Q -> .
 380 IF Q = 1 THEN 400
- Variable:Q -> _
+ Variable:Q -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:400
 390 STOP
  

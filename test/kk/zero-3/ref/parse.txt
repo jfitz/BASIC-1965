@@ -1,101 +1,101 @@
 10 DEF FNF(X) = X^5 + 2*X^3 -1
- UserFunctionName:FNF -> _
- VariableName:X -> _
- Variable:X -> _
+ UserFunctionName:FNF -> .
+ VariableName:X -> .
+ Variable:X -> .
  NumericValue:5
- BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
  NumericValue:2
- Variable:X -> _
+ Variable:X -> .
  NumericValue:3
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
 20 READ A,B
- Variable:A -> _
- Variable:B -> _
+ Variable:A -> .
+ Variable:B -> .
 22 LET S = SGN(FNF(A))
- Variable:S -> _
- Variable:A -> _
- UserFunction:FNF(_) -> _
- FunctionSgn:SGN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:A -> .
+ UserFunction:FNF(.) -> .
+ FunctionSgn:SGN(.) -> .
+ AssignmentOperator:= . -> .
 24 IF S = 0 THEN 95
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:95
 26 LET X(1+S) = A
  NumericValue:1
- Variable:S -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:X(_) -> _
- Variable:A -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:X(.) -> .
+ Variable:A -> .
+ AssignmentOperator:= . -> .
 28 LET X(1-S) = B
  NumericValue:1
- Variable:S -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:X(_) -> _
- Variable:B -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:X(.) -> .
+ Variable:B -> .
+ AssignmentOperator:= . -> .
 30 LET X = (X(0)+X(2))/2
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- Variable:X(_) -> _
+ Variable:X(.) -> .
  NumericValue:2
- Variable:X(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:X(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 35 LET F = SGN(FNF(X))
- Variable:F -> _
- Variable:X -> _
- UserFunction:FNF(_) -> _
- FunctionSgn:SGN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:F -> .
+ Variable:X -> .
+ UserFunction:FNF(.) -> .
+ FunctionSgn:SGN(.) -> .
+ AssignmentOperator:= . -> .
 40 IF F = 0 THEN 100
- Variable:F -> _
+ Variable:F -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:100
 50 LET X(1+F) = X
  NumericValue:1
- Variable:F -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:X(_) -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:F -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:X(.) -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
  NumericValue:0
- Variable:X(_) -> _
+ Variable:X(.) -> .
  NumericValue:2
- Variable:X(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionAbs:ABS(_) -> _
+ Variable:X(.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionAbs:ABS(.) -> .
  NumericValue:0
- Variable:X(_) -> _
- FunctionAbs:ABS(_) -> _
+ Variable:X(.) -> .
+ FunctionAbs:ABS(.) -> .
  NumericValue:2
- Variable:X(_) -> _
- FunctionAbs:ABS(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
+ Variable:X(.) -> .
+ FunctionAbs:ABS(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
  NumericValue:0.0000005
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:100
 90 GOTO 30
  LineNumber:30
 95 LET X = A
- Variable:X -> _
- Variable:A -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:A -> .
+ AssignmentOperator:= . -> .
 100 PRINT "ONE ZERO AT" X
  TextValue:"ONE ZERO AT"
  CarriageControl:
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:NL
 900 DATA 0,1
  NumericValue:0

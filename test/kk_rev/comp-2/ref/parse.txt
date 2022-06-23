@@ -4,66 +4,66 @@
  TextValue:"A, B, P, R, Y, T"
  CarriageControl:;
 20 INPUT A, B, P, R, Y, T
- Variable:A -> _
- Variable:B -> _
- Variable:P -> _
- Variable:R -> _
- Variable:Y -> _
- Variable:T -> _
+ Variable:A -> .
+ Variable:B -> .
+ Variable:P -> .
+ Variable:R -> .
+ Variable:Y -> .
+ Variable:T -> .
 21 IF A < 0 THEN 800
- Variable:A -> _
+ Variable:A -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:800
 22 IF B < 0 THEN 800
- Variable:B -> _
+ Variable:B -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:800
 23 IF R <= 0 THEN 800
- Variable:R -> _
+ Variable:R -> .
  NumericValue:0
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:800
 24 IF Y <= 0 THEN 800
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:0
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:800
 25 IF T <= 0 THEN 800
- Variable:T -> _
+ Variable:T -> .
  NumericValue:0
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:800
 26 IF T = 999 THEN 9999
- Variable:T -> _
+ Variable:T -> .
  NumericValue:999
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:9999
 30 IF A = 999 THEN 100
- Variable:A -> _
+ Variable:A -> .
  NumericValue:999
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:100
 40 IF B = 999 THEN 200
- Variable:B -> _
+ Variable:B -> .
  NumericValue:999
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:200
 50 IF P = 999 THEN 300
- Variable:P -> _
+ Variable:P -> .
  NumericValue:999
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:300
 60 IF Y = 999 THEN 400
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:999
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:400
 70 IF R = 999 THEN 500
- Variable:R -> _
+ Variable:R -> .
  NumericValue:999
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:500
 80
 100 REM FIND ORIGINAL AMOUNT
@@ -71,24 +71,24 @@
 110 GOSUB 1000
  LineNumber:1000
 120 LET A = (B+P1)/R2 - P1
- Variable:A -> _
- Variable:B -> _
- Variable:P1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:R2 -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:P1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:B -> .
+ Variable:P1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:R2 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:P1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 125 IF A < 0 THEN 850
- Variable:A -> _
+ Variable:A -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:850
 130 PRINT "ORIGINAL AMOUNT = $" A
  TextValue:"ORIGINAL AMOUNT = $"
  CarriageControl:
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:NL
 140 GOTO 5
  LineNumber:5
@@ -98,24 +98,24 @@
 210 GOSUB 1000
  LineNumber:1000
 220 LET B = (A+P1)*R2 - P1
- Variable:B -> _
- Variable:A -> _
- Variable:P1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:R2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:P1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:A -> .
+ Variable:P1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:R2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:P1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 225 IF B < 0 THEN 850
- Variable:B -> _
+ Variable:B -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:850
 230 PRINT "FINAL AMOUNT = $" B
  TextValue:"FINAL AMOUNT = $"
  CarriageControl:
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 240 GOTO 5
  LineNumber:5
@@ -125,23 +125,23 @@
 310 GOSUB 1000
  LineNumber:1000
 320 LET P = R1*(B - A*R2)/(R2-1)
- Variable:P -> _
- Variable:R1 -> _
- Variable:B -> _
- Variable:A -> _
- Variable:R2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:R2 -> _
+ Variable:P -> .
+ Variable:R1 -> .
+ Variable:B -> .
+ Variable:A -> .
+ Variable:R2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:R2 -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 330 PRINT "PAYMENT = $" P
  TextValue:"PAYMENT = $"
  CarriageControl:
- Variable:P -> _
+ Variable:P -> .
  CarriageControl:NL
 340 GOTO 5
  LineNumber:5
@@ -151,36 +151,36 @@
 410 GOSUB 1000
  LineNumber:1000
 415 LET Q = (B+P1)/(A+P1)
- Variable:Q -> _
- Variable:B -> _
- Variable:P1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:A -> _
- Variable:P1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Q -> .
+ Variable:B -> .
+ Variable:P1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:A -> .
+ Variable:P1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 416 IF Q <= 1 THEN 850
- Variable:Q -> _
+ Variable:Q -> .
  NumericValue:1
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:850
 420 LET Y = LOG(Q)/LOG(1+R1)/T
- Variable:Y -> _
- Variable:Q -> _
- FunctionLog:LOG(_) -> _
+ Variable:Y -> .
+ Variable:Q -> .
+ FunctionLog:LOG(.) -> .
  NumericValue:1
- Variable:R1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionLog:LOG(_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- Variable:T -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionLog:LOG(.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:T -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 430 PRINT "NUMBER OF YEARS = " Y
  TextValue:"NUMBER OF YEARS = "
  CarriageControl:
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 440 GOTO 5
  LineNumber:5
@@ -188,50 +188,50 @@
 500 REM FIND ANNUAL INTEREST
  Remark:FIND ANNUAL INTEREST
 505 LET S = B - (A+Y*T*P)
- Variable:S -> _
- Variable:B -> _
- Variable:A -> _
- Variable:Y -> _
- Variable:T -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:P -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:B -> .
+ Variable:A -> .
+ Variable:Y -> .
+ Variable:T -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:P -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 510 FOR R = 0.1 TO 100 STEP 0.1
  WARNING: FORNEXT length exceeds limit 40
- control: Variable:R -> _
+ control: Variable:R -> .
  start:   ["NumericValue:0.1"]
  end:     ["NumericValue:100"]
  step:    ["NumericValue:0.1"]
 520    GOSUB 1000
  LineNumber:1000
 530    LET S1 = B - ((A+P1)*R2 - P1)
- Variable:S1 -> _
- Variable:B -> _
- Variable:A -> _
- Variable:P1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:R2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:P1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S1 -> .
+ Variable:B -> .
+ Variable:A -> .
+ Variable:P1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:R2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:P1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 535    IF S*S1 <= 0 THEN 550
- Variable:S -> _
- Variable:S1 -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:S -> .
+ Variable:S1 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:0
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:550
 536    LET S = S1
- Variable:S -> _
- Variable:S1 -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S1 -> .
+ AssignmentOperator:= . -> .
 540 NEXT R
- Variable:R -> _
+ Variable:R -> .
 545 PRINT "NO ANSWER FOUND"
  TextValue:"NO ANSWER FOUND"
  CarriageControl:NL
@@ -240,13 +240,13 @@
 550 PRINT "ANNUAL INTEREST IS BETWEEN " R-0.1; "AND " R; "PERCENT"
  TextValue:"ANNUAL INTEREST IS BETWEEN "
  CarriageControl:
- Variable:R -> _
+ Variable:R -> .
  NumericValue:0.1
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
  CarriageControl:;
  TextValue:"AND "
  CarriageControl:
- Variable:R -> _
+ Variable:R -> .
  CarriageControl:;
  TextValue:"PERCENT"
  CarriageControl:NL
@@ -269,33 +269,33 @@
 1000 REM COMPUTE BASIC QUANTITIES
  Remark:COMPUTE BASIC QUANTITIES
 1010 LET N = Y*T
- Variable:N -> _
- Variable:Y -> _
- Variable:T -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:N -> .
+ Variable:Y -> .
+ Variable:T -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 1020 LET R1 = R/100/T
- Variable:R1 -> _
- Variable:R -> _
+ Variable:R1 -> .
+ Variable:R -> .
  NumericValue:100
- BinaryOperatorDivide:/(_,_) -> _
- Variable:T -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:T -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 1030 LET P1 = P/R1
- Variable:P1 -> _
- Variable:P -> _
- Variable:R1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:P1 -> .
+ Variable:P -> .
+ Variable:R1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 1040 LET R2 = (1+R1)^N
- Variable:R2 -> _
+ Variable:R2 -> .
  NumericValue:1
- Variable:R1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:N -> _
- BinaryOperatorPower:^(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:N -> .
+ BinaryOperatorPower:^(.,.) -> .
+ AssignmentOperator:= . -> .
 1099 RETURN
  
 9999 END

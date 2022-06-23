@@ -8,42 +8,42 @@
  TextValue:"SQR(15+X)-SQR(X)"
  CarriageControl:NL
 30 FOR X = 1 TO 100
- control: Variable:X -> _
+ control: Variable:X -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:100"]
 40 LET A1 = SQR(15+X)
- Variable:A1 -> _
+ Variable:A1 -> .
  NumericValue:15
- Variable:X -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 50 LET A2 = SQR(X)
- Variable:A2 -> _
- Variable:X -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A2 -> .
+ Variable:X -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 60 LET A = A1+A2
- Variable:A -> _
- Variable:A1 -> _
- Variable:A2 -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:A1 -> .
+ Variable:A2 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 70 LET B = A1-A2
- Variable:B -> _
- Variable:A1 -> _
- Variable:A2 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:A1 -> .
+ Variable:A2 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 80 PRINT X,A,B
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 90 NEXT X
- Variable:X -> _
+ Variable:X -> .
 99 END
  
 

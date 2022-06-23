@@ -5,20 +5,20 @@
 22 OPTION PROVENANCE TRUE
  BooleanValue:true
 30 READ A,B,C
- Variable:A -> _
- Variable:B -> _
- Variable:C -> _
+ Variable:A -> .
+ Variable:B -> .
+ Variable:C -> .
 40 PRINT A,B,C
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:,
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:NL
 50 OPTION TRACE 1 = 0
  NumericValue:1
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> =?
+ BinaryOperatorEqual:=(.,.) -> =?
 90 DATA 1,2,3
  NumericValue:1
  NumericValue:2

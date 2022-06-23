@@ -1,23 +1,23 @@
 10 REM Test different values
  Remark:Test different values
 20 LET A0 = 10{M}
- Variable:A0 -> _
+ Variable:A0 -> .
  NumericValue:10{M}
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 21 LET A1 = 20
- Variable:A1 -> _
+ Variable:A1 -> .
  NumericValue:20
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 22 LET A2 = A0 - A1
- Variable:A2 -> _
- Variable:A0 -> _
- Variable:A1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A2 -> .
+ Variable:A0 -> .
+ Variable:A1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 23 PRINT "A2="; A2
  TextValue:"A2="
  CarriageControl:;
- Variable:A2 -> _
+ Variable:A2 -> .
  CarriageControl:NL
 99 END
  

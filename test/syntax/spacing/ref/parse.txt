@@ -3,27 +3,27 @@
 20 R E M A R K THIS IS THE FIRST TEST
  Remark:THIS IS THE FIRST TEST
 30 LET A = 5
- Variable:A -> _
+ Variable:A -> .
  NumericValue:5
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 40 L E T A 2 = A * 2
- Variable:A2 -> _
- Variable:A -> _
+ Variable:A2 -> .
+ Variable:A -> .
  NumericValue:2
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 50LETA5=A*5
- Variable:A5 -> _
- Variable:A -> _
+ Variable:A5 -> .
+ Variable:A -> .
  NumericValue:5
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 60 PRI NT A,A2,A5
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:A2 -> _
+ Variable:A2 -> .
  CarriageControl:,
- Variable:A5 -> _
+ Variable:A5 -> .
  CarriageControl:NL
 99 END
  

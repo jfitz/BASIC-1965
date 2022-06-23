@@ -6,8 +6,8 @@ Error 103 Out of data in line 150
 
 100 (0) REM ANGLE-SIDE-ANGLE
 110 (1) LET P = 3.1416
-120 FND(_) (0) DEF FND(X) = X * P / 180
-130 FNS(_) (0) DEF FNS(X) = SIN(FND(X))
+120 FND(.) (0) DEF FND(X) = X * P / 180
+130 FNS(.) (0) DEF FNS(X) = SIN(FND(X))
 140 (1) PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
 150 (3) READ A, X, B
 160 (3) LET C = 180 - A - B

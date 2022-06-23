@@ -6,104 +6,104 @@
  TextValue:"CENTER OF CIRCLE (X0,Y0) = "
  CarriageControl:;
 40 INPUT X0,Y0
- Variable:X0 -> _
- Variable:Y0 -> _
+ Variable:X0 -> .
+ Variable:Y0 -> .
 50 PRINT "ANGLE IN DEGREES OF 1ST POINT = ";
  TextValue:"ANGLE IN DEGREES OF 1ST POINT = "
  CarriageControl:;
 60 INPUT W
- Variable:W -> _
+ Variable:W -> .
 70 LET W = (W*3.14159)/180
- Variable:W -> _
- Variable:W -> _
+ Variable:W -> .
+ Variable:W -> .
  NumericValue:3.14159
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 80 PRINT "NUMBER OF POINTS DESIRED = ";
  TextValue:"NUMBER OF POINTS DESIRED = "
  CarriageControl:;
 90 INPUT N
- Variable:N -> _
+ Variable:N -> .
 100 PRINT "RADIUS OF CIRCLE = ";
  TextValue:"RADIUS OF CIRCLE = "
  CarriageControl:;
 110 INPUT R
- Variable:R -> _
+ Variable:R -> .
 120 LET Z = 6.28319/N
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:6.28319
- Variable:N -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:N -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 130 PRINT
  CarriageControl:NL
 140 PRINT "COORDINATES"
  TextValue:"COORDINATES"
  CarriageControl:NL
 150 FOR I = 0 TO N - 1
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
- end:     ["Variable:N -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:N -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 160 LET X = X0 + (R*COS(W + (Z*I)))
- Variable:X -> _
- Variable:X0 -> _
- Variable:R -> _
- Variable:W -> _
- Variable:Z -> _
- Variable:I -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionCos:COS(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:X0 -> .
+ Variable:R -> .
+ Variable:W -> .
+ Variable:Z -> .
+ Variable:I -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionCos:COS(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 170 LET Y = Y0 + (R*SIN(W + (Z*I)))
- Variable:Y -> _
- Variable:Y0 -> _
- Variable:R -> _
- Variable:W -> _
- Variable:Z -> _
- Variable:I -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSin:SIN(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:Y0 -> .
+ Variable:R -> .
+ Variable:W -> .
+ Variable:Z -> .
+ Variable:I -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSin:SIN(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 180 LET P = I + 1
- Variable:P -> _
- Variable:I -> _
+ Variable:P -> .
+ Variable:I -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 190 PRINT "POINT:";P,"X = ";X,"Y = ";Y
  TextValue:"POINT:"
  CarriageControl:;
- Variable:P -> _
+ Variable:P -> .
  CarriageControl:,
  TextValue:"X = "
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
  TextValue:"Y = "
  CarriageControl:;
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 200 NEXT I
- Variable:I -> _
+ Variable:I -> .
 210 PRINT
  CarriageControl:NL
 220 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- Variable:L -> _
+ Variable:L -> .
 240 IF L = 1 THEN 260
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:260
 250 STOP
  

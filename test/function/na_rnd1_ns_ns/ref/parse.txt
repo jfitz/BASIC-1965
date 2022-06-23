@@ -2,80 +2,80 @@
  Remark:ARRAY FUNCTION RND1()
 15 DIM D(3)
  NumericValue:3
- Declaration:D() -> _()
+ Declaration:D() -> .()
 20 ARR A = RND1(5, 10)
- Variable:A() -> _()
+ Variable:A() -> .()
  NumericValue:5
  NumericValue:10
- FunctionRnd1:RND1(_,_) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionRnd1:RND1(.,.) -> .()
+ AssignmentOperator:= .() -> .()
 30 ARR B = RND1(3, 2)
- Variable:B() -> _()
+ Variable:B() -> .()
  NumericValue:3
  NumericValue:2
- FunctionRnd1:RND1(_,_) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionRnd1:RND1(.,.) -> .()
+ AssignmentOperator:= .() -> .()
 40 ARR C = RND1(4, 0.5)
- Variable:C() -> _()
+ Variable:C() -> .()
  NumericValue:4
  NumericValue:0.5
- FunctionRnd1:RND1(_,_) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionRnd1:RND1(.,.) -> .()
+ AssignmentOperator:= .() -> .()
 50 PRINT "ARRAY A"
  TextValue:"ARRAY A"
  CarriageControl:NL
 60 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 70 PRINT "ARRAY B"
  TextValue:"ARRAY B"
  CarriageControl:NL
 80 ARR PRINT B
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:NL
 90 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 100 ARR PRINT C
- Variable:C() -> _()
+ Variable:C() -> .()
  CarriageControl:NL
 200 OPTION BASE 1
  NumericValue:1
 220 ARR A = RND1(5, 10)
- Variable:A() -> _()
+ Variable:A() -> .()
  NumericValue:5
  NumericValue:10
- FunctionRnd1:RND1(_,_) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionRnd1:RND1(.,.) -> .()
+ AssignmentOperator:= .() -> .()
 230 ARR B = RND1(3, 2)
- Variable:B() -> _()
+ Variable:B() -> .()
  NumericValue:3
  NumericValue:2
- FunctionRnd1:RND1(_,_) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionRnd1:RND1(.,.) -> .()
+ AssignmentOperator:= .() -> .()
 240 ARR C = RND1(4, 0.5)
- Variable:C() -> _()
+ Variable:C() -> .()
  NumericValue:4
  NumericValue:0.5
- FunctionRnd1:RND1(_,_) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionRnd1:RND1(.,.) -> .()
+ AssignmentOperator:= .() -> .()
 250 PRINT "ARRAY A"
  TextValue:"ARRAY A"
  CarriageControl:NL
 260 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 270 PRINT "ARRAY B"
  TextValue:"ARRAY B"
  CarriageControl:NL
 280 ARR PRINT B
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:NL
 290 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 300 ARR PRINT C
- Variable:C() -> _()
+ Variable:C() -> .()
  CarriageControl:NL
 999 END
  

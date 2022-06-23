@@ -4,23 +4,23 @@
  NumericValue:1
 20 DIM A(6)
  NumericValue:6
- Declaration:A() -> _()
+ Declaration:A() -> .()
 100 ARR INPUT A
- Variable:A() -> _()
+ Variable:A() -> .()
 150 PRINT "ARRAY A"
  TextValue:"ARRAY A"
  CarriageControl:NL
 160 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 200 ARR INPUT B(6)
  NumericValue:6
- Variable:B(_) -> _()
+ Variable:B(.) -> .()
 250 PRINT "ARRAY B"
  TextValue:"ARRAY B"
  CarriageControl:NL
 260 ARR PRINT B
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:NL
 999 END
  

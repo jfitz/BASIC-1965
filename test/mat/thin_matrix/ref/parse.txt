@@ -5,66 +5,66 @@
 30 DIM H(0,5), V(5,0)
  NumericValue:0
  NumericValue:5
- Declaration:H(,) -> _(,)
+ Declaration:H(,) -> .(,)
  NumericValue:5
  NumericValue:0
- Declaration:V(,) -> _(,)
+ Declaration:V(,) -> .(,)
 40 FOR I = 0 TO 5
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:5"]
 50 LET H(0,I) = I
  NumericValue:0
- Variable:I -> _
- Variable:H(_,_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:H(.,.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 52 LET V(I,0) = I
- Variable:I -> _
+ Variable:I -> .
  NumericValue:0
- Variable:V(_,_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:V(.,.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 60 NEXT I
- Variable:I -> _
+ Variable:I -> .
 70 MAT PRINT H
- Variable:H(,) -> _(,)
+ Variable:H(,) -> .(,)
  CarriageControl:NL
 72 MAT PRINT V
- Variable:V(,) -> _(,)
+ Variable:V(,) -> .(,)
  CarriageControl:NL
 120 OPTION BASE 1
  NumericValue:1
 130 DIM H(1,5), V(5,1)
  NumericValue:1
  NumericValue:5
- Declaration:H(,) -> _(,)
+ Declaration:H(,) -> .(,)
  NumericValue:5
  NumericValue:1
- Declaration:V(,) -> _(,)
+ Declaration:V(,) -> .(,)
 140 FOR I = 1 TO 5
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:5"]
 150 LET H(1,I) = I
  NumericValue:1
- Variable:I -> _
- Variable:H(_,_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:H(.,.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 152 LET V(I,1) = I
- Variable:I -> _
+ Variable:I -> .
  NumericValue:1
- Variable:V(_,_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:V(.,.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 160 NEXT I
- Variable:I -> _
+ Variable:I -> .
 170 MAT PRINT H
- Variable:H(,) -> _(,)
+ Variable:H(,) -> .(,)
  CarriageControl:NL
 172 MAT PRINT V
- Variable:V(,) -> _(,)
+ Variable:V(,) -> .(,)
  CarriageControl:NL
 999 END
  

@@ -1,21 +1,21 @@
 100 REM INITIALIZE
  Remark:INITIALIZE
 110 FOR B = 1 TO 9
- control: Variable:B -> _
+ control: Variable:B -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:9"]
 120    FOR R = 0 TO 3
- control: Variable:R -> _
+ control: Variable:R -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:3"]
 130    READ P(B,R)
- Variable:B -> _
- Variable:R -> _
- Variable:P(_,_) -> _
+ Variable:B -> .
+ Variable:R -> .
+ Variable:P(.,.) -> .
 140    NEXT R
- Variable:R -> _
+ Variable:R -> .
 150 NEXT B
- Variable:B -> _
+ Variable:B -> .
 160 DATA 0.644, 0.24, 0.077, 0.039, 0.644, 0.19, 0.103, 0.053, 0.72, 0.167, 0.046, 0.05
  WARNING: Line exceeds LIST width limit 72
  WARNING: Line exceeds PRETTY width limit 72
@@ -63,21 +63,21 @@
  NumericValue:0.016
 190
 200 FOR R = 1 TO 4
- control: Variable:R -> _
+ control: Variable:R -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:4"]
 210    FOR C = 0 TO 7
- control: Variable:C -> _
+ control: Variable:C -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:7"]
 220       READ Q(R,C)
- Variable:R -> _
- Variable:C -> _
- Variable:Q(_,_) -> _
+ Variable:R -> .
+ Variable:C -> .
+ Variable:Q(.,.) -> .
 230    NEXT C
- Variable:C -> _
+ Variable:C -> .
 240 NEXT R
- Variable:R -> _
+ Variable:R -> .
 250 DATA 1, 5, 11, 15, 11, 15, 21, 25
  NumericValue:1
  NumericValue:5
@@ -116,35 +116,35 @@
  NumericValue:40
 290
 300 LET S1 = 0
- Variable:S1 -> _
+ Variable:S1 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 310 LET B = 0
- Variable:B -> _
+ Variable:B -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 320 LET H = 0
- Variable:H -> _
+ Variable:H -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 330 LET L7 = 0
- Variable:L7 -> _
+ Variable:L7 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 340 LET I = 1
- Variable:I -> _
+ Variable:I -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 350
 360 FOR C = 0 TO 7
- control: Variable:C -> _
+ control: Variable:C -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:7"]
 370    READ L(C)
- Variable:C -> _
- Variable:L(_) -> _
+ Variable:C -> .
+ Variable:L(.) -> .
 380 NEXT C
- Variable:C -> _
+ Variable:C -> .
 390 DATA 0, 1, 1, 2, 1, 2, 2, 3
  NumericValue:0
  NumericValue:1
@@ -160,77 +160,77 @@
 430 PRINT "INNING" I
  TextValue:"INNING"
  CarriageControl:
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 450 LET S = 0
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 460 LET O = 0
- Variable:O -> _
+ Variable:O -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 470 LET C = 0
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 480
 490 REM NEW BATTER
  Remark:NEW BATTER
 500 IF B < 9 THEN 520
- Variable:B -> _
+ Variable:B -> .
  NumericValue:9
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:520
 510 LET B = 0
- Variable:B -> _
+ Variable:B -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 520 LET B = B+1
- Variable:B -> _
- Variable:B -> _
+ Variable:B -> .
+ Variable:B -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 530
 540 REM DETERMINE OUTCOME
  Remark:DETERMINE OUTCOME
 550 LET X = RND(0)
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- FunctionRnd:RND(_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRnd:RND(.) -> .
+ AssignmentOperator:= . -> .
 560 FOR R = 0 TO 3
  WARNING: FORNEXT length exceeds limit 40
- control: Variable:R -> _
+ control: Variable:R -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:3"]
 570 LET X = X - P(B,R)
- Variable:X -> _
- Variable:X -> _
- Variable:B -> _
- Variable:R -> _
- Variable:P(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:X -> .
+ Variable:B -> .
+ Variable:R -> .
+ Variable:P(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 580 IF X < 0 THEN 620
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:620
 590 NEXT R
- Variable:R -> _
+ Variable:R -> .
 600 LET R = 4
- Variable:R -> _
+ Variable:R -> .
  NumericValue:4
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 610
 620 REM PRINT OUTCOME
  Remark:PRINT OUTCOME
 630 IF R > 0 THEN 660
- Variable:R -> _
+ Variable:R -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:660
 640 PRINT "OUT   ";
  TextValue:"OUT   "
@@ -238,9 +238,9 @@
 650 GOTO 770
  LineNumber:770
 660 IF R > 1 THEN 690
- Variable:R -> _
+ Variable:R -> .
  NumericValue:1
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:690
 670 PRINT "SINGLE   ";
  TextValue:"SINGLE   "
@@ -248,9 +248,9 @@
 680 GOTO 770
  LineNumber:770
 690 IF R > 2 THEN 720
- Variable:R -> _
+ Variable:R -> .
  NumericValue:2
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:720
 700 PRINT "WALK   ";
  TextValue:"WALK   "
@@ -258,9 +258,9 @@
 710 GOTO 770
  LineNumber:770
 720 IF R > 3 THEN 750
- Variable:R -> _
+ Variable:R -> .
  NumericValue:3
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:750
 730 PRINT "DOUBLE   ";
  TextValue:"DOUBLE   "
@@ -274,98 +274,98 @@
 770 REM DO BOOK-KEEPING
  Remark:DO BOOK-KEEPING
 780 IF R = 0 THEN 860
- Variable:R -> _
+ Variable:R -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:860
 790 IF R = 2 THEN 810
- Variable:R -> _
+ Variable:R -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:810
 800 LET H = H + 1
- Variable:H -> _
- Variable:H -> _
+ Variable:H -> .
+ Variable:H -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 810 LET X = Q(R,C)
- Variable:X -> _
- Variable:R -> _
- Variable:C -> _
- Variable:Q(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:R -> .
+ Variable:C -> .
+ Variable:Q(.,.) -> .
+ AssignmentOperator:= . -> .
 820 LET Y = INT(X/10)
- Variable:Y -> _
- Variable:X -> _
+ Variable:Y -> .
+ Variable:X -> .
  NumericValue:10
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 830 LET C = X - Y*10
- Variable:C -> _
- Variable:X -> _
- Variable:Y -> _
+ Variable:C -> .
+ Variable:X -> .
+ Variable:Y -> .
  NumericValue:10
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 840 LET S = S+Y
- Variable:S -> _
- Variable:S -> _
- Variable:Y -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S -> .
+ Variable:Y -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 850 GOTO 490
  LineNumber:490
 860 IF O = 2 THEN 890
- Variable:O -> _
+ Variable:O -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:890
 870 LET O = O+1
- Variable:O -> _
- Variable:O -> _
+ Variable:O -> .
+ Variable:O -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 880 GOTO 490
  LineNumber:490
 885
 890 REM END OF AN INNING
  Remark:END OF AN INNING
 895 LET L7 = L7 + L(C)
- Variable:L7 -> _
- Variable:L7 -> _
- Variable:C -> _
- Variable:L(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:L7 -> .
+ Variable:L7 -> .
+ Variable:C -> .
+ Variable:L(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 900 PRINT
  CarriageControl:NL
 910 PRINT S; "RUNS"
- Variable:S -> _
+ Variable:S -> .
  CarriageControl:;
  TextValue:"RUNS"
  CarriageControl:NL
 920 PRINT
  CarriageControl:NL
 930 LET S1 = S1+S
- Variable:S1 -> _
- Variable:S1 -> _
- Variable:S -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S1 -> .
+ Variable:S1 -> .
+ Variable:S -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 940 LET I = I+1
- Variable:I -> _
- Variable:I -> _
+ Variable:I -> .
+ Variable:I -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 945 IF I < 9 THEN 410
- Variable:I -> _
+ Variable:I -> .
  NumericValue:9
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:410
 950 
 955 REM PRINT RESULTS
@@ -378,17 +378,17 @@
 970 PRINT
  CarriageControl:NL
 975 PRINT S1; "RUNS SCORED"
- Variable:S1 -> _
+ Variable:S1 -> .
  CarriageControl:;
  TextValue:"RUNS SCORED"
  CarriageControl:NL
 980 PRINT L7; "MEN LEFT ON BASE"
- Variable:L7 -> _
+ Variable:L7 -> .
  CarriageControl:;
  TextValue:"MEN LEFT ON BASE"
  CarriageControl:NL
 985 PRINT H; "HITS"
- Variable:H -> _
+ Variable:H -> .
  CarriageControl:;
  TextValue:"HITS"
  CarriageControl:NL

@@ -1,88 +1,88 @@
 10 DIM D(20)
  NumericValue:20
- Declaration:D() -> _()
+ Declaration:D() -> .()
 20 READ A,Y,T,R
- Variable:A -> _
- Variable:Y -> _
- Variable:T -> _
- Variable:R -> _
+ Variable:A -> .
+ Variable:Y -> .
+ Variable:T -> .
+ Variable:R -> .
 30 PRINT "YEAR", "DEPRECIATE"
  TextValue:"YEAR"
  CarriageControl:,
  TextValue:"DEPRECIATE"
  CarriageControl:NL
 40 LET Y9 = Y*(Y+1)/2
- Variable:Y9 -> _
- Variable:Y -> _
- Variable:Y -> _
+ Variable:Y9 -> .
+ Variable:Y -> .
+ Variable:Y -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 100 FOR I = 1 TO Y
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:Y -> _"]
+ end:     ["Variable:Y -> ."]
 110    LET D(I) = A*(Y-I+1)/Y9
- Variable:I -> _
- Variable:D(_) -> _
- Variable:A -> _
- Variable:Y -> _
- Variable:I -> _
- BinaryOperatorMinus:-(_,_) -> _
+ Variable:I -> .
+ Variable:D(.) -> .
+ Variable:A -> .
+ Variable:Y -> .
+ Variable:I -> .
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y9 -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y9 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 120    PRINT I, D(I)
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:,
- Variable:I -> _
- Variable:D(_) -> _
+ Variable:I -> .
+ Variable:D(.) -> .
  CarriageControl:NL
 130 NEXT I
- Variable:I -> _
+ Variable:I -> .
 140 PRINT
  CarriageControl:NL
 200 LET S = 0
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 210 FOR I = 1 TO Y
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:Y -> _"]
+ end:     ["Variable:Y -> ."]
 220    LET S = S + D(I)*(T/100)*(1+R/100)^(Y-1)
- Variable:S -> _
- Variable:S -> _
- Variable:I -> _
- Variable:D(_) -> _
- Variable:T -> _
+ Variable:S -> .
+ Variable:S -> .
+ Variable:I -> .
+ Variable:D(.) -> .
+ Variable:T -> .
  NumericValue:100
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- Variable:R -> _
+ Variable:R -> .
  NumericValue:100
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:Y -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:Y -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 230 NEXT I
- Variable:I -> _
+ Variable:I -> .
 240 PRINT "SAVING = $" S
  TextValue:"SAVING = $"
  CarriageControl:
- Variable:S -> _
+ Variable:S -> .
  CarriageControl:NL
 900 DATA 5000,7,48,4.5
  NumericValue:5000

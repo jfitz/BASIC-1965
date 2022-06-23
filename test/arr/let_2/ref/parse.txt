@@ -2,24 +2,24 @@
  Remark:ARRAY ASSIGNMENT
 20 DIM A(5)
  NumericValue:5
- Declaration:A() -> _()
+ Declaration:A() -> .()
 30 FOR I = 0 TO 5
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:5"]
 50 LET A(I) = I
- Variable:I -> _
- Variable:A(_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:A(.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 70 NEXT I
- Variable:I -> _
+ Variable:I -> .
 100 ARR LET B = A
- Variable:B() -> _()
- Variable:A() -> _()
- AssignmentOperator:= _() -> _()
+ Variable:B() -> .()
+ Variable:A() -> .()
+ AssignmentOperator:= .() -> .()
 110 ARR PRINT B,
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:,
 112 PRINT
  CarriageControl:NL

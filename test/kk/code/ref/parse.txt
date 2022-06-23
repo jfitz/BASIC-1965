@@ -2,73 +2,73 @@
  Remark: MACHINE ENCODING AND DECODING PROGRAM.
 20 DIM L(100)
  NumericValue:100
- Declaration:L() -> _()
+ Declaration:L() -> .()
 30 FOR I = 1 TO 100
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:100"]
 40    READ L(I)
- Variable:I -> _
- Variable:L(_) -> _
+ Variable:I -> .
+ Variable:L(.) -> .
 50    IF L(I) < 0 THEN 70
- Variable:I -> _
- Variable:L(_) -> _
+ Variable:I -> .
+ Variable:L(.) -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:70
 60 NEXT I
- Variable:I -> _
+ Variable:I -> .
 70 LET I9 = I-1
- Variable:I9 -> _
- Variable:I -> _
+ Variable:I9 -> .
+ Variable:I -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 100 PRINT "PLEASE TYPE KEY";
  TextValue:"PLEASE TYPE KEY"
  CarriageControl:;
 110 INPUT K(1), K(2), K(3), K(4), K(5)
  NumericValue:1
- Variable:K(_) -> _
+ Variable:K(.) -> .
  NumericValue:2
- Variable:K(_) -> _
+ Variable:K(.) -> .
  NumericValue:3
- Variable:K(_) -> _
+ Variable:K(.) -> .
  NumericValue:4
- Variable:K(_) -> _
+ Variable:K(.) -> .
  NumericValue:5
- Variable:K(_) -> _
+ Variable:K(.) -> .
 120 PRINT
  CarriageControl:NL
 130 PRINT "TYPE '0' FOR ENCODING, '1' FOR DECODING";
  TextValue:"TYPE '0' FOR ENCODING, '1' FOR DECODING"
  CarriageControl:;
 140 INPUT F
- Variable:F -> _
+ Variable:F -> .
 145 PRINT
  CarriageControl:NL
 150 IF F = 0 THEN 200
- Variable:F -> _
+ Variable:F -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:200
 160 PRINT "DECODED MESSAGE:"
  TextValue:"DECODED MESSAGE:"
  CarriageControl:NL
 170 FOR J = 1 TO 5
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:5"]
 180    LET K(J) = 27-K(J)
- Variable:J -> _
- Variable:K(_) -> _
+ Variable:J -> .
+ Variable:K(.) -> .
  NumericValue:27
- Variable:J -> _
- Variable:K(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:K(.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 190 NEXT J
- Variable:J -> _
+ Variable:J -> .
 195 GOTO 210
  LineNumber:210
 200 PRINT "ENCODED MESSAGE:"
@@ -77,100 +77,100 @@
 210 PRINT
  CarriageControl:NL
 215 LET J = 1
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 220 FOR I = 1 TO I9
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:I9 -> _"]
+ end:     ["Variable:I9 -> ."]
 230    LET X = L(I)+K(J)
- Variable:X -> _
- Variable:I -> _
- Variable:L(_) -> _
- Variable:J -> _
- Variable:K(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:I -> .
+ Variable:L(.) -> .
+ Variable:J -> .
+ Variable:K(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 240    IF X <= 26 THEN 260
- Variable:X -> _
+ Variable:X -> .
  NumericValue:26
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:260
 250    LET X = X-27
- Variable:X -> _
- Variable:X -> _
+ Variable:X -> .
+ Variable:X -> .
  NumericValue:27
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 260    GOSUB 1000
  LineNumber:1000
 270    LET J = J+1
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 280    IF J <= 5 THEN 300
- Variable:J -> _
+ Variable:J -> .
  NumericValue:5
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:300
 290    LET J = 1
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 300 NEXT I
- Variable:I -> _
+ Variable:I -> .
 310 PRINT
  CarriageControl:NL
 315 LET J = 1
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 320 FOR I = 1 TO I9
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:I9 -> _"]
+ end:     ["Variable:I9 -> ."]
 330    LET X = L(I)+K(J)
- Variable:X -> _
- Variable:I -> _
- Variable:L(_) -> _
- Variable:J -> _
- Variable:K(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:I -> .
+ Variable:L(.) -> .
+ Variable:J -> .
+ Variable:K(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 340    IF X <= 26 THEN 360
- Variable:X -> _
+ Variable:X -> .
  NumericValue:26
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:360
 350    LET X = X-27
- Variable:X -> _
- Variable:X -> _
+ Variable:X -> .
+ Variable:X -> .
  NumericValue:27
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 360    PRINT X;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
 370    LET J = J+1
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 380    IF J <= 5 THEN 400
- Variable:J -> _
+ Variable:J -> .
  NumericValue:5
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:400
 390    LET J = 1
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 400 NEXT I
- Variable:I -> _
+ Variable:I -> .
 800 STOP
  
 900 DATA 7,18,5,5,20,9,14,7,19,0,6,18,15,13,0,20,8,5,0
@@ -232,14 +232,14 @@
  Remark:DATA 9,23,22,14,12,1,11,14,19,16,23,10,13,20,5,1,23,18,14
 999 DATA -1
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 1000 REM THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
  Remark:THIS SUBROUTINE CONVERTS NUMBERS INTO LETTERS.
 1010 IF X>0 THEN 1040
  WARNING: GOSUB length exceeds limit 40
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1040
 1020 PRINT " ";
  TextValue:" "
@@ -247,9 +247,9 @@
 1030 RETURN
  
 1040 IF X>1 THEN 1070
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1070
 1050 PRINT "A";
  TextValue:"A"
@@ -257,9 +257,9 @@
 1060 RETURN
  
 1070 IF X>2 THEN 1100
- Variable:X -> _
+ Variable:X -> .
  NumericValue:2
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1100
 1080 PRINT "B";
  TextValue:"B"
@@ -267,9 +267,9 @@
 1090 RETURN
  
 1100 IF X>3 THEN 1130
- Variable:X -> _
+ Variable:X -> .
  NumericValue:3
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1130
 1110 PRINT "C";
  TextValue:"C"
@@ -277,9 +277,9 @@
 1120 RETURN
  
 1130 IF X>4 THEN 1160
- Variable:X -> _
+ Variable:X -> .
  NumericValue:4
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1160
 1140 PRINT "D";
  TextValue:"D"
@@ -287,9 +287,9 @@
 1150 RETURN
  
 1160 IF X>5 THEN 1190
- Variable:X -> _
+ Variable:X -> .
  NumericValue:5
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1190
 1170 PRINT "E";
  TextValue:"E"
@@ -297,9 +297,9 @@
 1180 RETURN
  
 1190 IF X>6 THEN 1220
- Variable:X -> _
+ Variable:X -> .
  NumericValue:6
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1220
 1200 PRINT "F";
  TextValue:"F"
@@ -307,9 +307,9 @@
 1210 RETURN
  
 1220 IF X>7 THEN 1250
- Variable:X -> _
+ Variable:X -> .
  NumericValue:7
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1250
 1230 PRINT "G";
  TextValue:"G"
@@ -317,9 +317,9 @@
 1240 RETURN
  
 1250 IF X>8 THEN 1280
- Variable:X -> _
+ Variable:X -> .
  NumericValue:8
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1280
 1260 PRINT "H";
  TextValue:"H"
@@ -327,9 +327,9 @@
 1270 RETURN
  
 1280 IF X>9 THEN 1310
- Variable:X -> _
+ Variable:X -> .
  NumericValue:9
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1310
 1290 PRINT "I";
  TextValue:"I"
@@ -337,9 +337,9 @@
 1300 RETURN
  
 1310 IF X>10 THEN 1340
- Variable:X -> _
+ Variable:X -> .
  NumericValue:10
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1340
 1320 PRINT "J";
  TextValue:"J"
@@ -347,9 +347,9 @@
 1330 RETURN
  
 1340 IF X>11 THEN 1370
- Variable:X -> _
+ Variable:X -> .
  NumericValue:11
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1370
 1350 PRINT "K";
  TextValue:"K"
@@ -357,9 +357,9 @@
 1360 RETURN
  
 1370 IF X>12 THEN 1400
- Variable:X -> _
+ Variable:X -> .
  NumericValue:12
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1400
 1380 PRINT "L";
  TextValue:"L"
@@ -367,9 +367,9 @@
 1390 RETURN
  
 1400 IF X>13 THEN 1430
- Variable:X -> _
+ Variable:X -> .
  NumericValue:13
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1430
 1410 PRINT "M";
  TextValue:"M"
@@ -377,9 +377,9 @@
 1420 RETURN
  
 1430 IF X>14 THEN 1460
- Variable:X -> _
+ Variable:X -> .
  NumericValue:14
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1460
 1440 PRINT "N";
  TextValue:"N"
@@ -387,9 +387,9 @@
 1450 RETURN
  
 1460 IF X>15 THEN 1490
- Variable:X -> _
+ Variable:X -> .
  NumericValue:15
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1490
 1470 PRINT "O";
  TextValue:"O"
@@ -397,9 +397,9 @@
 1480 RETURN
  
 1490 IF X>16 THEN 1520
- Variable:X -> _
+ Variable:X -> .
  NumericValue:16
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1520
 1500 PRINT "P";
  TextValue:"P"
@@ -407,9 +407,9 @@
 1510 RETURN
  
 1520 IF X>17 THEN 1550
- Variable:X -> _
+ Variable:X -> .
  NumericValue:17
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1550
 1530 PRINT "Q";
  TextValue:"Q"
@@ -417,9 +417,9 @@
 1540 RETURN
  
 1550 IF X>18 THEN 1580
- Variable:X -> _
+ Variable:X -> .
  NumericValue:18
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1580
 1560 PRINT "R";
  TextValue:"R"
@@ -427,9 +427,9 @@
 1570 RETURN
  
 1580 IF X>19 THEN 1610
- Variable:X -> _
+ Variable:X -> .
  NumericValue:19
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1610
 1590 PRINT "S";
  TextValue:"S"
@@ -437,9 +437,9 @@
 1600 RETURN
  
 1610 IF X>20 THEN 1640
- Variable:X -> _
+ Variable:X -> .
  NumericValue:20
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1640
 1620 PRINT "T";
  TextValue:"T"
@@ -447,9 +447,9 @@
 1630 RETURN
  
 1640 IF X>21 THEN 1670
- Variable:X -> _
+ Variable:X -> .
  NumericValue:21
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1670
 1650 PRINT "U";
  TextValue:"U"
@@ -457,9 +457,9 @@
 1660 RETURN
  
 1670 IF X>22 THEN 1700
- Variable:X -> _
+ Variable:X -> .
  NumericValue:22
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1700
 1680 PRINT "V";
  TextValue:"V"
@@ -467,9 +467,9 @@
 1690 RETURN
  
 1700 IF X>23 THEN 1730
- Variable:X -> _
+ Variable:X -> .
  NumericValue:23
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1730
 1710 PRINT "W";
  TextValue:"W"
@@ -477,9 +477,9 @@
 1720 RETURN
  
 1730 IF X>24 THEN 1760
- Variable:X -> _
+ Variable:X -> .
  NumericValue:24
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1760
 1740 PRINT "X";
  TextValue:"X"
@@ -487,9 +487,9 @@
 1750 RETURN
  
 1760 IF X>25 THEN 1790
- Variable:X -> _
+ Variable:X -> .
  NumericValue:25
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:1790
 1770 PRINT "Y";
  TextValue:"Y"

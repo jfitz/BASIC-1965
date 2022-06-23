@@ -1,5 +1,5 @@
-10 FNL(_,_) DEF FNL(A, B) = LOG(A) / LOG(B)
-20 FNL(_) DEF FNL(A) = LOG(A) / LOG(10)
+10 FNL(.,.) DEF FNL(A, B) = LOG(A) / LOG(B)
+20 FNL(.) DEF FNL(A) = LOG(A) / LOG(10)
 30 F(N:30) FOR N = 2 TO 10 STEP 2
  N = 2
  terminated:false

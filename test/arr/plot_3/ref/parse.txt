@@ -1,26 +1,26 @@
 20 ARR LET A = RND1(30)
- Variable:A() -> _()
+ Variable:A() -> .()
  NumericValue:30
- FunctionRnd1:RND1(_) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionRnd1:RND1(.) -> .()
+ AssignmentOperator:= .() -> .()
 22 ARR LET B = RND1(30,20)
- Variable:B() -> _()
+ Variable:B() -> .()
  NumericValue:30
  NumericValue:20
- FunctionRnd1:RND1(_,_) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionRnd1:RND1(.,.) -> .()
+ AssignmentOperator:= .() -> .()
 24 ARR LET C = RND1(30,1000)
- Variable:C() -> _()
+ Variable:C() -> .()
  NumericValue:30
  NumericValue:1000
- FunctionRnd1:RND1(_,_) -> _()
- AssignmentOperator:= _() -> _()
+ FunctionRnd1:RND1(.,.) -> .()
+ AssignmentOperator:= .() -> .()
 30 ARR PLOT A,B,C
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:
- Variable:C() -> _()
+ Variable:C() -> .()
 99 END
  
 

@@ -6,34 +6,34 @@
  TextValue:"Fahrenheit"
  CarriageControl:NL
 30 LET C=0
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 40 LET F=C*9/5+32
- Variable:F -> _
- Variable:C -> _
+ Variable:F -> .
+ Variable:C -> .
  NumericValue:9
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:5
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
  NumericValue:32
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 50 PRINT C,F
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:,
- Variable:F -> _
+ Variable:F -> .
  CarriageControl:NL
 60 LET C=C+1
- Variable:C -> _
- Variable:C -> _
+ Variable:C -> .
+ Variable:C -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 70 IF C<=10 THEN 40
- Variable:C -> _
+ Variable:C -> .
  NumericValue:10
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:40
 900 STOP
  

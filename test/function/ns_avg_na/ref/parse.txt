@@ -2,16 +2,16 @@
  Remark:This is a test
 20 ARR READ A(6)
  NumericValue:6
- Variable:A(_) -> _()
+ Variable:A(.) -> .()
 30 LET B=AVG(A)
- Variable:B -> _
- Variable:A() -> _()
- FunctionAvg:AVG(_()) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:A() -> .()
+ FunctionAvg:AVG(.()) -> .
+ AssignmentOperator:= . -> .
 40 PRINT "AVERAGE IS "; B
  TextValue:"AVERAGE IS "
  CarriageControl:;
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 90 DATA 10.2,5.5,1.8,22,17,-19,7
  NumericValue:10.2
@@ -20,7 +20,7 @@
  NumericValue:22
  NumericValue:17
  NumericValue:19
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:7
 99 END
  

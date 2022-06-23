@@ -1,35 +1,35 @@
 10 READ N
- Variable:N -> _
+ Variable:N -> .
 20 MAT READ M(N,N)
- Variable:N -> _
- Variable:N -> _
- Variable:M(_,_) -> _(,)
+ Variable:N -> .
+ Variable:N -> .
+ Variable:M(.,.) -> .(,)
 30 FOR I = 1 TO 4
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:4"]
 40 PRINT "POWER : " 2^I
  TextValue:"POWER : "
  CarriageControl:
  NumericValue:2
- Variable:I -> _
- BinaryOperatorPower:^(_,_) -> _
+ Variable:I -> .
+ BinaryOperatorPower:^(.,.) -> .
  CarriageControl:NL
 50 MAT A = M*M
- Variable:A(,) -> _(,)
- Variable:M(,) -> _(,)
- Variable:M(,) -> _(,)
- BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:A(,) -> .(,)
+ Variable:M(,) -> .(,)
+ Variable:M(,) -> .(,)
+ BinaryOperatorMultiply:*(.(,),.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 60 MAT PRINT A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 70 MAT M = A
- Variable:M(,) -> _(,)
- Variable:A(,) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:M(,) -> .(,)
+ Variable:A(,) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 80 NEXT I
- Variable:I -> _
+ Variable:I -> .
 90 DATA 3
  NumericValue:3
 91 DATA 0.5, 0.25, 0.25, 0.5, 0, 0.5, 0.25, 0.25, 0.5

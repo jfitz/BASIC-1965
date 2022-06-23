@@ -1,20 +1,20 @@
 100 READ A,B,C,D
- Variable:A -> _
- Variable:B -> _
- Variable:C -> _
- Variable:D -> _
+ Variable:A -> .
+ Variable:B -> .
+ Variable:C -> .
+ Variable:D -> .
 110 READ T8,T9,P
- Variable:T8 -> _
- Variable:T9 -> _
- Variable:P -> _
+ Variable:T8 -> .
+ Variable:T9 -> .
+ Variable:P -> .
 120 DIM G(60,20)
  NumericValue:60
  NumericValue:20
- Declaration:G(,) -> _(,)
+ Declaration:G(,) -> .(,)
 130 MAT G = ZER
- Variable:G(,) -> _(,)
- FunctionZer2:ZER -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:G(,) -> .(,)
+ FunctionZer2:ZER -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 140 DATA 4,2,1,3
  NumericValue:4
  NumericValue:2
@@ -25,116 +25,116 @@
  NumericValue:2
  NumericValue:30
 160 DEF FNR(X) = INT(4*X+.5)
- UserFunctionName:FNR -> _
- VariableName:X -> _
+ UserFunctionName:FNR -> .
+ VariableName:X -> .
  NumericValue:4
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:.5
- BinaryOperatorPlus:+(_,_) -> _
- FunctionInt:INT(_) -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionInt:INT(.) -> .
 170
 200 READ X,Y
- Variable:X -> _
- Variable:Y -> _
+ Variable:X -> .
+ Variable:Y -> .
 210 LET G(FNR(X*1.5),FNR(Y)) = 1
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1.5
- BinaryOperatorMultiply:*(_,_) -> _
- UserFunction:FNR(_) -> _
- Variable:Y -> _
- UserFunction:FNR(_) -> _
- Variable:G(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ UserFunction:FNR(.) -> .
+ Variable:Y -> .
+ UserFunction:FNR(.) -> .
+ Variable:G(.,.) -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 220 FOR I = 1 TO P
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:P -> _"]
+ end:     ["Variable:P -> ."]
 230 FOR T = 0 TO T9/P STEP T8
- control: Variable:T -> _
+ control: Variable:T -> .
  start:   ["NumericValue:0"]
- end:     ["Variable:T9 -> _", "Variable:P -> _", "BinaryOperatorDivide:/(_,_) -> _"]
- step:    ["Variable:T8 -> _"]
+ end:     ["Variable:T9 -> .", "Variable:P -> .", "BinaryOperatorDivide:/(.,.) -> ."]
+ step:    ["Variable:T8 -> ."]
 240 LET X = X + (A*X - B*X*Y)*T8
- Variable:X -> _
- Variable:X -> _
- Variable:A -> _
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:B -> _
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:T8 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:X -> .
+ Variable:A -> .
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:B -> .
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:T8 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 250 LET Y = Y + (C*X*Y - D*Y)*T8
- Variable:Y -> _
- Variable:Y -> _
- Variable:C -> _
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:D -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:T8 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:Y -> .
+ Variable:C -> .
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:D -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:T8 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 260 NEXT T
- Variable:T -> _
+ Variable:T -> .
 270 LET G(FNR(X*1.5),FNR(Y)) = 1
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1.5
- BinaryOperatorMultiply:*(_,_) -> _
- UserFunction:FNR(_) -> _
- Variable:Y -> _
- UserFunction:FNR(_) -> _
- Variable:G(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ UserFunction:FNR(.) -> .
+ Variable:Y -> .
+ UserFunction:FNR(.) -> .
+ Variable:G(.,.) -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 280 NEXT I
- Variable:I -> _
+ Variable:I -> .
 290
 300 FOR J = 20 TO 1 STEP -1
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:20"]
  end:     ["NumericValue:1"]
- step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
 310 FOR I = 1 TO 60
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:60"]
 320 IF G(I,J) > 0 THEN 360
- Variable:I -> _
- Variable:J -> _
- Variable:G(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:G(.,.) -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:360
 330 NEXT I
- Variable:I -> _
+ Variable:I -> .
 340 PRINT
  CarriageControl:NL
 350 GOTO 470
  LineNumber:470
 360 FOR I = 1 TO 60
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:60"]
 370 IF G(I,J) > 0 THEN 400
- Variable:I -> _
- Variable:J -> _
- Variable:G(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:G(.,.) -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:400
 380 PRINT " ";
  TextValue:" "
@@ -146,26 +146,26 @@
  CarriageControl:;
 410 FOR K = I+1 TO 60
  WARNING: FOR/NEXT nesting exceeds limit 3
- control: Variable:K -> _
- start:   ["Variable:I -> _", "NumericValue:1", "BinaryOperatorPlus:+(_,_) -> _"]
+ control: Variable:K -> .
+ start:   ["Variable:I -> .", "NumericValue:1", "BinaryOperatorPlus:+(.,.) -> ."]
  end:     ["NumericValue:60"]
 420 IF G(K,J) > 0 THEN 450
- Variable:K -> _
- Variable:J -> _
- Variable:G(_,_) -> _
+ Variable:K -> .
+ Variable:J -> .
+ Variable:G(.,.) -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:450
 430 NEXT K
- Variable:K -> _
+ Variable:K -> .
 440 GOTO 460
  LineNumber:460
 450 NEXT I
- Variable:I -> _
+ Variable:I -> .
 460 PRINT
  CarriageControl:NL
 470 NEXT J
- Variable:J -> _
+ Variable:J -> .
 480
 900 DATA 3,.5
  NumericValue:3

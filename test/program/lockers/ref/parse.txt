@@ -1,62 +1,62 @@
 10 REM TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
  Remark:TEST LOCKERS PROGRAM FOR SQUARE NUMBERS
 20 LET N = 1000
- Variable:N -> _
+ Variable:N -> .
  NumericValue:1000
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 30 DIM L(N)
- Variable:N -> _
- Declaration:L() -> _()
+ Variable:N -> .
+ Declaration:L() -> .()
 100 REM INITIALIZE LOCKERS TO OPEN
  Remark:INITIALIZE LOCKERS TO OPEN
 110 PRINT "INITIALIZING";N;" LOCKERS..."
  TextValue:"INITIALIZING"
  CarriageControl:;
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:;
  TextValue:" LOCKERS..."
  CarriageControl:NL
 130 FOR I = 1 TO N
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 140 FOR J = I TO N STEP I
- control: Variable:J -> _
- start:   ["Variable:I -> _"]
- end:     ["Variable:N -> _"]
- step:    ["Variable:I -> _"]
+ control: Variable:J -> .
+ start:   ["Variable:I -> ."]
+ end:     ["Variable:N -> ."]
+ step:    ["Variable:I -> ."]
 150 LET L(J) = 1 - L(J)
- Variable:J -> _
- Variable:L(_) -> _
+ Variable:J -> .
+ Variable:L(.) -> .
  NumericValue:1
- Variable:J -> _
- Variable:L(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:L(.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 160 NEXT J
- Variable:J -> _
+ Variable:J -> .
 180 NEXT I
- Variable:I -> _
+ Variable:I -> .
 200 REM PRINT LOCKER STATES
  Remark:PRINT LOCKER STATES
 310 PRINT "OPEN LOCKERS:";
  TextValue:"OPEN LOCKERS:"
  CarriageControl:;
 320 FOR I = 1 TO N
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 330 IF L(I) = 0 THEN 350
- Variable:I -> _
- Variable:L(_) -> _
+ Variable:I -> .
+ Variable:L(.) -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:350
 340 PRINT I;
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:;
 350 NEXT I
- Variable:I -> _
+ Variable:I -> .
 360 PRINT
  CarriageControl:NL
 999 END

@@ -6,18 +6,18 @@
  TextValue:"LOG(I)"
  CarriageControl:NL
 30 FOR I = 0.5 TO 10.5 STEP 0.1
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0.5"]
  end:     ["NumericValue:10.5"]
  step:    ["NumericValue:0.1"]
 40 PRINT I, LOG(I)
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:,
- Variable:I -> _
- FunctionLog:LOG(_) -> _
+ Variable:I -> .
+ FunctionLog:LOG(.) -> .
  CarriageControl:NL
 50 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 

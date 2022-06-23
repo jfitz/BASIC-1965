@@ -1,16 +1,16 @@
 10 DIM A(5,6)
  NumericValue:5
  NumericValue:6
- Declaration:A(,) -> _(,)
+ Declaration:A(,) -> .(,)
 20 OPTION BASE 0
  NumericValue:0
 30 MAT READ A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
 40 MAT B = SORT2(A)
- Variable:B(,) -> _(,)
- Variable:A(,) -> _(,)
- FunctionSort2:SORT2(_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:B(,) -> .(,)
+ Variable:A(,) -> .(,)
+ FunctionSort2:SORT2(.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 50 GOSUB 800
  LineNumber:800
 90 REM RESTORE
@@ -18,12 +18,12 @@
 120 OPTION BASE 1
  NumericValue:1
 130 MAT READ A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
 140 MAT B = SORT2(A)
- Variable:B(,) -> _(,)
- Variable:A(,) -> _(,)
- FunctionSort2:SORT2(_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:B(,) -> .(,)
+ Variable:A(,) -> .(,)
+ FunctionSort2:SORT2(.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 150 GOSUB 800
  LineNumber:800
 790 STOP
@@ -34,13 +34,13 @@
  TextValue:"MATRIX A"
  CarriageControl:NL
 820 MAT PRINT A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 830 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 840 MAT PRINT B
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:NL
 890 RETURN
  

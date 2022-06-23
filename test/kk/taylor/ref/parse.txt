@@ -1,61 +1,61 @@
 10 READ X,N
- Variable:X -> _
- Variable:N -> _
+ Variable:X -> .
+ Variable:N -> .
 20 LET S = 0
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 25 LET F = 1
- Variable:F -> _
+ Variable:F -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 30 FOR I = 1 TO N
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 40 LET K = 2*I-1
- Variable:K -> _
+ Variable:K -> .
  NumericValue:2
- Variable:I -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:I -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 50 LET S = S + F*X^K/K
- Variable:S -> _
- Variable:S -> _
- Variable:F -> _
- Variable:X -> _
- Variable:K -> _
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:K -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S -> .
+ Variable:F -> .
+ Variable:X -> .
+ Variable:K -> .
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:K -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 60 LET F = -F
- Variable:F -> _
- Variable:F -> _
- UnaryOperatorMinus:-(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:F -> .
+ Variable:F -> .
+ UnaryOperatorMinus:-(.) -> .
+ AssignmentOperator:= . -> .
 70 NEXT I
- Variable:I -> _
+ Variable:I -> .
 80 PRINT "ATN OF " X; "= " ATN(X)
  TextValue:"ATN OF "
  CarriageControl:
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
  TextValue:"= "
  CarriageControl:
- Variable:X -> _
- FunctionArcTan:ATN(_) -> _
+ Variable:X -> .
+ FunctionArcTan:ATN(.) -> .
  CarriageControl:NL
 85 PRINT N; "TERMS OF THE SERIES YIELD " S
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:;
  TextValue:"TERMS OF THE SERIES YIELD "
  CarriageControl:
- Variable:S -> _
+ Variable:S -> .
  CarriageControl:NL
 90 PRINT
  CarriageControl:NL
@@ -69,7 +69,7 @@
  NumericValue:0.5
  NumericValue:10
  NumericValue:0.75
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:10
  NumericValue:0.99
  NumericValue:10

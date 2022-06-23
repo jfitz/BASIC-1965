@@ -1,90 +1,90 @@
 10 READ R,C
- Variable:R -> _
- Variable:C -> _
+ Variable:R -> .
+ Variable:C -> .
 20 FOR I = 1 TO R
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:R -> _"]
+ end:     ["Variable:R -> ."]
 30 FOR J = 1 TO C
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:C -> _"]
+ end:     ["Variable:C -> ."]
 40 READ T(I,J)
- Variable:I -> _
- Variable:J -> _
- Variable:T(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:T(.,.) -> .
 50 NEXT J
- Variable:J -> _
+ Variable:J -> .
 60 NEXT I
- Variable:I -> _
+ Variable:I -> .
 70 FOR I = 1 TO R
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:R -> _"]
+ end:     ["Variable:R -> ."]
 80 LET S = 0
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 90 FOR J = 1 TO C
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:C -> _"]
+ end:     ["Variable:C -> ."]
 100 LET S = S + T(I,J)
- Variable:S -> _
- Variable:S -> _
- Variable:I -> _
- Variable:J -> _
- Variable:T(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S -> .
+ Variable:I -> .
+ Variable:J -> .
+ Variable:T(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 110 NEXT J
- Variable:J -> _
+ Variable:J -> .
 120 PRINT "SUM OF ROW" I; "EQUALS" S
  TextValue:"SUM OF ROW"
  CarriageControl:
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:;
  TextValue:"EQUALS"
  CarriageControl:
- Variable:S -> _
+ Variable:S -> .
  CarriageControl:NL
 130 NEXT I
- Variable:I -> _
+ Variable:I -> .
 140 PRINT
  CarriageControl:NL
 150 FOR J = 1 TO C
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:C -> _"]
+ end:     ["Variable:C -> ."]
 160 LET S = 0
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 170 FOR I = 1 TO R
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:R -> _"]
+ end:     ["Variable:R -> ."]
 180 LET S = S + T(I,J)
- Variable:S -> _
- Variable:S -> _
- Variable:I -> _
- Variable:J -> _
- Variable:T(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S -> .
+ Variable:I -> .
+ Variable:J -> .
+ Variable:T(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 190 NEXT I
- Variable:I -> _
+ Variable:I -> .
 200 PRINT "SUM OF COLUMN" J; "EQUALS" S
  TextValue:"SUM OF COLUMN"
  CarriageControl:
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:;
  TextValue:"EQUALS"
  CarriageControl:
- Variable:S -> _
+ Variable:S -> .
  CarriageControl:NL
 210 NEXT J
- Variable:J -> _
+ Variable:J -> .
 220 DATA 3,5
  NumericValue:3
  NumericValue:5

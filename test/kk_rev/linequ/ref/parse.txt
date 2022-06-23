@@ -1,39 +1,39 @@
 100 DIM A(20,20), C(20,20), B(20), X(20)
  NumericValue:20
  NumericValue:20
- Declaration:A(,) -> _(,)
+ Declaration:A(,) -> .(,)
  NumericValue:20
  NumericValue:20
- Declaration:C(,) -> _(,)
+ Declaration:C(,) -> .(,)
  NumericValue:20
- Declaration:B() -> _()
+ Declaration:B() -> .()
  NumericValue:20
- Declaration:X() -> _()
+ Declaration:X() -> .()
 110
 120 READ N
- Variable:N -> _
+ Variable:N -> .
 130 MAT READ A(N,N)
- Variable:N -> _
- Variable:N -> _
- Variable:A(_,_) -> _(,)
+ Variable:N -> .
+ Variable:N -> .
+ Variable:A(.,.) -> .(,)
 140 MAT READ B(N)
- Variable:N -> _
- Variable:B(_) -> _(,)
+ Variable:N -> .
+ Variable:B(.) -> .(,)
 150
 160 MAT C = INV(A)
- Variable:C(,) -> _(,)
- Variable:A(,) -> _(,)
- FunctionInv:INV(_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:C(,) -> .(,)
+ Variable:A(,) -> .(,)
+ FunctionInv:INV(.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 170 MAT X = C*B
- Variable:X(,) -> _(,)
- Variable:C(,) -> _(,)
- Variable:B(,) -> _(,)
- BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:X(,) -> .(,)
+ Variable:C(,) -> .(,)
+ Variable:B(,) -> .(,)
+ BinaryOperatorMultiply:*(.(,),.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 180
 190 MAT PRINT X
- Variable:X(,) -> _(,)
+ Variable:X(,) -> .(,)
  CarriageControl:NL
 200
 210 DATA 3
@@ -41,20 +41,20 @@
 220 DATA 2, -4, 3
  NumericValue:2
  NumericValue:4
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:3
 230 DATA 3, 0, -1
  NumericValue:3
  NumericValue:0
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 240 DATA 2, 5, 1
  NumericValue:2
  NumericValue:5
  NumericValue:1
 250 DATA -9, 4, 11
  NumericValue:9
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:4
  NumericValue:11
 999 END

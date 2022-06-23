@@ -1,48 +1,48 @@
 100 LET X = 5
- Variable:X -> _
+ Variable:X -> .
  NumericValue:5
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 110 GOSUB 500
  LineNumber:500
 120 LET X = 7
- Variable:X -> _
+ Variable:X -> .
  NumericValue:7
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 130 GOSUB 500
  LineNumber:500
 140 LET X = 11
- Variable:X -> _
+ Variable:X -> .
  NumericValue:11
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 150 GOSUB 500
  LineNumber:500
 160 STOP
  
 170
 500 LET Y = 3*X
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:3
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 510 LET Z = 1.2*EXP(Y)
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:1.2
- Variable:Y -> _
- FunctionExp:EXP(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ FunctionExp:EXP(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 520 LET Y = SQR(Z+2)
- Variable:Y -> _
- Variable:Z -> _
+ Variable:Y -> .
+ Variable:Z -> .
  NumericValue:2
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 530 PRINT X;Y
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:;
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 540 RETURN
  

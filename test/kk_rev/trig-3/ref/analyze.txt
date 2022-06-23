@@ -25,13 +25,13 @@ Halstead complexity:
 110 (0 3) LET P = 3.14159
   Origs: :start
   Dests: 140:auto
-120 FND(_) (0 4) DEF FND(X) = X * P / 180
+120 FND(.) (0 4) DEF FND(X) = X * P / 180
   Origs: 
   Dests: 
-130 FNS(_) (0 3) DEF FNS(X) = SIN(FND(X))
+130 FNS(.) (0 3) DEF FNS(X) = SIN(FND(X))
   Origs: 170:function, 380:function
   Dests: 
-135 FNR(_) (0 4) DEF FNR(X) = INT(100 * X + 0.5) / 100
+135 FNR(.) (0 4) DEF FNR(X) = INT(100 * X + 0.5) / 100
   Origs: 
   Dests: 
 140 (0 6) PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"

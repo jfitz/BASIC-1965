@@ -3,9 +3,9 @@
 20 OPTION BASE 0
  NumericValue:0
 22 LET B = 0
- Variable:B -> _
+ Variable:B -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 50 DATA 3
  NumericValue:3
 52 DATA 3, 4, 8, 10
@@ -22,7 +22,7 @@
  NumericValue:0
  NumericValue:2
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:3
  NumericValue:0
  NumericValue:0
@@ -31,7 +31,7 @@
  NumericValue:1
  NumericValue:4
  NumericValue:3
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:1
  NumericValue:0
  NumericValue:5
@@ -41,9 +41,9 @@
 120 OPTION BASE 1
  NumericValue:1
 122 LET B = 1
- Variable:B -> _
+ Variable:B -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 150 DATA 4
  NumericValue:4
 152 DATA 9, 3, 4, 8
@@ -61,7 +61,7 @@
  NumericValue:0
  NumericValue:2
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:3
  NumericValue:0
  NumericValue:0
@@ -70,7 +70,7 @@
  NumericValue:1
  NumericValue:4
  NumericValue:3
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:1
  NumericValue:0
  NumericValue:5
@@ -79,25 +79,25 @@
 199 STOP
  
 400 READ N
- Variable:N -> _
+ Variable:N -> .
 420 ARR READ A(N)
- Variable:N -> _
- Variable:A(_) -> _()
+ Variable:N -> .
+ Variable:A(.) -> .()
 460 PRINT "ARRAY:"
  TextValue:"ARRAY:"
  CarriageControl:NL
 470 ARR PRINT A;
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:;
 480 LET L = NELEM(A)
- Variable:L -> _
- Variable:A() -> _()
- FunctionNelem:NELEM(_()) -> _
- AssignmentOperator:= _ -> _
+ Variable:L -> .
+ Variable:A() -> .()
+ FunctionNelem:NELEM(.()) -> .
+ AssignmentOperator:= . -> .
 490 PRINT "LENGTH:" L
  TextValue:"LENGTH:"
  CarriageControl:
- Variable:L -> _
+ Variable:L -> .
  CarriageControl:NL
 495 PRINT
  CarriageControl:NL

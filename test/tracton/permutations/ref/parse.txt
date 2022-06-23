@@ -8,69 +8,69 @@
  TextValue:"ENTER N,R"
  CarriageControl:;
 50 INPUT N,R
- Variable:N -> _
- Variable:R -> _
+ Variable:N -> .
+ Variable:R -> .
 60 IF N < R THEN 270
- Variable:N -> _
- Variable:R -> _
- BinaryOperatorLess:<(_,_) -> ?
+ Variable:N -> .
+ Variable:R -> .
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:270
 70 IF R < 0 THEN 290
- Variable:R -> _
+ Variable:R -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:290
 80 LET T = N
- Variable:T -> _
- Variable:N -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:N -> .
+ AssignmentOperator:= . -> .
 90 GOSUB 310
  LineNumber:310
 100 LET A = T
- Variable:A -> _
- Variable:T -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:T -> .
+ AssignmentOperator:= . -> .
 110 LET T = N - R
- Variable:T -> _
- Variable:N -> _
- Variable:R -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:N -> .
+ Variable:R -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 120 GOSUB 310
  LineNumber:310
 130 LET B = T
- Variable:B -> _
- Variable:T -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:T -> .
+ AssignmentOperator:= . -> .
 140 LET P = A/B
- Variable:P -> _
- Variable:A -> _
- Variable:B -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:P -> .
+ Variable:A -> .
+ Variable:B -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 150 LET T = R
- Variable:T -> _
- Variable:R -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:R -> .
+ AssignmentOperator:= . -> .
 160 GOSUB 310
  LineNumber:310
 170 LET C = A/(T*B)
- Variable:C -> _
- Variable:A -> _
- Variable:T -> _
- Variable:B -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C -> .
+ Variable:A -> .
+ Variable:T -> .
+ Variable:B -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 180 PRINT "PERMUTATIONS = ";P
  TextValue:"PERMUTATIONS = "
  CarriageControl:;
- Variable:P -> _
+ Variable:P -> .
  CarriageControl:NL
 190 PRINT "COMBINATIONS = ";C
  TextValue:"COMBINATIONS = "
  CarriageControl:;
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:NL
 200 PRINT
  CarriageControl:NL
@@ -78,11 +78,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 220 INPUT L
- Variable:L -> _
+ Variable:L -> .
 230 IF L = 1 THEN 250
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:250
 240 STOP
  
@@ -101,41 +101,41 @@
 300 GOTO 40
  LineNumber:40
 310 IF T = 0 THEN 390
- Variable:T -> _
+ Variable:T -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:390
 320 IF T = 1 THEN 390
- Variable:T -> _
+ Variable:T -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:390
 330 LET J = 1
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 340 FOR I = 2 TO T
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:2"]
- end:     ["Variable:T -> _"]
+ end:     ["Variable:T -> ."]
 350 LET J = J*I
- Variable:J -> _
- Variable:J -> _
- Variable:I -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:J -> .
+ Variable:I -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 360 NEXT I
- Variable:I -> _
+ Variable:I -> .
 370 LET T = J
- Variable:T -> _
- Variable:J -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:J -> .
+ AssignmentOperator:= . -> .
 380 GOTO 400
  LineNumber:400
 390 LET T = 1
- Variable:T -> _
+ Variable:T -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 400 RETURN
  
 410 END

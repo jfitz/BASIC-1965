@@ -34,15 +34,15 @@ Y-AXIS:  FROM -1 TO  1 IN STEPS OF  0.04
            *                                      +    10
 STOP in line 360
 
-100 FNF(_) (0) DEF FNF(X) = SIN(X)
-105 FNG(_) (0) DEF FNG(X) = LOG(X) / LOG(10)
+100 FNF(.) (0) DEF FNF(X) = SIN(X)
+105 FNG(.) (0) DEF FNG(X) = LOG(X) / LOG(10)
 110 (1) READ A, B, S
 120 (1) READ C, D, N
 130 (1) LET H = (D - C) / N
 140 (1) IF N <= 50 THEN 180
 150 (0) PRINT "ONLY 50 SUB-DIVISIONS ALLOWED ON Y-AXIS"
 160 (0) STOP
-170 FNR(_) (0) DEF FNR(X) = INT(X + 0.5)
+170 FNR(.) (0) DEF FNR(X) = INT(X + 0.5)
 180 (1) PRINT "Y-AXIS:  FROM " C; "TO " D; "IN STEPS OF " H
 190 (1) PRINT
 200 (1) PRINT "'";

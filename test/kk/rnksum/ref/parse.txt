@@ -1,235 +1,235 @@
 100 DIM X(100), Y(100), Z(200), T(200)
  NumericValue:100
- Declaration:X() -> _()
+ Declaration:X() -> .()
  NumericValue:100
- Declaration:Y() -> _()
+ Declaration:Y() -> .()
  NumericValue:200
- Declaration:Z() -> _()
+ Declaration:Z() -> .()
  NumericValue:200
- Declaration:T() -> _()
+ Declaration:T() -> .()
 110
 140 READ M, N
- Variable:M -> _
- Variable:N -> _
+ Variable:M -> .
+ Variable:N -> .
 150 FOR I = 1 TO M
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:M -> _"]
+ end:     ["Variable:M -> ."]
 160    READ X(I)
- Variable:I -> _
- Variable:X(_) -> _
+ Variable:I -> .
+ Variable:X(.) -> .
 170 NEXT I
- Variable:I -> _
+ Variable:I -> .
 180 FOR J = 1 TO N
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 190    READ Y(J)
- Variable:J -> _
- Variable:Y(_) -> _
+ Variable:J -> .
+ Variable:Y(.) -> .
 200 NEXT J
- Variable:J -> _
+ Variable:J -> .
 210
 250 FOR K = 1 TO M
- control: Variable:K -> _
+ control: Variable:K -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:M -> _"]
+ end:     ["Variable:M -> ."]
 260    LET Z(K) = X(K)
- Variable:K -> _
- Variable:Z(_) -> _
- Variable:K -> _
- Variable:X(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:Z(.) -> .
+ Variable:K -> .
+ Variable:X(.) -> .
+ AssignmentOperator:= . -> .
 270    LET T(K) = +1
- Variable:K -> _
- Variable:T(_) -> _
+ Variable:K -> .
+ Variable:T(.) -> .
  NumericValue:1
- UnaryOperatorPlus:+(_) -> =_
- AssignmentOperator:= =_ -> _
+ UnaryOperatorPlus:+(.) -> =.
+ AssignmentOperator:= =. -> .
 280 NEXT K
- Variable:K -> _
+ Variable:K -> .
 290 FOR K = 1 TO N
- control: Variable:K -> _
+ control: Variable:K -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 300    LET Z(M+K) = Y(K)
- Variable:M -> _
- Variable:K -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:Z(_) -> _
- Variable:K -> _
- Variable:Y(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:M -> .
+ Variable:K -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:Z(.) -> .
+ Variable:K -> .
+ Variable:Y(.) -> .
+ AssignmentOperator:= . -> .
 310    LET T(M+K) = 0
- Variable:M -> _
- Variable:K -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:T(_) -> _
+ Variable:M -> .
+ Variable:K -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:T(.) -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 320 NEXT K
- Variable:K -> _
+ Variable:K -> .
 330
 360 FOR K = 1 TO M+N-1
- control: Variable:K -> _
+ control: Variable:K -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:M -> _", "Variable:N -> _", "BinaryOperatorPlus:+(_,_) -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:M -> .", "Variable:N -> .", "BinaryOperatorPlus:+(.,.) -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 370    FOR L = K+1 TO M+N
- control: Variable:L -> _
- start:   ["Variable:K -> _", "NumericValue:1", "BinaryOperatorPlus:+(_,_) -> _"]
- end:     ["Variable:M -> _", "Variable:N -> _", "BinaryOperatorPlus:+(_,_) -> _"]
+ control: Variable:L -> .
+ start:   ["Variable:K -> .", "NumericValue:1", "BinaryOperatorPlus:+(.,.) -> ."]
+ end:     ["Variable:M -> .", "Variable:N -> .", "BinaryOperatorPlus:+(.,.) -> ."]
 380       IF Z(K) <= Z(L) THEN 450
- Variable:K -> _
- Variable:Z(_) -> _
- Variable:L -> _
- Variable:Z(_) -> _
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ Variable:K -> .
+ Variable:Z(.) -> .
+ Variable:L -> .
+ Variable:Z(.) -> .
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:450
 390       LET T = Z(K)
- Variable:T -> _
- Variable:K -> _
- Variable:Z(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:K -> .
+ Variable:Z(.) -> .
+ AssignmentOperator:= . -> .
 400       LET Z(K) = Z(L)
- Variable:K -> _
- Variable:Z(_) -> _
- Variable:L -> _
- Variable:Z(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:Z(.) -> .
+ Variable:L -> .
+ Variable:Z(.) -> .
+ AssignmentOperator:= . -> .
 410       LET Z(L) = T
- Variable:L -> _
- Variable:Z(_) -> _
- Variable:T -> _
- AssignmentOperator:= _ -> _
+ Variable:L -> .
+ Variable:Z(.) -> .
+ Variable:T -> .
+ AssignmentOperator:= . -> .
 420       LET T = T(K)
- Variable:T -> _
- Variable:K -> _
- Variable:T(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:K -> .
+ Variable:T(.) -> .
+ AssignmentOperator:= . -> .
 430       LET T(K) = T(L)
- Variable:K -> _
- Variable:T(_) -> _
- Variable:L -> _
- Variable:T(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:T(.) -> .
+ Variable:L -> .
+ Variable:T(.) -> .
+ AssignmentOperator:= . -> .
 440       LET T(L) = T
- Variable:L -> _
- Variable:T(_) -> _
- Variable:T -> _
- AssignmentOperator:= _ -> _
+ Variable:L -> .
+ Variable:T(.) -> .
+ Variable:T -> .
+ AssignmentOperator:= . -> .
 450    NEXT L
- Variable:L -> _
+ Variable:L -> .
 460 NEXT K
- Variable:K -> _
+ Variable:K -> .
 470
 500 LET J = 1
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 510 LET K = 1
- Variable:K -> _
+ Variable:K -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 520 LET B = J
- Variable:B -> _
- Variable:J -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:J -> .
+ AssignmentOperator:= . -> .
 530 LET T = J
- Variable:T -> _
- Variable:J -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:J -> .
+ AssignmentOperator:= . -> .
 540 LET J = J+1
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 550 IF J > M+N THEN 600
- Variable:J -> _
- Variable:M -> _
- Variable:N -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorGreater:>(_,_) -> ?
+ Variable:J -> .
+ Variable:M -> .
+ Variable:N -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:600
 560 IF Z(J) > Z(B) THEN 600
- Variable:J -> _
- Variable:Z(_) -> _
- Variable:B -> _
- Variable:Z(_) -> _
- BinaryOperatorGreater:>(_,_) -> ?
+ Variable:J -> .
+ Variable:Z(.) -> .
+ Variable:B -> .
+ Variable:Z(.) -> .
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:600
 570 LET T = T+J
- Variable:T -> _
- Variable:T -> _
- Variable:J -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:T -> .
+ Variable:J -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 580 LET K = K+1
- Variable:K -> _
- Variable:K -> _
+ Variable:K -> .
+ Variable:K -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 590 GO TO 540
  LineNumber:540
 600 FOR L = B TO J-1
- control: Variable:L -> _
- start:   ["Variable:B -> _"]
- end:     ["Variable:J -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ control: Variable:L -> .
+ start:   ["Variable:B -> ."]
+ end:     ["Variable:J -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 610    LET Z(L) = T/K
- Variable:L -> _
- Variable:Z(_) -> _
- Variable:T -> _
- Variable:K -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:L -> .
+ Variable:Z(.) -> .
+ Variable:T -> .
+ Variable:K -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 620 NEXT L
- Variable:L -> _
+ Variable:L -> .
 630 IF J <= M+N THEN 510
- Variable:J -> _
- Variable:M -> _
- Variable:N -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ Variable:J -> .
+ Variable:M -> .
+ Variable:N -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:510
 640
 740 LET S(0) = 0
  NumericValue:0
- Variable:S(_) -> _
+ Variable:S(.) -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 750 LET S(1) = 0
  NumericValue:1
- Variable:S(_) -> _
+ Variable:S(.) -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 760 FOR K = 1 TO M+N
- control: Variable:K -> _
+ control: Variable:K -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:M -> _", "Variable:N -> _", "BinaryOperatorPlus:+(_,_) -> _"]
+ end:     ["Variable:M -> .", "Variable:N -> .", "BinaryOperatorPlus:+(.,.) -> ."]
 770    LET S(T(K)) = S(T(K)) + Z(K)
- Variable:K -> _
- Variable:T(_) -> _
- Variable:S(_) -> _
- Variable:K -> _
- Variable:T(_) -> _
- Variable:S(_) -> _
- Variable:K -> _
- Variable:Z(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:K -> .
+ Variable:T(.) -> .
+ Variable:S(.) -> .
+ Variable:K -> .
+ Variable:T(.) -> .
+ Variable:S(.) -> .
+ Variable:K -> .
+ Variable:Z(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 790 NEXT K
- Variable:K -> _
+ Variable:K -> .
 800 PRINT "RANK SUM FOR X IS"; S(1), "FOR Y IS"; S(0)
  TextValue:"RANK SUM FOR X IS"
  CarriageControl:;
  NumericValue:1
- Variable:S(_) -> _
+ Variable:S(.) -> .
  CarriageControl:,
  TextValue:"FOR Y IS"
  CarriageControl:;
  NumericValue:0
- Variable:S(_) -> _
+ Variable:S(.) -> .
  CarriageControl:NL
 810
 900 DATA 6, 4

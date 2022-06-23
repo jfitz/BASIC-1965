@@ -168,7 +168,7 @@ class AbstractElement
       types.count == shapes.count
 
     sigil_chars = {
-      numeric: '_',
+      numeric: '.',
       integer: '%',
       string: '$',
       boolean: '?'
@@ -188,7 +188,7 @@ class AbstractElement
 
   def make_type_sigil(type)
     sigil_chars = {
-      numeric: '_',
+      numeric: '.',
       integer: '%',
       string: '$',
       boolean: '?',

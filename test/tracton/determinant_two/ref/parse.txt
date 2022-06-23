@@ -6,62 +6,62 @@
  TextValue:"ENTER A11, A12"
  CarriageControl:;
 40 INPUT A,B
- Variable:A -> _
- Variable:B -> _
+ Variable:A -> .
+ Variable:B -> .
 50 PRINT "A21, A22";
  TextValue:"A21, A22"
  CarriageControl:;
 60 INPUT C,D
- Variable:C -> _
- Variable:D -> _
+ Variable:C -> .
+ Variable:D -> .
 70 LET E = (D*A) - (B*C)
- Variable:E -> _
- Variable:D -> _
- Variable:A -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:B -> _
- Variable:C -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:E -> .
+ Variable:D -> .
+ Variable:A -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:B -> .
+ Variable:C -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 80 LET F = D/E
- Variable:F -> _
- Variable:D -> _
- Variable:E -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:F -> .
+ Variable:D -> .
+ Variable:E -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 90 LET G = - B/E
- Variable:G -> _
- Variable:B -> _
- UnaryOperatorMinus:-(_) -> _
- Variable:E -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:G -> .
+ Variable:B -> .
+ UnaryOperatorMinus:-(.) -> .
+ Variable:E -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 100 LET H = - C/E
- Variable:H -> _
- Variable:C -> _
- UnaryOperatorMinus:-(_) -> _
- Variable:E -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:H -> .
+ Variable:C -> .
+ UnaryOperatorMinus:-(.) -> .
+ Variable:E -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 110 LET I = A/E
- Variable:I -> _
- Variable:A -> _
- Variable:E -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:A -> .
+ Variable:E -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 120 PRINT "ORIGINAL MATRIX"
  TextValue:"ORIGINAL MATRIX"
  CarriageControl:NL
 130 PRINT A,B
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 140 PRINT C,D
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:,
- Variable:D -> _
+ Variable:D -> .
  CarriageControl:NL
 150 PRINT
  CarriageControl:NL
@@ -69,21 +69,21 @@
  TextValue:"INVERSE OF MATRIX"
  CarriageControl:NL
 170 PRINT F,G
- Variable:F -> _
+ Variable:F -> .
  CarriageControl:,
- Variable:G -> _
+ Variable:G -> .
  CarriageControl:NL
 180 PRINT H,I
- Variable:H -> _
+ Variable:H -> .
  CarriageControl:,
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 190 PRINT
  CarriageControl:NL
 200 PRINT "DETERMINANT = ";E
  TextValue:"DETERMINANT = "
  CarriageControl:;
- Variable:E -> _
+ Variable:E -> .
  CarriageControl:NL
 210 PRINT
  CarriageControl:NL
@@ -91,11 +91,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 230 INPUT L
- Variable:L -> _
+ Variable:L -> .
 240 IF L = 1 THEN 30
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:30
 250 STOP
  

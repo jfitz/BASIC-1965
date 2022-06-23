@@ -1,40 +1,40 @@
 10 READ N,B,P
- Variable:N -> _
- Variable:B -> _
- Variable:P -> _
+ Variable:N -> .
+ Variable:B -> .
+ Variable:P -> .
 20 FOR I = 2 TO N
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:2"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 30    READ A,M
- Variable:A -> _
- Variable:M -> _
+ Variable:A -> .
+ Variable:M -> .
 40       FOR K = 0 TO M-1
- control: Variable:K -> _
+ control: Variable:K -> .
  start:   ["NumericValue:0"]
- end:     ["Variable:M -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["Variable:M -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 50       LET X = B + K*P
- Variable:X -> _
- Variable:B -> _
- Variable:K -> _
- Variable:P -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:B -> .
+ Variable:K -> .
+ Variable:P -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 60       IF X - M*INT(X/M) = A THEN 100
- Variable:X -> _
- Variable:M -> _
- Variable:X -> _
- Variable:M -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:A -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:X -> .
+ Variable:M -> .
+ Variable:X -> .
+ Variable:M -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:A -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:100
 70    NEXT K
- Variable:K -> _
+ Variable:K -> .
 80    PRINT "ERROR"
  TextValue:"ERROR"
  CarriageControl:NL
@@ -42,25 +42,25 @@
  WARNING: Terminating statement in FOR/NEXT
  
 100 LET P = P*M
- Variable:P -> _
- Variable:P -> _
- Variable:M -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:P -> .
+ Variable:P -> .
+ Variable:M -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 110 LET B = X
- Variable:B -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 120 NEXT I
- Variable:I -> _
+ Variable:I -> .
 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P
  TextValue:"X  IS CONGRUENT TO "
  CarriageControl:
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:;
  TextValue:" MODULO "
  CarriageControl:
- Variable:P -> _
+ Variable:P -> .
  CarriageControl:NL
 900 DATA 4
  NumericValue:4

@@ -26,7 +26,7 @@ STOP in line 999
 130 (1) MAT G = ZER
 140 (0) DATA 4, 2, 1, 3
 150 (0) DATA 0.01, 2, 30
-160 FNR(_) (0) DEF FNR(X) = INT(4 * X + 0.5)
+160 FNR(.) (0) DEF FNR(X) = INT(4 * X + 0.5)
 170 (0) 
 200 (1) READ X, Y
 210 (1) LET G(FNR(X * 1.5), FNR(Y)) = 1

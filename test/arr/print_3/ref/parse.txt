@@ -1,34 +1,34 @@
 10 DIM A(6), B(3)
  NumericValue:6
- Declaration:A() -> _()
+ Declaration:A() -> .()
  NumericValue:3
- Declaration:B() -> _()
+ Declaration:B() -> .()
 20 FOR I = 0 TO 6
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:6"]
 40 LET A(I) = I
- Variable:I -> _
- Variable:A(_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:A(.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 60 NEXT I
- Variable:I -> _
+ Variable:I -> .
 70 FOR I = 0 TO 3
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:3"]
 90 LET B(I) = I
- Variable:I -> _
- Variable:B(_) -> _
- Variable:I -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:B(.) -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 110 NEXT I
- Variable:I -> _
+ Variable:I -> .
 120 ARR PRINT A;B;
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:;
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:;
 122 PRINT
  CarriageControl:NL

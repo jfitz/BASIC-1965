@@ -21,15 +21,15 @@ Syntax error: Invalid line number '0'
  TextValue:"(1. READ  2. PRINT  3. DATA  4. NONE OF THESE.)"
  CarriageControl:NL
 130 LET C = 1
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 140 GOSUB 8000
  LineNumber:8000
 150 IF X = C THEN 200
- Variable:X -> _
- Variable:C -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:X -> .
+ Variable:C -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:200
 160 PRINT "LET'S TRY THAT ONE AGAIN."
  TextValue:"LET'S TRY THAT ONE AGAIN."
@@ -49,20 +49,20 @@ Syntax error: Invalid line number '0'
  TextValue:"4. NONE OF THESE.)"
  CarriageControl:NL
 220 LET C = 3
- Variable:C -> _
+ Variable:C -> .
  NumericValue:3
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 230 GOSUB 8000
  LineNumber:8000
 240 IF C = X THEN 300
- Variable:C -> _
- Variable:X -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:C -> .
+ Variable:X -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:300
 250 IF X = 1 THEN 280
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:280
 260 PRINT "ANOTHER RETRY -- OKAY?"
  TextValue:"ANOTHER RETRY -- OKAY?"
@@ -98,20 +98,20 @@ Syntax error: Invalid line number '0'
  TextValue:"4. NONE OF THESE.)"
  CarriageControl:NL
 350 LET C = 2
- Variable:C -> _
+ Variable:C -> .
  NumericValue:2
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 360 GOSUB 8000
  LineNumber:8000
 370 IF C = X THEN 400
- Variable:C -> _
- Variable:X -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:C -> .
+ Variable:X -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:400
 375 IF X <> 1 THEN 390
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1
- BinaryOperatorNotEqual:<>(_,_) -> ?
+ BinaryOperatorNotEqual:<>(.,.) -> ?
  LineNumber:390
 380 PRINT "BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
  TextValue:"BASIC USES THE SIMPLER WORD  LET  RATHER THAN COMPUTE."
@@ -132,20 +132,20 @@ Syntax error: Invalid line number '0'
  TextValue:"(1. LET X = Y  2. LET Z = Z + 17  3. LET A + B = X )"
  CarriageControl:NL
 420 LET C = 3
- Variable:C -> _
+ Variable:C -> .
  NumericValue:3
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 430 GOSUB 8000
  LineNumber:8000
 440 IF C = X THEN 500
- Variable:C -> _
- Variable:X -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:C -> .
+ Variable:X -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:500
 450 IF X = 1 THEN 470
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:470
 460 PRINT "THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
  TextValue:"THIS FORM IS PERFECTLY CORRECT.  IT CALLS FOR COMPUTING THE"
@@ -176,20 +176,20 @@ Syntax error: Invalid line number '0'
  TextValue:"(1. LET T = X + T  2. LET X = T + X  3. LET T - X = T )"
  CarriageControl:NL
 530 LET C = 1
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 540 GOSUB 8000
  LineNumber:8000
 550 IF C = X THEN 600
- Variable:C -> _
- Variable:X -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:C -> .
+ Variable:X -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:600
 560 IF C = 3 THEN 580
- Variable:C -> _
+ Variable:C -> .
  NumericValue:3
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:580
 570 PRINT "THIS ONE INCREASES THE VALUE OF X BY T UNITS."
  TextValue:"THIS ONE INCREASES THE VALUE OF X BY T UNITS."
@@ -216,11 +216,11 @@ Syntax error: Invalid line number '0'
  TextValue:"YOUR ANSWER"
  CarriageControl:;
 8010 INPUT X
- Variable:X -> _
+ Variable:X -> .
 8020 IF C <> X THEN 8050
- Variable:C -> _
- Variable:X -> _
- BinaryOperatorNotEqual:<>(_,_) -> ?
+ Variable:C -> .
+ Variable:X -> .
+ BinaryOperatorNotEqual:<>(.,.) -> ?
  LineNumber:8050
 8030 PRINT "CORRECT"
  TextValue:"CORRECT"
@@ -230,7 +230,7 @@ Syntax error: Invalid line number '0'
 8050 PRINT "INCORRECT. CORRECT ANSWER IS "; C
  TextValue:"INCORRECT. CORRECT ANSWER IS "
  CarriageControl:;
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:NL
 8060 RETURN
  

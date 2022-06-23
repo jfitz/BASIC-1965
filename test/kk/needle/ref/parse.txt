@@ -1,86 +1,86 @@
 100 LET P = 3.14159265
- Variable:P -> _
+ Variable:P -> .
  NumericValue:3.14159265
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 110 LET C = 0
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 120 FOR N = 1 TO 1000
- control: Variable:N -> _
+ control: Variable:N -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:1000"]
 130    LET Y = RND(Z)
- Variable:Y -> _
- Variable:Z -> _
- FunctionRnd:RND(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:Z -> .
+ FunctionRnd:RND(.) -> .
+ AssignmentOperator:= . -> .
 140    LET R = RND(Z)
- Variable:R -> _
- Variable:Z -> _
- FunctionRnd:RND(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R -> .
+ Variable:Z -> .
+ FunctionRnd:RND(.) -> .
+ AssignmentOperator:= . -> .
 150    LET A = P*(R-1/2)
- Variable:A -> _
- Variable:P -> _
- Variable:R -> _
+ Variable:A -> .
+ Variable:P -> .
+ Variable:R -> .
  NumericValue:1
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> =_
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> =.
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 160    LET Y1 = Y - COS(A)
- Variable:Y1 -> _
- Variable:Y -> _
- Variable:A -> _
- FunctionCos:COS(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y1 -> .
+ Variable:Y -> .
+ Variable:A -> .
+ FunctionCos:COS(.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 170    LET Y2 = Y + COS(A)
- Variable:Y2 -> _
- Variable:Y -> _
- Variable:A -> _
- FunctionCos:COS(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y2 -> .
+ Variable:Y -> .
+ Variable:A -> .
+ FunctionCos:COS(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 172    LET C2 = COS(A)
- Variable:C2 -> _
- Variable:A -> _
- FunctionCos:COS(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C2 -> .
+ Variable:A -> .
+ FunctionCos:COS(.) -> .
+ AssignmentOperator:= . -> .
 180    IF SGN(Y1) = SGN(Y2) THEN 200
- Variable:Y1 -> _
- FunctionSgn:SGN(_) -> _
- Variable:Y2 -> _
- FunctionSgn:SGN(_) -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:Y1 -> .
+ FunctionSgn:SGN(.) -> .
+ Variable:Y2 -> .
+ FunctionSgn:SGN(.) -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:200
 190    LET C = C+1
- Variable:C -> _
- Variable:C -> _
+ Variable:C -> .
+ Variable:C -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 200 NEXT N
- Variable:N -> _
+ Variable:N -> .
 210 LET F = C/N
- Variable:F -> _
- Variable:C -> _
- Variable:N -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:F -> .
+ Variable:C -> .
+ Variable:N -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 220 PRINT "FRACTION OF CROSSINGS = " F
  TextValue:"FRACTION OF CROSSINGS = "
  CarriageControl:
- Variable:F -> _
+ Variable:F -> .
  CarriageControl:NL
 230 PRINT "ESTIMATE OF PI = " 2/F
  TextValue:"ESTIMATE OF PI = "
  CarriageControl:
  NumericValue:2
- Variable:F -> _
- BinaryOperatorDivide:/(_,_) -> _
+ Variable:F -> .
+ BinaryOperatorDivide:/(.,.) -> .
  CarriageControl:NL
 240 END
  

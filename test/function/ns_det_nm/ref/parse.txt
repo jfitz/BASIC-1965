@@ -3,9 +3,9 @@
 20 OPTION BASE 0
  NumericValue:0
 22 LET B = 0
- Variable:B -> _
+ Variable:B -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 50 DATA 1, 1
  NumericValue:1
  NumericValue:1
@@ -24,7 +24,7 @@
  NumericValue:0
  NumericValue:2
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:3
  NumericValue:0
  NumericValue:0
@@ -33,7 +33,7 @@
  NumericValue:1
  NumericValue:4
  NumericValue:3
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:1
  NumericValue:0
  NumericValue:5
@@ -43,9 +43,9 @@
 120 OPTION BASE 1
  NumericValue:1
 122 LET B = 1
- Variable:B -> _
+ Variable:B -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 150 DATA 2, 2
  NumericValue:2
  NumericValue:2
@@ -64,7 +64,7 @@
  NumericValue:0
  NumericValue:2
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:3
  NumericValue:0
  NumericValue:0
@@ -73,7 +73,7 @@
  NumericValue:1
  NumericValue:4
  NumericValue:3
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:1
  NumericValue:0
  NumericValue:5
@@ -83,43 +83,43 @@
 199 STOP
  
 400 READ R,C
- Variable:R -> _
- Variable:C -> _
+ Variable:R -> .
+ Variable:C -> .
 405 DIM M1(R,C)
- Variable:R -> _
- Variable:C -> _
- Declaration:M1(,) -> _(,)
+ Variable:R -> .
+ Variable:C -> .
+ Declaration:M1(,) -> .(,)
 410 FOR I = B TO R
- control: Variable:I -> _
- start:   ["Variable:B -> _"]
- end:     ["Variable:R -> _"]
+ control: Variable:I -> .
+ start:   ["Variable:B -> ."]
+ end:     ["Variable:R -> ."]
 420 FOR J = B TO C
- control: Variable:J -> _
- start:   ["Variable:B -> _"]
- end:     ["Variable:C -> _"]
+ control: Variable:J -> .
+ start:   ["Variable:B -> ."]
+ end:     ["Variable:C -> ."]
 430 READ M1(I,J)
- Variable:I -> _
- Variable:J -> _
- Variable:M1(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:M1(.,.) -> .
 440 NEXT J
- Variable:J -> _
+ Variable:J -> .
 450 NEXT I
- Variable:I -> _
+ Variable:I -> .
 460 PRINT "MATRIX:"
  TextValue:"MATRIX:"
  CarriageControl:NL
 470 MAT PRINT M1;
- Variable:M1(,) -> _(,)
+ Variable:M1(,) -> .(,)
  CarriageControl:;
 480 LET D = DET(M1)
- Variable:D -> _
- Variable:M1(,) -> _(,)
- FunctionDet:DET(_(,)) -> _
- AssignmentOperator:= _ -> _
+ Variable:D -> .
+ Variable:M1(,) -> .(,)
+ FunctionDet:DET(.(,)) -> .
+ AssignmentOperator:= . -> .
 490 PRINT "DETERMINANT:" D
  TextValue:"DETERMINANT:"
  CarriageControl:
- Variable:D -> _
+ Variable:D -> .
  CarriageControl:NL
 495 PRINT
  CarriageControl:NL

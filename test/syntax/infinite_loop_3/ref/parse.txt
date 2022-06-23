@@ -1,15 +1,15 @@
 10 REM TEST INFINITE LOOP CHECK
  Remark:TEST INFINITE LOOP CHECK
 20 FOR I = 1 TO 10 STEP 0
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:10"]
  step:    ["NumericValue:0"]
 30 PRINT I
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 40 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 

@@ -6,8 +6,8 @@ Error 103 Out of data in line 150
 
 100 (0) REM SIDE-ANGLE-SIDE
 110 (1) LET P = 3.14159
-120 FND(_) (0) DEF FND(X) = X * P / 180
-130 FNC(_) (0) DEF FNC(X) = COS(FND(X))
+120 FND(.) (0) DEF FND(X) = X * P / 180
+130 FNC(.) (0) DEF FNC(X) = COS(FND(X))
 140 (1) PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
 150 (3) READ X, A, Y
 160 (3) LET Z = SQR(X ^ 2 + Y ^ 2 - 2 * X * Y * FNC(A))

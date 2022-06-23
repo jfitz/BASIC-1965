@@ -6,80 +6,80 @@
  TextValue:"ENTER 1ST VECTOR (A1,A2,A3)"
  CarriageControl:NL
 40 INPUT A1,A2,A3
- Variable:A1 -> _
- Variable:A2 -> _
- Variable:A3 -> _
+ Variable:A1 -> .
+ Variable:A2 -> .
+ Variable:A3 -> .
 50 PRINT "ENTER 2ND VECTOR (B1,B2,B3)"
  TextValue:"ENTER 2ND VECTOR (B1,B2,B3)"
  CarriageControl:NL
 60 INPUT B1,B2,B3
- Variable:B1 -> _
- Variable:B2 -> _
- Variable:B3 -> _
+ Variable:B1 -> .
+ Variable:B2 -> .
+ Variable:B3 -> .
 70 REM CALCULATE THE NORM OF A VECTOR
  Remark:CALCULATE THE NORM OF A VECTOR
 80 LET X = SQR((A1^2) + (A2^2) + (A3^2))
- Variable:X -> _
- Variable:A1 -> _
+ Variable:X -> .
+ Variable:A1 -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- Variable:A2 -> _
+ BinaryOperatorPower:^(.,.) -> .
+ Variable:A2 -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:A3 -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:A3 -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 90 REM CALCULATE THE NORM OF B VECTOR
  Remark:CALCULATE THE NORM OF B VECTOR
 100 LET Y = SQR((B1^2) + (B2^2) + (B3^2))
- Variable:Y -> _
- Variable:B1 -> _
+ Variable:Y -> .
+ Variable:B1 -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- Variable:B2 -> _
+ BinaryOperatorPower:^(.,.) -> .
+ Variable:B2 -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:B3 -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:B3 -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 110 REM CALCULATE DOT PRODUCT
  Remark:CALCULATE DOT PRODUCT
 120 LET Z = (A1*B1) + (A2*B2) + (A3*B3)
- Variable:Z -> _
- Variable:A1 -> _
- Variable:B1 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:A2 -> _
- Variable:B2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:A3 -> _
- Variable:B3 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ Variable:A1 -> .
+ Variable:B1 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:A2 -> .
+ Variable:B2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:A3 -> .
+ Variable:B3 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 130 PRINT "DOT PRODUCT = ";Z
  TextValue:"DOT PRODUCT = "
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 140 PRINT "NORM OF 1ST VECTOR = ";X
  TextValue:"NORM OF 1ST VECTOR = "
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:NL
 150 PRINT "NORM OF 2ND VECTOR = ";Y
  TextValue:"NORM OF 2ND VECTOR = "
  CarriageControl:;
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 160 PRINT "********************"
  TextValue:"********************"
@@ -88,11 +88,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT L
- Variable:L -> _
+ Variable:L -> .
 190 IF L = 1 THEN 210
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:210
 200 STOP
  

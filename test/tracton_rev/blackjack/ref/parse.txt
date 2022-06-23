@@ -7,16 +7,16 @@
  TextValue:"IF NOT TYPE 0"
  CarriageControl:NL
 40 INPUT C
- Variable:C -> _
+ Variable:C -> .
 50 IF C = 1 THEN 90
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:90
 60 IF C = 0 THEN 340
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:340
 70 PRINT "INVALID RESPONSE"
  TextValue:"INVALID RESPONSE"
@@ -103,105 +103,105 @@
 355 REM RANDOMIZE
  Remark:RANDOMIZE
 360 LET D = 0
- Variable:D -> _
+ Variable:D -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 370 LET P = D
- Variable:P -> _
- Variable:D -> _
- AssignmentOperator:= _ -> _
+ Variable:P -> .
+ Variable:D -> .
+ AssignmentOperator:= . -> .
 380 GOSUB 820
  LineNumber:820
 390 LET D1 = C
- Variable:D1 -> _
- Variable:C -> _
- AssignmentOperator:= _ -> _
+ Variable:D1 -> .
+ Variable:C -> .
+ AssignmentOperator:= . -> .
 400 GOSUB 820
  LineNumber:820
 410 LET D2 = C
- Variable:D2 -> _
- Variable:C -> _
- AssignmentOperator:= _ -> _
+ Variable:D2 -> .
+ Variable:C -> .
+ AssignmentOperator:= . -> .
 420 GOSUB 820
  LineNumber:820
 430 LET P1 = C
- Variable:P1 -> _
- Variable:C -> _
- AssignmentOperator:= _ -> _
+ Variable:P1 -> .
+ Variable:C -> .
+ AssignmentOperator:= . -> .
 440 GOSUB 820
  LineNumber:820
 450 LET P2 = C
- Variable:P2 -> _
- Variable:C -> _
- AssignmentOperator:= _ -> _
+ Variable:P2 -> .
+ Variable:C -> .
+ AssignmentOperator:= . -> .
 460 PRINT
  CarriageControl:NL
 470 PRINT "THE DEALER HAS A ";D1;" SHOWING"
  TextValue:"THE DEALER HAS A "
  CarriageControl:;
- Variable:D1 -> _
+ Variable:D1 -> .
  CarriageControl:;
  TextValue:" SHOWING"
  CarriageControl:NL
 480 PRINT "YOU HAVE A ";P1;" AND A ";P2
  TextValue:"YOU HAVE A "
  CarriageControl:;
- Variable:P1 -> _
+ Variable:P1 -> .
  CarriageControl:;
  TextValue:" AND A "
  CarriageControl:;
- Variable:P2 -> _
+ Variable:P2 -> .
  CarriageControl:NL
 490 PRINT "YOUR TOTAL IS ";P1 + P2
  TextValue:"YOUR TOTAL IS "
  CarriageControl:;
- Variable:P1 -> _
- Variable:P2 -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:P1 -> .
+ Variable:P2 -> .
+ BinaryOperatorPlus:+(.,.) -> .
  CarriageControl:NL
 500 LET D = D1 + D2
- Variable:D -> _
- Variable:D1 -> _
- Variable:D2 -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:D -> .
+ Variable:D1 -> .
+ Variable:D2 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 510 LET P = P1 + P2
- Variable:P -> _
- Variable:P1 -> _
- Variable:P2 -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:P -> .
+ Variable:P1 -> .
+ Variable:P2 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 520 IF P = 21 THEN 640
- Variable:P -> _
+ Variable:P -> .
  NumericValue:21
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:640
 530 GOSUB 960
  LineNumber:960
 540 IF L = 1 THEN 690
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:690
 550 IF D <= 16 THEN 740
- Variable:D -> _
+ Variable:D -> .
  NumericValue:16
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:740
 560 PRINT "THE DEALER HAS ";D
  TextValue:"THE DEALER HAS "
  CarriageControl:;
- Variable:D -> _
+ Variable:D -> .
  CarriageControl:NL
 570 PRINT "YOU HAVE ";P
  TextValue:"YOU HAVE "
  CarriageControl:;
- Variable:P -> _
+ Variable:P -> .
  CarriageControl:NL
 580 IF P > D THEN 620
- Variable:P -> _
- Variable:D -> _
- BinaryOperatorGreater:>(_,_) -> ?
+ Variable:P -> .
+ Variable:D -> .
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:620
 590 REM WIN OR LOSS STATEMENTS
  Remark:WIN OR LOSS STATEMENTS
@@ -219,9 +219,9 @@
  TextValue:"***YOU HAVE BLACKJACK***"
  CarriageControl:NL
 650 IF D = 21 THEN 670
- Variable:D -> _
+ Variable:D -> .
  NumericValue:21
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:670
 660 GOTO 560
  LineNumber:560
@@ -235,116 +235,116 @@
 700 PRINT "YOUR CARD IS ";C
  TextValue:"YOUR CARD IS "
  CarriageControl:;
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:NL
 710 LET P = P + C
- Variable:P -> _
- Variable:P -> _
- Variable:C -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:P -> .
+ Variable:P -> .
+ Variable:C -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 720 IF P > 21 THEN 600
- Variable:P -> _
+ Variable:P -> .
  NumericValue:21
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:600
 730 GOTO 530
  LineNumber:530
 740 PRINT "THE DEALER HAS ";D
  TextValue:"THE DEALER HAS "
  CarriageControl:;
- Variable:D -> _
+ Variable:D -> .
  CarriageControl:NL
 750 GOSUB 820
  LineNumber:820
 760 LET D = D + C
- Variable:D -> _
- Variable:D -> _
- Variable:C -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:D -> .
+ Variable:D -> .
+ Variable:C -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 770 PRINT "THE DEALER DRAWS A ";C
  TextValue:"THE DEALER DRAWS A "
  CarriageControl:;
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:NL
 780 PRINT "HIS TOTAL IS ";D
  TextValue:"HIS TOTAL IS "
  CarriageControl:;
- Variable:D -> _
+ Variable:D -> .
  CarriageControl:NL
 790 IF D > 21 THEN 620
- Variable:D -> _
+ Variable:D -> .
  NumericValue:21
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:620
 800 IF D <= 17 THEN 750
- Variable:D -> _
+ Variable:D -> .
  NumericValue:17
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:750
 810 GOTO 560
  LineNumber:560
 820 LET C = 1 + INT(11*RND)
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
  NumericValue:11
- FunctionRnd:RND -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRnd:RND -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 830 IF C = 11 THEN 850
- Variable:C -> _
+ Variable:C -> .
  NumericValue:11
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:850
 840 GOTO 880
  LineNumber:880
 850 IF D + C > 21 THEN 870
- Variable:D -> _
- Variable:C -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:D -> .
+ Variable:C -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:21
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:870
 860 GOTO 880
  LineNumber:880
 870 LET C = 1
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 880 RETURN
  
 890 LET C = 1 + INT(11*RND)
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
  NumericValue:11
- FunctionRnd:RND -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRnd:RND -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 900 IF C = 11 THEN 920
- Variable:C -> _
+ Variable:C -> .
  NumericValue:11
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:920
 910 GOTO 950
  LineNumber:950
 920 IF P + C > 21 THEN 940
- Variable:P -> _
- Variable:C -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:P -> .
+ Variable:C -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:21
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:940
 930 GOTO 950
  LineNumber:950
 940 LET C = 1
- Variable:C -> _
+ Variable:C -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 950 RETURN
  
 960 PRINT "DO YOU WANT A HIT (1), OR DO YOU STAND (0)"
@@ -352,16 +352,16 @@
  TextValue:"DO YOU WANT A HIT (1), OR DO YOU STAND (0)"
  CarriageControl:NL
 970 INPUT Q
- Variable:Q -> _
+ Variable:Q -> .
 980 IF Q = 1 THEN 1020
- Variable:Q -> _
+ Variable:Q -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:1020
 990 IF Q = 0 THEN 1040
- Variable:Q -> _
+ Variable:Q -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:1040
 1000 PRINT "INVALID RESPONSE"
  TextValue:"INVALID RESPONSE"
@@ -369,15 +369,15 @@
 1010 GOTO 960
  LineNumber:960
 1020 LET L = 1
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 1030 GOTO 1050
  LineNumber:1050
 1040 LET L = 0
- Variable:L -> _
+ Variable:L -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 1050 RETURN
  
 1060 PRINT
@@ -389,11 +389,11 @@
  TextValue:"TYPE 1 OR 0"
  CarriageControl:NL
 1090 INPUT L
- Variable:L -> _
+ Variable:L -> .
 1100 IF L = 1 THEN 1130
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:1130
 1110 PRINT "BLACKJACK SAYS GOOD-BYE"
  TextValue:"BLACKJACK SAYS GOOD-BYE"

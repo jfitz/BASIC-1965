@@ -3,98 +3,98 @@
 15 DIM D(2,3)
  NumericValue:2
  NumericValue:3
- Declaration:D(,) -> _(,)
+ Declaration:D(,) -> .(,)
 20 MAT A = ZER(3,5)
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  NumericValue:3
  NumericValue:5
- FunctionZer2:ZER(_,_) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER(.,.) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 30 MAT B = ZER(5,3)
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  NumericValue:5
  NumericValue:3
- FunctionZer2:ZER(_,_) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER(.,.) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 40 MAT C = ZER(4)
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  NumericValue:4
- FunctionZer2:ZER(_) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER(.) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 45 MAT D = ZER
- Variable:D(,) -> _(,)
- FunctionZer2:ZER -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:D(,) -> .(,)
+ FunctionZer2:ZER -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 50 PRINT "MATRIX A"
  TextValue:"MATRIX A"
  CarriageControl:NL
 60 MAT PRINT A;
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:;
 70 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 80 MAT PRINT B;
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:;
 90 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 100 MAT PRINT C;
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  CarriageControl:;
 110 PRINT "MATRIX D"
  TextValue:"MATRIX D"
  CarriageControl:NL
 120 MAT PRINT D;
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  CarriageControl:;
 200 OPTION BASE 1
  NumericValue:1
 220 MAT A = ZER(3,5)
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  NumericValue:3
  NumericValue:5
- FunctionZer2:ZER(_,_) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER(.,.) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 230 MAT B = ZER(5,3)
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  NumericValue:5
  NumericValue:3
- FunctionZer2:ZER(_,_) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER(.,.) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 240 MAT C = ZER(4)
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  NumericValue:4
- FunctionZer2:ZER(_) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER(.) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 245 MAT D = ZER
- Variable:D(,) -> _(,)
- FunctionZer2:ZER -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:D(,) -> .(,)
+ FunctionZer2:ZER -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 250 PRINT "MATRIX A"
  TextValue:"MATRIX A"
  CarriageControl:NL
 260 MAT PRINT A;
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:;
 270 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 280 MAT PRINT B;
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:;
 290 PRINT "ARRAY C"
  TextValue:"ARRAY C"
  CarriageControl:NL
 300 MAT PRINT C;
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  CarriageControl:;
 310 PRINT "MATRIX D"
  TextValue:"MATRIX D"
  CarriageControl:NL
 320 MAT PRINT D;
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  CarriageControl:;
 999 END
  

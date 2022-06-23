@@ -1,45 +1,45 @@
 10 DIM A(6,5)
  NumericValue:6
  NumericValue:5
- Declaration:A(,) -> _(,)
+ Declaration:A(,) -> .(,)
 20 FOR I = 0 TO 6
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:6"]
 30 FOR J = 0 TO 5
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:5"]
 40 LET A(I,J) = I*10 + J
- Variable:I -> _
- Variable:J -> _
- Variable:A(_,_) -> _
- Variable:I -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:A(.,.) -> .
+ Variable:I -> .
  NumericValue:10
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:J -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:J -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 50 NEXT J
- Variable:J -> _
+ Variable:J -> .
 60 NEXT I
- Variable:I -> _
+ Variable:I -> .
 70 PRINT "MATRIX A"
  TextValue:"MATRIX A"
  CarriageControl:NL
 72 MAT PRINT A;
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:;
 80 MAT B = TRN(A)
- Variable:B(,) -> _(,)
- Variable:A(,) -> _(,)
- FunctionTrn:TRN(_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:B(,) -> .(,)
+ Variable:A(,) -> .(,)
+ FunctionTrn:TRN(.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 90 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 92 MAT PRINT B;
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:;
 100 OPTION BASE 1
  NumericValue:1
@@ -47,18 +47,18 @@
  TextValue:"MATRIX A"
  CarriageControl:NL
 172 MAT PRINT A;
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:;
 180 MAT B = TRN(A)
- Variable:B(,) -> _(,)
- Variable:A(,) -> _(,)
- FunctionTrn:TRN(_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:B(,) -> .(,)
+ Variable:A(,) -> .(,)
+ FunctionTrn:TRN(.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 190 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 192 MAT PRINT B;
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:;
 199 END
  

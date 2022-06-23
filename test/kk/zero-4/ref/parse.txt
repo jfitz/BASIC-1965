@@ -1,17 +1,17 @@
 10 DEF FNF(X) = X^5 + 2*X^3 -1
- UserFunctionName:FNF -> _
- VariableName:X -> _
- Variable:X -> _
+ UserFunctionName:FNF -> .
+ VariableName:X -> .
+ Variable:X -> .
  NumericValue:5
- BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
  NumericValue:2
- Variable:X -> _
+ Variable:X -> .
  NumericValue:3
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorMinus:-(.,.) -> .
 11 REM DEF FNF(X) = -3*X^5 + X^3 + 1
  Remark:DEF FNF(X) = -3*X^5 + X^3 + 1
 12 REM DEF FNF(X) = X^2 + 1
@@ -21,137 +21,137 @@
 14 REM DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
  Remark:DEF FNF(X) = SIN(X) - LOG(X)/LOG(10)
 20 READ A,B
- Variable:A -> _
- Variable:B -> _
+ Variable:A -> .
+ Variable:B -> .
 22 GOSUB 200
  LineNumber:200
 26 LET X(1+S) = A
  NumericValue:1
- Variable:S -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:X(_) -> _
- Variable:A -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:X(.) -> .
+ Variable:A -> .
+ AssignmentOperator:= . -> .
 28 LET X(1-S) = B
  NumericValue:1
- Variable:S -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:X(_) -> _
- Variable:B -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:X(.) -> .
+ Variable:B -> .
+ AssignmentOperator:= . -> .
 30 LET X = (X(0)+X(2))/2
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- Variable:X(_) -> _
+ Variable:X(.) -> .
  NumericValue:2
- Variable:X(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:X(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 35 LET F = SGN(FNF(X))
- Variable:F -> _
- Variable:X -> _
- UserFunction:FNF(_) -> _
- FunctionSgn:SGN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:F -> .
+ Variable:X -> .
+ UserFunction:FNF(.) -> .
+ FunctionSgn:SGN(.) -> .
+ AssignmentOperator:= . -> .
 40 IF F = 0 THEN 100
- Variable:F -> _
+ Variable:F -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:100
 50 LET X(1+F) = X
  NumericValue:1
- Variable:F -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:X(_) -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:F -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:X(.) -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 80 IF ABS(X(0)-X(2))/(ABS(X(0))+ABS(X(2))) < 0.0000005 THEN 100
  NumericValue:0
- Variable:X(_) -> _
+ Variable:X(.) -> .
  NumericValue:2
- Variable:X(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionAbs:ABS(_) -> _
+ Variable:X(.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionAbs:ABS(.) -> .
  NumericValue:0
- Variable:X(_) -> _
- FunctionAbs:ABS(_) -> _
+ Variable:X(.) -> .
+ FunctionAbs:ABS(.) -> .
  NumericValue:2
- Variable:X(_) -> _
- FunctionAbs:ABS(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
+ Variable:X(.) -> .
+ FunctionAbs:ABS(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
  NumericValue:0.0000005
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:100
 90 GOTO 30
  LineNumber:30
 100 PRINT "ONE ZERO AT" X
  TextValue:"ONE ZERO AT"
  CarriageControl:
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:NL
 110 STOP
  WARNING: Terminating statement in GOSUB
  
 200 LET S = SGN(FNF(A))
- Variable:S -> _
- Variable:A -> _
- UserFunction:FNF(_) -> _
- FunctionSgn:SGN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:A -> .
+ UserFunction:FNF(.) -> .
+ FunctionSgn:SGN(.) -> .
+ AssignmentOperator:= . -> .
 210 LET T = SGN(FNF(B))
- Variable:T -> _
- Variable:B -> _
- UserFunction:FNF(_) -> _
- FunctionSgn:SGN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:B -> .
+ UserFunction:FNF(.) -> .
+ FunctionSgn:SGN(.) -> .
+ AssignmentOperator:= . -> .
 220 IF S*T = 0 THEN 400
- Variable:S -> _
- Variable:T -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:S -> .
+ Variable:T -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:400
 230 IF S*T > 0 THEN 300
- Variable:S -> _
- Variable:T -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:S -> .
+ Variable:T -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:300
 240 RETURN
  
 300 LET L = B-A
- Variable:L -> _
- Variable:B -> _
- Variable:A -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:L -> .
+ Variable:B -> .
+ Variable:A -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 310 FOR I = 1 TO 1000
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:1000"]
 320 LET X = A + RND()*L
- Variable:X -> _
- Variable:A -> _
- FunctionRnd:RND() -> _
- Variable:L -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:A -> .
+ FunctionRnd:RND() -> .
+ Variable:L -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 330 IF S * SGN(FNF(X)) < 0 THEN 370
- Variable:S -> _
- Variable:X -> _
- UserFunction:FNF(_) -> _
- FunctionSgn:SGN(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:S -> .
+ Variable:X -> .
+ UserFunction:FNF(.) -> .
+ FunctionSgn:SGN(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:370
 340 NEXT I
- Variable:I -> _
+ Variable:I -> .
 350 PRINT "NO CHANGE OF SIGN FOUND"
  TextValue:"NO CHANGE OF SIGN FOUND"
  CarriageControl:NL
@@ -159,27 +159,27 @@
  WARNING: Terminating statement in GOSUB
  
 370 LET B = X
- Variable:B -> _
- Variable:X -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:X -> .
+ AssignmentOperator:= . -> .
 380 RETURN
  
 400 IF S = 0 THEN 430
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:430
 410 LET X = B
- Variable:X -> _
- Variable:B -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:B -> .
+ AssignmentOperator:= . -> .
 420 GOTO 100
  WARNING: Branch to line before GOSUB start
  LineNumber:100
 430 LET X = A
- Variable:X -> _
- Variable:A -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:A -> .
+ AssignmentOperator:= . -> .
 440 GOTO 100
  WARNING: Branch to line before GOSUB start
  LineNumber:100

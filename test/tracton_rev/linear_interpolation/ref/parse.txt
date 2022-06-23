@@ -4,45 +4,45 @@
  TextValue:"KNOWN VALUE OF X (X1,X2) = "
  CarriageControl:;
 30 INPUT X1,X2
- Variable:X1 -> _
- Variable:X2 -> _
+ Variable:X1 -> .
+ Variable:X2 -> .
 40 PRINT "KNOWN VALUES OF Y (F(X1),F(X2)) = ";
  TextValue:"KNOWN VALUES OF Y (F(X1),F(X2)) = "
  CarriageControl:;
 50 INPUT Y1,Y2
- Variable:Y1 -> _
- Variable:Y2 -> _
+ Variable:Y1 -> .
+ Variable:Y2 -> .
 60 PRINT "INTERPOLATE F(X) AT X = ";
  TextValue:"INTERPOLATE F(X) AT X = "
  CarriageControl:;
 70 INPUT X
- Variable:X -> _
+ Variable:X -> .
 80 LET G = ((X2 - X)*Y1) + ((X - X1)*Y2)
- Variable:G -> _
- Variable:X2 -> _
- Variable:X -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:Y1 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:X -> _
- Variable:X1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:Y2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:G -> .
+ Variable:X2 -> .
+ Variable:X -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:Y1 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:X -> .
+ Variable:X1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:Y2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 90 LET F = G/(X2 - X1)
- Variable:F -> _
- Variable:G -> _
- Variable:X2 -> _
- Variable:X1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:F -> .
+ Variable:G -> .
+ Variable:X2 -> .
+ Variable:X1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 100 PRINT "INTERPOLATED F(X) = ";F
  TextValue:"INTERPOLATED F(X) = "
  CarriageControl:;
- Variable:F -> _
+ Variable:F -> .
  CarriageControl:NL
 110 PRINT
  CarriageControl:NL
@@ -50,11 +50,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 130 INPUT L
- Variable:L -> _
+ Variable:L -> .
 140 IF L = 1 THEN 160
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:160
 150 STOP
  

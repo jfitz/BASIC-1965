@@ -1,78 +1,78 @@
 100 MAT A = ZER(3,3)
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  NumericValue:3
  NumericValue:3
- FunctionZer2:ZER(_,_) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionZer2:ZER(.,.) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 110 MAT B = CON(3,3)
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  NumericValue:3
  NumericValue:3
- FunctionCon2:CON(_,_) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionCon2:CON(.,.) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 120 MAT C = IDN(3,3)
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  NumericValue:3
  NumericValue:3
- FunctionIdn:IDN(_,_) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionIdn:IDN(.,.) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 130
 200 PRINT "ALL ZEROES"
  TextValue:"ALL ZEROES"
  CarriageControl:NL
 210 MAT PRINT A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 220 PRINT "ALL ONES"
  TextValue:"ALL ONES"
  CarriageControl:NL
 230 MAT PRINT B
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:NL
 240 PRINT "IDENTITY MATRIX"
  TextValue:"IDENTITY MATRIX"
  CarriageControl:NL
 250 MAT PRINT C
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  CarriageControl:NL
 260
 300 MAT READ A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
 310 PRINT "SQUARE MATRIX"
  TextValue:"SQUARE MATRIX"
  CarriageControl:NL
 320 MAT PRINT A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 330 MAT B = INV(A)
- Variable:B(,) -> _(,)
- Variable:A(,) -> _(,)
- FunctionInv:INV(_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:B(,) -> .(,)
+ Variable:A(,) -> .(,)
+ FunctionInv:INV(.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 340 PRINT "ITS INVERSE"
  TextValue:"ITS INVERSE"
  CarriageControl:NL
 350 MAT PRINT B
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:NL
 360
 400 MAT R = A*B
- Variable:R(,) -> _(,)
- Variable:A(,) -> _(,)
- Variable:B(,) -> _(,)
- BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:R(,) -> .(,)
+ Variable:A(,) -> .(,)
+ Variable:B(,) -> .(,)
+ BinaryOperatorMultiply:*(.(,),.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 410 MAT R = R-C
- Variable:R(,) -> _(,)
- Variable:R(,) -> _(,)
- Variable:C(,) -> _(,)
- BinaryOperatorMinus:-(_(,),_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:R(,) -> .(,)
+ Variable:R(,) -> .(,)
+ Variable:C(,) -> .(,)
+ BinaryOperatorMinus:-(.(,),.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 420 PRINT "ROUNDOFF ERRORS"
  TextValue:"ROUNDOFF ERRORS"
  CarriageControl:NL
 430 MAT PRINT R
- Variable:R(,) -> _(,)
+ Variable:R(,) -> .(,)
  CarriageControl:NL
 440
 900 DATA 1, 0.5, 0.333333, 0.5, 0.333333, 0.25, 0.333333, 0.25, 0.5

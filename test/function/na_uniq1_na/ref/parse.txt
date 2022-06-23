@@ -1,15 +1,15 @@
 10 DIM A(6)
  NumericValue:6
- Declaration:A() -> _()
+ Declaration:A() -> .()
 20 OPTION BASE 0
  NumericValue:0
 30 ARR READ A
- Variable:A() -> _()
+ Variable:A() -> .()
 40 ARR B = UNIQ1(A)
- Variable:B() -> _()
- Variable:A() -> _()
- FunctionUniq1:UNIQ1(_()) -> _()
- AssignmentOperator:= _() -> _()
+ Variable:B() -> .()
+ Variable:A() -> .()
+ FunctionUniq1:UNIQ1(.()) -> .()
+ AssignmentOperator:= .() -> .()
 50 GOSUB 800
  LineNumber:800
 100 RESTORE
@@ -17,12 +17,12 @@
 120 OPTION BASE 1
  NumericValue:1
 130 ARR READ A
- Variable:A() -> _()
+ Variable:A() -> .()
 140 ARR B = UNIQ1(A)
- Variable:B() -> _()
- Variable:A() -> _()
- FunctionUniq1:UNIQ1(_()) -> _()
- AssignmentOperator:= _() -> _()
+ Variable:B() -> .()
+ Variable:A() -> .()
+ FunctionUniq1:UNIQ1(.()) -> .()
+ AssignmentOperator:= .() -> .()
 150 GOSUB 800
  LineNumber:800
 790 STOP
@@ -33,13 +33,13 @@
  TextValue:"ARRAY A"
  CarriageControl:NL
 820 ARR PRINT A
- Variable:A() -> _()
+ Variable:A() -> .()
  CarriageControl:NL
 830 PRINT "ARRAY B"
  TextValue:"ARRAY B"
  CarriageControl:NL
 840 ARR PRINT B
- Variable:B() -> _()
+ Variable:B() -> .()
  CarriageControl:NL
 890 RETURN
  

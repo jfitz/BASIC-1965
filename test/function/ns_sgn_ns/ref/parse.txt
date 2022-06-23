@@ -6,47 +6,47 @@
  TextValue:"SIGN"
  CarriageControl:NL
 20 LET A=10.5
- Variable:A -> _
+ Variable:A -> .
  NumericValue:10.5
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 22 LET A1=SGN(A)
- Variable:A1 -> _
- Variable:A -> _
- FunctionSgn:SGN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A1 -> .
+ Variable:A -> .
+ FunctionSgn:SGN(.) -> .
+ AssignmentOperator:= . -> .
 25 PRINT A,A1
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:A1 -> _
+ Variable:A1 -> .
  CarriageControl:NL
 30 LET B=-20
- Variable:B -> _
+ Variable:B -> .
  NumericValue:20
- UnaryOperatorMinus:-(_) -> =_
- AssignmentOperator:= =_ -> _
+ UnaryOperatorMinus:-(.) -> =.
+ AssignmentOperator:= =. -> .
 32 LET B1=SGN(B)
- Variable:B1 -> _
- Variable:B -> _
- FunctionSgn:SGN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B1 -> .
+ Variable:B -> .
+ FunctionSgn:SGN(.) -> .
+ AssignmentOperator:= . -> .
 35 PRINT B,B1
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:,
- Variable:B1 -> _
+ Variable:B1 -> .
  CarriageControl:NL
 40 LET C=0
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 42 LET C1=SGN(C)
- Variable:C1 -> _
- Variable:C -> _
- FunctionSgn:SGN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C1 -> .
+ Variable:C -> .
+ FunctionSgn:SGN(.) -> .
+ AssignmentOperator:= . -> .
 45 PRINT C,C1
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:,
- Variable:C1 -> _
+ Variable:C1 -> .
  CarriageControl:NL
 90 STOP
  

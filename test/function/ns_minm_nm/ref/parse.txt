@@ -3,16 +3,16 @@
 20 MAT READ A(3,6)
  NumericValue:3
  NumericValue:6
- Variable:A(_,_) -> _(,)
+ Variable:A(.,.) -> .(,)
 30 LET B=MINM(A)
- Variable:B -> _
- Variable:A(,) -> _(,)
- FunctionMinM:MINM(_(,)) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:A(,) -> .(,)
+ FunctionMinM:MINM(.(,)) -> .
+ AssignmentOperator:= . -> .
 40 PRINT "MINIMUM IS "; B
  TextValue:"MINIMUM IS "
  CarriageControl:;
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 90 DATA 10.2,5.5,1.8,22,17,-19,7
  NumericValue:10.2
@@ -21,7 +21,7 @@
  NumericValue:22
  NumericValue:17
  NumericValue:19
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:7
 91 DATA 11.2,6.5,2.8,23,18,-20,8
  NumericValue:11.2
@@ -30,7 +30,7 @@
  NumericValue:23
  NumericValue:18
  NumericValue:20
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:8
 92 DATA 12.2,7.5,3.8,24,19,-21,9
  NumericValue:12.2
@@ -39,7 +39,7 @@
  NumericValue:24
  NumericValue:19
  NumericValue:21
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:9
 93 DATA 13.2,8.5,4.8,25,20,-22,10
  NumericValue:13.2
@@ -48,7 +48,7 @@
  NumericValue:25
  NumericValue:20
  NumericValue:22
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:10
 99 END
  

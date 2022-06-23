@@ -2,7 +2,7 @@
  Remark:This is a test
 15 DIM A(3)
  NumericValue:3
- Declaration:A() -> _()
+ Declaration:A() -> .()
 20 DATA 10,20,30,40
  NumericValue:10
  NumericValue:20
@@ -11,11 +11,11 @@
 25 FILES "output.txt"
  TextValue:"output.txt"
 30 ARR READ A
- Variable:A() -> _()
+ Variable:A() -> .()
 40 ARR PRINT #1;A
  NumericValue:1
- UnaryOperatorHash:#(_) -> =FH
- Variable:A() -> _()
+ UnaryOperatorHash:#(.) -> =FH
+ Variable:A() -> .()
  CarriageControl:NL
 90 STOP
  

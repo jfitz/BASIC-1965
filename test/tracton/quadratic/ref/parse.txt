@@ -6,123 +6,123 @@
  TextValue:"ENTER VALUES FOR A, B AND C"
  CarriageControl:NL
 40 INPUT A,B,C
- Variable:A -> _
- Variable:B -> _
- Variable:C -> _
+ Variable:A -> .
+ Variable:B -> .
+ Variable:C -> .
 50 LET D = ((B^2) - (4*A*C))/(4*A^2)
- Variable:D -> _
- Variable:B -> _
+ Variable:D -> .
+ Variable:B -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
  NumericValue:4
- Variable:A -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:C -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
+ Variable:A -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:C -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:4
- Variable:A -> _
+ Variable:A -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 60 IF D > = 0 THEN 130
- Variable:D -> _
+ Variable:D -> .
  NumericValue:0
- BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ BinaryOperatorGreaterEqual:>=(.,.) -> ?
  LineNumber:130
 70 LET X = -B/(2*A)
- Variable:X -> _
- Variable:B -> _
- UnaryOperatorMinus:-(_) -> _
+ Variable:X -> .
+ Variable:B -> .
+ UnaryOperatorMinus:-(.) -> .
  NumericValue:2
- Variable:A -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 80 LET Y = (SQR((4*A*C) - B^2))/(2*A)
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:4
- Variable:A -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:C -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:B -> _
+ Variable:A -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:C -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:B -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionSqr:SQR(_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionSqr:SQR(.) -> .
  NumericValue:2
- Variable:A -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 90 PRINT "ROOTS ARE COMPLEX"
  TextValue:"ROOTS ARE COMPLEX"
  CarriageControl:NL
 100 PRINT "REAL PART = ";X
  TextValue:"REAL PART = "
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:NL
 110 PRINT "IMAGINARY PART = ";Y
  TextValue:"IMAGINARY PART = "
  CarriageControl:;
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 120 GOTO 220
  LineNumber:220
 130 LET E = - B/(2*A)
- Variable:E -> _
- Variable:B -> _
- UnaryOperatorMinus:-(_) -> _
+ Variable:E -> .
+ Variable:B -> .
+ UnaryOperatorMinus:-(.) -> .
  NumericValue:2
- Variable:A -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 140 IF E > = 0 THEN 170
- Variable:E -> _
+ Variable:E -> .
  NumericValue:0
- BinaryOperatorGreaterEqual:>=(_,_) -> ?
+ BinaryOperatorGreaterEqual:>=(.,.) -> ?
  LineNumber:170
 150 LET Z = E - SQR(D)
- Variable:Z -> _
- Variable:E -> _
- Variable:D -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ Variable:E -> .
+ Variable:D -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 160 GOTO 180
  LineNumber:180
 170 LET Z = E + SQR(D)
- Variable:Z -> _
- Variable:E -> _
- Variable:D -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ Variable:E -> .
+ Variable:D -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 180 LET W = C/(Z*A)
- Variable:W -> _
- Variable:C -> _
- Variable:Z -> _
- Variable:A -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:W -> .
+ Variable:C -> .
+ Variable:Z -> .
+ Variable:A -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 190 PRINT "ROOTS ARE REAL"
  TextValue:"ROOTS ARE REAL"
  CarriageControl:NL
 200 PRINT "1ST ROOT = ";Z
  TextValue:"1ST ROOT = "
  CarriageControl:;
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 210 PRINT "2ND ROOT = ";W
  TextValue:"2ND ROOT = "
  CarriageControl:;
- Variable:W -> _
+ Variable:W -> .
  CarriageControl:NL
 220 PRINT "********************"
  TextValue:"********************"
@@ -131,11 +131,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 240 INPUT L
- Variable:L -> _
+ Variable:L -> .
 250 IF L = 1 THEN 270
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:270
 260 STOP
  

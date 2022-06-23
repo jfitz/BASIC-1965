@@ -8,75 +8,75 @@
  TextValue:"1ST IMPEDANCE"
  CarriageControl:NL
 50 INPUT Z1
- Variable:Z1 -> _
+ Variable:Z1 -> .
 60 PRINT "2ND IMPEDANCE"
  TextValue:"2ND IMPEDANCE"
  CarriageControl:NL
 70 INPUT Z2
- Variable:Z2 -> _
+ Variable:Z2 -> .
 80 LET R1 = Z1*SQR(1 - (Z2/Z1))
- Variable:R1 -> _
- Variable:Z1 -> _
+ Variable:R1 -> .
+ Variable:Z1 -> .
  NumericValue:1
- Variable:Z2 -> _
- Variable:Z1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z2 -> .
+ Variable:Z1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 90 LET R2 = Z2/SQR(1 - (Z2/Z1))
- Variable:R2 -> _
- Variable:Z2 -> _
+ Variable:R2 -> .
+ Variable:Z2 -> .
  NumericValue:1
- Variable:Z2 -> _
- Variable:Z1 -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z2 -> .
+ Variable:Z1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 100 LET M = SQR(Z1/Z2) + SQR((Z1/Z2) - 1)
- Variable:M -> _
- Variable:Z1 -> _
- Variable:Z2 -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionSqr:SQR(_) -> _
- Variable:Z1 -> _
- Variable:Z2 -> _
- BinaryOperatorDivide:/(_,_) -> _
+ Variable:M -> .
+ Variable:Z1 -> .
+ Variable:Z2 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ Variable:Z1 -> .
+ Variable:Z2 -> .
+ BinaryOperatorDivide:/(.,.) -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 110 LET L = 20*(LOG(M)/LOG(10))
- Variable:L -> _
+ Variable:L -> .
  NumericValue:20
- Variable:M -> _
- FunctionLog:LOG(_) -> _
+ Variable:M -> .
+ FunctionLog:LOG(.) -> .
  NumericValue:10
- FunctionLog:LOG(_) -> =_
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionLog:LOG(.) -> =.
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 120 PRINT "COMPONENTS OF THE L-PAD"
  TextValue:"COMPONENTS OF THE L-PAD"
  CarriageControl:NL
 130 PRINT "RESISTOR 1 = ";R1
  TextValue:"RESISTOR 1 = "
  CarriageControl:;
- Variable:R1 -> _
+ Variable:R1 -> .
  CarriageControl:NL
 140 PRINT "RESISTOR 2 = ";R2
  TextValue:"RESISTOR 2 = "
  CarriageControl:;
- Variable:R2 -> _
+ Variable:R2 -> .
  CarriageControl:NL
 150 PRINT "LOSS IN DECIBELS = ";L
  TextValue:"LOSS IN DECIBELS = "
  CarriageControl:;
- Variable:L -> _
+ Variable:L -> .
  CarriageControl:NL
 160 PRINT
  CarriageControl:NL
@@ -84,11 +84,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 180 INPUT X
- Variable:X -> _
+ Variable:X -> .
 190 IF X = 1 THEN 210
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:210
 200 STOP
  

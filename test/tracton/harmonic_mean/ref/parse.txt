@@ -3,55 +3,55 @@
 20 REM OF SAMPLES ENTERED BY THE USER
  Remark:OF SAMPLES ENTERED BY THE USER
 30 LET Z = 0
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 40 LET N = 0
- Variable:N -> _
+ Variable:N -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 50 PRINT "SAMPLE = ";
  TextValue:"SAMPLE = "
  CarriageControl:;
 60 INPUT X
- Variable:X -> _
+ Variable:X -> .
 70 IF X = 0 THEN 130
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:130
 80 LET N = N + 1
- Variable:N -> _
- Variable:N -> _
+ Variable:N -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 90 LET Z = Z + (1/X)
- Variable:Z -> _
- Variable:Z -> _
+ Variable:Z -> .
+ Variable:Z -> .
  NumericValue:1
- Variable:X -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 100 LET H = N/Z
- Variable:H -> _
- Variable:N -> _
- Variable:Z -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:H -> .
+ Variable:N -> .
+ Variable:Z -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 110 PRINT "N = ";N,"SAMPLE = ";X,"CURRENT MEAN = ";H
  TextValue:"N = "
  CarriageControl:;
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:,
  TextValue:"SAMPLE = "
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
  TextValue:"CURRENT MEAN = "
  CarriageControl:;
- Variable:H -> _
+ Variable:H -> .
  CarriageControl:NL
 120 GOTO 50
  LineNumber:50
@@ -61,11 +61,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Variable:L -> _
+ Variable:L -> .
 160 IF L = 1 THEN 180
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:180
 170 STOP
  

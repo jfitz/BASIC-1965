@@ -39,11 +39,11 @@
  TextValue:"SULPHUR(S), NITROGEN(N) IN THAT ORDER"
  CarriageControl:NL
 160 INPUT C,H,O,S,N
- Variable:C -> _
- Variable:H -> _
- Variable:O -> _
- Variable:S -> _
- Variable:N -> _
+ Variable:C -> .
+ Variable:H -> .
+ Variable:O -> .
+ Variable:S -> .
+ Variable:N -> .
 170 PRINT "ENTER PERCENTAGE EXCESS AIR, IF ZERO"
  TextValue:"ENTER PERCENTAGE EXCESS AIR, IF ZERO"
  CarriageControl:NL
@@ -51,157 +51,157 @@
  TextValue:"ENTER 0. EXAMPLE: - 34% ENTER AS 34"
  CarriageControl:NL
 190 INPUT E
- Variable:E -> _
+ Variable:E -> .
 200 LET E = 1 + (E/100)
- Variable:E -> _
+ Variable:E -> .
  NumericValue:1
- Variable:E -> _
+ Variable:E -> .
  NumericValue:100
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 210 LET O2 = C + S + (H/4) - (O/2)
- Variable:O2 -> _
- Variable:C -> _
- Variable:S -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:H -> _
+ Variable:O2 -> .
+ Variable:C -> .
+ Variable:S -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:H -> .
  NumericValue:4
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:O -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:O -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 220 LET A = O2*E*4.762
- Variable:A -> _
- Variable:O2 -> _
- Variable:E -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:A -> .
+ Variable:O2 -> .
+ Variable:E -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:4.762
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 230 LET A1 = 1.8094*A
- Variable:A1 -> _
+ Variable:A1 -> .
  NumericValue:1.8094
- Variable:A -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 240 LET F = (0.7507*C) + (0.063*H) + (2.004*S)
- Variable:F -> _
+ Variable:F -> .
  NumericValue:0.7507
- Variable:C -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ Variable:C -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:0.063
- Variable:H -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:H -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2.004
- Variable:S -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 250 LET F = (0.875*N) + O + F
- Variable:F -> _
+ Variable:F -> .
  NumericValue:0.875
- Variable:N -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:O -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:F -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:N -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:O -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:F -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 260 LET A1 = A1/F
- Variable:A1 -> _
- Variable:A1 -> _
- Variable:F -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A1 -> .
+ Variable:A1 -> .
+ Variable:F -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 270 LET M = A + (H/4) + (O/2) + (N/2)
- Variable:M -> _
- Variable:A -> _
- Variable:H -> _
+ Variable:M -> .
+ Variable:A -> .
+ Variable:H -> .
  NumericValue:4
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:O -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:O -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:N -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:N -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 280 LET C2 = (C*100)/M
- Variable:C2 -> _
- Variable:C -> _
+ Variable:C2 -> .
+ Variable:C -> .
  NumericValue:100
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:M -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:M -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 290 LET S2 = (S*100)/M
- Variable:S2 -> _
- Variable:S -> _
+ Variable:S2 -> .
+ Variable:S -> .
  NumericValue:100
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:M -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:M -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 300 LET H2 = (H*100)/M
- Variable:H2 -> _
- Variable:H -> _
+ Variable:H2 -> .
+ Variable:H -> .
  NumericValue:100
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:M -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:M -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 310 LET O3 = (100*(E-1)*O2)/M
- Variable:O3 -> _
+ Variable:O3 -> .
  NumericValue:100
- Variable:E -> _
+ Variable:E -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:O2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:M -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:O2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:M -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 320 LET N2 = (100*((3.762*E*O2) + (N/2)))/M
- Variable:N2 -> _
+ Variable:N2 -> .
  NumericValue:100
  NumericValue:3.762
- Variable:E -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:O2 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:N -> _
+ Variable:E -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:O2 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:N -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:M -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:M -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 330 PRINT
  CarriageControl:NL
 340 PRINT "AIR-FUEL RATIO WITH RESPECT TO MOLES = ";A
  TextValue:"AIR-FUEL RATIO WITH RESPECT TO MOLES = "
  CarriageControl:;
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:NL
 350 PRINT "AIR-FUEL RATIO WITH RESPECT TO MASS = ";A1
  TextValue:"AIR-FUEL RATIO WITH RESPECT TO MASS = "
  CarriageControl:;
- Variable:A1 -> _
+ Variable:A1 -> .
  CarriageControl:NL
 360 PRINT "TOTAL MOLES OF PRODUCT = ";M
  TextValue:"TOTAL MOLES OF PRODUCT = "
  CarriageControl:;
- Variable:M -> _
+ Variable:M -> .
  CarriageControl:NL
 370 PRINT "*****PERCENTAGE VOLUME OF PRODUCTS*****"
  TextValue:"*****PERCENTAGE VOLUME OF PRODUCTS*****"
@@ -209,35 +209,35 @@
 380 PRINT "CARBON DIOXIDE = ";C2;"%"
  TextValue:"CARBON DIOXIDE = "
  CarriageControl:;
- Variable:C2 -> _
+ Variable:C2 -> .
  CarriageControl:;
  TextValue:"%"
  CarriageControl:NL
 390 PRINT "SULPHUR DIOXIDE = ";S2;"%"
  TextValue:"SULPHUR DIOXIDE = "
  CarriageControl:;
- Variable:S2 -> _
+ Variable:S2 -> .
  CarriageControl:;
  TextValue:"%"
  CarriageControl:NL
 400 PRINT "WATER = ";H2;"%"
  TextValue:"WATER = "
  CarriageControl:;
- Variable:H2 -> _
+ Variable:H2 -> .
  CarriageControl:;
  TextValue:"%"
  CarriageControl:NL
 410 PRINT "OXYGEN = ";O3;"%"
  TextValue:"OXYGEN = "
  CarriageControl:;
- Variable:O3 -> _
+ Variable:O3 -> .
  CarriageControl:;
  TextValue:"%"
  CarriageControl:NL
 420 PRINT "NITROGEN = ";N2;"%"
  TextValue:"NITROGEN = "
  CarriageControl:;
- Variable:N2 -> _
+ Variable:N2 -> .
  CarriageControl:;
  TextValue:"%"
  CarriageControl:NL

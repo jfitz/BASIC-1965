@@ -1,35 +1,35 @@
 10 LET P = 3.14159
- Variable:P -> _
+ Variable:P -> .
  NumericValue:3.14159
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 20 PRINT "ANGLE","COTANGENT"
  TextValue:"ANGLE"
  CarriageControl:,
  TextValue:"COTANGENT"
  CarriageControl:NL
 30 FOR I = 0 TO 2 STEP 0.1
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:2"]
  step:    ["NumericValue:0.1"]
 40 LET A = I * P
- Variable:A -> _
- Variable:I -> _
- Variable:P -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:I -> .
+ Variable:P -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 50 LET C = COT(A)
- Variable:C -> _
- Variable:A -> _
- FunctionCot:COT(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C -> .
+ Variable:A -> .
+ FunctionCot:COT(.) -> .
+ AssignmentOperator:= . -> .
 60 PRINT A, C
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:NL
 70 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 

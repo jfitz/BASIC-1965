@@ -12,61 +12,61 @@
  TextValue:"ENTER PARAMETERS A,B,C,D,E,F"
  CarriageControl:NL
 60 INPUT A,B,C,D,E,F
- Variable:A -> _
- Variable:B -> _
- Variable:C -> _
- Variable:D -> _
- Variable:E -> _
- Variable:F -> _
+ Variable:A -> .
+ Variable:B -> .
+ Variable:C -> .
+ Variable:D -> .
+ Variable:E -> .
+ Variable:F -> .
 70 LET M = (A*D) - (B*C)
- Variable:M -> _
- Variable:A -> _
- Variable:D -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:B -> _
- Variable:C -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:M -> .
+ Variable:A -> .
+ Variable:D -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:B -> .
+ Variable:C -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 80 IF M = 0 THEN 140
- Variable:M -> _
+ Variable:M -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:140
 90 LET X = ((E*D) - (B*F))/M
- Variable:X -> _
- Variable:E -> _
- Variable:D -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:B -> _
- Variable:F -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:M -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:E -> .
+ Variable:D -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:B -> .
+ Variable:F -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:M -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 100 LET Y = ((A*F) - (E*C))/M
- Variable:Y -> _
- Variable:A -> _
- Variable:F -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:E -> _
- Variable:C -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:M -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:A -> .
+ Variable:F -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:E -> .
+ Variable:C -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:M -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 110 PRINT "SOLUTION","X = ";X,"Y = ";Y
  TextValue:"SOLUTION"
  CarriageControl:,
  TextValue:"X = "
  CarriageControl:;
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
  TextValue:"Y = "
  CarriageControl:;
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 120 PRINT "********************"
  TextValue:"********************"
@@ -83,11 +83,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 170 INPUT L
- Variable:L -> _
+ Variable:L -> .
 180 IF L = 1 THEN 200
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:200
 190 STOP
  

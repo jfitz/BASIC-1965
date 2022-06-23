@@ -4,63 +4,63 @@
  TextValue:"A, R, Y, T"
  CarriageControl:;
 20 INPUT A, R, Y, T
- Variable:A -> _
- Variable:R -> _
- Variable:Y -> _
- Variable:T -> _
+ Variable:A -> .
+ Variable:R -> .
+ Variable:Y -> .
+ Variable:T -> .
 26 IF T = 999 THEN 999
- Variable:T -> _
+ Variable:T -> .
  NumericValue:999
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:999
 30 IF A <= 0 THEN 100
- Variable:A -> _
+ Variable:A -> .
  NumericValue:0
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:100
 40 IF R <= 0 THEN 100
- Variable:R -> _
+ Variable:R -> .
  NumericValue:0
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:100
 50 IF Y <= 0 THEN 100
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:0
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:100
 60 IF T <= 0 THEN 100
- Variable:T -> _
+ Variable:T -> .
  NumericValue:0
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:100
 70 LET N = Y*T
- Variable:N -> _
- Variable:Y -> _
- Variable:T -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:N -> .
+ Variable:Y -> .
+ Variable:T -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 80 LET R1 = R/100/T
- Variable:R1 -> _
- Variable:R -> _
+ Variable:R1 -> .
+ Variable:R -> .
  NumericValue:100
- BinaryOperatorDivide:/(_,_) -> _
- Variable:T -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:T -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 90 LET B = A*(1+R1)^N
- Variable:B -> _
- Variable:A -> _
+ Variable:B -> .
+ Variable:A -> .
  NumericValue:1
- Variable:R1 -> _
- BinaryOperatorPlus:+(_,_) -> _
- Variable:N -> _
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ Variable:N -> .
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 95 PRINT "FINAL AMOUNT = $" B
  TextValue:"FINAL AMOUNT = $"
  CarriageControl:
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:NL
 96 GOTO 5
  LineNumber:5

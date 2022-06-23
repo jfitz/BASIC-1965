@@ -2,32 +2,32 @@
  Remark:THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
 110
 120 LET N = 20 + INT(80*RND(X))
- Variable:N -> _
+ Variable:N -> .
  NumericValue:20
  NumericValue:80
- Variable:X -> _
- FunctionRnd:RND(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ FunctionRnd:RND(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 130 LET K = 5 + INT(10*RND(X))
- Variable:K -> _
+ Variable:K -> .
  NumericValue:5
  NumericValue:10
- Variable:X -> _
- FunctionRnd:RND(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ FunctionRnd:RND(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 140 PRINT "LEGAL MOVES ARE:"
  TextValue:"LEGAL MOVES ARE:"
  CarriageControl:NL
 150 PRINT "TAKE AWAY 1 THROUGH" K
  TextValue:"TAKE AWAY 1 THROUGH"
  CarriageControl:
- Variable:K -> _
+ Variable:K -> .
  CarriageControl:NL
 160 PRINT "LAST PERSON TO MOVE LOSES"
  TextValue:"LAST PERSON TO MOVE LOSES"
@@ -37,7 +37,7 @@
 180 PRINT "THE INITIAL NUMBER IS" N
  TextValue:"THE INITIAL NUMBER IS"
  CarriageControl:
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:NL
 190 PRINT
  CarriageControl:NL
@@ -48,21 +48,21 @@
  TextValue:"YOUR MOVE"
  CarriageControl:;
 230 INPUT X
- Variable:X -> _
+ Variable:X -> .
 240 IF X > K THEN 270
- Variable:X -> _
- Variable:K -> _
- BinaryOperatorGreater:>(_,_) -> ?
+ Variable:X -> .
+ Variable:K -> .
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:270
 250 IF X < 1 THEN 270
- Variable:X -> _
+ Variable:X -> .
  NumericValue:1
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:270
 260 IF X <= N THEN 310
- Variable:X -> _
- Variable:N -> _
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ Variable:X -> .
+ Variable:N -> .
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:310
 270 PRINT "ILLEGAL MOVE"
  TextValue:"ILLEGAL MOVE"
@@ -75,15 +75,15 @@
 310 REM TEST FOR WIN
  Remark:TEST FOR WIN
 320 LET N = N-X
- Variable:N -> _
- Variable:N -> _
- Variable:X -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:N -> .
+ Variable:N -> .
+ Variable:X -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 330 IF N > 0 THEN 410
- Variable:N -> _
+ Variable:N -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:410
 340 PRINT "I WIN ***"
  TextValue:"I WIN ***"
@@ -103,55 +103,55 @@
 410 REM MACHINE'S MOVE
  Remark:MACHINE'S MOVE
 420 LET Q = INT((N-1)/(K+1))
- Variable:Q -> _
- Variable:N -> _
+ Variable:Q -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- Variable:K -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:K -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 430 LET Y = N-1 - Q*(K+1)
- Variable:Y -> _
- Variable:N -> _
+ Variable:Y -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- Variable:Q -> _
- Variable:K -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:Q -> .
+ Variable:K -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 440 IF Y = 0 THEN 530
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:530
 450 LET N = N - Y
- Variable:N -> _
- Variable:N -> _
- Variable:Y -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:N -> .
+ Variable:N -> .
+ Variable:Y -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 460 PRINT "MY MOVE:" Y
  TextValue:"MY MOVE:"
  CarriageControl:
- Variable:Y -> _
+ Variable:Y -> .
  CarriageControl:NL
 470 PRINT
  CarriageControl:NL
 480 IF N = 0 THEN 600
- Variable:N -> _
+ Variable:N -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:600
 490 PRINT "NEW TOTAL IS" N
  TextValue:"NEW TOTAL IS"
  CarriageControl:
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:NL
 500 PRINT
  CarriageControl:NL
@@ -161,26 +161,26 @@
 530 REM MAKE RANDOM MOVE
  Remark:MAKE RANDOM MOVE
 540 IF N > 1 THEN 570
- Variable:N -> _
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:570
 550 LET Y = 1
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 560 GOTO 450
  LineNumber:450
 570 LET Y = 1 + INT(K*RND(0))
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:1
- Variable:K -> _
+ Variable:K -> .
  NumericValue:0
- FunctionRnd:RND(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRnd:RND(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 580 GOTO 450
  LineNumber:450
 590

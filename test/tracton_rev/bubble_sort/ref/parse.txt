@@ -17,59 +17,59 @@
 90 REM STATEMENT AND N SET AHEAD OF TIME
  Remark:STATEMENT AND N SET AHEAD OF TIME
 100 LET I = N - 1
- Variable:I -> _
- Variable:N -> _
+ Variable:I -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 110 FOR J = 1 TO I
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:I -> _"]
+ end:     ["Variable:I -> ."]
 120 LET K = J + 1
- Variable:K -> _
- Variable:J -> _
+ Variable:K -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 130 FOR L = N TO K STEP -1
- control: Variable:L -> _
- start:   ["Variable:N -> _"]
- end:     ["Variable:K -> _"]
- step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
+ control: Variable:L -> .
+ start:   ["Variable:N -> ."]
+ end:     ["Variable:K -> ."]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
 140 IF Z(L) > Z(J) THEN 210
- Variable:L -> _
- Variable:Z(_) -> _
- Variable:J -> _
- Variable:Z(_) -> _
- BinaryOperatorGreater:>(_,_) -> ?
+ Variable:L -> .
+ Variable:Z(.) -> .
+ Variable:J -> .
+ Variable:Z(.) -> .
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:210
 150 REM SAVE FIRST VALUE
  Remark:SAVE FIRST VALUE
 160 LET T = Z(L)
- Variable:T -> _
- Variable:L -> _
- Variable:Z(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:L -> .
+ Variable:Z(.) -> .
+ AssignmentOperator:= . -> .
 170 LET Z(L) =Z(J)
- Variable:L -> _
- Variable:Z(_) -> _
- Variable:J -> _
- Variable:Z(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:L -> .
+ Variable:Z(.) -> .
+ Variable:J -> .
+ Variable:Z(.) -> .
+ AssignmentOperator:= . -> .
 180 LET Z(J) = T
- Variable:J -> _
- Variable:Z(_) -> _
- Variable:T -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:Z(.) -> .
+ Variable:T -> .
+ AssignmentOperator:= . -> .
 190 REM IF Z IS THE KEY FOR SORTING MULTIPLE
  Remark:IF Z IS THE KEY FOR SORTING MULTIPLE
 200 REM ARRAYS AND EXTRA CODE HERE
  Remark:ARRAYS AND EXTRA CODE HERE
 210 NEXT L
- Variable:L -> _
+ Variable:L -> .
 220 NEXT J
- Variable:J -> _
+ Variable:J -> .
 230 RETURN
  
 

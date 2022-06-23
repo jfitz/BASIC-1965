@@ -10,64 +10,64 @@
 15 PRINT
  CarriageControl:NL
 20 FOR P = 1 TO 0 STEP -1
- control: Variable:P -> _
+ control: Variable:P -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:0"]
- step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
 30     FOR Q = 1 TO 0 STEP -1
- control: Variable:Q -> _
+ control: Variable:Q -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:0"]
- step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
 40         FOR R = 1 TO 0 STEP -1
- control: Variable:R -> _
+ control: Variable:R -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:0"]
- step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
 50             LET X = P
- Variable:X -> _
- Variable:P -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:P -> .
+ AssignmentOperator:= . -> .
 60             GOSUB 200
  LineNumber:200
 70             LET X = Q
- Variable:X -> _
- Variable:Q -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:Q -> .
+ AssignmentOperator:= . -> .
 80             GOSUB 200
  LineNumber:200
 90             LET X = R
- Variable:X -> _
- Variable:R -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:R -> .
+ AssignmentOperator:= . -> .
 95             GOSUB 200
  LineNumber:200
 100            LET X = P*SGN(Q+R)
- Variable:X -> _
- Variable:P -> _
- Variable:Q -> _
- Variable:R -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSgn:SGN(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:P -> .
+ Variable:Q -> .
+ Variable:R -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSgn:SGN(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 110            GOSUB 200
  LineNumber:200
 120            PRINT
  CarriageControl:NL
 130        NEXT R
- Variable:R -> _
+ Variable:R -> .
 140    NEXT Q
- Variable:Q -> _
+ Variable:Q -> .
 150 NEXT P
- Variable:P -> _
+ Variable:P -> .
 160 STOP
  
 170
 200 IF X > 0 THEN 250
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:250
 210 PRINT "FALSE",
  TextValue:"FALSE"

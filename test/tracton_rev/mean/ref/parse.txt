@@ -3,117 +3,117 @@
 20 REM DEVIATION AND STANDARD ERROR FOR GROUPED DATA
  Remark:DEVIATION AND STANDARD ERROR FOR GROUPED DATA
 30 LET A = 0
- Variable:A -> _
+ Variable:A -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 40 LET B = 0
- Variable:B -> _
+ Variable:B -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 50 LET C = 0
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 60 LET D = 0
- Variable:D -> _
+ Variable:D -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 70 PRINT "ENTER SAMPLE VALUE AND FREQUENCY";
  TextValue:"ENTER SAMPLE VALUE AND FREQUENCY"
  CarriageControl:;
 80 INPUT X,F
- Variable:X -> _
- Variable:F -> _
+ Variable:X -> .
+ Variable:F -> .
 90 IF F <= 0 THEN 170
- Variable:F -> _
+ Variable:F -> .
  NumericValue:0
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:170
 100 LET A = A + 1
- Variable:A -> _
- Variable:A -> _
+ Variable:A -> .
+ Variable:A -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 110 LET B = B + F
- Variable:B -> _
- Variable:B -> _
- Variable:F -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:B -> .
+ Variable:F -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 120 LET G = X*F
- Variable:G -> _
- Variable:X -> _
- Variable:F -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:G -> .
+ Variable:X -> .
+ Variable:F -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 130 LET C = C + G
- Variable:C -> _
- Variable:C -> _
- Variable:G -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C -> .
+ Variable:C -> .
+ Variable:G -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 140 LET E = (X^2)*F
- Variable:E -> _
- Variable:X -> _
+ Variable:E -> .
+ Variable:X -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- Variable:F -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ Variable:F -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 150 LET D = D + E
- Variable:D -> _
- Variable:D -> _
- Variable:E -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:D -> .
+ Variable:D -> .
+ Variable:E -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 160 GOTO 70
  LineNumber:70
 170 LET H = C/B
- Variable:H -> _
- Variable:C -> _
- Variable:B -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:H -> .
+ Variable:C -> .
+ Variable:B -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 180 LET I = SQR(D - (B*(H^2)))
- Variable:I -> _
- Variable:D -> _
- Variable:B -> _
- Variable:H -> _
+ Variable:I -> .
+ Variable:D -> .
+ Variable:B -> .
+ Variable:H -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 190 LET J = I/SQR(B)
- Variable:J -> _
- Variable:I -> _
- Variable:B -> _
- FunctionSqr:SQR(_) -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:I -> .
+ Variable:B -> .
+ FunctionSqr:SQR(.) -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 200 PRINT
  CarriageControl:NL
 210 PRINT "NUMBER OF SAMPLES ENTERED = ";A
  TextValue:"NUMBER OF SAMPLES ENTERED = "
  CarriageControl:;
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:NL
 220 PRINT "MEAN = ";H
  TextValue:"MEAN = "
  CarriageControl:;
- Variable:H -> _
+ Variable:H -> .
  CarriageControl:NL
 230 PRINT "STANDARD DEVIATION = ";I
  TextValue:"STANDARD DEVIATION = "
  CarriageControl:;
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 240 PRINT "STANDARD ERROR = ";J
  TextValue:"STANDARD ERROR = "
  CarriageControl:;
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 250 PRINT
  CarriageControl:NL
@@ -121,11 +121,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 270 INPUT L
- Variable:L -> _
+ Variable:L -> .
 280 IF L = 1 THEN 300
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:300
 290 STOP
  

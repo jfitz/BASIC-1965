@@ -6,54 +6,54 @@
 30 OPTION MATCH_FORNEXT FALSE
  BooleanValue:false
 40 FOR I = 1 TO 3
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
 50 FOR J = 1 TO 3
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
 60 PRINT I,J
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:,
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 70 IF J = 2 THEN 90
- Variable:J -> _
+ Variable:J -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:90
 80 NEXT J
- Variable:J -> _
+ Variable:J -> .
 90 NEXT I
- Variable:I -> _
+ Variable:I -> .
 120 PRINT "OPTION MATCH_FORNEXT TRUE"
  TextValue:"OPTION MATCH_FORNEXT TRUE"
  CarriageControl:NL
 130 OPTION MATCH_FORNEXT TRUE
  BooleanValue:true
 140 FOR I = 1 TO 3
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
 150 FOR J = 1 TO 3
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
 160 PRINT I,J
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:,
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 170 IF J = 2 THEN 190
- Variable:J -> _
+ Variable:J -> .
  NumericValue:2
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:190
 180 NEXT J
- Variable:J -> _
+ Variable:J -> .
 190 NEXT I
- Variable:I -> _
+ Variable:I -> .
 999 END
  WARNING: Terminating statement in FOR/NEXT
  

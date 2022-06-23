@@ -4,22 +4,22 @@
  TextValue:"ARCTAN"
  CarriageControl:NL
 30 FOR I = 0 TO 2 STEP 0.1
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:2"]
  step:    ["NumericValue:0.1"]
 50 LET S = ARCTAN(I)
- Variable:S -> _
- Variable:I -> _
- FunctionArcTan:ARCTAN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:I -> .
+ FunctionArcTan:ARCTAN(.) -> .
+ AssignmentOperator:= . -> .
 60 PRINT I, S
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:,
- Variable:S -> _
+ Variable:S -> .
  CarriageControl:NL
 70 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 

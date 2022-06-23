@@ -1,20 +1,20 @@
 10 LET L1 = 1
- Variable:L1 -> _
+ Variable:L1 -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 20 LET L2 = 10
- Variable:L2 -> _
+ Variable:L2 -> .
  NumericValue:10
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 30 FOR I = L1 TO L2
- control: Variable:I -> _
- start:   ["Variable:L1 -> _"]
- end:     ["Variable:L2 -> _"]
+ control: Variable:I -> .
+ start:   ["Variable:L1 -> ."]
+ end:     ["Variable:L2 -> ."]
 40 PRINT I
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 50 NEXT I
- Variable:I -> _
+ Variable:I -> .
 90 STOP
  
 99 END

@@ -1,160 +1,160 @@
 10 DIM T(100,10), V(100)
  NumericValue:100
  NumericValue:10
- Declaration:T(,) -> _(,)
+ Declaration:T(,) -> .(,)
  NumericValue:100
- Declaration:V() -> _()
+ Declaration:V() -> .()
 20 FOR I = 0 TO 100
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:100"]
 30    READ K
- Variable:K -> _
+ Variable:K -> .
 40    IF K = 999 THEN 100
- Variable:K -> _
+ Variable:K -> .
  NumericValue:999
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:100
 50    LET T(I,0) = K
- Variable:I -> _
+ Variable:I -> .
  NumericValue:0
- Variable:T(_,_) -> _
- Variable:K -> _
- AssignmentOperator:= _ -> _
+ Variable:T(.,.) -> .
+ Variable:K -> .
+ AssignmentOperator:= . -> .
 60    LET K1 = ABS(K)
- Variable:K1 -> _
- Variable:K -> _
- FunctionAbs:ABS(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:K1 -> .
+ Variable:K -> .
+ FunctionAbs:ABS(.) -> .
+ AssignmentOperator:= . -> .
 70    FOR J = 1 TO 2*K1 + 1 - SGN(K1)
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["NumericValue:2", "Variable:K1 -> _", "BinaryOperatorMultiply:*(_,_) -> _", "NumericValue:1", "BinaryOperatorPlus:+(_,_) -> _", "Variable:K1 -> _", "FunctionSgn:SGN(_) -> _", "BinaryOperatorMinus:-(_,_) -> _"]
+ end:     ["NumericValue:2", "Variable:K1 -> .", "BinaryOperatorMultiply:*(.,.) -> .", "NumericValue:1", "BinaryOperatorPlus:+(.,.) -> .", "Variable:K1 -> .", "FunctionSgn:SGN(.) -> .", "BinaryOperatorMinus:-(.,.) -> ."]
 80       READ T(I,J)
- Variable:I -> _
- Variable:J -> _
- Variable:T(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:T(.,.) -> .
 90    NEXT J
- Variable:J -> _
+ Variable:J -> .
 95 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99
 100 PRINT "SELECTED ACTS: ";
  TextValue:"SELECTED ACTS: "
  CarriageControl:;
 105 FOR I = I-1 TO 0 STEP -1
- control: Variable:I -> _
- start:   ["Variable:I -> _", "NumericValue:1", "BinaryOperatorMinus:-(_,_) -> _"]
+ control: Variable:I -> .
+ start:   ["Variable:I -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
  end:     ["NumericValue:0"]
- step:    ["NumericValue:1", "UnaryOperatorMinus:-(_) -> =_"]
+ step:    ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
 110    LET K = T(I,0)
- Variable:K -> _
- Variable:I -> _
+ Variable:K -> .
+ Variable:I -> .
  NumericValue:0
- Variable:T(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:T(.,.) -> .
+ AssignmentOperator:= . -> .
 120    IF K > 0 THEN 200
- Variable:K -> _
+ Variable:K -> .
  NumericValue:0
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:200
 130    IF K < 0 THEN 300
- Variable:K -> _
+ Variable:K -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:300
 140    LET V(I) = T(I,1)
- Variable:I -> _
- Variable:V(_) -> _
- Variable:I -> _
+ Variable:I -> .
+ Variable:V(.) -> .
+ Variable:I -> .
  NumericValue:1
- Variable:T(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:T(.,.) -> .
+ AssignmentOperator:= . -> .
 150    GOTO 399
  LineNumber:399
 200    LET S = 0
- Variable:S -> _
+ Variable:S -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 210    FOR J = 2 TO 2*K STEP 2
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:2"]
- end:     ["NumericValue:2", "Variable:K -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
+ end:     ["NumericValue:2", "Variable:K -> .", "BinaryOperatorMultiply:*(.,.) -> ."]
  step:    ["NumericValue:2"]
 220       LET B = T(I,J)
- Variable:B -> _
- Variable:I -> _
- Variable:J -> _
- Variable:T(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:I -> .
+ Variable:J -> .
+ Variable:T(.,.) -> .
+ AssignmentOperator:= . -> .
 230       LET S = S + T(I,J-1)*V(B)
- Variable:S -> _
- Variable:S -> _
- Variable:I -> _
- Variable:J -> _
+ Variable:S -> .
+ Variable:S -> .
+ Variable:I -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- Variable:T(_,_) -> _
- Variable:B -> _
- Variable:V(_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:T(.,.) -> .
+ Variable:B -> .
+ Variable:V(.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 240    NEXT J
- Variable:J -> _
+ Variable:J -> .
 250    LET V(I) = S
- Variable:I -> _
- Variable:V(_) -> _
- Variable:S -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:V(.) -> .
+ Variable:S -> .
+ AssignmentOperator:= . -> .
 260    GOTO 399
  LineNumber:399
 300    LET M = -999999999
- Variable:M -> _
+ Variable:M -> .
  NumericValue:999999999
- UnaryOperatorMinus:-(_) -> =_
- AssignmentOperator:= =_ -> _
+ UnaryOperatorMinus:-(.) -> =.
+ AssignmentOperator:= =. -> .
 310    FOR J = 2 TO 2*ABS(K) STEP 2
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:2"]
- end:     ["NumericValue:2", "Variable:K -> _", "FunctionAbs:ABS(_) -> _", "BinaryOperatorMultiply:*(_,_) -> _"]
+ end:     ["NumericValue:2", "Variable:K -> .", "FunctionAbs:ABS(.) -> .", "BinaryOperatorMultiply:*(.,.) -> ."]
  step:    ["NumericValue:2"]
 320       LET V = V(T(I,J))
- Variable:V -> _
- Variable:I -> _
- Variable:J -> _
- Variable:T(_,_) -> _
- Variable:V(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:V -> .
+ Variable:I -> .
+ Variable:J -> .
+ Variable:T(.,.) -> .
+ Variable:V(.) -> .
+ AssignmentOperator:= . -> .
 330       IF V <= M THEN 360
- Variable:V -> _
- Variable:M -> _
- BinaryOperatorLessEqual:<=(_,_) -> ?
+ Variable:V -> .
+ Variable:M -> .
+ BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:360
 340       LET M = V
- Variable:M -> _
- Variable:V -> _
- AssignmentOperator:= _ -> _
+ Variable:M -> .
+ Variable:V -> .
+ AssignmentOperator:= . -> .
 350       LET A = T(I,J-1)
- Variable:A -> _
- Variable:I -> _
- Variable:J -> _
+ Variable:A -> .
+ Variable:I -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- Variable:T(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:T(.,.) -> .
+ AssignmentOperator:= . -> .
 360    NEXT J
- Variable:J -> _
+ Variable:J -> .
 370    PRINT A;
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:;
 380    LET V(I) = M
- Variable:I -> _
- Variable:V(_) -> _
- Variable:M -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:V(.) -> .
+ Variable:M -> .
+ AssignmentOperator:= . -> .
 399 NEXT I
- Variable:I -> _
+ Variable:I -> .
 400 PRINT
  CarriageControl:NL
 410 PRINT
@@ -163,12 +163,12 @@
  TextValue:"EXPECTED GAIN = $"
  CarriageControl:
  NumericValue:0
- Variable:V(_) -> _
+ Variable:V(.) -> .
  CarriageControl:NL
 430
 900 DATA -3,1,1,2,2,3,3
  NumericValue:3
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:1
  NumericValue:1
  NumericValue:2
@@ -197,7 +197,7 @@
  NumericValue:100
 905 DATA -2,4,9,5,10
  NumericValue:2
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:4
  NumericValue:9
  NumericValue:5
@@ -211,7 +211,7 @@
 907 DATA 0,-10
  NumericValue:0
  NumericValue:10
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 908 DATA 2,0.75,13,0.25,14
  NumericValue:2
  NumericValue:0.75
@@ -229,13 +229,13 @@
 910 DATA 0,-100
  NumericValue:0
  NumericValue:100
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 911 DATA 0,90
  NumericValue:0
  NumericValue:90
 912 DATA -2,6,18,7,19
  NumericValue:2
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:6
  NumericValue:18
  NumericValue:7
@@ -245,7 +245,7 @@
  NumericValue:90
 914 DATA -2,8,20,9,21
  NumericValue:2
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:8
  NumericValue:20
  NumericValue:9
@@ -259,7 +259,7 @@
 917 DATA 0,-100
  NumericValue:0
  NumericValue:100
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 918 DATA 3,0.167,22,0.333,23,0.5,24
  NumericValue:3
  NumericValue:0.167
@@ -271,7 +271,7 @@
 919 DATA 0,-110
  NumericValue:0
  NumericValue:110
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 920 DATA 3,0.167,25,0.333,26,0.5,27
  NumericValue:3
  NumericValue:0.167
@@ -283,29 +283,29 @@
 921 DATA 0,-110
  NumericValue:0
  NumericValue:110
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 922 DATA 0,90
  NumericValue:0
  NumericValue:90
 923 DATA 0,-10
  NumericValue:0
  NumericValue:10
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 924 DATA 0,-110
  NumericValue:0
  NumericValue:110
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 925 DATA 0,90
  NumericValue:0
  NumericValue:90
 926 DATA 0,-10
  NumericValue:0
  NumericValue:10
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 927 DATA 0,-110
  NumericValue:0
  NumericValue:110
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 998 DATA 999
  NumericValue:999
 999 END

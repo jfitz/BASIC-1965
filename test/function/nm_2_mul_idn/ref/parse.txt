@@ -3,86 +3,86 @@
 15 DIM D(4,4)
  NumericValue:4
  NumericValue:4
- Declaration:D(,) -> _(,)
+ Declaration:D(,) -> .(,)
 20 MAT A = 2 * IDN(3)
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  NumericValue:2
  NumericValue:3
- FunctionIdn:IDN(_) -> =_(,)
- BinaryOperatorMultiply:*(_,_(,)) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionIdn:IDN(.) -> =.(,)
+ BinaryOperatorMultiply:*(.,.(,)) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 30 MAT B = 2 * IDN(5,5)
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  NumericValue:2
  NumericValue:5
  NumericValue:5
- FunctionIdn:IDN(_,_) -> =_(,)
- BinaryOperatorMultiply:*(_,_(,)) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionIdn:IDN(.,.) -> =.(,)
+ BinaryOperatorMultiply:*(.,.(,)) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 35 MAT D = 2 * IDN
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  NumericValue:2
- FunctionIdn:IDN -> _(,)
- BinaryOperatorMultiply:*(_,_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionIdn:IDN -> .(,)
+ BinaryOperatorMultiply:*(.,.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 40 PRINT "MATRIX A"
  TextValue:"MATRIX A"
  CarriageControl:NL
 50 MAT PRINT A;
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:;
 60 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 70 MAT PRINT B;
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:;
 80 PRINT "MATRIX D"
  TextValue:"MATRIX D"
  CarriageControl:NL
 90 MAT PRINT D;
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  CarriageControl:;
 100 OPTION BASE 1
  NumericValue:1
 120 MAT A = 3 * IDN(3)
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  NumericValue:3
  NumericValue:3
- FunctionIdn:IDN(_) -> =_(,)
- BinaryOperatorMultiply:*(_,_(,)) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionIdn:IDN(.) -> =.(,)
+ BinaryOperatorMultiply:*(.,.(,)) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 130 MAT B = 3 * IDN(5,5)
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  NumericValue:3
  NumericValue:5
  NumericValue:5
- FunctionIdn:IDN(_,_) -> =_(,)
- BinaryOperatorMultiply:*(_,_(,)) -> =_(,)
- AssignmentOperator:= =_(,) -> _(,)
+ FunctionIdn:IDN(.,.) -> =.(,)
+ BinaryOperatorMultiply:*(.,.(,)) -> =.(,)
+ AssignmentOperator:= =.(,) -> .(,)
 135 MAT D = 3 * IDN()
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  NumericValue:3
- FunctionIdn:IDN() -> _(,)
- BinaryOperatorMultiply:*(_,_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ FunctionIdn:IDN() -> .(,)
+ BinaryOperatorMultiply:*(.,.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 140 PRINT "MATRIX A"
  TextValue:"MATRIX A"
  CarriageControl:NL
 150 MAT PRINT A;
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:;
 160 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 170 MAT PRINT B;
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:;
 180 PRINT "MATRIX D"
  TextValue:"MATRIX D"
  CarriageControl:NL
 190 MAT PRINT D;
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  CarriageControl:;
 999 END
  

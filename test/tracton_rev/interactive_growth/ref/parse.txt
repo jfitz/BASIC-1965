@@ -12,36 +12,36 @@
  TextValue:"NUMBER OF DESTROYERS (Y) = "
  CarriageControl:;
 70 INPUT Y
- Variable:Y -> _
+ Variable:Y -> .
 80 PRINT "NUMBER OF CREATORS (X) = ";
  TextValue:"NUMBER OF CREATORS (X) = "
  CarriageControl:;
 90 INPUT X
- Variable:X -> _
+ Variable:X -> .
 100 PRINT "PROPAGATION RATE OF X = ";
  TextValue:"PROPAGATION RATE OF X = "
  CarriageControl:;
 110 INPUT Z
- Variable:Z -> _
+ Variable:Z -> .
 120 PRINT "CHANCE OF METTING BETWEEN X AND Y = ";
  TextValue:"CHANCE OF METTING BETWEEN X AND Y = "
  CarriageControl:;
 130 INPUT A
- Variable:A -> _
+ Variable:A -> .
 140 PRINT "TIME BETWEEN SAMPLES = ";
  TextValue:"TIME BETWEEN SAMPLES = "
  CarriageControl:;
 150 INPUT H
- Variable:H -> _
+ Variable:H -> .
 160 PRINT "MAXIMUM GENERATIONS = ";
  TextValue:"MAXIMUM GENERATIONS = "
  CarriageControl:;
 170 INPUT K
- Variable:K -> _
+ Variable:K -> .
 180 LET J = 0
- Variable:J -> _
+ Variable:J -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 190 PRINT
  CarriageControl:NL
 200 PRINT "INTERACTIVE GROWTH PATTERNS"
@@ -55,103 +55,103 @@
  TextValue:"DESTROYER"
  CarriageControl:NL
 230 IF J = K THEN 470
- Variable:J -> _
- Variable:K -> _
- BinaryOperatorEqual:=(_,_) -> ?
+ Variable:J -> .
+ Variable:K -> .
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:470
 240 LET J = J + 1
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 250 LET B = A*X*Y
- Variable:B -> _
- Variable:A -> _
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B -> .
+ Variable:A -> .
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 260 LET C = ((Y - B)*H) + Y
- Variable:C -> _
- Variable:Y -> _
- Variable:B -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:H -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:Y -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:C -> .
+ Variable:Y -> .
+ Variable:B -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:H -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:Y -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 270 IF C < 0 THEN 390
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:390
 280 LET Y = C
- Variable:Y -> _
- Variable:C -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:C -> .
+ AssignmentOperator:= . -> .
 290 LET D = (((X*Z) - B)*H) + X
- Variable:D -> _
- Variable:X -> _
- Variable:Z -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:B -> _
- BinaryOperatorMinus:-(_,_) -> _
- Variable:H -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:X -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:D -> .
+ Variable:X -> .
+ Variable:Z -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:B -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ Variable:H -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:X -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 300 IF D < 0 THEN 410
- Variable:D -> _
+ Variable:D -> .
  NumericValue:0
- BinaryOperatorLess:<(_,_) -> ?
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:410
 310 LET X = D
- Variable:X -> _
- Variable:D -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:D -> .
+ AssignmentOperator:= . -> .
 320 LET M = INT(X)
- Variable:M -> _
- Variable:X -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:M -> .
+ Variable:X -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 330 LET N = INT(Y)
- Variable:N -> _
- Variable:Y -> _
- FunctionInt:INT(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:N -> .
+ Variable:Y -> .
+ FunctionInt:INT(.) -> .
+ AssignmentOperator:= . -> .
 340 PRINT M,N
- Variable:M -> _
+ Variable:M -> .
  CarriageControl:,
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:NL
 350 IF M = 0 THEN 370
- Variable:M -> _
+ Variable:M -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:370
 360 GOTO 230
  LineNumber:230
 370 IF N = 0 THEN 430
- Variable:N -> _
+ Variable:N -> .
  NumericValue:0
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:430
 380 GOTO 230
  LineNumber:230
 390 LET Y = 0
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 400 GOTO 290
  LineNumber:290
 410 LET X = 0
- Variable:X -> _
+ Variable:X -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 420 GOTO 320
  LineNumber:320
 430 PRINT "ALL GROWTH ENDED"
@@ -160,7 +160,7 @@
 440 PRINT "NUMBER OF GENERATIONS = ";J
  TextValue:"NUMBER OF GENERATIONS = "
  CarriageControl:;
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 450 PRINT
  CarriageControl:NL
@@ -175,11 +175,11 @@
  TextValue:"FOR FURTHER GENERATIONS TYPE 1, IF NOT 0"
  CarriageControl:NL
 500 INPUT W
- Variable:W -> _
+ Variable:W -> .
 510 IF W = 1 THEN 530
- Variable:W -> _
+ Variable:W -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:530
 520 GOTO 560
  LineNumber:560
@@ -187,7 +187,7 @@
  TextValue:"MAXIMUM GENERATIONS = "
  CarriageControl:;
 540 INPUT K
- Variable:K -> _
+ Variable:K -> .
 550 GOTO 230
  LineNumber:230
 560 PRINT
@@ -196,11 +196,11 @@
  TextValue:"FOR NEXT PATTERN TYPE 1, 0 TO STOP"
  CarriageControl:NL
 580 INPUT W
- Variable:W -> _
+ Variable:W -> .
 590 IF W = 1 THEN 610
- Variable:W -> _
+ Variable:W -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:610
 600 STOP
  

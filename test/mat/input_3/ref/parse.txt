@@ -3,22 +3,22 @@
 20 OPTION BASE 0
  NumericValue:0
 30 LET R = 6
- Variable:R -> _
+ Variable:R -> .
  NumericValue:6
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 40 LET C = 2
- Variable:C -> _
+ Variable:C -> .
  NumericValue:2
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 100 MAT INPUT A(R,C)
- Variable:R -> _
- Variable:C -> _
- Variable:A(_,_) -> _()
+ Variable:R -> .
+ Variable:C -> .
+ Variable:A(.,.) -> .()
 150 PRINT "MATRIX A"
  TextValue:"MATRIX A"
  CarriageControl:NL
 160 MAT PRINT A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 999 END
  

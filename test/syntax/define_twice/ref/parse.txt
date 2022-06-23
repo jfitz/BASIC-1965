@@ -1,35 +1,35 @@
 10 DEF FNL(A)=LOG(A)/LOG(2)
- UserFunctionName:FNL -> _
- VariableName:A -> _
- Variable:A -> _
- FunctionLog:LOG(_) -> _
+ UserFunctionName:FNL -> .
+ VariableName:A -> .
+ Variable:A -> .
+ FunctionLog:LOG(.) -> .
  NumericValue:2
- FunctionLog:LOG(_) -> =_
- BinaryOperatorDivide:/(_,_) -> _
+ FunctionLog:LOG(.) -> =.
+ BinaryOperatorDivide:/(.,.) -> .
 12 DEF FNL(A)=LOG(A)/LOG(10)
- UserFunctionName:FNL -> _
- VariableName:A -> _
- Variable:A -> _
- FunctionLog:LOG(_) -> _
+ UserFunctionName:FNL -> .
+ VariableName:A -> .
+ Variable:A -> .
+ FunctionLog:LOG(.) -> .
  NumericValue:10
- FunctionLog:LOG(_) -> =_
- BinaryOperatorDivide:/(_,_) -> _
+ FunctionLog:LOG(.) -> =.
+ BinaryOperatorDivide:/(.,.) -> .
 20 FOR N = 2 TO 10 STEP 2
- control: Variable:N -> _
+ control: Variable:N -> .
  start:   ["NumericValue:2"]
  end:     ["NumericValue:10"]
  step:    ["NumericValue:2"]
 30 PRINT N, LOG(N), FNL(N)
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:,
- Variable:N -> _
- FunctionLog:LOG(_) -> _
+ Variable:N -> .
+ FunctionLog:LOG(.) -> .
  CarriageControl:,
- Variable:N -> _
- UserFunction:FNL(_) -> _
+ Variable:N -> .
+ UserFunction:FNL(.) -> .
  CarriageControl:NL
 40 NEXT N
- Variable:N -> _
+ Variable:N -> .
 99 END
  
 

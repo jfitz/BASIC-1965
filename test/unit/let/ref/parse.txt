@@ -1,69 +1,69 @@
 10 REM Test different values
  Remark:Test different values
 20 LET A0 = 10{}
- Variable:A0 -> _
+ Variable:A0 -> .
  NumericValue:10{}
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 21 LET A1 = 10{M}
- Variable:A1 -> _
+ Variable:A1 -> .
  NumericValue:10{M}
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 22 LET A2 = 10{FT2}
- Variable:A2 -> _
+ Variable:A2 -> .
  NumericValue:10{FT2}
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 23 LET A3 = 10{M2 S}
- Variable:A3 -> _
+ Variable:A3 -> .
  NumericValue:10{M2S}
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 24 LET A4 = 10{M2 S-1}
- Variable:A4 -> _
+ Variable:A4 -> .
  NumericValue:10{M2S-1}
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 30 LET F0 = A0
- Variable:F0 -> _
- Variable:A0 -> _
- AssignmentOperator:= _ -> _
+ Variable:F0 -> .
+ Variable:A0 -> .
+ AssignmentOperator:= . -> .
 31 LET F1 = A1
- Variable:F1 -> _
- Variable:A1 -> _
- AssignmentOperator:= _ -> _
+ Variable:F1 -> .
+ Variable:A1 -> .
+ AssignmentOperator:= . -> .
 32 LET F2 = A2
- Variable:F2 -> _
- Variable:A2 -> _
- AssignmentOperator:= _ -> _
+ Variable:F2 -> .
+ Variable:A2 -> .
+ AssignmentOperator:= . -> .
 33 LET F3 = A3
- Variable:F3 -> _
- Variable:A3 -> _
- AssignmentOperator:= _ -> _
+ Variable:F3 -> .
+ Variable:A3 -> .
+ AssignmentOperator:= . -> .
 34 LET F4 = A4
- Variable:F4 -> _
- Variable:A4 -> _
- AssignmentOperator:= _ -> _
+ Variable:F4 -> .
+ Variable:A4 -> .
+ AssignmentOperator:= . -> .
 40 PRINT "F0="; F0
  TextValue:"F0="
  CarriageControl:;
- Variable:F0 -> _
+ Variable:F0 -> .
  CarriageControl:NL
 41 PRINT "F1="; F1
  TextValue:"F1="
  CarriageControl:;
- Variable:F1 -> _
+ Variable:F1 -> .
  CarriageControl:NL
 42 PRINT "F2="; F2
  TextValue:"F2="
  CarriageControl:;
- Variable:F2 -> _
+ Variable:F2 -> .
  CarriageControl:NL
 43 PRINT "F3="; F3
  TextValue:"F3="
  CarriageControl:;
- Variable:F3 -> _
+ Variable:F3 -> .
  CarriageControl:NL
 44 PRINT "F4="; F4
  TextValue:"F4="
  CarriageControl:;
- Variable:F4 -> _
+ Variable:F4 -> .
  CarriageControl:NL
 99 END
  

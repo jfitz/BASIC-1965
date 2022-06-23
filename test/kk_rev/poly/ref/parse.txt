@@ -1,56 +1,56 @@
 10 DIM A(100), X(100), T(100,2)
  NumericValue:100
- Declaration:A() -> _()
+ Declaration:A() -> .()
  NumericValue:100
- Declaration:X() -> _()
+ Declaration:X() -> .()
  NumericValue:100
  NumericValue:2
- Declaration:T(,) -> _(,)
+ Declaration:T(,) -> .(,)
 20 READ N
- Variable:N -> _
+ Variable:N -> .
 30 FOR I = 0 TO N
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 40 READ A(I)
- Variable:I -> _
- Variable:A(_) -> _
+ Variable:I -> .
+ Variable:A(.) -> .
 50 NEXT I
- Variable:I -> _
+ Variable:I -> .
 60 READ X9
- Variable:X9 -> _
+ Variable:X9 -> .
 70 FOR J = 1 TO X9
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:X9 -> _"]
+ end:     ["Variable:X9 -> ."]
 80 READ X(J)
- Variable:J -> _
- Variable:X(_) -> _
+ Variable:J -> .
+ Variable:X(.) -> .
 90 NEXT J
- Variable:J -> _
+ Variable:J -> .
 95
 100 REM  MAIN ROUTINE.
  Remark: MAIN ROUTINE.
 110 LET K = 0
- Variable:K -> _
+ Variable:K -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 120 GOSUB 500
  LineNumber:500
 130 GOSUB 2000
  LineNumber:2000
 140 LET K = 1
- Variable:K -> _
+ Variable:K -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 150 GOSUB 500
  LineNumber:500
 160 GOSUB 2000
  LineNumber:2000
 170 LET K = 2
- Variable:K -> _
+ Variable:K -> .
  NumericValue:2
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 180 GOSUB 500
  LineNumber:500
 190
@@ -68,102 +68,102 @@
 220 PRINT
  CarriageControl:NL
 230 FOR J = 1 TO X9
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:X9 -> _"]
+ end:     ["Variable:X9 -> ."]
 240 PRINT X(J), T(J,0), T(J,1), T(J,2)
- Variable:J -> _
- Variable:X(_) -> _
+ Variable:J -> .
+ Variable:X(.) -> .
  CarriageControl:,
- Variable:J -> _
+ Variable:J -> .
  NumericValue:0
- Variable:T(_,_) -> _
+ Variable:T(.,.) -> .
  CarriageControl:,
- Variable:J -> _
+ Variable:J -> .
  NumericValue:1
- Variable:T(_,_) -> _
+ Variable:T(.,.) -> .
  CarriageControl:,
- Variable:J -> _
+ Variable:J -> .
  NumericValue:2
- Variable:T(_,_) -> _
+ Variable:T(.,.) -> .
  CarriageControl:NL
 250 NEXT J
- Variable:J -> _
+ Variable:J -> .
 260 STOP
  
 270
 500 REM  RUN THROUGH X-VALUES
  Remark: RUN THROUGH X-VALUES
 510 FOR J = 1 TO X9
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
- end:     ["Variable:X9 -> _"]
+ end:     ["Variable:X9 -> ."]
 520 LET X = X(J)
- Variable:X -> _
- Variable:J -> _
- Variable:X(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:X -> .
+ Variable:J -> .
+ Variable:X(.) -> .
+ AssignmentOperator:= . -> .
 530 GOSUB 1000
  LineNumber:1000
 540 LET T(J,K) = Y
- Variable:J -> _
- Variable:K -> _
- Variable:T(_,_) -> _
- Variable:Y -> _
- AssignmentOperator:= _ -> _
+ Variable:J -> .
+ Variable:K -> .
+ Variable:T(.,.) -> .
+ Variable:Y -> .
+ AssignmentOperator:= . -> .
 550 NEXT J
- Variable:J -> _
+ Variable:J -> .
 560 RETURN
  
 570
 1000 REM  EVALUATE.
  Remark: EVALUATE.
 1010 LET Y = 0
- Variable:Y -> _
+ Variable:Y -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 1020 FOR I = 0 TO N
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 1030 LET Y = Y*X + A(I)
- Variable:Y -> _
- Variable:Y -> _
- Variable:X -> _
- BinaryOperatorMultiply:*(_,_) -> _
- Variable:I -> _
- Variable:A(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Y -> .
+ Variable:Y -> .
+ Variable:X -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:I -> .
+ Variable:A(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 1040 NEXT I
- Variable:I -> _
+ Variable:I -> .
 1050 RETURN
  
 1060
 2000 REM  DIFFERENTIATE.
  Remark: DIFFERENTIATE.
 2010 FOR I = 0 TO N
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
- end:     ["Variable:N -> _"]
+ end:     ["Variable:N -> ."]
 2020 LET A(I) = A(I)*(N-I)
- Variable:I -> _
- Variable:A(_) -> _
- Variable:I -> _
- Variable:A(_) -> _
- Variable:N -> _
- Variable:I -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I -> .
+ Variable:A(.) -> .
+ Variable:I -> .
+ Variable:A(.) -> .
+ Variable:N -> .
+ Variable:I -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 2030 NEXT I
- Variable:I -> _
+ Variable:I -> .
 2040 LET N = N-1
- Variable:N -> _
- Variable:N -> _
+ Variable:N -> .
+ Variable:N -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 2050 RETURN
  
 2060
@@ -171,14 +171,14 @@
  NumericValue:2
  NumericValue:2
  NumericValue:3
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:1
 9100 DATA 8, -3, -1, 0, 0.5, 0.75, 1, 2.5, 5
  NumericValue:8
  NumericValue:3
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:0
  NumericValue:0.5
  NumericValue:0.75

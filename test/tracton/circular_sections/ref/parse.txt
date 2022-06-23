@@ -6,57 +6,57 @@
  TextValue:"RADIUS"
  CarriageControl:NL
 40 INPUT R
- Variable:R -> _
+ Variable:R -> .
 50 LET P = 3.14159
- Variable:P -> _
+ Variable:P -> .
  NumericValue:3.14159
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 60 LET D = 2*R
- Variable:D -> _
+ Variable:D -> .
  NumericValue:2
- Variable:R -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 70 LET I = (P*(D^4))/64
- Variable:I -> _
- Variable:P -> _
- Variable:D -> _
+ Variable:I -> .
+ Variable:P -> .
+ Variable:D -> .
  NumericValue:4
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:64
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 80 LET J = I*2
- Variable:J -> _
- Variable:I -> _
+ Variable:J -> .
+ Variable:I -> .
  NumericValue:2
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 90 LET A = (P*(D^2))/4
- Variable:A -> _
- Variable:P -> _
- Variable:D -> _
+ Variable:A -> .
+ Variable:P -> .
+ Variable:D -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:4
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 100 PRINT "MOMENT OF INERTIA = ";I
  TextValue:"MOMENT OF INERTIA = "
  CarriageControl:;
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 110 PRINT "POLAR MOMENT OF INERTIA = ";J
  TextValue:"POLAR MOMENT OF INERTIA = "
  CarriageControl:;
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 120 PRINT "AREA OF SECTION = ";A
  TextValue:"AREA OF SECTION = "
  CarriageControl:;
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:NL
 130 PRINT "*************************"
  TextValue:"*************************"
@@ -65,11 +65,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:NL
 150 INPUT L
- Variable:L -> _
+ Variable:L -> .
 160 IF L = 1 THEN 180
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:180
 170 STOP
  

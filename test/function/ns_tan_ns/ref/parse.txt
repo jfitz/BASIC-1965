@@ -1,35 +1,35 @@
 10 LET P = 3.14159
- Variable:P -> _
+ Variable:P -> .
  NumericValue:3.14159
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 20 PRINT "ANGLE","TAN"
  TextValue:"ANGLE"
  CarriageControl:,
  TextValue:"TAN"
  CarriageControl:NL
 30 FOR I = 0 TO 2 STEP 0.1
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:2"]
  step:    ["NumericValue:0.1"]
 40 LET A = I * P
- Variable:A -> _
- Variable:I -> _
- Variable:P -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:I -> .
+ Variable:P -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 50 LET S = TAN(A)
- Variable:S -> _
- Variable:A -> _
- FunctionTan:TAN(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:A -> .
+ FunctionTan:TAN(.) -> .
+ AssignmentOperator:= . -> .
 60 PRINT A, S
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:S -> _
+ Variable:S -> .
  CarriageControl:NL
 70 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 

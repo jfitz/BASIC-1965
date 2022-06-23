@@ -5,61 +5,61 @@
 30  REM SECTION
  Remark:SECTION
 40  INPUT "INSIDE DIAMETER (D1) = ", D1
- Variable:D1 -> _
+ Variable:D1 -> .
 50  INPUT "OUTSIDE DIAMETER (D2) = "; D2
- Variable:D2 -> _
+ Variable:D2 -> .
 60  LET P=3.14159
- Variable:P -> _
+ Variable:P -> .
  NumericValue:3.14159
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 70  LET I = (P*((D2 ^ 4) - (D1 ^ 4)))/64
- Variable:I -> _
- Variable:P -> _
- Variable:D2 -> _
+ Variable:I -> .
+ Variable:P -> .
+ Variable:D2 -> .
  NumericValue:4
- BinaryOperatorPower:^(_,_) -> _
- Variable:D1 -> _
+ BinaryOperatorPower:^(.,.) -> .
+ Variable:D1 -> .
  NumericValue:4
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:64
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 80  LET J=I*2
- Variable:J -> _
- Variable:I -> _
+ Variable:J -> .
+ Variable:I -> .
  NumericValue:2
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 100  LET A = (P*((D2 ^ 2) - (D1 ^ 2)))/4
- Variable:A -> _
- Variable:P -> _
- Variable:D2 -> _
+ Variable:A -> .
+ Variable:P -> .
+ Variable:D2 -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- Variable:D1 -> _
+ BinaryOperatorPower:^(.,.) -> .
+ Variable:D1 -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorMinus:-(_,_) -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:4
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 110  PRINT "MOMENT OF INERTIA = " I
  TextValue:"MOMENT OF INERTIA = "
  CarriageControl:
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 120  PRINT "POLAR MOMENT OF INERTIA = " J
  TextValue:"POLAR MOMENT OF INERTIA = "
  CarriageControl:
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 130  PRINT "AREA OF SECTION = " A
  TextValue:"AREA OF SECTION = "
  CarriageControl:
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:NL
 140  PRINT
  CarriageControl:NL
@@ -67,11 +67,11 @@
  TextValue:"TYPE 1 TO CONTINUE, 0 TO STOP"
  CarriageControl:;
 160  INPUT L
- Variable:L -> _
+ Variable:L -> .
 170  IF L=1 THEN 190
- Variable:L -> _
+ Variable:L -> .
  NumericValue:1
- BinaryOperatorEqual:=(_,_) -> ?
+ BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:190
 180  STOP
  

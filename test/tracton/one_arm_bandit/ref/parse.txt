@@ -43,49 +43,49 @@
  TextValue:"EARN $10. EACH TURN COSTS $1. GOOD-LUCK"
  CarriageControl:NL
 170 LET J = 0
- Variable:J -> _
+ Variable:J -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 180 PRINT
  CarriageControl:NL
 190 GOSUB 590
  LineNumber:590
 200 LET S1 = S
- Variable:S1 -> _
- Variable:S -> _
- AssignmentOperator:= _ -> _
+ Variable:S1 -> .
+ Variable:S -> .
+ AssignmentOperator:= . -> .
 210 GOSUB 590
  LineNumber:590
 220 LET S2 = S
- Variable:S2 -> _
- Variable:S -> _
- AssignmentOperator:= _ -> _
+ Variable:S2 -> .
+ Variable:S -> .
+ AssignmentOperator:= . -> .
 230 GOSUB 590
  LineNumber:590
 240 LET S3 = S
- Variable:S3 -> _
- Variable:S -> _
- AssignmentOperator:= _ -> _
+ Variable:S3 -> .
+ Variable:S -> .
+ AssignmentOperator:= . -> .
 250 LET S = S1
- Variable:S -> _
- Variable:S1 -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S1 -> .
+ AssignmentOperator:= . -> .
 260 GOSUB 610
  LineNumber:610
 270 LET S1$ = S$
  ERROR: Token 'InvalidToken:$' is not a value or operator
 280 LET S = S2
- Variable:S -> _
- Variable:S2 -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S2 -> .
+ AssignmentOperator:= . -> .
 290 GOSUB 610
  LineNumber:610
 300 LET S2$ = S$
  ERROR: Token 'InvalidToken:$' is not a value or operator
 310 LET S = S3
- Variable:S -> _
- Variable:S3 -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:S3 -> .
+ AssignmentOperator:= . -> .
 320 GOSUB 610
  LineNumber:610
 330 LET S3$ = S$
@@ -123,43 +123,43 @@
  ERROR: Token 'InvalidToken:$' is not a value or operator
  LineNumber:540
 460 LET J = J - 1
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 470 GOTO 550
  LineNumber:550
 480 LET J = J + 89
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:89
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 490 GOTO 550
  LineNumber:550
 500 LET J = J + 2
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:2
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 510 GOTO 550
  LineNumber:550
 520 LET J = J + 1
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 530 GOTO 550
  LineNumber:550
 540 LET J = J + 9
- Variable:J -> _
- Variable:J -> _
+ Variable:J -> .
+ Variable:J -> .
  NumericValue:9
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 550 PRINT
  CarriageControl:NL
 560 PRINT S1$;" ";S2$;" ";S3$
@@ -175,19 +175,19 @@
 570 PRINT "YOUR EARNINGS ARE NOW $";J
  TextValue:"YOUR EARNINGS ARE NOW $"
  CarriageControl:;
- Variable:J -> _
+ Variable:J -> .
  CarriageControl:NL
 580 GOTO 720
  LineNumber:720
 590 LET S = 1 + INT(5*RND)
- Variable:S -> _
+ Variable:S -> .
  NumericValue:1
  NumericValue:5
- FunctionRnd:RND -> _
- BinaryOperatorMultiply:*(_,_) -> _
- FunctionInt:INT(_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ FunctionRnd:RND -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ FunctionInt:INT(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 600 RETURN
  
 610 ON S GOTO 620, 640, 660, 680, 700

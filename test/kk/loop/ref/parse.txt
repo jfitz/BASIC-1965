@@ -1,21 +1,21 @@
 10 LET I = 1
- Variable:I -> _
+ Variable:I -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 20 IF I > 1000 THEN 60
- Variable:I -> _
+ Variable:I -> .
  NumericValue:1000
- BinaryOperatorGreater:>(_,_) -> ?
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:60
 30 PRINT I
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 40 LET I = I + 1
- Variable:I -> _
- Variable:I -> _
+ Variable:I -> .
+ Variable:I -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 50 GOTO 20
  LineNumber:20
 60 END

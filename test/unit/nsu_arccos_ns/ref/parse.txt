@@ -4,23 +4,23 @@
 102 OPTION TRIG_REQUIRE_UNITS FALSE
  BooleanValue:false
 110 LET C = 0.707
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0.707
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 112 PRINT "C ="; C
  TextValue:"C ="
  CarriageControl:;
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:NL
 120 LET A = ARCCOS(C)
- Variable:A -> _
- Variable:C -> _
- FunctionArcCos:ARCCOS(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:C -> .
+ FunctionArcCos:ARCCOS(.) -> .
+ AssignmentOperator:= . -> .
 122 PRINT "A ="; A
  TextValue:"A ="
  CarriageControl:;
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:NL
 200 PRINT "TRIG_REQUIRE_UNITS TRUE"
  TextValue:"TRIG_REQUIRE_UNITS TRUE"
@@ -28,23 +28,23 @@
 202 OPTION TRIG_REQUIRE_UNITS TRUE
  BooleanValue:true
 210 LET C = 0.707
- Variable:C -> _
+ Variable:C -> .
  NumericValue:0.707
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 212 PRINT "C ="; C
  TextValue:"C ="
  CarriageControl:;
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:NL
 220 LET A = ARCCOS(C)
- Variable:A -> _
- Variable:C -> _
- FunctionArcCos:ARCCOS(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:C -> .
+ FunctionArcCos:ARCCOS(.) -> .
+ AssignmentOperator:= . -> .
 222 PRINT "A ="; A
  TextValue:"A ="
  CarriageControl:;
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:NL
 999 END
  

@@ -1,38 +1,38 @@
 5 DEF FNR(X) = INT(X*1000 + 0.5)/1000
- UserFunctionName:FNR -> _
- VariableName:X -> _
- Variable:X -> _
+ UserFunctionName:FNR -> .
+ VariableName:X -> .
+ Variable:X -> .
  NumericValue:1000
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:0.5
- BinaryOperatorPlus:+(_,_) -> _
- FunctionInt:INT(_) -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionInt:INT(.) -> .
  NumericValue:1000
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
 10 LET P = 3.14159625
- Variable:P -> _
+ Variable:P -> .
  NumericValue:3.14159625
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 20 DEF FND(X) = X*P/180
- UserFunctionName:FND -> _
- VariableName:X -> _
- Variable:X -> _
- Variable:P -> _
- BinaryOperatorMultiply:*(_,_) -> _
+ UserFunctionName:FND -> .
+ VariableName:X -> .
+ Variable:X -> .
+ Variable:P -> .
+ BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
 30 DEF FNS(X) = SIN(FND(X))
- UserFunctionName:FNS -> _
- VariableName:X -> _
- Variable:X -> _
- UserFunction:FND(_) -> _
- FunctionSin:SIN(_) -> _
+ UserFunctionName:FNS -> .
+ VariableName:X -> .
+ Variable:X -> .
+ UserFunction:FND(.) -> .
+ FunctionSin:SIN(.) -> .
 40 DEF FNC(X) = COS(FND(X))
- UserFunctionName:FNC -> _
- VariableName:X -> _
- Variable:X -> _
- UserFunction:FND(_) -> _
- FunctionCos:COS(_) -> _
+ UserFunctionName:FNC -> .
+ VariableName:X -> .
+ Variable:X -> .
+ UserFunction:FND(.) -> .
+ FunctionCos:COS(.) -> .
 50 PRINT "DEGREES", "SINE", "COSINE"
  TextValue:"DEGREES"
  CarriageControl:,
@@ -41,23 +41,23 @@
  TextValue:"COSINE"
  CarriageControl:NL
 60 FOR X = 0 TO 90 STEP 10
- control: Variable:X -> _
+ control: Variable:X -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:90"]
  step:    ["NumericValue:10"]
 70     PRINT X, FNR(FNS(X)), FNR(FNC(X))
- Variable:X -> _
+ Variable:X -> .
  CarriageControl:,
- Variable:X -> _
- UserFunction:FNS(_) -> _
- UserFunction:FNR(_) -> _
+ Variable:X -> .
+ UserFunction:FNS(.) -> .
+ UserFunction:FNR(.) -> .
  CarriageControl:,
- Variable:X -> _
- UserFunction:FNC(_) -> _
- UserFunction:FNR(_) -> _
+ Variable:X -> .
+ UserFunction:FNC(.) -> .
+ UserFunction:FNR(.) -> .
  CarriageControl:NL
 80 NEXT X
- Variable:X -> _
+ Variable:X -> .
 99 END
  
 

@@ -22,13 +22,13 @@ Halstead complexity:
 10 (0 3) LET P = 3.1416
   Origs: :start
   Dests: 50:auto
-20 FND(_) (0 4) DEF FND(X) = X * P / 180
+20 FND(.) (0 4) DEF FND(X) = X * P / 180
   Origs: 
   Dests: 
-30 FNS(_) (0 3) DEF FNS(X) = SIN(FND(X))
+30 FNS(.) (0 3) DEF FNS(X) = SIN(FND(X))
   Origs: 
   Dests: 
-40 FNC(_) (0 3) DEF FNC(X) = COS(FND(X))
+40 FNC(.) (0 3) DEF FNC(X) = COS(FND(X))
   Origs: 
   Dests: 
 50 (0 4) PRINT "DEGREES", "SINE", "COSINE"

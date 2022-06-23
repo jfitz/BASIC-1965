@@ -1,33 +1,33 @@
 10 REM TEST FOR/NEXT STATEMENTS
  Remark:TEST FOR/NEXT STATEMENTS
 20 LET B = 1
- Variable:B -> _
+ Variable:B -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 30 LET E = 5
- Variable:E -> _
+ Variable:E -> .
  NumericValue:5
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 40 LET S = 1
- Variable:S -> _
+ Variable:S -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 50 FOR I = B TO E STEP S
- control: Variable:I -> _
- start:   ["Variable:B -> _"]
- end:     ["Variable:E -> _"]
- step:    ["Variable:S -> _"]
+ control: Variable:I -> .
+ start:   ["Variable:B -> ."]
+ end:     ["Variable:E -> ."]
+ step:    ["Variable:S -> ."]
 60 PRINT I
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:NL
 70 LET S = S + 1
- Variable:S -> _
- Variable:S -> _
+ Variable:S -> .
+ Variable:S -> .
  NumericValue:1
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 80 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 

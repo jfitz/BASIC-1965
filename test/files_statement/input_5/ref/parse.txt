@@ -4,19 +4,19 @@
  TextValue:"input.txt"
 30 INPUT #1;A,B,C,D
  NumericValue:1
- UnaryOperatorHash:#(_) -> =FH
- Variable:A -> _
- Variable:B -> _
- Variable:C -> _
- Variable:D -> _
+ UnaryOperatorHash:#(.) -> =FH
+ Variable:A -> .
+ Variable:B -> .
+ Variable:C -> .
+ Variable:D -> .
 40 PRINT A;B;C;D
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:;
- Variable:B -> _
+ Variable:B -> .
  CarriageControl:;
- Variable:C -> _
+ Variable:C -> .
  CarriageControl:;
- Variable:D -> _
+ Variable:D -> .
  CarriageControl:NL
 90 STOP
  

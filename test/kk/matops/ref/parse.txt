@@ -1,50 +1,50 @@
 100 MAT READ A(2,3), B(2,3)
  NumericValue:2
  NumericValue:3
- Variable:A(_,_) -> _(,)
+ Variable:A(.,.) -> .(,)
  NumericValue:2
  NumericValue:3
- Variable:B(_,_) -> _(,)
+ Variable:B(.,.) -> .(,)
 110
 130 MAT S = A+B
- Variable:S(,) -> _(,)
- Variable:A(,) -> _(,)
- Variable:B(,) -> _(,)
- BinaryOperatorPlus:+(_(,),_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:S(,) -> .(,)
+ Variable:A(,) -> .(,)
+ Variable:B(,) -> .(,)
+ BinaryOperatorPlus:+(.(,),.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 140 PRINT "THE SUM"
  TextValue:"THE SUM"
  CarriageControl:NL
 150 MAT PRINT S
- Variable:S(,) -> _(,)
+ Variable:S(,) -> .(,)
  CarriageControl:NL
 160
 170 MAT D = A-B
- Variable:D(,) -> _(,)
- Variable:A(,) -> _(,)
- Variable:B(,) -> _(,)
- BinaryOperatorMinus:-(_(,),_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:D(,) -> .(,)
+ Variable:A(,) -> .(,)
+ Variable:B(,) -> .(,)
+ BinaryOperatorMinus:-(.(,),.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 180 PRINT "THE DIFFERENCE"
  TextValue:"THE DIFFERENCE"
  CarriageControl:NL
 190 MAT PRINT D
- Variable:D(,) -> _(,)
+ Variable:D(,) -> .(,)
  CarriageControl:NL
 200
 210 MAT K = (1/4)*A
- Variable:K(,) -> _(,)
+ Variable:K(,) -> .(,)
  NumericValue:1
  NumericValue:4
- BinaryOperatorDivide:/(_,_) -> =_
- Variable:A(,) -> _(,)
- BinaryOperatorMultiply:*(_,_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ BinaryOperatorDivide:/(.,.) -> =.
+ Variable:A(,) -> .(,)
+ BinaryOperatorMultiply:*(.,.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 220 PRINT "SCALAR MULTIPLE"
  TextValue:"SCALAR MULTIPLE"
  CarriageControl:NL
 230 MAT PRINT K
- Variable:K(,) -> _(,)
+ Variable:K(,) -> .(,)
  CarriageControl:NL
 240
 900 DATA 1, 4, 7, 3, 2, 1
@@ -57,13 +57,13 @@
 910 DATA 3, -2, 6, 2, -5, -1
  NumericValue:3
  NumericValue:2
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:6
  NumericValue:2
  NumericValue:5
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
  NumericValue:1
- UnaryOperatorMinus:-(_) -> =_
+ UnaryOperatorMinus:-(.) -> =.
 999 END
  
 

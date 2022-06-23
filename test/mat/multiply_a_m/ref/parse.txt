@@ -2,10 +2,10 @@
  Remark:MATRIX ASSIGNMENT
 20 DIM A(3), B(3, 2)
  NumericValue:3
- Declaration:A() -> _()
+ Declaration:A() -> .()
  NumericValue:3
  NumericValue:2
- Declaration:B(,) -> _(,)
+ Declaration:B(,) -> .(,)
 30 DATA 1,2,3
  NumericValue:1
  NumericValue:2
@@ -18,53 +18,53 @@
  NumericValue:11
  NumericValue:12
 100 FOR I = 1 TO 3
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
 120 READ A(I)
- Variable:I -> _
- Variable:A(_) -> _
+ Variable:I -> .
+ Variable:A(.) -> .
 140 NEXT I
- Variable:I -> _
+ Variable:I -> .
 150 PRINT "MATRIX A"
  TextValue:"MATRIX A"
  CarriageControl:NL
 160 MAT PRINT A
- Variable:A(,) -> _(,)
+ Variable:A(,) -> .(,)
  CarriageControl:NL
 200 FOR I = 1 TO 3
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
 210 FOR J = 1 TO 2
- control: Variable:J -> _
+ control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:2"]
 220 READ B(I,J)
- Variable:I -> _
- Variable:J -> _
- Variable:B(_,_) -> _
+ Variable:I -> .
+ Variable:J -> .
+ Variable:B(.,.) -> .
 230 NEXT J
- Variable:J -> _
+ Variable:J -> .
 240 NEXT I
- Variable:I -> _
+ Variable:I -> .
 250 PRINT "MATRIX B"
  TextValue:"MATRIX B"
  CarriageControl:NL
 260 MAT PRINT B
- Variable:B(,) -> _(,)
+ Variable:B(,) -> .(,)
  CarriageControl:NL
 300 MAT C = A*B
- Variable:C(,) -> _(,)
- Variable:A(,) -> _(,)
- Variable:B(,) -> _(,)
- BinaryOperatorMultiply:*(_(,),_(,)) -> _(,)
- AssignmentOperator:= _(,) -> _(,)
+ Variable:C(,) -> .(,)
+ Variable:A(,) -> .(,)
+ Variable:B(,) -> .(,)
+ BinaryOperatorMultiply:*(.(,),.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
 310 PRINT "MATRIX C"
  TextValue:"MATRIX C"
  CarriageControl:NL
 320 MAT PRINT C
- Variable:C(,) -> _(,)
+ Variable:C(,) -> .(,)
  CarriageControl:NL
 999 END
  

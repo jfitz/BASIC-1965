@@ -5,81 +5,81 @@
 50 REM CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
  Remark:CALCULATE LENGTH OF LINE (X1,X2)-(Y1,Y2)
 51 DEF FNL(X1,X2,Y1,Y2) = SQR((X1-Y1)^2 + (X2-Y2)^2)
- UserFunctionName:FNL -> _
- VariableName:X1 -> _
- VariableName:X2 -> _
- VariableName:Y1 -> _
- VariableName:Y2 -> _
- Variable:X1 -> _
- Variable:Y1 -> _
- BinaryOperatorMinus:-(_,_) -> _
+ UserFunctionName:FNL -> .
+ VariableName:X1 -> .
+ VariableName:X2 -> .
+ VariableName:Y1 -> .
+ VariableName:Y2 -> .
+ Variable:X1 -> .
+ Variable:Y1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- Variable:X2 -> _
- Variable:Y2 -> _
- BinaryOperatorMinus:-(_,_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ Variable:X2 -> .
+ Variable:Y2 -> .
+ BinaryOperatorMinus:-(.,.) -> .
  NumericValue:2
- BinaryOperatorPower:^(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
+ BinaryOperatorPower:^(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
 60 REM CONVERT DEGREES TO RADIANS
  Remark:CONVERT DEGREES TO RADIANS
 61 DEF FNR(D) = D/180*3.1415926
- UserFunctionName:FNR -> _
- VariableName:D -> _
- Variable:D -> _
+ UserFunctionName:FNR -> .
+ VariableName:D -> .
+ Variable:D -> .
  NumericValue:180
- BinaryOperatorDivide:/(_,_) -> _
+ BinaryOperatorDivide:/(.,.) -> .
  NumericValue:3.1415926
- BinaryOperatorMultiply:*(_,_) -> _
+ BinaryOperatorMultiply:*(.,.) -> .
 100 REM POINT A
  Remark:POINT A
 101 READ A1,A2
- Variable:A1 -> _
- Variable:A2 -> _
+ Variable:A1 -> .
+ Variable:A2 -> .
 110 REM CIRCLE AT POINT D WITH RADIUS DC
  Remark:CIRCLE AT POINT D WITH RADIUS DC
 111 READ D1,D2
- Variable:D1 -> _
- Variable:D2 -> _
+ Variable:D1 -> .
+ Variable:D2 -> .
 113 READ C1,C2
- Variable:C1 -> _
- Variable:C2 -> _
+ Variable:C1 -> .
+ Variable:C2 -> .
 115 LET D5=D1-C1  ' RADIUS
- Variable:D5 -> _
- Variable:D1 -> _
- Variable:C1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:D5 -> .
+ Variable:D1 -> .
+ Variable:C1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 121 READ Z9,Z8
- Variable:Z9 -> _
- Variable:Z8 -> _
+ Variable:Z9 -> .
+ Variable:Z8 -> .
 122 READ R9
- Variable:R9 -> _
+ Variable:R9 -> .
 200 REM FIND POINT B
  Remark:FIND POINT B
 201 LET B1=(A1+D1)/2
- Variable:B1 -> _
- Variable:A1 -> _
- Variable:D1 -> _
- BinaryOperatorPlus:+(_,_) -> _
+ Variable:B1 -> .
+ Variable:A1 -> .
+ Variable:D1 -> .
+ BinaryOperatorPlus:+(.,.) -> .
  NumericValue:2
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 202 LET B2=0
- Variable:B2 -> _
+ Variable:B2 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 203 LET I1=D1+D5
- Variable:I1 -> _
- Variable:D1 -> _
- Variable:D5 -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I1 -> .
+ Variable:D1 -> .
+ Variable:D5 -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 204 LET I2=0
- Variable:I2 -> _
+ Variable:I2 -> .
  NumericValue:0
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 217 PRINT "IDENTIFYING POINT B"
  TextValue:"IDENTIFYING POINT B"
  CarriageControl:NL
@@ -93,103 +93,103 @@
  TextValue:"Z"
  CarriageControl:NL
 219 LET Z=1
- Variable:Z -> _
+ Variable:Z -> .
  NumericValue:1
- AssignmentOperator:= =_ -> _
+ AssignmentOperator:= =. -> .
 220 REM RATIO OF AC/BC
  Remark:RATIO OF AC/BC
 221 LET F1 = FNL(A1,A2,C1,C2)
- Variable:F1 -> _
- Variable:A1 -> _
- Variable:A2 -> _
- Variable:C1 -> _
- Variable:C2 -> _
- UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:F1 -> .
+ Variable:A1 -> .
+ Variable:A2 -> .
+ Variable:C1 -> .
+ Variable:C2 -> .
+ UserFunction:FNL(.,.,.,.) -> .
+ AssignmentOperator:= . -> .
 222 LET F2 = FNL(B1,B2,C1,C2)
- Variable:F2 -> _
- Variable:B1 -> _
- Variable:B2 -> _
- Variable:C1 -> _
- Variable:C2 -> _
- UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:F2 -> .
+ Variable:B1 -> .
+ Variable:B2 -> .
+ Variable:C1 -> .
+ Variable:C2 -> .
+ UserFunction:FNL(.,.,.,.) -> .
+ AssignmentOperator:= . -> .
 223 LET R0 = F1/F2
- Variable:R0 -> _
- Variable:F1 -> _
- Variable:F2 -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R0 -> .
+ Variable:F1 -> .
+ Variable:F2 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 230 REM RATIO OF AI/BI
  Remark:RATIO OF AI/BI
 231 LET G1 = FNL(A1,A2,I1,I2)
- Variable:G1 -> _
- Variable:A1 -> _
- Variable:A2 -> _
- Variable:I1 -> _
- Variable:I2 -> _
- UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:G1 -> .
+ Variable:A1 -> .
+ Variable:A2 -> .
+ Variable:I1 -> .
+ Variable:I2 -> .
+ UserFunction:FNL(.,.,.,.) -> .
+ AssignmentOperator:= . -> .
 232 LET G2 = FNL(B1,B2,I1,I2)
- Variable:G2 -> _
- Variable:B1 -> _
- Variable:B2 -> _
- Variable:I1 -> _
- Variable:I2 -> _
- UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:G2 -> .
+ Variable:B1 -> .
+ Variable:B2 -> .
+ Variable:I1 -> .
+ Variable:I2 -> .
+ UserFunction:FNL(.,.,.,.) -> .
+ AssignmentOperator:= . -> .
 233 LET R1 = G1/G2
- Variable:R1 -> _
- Variable:G1 -> _
- Variable:G2 -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R1 -> .
+ Variable:G1 -> .
+ Variable:G2 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 239 PRINT B1,R0,R1,Z
- Variable:B1 -> _
+ Variable:B1 -> .
  CarriageControl:,
- Variable:R0 -> _
+ Variable:R0 -> .
  CarriageControl:,
- Variable:R1 -> _
+ Variable:R1 -> .
  CarriageControl:,
- Variable:Z -> _
+ Variable:Z -> .
  CarriageControl:NL
 240 IF ABS(R0-R1)<R9 THEN 300
- Variable:R0 -> _
- Variable:R1 -> _
- BinaryOperatorMinus:-(_,_) -> _
- FunctionAbs:ABS(_) -> _
- Variable:R9 -> _
- BinaryOperatorLess:<(_,_) -> ?
+ Variable:R0 -> .
+ Variable:R1 -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ FunctionAbs:ABS(.) -> .
+ Variable:R9 -> .
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:300
 241 IF R0<R1 THEN 245
- Variable:R0 -> _
- Variable:R1 -> _
- BinaryOperatorLess:<(_,_) -> ?
+ Variable:R0 -> .
+ Variable:R1 -> .
+ BinaryOperatorLess:<(.,.) -> ?
  LineNumber:245
 242 LET B1=B1+Z
- Variable:B1 -> _
- Variable:B1 -> _
- Variable:Z -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B1 -> .
+ Variable:B1 -> .
+ Variable:Z -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 243 GOTO 246
  LineNumber:246
 245 LET B1=B1-Z
- Variable:B1 -> _
- Variable:B1 -> _
- Variable:Z -> _
- BinaryOperatorMinus:-(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:B1 -> .
+ Variable:B1 -> .
+ Variable:Z -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
 246 LET Z=Z*Z8
- Variable:Z -> _
- Variable:Z -> _
- Variable:Z8 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:Z -> .
+ Variable:Z -> .
+ Variable:Z8 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 247 IF Z>Z9 THEN 220
- Variable:Z -> _
- Variable:Z9 -> _
- BinaryOperatorGreater:>(_,_) -> ?
+ Variable:Z -> .
+ Variable:Z9 -> .
+ BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:220
 248 PRINT "CANNOT RESOLVE POINT B"
  TextValue:"CANNOT RESOLVE POINT B"
@@ -201,38 +201,38 @@
 301 PRINT "POINT C    :";C1;C2
  TextValue:"POINT C    :"
  CarriageControl:;
- Variable:C1 -> _
+ Variable:C1 -> .
  CarriageControl:;
- Variable:C2 -> _
+ Variable:C2 -> .
  CarriageControl:NL
 302 PRINT "POINT B    :";B1;B2
  TextValue:"POINT B    :"
  CarriageControl:;
- Variable:B1 -> _
+ Variable:B1 -> .
  CarriageControl:;
- Variable:B2 -> _
+ Variable:B2 -> .
  CarriageControl:NL
 303 PRINT "DISTANCE BC:";F2
  TextValue:"DISTANCE BC:"
  CarriageControl:;
- Variable:F2 -> _
+ Variable:F2 -> .
  CarriageControl:NL
 304 PRINT "POINT A    :";A1;A2
  TextValue:"POINT A    :"
  CarriageControl:;
- Variable:A1 -> _
+ Variable:A1 -> .
  CarriageControl:;
- Variable:A2 -> _
+ Variable:A2 -> .
  CarriageControl:NL
 305 PRINT "DISTANCE AC:";F1
  TextValue:"DISTANCE AC:"
  CarriageControl:;
- Variable:F1 -> _
+ Variable:F1 -> .
  CarriageControl:NL
 306 PRINT "RATIO AC/BC:";R0
  TextValue:"RATIO AC/BC:"
  CarriageControl:;
- Variable:R0 -> _
+ Variable:R0 -> .
  CarriageControl:NL
 400 REM PICK VALUES ON CIRCLE D
  Remark:PICK VALUES ON CIRCLE D
@@ -252,78 +252,78 @@
  TextValue:"DIFFERENCE"
  CarriageControl:NL
 410 FOR I = 0 TO 365 STEP 5
- control: Variable:I -> _
+ control: Variable:I -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:365"]
  step:    ["NumericValue:5"]
 420 REM PICK POINT ON CIRCLE D
  Remark:PICK POINT ON CIRCLE D
 421 LET T = FNR(I)
- Variable:T -> _
- Variable:I -> _
- UserFunction:FNR(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:T -> .
+ Variable:I -> .
+ UserFunction:FNR(.) -> .
+ AssignmentOperator:= . -> .
 422 LET I1 = D1 + COS(T)*D5
- Variable:I1 -> _
- Variable:D1 -> _
- Variable:T -> _
- FunctionCos:COS(_) -> _
- Variable:D5 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I1 -> .
+ Variable:D1 -> .
+ Variable:T -> .
+ FunctionCos:COS(.) -> .
+ Variable:D5 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 423 LET I2 = D2 + SIN(T)*D5
- Variable:I2 -> _
- Variable:D2 -> _
- Variable:T -> _
- FunctionSin:SIN(_) -> _
- Variable:D5 -> _
- BinaryOperatorMultiply:*(_,_) -> _
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:I2 -> .
+ Variable:D2 -> .
+ Variable:T -> .
+ FunctionSin:SIN(.) -> .
+ Variable:D5 -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 424 LET G1 = FNL(A1,A2,I1,I2)
- Variable:G1 -> _
- Variable:A1 -> _
- Variable:A2 -> _
- Variable:I1 -> _
- Variable:I2 -> _
- UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:G1 -> .
+ Variable:A1 -> .
+ Variable:A2 -> .
+ Variable:I1 -> .
+ Variable:I2 -> .
+ UserFunction:FNL(.,.,.,.) -> .
+ AssignmentOperator:= . -> .
 425 LET G2 = FNL(B1,B2,I1,I2)
- Variable:G2 -> _
- Variable:B1 -> _
- Variable:B2 -> _
- Variable:I1 -> _
- Variable:I2 -> _
- UserFunction:FNL(_,_,_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:G2 -> .
+ Variable:B1 -> .
+ Variable:B2 -> .
+ Variable:I1 -> .
+ Variable:I2 -> .
+ UserFunction:FNL(.,.,.,.) -> .
+ AssignmentOperator:= . -> .
 426 LET R1 = G1/G2
- Variable:R1 -> _
- Variable:G1 -> _
- Variable:G2 -> _
- BinaryOperatorDivide:/(_,_) -> _
- AssignmentOperator:= _ -> _
+ Variable:R1 -> .
+ Variable:G1 -> .
+ Variable:G2 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
 430 REM PRINT RESULTS
  Remark:PRINT RESULTS
 431 PRINT T,I1;I2,G1;G2,R1,R1-R0
- Variable:T -> _
+ Variable:T -> .
  CarriageControl:,
- Variable:I1 -> _
+ Variable:I1 -> .
  CarriageControl:;
- Variable:I2 -> _
+ Variable:I2 -> .
  CarriageControl:,
- Variable:G1 -> _
+ Variable:G1 -> .
  CarriageControl:;
- Variable:G2 -> _
+ Variable:G2 -> .
  CarriageControl:,
- Variable:R1 -> _
+ Variable:R1 -> .
  CarriageControl:,
- Variable:R1 -> _
- Variable:R0 -> _
- BinaryOperatorMinus:-(_,_) -> _
+ Variable:R1 -> .
+ Variable:R0 -> .
+ BinaryOperatorMinus:-(.,.) -> .
  CarriageControl:NL
 441 NEXT I
- Variable:I -> _
+ Variable:I -> .
 900 REM DATA - POINT A, POINT D, POINT C
  Remark:DATA - POINT A, POINT D, POINT C
 901 DATA 0,0,100,0,75,0,0.00001,0.995,0.00001

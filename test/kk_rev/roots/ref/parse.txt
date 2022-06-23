@@ -8,29 +8,29 @@
  TextValue:"FOURTH ROOT"
  CarriageControl:NL
 20 FOR N = 1 TO 10
- control: Variable:N -> _
+ control: Variable:N -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:10"]
 30 PRINT N,
- Variable:N -> _
+ Variable:N -> .
  CarriageControl:,
 40 FOR R = 2 TO 4
- control: Variable:R -> _
+ control: Variable:R -> .
  start:   ["NumericValue:2"]
  end:     ["NumericValue:4"]
 50 PRINT N^(1/R),
- Variable:N -> _
+ Variable:N -> .
  NumericValue:1
- Variable:R -> _
- BinaryOperatorDivide:/(_,_) -> _
- BinaryOperatorPower:^(_,_) -> _
+ Variable:R -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ BinaryOperatorPower:^(.,.) -> .
  CarriageControl:,
 60 NEXT R
- Variable:R -> _
+ Variable:R -> .
 70 PRINT
  CarriageControl:NL
 80 NEXT N
- Variable:N -> _
+ Variable:N -> .
 99 END
  
 

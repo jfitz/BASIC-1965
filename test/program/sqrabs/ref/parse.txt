@@ -1,58 +1,58 @@
 10 FOR I=-5 TO 10
- control: Variable:I -> _
- start:   ["NumericValue:5", "UnaryOperatorMinus:-(_) -> =_"]
+ control: Variable:I -> .
+ start:   ["NumericValue:5", "UnaryOperatorMinus:-(.) -> =."]
  end:     ["NumericValue:10"]
 20 LET A=ABS(I)
- Variable:A -> _
- Variable:I -> _
- FunctionAbs:ABS(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:A -> .
+ Variable:I -> .
+ FunctionAbs:ABS(.) -> .
+ AssignmentOperator:= . -> .
 30 LET S=SQR(ABS(I))
- Variable:S -> _
- Variable:I -> _
- FunctionAbs:ABS(_) -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ Variable:S -> .
+ Variable:I -> .
+ FunctionAbs:ABS(.) -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 31 LET A1=ABS(I)+3
- Variable:A1 -> _
- Variable:I -> _
- FunctionAbs:ABS(_) -> _
+ Variable:A1 -> .
+ Variable:I -> .
+ FunctionAbs:ABS(.) -> .
  NumericValue:3
- BinaryOperatorPlus:+(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
 32 LET S1=SQR(ABS(I)+3)
- Variable:S1 -> _
- Variable:I -> _
- FunctionAbs:ABS(_) -> _
+ Variable:S1 -> .
+ Variable:I -> .
+ FunctionAbs:ABS(.) -> .
  NumericValue:3
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
+ AssignmentOperator:= . -> .
 34 LET S2=SQR(ABS(I)+3)*2
- Variable:S2 -> _
- Variable:I -> _
- FunctionAbs:ABS(_) -> _
+ Variable:S2 -> .
+ Variable:I -> .
+ FunctionAbs:ABS(.) -> .
  NumericValue:3
- BinaryOperatorPlus:+(_,_) -> _
- FunctionSqr:SQR(_) -> _
+ BinaryOperatorPlus:+(.,.) -> .
+ FunctionSqr:SQR(.) -> .
  NumericValue:2
- BinaryOperatorMultiply:*(_,_) -> _
- AssignmentOperator:= _ -> _
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
 40 PRINT I, A, S, A1, S1, S2
- Variable:I -> _
+ Variable:I -> .
  CarriageControl:,
- Variable:A -> _
+ Variable:A -> .
  CarriageControl:,
- Variable:S -> _
+ Variable:S -> .
  CarriageControl:,
- Variable:A1 -> _
+ Variable:A1 -> .
  CarriageControl:,
- Variable:S1 -> _
+ Variable:S1 -> .
  CarriageControl:,
- Variable:S2 -> _
+ Variable:S2 -> .
  CarriageControl:NL
 50 NEXT I
- Variable:I -> _
+ Variable:I -> .
 99 END
  
 
