@@ -119,7 +119,6 @@ When the BASIC program ends, BASIC-1965 ends.
 |--base 0/1 |Set the minimum for subscripts to either 0 or 1. Default is 0.
 |--no-cache-const-expr |Disables caching of results of constant expressions.
 |--no-detect-infinite-loop |Disables checks for infinite loops.
-|--echo-input |Echoes console input to output. Useful in run mode when redirecting input from a text file.
 |--field-sep-semi |Sets field separator for ARR PRINT and MAT PRINT statements to semicolon, which provides narrow spacing.
 |--forget-fornext |Forgets the control value when a FOR/NEXT loop terminates, if it was undefined when the loop started.
 |--no-heading |Supress the header and trailer messages.
@@ -432,7 +431,6 @@ The OPTION command overrides the command-line setting.
 |CACHE_CONST_EXPR |NLP |TRUE or FALSE |TRUE |Cache result of operations on constant values and re-use instead of re-calculate
 |DEFAULT_PROMPT |NLP |String |"? " |Changes the prompt for INPUT statements
 |DETECT_INFINITE_LOOP |NLP |TRUE or FALSE |TRUE |Enables the detection of infinite loops
-|ECHO |NLP |TRUE or FALSE |FALSE |Echoes input (useful for testing)
 |FIELD_SEP |NLP |COMMA, SEMI, NL, or NONE |COMMA |Controls spacing of values in ARR PRINT and MAT PRINT statements
 |FORGET_FORNEXT |NLP |TRUE or FALSE |FALSE |Forgets value of control value after final NEXT, if value was not defined at start
 |HEADING |NLP |TRUE or FALSE |TRUE |Displays the opening and closing lines that identify BASIC

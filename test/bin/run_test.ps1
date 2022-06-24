@@ -189,7 +189,7 @@ If (Test-Path "$TESTROOT\$TESTGROUP\$TESTNAME\ref\stdout.txt") {
 
     If (Test-Path "$TESTBED\$TESTNAME\stdin.txt") {
     	Set-Location "$TESTBED\$TESTNAME"
-	    Get-Content stdin.txt | ruby basic.rb --no-timing --profile $OPTIONS --run "$TESTNAME.bas" --print-width 0 --no-heading --echo-input >stdout.txt $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS
+	    Get-Content stdin.txt | ruby basic.rb --no-timing --profile $OPTIONS --run "$TESTNAME.bas" --print-width 0 --no-heading >stdout.txt $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS
 	    Set-Location ..\..
     } else {
     	Set-Location "$TESTBED\$TESTNAME"
@@ -235,7 +235,7 @@ If (Test-Path "$TESTROOT\$TESTGROUP\$TESTNAME\ref\trace.txt") {
 
     If (Test-Path "$TESTBED\$TESTNAME\stdin.txt") {
     	Set-Location "$TESTBED\$TESTNAME"
-	    Get-Content stdin.txt | ruby basic.rb --no-timing $OPTIONS --run "$TESTNAME.bas" --print-width 0 --no-heading --trace --echo-input >trace.txt $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS
+	    Get-Content stdin.txt | ruby basic.rb --no-timing $OPTIONS --run "$TESTNAME.bas" --print-width 0 --no-heading --trace >trace.txt $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS
 	    Set-Location ..\..
     } else {
     	Set-Location "$TESTBED\$TESTNAME"

@@ -618,7 +618,6 @@ OptionParser.new do |opt|
     options[:no_detect_infinite_loop] = o
   end
 
-  opt.on('--echo-input') { |o| options[:echo_input] = o }
   opt.on('--field-sep-semi') { |o| options[:field_sep_semi] = o }
   opt.on('--forget-fornext') { |o| options[:forget_fornext] = o }
   opt.on('--no-heading') { |o| options[:no_heading] = o }
@@ -692,9 +691,6 @@ $options['default_prompt'] = Option.new(all_types, string, '? ')
 
 $options['detect_infinite_loop'] =
   Option.new(all_types, boolean, !options.key?(:no_detect_infinite_loop))
-
-$options['echo'] =
-  Option.new(all_types, boolean, options.key?(:echo_input))
 
 field_sep = Option.new(all_types, separator, 'COMMA')
 field_sep = Option.new(all_types, separator, 'SEMI') if

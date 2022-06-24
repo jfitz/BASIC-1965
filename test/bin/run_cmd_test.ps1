@@ -38,7 +38,7 @@ Set-Variable -Name ECOUNT -Value 0
 # execute program
 Write-Output "Running program..."
 Set-Location "$TESTBED\$TESTNAME"
-Get-Content stdin.txt | ruby basic.rb --no-timing --print-width 0 --echo-input | Out-File stdout.txt
+Get-Content stdin.txt | ruby basic.rb --no-timing --print-width 0 | Out-File stdout.txt
 Set-Location ..\..
 Write-Output "run finished"
 

@@ -77,7 +77,7 @@ class ConsoleIo
 
     ascii_text = ascii_printables(input_text)
 
-    puts(ascii_text) if $options['echo'].value
+    puts(ascii_text) unless STDIN.tty?
 
     ascii_text
   end
