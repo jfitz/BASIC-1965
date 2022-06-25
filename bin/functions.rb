@@ -67,11 +67,11 @@ class AbstractFunction < AbstractElement
   end
 
   def sigils
-    make_sigils(@arg_types, @arg_shapes)
+    Sigils.make_sigils_2(@arg_types, @arg_shapes)
   end
 
   def signature
-    sigils = make_sigils(@arg_types, @arg_shapes)
+    sigils = Sigils.make_sigils_2(@arg_types, @arg_shapes)
 
     UserFunctionSignature.new(@name, sigils)
   end
@@ -81,7 +81,7 @@ class AbstractFunction < AbstractElement
   end
 
   def dump
-    result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
+    result = Sigils.make_type_sigil(@content_type) + Sigils.make_shape_sigil(@shape)
     const = @constant ? '=' : ''
     "#{self.class}:#{signature} -> #{const}#{result}"
   end
@@ -206,7 +206,7 @@ class UserFunctionSignature < AbstractElement
   end
 
   def to_s
-    @name.to_s + XrefEntry.format_sigils(@sigils)
+    @name.to_s + Sigils.format_sigils(@sigils)
   end
 
   def to_sw
@@ -329,7 +329,7 @@ class UserFunction < AbstractFunction
   # return a single value
   def evaluate_value(interpreter, arg_stack)
     arguments = arg_stack.pop
-    sigils = XrefEntry.make_sigils(arguments)
+    sigils = Sigils.make_sigils_1(arguments)
     signature = UserFunctionSignature.new(@name, sigils)
     definition = interpreter.get_user_function(signature)
 

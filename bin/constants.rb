@@ -1,5 +1,73 @@
 # frozen_string_literal: true
 
+# class for type sigils
+class Sigils
+  def self.make_type_sigil(type)
+    sigil_chars = {
+      numeric: '.',
+      integer: '%',
+      string: '$',
+      boolean: '?',
+      filehandle: 'FH'
+    }
+
+    sigil_chars[type]
+  end
+
+  def self.make_shape_sigil(shape)
+    sigil = ''
+    sigil = '()' if shape == :array
+    sigil = '(,)' if shape == :matrix
+    sigil
+  end
+
+  def self.make_sigils_1(arguments)
+    return nil if arguments.nil?
+
+    sigils = []
+
+    arguments.each do |arg|
+      content_type = :empty
+      # TODO: I think we can remove check for Array
+      if arg.class.to_s == 'Array'
+        # an array is a parsed expression
+        unless arg.empty?
+          a0 = arg[-1]
+          content_type = a0.content_type
+        end
+      else
+        content_type = arg.content_type
+      end
+
+      sigils << Sigils.make_type_sigil(content_type)
+    end
+
+    sigils
+  end
+
+  def self.format_sigils(sigils)
+    return '' if sigils.nil?
+
+    "(#{sigils.join(',')})"
+  end
+
+  def self.make_sigils_2(types, shapes)
+    return nil if types.nil? || shapes.nil?
+
+    msg = "Different number of types (#{types.count}) and shapes (#{shapes.count})"
+    raise BASICExpressionError, msg unless
+      types.count == shapes.count
+
+    sigils = []
+
+    types.each_with_index do |type, index|
+      sigils << Sigils.make_type_sigil(type) + Sigils.make_shape_sigil(shapes[index])
+    end
+
+    sigils
+  end
+end
+
 # class for all element classes
 class AbstractElement
   def self.make_coord(c)
@@ -160,57 +228,12 @@ class AbstractElement
 
   private
 
-  def make_sigils(types, shapes)
-    return nil if types.nil? || shapes.nil?
-
-    msg = "Different number of types (#{types.count}) and shapes (#{shapes.count})"
-    raise BASICExpressionError, msg unless
-      types.count == shapes.count
-
-    sigil_chars = {
-      numeric: '.',
-      integer: '%',
-      string: '$',
-      boolean: '?'
-    }
-
-    sigils = []
-
-    types.each_with_index do |type, index|
-      sigil = sigil_chars[type]
-      sigil += '()' if shapes[index] == :array
-      sigil += '(,)' if shapes[index] == :matrix
-      sigils << sigil
-    end
-
-    sigils
-  end
-
-  def make_type_sigil(type)
-    sigil_chars = {
-      numeric: '.',
-      integer: '%',
-      string: '$',
-      boolean: '?',
-      filehandle: 'FH'
-    }
-
-    sigil_chars[type]
-  end
-
-  def make_shape_sigil(shape)
-    sigil = ''
-    sigil = '()' if shape == :array
-    sigil = '(,)' if shape == :matrix
-    sigil
-  end
-
   def make_signature(types, shapes)
     return '' if types.nil? || shapes.nil?
 
-    sigils = make_sigils(types, shapes)
+    sigils = Sigils.make_sigils_2(types, shapes)
 
-    XrefEntry.format_sigils(sigils)
+    Sigils.format_sigils(sigils)
   end
 end
 
@@ -2091,7 +2114,7 @@ class VariableName < AbstractElement
   end
 
   def dump
-    result = make_type_sigil(@content_type)
+    result = Sigils.make_type_sigil(@content_type)
     "#{self.class}:#{@name} -> #{result}"
   end
 
@@ -2177,7 +2200,7 @@ class AbstractFunctionName < AbstractElement
   end
 
   def dump
-    result = make_type_sigil(@content_type)
+    result = Sigils.make_type_sigil(@content_type)
     "#{self.class}:#{@name} -> #{result}"
   end
 
@@ -2311,12 +2334,12 @@ class Variable < AbstractElement
 
   def signature
     sig = make_signature(@arg_types, @arg_shapes)
-    sig += make_shape_sigil(@shape) if sig.empty?
+    sig += Sigils.make_shape_sigil(@shape) if sig.empty?
     sig
   end
 
   def dump
-    result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
+    result = Sigils.make_type_sigil(@content_type) + Sigils.make_shape_sigil(@shape)
     "#{self.class}:#{@variable_name}#{signature} -> #{result}"
   end
 
@@ -2625,11 +2648,11 @@ class Declaration < AbstractElement
   end
 
   def signature
-    make_shape_sigil(@shape)
+    Sigils.make_shape_sigil(@shape)
   end
 
   def dump
-    result = make_type_sigil(@content_type) + make_shape_sigil(@shape)
+    result = Sigils.make_type_sigil(@content_type) + Sigils.make_shape_sigil(@shape)
     "#{self.class}:#{@variable_name}#{signature} -> #{result}"
   end
 
