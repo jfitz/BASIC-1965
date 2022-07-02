@@ -369,12 +369,12 @@ class NumericLiteralToken < AbstractToken
 
     @is_numeric_constant = true
 
-    @units = Units.new({}, '{}')
+    @units = Units.new_empty
 
     if @text.include?('{')
       index = @text.index('{')
       text = @text[index..-1]
-      @units = Units.new({}, text)
+      @units = Units.new_text(text)
     end
   end
 

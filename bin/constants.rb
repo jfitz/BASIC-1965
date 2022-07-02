@@ -330,19 +330,29 @@ end
 
 # class for units
 class Units
+  def self.new_empty
+    Units.new({}, '')
+  end
+
+  def self.new_values(values)
+    Units.new(values, nil)
+  end
+
+  def self.new_text(text)
+    Units.new({}, text)
+  end
+
   attr_reader :values
 
   def initialize(values, text)
     @values = values
 
     unless text.nil?
-      units_s = text[0..-1]
-
       name = ''
       power_s = ''
       last_c = ''
 
-      units_s.each_char do |c|
+      text.each_char do |c|
         if is_alpha(c)
           if !name.empty? && (is_digit(last_c) || '+-'.include?(last_c))
             power_s = '1' if '+-'.include?(power_s)
@@ -460,13 +470,13 @@ class Units
   def add(other)
     raise BASICRuntimeError, :te_units_no_match unless @values == other.values
 
-    Units.new(@values, nil)
+    clone
   end
 
   def subtract(other)
     raise BASICRuntimeError, :te_units_no_match unless @values == other.values
 
-    Units.new(@values, nil)
+    clone
   end
 
   def multiply(other)
@@ -486,7 +496,7 @@ class Units
       end
     end
 
-    Units.new(new_values, nil)
+    Units.new_values(new_values)
   end
 
   def divide(other)
@@ -506,7 +516,7 @@ class Units
       end
     end
 
-    Units.new(new_values, nil)
+    Units.new_values(new_values)
   end
 
   def power(other)
@@ -532,7 +542,7 @@ class Units
       new_values[name] = pow * p_i
     end
 
-    Units.new(new_values, nil)
+    Units.new_values(new_values)
   end
 
   def sqrt
@@ -544,7 +554,7 @@ class Units
       new_values[name] = pow / 2
     end
 
-    Units.new(new_values, nil)
+    Units.new_values(new_values)
   end
 
   def exp
@@ -552,7 +562,7 @@ class Units
       @values.empty?
 
     # result is always pure
-    Units.new({}, nil)
+    Units.new_empty
   end
 
   def log
@@ -560,7 +570,7 @@ class Units
       @values.empty?
 
     # result is always pure
-    Units.new({}, nil)
+    Units.new_empty
   end
 
   def logb(_other)
@@ -568,7 +578,7 @@ class Units
       @values.empty?
 
     # result is always pure
-    Units.new({}, nil)
+    Units.new_empty
   end
 
   def mod(other)
@@ -576,7 +586,7 @@ class Units
       other.empty?
 
     # units after mod() are the same as original
-    Units.new(@values, nil)
+    clone
   end
 
   private
@@ -861,7 +871,7 @@ class NumericValue < AbstractValue
     @constant = true
 
     @numeric_constant = true
-    @units = Units.new({}, '{}')
+    @units = Units.new_text('{}')
     @units = obj.units if obj.class.to_s == 'NumericLiteralToken'
   end
 
@@ -1072,12 +1082,10 @@ class NumericValue < AbstractValue
   end
 
   def to_radians
-    new_units = Units.new({}, '')
+    new_units = Units.new_text('')
 
-    if $options['trig_require_units'].value
-      unit = { 'RAD' => 1 }
-      new_units = Units.new(unit, '')
-    end
+    new_units = Units.new_values({ 'RAD' => 1 }) if
+      $options['trig_require_units'].value
 
     new_value = to_rad(@value)
     NumericValue.new_2(new_value, new_units)
@@ -1088,12 +1096,10 @@ class NumericValue < AbstractValue
   end
 
   def to_degrees
-    new_units = Units.new({}, '')
+    new_units = Units.new_text('')
 
-    if $options['trig_require_units'].value
-      unit = { 'DEG' => 1 }
-      new_units = Units.new(unit, '')
-    end
+    new_units = Units.new_values({ 'DEG' => 1 }) if
+      $options['trig_require_units'].value
 
     new_value = to_deg(@value)
     NumericValue.new_2(new_value, new_units)
@@ -1109,7 +1115,6 @@ class NumericValue < AbstractValue
     end
 
     angle_in_radians = @value
-
     angle_in_radians = to_rad(@value) if @units.key?('DEG')
 
     new_value = Math.sin(angle_in_radians)
@@ -1120,15 +1125,12 @@ class NumericValue < AbstractValue
   def arcsin
     raise BASICRuntimeError.new(:te_not_pure, @name) unless @units.empty?
 
-    new_units = Units.new({}, '')
+    new_units = Units.new_text('')
 
-    if $options['trig_require_units'].value
-      unit = { 'RAD' => 1 }
-      new_units = Units.new(unit, '')
-    end
+    new_units = Units.new_values({ 'RAD' => 1 }) if
+      $options['trig_require_units'].value
 
     new_value = 0
-
     new_value = Math.asin(@value) if @value >= -1.0 && @value <= 1.0
 
     NumericValue.new_2(new_value, new_units)
@@ -1155,15 +1157,12 @@ class NumericValue < AbstractValue
   def arccos
     raise BASICRuntimeError.new(:te_not_pure, @name) unless @units.empty?
 
-    new_units = Units.new({}, '')
+    new_units = Units.new_text('')
 
-    if $options['trig_require_units'].value
-      unit = { 'RAD' => 1 }
-      new_units = Units.new(unit, '')
-    end
+    new_units = Units.new_values({ 'RAD' => 1 }) if
+      $options['trig_require_units'].value
 
     new_value = 0
-
     new_value = Math.acos(@value) if @value >= -1.0 && @value <= 1.0
 
     NumericValue.new_2(new_value, new_units)
@@ -1190,12 +1189,10 @@ class NumericValue < AbstractValue
   def atn
     raise BASICRuntimeError.new(:te_not_pure, @name) unless @units.empty?
 
-    new_units = Units.new({}, '')
+    new_units = Units.new_text('')
 
-    if $options['trig_require_units'].value
-      unit = { 'RAD' => 1 }
-      new_units = Units.new(unit, '')
-    end
+    new_units = Units.new_values({ 'RAD' => 1 }) if
+      $options['trig_require_units'].value
 
     new_value = Math.atan(@value)
 
@@ -1207,12 +1204,10 @@ class NumericValue < AbstractValue
 
     raise BASICRuntimeError.new(:te_not_pure, @name) unless a2.units.empty?
 
-    new_units = Units.new({}, '')
+    new_units = Units.new_text('')
 
-    if $options['trig_require_units'].value
-      unit = { 'RAD' => 1 }
-      new_units = Units.new(unit, '')
-    end
+    new_units = Units.new_values({ 'RAD' => 1 }) if
+      $options['trig_require_units'].value
 
     new_value = Math.atan2(@value, a2.to_f)
 
@@ -1229,7 +1224,6 @@ class NumericValue < AbstractValue
     end
 
     angle_in_radians = @value
-
     angle_in_radians = to_rad(@value) if @units.key?('DEG')
 
     cos = Math.cos(angle_in_radians)
@@ -1385,7 +1379,7 @@ class IntegerValue < AbstractValue
     @constant = true
 
     @numeric_constant = true
-    @units = Units.new({}, '{}')
+    @units = Units.new_text('{}')
     @units = obj.units if obj.class.to_s == 'IntegerLiteralToken'
   end
 
