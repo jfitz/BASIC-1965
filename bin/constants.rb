@@ -61,7 +61,9 @@ class Sigils
     sigils = []
 
     types.each_with_index do |type, index|
-      sigils << Sigils.make_type_sigil(type) + Sigils.make_shape_sigil(shapes[index])
+      unless type == :empty
+        sigils << Sigils.make_type_sigil(type) + Sigils.make_shape_sigil(shapes[index])
+      end
     end
 
     sigils
