@@ -11,13 +11,13 @@ Comment density: 0.263
 Comprehension effort: 139
 McCabe complexity: 14
 Halstead complexity:
- length: 177
- volume: 733.335
- difficulty: 22.455
- effort: 16466.701
- language: 1.454
- intelligence: 32.659
- time: 15.247
+ length: 175
+ volume: 722.249
+ difficulty: 22.756
+ effort: 16435.353
+ language: 1.395
+ intelligence: 31.739
+ time: 15.218
 
 100 (0 1) REMARK THIS PROGRAM CARRIES OUT A SERIES OF KNIGHT'S MOVES
   Origs: 
@@ -142,7 +142,7 @@ Halstead complexity:
 500 (0 1) REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
   Origs: 
   Dests: 
-510 F(J1:370) (0 4) LET C1 = INT(RND(Z) * C + 1)
+510 F(J1:370) (0 4) LET C1 = INT(RND(C) + 1)
   Origs: 490:auto
   Dests: 520:auto
 520 F(J1:370) (0 3) GOTO 320

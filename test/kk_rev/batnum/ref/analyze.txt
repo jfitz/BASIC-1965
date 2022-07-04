@@ -25,10 +25,10 @@ Halstead complexity:
 110 (0 0) 
   Origs: 
   Dests: 
-120 (0 5) LET N = 20 + INT(80 * RND(X))
+120 (0 5) LET N = 20 + INT(80 * RND(1))
   Origs: :start, 390:goto
   Dests: 130:auto
-130 (0 5) LET K = 5 + INT(10 * RND(X))
+130 (0 5) LET K = 5 + INT(10 * RND(1))
   Origs: 120:auto
   Dests: 140:auto
 140 (0 2) PRINT "LEGAL MOVES ARE:"
@@ -160,7 +160,7 @@ Halstead complexity:
 560 (0 3) GOTO 450
   Origs: 550:auto
   Dests: 450:goto
-570 (0 5) LET Y = 1 + INT(K * RND(0))
+570 (0 5) LET Y = 1 + INT(K * RND(1))
   Origs: 540:ifthen
   Dests: 580:auto
 580 (0 3) GOTO 450

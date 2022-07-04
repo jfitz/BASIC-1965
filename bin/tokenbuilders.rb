@@ -11,8 +11,8 @@ class InvalidTokenBuilder
     @token.size
   end
 
-  def token
-    InvalidToken.new(@token)
+  def tokens
+    [InvalidToken.new(@token)]
   end
 end
 
@@ -61,8 +61,8 @@ class ListTokenBuilder
     !@count.zero?
   end
 
-  def token
-    @class.new(@token)
+  def tokens
+    [@class.new(@token)]
   end
 
   private
@@ -126,7 +126,7 @@ class RemarkTokenBuilder
     !@count.zero?
   end
 
-  def token
+  def tokens
     tokens = []
     tokens << KeywordToken.new(@keyword_token)
     tokens << RemarkToken.new(@remark_token) unless @remark_token.empty?
@@ -160,8 +160,8 @@ class WhitespaceTokenBuilder
     @token.size
   end
 
-  def token
-    WhitespaceToken.new(@token)
+  def tokens
+    [WhitespaceToken.new(@token)]
   end
 end
 
@@ -176,8 +176,8 @@ class CommentTokenBuilder
     @count = @token.size
   end
 
-  def token
-    CommentToken.new(@token)
+  def tokens
+    [CommentToken.new(@token)]
   end
 end
 
@@ -204,8 +204,8 @@ class TextTokenBuilder
     @count = @token.size
   end
 
-  def token
-    TextLiteralToken.new(@token)
+  def tokens
+    [TextLiteralToken.new(@token)]
   end
 end
 
@@ -232,8 +232,8 @@ class InputNumberTokenBuilder
     @token.size
   end
 
-  def token
-    NumericLiteralToken.new(@token)
+  def tokens
+    [NumericLiteralToken.new(@token)]
   end
 end
 
@@ -297,8 +297,8 @@ class NumberTokenBuilder
     !@count.zero?
   end
 
-  def token
-    NumericLiteralToken.new(@token)
+  def tokens
+    [NumericLiteralToken.new(@token)]
   end
 
   private
@@ -359,8 +359,8 @@ class NumericSymbolTokenBuilder
     !@count.zero?
   end
 
-  def token
-    NumericSymbolToken.new(@token)
+  def tokens
+    [NumericSymbolToken.new(@token)]
   end
 end
 
@@ -403,8 +403,8 @@ class VariableTokenBuilder
     !@count.zero?
   end
 
-  def token
-    VariableToken.new(@token)
+  def tokens
+    [VariableToken.new(@token)]
   end
 
   private
@@ -431,7 +431,7 @@ class BreakTokenBuilder
     @token.size
   end
 
-  def token
-    BreakToken.new(@token)
+  def tokens
+    [BreakToken.new(@token)]
   end
 end

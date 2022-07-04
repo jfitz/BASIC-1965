@@ -1,21 +1,21 @@
 100 REM THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
  Remark:THIS PROGRAM PLAYS BATNUM. IT IS SELF-EXPLANATORY
 110
-120 LET N = 20 + INT(80*RND(X))
+120 LET N = 20 + INT(80*RND(1))
  Variable:N -> .
  NumericValue:20
  NumericValue:80
- Variable:X -> .
+ NumericValue:1
  FunctionRnd:RND(.) -> .
  BinaryOperatorMultiply:*(.,.) -> .
  FunctionInt:INT(.) -> .
  BinaryOperatorPlus:+(.,.) -> .
  AssignmentOperator:= . -> .
-130 LET K = 5 + INT(10*RND(X))
+130 LET K = 5 + INT(10*RND(1))
  Variable:K -> .
  NumericValue:5
  NumericValue:10
- Variable:X -> .
+ NumericValue:1
  FunctionRnd:RND(.) -> .
  BinaryOperatorMultiply:*(.,.) -> .
  FunctionInt:INT(.) -> .
@@ -171,11 +171,11 @@
  AssignmentOperator:= =. -> .
 560 GOTO 450
  LineNumber:450
-570 LET Y = 1 + INT(K*RND(0))
+570 LET Y = 1 + INT(K*RND(1))
  Variable:Y -> .
  NumericValue:1
  Variable:K -> .
- NumericValue:0
+ NumericValue:1
  FunctionRnd:RND(.) -> .
  BinaryOperatorMultiply:*(.,.) -> .
  FunctionInt:INT(.) -> .

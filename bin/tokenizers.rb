@@ -9,23 +9,22 @@ class Tokenizer
 
   def tokenize(text)
     tokens = []
+
     until text.nil? || text.empty?
-      token, count = try_tokenbuilders(text)
+      new_tokens, count = try_tokenbuilders(text)
 
-      if token.nil? && !@invalid_tokenbuilder.nil?
-        token, count = try_invalid(text)
+      if new_tokens.empty? && !@invalid_tokenbuilder.nil?
+        new_tokens, count = try_invalid(text)
       end
 
-      raise(BASICSyntaxError, "Cannot tokenize '#{text}'") if token.nil?
+      raise(BASICSyntaxError, "Cannot tokenize '#{text}'") if
+        new_tokens.empty?
 
-      if token.class.to_s == 'Array'
-        tokens += token
-      else
-        tokens << token
-      end
+      tokens += new_tokens
 
       text = text[count..-1]
     end
+
     tokens
   end
 
@@ -34,23 +33,23 @@ class Tokenizer
   def try_tokenbuilders(text)
     @tokenbuilders.each { |tokenbuilder| tokenbuilder.try(text) }
     count = 0
-    token = nil
+    tokens = []
 
     # general tokenbuilders
     @tokenbuilders.each do |tokenbuilder|
       if tokenbuilder.count > count
-        token = tokenbuilder.token
+        tokens = tokenbuilder.tokens
         count = tokenbuilder.count
       end
     end
 
-    [token, count]
+    [tokens, count]
   end
 
   def try_invalid(text)
     @invalid_tokenbuilder.try(text)
-    token = @invalid_tokenbuilder.token
+    tokens = @invalid_tokenbuilder.tokens
     count = @invalid_tokenbuilder.count
-    [token, count]
+    [tokens, count]
   end
 end

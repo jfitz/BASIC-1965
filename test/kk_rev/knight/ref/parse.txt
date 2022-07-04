@@ -163,12 +163,10 @@
  LineNumber:600
 500 REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
  Remark:NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
-510 LET C1 = INT(RND(Z)*C + 1)
+510 LET C1 = INT(RND(C) + 1)
  Variable:C1 -> .
- Variable:Z -> .
- FunctionRnd:RND(.) -> .
  Variable:C -> .
- BinaryOperatorMultiply:*(.,.) -> .
+ FunctionRnd:RND(.) -> .
  NumericValue:1
  BinaryOperatorPlus:+(.,.) -> .
  FunctionInt:INT(.) -> .

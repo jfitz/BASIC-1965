@@ -10,14 +10,14 @@
  control: Variable:N -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:1000"]
-130    LET Y = RND(Z)
+130    LET Y = RND(1)
  Variable:Y -> .
- Variable:Z -> .
+ NumericValue:1
  FunctionRnd:RND(.) -> .
  AssignmentOperator:= . -> .
-140    LET R = RND(Z)
+140    LET R = RND(1)
  Variable:R -> .
- Variable:Z -> .
+ NumericValue:1
  FunctionRnd:RND(.) -> .
  AssignmentOperator:= . -> .
 150    LET A = P*(R-1/2)
