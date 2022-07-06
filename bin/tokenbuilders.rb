@@ -205,7 +205,7 @@ class TextTokenBuilder
   end
 
   def tokens
-    [TextLiteralToken.new(@token)]
+    [QuotedTextLiteralToken.new(@token)]
   end
 end
 

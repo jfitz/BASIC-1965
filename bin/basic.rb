@@ -838,7 +838,7 @@ end
 
 # list the source
 unless list_filename.nil?
-  token = TextLiteralToken.new("\"#{list_filename}\"")
+  token = BareTextLiteralToken.new(list_filename)
   args = [TextValue.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -861,7 +861,7 @@ end
 
 # show parse dump
 unless parse_filename.nil?
-  token = TextLiteralToken.new("\"#{parse_filename}\"")
+  token = BareTextLiteralToken.new(parse_filename)
   args = [TextValue.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -884,7 +884,7 @@ end
 
 # show analysis
 unless analyze_filename.nil?
-  token = TextLiteralToken.new("\"#{analyze_filename}\"")
+  token = BareTextLiteralToken.new(analyze_filename)
   args = [TextValue.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -905,7 +905,7 @@ end
 
 # pretty-print the source
 unless pretty_filename.nil?
-  token = TextLiteralToken.new("\"#{pretty_filename}\"")
+  token = BareTextLiteralToken.new(pretty_filename)
   args = [TextValue.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -927,7 +927,7 @@ end
 
 # cross-reference the source
 unless cref_filename.nil?
-  token = TextLiteralToken.new("\"#{cref_filename}\"")
+  token = BareTextLiteralToken.new(cref_filename)
   args = [TextValue.new(token)]
 
   filename, _keywords = parse_args(args)
@@ -948,7 +948,7 @@ end
 
 # run the source
 unless run_filename.nil?
-  token = TextLiteralToken.new("\"#{run_filename}\"")
+  token = BareTextLiteralToken.new(run_filename)
   args = [TextValue.new(token)]
 
   filename, _keywords = parse_args(args)

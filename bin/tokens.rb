@@ -344,7 +344,7 @@ class FunctionToken < AbstractToken
 end
 
 # text constant token
-class TextLiteralToken < AbstractToken
+class QuotedTextLiteralToken < AbstractToken
   def initialize(text)
     super
 
@@ -357,6 +357,23 @@ class TextLiteralToken < AbstractToken
 
   def value
     @text[1..-2]
+  end
+end
+
+# text constant token
+class BareTextLiteralToken < AbstractToken
+  def initialize(text)
+    super
+
+    @is_text_constant = true
+  end
+
+  def <=>(other)
+    value <=> other.value
+  end
+
+  def value
+    @text
   end
 end
 
