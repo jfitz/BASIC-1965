@@ -1,0 +1,74 @@
+Statistics:
+
+Number of lines: 16
+Number of valid statements: 15
+Number of comments: 1
+Number of executable statements: 15
+
+Complexity:
+
+Comment density: 0.067
+Comprehension effort: 36
+McCabe complexity: 1
+Halstead complexity:
+ length: 27
+ volume: 73.117
+ difficulty: 5.667
+ effort: 414.332
+ language: 2.277
+ intelligence: 12.903
+ time: 0.384
+
+10 (0 1) REM THIS PROGRAM IS A NAIVE SORT.
+  Origs: 
+  Dests: 
+100 (0 3) LET N = 100
+  Origs: :start
+  Dests: 102:auto
+102 (0 2) OPTION MAX_DIM N
+  Origs: 100:auto
+  Dests: 110:auto
+110 (0 2) PRINT "NAIVE SORT"
+  Origs: 102:auto
+  Dests: 112:auto
+112 (0 3) PRINT N; " VALUES"
+  Origs: 110:auto
+  Dests: 114:auto
+114 (0 2) PRINT
+  Origs: 112:auto
+  Dests: 120:auto
+120 (0 2) DIM Z(100)
+  Origs: 114:auto
+  Dests: 122:auto
+122 (0 4) ARR Z = RND1(N, 100)
+  Origs: 120:auto
+  Dests: 130:auto
+130 (0 2) PRINT "ORIGINAL ARRAY:"
+  Origs: 122:auto
+  Dests: 132:auto
+132 (0 2) ARR PRINT Z
+  Origs: 130:auto
+  Dests: 134:auto
+134 (0 2) PRINT
+  Origs: 132:auto
+  Dests: 140:auto
+140 (0 4) ARR Z = SORT1(Z)
+  Origs: 134:auto
+  Dests: 150:auto
+150 (0 2) PRINT "SORTED ARRAY:"
+  Origs: 140:auto
+  Dests: 152:auto
+152 (0 2) ARR PRINT Z
+  Origs: 150:auto
+  Dests: 154:auto
+154 (0 2) PRINT
+  Origs: 152:auto
+  Dests: 999:auto
+999 (0 1) END
+  Origs: 154:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

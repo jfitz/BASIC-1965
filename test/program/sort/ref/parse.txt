@@ -1,0 +1,51 @@
+10 REM THIS PROGRAM IS A NAIVE SORT.
+ Remark:THIS PROGRAM IS A NAIVE SORT.
+100 LET N = 100
+ Variable:N -> .
+ NumericValue:100
+ AssignmentOperator:= =. -> .
+102 OPTION MAX_DIM N
+ Variable:N -> .
+110 PRINT "NAIVE SORT"
+ TextValue:"NAIVE SORT"
+ CarriageControl:NL
+112 PRINT N;" VALUES"
+ Variable:N -> .
+ CarriageControl:;
+ TextValue:" VALUES"
+ CarriageControl:NL
+114 PRINT
+ CarriageControl:NL
+120 DIM Z(100)
+ NumericValue:100
+ Declaration:Z() -> .()
+122 ARR Z = RND1(N, 100)
+ Variable:Z() -> .()
+ Variable:N -> .
+ NumericValue:100
+ FunctionRnd1:RND1(.,.) -> .()
+ AssignmentOperator:= .() -> .()
+130 PRINT "ORIGINAL ARRAY:"
+ TextValue:"ORIGINAL ARRAY:"
+ CarriageControl:NL
+132 ARR PRINT Z
+ Variable:Z() -> .()
+ CarriageControl:NL
+134 PRINT
+ CarriageControl:NL
+140 ARR Z = SORT1(Z)
+ Variable:Z() -> .()
+ Variable:Z() -> .()
+ FunctionSort1:SORT1(.()) -> .()
+ AssignmentOperator:= .() -> .()
+150 PRINT "SORTED ARRAY:"
+ TextValue:"SORTED ARRAY:"
+ CarriageControl:NL
+152 ARR PRINT Z
+ Variable:Z() -> .()
+ CarriageControl:NL
+154 PRINT
+ CarriageControl:NL
+999 END
+ 
+
