@@ -480,7 +480,7 @@ class Interpreter
       # tokenize
       invalid_tokenbuilder = InvalidTokenBuilder.new
       tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
-      tokens = tokenizer.tokenize(cmd)
+      tokens = tokenizer.tokenize_line(cmd)
       tokens.delete_if(&:whitespace?)
 
       next if tokens.empty?

@@ -7,18 +7,11 @@ class Tokenizer
     @invalid_tokenbuilder = invalid_tokenbuilder
   end
 
-  def tokenize(text)
+  def tokenize_line(text)
     tokens = []
 
     until text.nil? || text.empty?
-      new_tokens, count = try_tokenbuilders(text)
-
-      if new_tokens.empty? && !@invalid_tokenbuilder.nil?
-        new_tokens, count = try_invalid(text)
-      end
-
-      raise(BASICSyntaxError, "Cannot tokenize '#{text}'") if
-        new_tokens.empty?
+      new_tokens, count = tokenize(text)
 
       tokens += new_tokens
 
@@ -26,6 +19,18 @@ class Tokenizer
     end
 
     tokens
+  end
+
+  def tokenize(text)
+    tokens, count = try_tokenbuilders(text)
+
+    if tokens.empty? && !@invalid_tokenbuilder.nil?
+      tokens, count = try_invalid(text)
+    end
+
+    raise(BASICSyntaxError, "Cannot tokenize '#{text}'") if tokens.empty?
+
+    [tokens, count]
   end
 
   private

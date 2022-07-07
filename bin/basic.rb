@@ -164,7 +164,7 @@ class Shell
 
     # immediate command -- tokenize and execute
     tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
-    tokens = tokenizer.tokenize(line)
+    tokens = tokenizer.tokenize_line(line)
     tokens.delete_if(&:whitespace?)
 
     process_command_keyboard(tokens, line)
@@ -191,7 +191,7 @@ class Shell
     if line[0] == '.'
       tokenizer = Tokenizer.new(@tokenbuilders, @invalid_tokenbuilder)
       nline = line[1..-1]
-      tokens = tokenizer.tokenize(nline)
+      tokens = tokenizer.tokenize_line(nline)
       tokens.delete_if(&:whitespace?)
 
       process_command_load_command(tokens, line)

@@ -41,11 +41,11 @@ end
 # Common routines for input
 module Inputter
   def input(interpreter)
-    input_text = read_line
+    line = read_line
 
     tokenbuilders = make_tokenbuilders
     tokenizer = Tokenizer.new(tokenbuilders, nil)
-    tokens = tokenizer.tokenize(input_text)
+    tokens = tokenizer.tokenize_line(line)
 
     # drop whitespace
     tokens.delete_if(&:whitespace?)
@@ -393,7 +393,7 @@ class FileHandler
 
       line = line.strip
 
-      tokens = tokenizer.tokenize(line)
+      tokens = tokenizer.tokenize_line(line)
       tokens.delete_if { |token| token.separator? || token.whitespace? }
 
       elements = read_convert(tokens)
