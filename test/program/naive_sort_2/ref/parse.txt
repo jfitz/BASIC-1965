@@ -1,0 +1,81 @@
+10 REM THIS PROGRAM IS A NAIVE SORT.
+ Remark:THIS PROGRAM IS A NAIVE SORT.
+100 LET N = 100
+ Variable:N -> .
+ NumericValue:100
+ AssignmentOperator:= =. -> .
+102 OPTION MAX_DIM N
+ Variable:N -> .
+110 PRINT "NAIVE SORT"
+ TextValue:"NAIVE SORT"
+ CarriageControl:NL
+112 PRINT N;" VALUES"
+ Variable:N -> .
+ CarriageControl:;
+ TextValue:" VALUES"
+ CarriageControl:NL
+114 PRINT
+ CarriageControl:NL
+120 DIM Z(100)
+ NumericValue:100
+ Declaration:Z() -> .()
+122 ARR Z = RND1(N, 100)
+ Variable:Z() -> .()
+ Variable:N -> .
+ NumericValue:100
+ FunctionRnd1:RND1(.,.) -> .()
+ AssignmentOperator:= .() -> .()
+130 PRINT "ORIGINAL ARRAY:"
+ TextValue:"ORIGINAL ARRAY:"
+ CarriageControl:NL
+132 ARR PRINT Z
+ Variable:Z() -> .()
+ CarriageControl:NL
+134 PRINT
+ CarriageControl:NL
+140 GOSUB 200
+ LineNumber:200
+150 PRINT "SORTED ARRAY:"
+ TextValue:"SORTED ARRAY:"
+ CarriageControl:NL
+152 ARR PRINT Z
+ Variable:Z() -> .()
+ CarriageControl:NL
+154 PRINT
+ CarriageControl:NL
+190 STOP
+ 
+200 FOR I = 0 TO N-1
+ control: Variable:I -> .
+ start:   ["NumericValue:0"]
+ end:     ["Variable:N -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
+210 FOR J = I+1 TO N
+ control: Variable:J -> .
+ start:   ["Variable:I -> .", "NumericValue:1", "BinaryOperatorPlus:+(.,.) -> ."]
+ end:     ["Variable:N -> ."]
+220 IF Z(I) < Z(J) THEN 240
+ Variable:I -> .
+ Variable:Z(.) -> .
+ Variable:J -> .
+ Variable:Z(.) -> .
+ BinaryOperatorLess:<(.,.) -> ?
+ LineNumber:240
+230 LET Z(I), Z(J) = Z(J), Z(I)
+ Variable:I -> .
+ Variable:Z(.) -> .
+ Variable:J -> .
+ Variable:Z(.) -> .
+ Variable:J -> .
+ Variable:Z(.) -> .
+ Variable:I -> .
+ Variable:Z(.) -> .
+ AssignmentOperator:= .,. -> .,.
+240 NEXT J
+ Variable:J -> .
+250 NEXT I
+ Variable:I -> .
+260 RETURN
+ 
+999 END
+ 
+

@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 23
-Number of valid statements: 11
+Number of lines: 39
+Number of valid statements: 27
 Number of comments: 12
-Number of executable statements: 11
+Number of executable statements: 27
 
 Complexity:
 
-Comment density: 1.091
-Comprehension effort: 44
+Comment density: 0.444
+Comprehension effort: 78
 McCabe complexity: 4
 Halstead complexity:
- length: 52
- volume: 169.421
- difficulty: 9.375
- effort: 1588.322
- language: 1.928
- intelligence: 18.072
- time: 1.471
+ length: 76
+ volume: 276.457
+ difficulty: 13.417
+ effort: 3709.125
+ language: 1.536
+ intelligence: 20.605
+ time: 3.434
 
 10 (0 1) REM THIS PROGRAM IS A BUBBLE SORT, WHICH PLACES THE
   Origs: 
@@ -46,50 +46,98 @@ Halstead complexity:
 90 (0 1) REM STATEMENT AND N SET AHEAD OF TIME
   Origs: 
   Dests: 
-100 (0 4) LET I = N - 1
+100 (0 3) LET N = 100
   Origs: :start
-  Dests: 110:auto
-110 F(J:110) (1 3) FOR J = 1 TO I
+  Dests: 102:auto
+102 (0 2) OPTION MAX_DIM N
   Origs: 100:auto
-  Dests: 120:fornext, 220:fornext
-120 F(J:110) (0 4) LET K = J + 1
-  Origs: 110:fornext
-  Dests: 130:auto
-130 F(J:110,L:130) (1 5) FOR L = N TO K STEP -1
+  Dests: 110:auto
+110 (0 2) PRINT "BUBBLE SORT"
+  Origs: 102:auto
+  Dests: 112:auto
+112 (0 3) PRINT N; " VALUES"
+  Origs: 110:auto
+  Dests: 114:auto
+114 (0 2) PRINT
+  Origs: 112:auto
+  Dests: 120:auto
+120 (0 2) DIM Z(100)
+  Origs: 114:auto
+  Dests: 122:auto
+122 (0 4) ARR Z = RND1(N, 100)
   Origs: 120:auto
-  Dests: 140:fornext, 210:fornext
-140 F(J:110,L:130) (1 4) IF Z(L) > Z(J) THEN 210
-  Origs: 130:fornext
-  Dests: 160:auto, 210:ifthen
-150 (0 1) REM SAVE FIRST VALUE
-  Origs: 
-  Dests: 
-160 F(J:110,L:130) (0 3) LET T = Z(L)
+  Dests: 130:auto
+130 (0 2) PRINT "ORIGINAL ARRAY:"
+  Origs: 122:auto
+  Dests: 132:auto
+132 (0 2) ARR PRINT Z
+  Origs: 130:auto
+  Dests: 134:auto
+134 (0 2) PRINT
+  Origs: 132:auto
+  Dests: 140:auto
+140 (0 2) GOSUB 1000
+  Origs: 134:auto
+  Dests: 150:auto, 1000:gosub
+150 (0 2) PRINT "SORTED ARRAY:"
   Origs: 140:auto
-  Dests: 170:auto
-170 F(J:110,L:130) (0 3) LET Z(L) = Z(J)
-  Origs: 160:auto
-  Dests: 180:auto
-180 F(J:110,L:130) (0 3) LET Z(J) = T
-  Origs: 170:auto
-  Dests: 210:auto
-190 (0 1) REM IF Z IS THE KEY FOR SORTING MULTIPLE
+  Dests: 152:auto
+152 (0 2) ARR PRINT Z
+  Origs: 150:auto
+  Dests: 154:auto
+154 (0 2) PRINT
+  Origs: 152:auto
+  Dests: 190:auto
+190 (0 1) STOP
+  Origs: 154:auto
+  Dests: :stop
+1000 G(1000) (0 4) LET I = N - 1
+  Origs: 140:gosub
+  Dests: 1010:auto
+1010 G(1000) F(J:1010) (1 3) FOR J = 0 TO I
+  Origs: 1000:auto
+  Dests: 1020:fornext, 2020:fornext
+1020 G(1000) F(J:1010) (0 4) LET K = J + 1
+  Origs: 1010:fornext
+  Dests: 1030:auto
+1030 G(1000) F(J:1010,L:1030) (1 5) FOR L = N TO K STEP -1
+  Origs: 1020:auto
+  Dests: 1040:fornext, 2010:fornext
+1040 G(1000) F(J:1010,L:1030) (1 4) IF Z(L) > Z(J) THEN 2010
+  Origs: 1030:fornext
+  Dests: 1060:auto, 2010:ifthen
+1050 (0 1) REM SAVE FIRST VALUE
   Origs: 
   Dests: 
-200 (0 1) REM ARRAYS AND EXTRA CODE HERE
+1060 G(1000) F(J:1010,L:1030) (0 3) LET T = Z(L)
+  Origs: 1040:auto
+  Dests: 1070:auto
+1070 G(1000) F(J:1010,L:1030) (0 3) LET Z(L) = Z(J)
+  Origs: 1060:auto
+  Dests: 1080:auto
+1080 G(1000) F(J:1010,L:1030) (0 3) LET Z(J) = T
+  Origs: 1070:auto
+  Dests: 2010:auto
+1090 (0 1) REM IF Z IS THE KEY FOR SORTING MULTIPLE
   Origs: 
   Dests: 
-210 F(J:110,L:130) (0 1) NEXT L
-  Origs: 130:fornext, 140:ifthen, 180:auto
-  Dests: 220:auto
-220 F(J:110) (0 1) NEXT J
-  Origs: 110:fornext, 210:auto
-  Dests: 230:auto
-230 (0 1) RETURN
-  Origs: 220:auto
+2000 (0 1) REM ARRAYS AND EXTRA CODE HERE
+  Origs: 
   Dests: 
+2010 G(1000) F(J:1010,L:1030) (0 1) NEXT L
+  Origs: 1030:fornext, 1040:ifthen, 1080:auto
+  Dests: 2020:auto
+2020 G(1000) F(J:1010) (0 1) NEXT J
+  Origs: 1010:fornext, 2010:auto
+  Dests: 2030:auto
+2030 G(1000) (0 1) RETURN
+  Origs: 2020:auto
+  Dests: 
+9999 (0 1) END
+  Origs: 
+  Dests: :stop
 
 Unreachable code:
 
-All executable lines are reachable.
+9999: END
 

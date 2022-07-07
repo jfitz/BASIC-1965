@@ -1,0 +1,98 @@
+Statistics:
+
+Number of lines: 24
+Number of valid statements: 23
+Number of comments: 1
+Number of executable statements: 23
+
+Complexity:
+
+Comment density: 0.043
+Comprehension effort: 51
+McCabe complexity: 4
+Halstead complexity:
+ length: 66
+ volume: 217.525
+ difficulty: 12.719
+ effort: 2766.649
+ language: 1.345
+ intelligence: 17.103
+ time: 2.562
+
+10 (0 1) REM THIS PROGRAM IS A NAIVE SORT.
+  Origs: 
+  Dests: 
+100 (0 3) LET N = 100
+  Origs: :start
+  Dests: 102:auto
+102 (0 2) OPTION MAX_DIM N
+  Origs: 100:auto
+  Dests: 110:auto
+110 (0 2) PRINT "NAIVE SORT"
+  Origs: 102:auto
+  Dests: 112:auto
+112 (0 3) PRINT N; " VALUES"
+  Origs: 110:auto
+  Dests: 114:auto
+114 (0 2) PRINT
+  Origs: 112:auto
+  Dests: 120:auto
+120 (0 2) DIM Z(100)
+  Origs: 114:auto
+  Dests: 122:auto
+122 (0 4) ARR Z = RND1(N, 100)
+  Origs: 120:auto
+  Dests: 130:auto
+130 (0 2) PRINT "ORIGINAL ARRAY:"
+  Origs: 122:auto
+  Dests: 132:auto
+132 (0 2) ARR PRINT Z
+  Origs: 130:auto
+  Dests: 134:auto
+134 (0 2) PRINT
+  Origs: 132:auto
+  Dests: 140:auto
+140 (0 2) GOSUB 200
+  Origs: 134:auto
+  Dests: 150:auto, 200:gosub
+150 (0 2) PRINT "SORTED ARRAY:"
+  Origs: 140:auto
+  Dests: 152:auto
+152 (0 2) ARR PRINT Z
+  Origs: 150:auto
+  Dests: 154:auto
+154 (0 2) PRINT
+  Origs: 152:auto
+  Dests: 190:auto
+190 (0 1) STOP
+  Origs: 154:auto
+  Dests: :stop
+200 G(200) F(I:200) (1 3) FOR I = 0 TO N
+  Origs: 140:gosub
+  Dests: 210:fornext, 250:fornext
+210 G(200) F(I:200,J:210) (1 3) FOR J = 0 TO N
+  Origs: 200:fornext
+  Dests: 220:fornext, 240:fornext
+220 G(200) F(I:200,J:210) (1 4) IF Z(I) >= Z(J) THEN 240
+  Origs: 210:fornext
+  Dests: 230:auto, 240:ifthen
+230 G(200) F(I:200,J:210) (0 3) LET Z(I), Z(J) = Z(J), Z(I)
+  Origs: 220:auto
+  Dests: 240:auto
+240 G(200) F(I:200,J:210) (0 1) NEXT J
+  Origs: 210:fornext, 220:ifthen, 230:auto
+  Dests: 250:auto
+250 G(200) F(I:200) (0 1) NEXT I
+  Origs: 200:fornext, 240:auto
+  Dests: 260:auto
+260 G(200) (0 1) RETURN
+  Origs: 250:auto
+  Dests: 
+999 (0 1) END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+999: END
+
