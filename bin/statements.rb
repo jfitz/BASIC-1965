@@ -207,7 +207,18 @@ class StatementFactory
   def tokenize(text)
     invalid_tokenbuilder = InvalidTokenBuilder.new
     tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
-    tokenizer.tokenize_line(text)
+
+    tokens = []
+
+    until text.nil? || text.empty?
+      new_tokens, count = tokenizer.tokenize(text)
+
+      tokens += new_tokens
+
+      text = text[count..-1]
+    end
+
+    tokens
   end
 end
 
