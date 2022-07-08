@@ -309,7 +309,7 @@ class Interpreter
     @trace_out = trace ? @console_io : @null_out
 
     @variables = {}
-    @data_store.reset
+    @data_store = DataStore.new
     @user_function_defs = {}
 
     @previous_stack = []
