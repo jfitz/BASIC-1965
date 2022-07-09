@@ -152,6 +152,7 @@ class Interpreter
     randomize_option = $options['randomize']
     @randomizer = Random.new if randomize_option.value
 
+    @quotes = ['"']
     @console_io = console_io
     @tokenbuilders = make_debug_tokenbuilders
 
@@ -208,7 +209,7 @@ class Interpreter
     function_names = ('FNA'..'FNZ').to_a
     tokenbuilders << ListTokenBuilder.new(function_names, UserFunctionToken)
 
-    tokenbuilders << TextTokenBuilder.new
+    tokenbuilders << TextTokenBuilder.new(@quotes)
     tokenbuilders << NumberTokenBuilder.new
     tokenbuilders << VariableTokenBuilder.new
     tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanLiteralToken)
@@ -573,7 +574,7 @@ class Interpreter
 
         stop_running
       end
-    rescue BASICSyntaxError => e
+    rescue BASICSyntaxError, BASICError => e
       @console_io.newline_when_needed
 
       if @current_line_stmt_mod.nil?
@@ -589,7 +590,6 @@ class Interpreter
 
   def split_breakpoint_tokens(tokens)
     tokens_lists = []
-
     tokens_list = []
 
     tokens.each do |token|
@@ -1027,6 +1027,7 @@ class Interpreter
     # then look in general table
     if value.nil?
       var = variable.to_sw
+      default_value = NumericValue.new(0)
 
       unless @variables.key?(var)
         if $options['require_initialized'].value
@@ -1037,7 +1038,7 @@ class Interpreter
         @variables[var] =
           {
             'provenance' => @current_line_stmt_mod,
-            'value' => NumericValue.new(0)
+            'value' => default_value
           }
       end
 
@@ -1337,6 +1338,7 @@ class Interpreter
 
     fh = @file_handlers[file_handle]
     fh.set_mode(mode)
+
     fh
   end
 
@@ -1348,6 +1350,7 @@ class Interpreter
 
     fh = @file_handlers[file_handle]
     fh.set_mode(:read)
+
     fh
   end
 end

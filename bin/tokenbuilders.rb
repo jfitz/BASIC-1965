@@ -29,20 +29,25 @@ class ListTokenBuilder
   def try(text)
     best_candidate = ''
     best_count = 0
+
     if !text.empty? && text[0] != ' '
       candidate = ''
       i = 0
       accepted = true
+
       while i < text.size && accepted
         c = text[i]
+
         # ignore space char
         if c == ' '
           i += 1
         else
           accepted = accept?(candidate, c)
+
           if accepted
             candidate += c
             i += 1
+
             if @legals.include?(candidate)
               best_candidate = candidate
               best_count = i
@@ -53,12 +58,13 @@ class ListTokenBuilder
     end
 
     @count = 0
+
     unless best_candidate.empty?
       @token = best_candidate
       @count = best_count
     end
 
-    !@count.zero?
+    @count.positive?
   end
 
   def tokens
@@ -80,7 +86,7 @@ class ListTokenBuilder
   end
 end
 
-# accept characters to match item in list
+# Remark tokens (returns 2)
 class RemarkTokenBuilder
   attr_reader :count
 
@@ -92,20 +98,25 @@ class RemarkTokenBuilder
   def try(text)
     best_candidate = ''
     best_count = 0
+
     if !text.empty? && text[0] != ' '
       candidate = ''
       i = 0
       accepted = true
+
       while i < text.size && accepted
         c = text[i]
+
         # ignore space char
         if c == ' '
           i += 1
         else
           accepted = accept?(candidate, c)
+
           if accepted
             candidate += c
             i += 1
+
             if @legals.include?(candidate)
               best_candidate = candidate
               best_count = i
@@ -116,14 +127,15 @@ class RemarkTokenBuilder
     end
 
     @count = 0
-    unless best_candidate.size.zero?
+
+    unless best_candidate.empty?
       @keyword_token = best_candidate
       remark = text[best_count..-1]
       @remark_token = remark[0] == ' ' ? remark[1..-1] : remark
       @count = text.size
     end
 
-    !@count.zero?
+    @count.positive?
   end
 
   def tokens
@@ -169,9 +181,13 @@ end
 class CommentTokenBuilder
   attr_reader :count
 
+  def initialize(lead_chars)
+    @lead_chars = lead_chars
+  end
+
   def try(text)
     @token = ''
-    @token = text if !text.empty? && text[0] == "'"
+    @token = text if !text.empty? && @lead_chars.include?(text[0])
 
     @count = @token.size
   end
@@ -185,22 +201,31 @@ end
 class TextTokenBuilder
   attr_reader :count
 
+  def initialize(quotes)
+    @quotes = quotes
+  end
+
   def try(text)
     @token = ''
 
     candidate = ''
-    num_quotes = 0
     i = 0
-    if !text.empty? && text[0] == '"'
-      until i == text.size || num_quotes == 2
+
+    if !text.empty? && @quotes.include?(text[0])
+      until i == text.size ||
+            (candidate.size >= 2 && candidate[-1] == candidate[0])
         c = text[i]
         candidate += c
-        num_quotes += 1 if c == '"'
         i += 1
       end
     end
 
-    @token = candidate if num_quotes == 2
+    unless candidate.empty?
+      lead_quote = text[0]
+      candidate += lead_quote if candidate.count(lead_quote) == 1
+      @token = candidate if candidate.count(lead_quote) == 2
+    end
+
     @count = @token.size
   end
 
@@ -242,16 +267,15 @@ class NumberTokenBuilder
   attr_reader :count
 
   def try(text)
-    @token = ''
-
     candidate = ''
-    i = 0
 
     if !text.empty? && text[0] != ' '
+      i = 0
       accepted = true
 
       while i < text.size && accepted
         c = text[i]
+
         # ignore space char
         if c == ' '
           i += 1
@@ -264,18 +288,18 @@ class NumberTokenBuilder
           end
         end
       end
-    end
 
-    # if the candidate ends with 'E', remove it
-    # the tokenizer takes as many as possible,
-    # but a trailing 'E' is not valid
-    if candidate[-1] == 'E'
-      candidate = candidate[0..-2]
-      i -= 1
+      # if the candidate ends with 'E', remove it
+      # the tokenbuilder takes as many as possible,
+      # but a trailing 'E' is not valid
+      if candidate[-1] == 'E'
+        candidate = candidate[0..-2]
+        i -= 1
 
-      # back up to the 'E' in the input text
-      # (there may be spaces)
-      i -= 1 while text[i] != 'E'
+        # back up to the 'E' in the input text
+        # (there may be spaces)
+        i -= 1 while text[i] != 'E'
+      end
     end
 
     # check that string conforms to one of these
@@ -294,7 +318,8 @@ class NumberTokenBuilder
 
     @count = 0
     @count = i unless @token.empty?
-    !@count.zero?
+
+    @count.positive?
   end
 
   def tokens
@@ -356,7 +381,8 @@ class NumericSymbolTokenBuilder
 
     @count = 0
     @count = i unless @token.empty?
-    !@count.zero?
+
+    @count.positive?
   end
 
   def tokens
@@ -376,13 +402,16 @@ class VariableTokenBuilder
 
     if !text.empty? && text[0] != ' '
       accepted = true
+
       while i < text.size && accepted
         c = text[i]
+
         # ignore space char
         if c == ' '
           i += 1
         else
           accepted = accept?(candidate, c)
+
           if accepted
             candidate += c
             i += 1
@@ -399,8 +428,11 @@ class VariableTokenBuilder
 
     @token = ''
     regexes.each { |regex| regex.match(candidate) { |m| @token = m[0] } }
-    @count = i
-    !@count.zero?
+
+    @count = 0
+    @count = i unless @token.empty?
+
+    @count.positive?
   end
 
   def tokens
@@ -412,7 +444,7 @@ class VariableTokenBuilder
   def accept?(candidate, c)
     result = false
     # can always start with an alpha
-    result = true if c =~ /[A-Z]/ && candidate.size.zero?
+    result = true if c =~ /[A-Z]/ && candidate.empty?
     # can always append a digit
     result = true if c =~ /[0-9]/ && candidate.size == 1
 
