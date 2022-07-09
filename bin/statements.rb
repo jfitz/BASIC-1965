@@ -5,10 +5,12 @@ class StatementFactory
   include Singleton
 
   attr_writer :tokenbuilders
+  attr_writer :data_tokenbuilders
 
   def initialize
     @statement_definitions = statement_definitions
     @tokenbuilders = []
+    @data_tokenbuilders = []
   end
 
   def parse(text)
@@ -206,15 +208,24 @@ class StatementFactory
 
   def tokenize(text)
     invalid_tokenbuilder = InvalidTokenBuilder.new
-    tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
+    general_tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
+    data_tokenizer = Tokenizer.new(@data_tokenbuilders, invalid_tokenbuilder)
 
     tokens = []
+
+    tokenizer = general_tokenizer
 
     until text.nil? || text.empty?
       new_tokens, count = tokenizer.tokenize(text)
 
       tokens += new_tokens
 
+      tokenizer = data_tokenizer if
+        new_tokens[0].keyword? && new_tokens[0].to_s == 'DATA'
+
+      tokenizer = general_tokenizer if
+        new_tokens[0].statement_separator?
+      
       text = text[count..-1]
     end
 

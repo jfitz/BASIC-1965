@@ -1,13 +1,13 @@
 Statistics:
 
 Number of lines: 6
-Number of valid statements: 5
+Number of valid statements: 4
 Number of comments: 1
 Number of executable statements: 4
 
 Complexity:
 
-Comment density: 0.200
+Comment density: 0.250
 Comprehension effort: 9
 McCabe complexity: 3
 Halstead complexity:
@@ -31,8 +31,8 @@ Halstead complexity:
 40 F(I:20) (0 1) NEXT I
   Origs: 20:fornext, 30:auto
   Dests: 99:auto
-80 (0 1) DATA 1, 2, 3, STOP, 5
-   ERROR: Syntax error
+80 (0 1) DATA 1, 2, 3, S T O P, 5
+   ERROR: Invalid statement: Token 'InvalidToken:S' is not a value or operator
   Origs: 
   Dests: 
 99 (0 1) END

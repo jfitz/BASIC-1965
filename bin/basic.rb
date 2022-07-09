@@ -143,12 +143,15 @@ class Shell
   def run
     need_prompt = true
     @done = false
+
     until @done
       prompt = $options['prompt'].value
+
       if need_prompt
         @console_io.print_item(prompt)
         @console_io.newline if prompt.size > 1
       end
+
       cmd = @console_io.read_line
       need_prompt = process_line_keyboard(cmd)
       need_prompt = true if prompt.size == 1
@@ -515,6 +518,24 @@ def make_interpreter_tokenbuilders
   tokenbuilders << WhitespaceTokenBuilder.new
 end
 
+def make_interpreter_data_tokenbuilders
+  tokenbuilders = []
+
+  tokenbuilders << CommentTokenBuilder.new
+
+  # operators for negative numeric values
+  un_ops = UnaryOperator.operators
+  tokenbuilders << ListTokenBuilder.new(un_ops, OperatorToken)
+
+  tokenbuilders << BreakTokenBuilder.new
+  tokenbuilders << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
+  tokenbuilders << TextTokenBuilder.new
+  tokenbuilders << NumberTokenBuilder.new
+  tokenbuilders << NumericSymbolTokenBuilder.new
+  tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanLiteralToken)
+  tokenbuilders << WhitespaceTokenBuilder.new
+end
+
 def make_command_tokenbuilders
   tokenbuilders = []
 
@@ -825,10 +846,11 @@ $options['zone_width'] = Option.new(all_types, int40, zone_width)
 console_io = ConsoleIo.new
 
 tokenbuilders = make_interpreter_tokenbuilders
+data_tokenbuilders = make_interpreter_data_tokenbuilders
 
 interpreter = Interpreter.new(console_io)
 interpreter.set_default_args('RND', NumericValue.new(1))
-program = Program.new(console_io, tokenbuilders)
+program = Program.new(console_io, tokenbuilders, data_tokenbuilders)
 interpreter.program = program
 
 if $options['heading'].value
