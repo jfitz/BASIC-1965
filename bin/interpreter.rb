@@ -209,7 +209,7 @@ class Interpreter
     function_names = ('FNA'..'FNZ').to_a
     tokenbuilders << ListTokenBuilder.new(function_names, UserFunctionToken)
 
-    tokenbuilders << TextTokenBuilder.new(@quotes)
+    tokenbuilders << QuotedTextTokenBuilder.new(@quotes)
     tokenbuilders << NumberTokenBuilder.new
     tokenbuilders << VariableTokenBuilder.new
     tokenbuilders << ListTokenBuilder.new(%w[TRUE FALSE], BooleanLiteralToken)
