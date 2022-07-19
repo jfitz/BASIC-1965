@@ -559,6 +559,28 @@ class AbstractStatement
     @keywords.size == 1 && @keywords[0].to_s == 'NEXT'
   end
 
+  def user_def?
+    @keywords.size == 1 && @keywords[0].to_s == 'DEF'
+  end
+
+  def end_user_def?
+    result = false
+
+    if @keywords.size == 1
+      result = true if @keywords[0].to_s == 'FNEND'
+      result = true if @keywords[0].to_s == 'ENDFN'
+      result = true if @keywords[0].to_s == 'ENDFUNCTION'
+    end
+
+    if @keywords.size == 2
+      result == true if
+        @keywords[0].to_s == 'END' &&
+        @keywords[1].to_s == 'FUNCTION'
+    end
+
+    result
+  end
+
   def procedure?
     is_proc = false
 

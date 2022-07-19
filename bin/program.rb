@@ -1931,7 +1931,7 @@ class Program
     line = @lines[line_number]
     statements = line.statements
 
-    walk_line_stmt = current_line_stmt
+    walk_line_stmt = find_next_line_stmt(current_line_stmt)
 
     # search for a ENDFUNCTION or FNEND
     until walk_line_stmt.nil?
@@ -1943,9 +1943,9 @@ class Program
 
       # consider only core statements, not modifiers
 
-      if statement.class.to_s == 'FnendStatement'
-        return LineStmt.new(line_number, stmt)
-      end
+      return nil if statement.user_def?
+
+      return LineStmt.new(line_number, stmt) if statement.end_user_def?
 
       walk_line_stmt = find_next_line_stmt(walk_line_stmt)
     end

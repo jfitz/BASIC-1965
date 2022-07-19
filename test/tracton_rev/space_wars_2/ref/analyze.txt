@@ -8,16 +8,16 @@ Number of executable statements: 287
 Complexity:
 
 Comment density: 0.024
-Comprehension effort: 798
+Comprehension effort: 787
 McCabe complexity: 47
 Halstead complexity:
- length: 702
- volume: 3945.521
- difficulty: 16.116
- effort: 63587.124
- language: 15.191
- intelligence: 244.816
- time: 58.877
+ length: 691
+ volume: 3865.946
+ difficulty: 16.171
+ effort: 62517.422
+ language: 14.783
+ intelligence: 239.062
+ time: 57.887
 
 10 (0 1) REM THIS COMPUTER SIMULATION IS AN ADVANCED VERSION OF
   Origs: 
@@ -556,8 +556,7 @@ Halstead complexity:
 1690 (0 2) PRINT "THE CANNON IS READY, DO YOU WISH COMPUTER ASSISTANCE"
   Origs: 
   Dests: 1700:auto
-1700 (0 13) PRINT " E N T E R E I T H E R1 O R0
-     ERROR: Syntax error: ""E" Token 'InvalidToken:"' is not a value or operator
+1700 (0 2) PRINT "ENTER EITHER 1 OR 0"
   Origs: 1690:auto, 1750:goto
   Dests: 1710:auto
 1710 (1 2) INPUT C
@@ -928,7 +927,7 @@ Unreachable code:
 1340: PRINT "YOUR COURSE, HIS WEAPONS ARE READY"
 1350: GOTO 1130
 1690: PRINT "THE CANNON IS READY, DO YOU WISH COMPUTER ASSISTANCE"
-1700: PRINT " E N T E R E I T H E R1 O R0
+1700: PRINT "ENTER EITHER 1 OR 0"
 1710: INPUT C
 1720: IF C = 1 THEN 1820
 1730: IF C = 0 THEN 1880
