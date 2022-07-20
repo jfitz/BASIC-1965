@@ -1393,8 +1393,8 @@ class DefineFunctionStatement < AbstractStatement
     name = @definition.name
 
     begin
-      @endfunc_line_stmt =
-        program.find_closing_endfunc_line_stmt(name, line_stmt)
+      # call to detect missing ENDFUNCTION statements
+      program.find_closing_endfunc_line_stmt(name, line_stmt)
     rescue BASICSyntaxError => e
       @program_errors << e.message
     end
