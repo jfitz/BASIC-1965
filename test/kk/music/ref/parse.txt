@@ -155,7 +155,6 @@
  AssignmentOperator:= =. -> .
 510 FOR I = I1 TO 6
  WARNING: FORNEXT length exceeds limit 40
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:I -> .
  start:   ["Variable:I1 -> ."]
  end:     ["NumericValue:6"]
@@ -208,8 +207,6 @@
  Variable:S(.,.) -> .
  AssignmentOperator:= . -> .
 570 FOR J = 1 TO 2
- WARNING: FORNEXT length exceeds limit 40
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:2"]
@@ -268,7 +265,6 @@
  NumericValue:1
  AssignmentOperator:= =. -> .
 710 FOR K = 0 TO 4 STEP 2
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:K -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:4"]
@@ -305,7 +301,6 @@
  LineNumber:4000
 770
 800 FOR L = 0 TO 6
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:L -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:6"]
@@ -355,12 +350,10 @@
 1000 REM  TEST CASES IN W-TABLE
  Remark: TEST CASES IN W-TABLE
 1010 FOR L = 0 TO 6
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:L -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:6"]
 1020 FOR V = 2 TO 3
- WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V -> .
  start:   ["NumericValue:2"]
@@ -435,13 +428,11 @@
  BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:1200
 1105 FOR V1 = 1 TO 4
- WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V1 -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:4"]
 1110 FOR V2 = V1+1 TO 4
- WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V2 -> .
  start:   ["Variable:V1 -> .", "NumericValue:1", "BinaryOperatorPlus:+(.,.) -> ."]
@@ -559,7 +550,6 @@
  NumericValue:999
  AssignmentOperator:= =. -> .
 1520 FOR L = 0 TO 6
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:L -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:6"]
@@ -646,8 +636,6 @@
  Variable:S(.,.) -> .
  AssignmentOperator:= . -> .
 5120 FOR I = 1 TO 6
- WARNING: FORNEXT length exceeds limit 40
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:6"]
@@ -702,6 +690,5 @@
  Variable:N -> .
 6004
 9999 END
- WARNING: Terminating statement in FOR/NEXT
  
 

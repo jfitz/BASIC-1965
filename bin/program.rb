@@ -1535,11 +1535,8 @@ class Program
       statements = line.statements
 
       statements.each_with_index do |statement, stmt|
-        reset_visited
-
-        line_stmt = LineStmt.new(line_number, stmt)
-
-        statement.assign_fornext_markers(self, line_stmt)
+        current_line_stmt = LineStmt.new(line_number, stmt)
+        statement.assign_fornext_markers(self, current_line_stmt)
       end
     end
   end
@@ -1883,7 +1880,6 @@ class Program
   end
 
   def find_closing_next_line_stmt(control, current_line_stmt)
-    # move to the next statement
     walk_line_stmt = current_line_stmt
 
     # search for a NEXT with the same control variable
@@ -1899,7 +1895,7 @@ class Program
 
       # consider only core statements, not modifiers
 
-      if statement.class.to_s == 'NextStatement'
+      if statement.next?
         stmt_control = statement.control
 
         for_level -= 1
@@ -1912,6 +1908,7 @@ class Program
         end
       end
 
+      # move to the next statement
       walk_line_stmt = find_next_line_stmt(walk_line_stmt)
     end
 

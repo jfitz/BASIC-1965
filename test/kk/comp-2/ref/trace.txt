@@ -1,8 +1,8 @@
-5 F(R:510) PRINT
+5 PRINT
 
-10 F(R:510) PRINT "A, B, P, R, Y, T";
+10 PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20 F(R:510) INPUT A, B, P, R, Y, T
+20 INPUT A, B, P, R, Y, T
 ? 1000,999,0,4.5,10,4
  A = 1000
  B = 999
@@ -10,31 +10,31 @@ A, B, P, R, Y, T
  R = 4.5
  Y = 10
  T = 4
-21 F(R:510) IF A < 0 THEN 800
+21 IF A < 0 THEN 800
  A: 1000
  A < 0: false
-22 F(R:510) IF B < 0 THEN 800
+22 IF B < 0 THEN 800
  B: 999
  B < 0: false
-23 F(R:510) IF R <= 0 THEN 800
+23 IF R <= 0 THEN 800
  R: 4.5
  R <= 0: false
-24 F(R:510) IF Y <= 0 THEN 800
+24 IF Y <= 0 THEN 800
  Y: 10
  Y <= 0: false
-25 F(R:510) IF T <= 0 THEN 800
+25 IF T <= 0 THEN 800
  T: 4
  T <= 0: false
-26 F(R:510) IF T = 999 THEN 9999
+26 IF T = 999 THEN 9999
  T: 4
  T = 999: false
-30 F(R:510) IF A = 999 THEN 100
+30 IF A = 999 THEN 100
  A: 1000
  A = 999: false
-40 F(R:510) IF B = 999 THEN 200
+40 IF B = 999 THEN 200
  B: 999
  B = 999: true
-210 F(R:510) GOSUB 1000
+210 GOSUB 1000
 1010 G(1010) LET N = Y * T
  Y: 10
  T: 4
@@ -52,24 +52,24 @@ A, B, P, R, Y, T
  N: 40
  R2 = 1.56438
 1099 G(1010) RETURN
-220 F(R:510) LET B = (A + P1) * R2 - P1
+220 LET B = (A + P1) * R2 - P1
  A: 1000
  P1: 0
  R2: 1.56438
  B = 1564.38
-225 F(R:510) IF B < 0 THEN 850
+225 IF B < 0 THEN 850
  B: 1564.38
  B < 0: false
-230 F(R:510) PRINT "FINAL AMOUNT = $" B
+230 PRINT "FINAL AMOUNT = $" B
 FINAL AMOUNT = $
  B: 1564.38
  1564.38
-240 F(R:510) GOTO 5
-5 F(R:510) PRINT
+240 GOTO 5
+5 PRINT
 
-10 F(R:510) PRINT "A, B, P, R, Y, T";
+10 PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20 F(R:510) INPUT A, B, P, R, Y, T
+20 INPUT A, B, P, R, Y, T
 ? 0,999,10,5,20,12
  A = 0
  B = 999
@@ -77,31 +77,31 @@ A, B, P, R, Y, T
  R = 5
  Y = 20
  T = 12
-21 F(R:510) IF A < 0 THEN 800
+21 IF A < 0 THEN 800
  A: 0
  A < 0: false
-22 F(R:510) IF B < 0 THEN 800
+22 IF B < 0 THEN 800
  B: 999
  B < 0: false
-23 F(R:510) IF R <= 0 THEN 800
+23 IF R <= 0 THEN 800
  R: 5
  R <= 0: false
-24 F(R:510) IF Y <= 0 THEN 800
+24 IF Y <= 0 THEN 800
  Y: 20
  Y <= 0: false
-25 F(R:510) IF T <= 0 THEN 800
+25 IF T <= 0 THEN 800
  T: 12
  T <= 0: false
-26 F(R:510) IF T = 999 THEN 9999
+26 IF T = 999 THEN 9999
  T: 12
  T = 999: false
-30 F(R:510) IF A = 999 THEN 100
+30 IF A = 999 THEN 100
  A: 0
  A = 999: false
-40 F(R:510) IF B = 999 THEN 200
+40 IF B = 999 THEN 200
  B: 999
  B = 999: true
-210 F(R:510) GOSUB 1000
+210 GOSUB 1000
 1010 G(1010) LET N = Y * T
  Y: 20
  T: 12
@@ -119,24 +119,24 @@ A, B, P, R, Y, T
  N: 240
  R2 = 2.7148
 1099 G(1010) RETURN
-220 F(R:510) LET B = (A + P1) * R2 - P1
+220 LET B = (A + P1) * R2 - P1
  A: 0
  P1: 2400
  R2: 2.7148
  B = 4115.52
-225 F(R:510) IF B < 0 THEN 850
+225 IF B < 0 THEN 850
  B: 4115.52
  B < 0: false
-230 F(R:510) PRINT "FINAL AMOUNT = $" B
+230 PRINT "FINAL AMOUNT = $" B
 FINAL AMOUNT = $
  B: 4115.52
  4115.52
-240 F(R:510) GOTO 5
-5 F(R:510) PRINT
+240 GOTO 5
+5 PRINT
 
-10 F(R:510) PRINT "A, B, P, R, Y, T";
+10 PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20 F(R:510) INPUT A, B, P, R, Y, T
+20 INPUT A, B, P, R, Y, T
 ? 999,1000,25,5,10,4
  A = 999
  B = 1000
@@ -144,28 +144,28 @@ A, B, P, R, Y, T
  R = 5
  Y = 10
  T = 4
-21 F(R:510) IF A < 0 THEN 800
+21 IF A < 0 THEN 800
  A: 999
  A < 0: false
-22 F(R:510) IF B < 0 THEN 800
+22 IF B < 0 THEN 800
  B: 1000
  B < 0: false
-23 F(R:510) IF R <= 0 THEN 800
+23 IF R <= 0 THEN 800
  R: 5
  R <= 0: false
-24 F(R:510) IF Y <= 0 THEN 800
+24 IF Y <= 0 THEN 800
  Y: 10
  Y <= 0: false
-25 F(R:510) IF T <= 0 THEN 800
+25 IF T <= 0 THEN 800
  T: 4
  T <= 0: false
-26 F(R:510) IF T = 999 THEN 9999
+26 IF T = 999 THEN 9999
  T: 4
  T = 999: false
-30 F(R:510) IF A = 999 THEN 100
+30 IF A = 999 THEN 100
  A: 999
  A = 999: true
-110 F(R:510) GOSUB 1000
+110 GOSUB 1000
 1010 G(1010) LET N = Y * T
  Y: 10
  T: 4
@@ -183,22 +183,22 @@ A, B, P, R, Y, T
  N: 40
  R2 = 1.64362
 1099 G(1010) RETURN
-120 F(R:510) LET A = (B + P1) / R2 - P1
+120 LET A = (B + P1) / R2 - P1
  B: 1000
  P1: 2000
  R2: 1.64362
  A = -174.76
-125 F(R:510) IF A < 0 THEN 850
+125 IF A < 0 THEN 850
  A: -174.76
  A < 0: true
-850 F(R:510) PRINT "ANSWER IS NEGATIVE."
+850 PRINT "ANSWER IS NEGATIVE."
 ANSWER IS NEGATIVE.
-860 F(R:510) GOTO 5
-5 F(R:510) PRINT
+860 GOTO 5
+5 PRINT
 
-10 F(R:510) PRINT "A, B, P, R, Y, T";
+10 PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20 F(R:510) INPUT A, B, P, R, Y, T
+20 INPUT A, B, P, R, Y, T
 ? 999,0,-6000,5,20,1
  A = 999
  B = 0
@@ -206,28 +206,28 @@ A, B, P, R, Y, T
  R = 5
  Y = 20
  T = 1
-21 F(R:510) IF A < 0 THEN 800
+21 IF A < 0 THEN 800
  A: 999
  A < 0: false
-22 F(R:510) IF B < 0 THEN 800
+22 IF B < 0 THEN 800
  B: 0
  B < 0: false
-23 F(R:510) IF R <= 0 THEN 800
+23 IF R <= 0 THEN 800
  R: 5
  R <= 0: false
-24 F(R:510) IF Y <= 0 THEN 800
+24 IF Y <= 0 THEN 800
  Y: 20
  Y <= 0: false
-25 F(R:510) IF T <= 0 THEN 800
+25 IF T <= 0 THEN 800
  T: 1
  T <= 0: false
-26 F(R:510) IF T = 999 THEN 9999
+26 IF T = 999 THEN 9999
  T: 1
  T = 999: false
-30 F(R:510) IF A = 999 THEN 100
+30 IF A = 999 THEN 100
  A: 999
  A = 999: true
-110 F(R:510) GOSUB 1000
+110 GOSUB 1000
 1010 G(1010) LET N = Y * T
  Y: 20
  T: 1
@@ -245,24 +245,24 @@ A, B, P, R, Y, T
  N: 20
  R2 = 2.6533
 1099 G(1010) RETURN
-120 F(R:510) LET A = (B + P1) / R2 - P1
+120 LET A = (B + P1) / R2 - P1
  B: 0
  P1: -120000
  R2: 2.6533
  A = 74773.3
-125 F(R:510) IF A < 0 THEN 850
+125 IF A < 0 THEN 850
  A: 74773.3
  A < 0: false
-130 F(R:510) PRINT "ORIGINAL AMOUNT = $" A
+130 PRINT "ORIGINAL AMOUNT = $" A
 ORIGINAL AMOUNT = $
  A: 74773.3
  74773.3
-140 F(R:510) GOTO 5
-5 F(R:510) PRINT
+140 GOTO 5
+5 PRINT
 
-10 F(R:510) PRINT "A, B, P, R, Y, T";
+10 PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20 F(R:510) INPUT A, B, P, R, Y, T
+20 INPUT A, B, P, R, Y, T
 ? 2000,0,-92.62,999,2,12
  A = 2000
  B = 0
@@ -270,40 +270,40 @@ A, B, P, R, Y, T
  R = 999
  Y = 2
  T = 12
-21 F(R:510) IF A < 0 THEN 800
+21 IF A < 0 THEN 800
  A: 2000
  A < 0: false
-22 F(R:510) IF B < 0 THEN 800
+22 IF B < 0 THEN 800
  B: 0
  B < 0: false
-23 F(R:510) IF R <= 0 THEN 800
+23 IF R <= 0 THEN 800
  R: 999
  R <= 0: false
-24 F(R:510) IF Y <= 0 THEN 800
+24 IF Y <= 0 THEN 800
  Y: 2
  Y <= 0: false
-25 F(R:510) IF T <= 0 THEN 800
+25 IF T <= 0 THEN 800
  T: 12
  T <= 0: false
-26 F(R:510) IF T = 999 THEN 9999
+26 IF T = 999 THEN 9999
  T: 12
  T = 999: false
-30 F(R:510) IF A = 999 THEN 100
+30 IF A = 999 THEN 100
  A: 2000
  A = 999: false
-40 F(R:510) IF B = 999 THEN 200
+40 IF B = 999 THEN 200
  B: 0
  B = 999: false
-50 F(R:510) IF P = 999 THEN 300
+50 IF P = 999 THEN 300
  P: -92.62
  P = 999: false
-60 F(R:510) IF Y = 999 THEN 400
+60 IF Y = 999 THEN 400
  Y: 2
  Y = 999: false
-70 F(R:510) IF R = 999 THEN 500
+70 IF R = 999 THEN 500
  R: 999
  R = 999: true
-505 F(R:510) LET S = B - (A + Y * T * P)
+505 LET S = B - (A + Y * T * P)
  B: 0
  A: 2000
  Y: 2
@@ -3946,16 +3946,16 @@ A, B, P, R, Y, T
  S: 0.6
  S1: -0.2
  S * S1 <= 0: true
-550 F(R:510) PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
+550 PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
 ANNUAL INTEREST IS BETWEEN 
  R: 10.4
  10.3 AND  10.4 PERCENT
-560 F(R:510) GOTO 5
-5 F(R:510) PRINT
+560 GOTO 5
+5 PRINT
 
-10 F(R:510) PRINT "A, B, P, R, Y, T";
+10 PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20 F(R:510) INPUT A, B, P, R, Y, T
+20 INPUT A, B, P, R, Y, T
 ? 30000,0,-2000,5,999,1
  A = 30000
  B = 0
@@ -3963,37 +3963,37 @@ A, B, P, R, Y, T
  R = 5
  Y = 999
  T = 1
-21 F(R:510) IF A < 0 THEN 800
+21 IF A < 0 THEN 800
  A: 30000
  A < 0: false
-22 F(R:510) IF B < 0 THEN 800
+22 IF B < 0 THEN 800
  B: 0
  B < 0: false
-23 F(R:510) IF R <= 0 THEN 800
+23 IF R <= 0 THEN 800
  R: 5
  R <= 0: false
-24 F(R:510) IF Y <= 0 THEN 800
+24 IF Y <= 0 THEN 800
  Y: 999
  Y <= 0: false
-25 F(R:510) IF T <= 0 THEN 800
+25 IF T <= 0 THEN 800
  T: 1
  T <= 0: false
-26 F(R:510) IF T = 999 THEN 9999
+26 IF T = 999 THEN 9999
  T: 1
  T = 999: false
-30 F(R:510) IF A = 999 THEN 100
+30 IF A = 999 THEN 100
  A: 30000
  A = 999: false
-40 F(R:510) IF B = 999 THEN 200
+40 IF B = 999 THEN 200
  B: 0
  B = 999: false
-50 F(R:510) IF P = 999 THEN 300
+50 IF P = 999 THEN 300
  P: -2000
  P = 999: false
-60 F(R:510) IF Y = 999 THEN 400
+60 IF Y = 999 THEN 400
  Y: 999
  Y = 999: true
-410 F(R:510) GOSUB 1000
+410 GOSUB 1000
 1010 G(1010) LET N = Y * T
  Y: 999
  T: 1
@@ -4011,29 +4011,29 @@ A, B, P, R, Y, T
  N: 999
  R2 = 1472680000000000000000
 1099 G(1010) RETURN
-415 F(R:510) LET Q = (B + P1) / (A + P1)
+415 LET Q = (B + P1) / (A + P1)
  B: 0
  P1: -40000
  A: 30000
  Q = 4
-416 F(R:510) IF Q <= 1 THEN 850
+416 IF Q <= 1 THEN 850
  Q: 4
  Q <= 1: false
-420 F(R:510) LET Y = LOG(Q) / LOG(1 + R1) / T
+420 LET Y = LOG(Q) / LOG(1 + R1) / T
  Q: 4
  R1: 0.05
  T: 1
  Y = 28.4133
-430 F(R:510) PRINT "NUMBER OF YEARS = " Y
+430 PRINT "NUMBER OF YEARS = " Y
 NUMBER OF YEARS = 
  Y: 28.4133
  28.4133
-440 F(R:510) GOTO 5
-5 F(R:510) PRINT
+440 GOTO 5
+5 PRINT
 
-10 F(R:510) PRINT "A, B, P, R, Y, T";
+10 PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20 F(R:510) INPUT A, B, P, R, Y, T
+20 INPUT A, B, P, R, Y, T
 ? 1000,500,10,5,999,12
  A = 1000
  B = 500
@@ -4041,37 +4041,37 @@ A, B, P, R, Y, T
  R = 5
  Y = 999
  T = 12
-21 F(R:510) IF A < 0 THEN 800
+21 IF A < 0 THEN 800
  A: 1000
  A < 0: false
-22 F(R:510) IF B < 0 THEN 800
+22 IF B < 0 THEN 800
  B: 500
  B < 0: false
-23 F(R:510) IF R <= 0 THEN 800
+23 IF R <= 0 THEN 800
  R: 5
  R <= 0: false
-24 F(R:510) IF Y <= 0 THEN 800
+24 IF Y <= 0 THEN 800
  Y: 999
  Y <= 0: false
-25 F(R:510) IF T <= 0 THEN 800
+25 IF T <= 0 THEN 800
  T: 12
  T <= 0: false
-26 F(R:510) IF T = 999 THEN 9999
+26 IF T = 999 THEN 9999
  T: 12
  T = 999: false
-30 F(R:510) IF A = 999 THEN 100
+30 IF A = 999 THEN 100
  A: 1000
  A = 999: false
-40 F(R:510) IF B = 999 THEN 200
+40 IF B = 999 THEN 200
  B: 500
  B = 999: false
-50 F(R:510) IF P = 999 THEN 300
+50 IF P = 999 THEN 300
  P: 10
  P = 999: false
-60 F(R:510) IF Y = 999 THEN 400
+60 IF Y = 999 THEN 400
  Y: 999
  Y = 999: true
-410 F(R:510) GOSUB 1000
+410 GOSUB 1000
 1010 G(1010) LET N = Y * T
  Y: 999
  T: 12
@@ -4089,22 +4089,22 @@ A, B, P, R, Y, T
  N: 11988
  R2 = 4626190000000000000000
 1099 G(1010) RETURN
-415 F(R:510) LET Q = (B + P1) / (A + P1)
+415 LET Q = (B + P1) / (A + P1)
  B: 500
  P1: 2400
  A: 1000
  Q = 0.852941
-416 F(R:510) IF Q <= 1 THEN 850
+416 IF Q <= 1 THEN 850
  Q: 0.852941
  Q <= 1: true
-850 F(R:510) PRINT "ANSWER IS NEGATIVE."
+850 PRINT "ANSWER IS NEGATIVE."
 ANSWER IS NEGATIVE.
-860 F(R:510) GOTO 5
-5 F(R:510) PRINT
+860 GOTO 5
+5 PRINT
 
-10 F(R:510) PRINT "A, B, P, R, Y, T";
+10 PRINT "A, B, P, R, Y, T";
 A, B, P, R, Y, T
-20 F(R:510) INPUT A, B, P, R, Y, T
+20 INPUT A, B, P, R, Y, T
 ? 9,9,9,9,9,999
  A = 9
  B = 9
@@ -4112,24 +4112,24 @@ A, B, P, R, Y, T
  R = 9
  Y = 9
  T = 999
-21 F(R:510) IF A < 0 THEN 800
+21 IF A < 0 THEN 800
  A: 9
  A < 0: false
-22 F(R:510) IF B < 0 THEN 800
+22 IF B < 0 THEN 800
  B: 9
  B < 0: false
-23 F(R:510) IF R <= 0 THEN 800
+23 IF R <= 0 THEN 800
  R: 9
  R <= 0: false
-24 F(R:510) IF Y <= 0 THEN 800
+24 IF Y <= 0 THEN 800
  Y: 9
  Y <= 0: false
-25 F(R:510) IF T <= 0 THEN 800
+25 IF T <= 0 THEN 800
  T: 999
  T <= 0: false
-26 F(R:510) IF T = 999 THEN 9999
+26 IF T = 999 THEN 9999
  T: 999
  T = 999: true
-9999 F(R:510) END
+9999 END
 STOP in line 9999
 

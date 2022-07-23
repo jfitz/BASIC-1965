@@ -44,7 +44,6 @@
 500 REM FIND ANNUAL INTEREST
 505 LET S = B - (A + Y * T * P)
 510 FOR R = 0.1 TO 100 STEP 0.1
- WARNING: FORNEXT length exceeds limit 40
 520 GOSUB 1000
 530 LET S1 = B - ((A + P1) * R2 - P1)
 535 IF S * S1 <= 0 THEN 550
@@ -68,5 +67,4 @@
 1040 LET R2 = (1 + R1) ^ N
 1099 RETURN
 9999 END
- WARNING: Terminating statement in FOR/NEXT
 

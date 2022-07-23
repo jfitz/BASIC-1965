@@ -22,18 +22,17 @@ Halstead complexity:
 10 (0 1) REM TEST PROGRAM
   Origs: 
   Dests: 
-20 F(I:20) (1 3) FOR I = 1 TO 4
+20 (1 3) FOR I = 1 TO 4
    ERROR: Cannot find NEXT for I
   Origs: :start
   Dests: 30:fornext
-30 F(I:20) (0 2) PRINT I
+30 (0 2) PRINT I
   Origs: 20:fornext
   Dests: 40:auto
-40 F(I:20) (0 1) NEXT T
+40 (0 1) NEXT T
   Origs: 30:auto
   Dests: 90:auto
-90 F(I:20) (0 1) END
-   WARNING: Terminating statement in FOR/NEXT
+90 (0 1) END
   Origs: 40:auto
   Dests: :stop
 

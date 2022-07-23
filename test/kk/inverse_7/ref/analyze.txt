@@ -52,17 +52,16 @@ Halstead complexity:
 110 F(I:70) (0 3) PRINT I; "DOES NOT HAVE AN INVERSE"
   Origs: 100:auto
   Dests: 120:auto
-120 F(I:70,J:80) (0 1) NEXT I
+120 F(I:70) (0 1) NEXT I
   Origs: 70:fornext, 110:auto, 150:goto
   Dests: 130:auto
-130 F(J:80) (0 1) STOP
-    WARNING: Terminating statement in FOR/NEXT
+130 (0 1) STOP
   Origs: 120:auto
   Dests: :stop
-140 F(I:70,J:80) (0 4) PRINT I; "HAS AN INVERSE" J
+140 (0 4) PRINT I; "HAS AN INVERSE" J
   Origs: 90:ifthen
   Dests: 150:auto
-150 F(I:70,J:80) (0 3) GOTO 120
+150 (0 3) GOTO 120
   Origs: 140:auto
   Dests: 120:goto
 160 (0 2) DATA 7

@@ -366,55 +366,8 @@ class AbstractStatement
 
   def assign_fornext_markers(_, _) end
 
-  def assign_fornext_marker(marker, markers, line_stmt, program)
-    return if @visited == marker
-    @visited = marker
-
-    # if already in the list, remove it
-    # the current marker holds control variable and line-statement
-    if @part_of_fornext.include?(marker)
-      @part_of_fornext -= [marker]
-    end
-
-    # mark as part of this fornext
+  def assign_fornext_marker(marker)
     @part_of_fornext << marker
-
-    if for?
-      # the list is just control variables; do not include line-stmt
-      markers << @control
-    end
-
-    # do not follow if statement is NEXT for this control
-    if next?
-      # no controls? that's a problem
-      return if @control.nil?
-
-      if markers.include?(@control)
-        markers -= [@control]
-      end
-
-      return if markers.empty?
-    end
-
-    # for each destination
-    @transfers.each do |xfer|
-      # don't follow function call and GOSUB
-      next if [:function, :gosub].include?(xfer.type)
-
-      statement = program.get_statement(xfer)
-
-      next if statement.nil?
-
-      if !statement.part_of_fornext.include?(marker)
-        # recurse for that statement's destinations
-        dest_line = xfer.line_number
-        dest_stmt = xfer.statement
-        dest_line_stmt = LineStmt.new(dest_line, dest_stmt)
-        markers2 = markers.clone
-        # recurse with copy of markers; restore original on return
-        statement.assign_fornext_marker(marker, markers2, dest_line_stmt, program)
-      end
-    end
   end
 
   def set_endfunc_lines(_, _) end
@@ -1716,34 +1669,27 @@ class ForStatement < AbstractStatement
     end
   end
 
-  def assign_fornext_markers(program, line_stmt)
-    return if @control.nil?
-    return if @loopstart_line_stmt_mod.nil?
+  def assign_fornext_markers(program, current_line_stmt)
+    return if @nextstmt_line_stmt.nil?
 
-    # the current marker holds control variable and line-statement
-    marker = ForNextMarker.new(@control, line_stmt)
+    marker = ForNextMarker.new(@control, current_line_stmt)
     
-    # if already in the list, remove it
-    if @part_of_fornext.include?(marker)
-      @part_of_fornext -= [marker]
-    end
+    walk_line_stmt = current_line_stmt
 
-    # mark as part of this fornext
-    @part_of_fornext << marker
-
-    statement = program.get_statement(@loopstart_line_stmt_mod)
-
-    unless statement.nil?
+    until walk_line_stmt == @nextstmt_line_stmt
+      statement = program.get_statement(walk_line_stmt)
+      
       # mark statement's destinations
-      # the list is just control variables; do not include line-stmt
-      markers = [@control]
+      statement.assign_fornext_marker(marker)
 
-      dest_line = @loopstart_line_stmt_mod.line_number
-      dest_stmt = @loopstart_line_stmt_mod.statement
-      dest_line_stmt = LineStmt.new(dest_line, dest_stmt)
-
-      statement.assign_fornext_marker(marker, markers, dest_line_stmt, program)
+      walk_line_stmt = program.find_next_line_stmt(walk_line_stmt)
     end
+
+    # assign marker to closing NEXT
+    statement = program.get_statement(walk_line_stmt)
+      
+    # mark statement's destinations
+    statement.assign_fornext_marker(marker)
   end
 
   def uncache

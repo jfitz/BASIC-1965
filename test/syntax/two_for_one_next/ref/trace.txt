@@ -37,40 +37,40 @@
 100 IF F = 0 THEN 60
  F: 0
  F = 0: true
-60 LET F = 1
+60 F(I:30) LET F = 1
  F = 1
-70 F(I:70) FOR I = 10 TO 14
+70 F(I:30,I:70) FOR I = 10 TO 14
  I = 10
  terminated:false
-80 F(I:70) PRINT I
+80 F(I:30,I:70) PRINT I
  I: 10
  10
 90 F(I:30,I:70) NEXT I
  I: 10
  terminated:false
  I = 11
-80 F(I:70) PRINT I
+80 F(I:30,I:70) PRINT I
  I: 11
  11
 90 F(I:30,I:70) NEXT I
  I: 11
  terminated:false
  I = 12
-80 F(I:70) PRINT I
+80 F(I:30,I:70) PRINT I
  I: 12
  12
 90 F(I:30,I:70) NEXT I
  I: 12
  terminated:false
  I = 13
-80 F(I:70) PRINT I
+80 F(I:30,I:70) PRINT I
  I: 13
  13
 90 F(I:30,I:70) NEXT I
  I: 13
  terminated:false
  I = 14
-80 F(I:70) PRINT I
+80 F(I:30,I:70) PRINT I
  I: 14
  14
 90 F(I:30,I:70) NEXT I

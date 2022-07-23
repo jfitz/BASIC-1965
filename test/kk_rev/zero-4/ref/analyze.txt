@@ -76,10 +76,10 @@ Halstead complexity:
 260 (0 1) STOP
   Origs: 250:auto
   Dests: :stop
-270 F(I:210) (0 3) LET B = X
+270 (0 3) LET B = X
   Origs: 230:ifthen
   Dests: 280:auto
-280 F(I:210) (0 2) GOTO 600
+280 (0 2) GOTO 600
   Origs: 270:auto
   Dests: 600:goto
 300 (1 4) IF S = 0 THEN 330
@@ -103,35 +103,34 @@ Halstead complexity:
 510 (0 1) STOP
   Origs: 500:auto
   Dests: :stop
-600 F(I:210) (0 3) LET X(1 + S) = A
+600 (0 3) LET X(1 + S) = A
   Origs: 140:goto, 280:goto
   Dests: 610:auto
-610 F(I:210) (0 3) LET X(1 - S) = B
+610 (0 3) LET X(1 - S) = B
   Origs: 600:auto
   Dests: 620:auto
-620 F(I:210) (0 5) LET X = (X(0) + X(2)) / 2
+620 (0 5) LET X = (X(0) + X(2)) / 2
   Origs: 610:auto, 680:goto
   Dests: 630:auto
-630 F(I:210) (0 4) LET F = SGN(FNF(X))
+630 (0 4) LET F = SGN(FNF(X))
   Origs: 620:auto
   Dests: 640:auto
-640 F(I:210) (1 4) IF F = 0 THEN 800
+640 (1 4) IF F = 0 THEN 800
   Origs: 630:auto
   Dests: 650:auto, 800:ifthen
-650 F(I:210) (0 3) LET X(1 + F) = X
+650 (0 3) LET X(1 + F) = X
   Origs: 640:auto
   Dests: 670:auto
-670 F(I:210) (1 10) IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 800
+670 (1 10) IF ABS(X(0) - X(2)) / (ABS(X(0)) + ABS(X(2))) < 5E-07 THEN 800
   Origs: 650:auto
   Dests: 680:auto, 800:ifthen
-680 F(I:210) (0 3) GOTO 620
+680 (0 3) GOTO 620
   Origs: 670:auto
   Dests: 620:goto
-800 F(I:210) (0 3) PRINT "ONE ZERO AT" X
+800 (0 3) PRINT "ONE ZERO AT" X
   Origs: 640:ifthen, 670:ifthen
   Dests: 810:auto
-810 F(I:210) (0 1) STOP
-    WARNING: Terminating statement in FOR/NEXT
+810 (0 1) STOP
   Origs: 800:auto
   Dests: :stop
 900 (0 1) REM DATA 0,1

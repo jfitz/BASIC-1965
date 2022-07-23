@@ -1,12 +1,63 @@
-START
-STOP in line 90
+BASIC-1965 interpreter version -1
 
-10 (0) REM TEST OF ANALYZE COMMAND
-20 (1) PRINT "START"
-30 (1) LET B = 10
-40 (1) GOTO 90
-50 (0) PRINT B
-60 (0) LET A = B / 10
-90 (1) STOP
-99 (0) END
+READY
+LOAD "analyze.bas"
+
+READY
+ANALYZE
+Statistics:
+
+Number of lines: 8
+Number of valid statements: 7
+Number of comments: 1
+Number of executable statements: 7
+
+Complexity:
+
+Comment density: 0.143
+Comprehension effort: 16
+McCabe complexity: 1
+Halstead complexity:
+ length: 10
+ volume: 20.794
+ difficulty: 1.333
+ effort: 27.726
+ language: 11.697
+ intelligence: 15.596
+ time: 0.026
+
+10 (0 1) REM TEST OF ANALYZE COMMAND
+  Origs: 
+  Dests: 
+20 (0 2) PRINT "START"
+  Origs: :start
+  Dests: 30:auto
+30 (0 3) LET B = 10
+  Origs: 20:auto
+  Dests: 40:auto
+40 (0 2) GOTO 90
+  Origs: 30:auto
+  Dests: 90:goto
+50 (0 2) PRINT B
+  Origs: 
+  Dests: 60:auto
+60 (0 4) LET A = B / 10
+  Origs: 50:auto
+  Dests: 90:auto
+90 (0 1) STOP
+  Origs: 40:goto, 60:auto
+  Dests: :stop
+99 (0 1) END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+50: PRINT B
+60: LET A = B / 10
+99: END
+
+READY
+BYE
+BASIC-1965 ended
 

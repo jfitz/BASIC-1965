@@ -392,13 +392,13 @@
  J: 1
  P(1,1): 1
  P(I, J) = 1: true
-140 F(I:70,J:80) PRINT I; "HAS AN INVERSE" J
+140 PRINT I; "HAS AN INVERSE" J
  I: 1
  1 HAS AN INVERSE
  J: 1
  1
-150 F(I:70,J:80) GOTO 120
-120 F(I:70,J:80) NEXT I
+150 GOTO 120
+120 F(I:70) NEXT I
  I: 1
  terminated:false
  I = 2
@@ -439,13 +439,13 @@
  J: 4
  P(2,4): 1
  P(I, J) = 1: true
-140 F(I:70,J:80) PRINT I; "HAS AN INVERSE" J
+140 PRINT I; "HAS AN INVERSE" J
  I: 2
  2 HAS AN INVERSE
  J: 4
  4
-150 F(I:70,J:80) GOTO 120
-120 F(I:70,J:80) NEXT I
+150 GOTO 120
+120 F(I:70) NEXT I
  I: 2
  terminated:false
  I = 3
@@ -495,13 +495,13 @@
  J: 5
  P(3,5): 1
  P(I, J) = 1: true
-140 F(I:70,J:80) PRINT I; "HAS AN INVERSE" J
+140 PRINT I; "HAS AN INVERSE" J
  I: 3
  3 HAS AN INVERSE
  J: 5
  5
-150 F(I:70,J:80) GOTO 120
-120 F(I:70,J:80) NEXT I
+150 GOTO 120
+120 F(I:70) NEXT I
  I: 3
  terminated:false
  I = 4
@@ -524,13 +524,13 @@
  J: 2
  P(4,2): 1
  P(I, J) = 1: true
-140 F(I:70,J:80) PRINT I; "HAS AN INVERSE" J
+140 PRINT I; "HAS AN INVERSE" J
  I: 4
  4 HAS AN INVERSE
  J: 2
  2
-150 F(I:70,J:80) GOTO 120
-120 F(I:70,J:80) NEXT I
+150 GOTO 120
+120 F(I:70) NEXT I
  I: 4
  terminated:false
  I = 5
@@ -562,13 +562,13 @@
  J: 3
  P(5,3): 1
  P(I, J) = 1: true
-140 F(I:70,J:80) PRINT I; "HAS AN INVERSE" J
+140 PRINT I; "HAS AN INVERSE" J
  I: 5
  5 HAS AN INVERSE
  J: 3
  3
-150 F(I:70,J:80) GOTO 120
-120 F(I:70,J:80) NEXT I
+150 GOTO 120
+120 F(I:70) NEXT I
  I: 5
  terminated:false
  I = 6
@@ -627,15 +627,15 @@
  J: 6
  P(6,6): 1
  P(I, J) = 1: true
-140 F(I:70,J:80) PRINT I; "HAS AN INVERSE" J
+140 PRINT I; "HAS AN INVERSE" J
  I: 6
  6 HAS AN INVERSE
  J: 6
  6
-150 F(I:70,J:80) GOTO 120
-120 F(I:70,J:80) NEXT I
+150 GOTO 120
+120 F(I:70) NEXT I
  I: 6
  terminated:true
-130 F(J:80) STOP
+130 STOP
 STOP in line 130
 

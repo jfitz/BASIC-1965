@@ -145,7 +145,6 @@
  TextValue:"*"
  CarriageControl:;
 410 FOR K = I+1 TO 60
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:K -> .
  start:   ["Variable:I -> .", "NumericValue:1", "BinaryOperatorPlus:+(.,.) -> ."]
  end:     ["NumericValue:60"]
@@ -171,6 +170,5 @@
  NumericValue:3
  NumericValue:.5
 999 END
- WARNING: Terminating statement in FOR/NEXT
  
 

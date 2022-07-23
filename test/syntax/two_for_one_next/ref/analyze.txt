@@ -34,13 +34,13 @@ Halstead complexity:
 50 F(I:30) (0 2) GOTO 90
   Origs: 40:auto
   Dests: 90:goto
-60 (0 3) LET F = 1
+60 F(I:30) (0 3) LET F = 1
   Origs: 100:ifthen
   Dests: 70:auto
-70 F(I:70) (1 3) FOR I = 10 TO 14
+70 F(I:30,I:70) (1 3) FOR I = 10 TO 14
   Origs: 60:auto
   Dests: 80:fornext, 90:fornext
-80 F(I:70) (0 2) PRINT I
+80 F(I:30,I:70) (0 2) PRINT I
   Origs: 70:fornext
   Dests: 90:auto
 90 F(I:30,I:70) (0 1) NEXT I

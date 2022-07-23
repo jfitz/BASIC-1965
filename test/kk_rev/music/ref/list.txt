@@ -28,7 +28,6 @@
 505 LET I1 = 1
 510 FOR I = I1 TO 6
  WARNING: FORNEXT length exceeds limit 40
- WARNING: FOR/NEXT nesting exceeds limit 3
 520 LET C2 = P(C1,I)
 525 LET S(0,N) = C2
 530 LET S = M(N)
@@ -39,8 +38,6 @@
 560 LET D(2) = C2-15
 565 LET D = S(4,N+1)
 570 FOR J = 1 TO 2
- WARNING: FORNEXT length exceeds limit 40
- WARNING: FOR/NEXT nesting exceeds limit 3
 580 IF ABS(D(J)-D) <= 5 THEN 610
 590 LET R = D(3-J)
 600 GOTO 660
@@ -54,7 +51,6 @@
 700 REM  FIND OTHER NOTES
 705 LET J = 1
 710 FOR K = 0 TO 4 STEP 2
- WARNING: FOR/NEXT nesting exceeds limit 3
 720 IF FNC(S-(R+K))=0 THEN 750
 730 LET B(J) = R+K
 740 LET J = J+1
@@ -62,7 +58,6 @@
 760 IF J > 3 THEN 4000
 770
 800 FOR L = 0 TO 6
- WARNING: FOR/NEXT nesting exceeds limit 3
 810 LET A = B(1)
 820 LET B = B(2)
 830 LET W(0,L) = 0
@@ -74,9 +69,7 @@
 899
 1000 REM  TEST CASES IN W-TABLE
 1010 FOR L = 0 TO 6
- WARNING: FOR/NEXT nesting exceeds limit 3
 1020 FOR V = 2 TO 3
- WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
 1030 LET B = W(V,L)
 1040 IF ABS(B-S(V,N+1)) > 5 THEN 1260
@@ -89,10 +82,8 @@
 1100 REM  CHECK FOR BAD TRANSITIONS
 1102 IF C1 = C2 THEN 1200
 1105 FOR V1 = 1 TO 4
- WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
 1110 FOR V2 = V1+1 TO 4
- WARNING: FORNEXT length exceeds limit 40
  WARNING: FOR/NEXT nesting exceeds limit 3
 1115 LET D = S(V1,N+1)-S(V2,N+1)
 1120 IF FNC(D) = 0 THEN 1145
@@ -117,7 +108,6 @@
 1500 REM  SELECT CHORD
 1510 LET M = 999
 1520 FOR L = 0 TO 6
- WARNING: FOR/NEXT nesting exceeds limit 3
 1530 LET M1 = W(0,L)
 1540 IF M1 > M THEN 1590
 1550 LET M = M1
@@ -139,8 +129,6 @@
 5100 LET C2 = S(0,N)
 5110 LET C1 = S(0,N+1)
 5120 FOR I = 1 TO 6
- WARNING: FORNEXT length exceeds limit 40
- WARNING: FOR/NEXT nesting exceeds limit 3
 5130 IF C2 = P(C1,I) THEN 5200
 5140 NEXT I
 5200 LET I1 = I+1
@@ -152,5 +140,4 @@
 6003 NEXT N
 6004
 9999 END
- WARNING: Terminating statement in FOR/NEXT
 

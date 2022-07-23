@@ -573,14 +573,14 @@
  M: 100
  A: 19
  X - M * INT(X / M) = A: true
-100 F(I:20,K:40) LET P = P * M
+100 F(I:20) LET P = P * M
  P: 3
  M: 100
  P = 300
-110 F(I:20,K:40) LET B = X
+110 F(I:20) LET B = X
  X: 119
  B = 119
-120 F(I:20,K:40) NEXT I
+120 F(I:20) NEXT I
  I: 2
  terminated:false
  I = 3
@@ -980,14 +980,14 @@
  M: 31
  A: 4
  X - M * INT(X / M) = A: true
-100 F(I:20,K:40) LET P = P * M
+100 F(I:20) LET P = P * M
  P: 300
  M: 31
  P = 9300
-110 F(I:20,K:40) LET B = X
+110 F(I:20) LET B = X
  X: 8219
  B = 8219
-120 F(I:20,K:40) NEXT I
+120 F(I:20) NEXT I
  I: 3
  terminated:false
  I = 4
@@ -1163,22 +1163,22 @@
  M: 101
  A: 25
  X - M * INT(X / M) = A: true
-100 F(I:20,K:40) LET P = P * M
+100 F(I:20) LET P = P * M
  P: 9300
  M: 101
  P = 939300
-110 F(I:20,K:40) LET B = X
+110 F(I:20) LET B = X
  X: 110519
  B = 110519
-120 F(I:20,K:40) NEXT I
+120 F(I:20) NEXT I
  I: 4
  terminated:true
-130 F(I:20,K:40) PRINT "X  IS CONGRUENT TO " B; " MODULO " P
+130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P
 X  IS CONGRUENT TO 
  B: 110519
  110519  MODULO 
  P: 939300
  939300
-999 F(I:20,K:40) END
+999 END
 STOP in line 999
 
