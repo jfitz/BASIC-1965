@@ -12,6 +12,7 @@
  Variable:I -> .
  CarriageControl:NL
 50 GOTO 90
+ WARNING: Transfer in/out of FOR/NEXT 90
  LineNumber:90
 60 LET F = 1
  Variable:F -> .
@@ -27,6 +28,7 @@
 90 NEXT I
  Variable:I -> .
 100 IF F = 0 THEN 60
+ WARNING: Transfer in/out of FOR/NEXT 60
  Variable:F -> .
  NumericValue:0
  BinaryOperatorEqual:=(.,.) -> ?

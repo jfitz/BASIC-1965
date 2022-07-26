@@ -128,12 +128,14 @@ Halstead complexity:
   Origs: 415:auto
   Dests: 430:auto, 550:ifthen
 430 (1 4) IF M < 1 THEN 500
+    WARNING: Transfer in/out of FOR/NEXT 500
   Origs: 420:auto
   Dests: 440:auto, 500:ifthen
 440 (1 4) IF M > 9 THEN 550
   Origs: 430:auto
   Dests: 450:auto, 550:ifthen
 450 (1 4) IF B(M) <> 0 THEN 500
+    WARNING: Transfer in/out of FOR/NEXT 500
   Origs: 440:auto
   Dests: 460:auto, 500:ifthen
 460 (0 3) LET B(M) = F
@@ -152,9 +154,11 @@ Halstead complexity:
   Origs: 430:ifthen, 450:ifthen, 490:auto
   Dests: 510:auto
 510 F(J:470) (1 6) IF C(P) = -3 THEN 860
+    WARNING: Transfer in/out of FOR/NEXT 860
   Origs: 500:auto
   Dests: 520:auto, 860:ifthen
 520 F(J:470) (1 4) IF C(P) = 3 THEN 800
+    WARNING: Transfer in/out of FOR/NEXT 810
   Origs: 510:auto
   Dests: 530:auto, 810:ifthen
 530 F(J:470) (0 1) NEXT J
@@ -239,6 +243,7 @@ Halstead complexity:
   Origs: 610:gosub
   Dests: 1020:fornext, 1030:fornext
 1020 G(1010) F(P:1010) (1 4) IF C(P) = 2 THEN 1100
+     WARNING: Transfer in/out of FOR/NEXT 1100
   Origs: 1010:fornext
   Dests: 1030:auto, 1100:ifthen
 1030 G(1010) F(P:1010) (0 1) NEXT P
@@ -248,6 +253,7 @@ Halstead complexity:
   Origs: 1030:auto
   Dests: 1050:fornext, 1060:fornext
 1050 G(1010) F(P:1040) (1 6) IF C(P) = -2 THEN 1100
+     WARNING: Transfer in/out of FOR/NEXT 1100
   Origs: 1040:fornext
   Dests: 1060:auto, 1100:ifthen
 1060 G(1010) F(P:1040) (0 1) NEXT P
@@ -263,6 +269,7 @@ Halstead complexity:
   Origs: 1100:fornext
   Dests: 1120:auto
 1120 G(1010) F(I:1100) (1 4) IF B(M) = 0 THEN 1999
+     WARNING: Transfer in/out of FOR/NEXT 1999
   Origs: 1110:auto
   Dests: 1130:auto, 1999:ifthen
 1130 G(1010) F(I:1100) (0 1) NEXT I

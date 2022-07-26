@@ -80,6 +80,7 @@ Halstead complexity:
   Origs: 300:fornext
   Dests: 320:fornext, 330:fornext
 320 F(J:300,I:310) (1 4) IF G(I, J) > 0 THEN 360
+    WARNING: Transfer in/out of FOR/NEXT 360
   Origs: 310:fornext
   Dests: 330:auto, 360:ifthen
 330 F(J:300,I:310) (0 1) NEXT I
@@ -110,12 +111,14 @@ Halstead complexity:
   Origs: 400:auto
   Dests: 420:fornext, 430:fornext
 420 F(J:300,I:360,K:410) (1 4) IF G(K, J) > 0 THEN 450
+    WARNING: Transfer in/out of FOR/NEXT 450
   Origs: 410:fornext
   Dests: 430:auto, 450:ifthen
 430 F(J:300,I:360,K:410) (0 1) NEXT K
   Origs: 410:fornext, 420:auto
   Dests: 440:auto
 440 F(J:300,I:360) (0 2) GOTO 460
+    WARNING: Transfer in/out of FOR/NEXT 460
   Origs: 430:auto
   Dests: 460:goto
 450 F(J:300,I:360) (0 1) NEXT I

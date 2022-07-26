@@ -32,6 +32,7 @@ Halstead complexity:
   Origs: 30:fornext
   Dests: 50:auto
 50 F(I:30) (1 4) IF L(I) < 0 THEN 70
+   WARNING: Transfer in/out of FOR/NEXT 70
   Origs: 40:auto
   Dests: 60:auto, 70:ifthen
 60 F(I:30) (0 1) NEXT I

@@ -164,6 +164,7 @@
  BinaryOperatorNotEqual:<>(.,.) -> ?
  LineNumber:550
 430  IF M < 1 THEN 500
+ WARNING: Transfer in/out of FOR/NEXT 500
  Variable:M -> .
  NumericValue:1
  BinaryOperatorLess:<(.,.) -> ?
@@ -174,6 +175,7 @@
  BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:550
 450  IF B(M) <> 0 THEN 500
+ WARNING: Transfer in/out of FOR/NEXT 500
  Variable:M -> .
  Variable:B(.) -> .
  NumericValue:0
@@ -208,6 +210,7 @@
  BinaryOperatorPlus:+(.,.) -> .
  AssignmentOperator:= . -> .
 510     IF C(P) = -3 THEN 860
+ WARNING: Transfer in/out of FOR/NEXT 860
  Variable:P -> .
  Variable:C(.) -> .
  NumericValue:3
@@ -215,6 +218,7 @@
  BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:860
 520     IF C(P) = 3 THEN 800
+ WARNING: Transfer in/out of FOR/NEXT 810
  Variable:P -> .
  Variable:C(.) -> .
  NumericValue:3
@@ -295,6 +299,7 @@
  start:   ["NumericValue:1"]
  end:     ["NumericValue:8"]
 1020 IF C(P) = 2 THEN 1100
+ WARNING: Transfer in/out of FOR/NEXT 1100
  Variable:P -> .
  Variable:C(.) -> .
  NumericValue:2
@@ -307,6 +312,7 @@
  start:   ["NumericValue:1"]
  end:     ["NumericValue:8"]
 1050 IF C(P) = -2 THEN 1100
+ WARNING: Transfer in/out of FOR/NEXT 1100
  Variable:P -> .
  Variable:C(.) -> .
  NumericValue:2
@@ -328,6 +334,7 @@
  Variable:T(.,.) -> .
  AssignmentOperator:= . -> .
 1120    IF B(M) = 0 THEN 1999
+ WARNING: Transfer in/out of FOR/NEXT 1999
  Variable:M -> .
  Variable:B(.) -> .
  NumericValue:0

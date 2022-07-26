@@ -44,6 +44,7 @@ Halstead complexity:
   Origs: 70:fornext
   Dests: 90:fornext, 100:fornext
 90 F(I:70,J:80) (1 4) IF P(I, J) = 1 THEN 140
+   WARNING: Transfer in/out of FOR/NEXT 140
   Origs: 80:fornext
   Dests: 100:auto, 140:ifthen
 100 F(I:70,J:80) (0 1) NEXT J
@@ -62,6 +63,7 @@ Halstead complexity:
   Origs: 90:ifthen
   Dests: 150:auto
 150 (0 3) GOTO 120
+    WARNING: Transfer in/out of FOR/NEXT 120
   Origs: 140:auto
   Dests: 120:goto
 160 (0 2) DATA 7

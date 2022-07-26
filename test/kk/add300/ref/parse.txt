@@ -134,6 +134,7 @@
  Variable:I -> .
  Variable:X(.) -> .
 1030     IF X(I) < 0 THEN 1100
+ WARNING: Transfer in/out of FOR/NEXT 1100
  Variable:I -> .
  Variable:X(.) -> .
  NumericValue:0
@@ -278,6 +279,7 @@
 2290     NEXT J
  Variable:J -> .
 2300     IF I = 0 THEN 2400
+ WARNING: Transfer in/out of FOR/NEXT 2400
  Variable:I -> .
  NumericValue:0
  BinaryOperatorEqual:=(.,.) -> ?

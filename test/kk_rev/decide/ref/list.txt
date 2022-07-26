@@ -2,6 +2,7 @@
 20 FOR I = 0 TO 100
 30    READ K
 40    IF K = 999 THEN 100
+ WARNING: Transfer in/out of FOR/NEXT 100
 50    LET T(I,0) = K
 60    LET K1 = ABS(K)
 70    FOR J = 1 TO 2*K1 + 1 - SGN(K1)

@@ -113,6 +113,7 @@
  start:   ["NumericValue:1"]
  end:     ["NumericValue:60"]
 320 IF G(I,J) > 0 THEN 360
+ WARNING: Transfer in/out of FOR/NEXT 360
  Variable:I -> .
  Variable:J -> .
  Variable:G(.,.) -> .
@@ -149,6 +150,7 @@
  start:   ["Variable:I -> .", "NumericValue:1", "BinaryOperatorPlus:+(.,.) -> ."]
  end:     ["NumericValue:60"]
 420 IF G(K,J) > 0 THEN 450
+ WARNING: Transfer in/out of FOR/NEXT 450
  Variable:K -> .
  Variable:J -> .
  Variable:G(.,.) -> .
@@ -158,6 +160,7 @@
 430 NEXT K
  Variable:K -> .
 440 GOTO 460
+ WARNING: Transfer in/out of FOR/NEXT 460
  LineNumber:460
 450 NEXT I
  Variable:I -> .

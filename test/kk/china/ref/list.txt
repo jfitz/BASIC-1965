@@ -4,6 +4,7 @@
 40       FOR K = 0 TO M-1
 50       LET X = B + K*P
 60       IF X - M*INT(X/M) = A THEN 100
+ WARNING: Transfer in/out of FOR/NEXT 100
 70    NEXT K
 80    PRINT "ERROR"
 90    STOP

@@ -32,6 +32,7 @@ Halstead complexity:
   Origs: 30:fornext
   Dests: 50:auto
 50 F(I:30) (0 2) GOTO 90
+   WARNING: Transfer in/out of FOR/NEXT 90
   Origs: 40:auto
   Dests: 90:goto
 60 F(I:30) (0 3) LET F = 1
@@ -47,6 +48,7 @@ Halstead complexity:
   Origs: 30:fornext, 50:goto, 70:fornext, 80:auto
   Dests: 100:auto
 100 (1 5) IF F = 0 THEN 60
+    WARNING: Transfer in/out of FOR/NEXT 60
   Origs: 90:auto
   Dests: 60:ifthen, 900:auto
 900 (0 1) END

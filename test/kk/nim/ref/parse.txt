@@ -210,6 +210,7 @@
  BinaryOperatorPlus:+(.,.) -> .
  AssignmentOperator:= . -> .
 580    GOTO 770
+ WARNING: Transfer in/out of FOR/NEXT 780
  LineNumber:770
 590 NEXT P
  Variable:P -> .
@@ -221,6 +222,7 @@
  start:   ["NumericValue:1"]
  end:     ["NumericValue:4"]
 630    IF S(J) > 0 THEN 650
+ WARNING: Transfer in/out of FOR/NEXT 650
  Variable:J -> .
  Variable:S(.) -> .
  NumericValue:0
@@ -233,6 +235,7 @@
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
 660    IF B(P,J) = 1 THEN 680
+ WARNING: Transfer in/out of FOR/NEXT 680
  Variable:P -> .
  Variable:J -> .
  Variable:B(.,.) -> .

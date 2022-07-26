@@ -161,6 +161,7 @@ Halstead complexity:
   Origs: 1010:fornext
   Dests: 1030:auto
 1030 G(1010) F(I:1010) (1 4) IF X(I) < 0 THEN 1100
+     WARNING: Transfer in/out of FOR/NEXT 1100
   Origs: 1020:auto
   Dests: 1040:auto, 1100:ifthen
 1040 G(1010) F(I:1010) (0 1) NEXT I
@@ -261,6 +262,7 @@ Halstead complexity:
   Origs: 2240:fornext, 2280:auto
   Dests: 2300:auto
 2300 G(2010) F(I:2210) (1 4) IF I = 0 THEN 2400
+     WARNING: Transfer in/out of FOR/NEXT 2400
   Origs: 2290:auto
   Dests: 2310:auto, 2400:ifthen
 2310 G(2010) F(I:2210) (0 2) PRINT ",   ";

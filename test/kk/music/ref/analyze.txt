@@ -142,6 +142,7 @@ Halstead complexity:
   Origs: 580:auto
   Dests: 600:auto
 600 F(N:450,I:510,J:570) (0 2) GOTO 660
+    WARNING: Transfer in/out of FOR/NEXT 660
   Origs: 590:auto
   Dests: 660:goto
 610 F(N:450,I:510,J:570) (0 1) NEXT J
@@ -236,18 +237,22 @@ Halstead complexity:
   Origs: 1020:fornext
   Dests: 1040:auto
 1040 F(N:450,I:510,L:1010,V:1020) (1 5) IF ABS(B - S(V, N + 1)) > 5 THEN 1260
+     WARNING: Transfer in/out of FOR/NEXT 1260
   Origs: 1030:auto
   Dests: 1050:auto, 1260:ifthen
 1050 F(N:450,I:510,L:1010,V:1020) (1 8) IF B > 17 - 4 * V THEN 1260
+     WARNING: Transfer in/out of FOR/NEXT 1260
   Origs: 1040:auto
   Dests: 1060:auto, 1260:ifthen
 1060 F(N:450,I:510,L:1010,V:1020) (1 8) IF B < 5 - 4 * V THEN 1260
+     WARNING: Transfer in/out of FOR/NEXT 1260
   Origs: 1050:auto
   Dests: 1070:auto, 1260:ifthen
 1070 F(N:450,I:510,L:1010,V:1020) (0 3) LET S(V, N) = B
   Origs: 1060:auto
   Dests: 1080:auto
 1080 F(N:450,I:510,L:1010,V:1020) (1 4) IF S(2 * V - 3, N) <= S(2 * V - 2, N) THEN 1260
+     WARNING: Transfer in/out of FOR/NEXT 1260
   Origs: 1070:auto
   Dests: 1090:auto, 1260:ifthen
 1090 F(N:450,I:510,L:1010,V:1020) (0 1) NEXT V
@@ -289,6 +294,7 @@ Halstead complexity:
   Origs: 1145:auto
   Dests: 1155:auto
 1155 F(N:450,I:510,L:1010,V1:1105,V2:1110) (1 4) IF S1 = S2 THEN 1260
+     WARNING: Transfer in/out of FOR/NEXT 1260
   Origs: 1150:auto
   Dests: 1160:auto, 1260:ifthen
 1160 F(N:450,I:510,L:1010,V1:1105,V2:1110) (0 1) NEXT V2
@@ -362,6 +368,7 @@ Halstead complexity:
   Origs: 1610:auto
   Dests: 1630:auto
 1630 F(N:450,I:510) (0 2) GOTO 6000
+     WARNING: Transfer in/out of FOR/NEXT 6001
   Origs: 1620:auto
   Dests: 6001:goto
 1640 (0 0) 
@@ -399,6 +406,7 @@ Halstead complexity:
   Origs: 5110:auto
   Dests: 5130:fornext, 5140:fornext
 5130 F(N:450,I:5120) (1 4) IF C2 = P(C1, I) THEN 5200
+     WARNING: Transfer in/out of FOR/NEXT 5200
   Origs: 5120:fornext
   Dests: 5140:auto, 5200:ifthen
 5140 F(N:450,I:5120) (0 1) NEXT I

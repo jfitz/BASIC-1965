@@ -38,6 +38,7 @@
  start:   ["NumericValue:1"]
  end:     ["Variable:N -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
 90 IF P(I,J) = 1 THEN 140
+ WARNING: Transfer in/out of FOR/NEXT 140
  Variable:I -> .
  Variable:J -> .
  Variable:P(.,.) -> .
@@ -63,6 +64,7 @@
  Variable:J -> .
  CarriageControl:NL
 150 GOTO 120
+ WARNING: Transfer in/out of FOR/NEXT 120
  LineNumber:120
 160 DATA 7
  NumericValue:7

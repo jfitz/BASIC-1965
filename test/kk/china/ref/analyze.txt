@@ -35,6 +35,7 @@ Halstead complexity:
   Origs: 40:fornext
   Dests: 60:auto
 60 F(I:20,K:40) (1 8) IF X - M * INT(X / M) = A THEN 100
+   WARNING: Transfer in/out of FOR/NEXT 100
   Origs: 50:auto
   Dests: 70:auto, 100:ifthen
 70 F(I:20,K:40) (0 1) NEXT K

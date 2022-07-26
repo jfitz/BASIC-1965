@@ -26,6 +26,7 @@ Halstead complexity:
   Origs: :start
   Dests: 30:fornext, 50:fornext
 30 F(I:20) (1 5) IF MOD(I, 2) = 0 THEN 70
+   WARNING: Transfer in/out of FOR/NEXT 70
   Origs: 20:fornext
   Dests: 40:auto, 70:ifthen
 40 F(I:20) (0 3) PRINT I; " IS ODD"

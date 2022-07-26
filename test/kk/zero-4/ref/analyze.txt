@@ -96,6 +96,7 @@ Halstead complexity:
   Origs: 310:fornext
   Dests: 330:auto
 330 G(200) F(I:310) (1 6) IF S * SGN(FNF(X)) < 0 THEN 370
+    WARNING: Transfer in/out of FOR/NEXT 370
   Origs: 320:auto
   Dests: 340:auto, 370:ifthen
 340 G(200) F(I:310) (0 1) NEXT I
