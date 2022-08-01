@@ -1934,6 +1934,40 @@ class Program
     raise(BASICSyntaxError, "Cannot find NEXT for #{control}")
   end
 
+  def find_continue_next_line_stmt(current_line_stmt)
+    walk_line_stmt = current_line_stmt
+
+    # search for NEXT at same nesting level
+    for_level = 0
+
+    until walk_line_stmt.nil?
+      line_number = walk_line_stmt.line_number
+      stmt = walk_line_stmt.statement
+      line = @lines[line_number]
+      statement = line.statements[stmt]
+
+      for_level += statement.number_for_stmts
+
+      # consider only core statements, not modifiers
+
+      if statement.next?
+        if for_level.zero?
+          return LineStmt.new(line_number, stmt)
+        end
+
+        for_level -= 1
+
+        break if for_level.negative?
+      end
+
+      # move to the next statement
+      walk_line_stmt = find_next_line_stmt(walk_line_stmt)
+    end
+
+    # if none found, error
+    raise(BASICSyntaxError, "Cannot find NEXT")
+  end
+
   def find_closing_endfunc_line_stmt(name, current_line_stmt)
     # move to the next statement
     walk_line_stmt = find_next_line_stmt(current_line_stmt)

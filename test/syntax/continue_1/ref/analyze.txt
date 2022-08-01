@@ -1,0 +1,47 @@
+Statistics:
+
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 5
+
+Complexity:
+
+Comment density: 0.200
+Comprehension effort: 8
+McCabe complexity: 1
+Halstead complexity:
+ length: 2
+ volume: 1.386
+ difficulty: 0.000
+ effort: 0.000
+ language: 0.000
+ intelligence: 0.000
+ time: 0.000
+
+10 (0 1) REM TEST OF CONTINUE
+  Origs: 
+  Dests: 
+20 (0 2) PRINT "TEST STARTS"
+  Origs: :start
+  Dests: 30:auto
+30 (0 1) CONTINUE
+   ERROR: Cannot find NEXT
+  Origs: 20:auto
+  Dests: 
+40 (0 2) PRINT "TEST ENDS"
+  Origs: 
+  Dests: 90:auto
+90 (0 1) STOP
+  Origs: 40:auto
+  Dests: :stop
+99 (0 1) END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+40: PRINT "TEST ENDS"
+90: STOP
+99: END
+

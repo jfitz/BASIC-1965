@@ -1,0 +1,301 @@
+10 F(I:10) FOR I = 1 TO 10
+ I = 1
+ terminated:false
+20 F(I:10) IF I <> 4 THEN 40
+ I: 1
+ I <> 4: true
+40 F(I:10,J:40) FOR J = 1 TO 3
+ J = 1
+ terminated:false
+50 F(I:10,J:40) PRINT I;
+ I: 1
+ 1 
+60 F(I:10,J:40) NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50 F(I:10,J:40) PRINT I;
+ I: 1
+ 1 
+60 F(I:10,J:40) NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50 F(I:10,J:40) PRINT I;
+ I: 1
+ 1 
+60 F(I:10,J:40) NEXT J
+ J: 3
+ terminated:true
+70 F(I:10) PRINT
+
+80 F(I:10) NEXT I
+ I: 1
+ terminated:false
+ I = 2
+20 F(I:10) IF I <> 4 THEN 40
+ I: 2
+ I <> 4: true
+40 F(I:10,J:40) FOR J = 1 TO 3
+ J = 1
+ terminated:false
+50 F(I:10,J:40) PRINT I;
+ I: 2
+ 2 
+60 F(I:10,J:40) NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50 F(I:10,J:40) PRINT I;
+ I: 2
+ 2 
+60 F(I:10,J:40) NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50 F(I:10,J:40) PRINT I;
+ I: 2
+ 2 
+60 F(I:10,J:40) NEXT J
+ J: 3
+ terminated:true
+70 F(I:10) PRINT
+
+80 F(I:10) NEXT I
+ I: 2
+ terminated:false
+ I = 3
+20 F(I:10) IF I <> 4 THEN 40
+ I: 3
+ I <> 4: true
+40 F(I:10,J:40) FOR J = 1 TO 3
+ J = 1
+ terminated:false
+50 F(I:10,J:40) PRINT I;
+ I: 3
+ 3 
+60 F(I:10,J:40) NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50 F(I:10,J:40) PRINT I;
+ I: 3
+ 3 
+60 F(I:10,J:40) NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50 F(I:10,J:40) PRINT I;
+ I: 3
+ 3 
+60 F(I:10,J:40) NEXT J
+ J: 3
+ terminated:true
+70 F(I:10) PRINT
+
+80 F(I:10) NEXT I
+ I: 3
+ terminated:false
+ I = 4
+20 F(I:10) IF I <> 4 THEN 40
+ I: 4
+ I <> 4: false
+30 F(I:10) CONTINUE
+80 F(I:10) NEXT I
+ I: 4
+ terminated:false
+ I = 5
+20 F(I:10) IF I <> 4 THEN 40
+ I: 5
+ I <> 4: true
+40 F(I:10,J:40) FOR J = 1 TO 3
+ J = 1
+ terminated:false
+50 F(I:10,J:40) PRINT I;
+ I: 5
+ 5 
+60 F(I:10,J:40) NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50 F(I:10,J:40) PRINT I;
+ I: 5
+ 5 
+60 F(I:10,J:40) NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50 F(I:10,J:40) PRINT I;
+ I: 5
+ 5 
+60 F(I:10,J:40) NEXT J
+ J: 3
+ terminated:true
+70 F(I:10) PRINT
+
+80 F(I:10) NEXT I
+ I: 5
+ terminated:false
+ I = 6
+20 F(I:10) IF I <> 4 THEN 40
+ I: 6
+ I <> 4: true
+40 F(I:10,J:40) FOR J = 1 TO 3
+ J = 1
+ terminated:false
+50 F(I:10,J:40) PRINT I;
+ I: 6
+ 6 
+60 F(I:10,J:40) NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50 F(I:10,J:40) PRINT I;
+ I: 6
+ 6 
+60 F(I:10,J:40) NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50 F(I:10,J:40) PRINT I;
+ I: 6
+ 6 
+60 F(I:10,J:40) NEXT J
+ J: 3
+ terminated:true
+70 F(I:10) PRINT
+
+80 F(I:10) NEXT I
+ I: 6
+ terminated:false
+ I = 7
+20 F(I:10) IF I <> 4 THEN 40
+ I: 7
+ I <> 4: true
+40 F(I:10,J:40) FOR J = 1 TO 3
+ J = 1
+ terminated:false
+50 F(I:10,J:40) PRINT I;
+ I: 7
+ 7 
+60 F(I:10,J:40) NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50 F(I:10,J:40) PRINT I;
+ I: 7
+ 7 
+60 F(I:10,J:40) NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50 F(I:10,J:40) PRINT I;
+ I: 7
+ 7 
+60 F(I:10,J:40) NEXT J
+ J: 3
+ terminated:true
+70 F(I:10) PRINT
+
+80 F(I:10) NEXT I
+ I: 7
+ terminated:false
+ I = 8
+20 F(I:10) IF I <> 4 THEN 40
+ I: 8
+ I <> 4: true
+40 F(I:10,J:40) FOR J = 1 TO 3
+ J = 1
+ terminated:false
+50 F(I:10,J:40) PRINT I;
+ I: 8
+ 8 
+60 F(I:10,J:40) NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50 F(I:10,J:40) PRINT I;
+ I: 8
+ 8 
+60 F(I:10,J:40) NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50 F(I:10,J:40) PRINT I;
+ I: 8
+ 8 
+60 F(I:10,J:40) NEXT J
+ J: 3
+ terminated:true
+70 F(I:10) PRINT
+
+80 F(I:10) NEXT I
+ I: 8
+ terminated:false
+ I = 9
+20 F(I:10) IF I <> 4 THEN 40
+ I: 9
+ I <> 4: true
+40 F(I:10,J:40) FOR J = 1 TO 3
+ J = 1
+ terminated:false
+50 F(I:10,J:40) PRINT I;
+ I: 9
+ 9 
+60 F(I:10,J:40) NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50 F(I:10,J:40) PRINT I;
+ I: 9
+ 9 
+60 F(I:10,J:40) NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50 F(I:10,J:40) PRINT I;
+ I: 9
+ 9 
+60 F(I:10,J:40) NEXT J
+ J: 3
+ terminated:true
+70 F(I:10) PRINT
+
+80 F(I:10) NEXT I
+ I: 9
+ terminated:false
+ I = 10
+20 F(I:10) IF I <> 4 THEN 40
+ I: 10
+ I <> 4: true
+40 F(I:10,J:40) FOR J = 1 TO 3
+ J = 1
+ terminated:false
+50 F(I:10,J:40) PRINT I;
+ I: 10
+ 10 
+60 F(I:10,J:40) NEXT J
+ J: 1
+ terminated:false
+ J = 2
+50 F(I:10,J:40) PRINT I;
+ I: 10
+ 10 
+60 F(I:10,J:40) NEXT J
+ J: 2
+ terminated:false
+ J = 3
+50 F(I:10,J:40) PRINT I;
+ I: 10
+ 10 
+60 F(I:10,J:40) NEXT J
+ J: 3
+ terminated:true
+70 F(I:10) PRINT
+
+80 F(I:10) NEXT I
+ I: 10
+ terminated:true
+90 STOP
+STOP in line 90
+

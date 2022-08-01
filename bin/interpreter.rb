@@ -30,11 +30,13 @@ end
 # Helper class for FOR-TO/NEXT
 class ForToControl < AbstractForControl
   attr_reader :end
+  attr_writer :broken
 
   def initialize(control, start, step, endv, start_line_stmt_mod)
     super(control, start, step, start_line_stmt_mod)
 
     @end = endv
+    @broken = false
   end
 
   def bump_early?
@@ -54,6 +56,8 @@ class ForToControl < AbstractForControl
   end
 
   def terminated?(interpreter)
+    return true if @broken
+
     zero = NumericValue.new(0)
     current_value = interpreter.get_value(@control)
 
@@ -1311,6 +1315,17 @@ class Interpreter
     raise BASICSyntaxError.new('Implied NEXT without FOR') if @fornext_stack.empty?
 
     @fornext_stack[-1]
+  end
+
+  def break_fornext
+    raise BASICSyntaxError.new('BREAK without FOR') if @fornext_stack.empty?
+
+    control = @fornext_stack[-1]
+    fornext = @fornexts[control]
+
+    raise BASICSyntaxError.new('BREAK without FOR') if fornext.nil?
+
+    fornext.broken = true
   end
 
   def add_file_names(file_names)

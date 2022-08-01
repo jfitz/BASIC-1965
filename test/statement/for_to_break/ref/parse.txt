@@ -1,0 +1,21 @@
+10 FOR I = 1 TO 10
+ control: Variable:I -> .
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:10"]
+20 IF I <> 4 THEN 40
+ Variable:I -> .
+ NumericValue:4
+ BinaryOperatorNotEqual:<>(.,.) -> ?
+ LineNumber:40
+30 BREAK
+ 
+40 PRINT I
+ Variable:I -> .
+ CarriageControl:NL
+50 NEXT I
+ Variable:I -> .
+90 STOP
+ 
+99 END
+ 
+

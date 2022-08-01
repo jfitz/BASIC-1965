@@ -85,6 +85,7 @@ I have changed a few things:
 - The ARR statements are not mentioned in Kemeny and Kurtz or in Coan
 - The DIM statement is executed in-line, and may contain expressions
 - Numeric values may have units specified
+- BREAK and CONTINUE statements
 
 Running BASIC-1965
 ------------------
@@ -721,6 +722,22 @@ Examples:
 	10
 	120
 	6731
+
+BREAK
+~~~~~
+
+Transfers control to the end of the active FOR/NEXT statement and terminates the statement.
+
+Syntax: BREAK
+
+
+CONTINUE
+~~~~~~~~
+
+Transfers control to the end of the active FOR/NEXT statement.
+Does not terminate the statement.
+
+Syntax: CONTINUE
 
 DATA
 ~~~~

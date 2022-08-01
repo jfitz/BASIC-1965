@@ -1,0 +1,56 @@
+Statistics:
+
+Number of lines: 10
+Number of valid statements: 10
+Number of comments: 0
+Number of executable statements: 10
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 20
+McCabe complexity: 4
+Halstead complexity:
+ length: 21
+ volume: 53.864
+ difficulty: 4.062
+ effort: 218.822
+ language: 3.264
+ intelligence: 13.259
+ time: 0.203
+
+10 F(I:10) (1 3) FOR I = 1 TO 10
+  Origs: :start
+  Dests: 20:fornext, 80:fornext
+20 F(I:10,J:20) (1 3) FOR J = 1 TO 3
+  Origs: 10:fornext
+  Dests: 30:fornext, 60:fornext
+30 F(I:10,J:20) (1 4) IF J <> I THEN 50
+  Origs: 20:fornext
+  Dests: 40:auto, 50:ifthen
+40 F(I:10,J:20) (0 1) BREAK
+  Origs: 30:auto
+  Dests: 60:fornext
+50 F(I:10,J:20) (0 3) PRINT I; J;
+  Origs: 30:ifthen
+  Dests: 60:auto
+60 F(I:10,J:20) (0 1) NEXT J
+  Origs: 20:fornext, 40:fornext, 50:auto
+  Dests: 65:auto
+65 F(I:10) (0 2) PRINT
+  Origs: 60:auto
+  Dests: 80:auto
+80 F(I:10) (0 1) NEXT I
+  Origs: 10:fornext, 65:auto
+  Dests: 90:auto
+90 (0 1) STOP
+  Origs: 80:auto
+  Dests: :stop
+99 (0 1) END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+99: END
+

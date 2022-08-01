@@ -1,0 +1,25 @@
+10 REM TEST OF CONTINUE
+ Remark:TEST OF CONTINUE
+20 PRINT "TEST STARTS"
+ TextValue:"TEST STARTS"
+ CarriageControl:NL
+30 FOR I = 1 TO 10
+ control: Variable:I -> .
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:10"]
+40 PRINT I
+ Variable:I -> .
+ CarriageControl:NL
+50 NEXT I
+ Variable:I -> .
+60 CONTINUE
+ ERROR: Cannot find NEXT
+ 
+70 PRINT "TEST ENDS"
+ TextValue:"TEST ENDS"
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 
+
