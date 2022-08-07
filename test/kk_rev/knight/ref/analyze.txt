@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 52
-Number of valid statements: 38
+Number of lines: 57
+Number of valid statements: 43
 Number of comments: 10
-Number of executable statements: 37
+Number of executable statements: 42
 
 Complexity:
 
-Comment density: 0.263
-Comprehension effort: 139
-McCabe complexity: 14
+Comment density: 0.233
+Comprehension effort: 153
+McCabe complexity: 16
 Halstead complexity:
- length: 175
- volume: 722.249
- difficulty: 22.756
- effort: 16435.353
- language: 1.395
- intelligence: 31.739
- time: 15.218
+ length: 187
+ volume: 777.711
+ difficulty: 23.644
+ effort: 18388.548
+ language: 1.391
+ intelligence: 32.892
+ time: 17.026
 
 100 (0 1) REMARK THIS PROGRAM CARRIES OUT A SERIES OF KNIGHT'S MOVES
   Origs: 
@@ -82,11 +82,14 @@ Halstead complexity:
 300 (0 1) REMARK WE NOW START THE SERIES OF MOVES
   Origs: 
   Dests: 
-310 (0 3) LET C1 = 9
-  Origs: 280:auto, 460:goto
+310 (0 3) LET C0 = 0
+  Origs: 280:auto, 485:ifthen
+  Dests: 315:auto
+315 (0 3) LET C1 = 9
+  Origs: 310:auto
   Dests: 320:auto
 320 (0 3) LET C = 0
-  Origs: 310:auto, 520:goto
+  Origs: 315:auto, 520:goto
   Dests: 330:auto
 330 F(I1:330) (1 5) FOR I1 = I - 2 TO I + 2
   Origs: 320:auto
@@ -127,18 +130,29 @@ Halstead complexity:
 450 F(I1:330,J1:370) (0 4) LET M = M + 1
   Origs: 440:auto
   Dests: 460:auto
-460 F(I1:330,J1:370) (0 3) GOTO 310
-    WARNING: Transfer in/out of FOR/NEXT 310
+460 F(I1:330,J1:370) (0 3) LET C0 = 1
   Origs: 450:auto
-  Dests: 310:goto
+  Dests: 465:auto
+465 F(I1:330,J1:370) (0 1) BREAK
+  Origs: 460:auto
+  Dests: 470:fornext
 470 F(I1:330,J1:370) (0 1) NEXT J1
-  Origs: 370:fornext, 380:ifthen, 390:ifthen, 410:ifthen
-  Dests: 480:auto
+  Origs: 370:fornext, 380:ifthen, 390:ifthen, 410:ifthen, 465:fornext
+  Dests: 472:auto
+472 F(I1:330) (1 4) IF C0 = 0 THEN 480
+  Origs: 470:auto
+  Dests: 475:auto, 480:ifthen
+475 F(I1:330) (0 1) BREAK
+  Origs: 472:auto
+  Dests: 480:fornext
 480 F(I1:330) (0 1) NEXT I1
-  Origs: 330:fornext, 340:ifthen, 350:ifthen, 470:auto
-  Dests: 490:auto
-490 (1 4) IF C = 0 THEN 600
+  Origs: 330:fornext, 340:ifthen, 350:ifthen, 472:ifthen, 475:fornext
+  Dests: 485:auto
+485 (1 5) IF C0 = 1 THEN 310
   Origs: 480:auto
+  Dests: 310:ifthen, 490:auto
+490 (1 4) IF C = 0 THEN 600
+  Origs: 485:auto
   Dests: 510:auto, 610:ifthen
 500 (0 1) REMARK NOW WE SELECT A RANDOM INTEGER TO SELECT A MOVE
   Origs: 

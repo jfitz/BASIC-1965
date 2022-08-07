@@ -218,26 +218,27 @@
  BinaryOperatorMinus:-(.,.) -> .
  BinaryOperatorMinus:-(.,.) -> .
  AssignmentOperator:= . -> .
-535    IF S*S1 <= 0 THEN 550
- WARNING: Transfer in/out of FOR/NEXT 550
+535    IF S*S1 > 0 THEN 537
  Variable:S -> .
  Variable:S1 -> .
  BinaryOperatorMultiply:*(.,.) -> .
  NumericValue:0
- BinaryOperatorLessEqual:<=(.,.) -> ?
- LineNumber:550
-536    LET S = S1
+ BinaryOperatorGreater:>(.,.) -> ?
+ LineNumber:537
+536    BREAK
+ 
+537    LET S = S1
  Variable:S -> .
  Variable:S1 -> .
  AssignmentOperator:= . -> .
 540 NEXT R
  Variable:R -> .
-545 PRINT "NO ANSWER FOUND"
- TextValue:"NO ANSWER FOUND"
- CarriageControl:NL
-546 GOTO 5
- LineNumber:5
-550 PRINT "ANNUAL INTEREST IS BETWEEN " R-0.1; "AND " R; "PERCENT"
+542 IF R = 100 THEN 550
+ Variable:R -> .
+ NumericValue:100
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:550
+545 PRINT "ANNUAL INTEREST IS BETWEEN " R-0.1; "AND " R; "PERCENT"
  TextValue:"ANNUAL INTEREST IS BETWEEN "
  CarriageControl:
  Variable:R -> .
@@ -249,6 +250,11 @@
  Variable:R -> .
  CarriageControl:;
  TextValue:"PERCENT"
+ CarriageControl:NL
+546 GOTO 5
+ LineNumber:5
+550 PRINT "NO ANSWER FOUND"
+ TextValue:"NO ANSWER FOUND"
  CarriageControl:NL
 560 GOTO 5
  LineNumber:5

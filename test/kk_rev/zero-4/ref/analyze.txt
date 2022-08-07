@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 41
-Number of valid statements: 36
+Number of lines: 43
+Number of valid statements: 38
 Number of comments: 5
-Number of executable statements: 34
+Number of executable statements: 36
 
 Complexity:
 
-Comment density: 0.139
-Comprehension effort: 128
-McCabe complexity: 10
+Comment density: 0.132
+Comprehension effort: 133
+McCabe complexity: 11
 Halstead complexity:
- length: 190
- volume: 761.393
- difficulty: 25.429
- effort: 19361.144
- language: 1.178
- intelligence: 29.942
- time: 17.927
+ length: 195
+ volume: 788.395
+ difficulty: 26.833
+ effort: 21155.266
+ language: 1.095
+ intelligence: 29.381
+ time: 19.588
 
 10 FNF(.) (0 9) DEF FNF(X) = X ^ 5 + 2 * X ^ 3 - 1
   Origs: 
@@ -64,21 +64,26 @@ Halstead complexity:
 220 F(I:210) (0 7) LET X = A + RND() * L
   Origs: 210:fornext
   Dests: 230:auto
-230 F(I:210) (1 6) IF S * SGN(FNF(X)) < 0 THEN 270
-    WARNING: Transfer in/out of FOR/NEXT 270
+230 F(I:210) (1 6) IF S * SGN(FNF(X)) >= 0 THEN 240
   Origs: 220:auto
-  Dests: 240:auto, 270:ifthen
+  Dests: 235:auto, 240:ifthen
+235 F(I:210) (0 1) BREAK
+  Origs: 230:auto
+  Dests: 240:fornext
 240 F(I:210) (0 1) NEXT I
-  Origs: 210:fornext, 230:auto
-  Dests: 250:auto
-250 (0 2) PRINT "NO CHANGE OF SIGN FOUND"
+  Origs: 210:fornext, 230:ifthen, 235:fornext
+  Dests: 245:auto
+245 (1 4) IF I < 1000 THEN 270
   Origs: 240:auto
+  Dests: 250:auto, 270:ifthen
+250 (0 2) PRINT "NO CHANGE OF SIGN FOUND"
+  Origs: 245:auto
   Dests: 260:auto
 260 (0 1) STOP
   Origs: 250:auto
   Dests: :stop
 270 (0 3) LET B = X
-  Origs: 230:ifthen
+  Origs: 245:ifthen
   Dests: 280:auto
 280 (0 2) GOTO 600
   Origs: 270:auto

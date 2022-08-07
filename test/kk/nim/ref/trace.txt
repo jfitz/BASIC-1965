@@ -1,0 +1,3748 @@
+140 F(P:140) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+150 F(P:140) LET N(P) = INT(10 * RND(0)) + 6
+ P: (140) 1
+ N(1) = 10
+160 F(P:140) NEXT P
+ P: (140) 1
+ terminated:false
+ P = 2
+150 F(P:140) LET N(P) = INT(10 * RND(0)) + 6
+ P: (160) 2
+ N(2) = 13
+160 F(P:140) NEXT P
+ P: (160) 2
+ terminated:false
+ P = 3
+150 F(P:140) LET N(P) = INT(10 * RND(0)) + 6
+ P: (160) 3
+ N(3) = 6
+160 F(P:140) NEXT P
+ P: (160) 3
+ terminated:true
+170 PRINT "INITIAL CONFIGURATION:"
+INITIAL CONFIGURATION:
+180 PRINT
+
+190 GOSUB 900
+910 G(910) F(P:910) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (910) 1
+ 1 
+ N(1): (150) 10
+ 10
+930 G(910) F(P:910) NEXT P
+ P: (910) 1
+ terminated:false
+ P = 2
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 2
+ 2 
+ N(2): (150) 13
+ 13
+930 G(910) F(P:910) NEXT P
+ P: (930) 2
+ terminated:false
+ P = 3
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 3
+ 3 
+ N(3): (150) 6
+ 6
+930 G(910) F(P:910) NEXT P
+ P: (930) 3
+ terminated:true
+940 G(910) PRINT
+
+950 G(910) PRINT
+
+960 G(910) RETURN
+220 PRINT "PILE, NUMBER TAKEN";
+PILE, NUMBER TAKEN
+230 INPUT P, N
+? 1,3
+ P = 1
+ N = 3
+240 LET N(P) = N(P) - N
+ P: (230) 1
+ N(1): (150) 10
+ N: (230) 3
+ N(1) = 7
+250 IF N(P) >= 0 THEN 300
+ P: (230) 1
+ N(1): (240) 7
+ N(P) >= 0: true
+300 IF N(1) + N(2) + N(3) > 0 THEN 370
+ N(1): (240) 7
+ N(2): (150) 13
+ N(3): (150) 6
+ N(1) + N(2) + N(3) > 0: true
+380 F(P:380) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+390 F(P:380) LET X = N(P)
+ P: (380) 1
+ N(1): (240) 7
+ X = 7
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 7
+ Y = 3
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (400) 4
+ X: (390) 7
+ Y: (410) 3
+ B(1,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 3
+ X = 3
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 3
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 3
+ X: (430) 3
+ Y: (410) 1
+ B(1,3) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 2
+ X: (430) 1
+ Y: (410) 0
+ B(1,2) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(1,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (380) 1
+ terminated:false
+ P = 2
+390 F(P:380) LET X = N(P)
+ P: (450) 2
+ N(2): (150) 13
+ X = 13
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 13
+ Y = 6
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (400) 4
+ X: (390) 13
+ Y: (410) 6
+ B(2,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 6
+ X = 6
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 6
+ Y = 3
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 3
+ X: (430) 6
+ Y: (410) 3
+ B(2,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 3
+ X = 3
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 3
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 2
+ X: (430) 3
+ Y: (410) 1
+ B(2,2) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 1
+ X: (430) 1
+ Y: (410) 0
+ B(2,1) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 2
+ terminated:false
+ P = 3
+390 F(P:380) LET X = N(P)
+ P: (450) 3
+ N(3): (150) 6
+ X = 6
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 6
+ Y = 3
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (400) 4
+ X: (390) 6
+ Y: (410) 3
+ B(3,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 3
+ X = 3
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 3
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 3
+ X: (430) 3
+ Y: (410) 1
+ B(3,3) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 2
+ X: (430) 1
+ Y: (410) 0
+ B(3,2) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(3,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 3
+ terminated:true
+480 F(J:480) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (480) 1
+ B(1,1): (420) 0
+ B(2,1): (420) 1
+ B(3,1): (420) 0
+ S(1) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (480) 1
+ S(1): (490) 1
+ S(1) = 1
+510 F(J:480) NEXT J
+ J: (480) 1
+ terminated:false
+ J = 2
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 2
+ B(1,2): (420) 1
+ B(2,2): (420) 1
+ B(3,2): (420) 1
+ S(2) = 3
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 2
+ S(2): (490) 3
+ S(2) = 1
+510 F(J:480) NEXT J
+ J: (510) 2
+ terminated:false
+ J = 3
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 3
+ B(1,3): (420) 1
+ B(2,3): (420) 0
+ B(3,3): (420) 1
+ S(3) = 2
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 3
+ S(3): (490) 2
+ S(3) = 0
+510 F(J:480) NEXT J
+ J: (510) 3
+ terminated:false
+ J = 4
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 4
+ B(1,4): (420) 1
+ B(2,4): (420) 1
+ B(3,4): (420) 0
+ S(4) = 2
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 4
+ S(4): (490) 2
+ S(4) = 0
+510 F(J:480) NEXT J
+ J: (510) 4
+ terminated:true
+540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
+ S(1): (500) 1
+ S(2): (500) 1
+ S(3): (500) 0
+ S(4): (500) 0
+ S(1) + S(2) + S(3) + S(4) > 0: true
+620 F(J:620) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (620) 1
+ S(1): (500) 1
+ S(J) > 0: true
+650 F(P:650) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (650) 1
+ J: (620) 1
+ B(1,1): (420) 0
+ B(P, J) = 1: false
+670 F(P:650) NEXT P
+ P: (650) 1
+ terminated:false
+ P = 2
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (670) 2
+ J: (620) 1
+ B(2,1): (420) 1
+ B(P, J) = 1: true
+680 LET N = 0
+ N = 0
+690 F(J:690) FOR J = J TO 4
+ J: (620) 1
+ J = 1
+ J = 1
+ terminated:false
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (690) 1
+ S(1): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (670) 2
+ J: (690) 1
+ B(2,1): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (680) 0
+ J: (690) 1
+ N = 8
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (690) 1
+ terminated:false
+ J = 2
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 2
+ S(2): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (670) 2
+ J: (750) 2
+ B(2,2): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (720) 8
+ J: (750) 2
+ N = 12
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (750) 2
+ terminated:false
+ J = 3
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 3
+ S(3): (500) 0
+ S(J) = 0: true
+750 F(J:690) NEXT J
+ J: (750) 3
+ terminated:false
+ J = 4
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 4
+ S(4): (500) 0
+ S(J) = 0: true
+750 F(J:690) NEXT J
+ J: (750) 4
+ terminated:true
+780 PRINT
+
+790 PRINT "MY MOVE:" P; "," N
+MY MOVE:
+ P: (670) 2
+ 2 ,
+ N: (720) 12
+ 12
+800 PRINT
+
+810 LET N(P) = N(P) - N
+ P: (670) 2
+ N(2): (150) 13
+ N: (720) 12
+ N(2) = 1
+820 IF N(1) + N(2) + N(3) > 0 THEN 850
+ N(1): (240) 7
+ N(2): (810) 1
+ N(3): (150) 6
+ N(1) + N(2) + N(3) > 0: true
+850 PRINT "NEW CONFIGURATION:"
+NEW CONFIGURATION:
+860 PRINT
+
+870 GOSUB 900
+910 G(910) F(P:910) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (910) 1
+ 1 
+ N(1): (240) 7
+ 7
+930 G(910) F(P:910) NEXT P
+ P: (910) 1
+ terminated:false
+ P = 2
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 2
+ 2 
+ N(2): (810) 1
+ 1
+930 G(910) F(P:910) NEXT P
+ P: (930) 2
+ terminated:false
+ P = 3
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 3
+ 3 
+ N(3): (150) 6
+ 6
+930 G(910) F(P:910) NEXT P
+ P: (930) 3
+ terminated:true
+940 G(910) PRINT
+
+950 G(910) PRINT
+
+960 G(910) RETURN
+880 GOTO 210
+220 PRINT "PILE, NUMBER TAKEN";
+PILE, NUMBER TAKEN
+230 INPUT P, N
+? 1,3
+ P = 1
+ N = 3
+240 LET N(P) = N(P) - N
+ P: (230) 1
+ N(1): (240) 7
+ N: (230) 3
+ N(1) = 4
+250 IF N(P) >= 0 THEN 300
+ P: (230) 1
+ N(1): (240) 4
+ N(P) >= 0: true
+300 IF N(1) + N(2) + N(3) > 0 THEN 370
+ N(1): (240) 4
+ N(2): (810) 1
+ N(3): (150) 6
+ N(1) + N(2) + N(3) > 0: true
+380 F(P:380) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+390 F(P:380) LET X = N(P)
+ P: (380) 1
+ N(1): (240) 4
+ X = 4
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 4
+ Y = 2
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (400) 4
+ X: (390) 4
+ Y: (410) 2
+ B(1,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 2
+ X = 2
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 2
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 3
+ X: (430) 2
+ Y: (410) 1
+ B(1,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 2
+ X: (430) 1
+ Y: (410) 0
+ B(1,2) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(1,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (380) 1
+ terminated:false
+ P = 2
+390 F(P:380) LET X = N(P)
+ P: (450) 2
+ N(2): (810) 1
+ X = 1
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (400) 4
+ X: (390) 1
+ Y: (410) 0
+ B(2,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(2,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(2,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(2,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 2
+ terminated:false
+ P = 3
+390 F(P:380) LET X = N(P)
+ P: (450) 3
+ N(3): (150) 6
+ X = 6
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 6
+ Y = 3
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (400) 4
+ X: (390) 6
+ Y: (410) 3
+ B(3,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 3
+ X = 3
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 3
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 3
+ X: (430) 3
+ Y: (410) 1
+ B(3,3) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 2
+ X: (430) 1
+ Y: (410) 0
+ B(3,2) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(3,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 3
+ terminated:true
+480 F(J:480) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (480) 1
+ B(1,1): (420) 0
+ B(2,1): (420) 0
+ B(3,1): (420) 0
+ S(1) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (480) 1
+ S(1): (490) 0
+ S(1) = 0
+510 F(J:480) NEXT J
+ J: (480) 1
+ terminated:false
+ J = 2
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 2
+ B(1,2): (420) 1
+ B(2,2): (420) 0
+ B(3,2): (420) 1
+ S(2) = 2
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 2
+ S(2): (490) 2
+ S(2) = 0
+510 F(J:480) NEXT J
+ J: (510) 2
+ terminated:false
+ J = 3
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 3
+ B(1,3): (420) 0
+ B(2,3): (420) 0
+ B(3,3): (420) 1
+ S(3) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 3
+ S(3): (490) 1
+ S(3) = 1
+510 F(J:480) NEXT J
+ J: (510) 3
+ terminated:false
+ J = 4
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 4
+ B(1,4): (420) 0
+ B(2,4): (420) 1
+ B(3,4): (420) 0
+ S(4) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 4
+ S(4): (490) 1
+ S(4) = 1
+510 F(J:480) NEXT J
+ J: (510) 4
+ terminated:true
+540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
+ S(1): (500) 0
+ S(2): (500) 0
+ S(3): (500) 1
+ S(4): (500) 1
+ S(1) + S(2) + S(3) + S(4) > 0: true
+620 F(J:620) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (620) 1
+ S(1): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (620) 1
+ terminated:false
+ J = 2
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 2
+ S(2): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (640) 2
+ terminated:false
+ J = 3
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 3
+ S(3): (500) 1
+ S(J) > 0: true
+650 F(P:650) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (650) 1
+ J: (640) 3
+ B(1,3): (420) 0
+ B(P, J) = 1: false
+670 F(P:650) NEXT P
+ P: (650) 1
+ terminated:false
+ P = 2
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (670) 2
+ J: (640) 3
+ B(2,3): (420) 0
+ B(P, J) = 1: false
+670 F(P:650) NEXT P
+ P: (670) 2
+ terminated:false
+ P = 3
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (670) 3
+ J: (640) 3
+ B(3,3): (420) 1
+ B(P, J) = 1: true
+680 LET N = 0
+ N = 0
+690 F(J:690) FOR J = J TO 4
+ J: (640) 3
+ J = 3
+ J = 3
+ terminated:false
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (690) 3
+ S(3): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (670) 3
+ J: (690) 3
+ B(3,3): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (680) 0
+ J: (690) 3
+ N = 2
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (690) 3
+ terminated:false
+ J = 4
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 4
+ S(4): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (670) 3
+ J: (750) 4
+ B(3,4): (420) 0
+ B(P, J) = 0: true
+740 F(J:690) LET N = N - 2 ^ (4 - J)
+ N: (720) 2
+ J: (750) 4
+ N = 1
+750 F(J:690) NEXT J
+ J: (750) 4
+ terminated:true
+780 PRINT
+
+790 PRINT "MY MOVE:" P; "," N
+MY MOVE:
+ P: (670) 3
+ 3 ,
+ N: (740) 1
+ 1
+800 PRINT
+
+810 LET N(P) = N(P) - N
+ P: (670) 3
+ N(3): (150) 6
+ N: (740) 1
+ N(3) = 5
+820 IF N(1) + N(2) + N(3) > 0 THEN 850
+ N(1): (240) 4
+ N(2): (810) 1
+ N(3): (810) 5
+ N(1) + N(2) + N(3) > 0: true
+850 PRINT "NEW CONFIGURATION:"
+NEW CONFIGURATION:
+860 PRINT
+
+870 GOSUB 900
+910 G(910) F(P:910) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (910) 1
+ 1 
+ N(1): (240) 4
+ 4
+930 G(910) F(P:910) NEXT P
+ P: (910) 1
+ terminated:false
+ P = 2
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 2
+ 2 
+ N(2): (810) 1
+ 1
+930 G(910) F(P:910) NEXT P
+ P: (930) 2
+ terminated:false
+ P = 3
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 3
+ 3 
+ N(3): (810) 5
+ 5
+930 G(910) F(P:910) NEXT P
+ P: (930) 3
+ terminated:true
+940 G(910) PRINT
+
+950 G(910) PRINT
+
+960 G(910) RETURN
+880 GOTO 210
+220 PRINT "PILE, NUMBER TAKEN";
+PILE, NUMBER TAKEN
+230 INPUT P, N
+? 1,3
+ P = 1
+ N = 3
+240 LET N(P) = N(P) - N
+ P: (230) 1
+ N(1): (240) 4
+ N: (230) 3
+ N(1) = 1
+250 IF N(P) >= 0 THEN 300
+ P: (230) 1
+ N(1): (240) 1
+ N(P) >= 0: true
+300 IF N(1) + N(2) + N(3) > 0 THEN 370
+ N(1): (240) 1
+ N(2): (810) 1
+ N(3): (810) 5
+ N(1) + N(2) + N(3) > 0: true
+380 F(P:380) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+390 F(P:380) LET X = N(P)
+ P: (380) 1
+ N(1): (240) 1
+ X = 1
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (400) 4
+ X: (390) 1
+ Y: (410) 0
+ B(1,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(1,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(1,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(1,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (380) 1
+ terminated:false
+ P = 2
+390 F(P:380) LET X = N(P)
+ P: (450) 2
+ N(2): (810) 1
+ X = 1
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (400) 4
+ X: (390) 1
+ Y: (410) 0
+ B(2,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(2,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(2,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(2,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 2
+ terminated:false
+ P = 3
+390 F(P:380) LET X = N(P)
+ P: (450) 3
+ N(3): (810) 5
+ X = 5
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 5
+ Y = 2
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (400) 4
+ X: (390) 5
+ Y: (410) 2
+ B(3,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 2
+ X = 2
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 2
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 3
+ X: (430) 2
+ Y: (410) 1
+ B(3,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 2
+ X: (430) 1
+ Y: (410) 0
+ B(3,2) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(3,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 3
+ terminated:true
+480 F(J:480) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (480) 1
+ B(1,1): (420) 0
+ B(2,1): (420) 0
+ B(3,1): (420) 0
+ S(1) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (480) 1
+ S(1): (490) 0
+ S(1) = 0
+510 F(J:480) NEXT J
+ J: (480) 1
+ terminated:false
+ J = 2
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 2
+ B(1,2): (420) 0
+ B(2,2): (420) 0
+ B(3,2): (420) 1
+ S(2) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 2
+ S(2): (490) 1
+ S(2) = 1
+510 F(J:480) NEXT J
+ J: (510) 2
+ terminated:false
+ J = 3
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 3
+ B(1,3): (420) 0
+ B(2,3): (420) 0
+ B(3,3): (420) 0
+ S(3) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 3
+ S(3): (490) 0
+ S(3) = 0
+510 F(J:480) NEXT J
+ J: (510) 3
+ terminated:false
+ J = 4
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 4
+ B(1,4): (420) 1
+ B(2,4): (420) 1
+ B(3,4): (420) 1
+ S(4) = 3
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 4
+ S(4): (490) 3
+ S(4) = 1
+510 F(J:480) NEXT J
+ J: (510) 4
+ terminated:true
+540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
+ S(1): (500) 0
+ S(2): (500) 1
+ S(3): (500) 0
+ S(4): (500) 1
+ S(1) + S(2) + S(3) + S(4) > 0: true
+620 F(J:620) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (620) 1
+ S(1): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (620) 1
+ terminated:false
+ J = 2
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 2
+ S(2): (500) 1
+ S(J) > 0: true
+650 F(P:650) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (650) 1
+ J: (640) 2
+ B(1,2): (420) 0
+ B(P, J) = 1: false
+670 F(P:650) NEXT P
+ P: (650) 1
+ terminated:false
+ P = 2
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (670) 2
+ J: (640) 2
+ B(2,2): (420) 0
+ B(P, J) = 1: false
+670 F(P:650) NEXT P
+ P: (670) 2
+ terminated:false
+ P = 3
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (670) 3
+ J: (640) 2
+ B(3,2): (420) 1
+ B(P, J) = 1: true
+680 LET N = 0
+ N = 0
+690 F(J:690) FOR J = J TO 4
+ J: (640) 2
+ J = 2
+ J = 2
+ terminated:false
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (690) 2
+ S(2): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (670) 3
+ J: (690) 2
+ B(3,2): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (680) 0
+ J: (690) 2
+ N = 4
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (690) 2
+ terminated:false
+ J = 3
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 3
+ S(3): (500) 0
+ S(J) = 0: true
+750 F(J:690) NEXT J
+ J: (750) 3
+ terminated:false
+ J = 4
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 4
+ S(4): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (670) 3
+ J: (750) 4
+ B(3,4): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (720) 4
+ J: (750) 4
+ N = 5
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (750) 4
+ terminated:true
+780 PRINT
+
+790 PRINT "MY MOVE:" P; "," N
+MY MOVE:
+ P: (670) 3
+ 3 ,
+ N: (720) 5
+ 5
+800 PRINT
+
+810 LET N(P) = N(P) - N
+ P: (670) 3
+ N(3): (810) 5
+ N: (720) 5
+ N(3) = 0
+820 IF N(1) + N(2) + N(3) > 0 THEN 850
+ N(1): (240) 1
+ N(2): (810) 1
+ N(3): (810) 0
+ N(1) + N(2) + N(3) > 0: true
+850 PRINT "NEW CONFIGURATION:"
+NEW CONFIGURATION:
+860 PRINT
+
+870 GOSUB 900
+910 G(910) F(P:910) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (910) 1
+ 1 
+ N(1): (240) 1
+ 1
+930 G(910) F(P:910) NEXT P
+ P: (910) 1
+ terminated:false
+ P = 2
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 2
+ 2 
+ N(2): (810) 1
+ 1
+930 G(910) F(P:910) NEXT P
+ P: (930) 2
+ terminated:false
+ P = 3
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 3
+ 3 
+ N(3): (810) 0
+ 0
+930 G(910) F(P:910) NEXT P
+ P: (930) 3
+ terminated:true
+940 G(910) PRINT
+
+950 G(910) PRINT
+
+960 G(910) RETURN
+880 GOTO 210
+220 PRINT "PILE, NUMBER TAKEN";
+PILE, NUMBER TAKEN
+230 INPUT P, N
+? 2,1
+ P = 2
+ N = 1
+240 LET N(P) = N(P) - N
+ P: (230) 2
+ N(2): (810) 1
+ N: (230) 1
+ N(2) = 0
+250 IF N(P) >= 0 THEN 300
+ P: (230) 2
+ N(2): (240) 0
+ N(P) >= 0: true
+300 IF N(1) + N(2) + N(3) > 0 THEN 370
+ N(1): (240) 1
+ N(2): (240) 0
+ N(3): (810) 0
+ N(1) + N(2) + N(3) > 0: true
+380 F(P:380) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+390 F(P:380) LET X = N(P)
+ P: (380) 1
+ N(1): (240) 1
+ X = 1
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (400) 4
+ X: (390) 1
+ Y: (410) 0
+ B(1,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(1,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(1,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(1,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (380) 1
+ terminated:false
+ P = 2
+390 F(P:380) LET X = N(P)
+ P: (450) 2
+ N(2): (240) 0
+ X = 0
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (400) 4
+ X: (390) 0
+ Y: (410) 0
+ B(2,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(2,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(2,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(2,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 2
+ terminated:false
+ P = 3
+390 F(P:380) LET X = N(P)
+ P: (450) 3
+ N(3): (810) 0
+ X = 0
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (400) 4
+ X: (390) 0
+ Y: (410) 0
+ B(3,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(3,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(3,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(3,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 3
+ terminated:true
+480 F(J:480) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (480) 1
+ B(1,1): (420) 0
+ B(2,1): (420) 0
+ B(3,1): (420) 0
+ S(1) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (480) 1
+ S(1): (490) 0
+ S(1) = 0
+510 F(J:480) NEXT J
+ J: (480) 1
+ terminated:false
+ J = 2
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 2
+ B(1,2): (420) 0
+ B(2,2): (420) 0
+ B(3,2): (420) 0
+ S(2) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 2
+ S(2): (490) 0
+ S(2) = 0
+510 F(J:480) NEXT J
+ J: (510) 2
+ terminated:false
+ J = 3
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 3
+ B(1,3): (420) 0
+ B(2,3): (420) 0
+ B(3,3): (420) 0
+ S(3) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 3
+ S(3): (490) 0
+ S(3) = 0
+510 F(J:480) NEXT J
+ J: (510) 3
+ terminated:false
+ J = 4
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 4
+ B(1,4): (420) 1
+ B(2,4): (420) 0
+ B(3,4): (420) 0
+ S(4) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 4
+ S(4): (490) 1
+ S(4) = 1
+510 F(J:480) NEXT J
+ J: (510) 4
+ terminated:true
+540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
+ S(1): (500) 0
+ S(2): (500) 0
+ S(3): (500) 0
+ S(4): (500) 1
+ S(1) + S(2) + S(3) + S(4) > 0: true
+620 F(J:620) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (620) 1
+ S(1): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (620) 1
+ terminated:false
+ J = 2
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 2
+ S(2): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (640) 2
+ terminated:false
+ J = 3
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 3
+ S(3): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (640) 3
+ terminated:false
+ J = 4
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 4
+ S(4): (500) 1
+ S(J) > 0: true
+650 F(P:650) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (650) 1
+ J: (640) 4
+ B(1,4): (420) 1
+ B(P, J) = 1: true
+680 LET N = 0
+ N = 0
+690 F(J:690) FOR J = J TO 4
+ J: (640) 4
+ J = 4
+ J = 4
+ terminated:false
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (690) 4
+ S(4): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (650) 1
+ J: (690) 4
+ B(1,4): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (680) 0
+ J: (690) 4
+ N = 1
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (690) 4
+ terminated:true
+780 PRINT
+
+790 PRINT "MY MOVE:" P; "," N
+MY MOVE:
+ P: (650) 1
+ 1 ,
+ N: (720) 1
+ 1
+800 PRINT
+
+810 LET N(P) = N(P) - N
+ P: (650) 1
+ N(1): (240) 1
+ N: (720) 1
+ N(1) = 0
+820 IF N(1) + N(2) + N(3) > 0 THEN 850
+ N(1): (810) 0
+ N(2): (240) 0
+ N(3): (810) 0
+ N(1) + N(2) + N(3) > 0: false
+830 PRINT "I WIN *****"
+I WIN *****
+840 GOTO 330
+330 PRINT
+
+340 PRINT
+
+350 GOTO 140
+140 F(P:140) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+150 F(P:140) LET N(P) = INT(10 * RND(0)) + 6
+ P: (140) 1
+ N(1) = 9
+160 F(P:140) NEXT P
+ P: (140) 1
+ terminated:false
+ P = 2
+150 F(P:140) LET N(P) = INT(10 * RND(0)) + 6
+ P: (160) 2
+ N(2) = 7
+160 F(P:140) NEXT P
+ P: (160) 2
+ terminated:false
+ P = 3
+150 F(P:140) LET N(P) = INT(10 * RND(0)) + 6
+ P: (160) 3
+ N(3) = 6
+160 F(P:140) NEXT P
+ P: (160) 3
+ terminated:true
+170 PRINT "INITIAL CONFIGURATION:"
+INITIAL CONFIGURATION:
+180 PRINT
+
+190 GOSUB 900
+910 G(910) F(P:910) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (910) 1
+ 1 
+ N(1): (150) 9
+ 9
+930 G(910) F(P:910) NEXT P
+ P: (910) 1
+ terminated:false
+ P = 2
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 2
+ 2 
+ N(2): (150) 7
+ 7
+930 G(910) F(P:910) NEXT P
+ P: (930) 2
+ terminated:false
+ P = 3
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 3
+ 3 
+ N(3): (150) 6
+ 6
+930 G(910) F(P:910) NEXT P
+ P: (930) 3
+ terminated:true
+940 G(910) PRINT
+
+950 G(910) PRINT
+
+960 G(910) RETURN
+220 PRINT "PILE, NUMBER TAKEN";
+PILE, NUMBER TAKEN
+230 INPUT P, N
+? 3,3
+ P = 3
+ N = 3
+240 LET N(P) = N(P) - N
+ P: (230) 3
+ N(3): (150) 6
+ N: (230) 3
+ N(3) = 3
+250 IF N(P) >= 0 THEN 300
+ P: (230) 3
+ N(3): (240) 3
+ N(P) >= 0: true
+300 IF N(1) + N(2) + N(3) > 0 THEN 370
+ N(1): (150) 9
+ N(2): (150) 7
+ N(3): (240) 3
+ N(1) + N(2) + N(3) > 0: true
+380 F(P:380) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+390 F(P:380) LET X = N(P)
+ P: (380) 1
+ N(1): (150) 9
+ X = 9
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 9
+ Y = 4
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (400) 4
+ X: (390) 9
+ Y: (410) 4
+ B(1,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 4
+ X = 4
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 4
+ Y = 2
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 3
+ X: (430) 4
+ Y: (410) 2
+ B(1,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 2
+ X = 2
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 2
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 2
+ X: (430) 2
+ Y: (410) 1
+ B(1,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 1
+ X: (430) 1
+ Y: (410) 0
+ B(1,1) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (380) 1
+ terminated:false
+ P = 2
+390 F(P:380) LET X = N(P)
+ P: (450) 2
+ N(2): (150) 7
+ X = 7
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 7
+ Y = 3
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (400) 4
+ X: (390) 7
+ Y: (410) 3
+ B(2,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 3
+ X = 3
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 3
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 3
+ X: (430) 3
+ Y: (410) 1
+ B(2,3) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 2
+ X: (430) 1
+ Y: (410) 0
+ B(2,2) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(2,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 2
+ terminated:false
+ P = 3
+390 F(P:380) LET X = N(P)
+ P: (450) 3
+ N(3): (240) 3
+ X = 3
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 3
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (400) 4
+ X: (390) 3
+ Y: (410) 1
+ B(3,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 3
+ X: (430) 1
+ Y: (410) 0
+ B(3,3) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(3,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(3,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 3
+ terminated:true
+480 F(J:480) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (480) 1
+ B(1,1): (420) 1
+ B(2,1): (420) 0
+ B(3,1): (420) 0
+ S(1) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (480) 1
+ S(1): (490) 1
+ S(1) = 1
+510 F(J:480) NEXT J
+ J: (480) 1
+ terminated:false
+ J = 2
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 2
+ B(1,2): (420) 0
+ B(2,2): (420) 1
+ B(3,2): (420) 0
+ S(2) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 2
+ S(2): (490) 1
+ S(2) = 1
+510 F(J:480) NEXT J
+ J: (510) 2
+ terminated:false
+ J = 3
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 3
+ B(1,3): (420) 0
+ B(2,3): (420) 1
+ B(3,3): (420) 1
+ S(3) = 2
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 3
+ S(3): (490) 2
+ S(3) = 0
+510 F(J:480) NEXT J
+ J: (510) 3
+ terminated:false
+ J = 4
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 4
+ B(1,4): (420) 1
+ B(2,4): (420) 1
+ B(3,4): (420) 1
+ S(4) = 3
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 4
+ S(4): (490) 3
+ S(4) = 1
+510 F(J:480) NEXT J
+ J: (510) 4
+ terminated:true
+540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
+ S(1): (500) 1
+ S(2): (500) 1
+ S(3): (500) 0
+ S(4): (500) 1
+ S(1) + S(2) + S(3) + S(4) > 0: true
+620 F(J:620) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (620) 1
+ S(1): (500) 1
+ S(J) > 0: true
+650 F(P:650) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (650) 1
+ J: (620) 1
+ B(1,1): (420) 1
+ B(P, J) = 1: true
+680 LET N = 0
+ N = 0
+690 F(J:690) FOR J = J TO 4
+ J: (620) 1
+ J = 1
+ J = 1
+ terminated:false
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (690) 1
+ S(1): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (650) 1
+ J: (690) 1
+ B(1,1): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (680) 0
+ J: (690) 1
+ N = 8
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (690) 1
+ terminated:false
+ J = 2
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 2
+ S(2): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (650) 1
+ J: (750) 2
+ B(1,2): (420) 0
+ B(P, J) = 0: true
+740 F(J:690) LET N = N - 2 ^ (4 - J)
+ N: (720) 8
+ J: (750) 2
+ N = 4
+750 F(J:690) NEXT J
+ J: (750) 2
+ terminated:false
+ J = 3
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 3
+ S(3): (500) 0
+ S(J) = 0: true
+750 F(J:690) NEXT J
+ J: (750) 3
+ terminated:false
+ J = 4
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 4
+ S(4): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (650) 1
+ J: (750) 4
+ B(1,4): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (740) 4
+ J: (750) 4
+ N = 5
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (750) 4
+ terminated:true
+780 PRINT
+
+790 PRINT "MY MOVE:" P; "," N
+MY MOVE:
+ P: (650) 1
+ 1 ,
+ N: (720) 5
+ 5
+800 PRINT
+
+810 LET N(P) = N(P) - N
+ P: (650) 1
+ N(1): (150) 9
+ N: (720) 5
+ N(1) = 4
+820 IF N(1) + N(2) + N(3) > 0 THEN 850
+ N(1): (810) 4
+ N(2): (150) 7
+ N(3): (240) 3
+ N(1) + N(2) + N(3) > 0: true
+850 PRINT "NEW CONFIGURATION:"
+NEW CONFIGURATION:
+860 PRINT
+
+870 GOSUB 900
+910 G(910) F(P:910) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (910) 1
+ 1 
+ N(1): (810) 4
+ 4
+930 G(910) F(P:910) NEXT P
+ P: (910) 1
+ terminated:false
+ P = 2
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 2
+ 2 
+ N(2): (150) 7
+ 7
+930 G(910) F(P:910) NEXT P
+ P: (930) 2
+ terminated:false
+ P = 3
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 3
+ 3 
+ N(3): (240) 3
+ 3
+930 G(910) F(P:910) NEXT P
+ P: (930) 3
+ terminated:true
+940 G(910) PRINT
+
+950 G(910) PRINT
+
+960 G(910) RETURN
+880 GOTO 210
+220 PRINT "PILE, NUMBER TAKEN";
+PILE, NUMBER TAKEN
+230 INPUT P, N
+? 3,3
+ P = 3
+ N = 3
+240 LET N(P) = N(P) - N
+ P: (230) 3
+ N(3): (240) 3
+ N: (230) 3
+ N(3) = 0
+250 IF N(P) >= 0 THEN 300
+ P: (230) 3
+ N(3): (240) 0
+ N(P) >= 0: true
+300 IF N(1) + N(2) + N(3) > 0 THEN 370
+ N(1): (810) 4
+ N(2): (150) 7
+ N(3): (240) 0
+ N(1) + N(2) + N(3) > 0: true
+380 F(P:380) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+390 F(P:380) LET X = N(P)
+ P: (380) 1
+ N(1): (810) 4
+ X = 4
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 4
+ Y = 2
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (400) 4
+ X: (390) 4
+ Y: (410) 2
+ B(1,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 2
+ X = 2
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 2
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 3
+ X: (430) 2
+ Y: (410) 1
+ B(1,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 2
+ X: (430) 1
+ Y: (410) 0
+ B(1,2) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(1,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (380) 1
+ terminated:false
+ P = 2
+390 F(P:380) LET X = N(P)
+ P: (450) 2
+ N(2): (150) 7
+ X = 7
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 7
+ Y = 3
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (400) 4
+ X: (390) 7
+ Y: (410) 3
+ B(2,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 3
+ X = 3
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 3
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 3
+ X: (430) 3
+ Y: (410) 1
+ B(2,3) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 2
+ X: (430) 1
+ Y: (410) 0
+ B(2,2) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(2,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 2
+ terminated:false
+ P = 3
+390 F(P:380) LET X = N(P)
+ P: (450) 3
+ N(3): (240) 0
+ X = 0
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (400) 4
+ X: (390) 0
+ Y: (410) 0
+ B(3,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(3,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(3,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(3,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 3
+ terminated:true
+480 F(J:480) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (480) 1
+ B(1,1): (420) 0
+ B(2,1): (420) 0
+ B(3,1): (420) 0
+ S(1) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (480) 1
+ S(1): (490) 0
+ S(1) = 0
+510 F(J:480) NEXT J
+ J: (480) 1
+ terminated:false
+ J = 2
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 2
+ B(1,2): (420) 1
+ B(2,2): (420) 1
+ B(3,2): (420) 0
+ S(2) = 2
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 2
+ S(2): (490) 2
+ S(2) = 0
+510 F(J:480) NEXT J
+ J: (510) 2
+ terminated:false
+ J = 3
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 3
+ B(1,3): (420) 0
+ B(2,3): (420) 1
+ B(3,3): (420) 0
+ S(3) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 3
+ S(3): (490) 1
+ S(3) = 1
+510 F(J:480) NEXT J
+ J: (510) 3
+ terminated:false
+ J = 4
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 4
+ B(1,4): (420) 0
+ B(2,4): (420) 1
+ B(3,4): (420) 0
+ S(4) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 4
+ S(4): (490) 1
+ S(4) = 1
+510 F(J:480) NEXT J
+ J: (510) 4
+ terminated:true
+540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
+ S(1): (500) 0
+ S(2): (500) 0
+ S(3): (500) 1
+ S(4): (500) 1
+ S(1) + S(2) + S(3) + S(4) > 0: true
+620 F(J:620) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (620) 1
+ S(1): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (620) 1
+ terminated:false
+ J = 2
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 2
+ S(2): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (640) 2
+ terminated:false
+ J = 3
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 3
+ S(3): (500) 1
+ S(J) > 0: true
+650 F(P:650) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (650) 1
+ J: (640) 3
+ B(1,3): (420) 0
+ B(P, J) = 1: false
+670 F(P:650) NEXT P
+ P: (650) 1
+ terminated:false
+ P = 2
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (670) 2
+ J: (640) 3
+ B(2,3): (420) 1
+ B(P, J) = 1: true
+680 LET N = 0
+ N = 0
+690 F(J:690) FOR J = J TO 4
+ J: (640) 3
+ J = 3
+ J = 3
+ terminated:false
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (690) 3
+ S(3): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (670) 2
+ J: (690) 3
+ B(2,3): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (680) 0
+ J: (690) 3
+ N = 2
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (690) 3
+ terminated:false
+ J = 4
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 4
+ S(4): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (670) 2
+ J: (750) 4
+ B(2,4): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (720) 2
+ J: (750) 4
+ N = 3
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (750) 4
+ terminated:true
+780 PRINT
+
+790 PRINT "MY MOVE:" P; "," N
+MY MOVE:
+ P: (670) 2
+ 2 ,
+ N: (720) 3
+ 3
+800 PRINT
+
+810 LET N(P) = N(P) - N
+ P: (670) 2
+ N(2): (150) 7
+ N: (720) 3
+ N(2) = 4
+820 IF N(1) + N(2) + N(3) > 0 THEN 850
+ N(1): (810) 4
+ N(2): (810) 4
+ N(3): (240) 0
+ N(1) + N(2) + N(3) > 0: true
+850 PRINT "NEW CONFIGURATION:"
+NEW CONFIGURATION:
+860 PRINT
+
+870 GOSUB 900
+910 G(910) F(P:910) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (910) 1
+ 1 
+ N(1): (810) 4
+ 4
+930 G(910) F(P:910) NEXT P
+ P: (910) 1
+ terminated:false
+ P = 2
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 2
+ 2 
+ N(2): (810) 4
+ 4
+930 G(910) F(P:910) NEXT P
+ P: (930) 2
+ terminated:false
+ P = 3
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 3
+ 3 
+ N(3): (240) 0
+ 0
+930 G(910) F(P:910) NEXT P
+ P: (930) 3
+ terminated:true
+940 G(910) PRINT
+
+950 G(910) PRINT
+
+960 G(910) RETURN
+880 GOTO 210
+220 PRINT "PILE, NUMBER TAKEN";
+PILE, NUMBER TAKEN
+230 INPUT P, N
+? 2,3
+ P = 2
+ N = 3
+240 LET N(P) = N(P) - N
+ P: (230) 2
+ N(2): (810) 4
+ N: (230) 3
+ N(2) = 1
+250 IF N(P) >= 0 THEN 300
+ P: (230) 2
+ N(2): (240) 1
+ N(P) >= 0: true
+300 IF N(1) + N(2) + N(3) > 0 THEN 370
+ N(1): (810) 4
+ N(2): (240) 1
+ N(3): (240) 0
+ N(1) + N(2) + N(3) > 0: true
+380 F(P:380) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+390 F(P:380) LET X = N(P)
+ P: (380) 1
+ N(1): (810) 4
+ X = 4
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 4
+ Y = 2
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (400) 4
+ X: (390) 4
+ Y: (410) 2
+ B(1,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 2
+ X = 2
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 2
+ Y = 1
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 3
+ X: (430) 2
+ Y: (410) 1
+ B(1,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 1
+ X = 1
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 2
+ X: (430) 1
+ Y: (410) 0
+ B(1,2) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(1,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (380) 1
+ terminated:false
+ P = 2
+390 F(P:380) LET X = N(P)
+ P: (450) 2
+ N(2): (240) 1
+ X = 1
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (400) 4
+ X: (390) 1
+ Y: (410) 0
+ B(2,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(2,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(2,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(2,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 2
+ terminated:false
+ P = 3
+390 F(P:380) LET X = N(P)
+ P: (450) 3
+ N(3): (240) 0
+ X = 0
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (400) 4
+ X: (390) 0
+ Y: (410) 0
+ B(3,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(3,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(3,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(3,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 3
+ terminated:true
+480 F(J:480) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (480) 1
+ B(1,1): (420) 0
+ B(2,1): (420) 0
+ B(3,1): (420) 0
+ S(1) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (480) 1
+ S(1): (490) 0
+ S(1) = 0
+510 F(J:480) NEXT J
+ J: (480) 1
+ terminated:false
+ J = 2
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 2
+ B(1,2): (420) 1
+ B(2,2): (420) 0
+ B(3,2): (420) 0
+ S(2) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 2
+ S(2): (490) 1
+ S(2) = 1
+510 F(J:480) NEXT J
+ J: (510) 2
+ terminated:false
+ J = 3
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 3
+ B(1,3): (420) 0
+ B(2,3): (420) 0
+ B(3,3): (420) 0
+ S(3) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 3
+ S(3): (490) 0
+ S(3) = 0
+510 F(J:480) NEXT J
+ J: (510) 3
+ terminated:false
+ J = 4
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 4
+ B(1,4): (420) 0
+ B(2,4): (420) 1
+ B(3,4): (420) 0
+ S(4) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 4
+ S(4): (490) 1
+ S(4) = 1
+510 F(J:480) NEXT J
+ J: (510) 4
+ terminated:true
+540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
+ S(1): (500) 0
+ S(2): (500) 1
+ S(3): (500) 0
+ S(4): (500) 1
+ S(1) + S(2) + S(3) + S(4) > 0: true
+620 F(J:620) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (620) 1
+ S(1): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (620) 1
+ terminated:false
+ J = 2
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 2
+ S(2): (500) 1
+ S(J) > 0: true
+650 F(P:650) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (650) 1
+ J: (640) 2
+ B(1,2): (420) 1
+ B(P, J) = 1: true
+680 LET N = 0
+ N = 0
+690 F(J:690) FOR J = J TO 4
+ J: (640) 2
+ J = 2
+ J = 2
+ terminated:false
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (690) 2
+ S(2): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (650) 1
+ J: (690) 2
+ B(1,2): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (680) 0
+ J: (690) 2
+ N = 4
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (690) 2
+ terminated:false
+ J = 3
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 3
+ S(3): (500) 0
+ S(J) = 0: true
+750 F(J:690) NEXT J
+ J: (750) 3
+ terminated:false
+ J = 4
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (750) 4
+ S(4): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (650) 1
+ J: (750) 4
+ B(1,4): (420) 0
+ B(P, J) = 0: true
+740 F(J:690) LET N = N - 2 ^ (4 - J)
+ N: (720) 4
+ J: (750) 4
+ N = 3
+750 F(J:690) NEXT J
+ J: (750) 4
+ terminated:true
+780 PRINT
+
+790 PRINT "MY MOVE:" P; "," N
+MY MOVE:
+ P: (650) 1
+ 1 ,
+ N: (740) 3
+ 3
+800 PRINT
+
+810 LET N(P) = N(P) - N
+ P: (650) 1
+ N(1): (810) 4
+ N: (740) 3
+ N(1) = 1
+820 IF N(1) + N(2) + N(3) > 0 THEN 850
+ N(1): (810) 1
+ N(2): (240) 1
+ N(3): (240) 0
+ N(1) + N(2) + N(3) > 0: true
+850 PRINT "NEW CONFIGURATION:"
+NEW CONFIGURATION:
+860 PRINT
+
+870 GOSUB 900
+910 G(910) F(P:910) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (910) 1
+ 1 
+ N(1): (810) 1
+ 1
+930 G(910) F(P:910) NEXT P
+ P: (910) 1
+ terminated:false
+ P = 2
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 2
+ 2 
+ N(2): (240) 1
+ 1
+930 G(910) F(P:910) NEXT P
+ P: (930) 2
+ terminated:false
+ P = 3
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 3
+ 3 
+ N(3): (240) 0
+ 0
+930 G(910) F(P:910) NEXT P
+ P: (930) 3
+ terminated:true
+940 G(910) PRINT
+
+950 G(910) PRINT
+
+960 G(910) RETURN
+880 GOTO 210
+220 PRINT "PILE, NUMBER TAKEN";
+PILE, NUMBER TAKEN
+230 INPUT P, N
+? 2,1
+ P = 2
+ N = 1
+240 LET N(P) = N(P) - N
+ P: (230) 2
+ N(2): (240) 1
+ N: (230) 1
+ N(2) = 0
+250 IF N(P) >= 0 THEN 300
+ P: (230) 2
+ N(2): (240) 0
+ N(P) >= 0: true
+300 IF N(1) + N(2) + N(3) > 0 THEN 370
+ N(1): (810) 1
+ N(2): (240) 0
+ N(3): (240) 0
+ N(1) + N(2) + N(3) > 0: true
+380 F(P:380) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+390 F(P:380) LET X = N(P)
+ P: (380) 1
+ N(1): (810) 1
+ X = 1
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 1
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (400) 4
+ X: (390) 1
+ Y: (410) 0
+ B(1,4) = 1
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(1,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(1,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (380) 1
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(1,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (380) 1
+ terminated:false
+ P = 2
+390 F(P:380) LET X = N(P)
+ P: (450) 2
+ N(2): (240) 0
+ X = 0
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (400) 4
+ X: (390) 0
+ Y: (410) 0
+ B(2,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(2,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(2,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 2
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(2,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 2
+ terminated:false
+ P = 3
+390 F(P:380) LET X = N(P)
+ P: (450) 3
+ N(3): (240) 0
+ X = 0
+400 F(P:380,J:400) FOR J = 4 TO 1 STEP -1
+ J = 4
+ -1 = -1
+ terminated:false
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (390) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (400) 4
+ X: (390) 0
+ Y: (410) 0
+ B(3,4) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (400) 4
+ terminated:false
+ J = 3
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 3
+ X: (430) 0
+ Y: (410) 0
+ B(3,3) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 3
+ terminated:false
+ J = 2
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 2
+ X: (430) 0
+ Y: (410) 0
+ B(3,2) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 2
+ terminated:false
+ J = 1
+410 F(P:380,J:400) LET Y = INT(X / 2)
+ X: (430) 0
+ Y = 0
+420 F(P:380,J:400) LET B(P, J) = X - 2 * Y
+ P: (450) 3
+ J: (440) 1
+ X: (430) 0
+ Y: (410) 0
+ B(3,1) = 0
+430 F(P:380,J:400) LET X = Y
+ Y: (410) 0
+ X = 0
+440 F(P:380,J:400) NEXT J
+ J: (440) 1
+ terminated:true
+450 F(P:380) NEXT P
+ P: (450) 3
+ terminated:true
+480 F(J:480) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (480) 1
+ B(1,1): (420) 0
+ B(2,1): (420) 0
+ B(3,1): (420) 0
+ S(1) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (480) 1
+ S(1): (490) 0
+ S(1) = 0
+510 F(J:480) NEXT J
+ J: (480) 1
+ terminated:false
+ J = 2
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 2
+ B(1,2): (420) 0
+ B(2,2): (420) 0
+ B(3,2): (420) 0
+ S(2) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 2
+ S(2): (490) 0
+ S(2) = 0
+510 F(J:480) NEXT J
+ J: (510) 2
+ terminated:false
+ J = 3
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 3
+ B(1,3): (420) 0
+ B(2,3): (420) 0
+ B(3,3): (420) 0
+ S(3) = 0
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 3
+ S(3): (490) 0
+ S(3) = 0
+510 F(J:480) NEXT J
+ J: (510) 3
+ terminated:false
+ J = 4
+490 F(J:480) LET S(J) = B(1, J) + B(2, J) + B(3, J)
+ J: (510) 4
+ B(1,4): (420) 1
+ B(2,4): (420) 0
+ B(3,4): (420) 0
+ S(4) = 1
+500 F(J:480) LET S(J) = S(J) - 2 * INT(S(J) / 2)
+ J: (510) 4
+ S(4): (490) 1
+ S(4) = 1
+510 F(J:480) NEXT J
+ J: (510) 4
+ terminated:true
+540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
+ S(1): (500) 0
+ S(2): (500) 0
+ S(3): (500) 0
+ S(4): (500) 1
+ S(1) + S(2) + S(3) + S(4) > 0: true
+620 F(J:620) FOR J = 1 TO 4
+ J = 1
+ terminated:false
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (620) 1
+ S(1): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (620) 1
+ terminated:false
+ J = 2
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 2
+ S(2): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (640) 2
+ terminated:false
+ J = 3
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 3
+ S(3): (500) 0
+ S(J) > 0: false
+640 F(J:620) NEXT J
+ J: (640) 3
+ terminated:false
+ J = 4
+630 F(J:620) IF S(J) > 0 THEN 650
+ J: (640) 4
+ S(4): (500) 1
+ S(J) > 0: true
+650 F(P:650) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+660 F(P:650) IF B(P, J) = 1 THEN 680
+ P: (650) 1
+ J: (640) 4
+ B(1,4): (420) 1
+ B(P, J) = 1: true
+680 LET N = 0
+ N = 0
+690 F(J:690) FOR J = J TO 4
+ J: (640) 4
+ J = 4
+ J = 4
+ terminated:false
+700 F(J:690) IF S(J) = 0 THEN 750
+ J: (690) 4
+ S(4): (500) 1
+ S(J) = 0: false
+710 F(J:690) IF B(P, J) = 0 THEN 740
+ P: (650) 1
+ J: (690) 4
+ B(1,4): (420) 1
+ B(P, J) = 0: false
+720 F(J:690) LET N = N + 2 ^ (4 - J)
+ N: (680) 0
+ J: (690) 4
+ N = 1
+730 F(J:690) GOTO 750
+750 F(J:690) NEXT J
+ J: (690) 4
+ terminated:true
+780 PRINT
+
+790 PRINT "MY MOVE:" P; "," N
+MY MOVE:
+ P: (650) 1
+ 1 ,
+ N: (720) 1
+ 1
+800 PRINT
+
+810 LET N(P) = N(P) - N
+ P: (650) 1
+ N(1): (810) 1
+ N: (720) 1
+ N(1) = 0
+820 IF N(1) + N(2) + N(3) > 0 THEN 850
+ N(1): (810) 0
+ N(2): (240) 0
+ N(3): (240) 0
+ N(1) + N(2) + N(3) > 0: false
+830 PRINT "I WIN *****"
+I WIN *****
+840 GOTO 330
+330 PRINT
+
+340 PRINT
+
+350 GOTO 140
+140 F(P:140) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+150 F(P:140) LET N(P) = INT(10 * RND(0)) + 6
+ P: (140) 1
+ N(1) = 7
+160 F(P:140) NEXT P
+ P: (140) 1
+ terminated:false
+ P = 2
+150 F(P:140) LET N(P) = INT(10 * RND(0)) + 6
+ P: (160) 2
+ N(2) = 9
+160 F(P:140) NEXT P
+ P: (160) 2
+ terminated:false
+ P = 3
+150 F(P:140) LET N(P) = INT(10 * RND(0)) + 6
+ P: (160) 3
+ N(3) = 9
+160 F(P:140) NEXT P
+ P: (160) 3
+ terminated:true
+170 PRINT "INITIAL CONFIGURATION:"
+INITIAL CONFIGURATION:
+180 PRINT
+
+190 GOSUB 900
+910 G(910) F(P:910) FOR P = 1 TO 3
+ P = 1
+ terminated:false
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (910) 1
+ 1 
+ N(1): (150) 7
+ 7
+930 G(910) F(P:910) NEXT P
+ P: (910) 1
+ terminated:false
+ P = 2
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 2
+ 2 
+ N(2): (150) 9
+ 9
+930 G(910) F(P:910) NEXT P
+ P: (930) 2
+ terminated:false
+ P = 3
+920 G(910) F(P:910) PRINT "PILE " P; N(P)
+PILE 
+ P: (930) 3
+ 3 
+ N(3): (150) 9
+ 9
+930 G(910) F(P:910) NEXT P
+ P: (930) 3
+ terminated:true
+940 G(910) PRINT
+
+950 G(910) PRINT
+
+960 G(910) RETURN
+220 PRINT "PILE, NUMBER TAKEN";
+PILE, NUMBER TAKEN
+230 INPUT P, N
+? 
+Error 102 End of file in line 230
+

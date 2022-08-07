@@ -27,15 +27,20 @@
 926 DATA 0, -10
 927 DATA 0, -110
 998 DATA 999
-10 DIM T(100, 10), V(100)
-20 F(I:20) FOR I = 0 TO 100
+10 LET N0 = 100
+ N0 = 100
+12 DIM T(N0, 10), V(N0)
+ N0: 100
+20 F(I:20) FOR I = 0 TO N0
+ N0: 100
  I = 0
+ N0 = 100
  terminated:false
 30 F(I:20) READ K
  K = -3
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: -3
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 0
  K: -3
@@ -101,9 +106,9 @@
  I = 1
 30 F(I:20) READ K
  K = 2
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 2
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 1
  K: 2
@@ -153,9 +158,9 @@
  I = 2
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 2
  K: 0
@@ -181,9 +186,9 @@
  I = 3
 30 F(I:20) READ K
  K = 3
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 3
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 3
  K: 3
@@ -249,9 +254,9 @@
  I = 4
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 4
  K: 0
@@ -277,9 +282,9 @@
  I = 5
 30 F(I:20) READ K
  K = -2
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: -2
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 5
  K: -2
@@ -329,9 +334,9 @@
  I = 6
 30 F(I:20) READ K
  K = 2
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 2
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 6
  K: 2
@@ -381,9 +386,9 @@
  I = 7
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 7
  K: 0
@@ -409,9 +414,9 @@
  I = 8
 30 F(I:20) READ K
  K = 2
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 2
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 8
  K: 2
@@ -461,9 +466,9 @@
  I = 9
 30 F(I:20) READ K
  K = 3
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 3
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 9
  K: 3
@@ -529,9 +534,9 @@
  I = 10
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 10
  K: 0
@@ -557,9 +562,9 @@
  I = 11
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 11
  K: 0
@@ -585,9 +590,9 @@
  I = 12
 30 F(I:20) READ K
  K = -2
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: -2
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 12
  K: -2
@@ -637,9 +642,9 @@
  I = 13
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 13
  K: 0
@@ -665,9 +670,9 @@
  I = 14
 30 F(I:20) READ K
  K = -2
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: -2
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 14
  K: -2
@@ -717,9 +722,9 @@
  I = 15
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 15
  K: 0
@@ -745,9 +750,9 @@
  I = 16
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 16
  K: 0
@@ -773,9 +778,9 @@
  I = 17
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 17
  K: 0
@@ -801,9 +806,9 @@
  I = 18
 30 F(I:20) READ K
  K = 3
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 3
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 18
  K: 3
@@ -869,9 +874,9 @@
  I = 19
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 19
  K: 0
@@ -897,9 +902,9 @@
  I = 20
 30 F(I:20) READ K
  K = 3
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 3
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 20
  K: 3
@@ -965,9 +970,9 @@
  I = 21
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 21
  K: 0
@@ -993,9 +998,9 @@
  I = 22
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 22
  K: 0
@@ -1021,9 +1026,9 @@
  I = 23
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 23
  K: 0
@@ -1049,9 +1054,9 @@
  I = 24
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 24
  K: 0
@@ -1077,9 +1082,9 @@
  I = 25
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 25
  K: 0
@@ -1105,9 +1110,9 @@
  I = 26
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 26
  K: 0
@@ -1133,9 +1138,9 @@
  I = 27
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 0
- K = 999: false
+ K <> 999: true
 50 F(I:20) LET T(I, 0) = K
  I: 27
  K: 0
@@ -1161,9 +1166,12 @@
  I = 28
 30 F(I:20) READ K
  K = 999
-40 F(I:20) IF K = 999 THEN 100
+40 F(I:20) IF K <> 999 THEN 50
  K: 999
- K = 999: true
+ K <> 999: false
+45 F(I:20) BREAK
+95 F(I:20) NEXT I
+ terminated:true
 100 PRINT "SELECTED ACTS: ";
 SELECTED ACTS: 
 105 F(I:105) FOR I = I - 1 TO 0 STEP -1

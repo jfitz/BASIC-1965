@@ -337,11 +337,11 @@ A, B, P, R, Y, T
  P1: -1111440
  R2: 1.00192
  S1 = 130
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 222.88
  S1: 130
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 130
  S = 130
 540 F(R:510) NEXT R
@@ -372,11 +372,11 @@ A, B, P, R, Y, T
  P1: -555719
  R2: 1.00409
  S1 = 265
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 130
  S1: 265
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 265
  S = 265
 540 F(R:510) NEXT R
@@ -407,11 +407,11 @@ A, B, P, R, Y, T
  P1: -370480
  R2: 1.00602
  S1 = 218
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 265
  S1: 218
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 218
  S = 218
 540 F(R:510) NEXT R
@@ -442,11 +442,11 @@ A, B, P, R, Y, T
  P1: -277860
  R2: 1.00795
  S1 = 193
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 218
  S1: 193
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 193
  S = 193
 540 F(R:510) NEXT R
@@ -477,11 +477,11 @@ A, B, P, R, Y, T
  P1: -222288
  R2: 1.01013
  S1 = 232
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 193
  S1: 232
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 232
  S = 232
 540 F(R:510) NEXT R
@@ -512,11 +512,11 @@ A, B, P, R, Y, T
  P1: -185240
  R2: 1.01207
  S1 = 212
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 232
  S1: 212
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 212
  S = 212
 540 F(R:510) NEXT R
@@ -547,11 +547,11 @@ A, B, P, R, Y, T
  P1: -158777
  R2: 1.01401
  S1 = 196
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 212
  S1: 196
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 196
  S = 196
 540 F(R:510) NEXT R
@@ -582,11 +582,11 @@ A, B, P, R, Y, T
  P1: -138930
  R2: 1.0162
  S1 = 218
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 196
  S1: 218
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 218
  S = 218
 540 F(R:510) NEXT R
@@ -617,11 +617,11 @@ A, B, P, R, Y, T
  P1: -123493
  R2: 1.01816
  S1 = 206
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 218
  S1: 206
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 206
  S = 206
 540 F(R:510) NEXT R
@@ -652,11 +652,11 @@ A, B, P, R, Y, T
  P1: -111144
  R2: 1.02011
  S1 = 195
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 206
  S1: 195
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 195
  S = 195
 540 F(R:510) NEXT R
@@ -687,11 +687,11 @@ A, B, P, R, Y, T
  P1: -101040
  R2: 1.02232
  S1 = 211
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 195
  S1: 211
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 211
  S = 211
 540 F(R:510) NEXT R
@@ -722,11 +722,11 @@ A, B, P, R, Y, T
  P1: -92620
  R2: 1.02428
  S1 = 200.3
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 211
  S1: 200.3
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 200.3
  S = 200.3
 540 F(R:510) NEXT R
@@ -757,11 +757,11 @@ A, B, P, R, Y, T
  P1: -85495.6
  R2: 1.02624
  S1 = 190.9
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 200.3
  S1: 190.9
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 190.9
  S = 190.9
 540 F(R:510) NEXT R
@@ -792,11 +792,11 @@ A, B, P, R, Y, T
  P1: -79388.3
  R2: 1.02846
  S1 = 202.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 190.9
  S1: 202.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 202.5
  S = 202.5
 540 F(R:510) NEXT R
@@ -827,11 +827,11 @@ A, B, P, R, Y, T
  P1: -74096
  R2: 1.03044
  S1 = 194.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 202.5
  S1: 194.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 194.6
  S = 194.6
 540 F(R:510) NEXT R
@@ -862,11 +862,11 @@ A, B, P, R, Y, T
  P1: -69465.2
  R2: 1.03241
  S1 = 186.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 194.6
  S1: 186.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 186.5
  S = 186.5
 540 F(R:510) NEXT R
@@ -897,11 +897,11 @@ A, B, P, R, Y, T
  P1: -65378.7
  R2: 1.03464
  S1 = 195.4
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 186.5
  S1: 195.4
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 195.4
  S = 195.4
 540 F(R:510) NEXT R
@@ -932,11 +932,11 @@ A, B, P, R, Y, T
  P1: -61746.7
  R2: 1.03663
  S1 = 188.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 195.4
  S1: 188.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 188.5
  S = 188.5
 540 F(R:510) NEXT R
@@ -967,11 +967,11 @@ A, B, P, R, Y, T
  P1: -58497
  R2: 1.03862
  S1 = 181.9
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 188.5
  S1: 181.9
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 181.9
  S = 181.9
 540 F(R:510) NEXT R
@@ -1002,11 +1002,11 @@ A, B, P, R, Y, T
  P1: -55571.9
  R2: 1.04086
  S1 = 188.9
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 181.9
  S1: 188.9
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 188.9
  S = 188.9
 540 F(R:510) NEXT R
@@ -1037,11 +1037,11 @@ A, B, P, R, Y, T
  P1: -52925.7
  R2: 1.04286
  S1 = 182.7
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 188.9
  S1: 182.7
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 182.7
  S = 182.7
 540 F(R:510) NEXT R
@@ -1072,11 +1072,11 @@ A, B, P, R, Y, T
  P1: -50520.1
  R2: 1.04486
  S1 = 176.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 182.7
  S1: 176.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 176.6
  S = 176.6
 540 F(R:510) NEXT R
@@ -1107,11 +1107,11 @@ A, B, P, R, Y, T
  P1: -48323.4
  R2: 1.04711
  S1 = 182.3
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 176.6
  S1: 182.3
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 182.3
  S = 182.3
 540 F(R:510) NEXT R
@@ -1142,11 +1142,11 @@ A, B, P, R, Y, T
  P1: -46310
  R2: 1.04912
  S1 = 176.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 182.3
  S1: 176.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 176.5
  S = 176.5
 540 F(R:510) NEXT R
@@ -1177,11 +1177,11 @@ A, B, P, R, Y, T
  P1: -44457.7
  R2: 1.05113
  S1 = 170.9
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 176.5
  S1: 170.9
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 170.9
  S = 170.9
 540 F(R:510) NEXT R
@@ -1212,11 +1212,11 @@ A, B, P, R, Y, T
  P1: -42747.6
  R2: 1.0534
  S1 = 175.9
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 170.9
  S1: 175.9
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 175.9
  S = 175.9
 540 F(R:510) NEXT R
@@ -1247,11 +1247,11 @@ A, B, P, R, Y, T
  P1: -41164.4
  R2: 1.05542
  S1 = 170.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 175.9
  S1: 170.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 170.5
  S = 170.5
 540 F(R:510) NEXT R
@@ -1282,11 +1282,11 @@ A, B, P, R, Y, T
  P1: -39694.3
  R2: 1.05744
  S1 = 165.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 170.5
  S1: 165.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 165.2
  S = 165.2
 540 F(R:510) NEXT R
@@ -1317,11 +1317,11 @@ A, B, P, R, Y, T
  P1: -38325.5
  R2: 1.05973
  S1 = 169.7
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 165.2
  S1: 169.7
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 169.7
  S = 169.7
 540 F(R:510) NEXT R
@@ -1352,11 +1352,11 @@ A, B, P, R, Y, T
  P1: -37048
  R2: 1.06176
  S1 = 164.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 169.7
  S1: 164.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 164.6
  S = 164.6
 540 F(R:510) NEXT R
@@ -1387,11 +1387,11 @@ A, B, P, R, Y, T
  P1: -35852.9
  R2: 1.06379
  S1 = 159.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 164.6
  S1: 159.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 159.5
  S = 159.5
 540 F(R:510) NEXT R
@@ -1422,11 +1422,11 @@ A, B, P, R, Y, T
  P1: -34732.5
  R2: 1.06609
  S1 = 163.3
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 159.5
  S1: 163.3
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 163.3
  S = 163.3
 540 F(R:510) NEXT R
@@ -1457,11 +1457,11 @@ A, B, P, R, Y, T
  P1: -33680
  R2: 1.06813
  S1 = 158.4
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 163.3
  S1: 158.4
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 158.4
  S = 158.4
 540 F(R:510) NEXT R
@@ -1492,11 +1492,11 @@ A, B, P, R, Y, T
  P1: -32689.5
  R2: 1.07018
  S1 = 153.8
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 158.4
  S1: 153.8
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 153.8
  S = 153.8
 540 F(R:510) NEXT R
@@ -1527,11 +1527,11 @@ A, B, P, R, Y, T
  P1: -31755.4
  R2: 1.07248
  S1 = 156.7
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 153.8
  S1: 156.7
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 156.7
  S = 156.7
 540 F(R:510) NEXT R
@@ -1562,11 +1562,11 @@ A, B, P, R, Y, T
  P1: -30873.3
  R2: 1.07454
  S1 = 152.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 156.7
  S1: 152.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 152.2
  S = 152.2
 540 F(R:510) NEXT R
@@ -1597,11 +1597,11 @@ A, B, P, R, Y, T
  P1: -30039
  R2: 1.0766
  S1 = 147.8
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 152.2
  S1: 147.8
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 147.8
  S = 147.8
 540 F(R:510) NEXT R
@@ -1632,11 +1632,11 @@ A, B, P, R, Y, T
  P1: -29248.4
  R2: 1.07892
  S1 = 150.4
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 147.8
  S1: 150.4
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 150.4
  S = 150.4
 540 F(R:510) NEXT R
@@ -1667,11 +1667,11 @@ A, B, P, R, Y, T
  P1: -28498.5
  R2: 1.08099
  S1 = 146.1
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 150.4
  S1: 146.1
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 146.1
  S = 146.1
 540 F(R:510) NEXT R
@@ -1702,11 +1702,11 @@ A, B, P, R, Y, T
  P1: -27786
  R2: 1.08306
  S1 = 141.8
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 146.1
  S1: 141.8
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 141.8
  S = 141.8
 540 F(R:510) NEXT R
@@ -1737,11 +1737,11 @@ A, B, P, R, Y, T
  P1: -27108.3
  R2: 1.08539
  S1 = 144
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 141.8
  S1: 144
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 144
  S = 144
 540 F(R:510) NEXT R
@@ -1772,11 +1772,11 @@ A, B, P, R, Y, T
  P1: -26462.9
  R2: 1.08747
  S1 = 139.8
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 144
  S1: 139.8
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 139.8
  S = 139.8
 540 F(R:510) NEXT R
@@ -1807,11 +1807,11 @@ A, B, P, R, Y, T
  P1: -25847.5
  R2: 1.08955
  S1 = 135.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 139.8
  S1: 135.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 135.5
  S = 135.5
 540 F(R:510) NEXT R
@@ -1842,11 +1842,11 @@ A, B, P, R, Y, T
  P1: -25260
  R2: 1.0919
  S1 = 137.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 135.5
  S1: 137.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 137.6
  S = 137.6
 540 F(R:510) NEXT R
@@ -1877,11 +1877,11 @@ A, B, P, R, Y, T
  P1: -24698.7
  R2: 1.09399
  S1 = 133.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 137.6
  S1: 133.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 133.5
  S = 133.5
 540 F(R:510) NEXT R
@@ -1912,11 +1912,11 @@ A, B, P, R, Y, T
  P1: -24161.8
  R2: 1.09608
  S1 = 129.3
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 133.5
  S1: 129.3
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 129.3
  S = 129.3
 540 F(R:510) NEXT R
@@ -1947,11 +1947,11 @@ A, B, P, R, Y, T
  P1: -23647.6
  R2: 1.09845
  S1 = 131.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 129.3
  S1: 131.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 131.2
  S = 131.2
 540 F(R:510) NEXT R
@@ -1982,11 +1982,11 @@ A, B, P, R, Y, T
  P1: -23155
  R2: 1.10055
  S1 = 127.1
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 131.2
  S1: 127.1
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 127.1
  S = 127.1
 540 F(R:510) NEXT R
@@ -2017,11 +2017,11 @@ A, B, P, R, Y, T
  P1: -22682.5
  R2: 1.10265
  S1 = 123.1
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 127.1
  S1: 123.1
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 123.1
  S = 123.1
 540 F(R:510) NEXT R
@@ -2052,11 +2052,11 @@ A, B, P, R, Y, T
  P1: -22228.8
  R2: 1.10503
  S1 = 124.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 123.1
  S1: 124.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 124.6
  S = 124.6
 540 F(R:510) NEXT R
@@ -2087,11 +2087,11 @@ A, B, P, R, Y, T
  P1: -21792.9
  R2: 1.10714
  S1 = 120.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 124.6
  S1: 120.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 120.6
  S = 120.6
 540 F(R:510) NEXT R
@@ -2122,11 +2122,11 @@ A, B, P, R, Y, T
  P1: -21373.9
  R2: 1.10926
  S1 = 116.8
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 120.6
  S1: 116.8
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 116.8
  S = 116.8
 540 F(R:510) NEXT R
@@ -2157,11 +2157,11 @@ A, B, P, R, Y, T
  P1: -20970.6
  R2: 1.11165
  S1 = 118.1
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 116.8
  S1: 118.1
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 118.1
  S = 118.1
 540 F(R:510) NEXT R
@@ -2192,11 +2192,11 @@ A, B, P, R, Y, T
  P1: -20582.2
  R2: 1.11378
  S1 = 114.3
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 118.1
  S1: 114.3
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 114.3
  S = 114.3
 540 F(R:510) NEXT R
@@ -2227,11 +2227,11 @@ A, B, P, R, Y, T
  P1: -20208
  R2: 1.11591
  S1 = 110.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 114.3
  S1: 110.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 110.5
  S = 110.5
 540 F(R:510) NEXT R
@@ -2262,11 +2262,11 @@ A, B, P, R, Y, T
  P1: -19847.1
  R2: 1.11831
  S1 = 111.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 110.5
  S1: 111.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 111.5
  S = 111.5
 540 F(R:510) NEXT R
@@ -2297,11 +2297,11 @@ A, B, P, R, Y, T
  P1: -19498.9
  R2: 1.12045
  S1 = 107.7
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 111.5
  S1: 107.7
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 107.7
  S = 107.7
 540 F(R:510) NEXT R
@@ -2332,11 +2332,11 @@ A, B, P, R, Y, T
  P1: -19162.8
  R2: 1.12259
  S1 = 104
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 107.7
  S1: 104
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 104
  S = 104
 540 F(R:510) NEXT R
@@ -2367,11 +2367,11 @@ A, B, P, R, Y, T
  P1: -18838
  R2: 1.12501
  S1 = 104.9
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 104
  S1: 104.9
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 104.9
  S = 104.9
 540 F(R:510) NEXT R
@@ -2402,11 +2402,11 @@ A, B, P, R, Y, T
  P1: -18524
  R2: 1.12716
  S1 = 101.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 104.9
  S1: 101.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 101.2
  S = 101.2
 540 F(R:510) NEXT R
@@ -2437,11 +2437,11 @@ A, B, P, R, Y, T
  P1: -18220.3
  R2: 1.12932
  S1 = 97.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 101.2
  S1: 97.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 97.6
  S = 97.6
 540 F(R:510) NEXT R
@@ -2472,11 +2472,11 @@ A, B, P, R, Y, T
  P1: -17926.4
  R2: 1.13174
  S1 = 98.1
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 97.6
  S1: 98.1
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 98.1
  S = 98.1
 540 F(R:510) NEXT R
@@ -2507,11 +2507,11 @@ A, B, P, R, Y, T
  P1: -17641.9
  R2: 1.13391
  S1 = 94.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 98.1
  S1: 94.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 94.6
  S = 94.6
 540 F(R:510) NEXT R
@@ -2542,11 +2542,11 @@ A, B, P, R, Y, T
  P1: -17366.3
  R2: 1.13608
  S1 = 91
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 94.6
  S1: 91
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 91
  S = 91
 540 F(R:510) NEXT R
@@ -2577,11 +2577,11 @@ A, B, P, R, Y, T
  P1: -17099.1
  R2: 1.13852
  S1 = 91.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 91
  S1: 91.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 91.5
  S = 91.5
 540 F(R:510) NEXT R
@@ -2612,11 +2612,11 @@ A, B, P, R, Y, T
  P1: -16840
  R2: 1.1407
  S1 = 88
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 91.5
  S1: 88
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 88
  S = 88
 540 F(R:510) NEXT R
@@ -2647,11 +2647,11 @@ A, B, P, R, Y, T
  P1: -16588.7
  R2: 1.14288
  S1 = 84.4
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 88
  S1: 84.4
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 84.4
  S = 84.4
 540 F(R:510) NEXT R
@@ -2682,11 +2682,11 @@ A, B, P, R, Y, T
  P1: -16344.7
  R2: 1.14533
  S1 = 84.7
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 84.4
  S1: 84.7
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 84.7
  S = 84.7
 540 F(R:510) NEXT R
@@ -2717,11 +2717,11 @@ A, B, P, R, Y, T
  P1: -16107.8
  R2: 1.14752
  S1 = 81.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 84.7
  S1: 81.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 81.2
  S = 81.2
 540 F(R:510) NEXT R
@@ -2752,11 +2752,11 @@ A, B, P, R, Y, T
  P1: -15877.7
  R2: 1.14971
  S1 = 77.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 81.2
  S1: 77.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 77.6
  S = 77.6
 540 F(R:510) NEXT R
@@ -2787,11 +2787,11 @@ A, B, P, R, Y, T
  P1: -15654.1
  R2: 1.15219
  S1 = 78
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 77.6
  S1: 78
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 78
  S = 78
 540 F(R:510) NEXT R
@@ -2822,11 +2822,11 @@ A, B, P, R, Y, T
  P1: -15436.7
  R2: 1.15439
  S1 = 74.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 78
  S1: 74.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 74.5
  S = 74.5
 540 F(R:510) NEXT R
@@ -2857,11 +2857,11 @@ A, B, P, R, Y, T
  P1: -15225.2
  R2: 1.15659
  S1 = 70.9
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 74.5
  S1: 70.9
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 70.9
  S = 70.9
 540 F(R:510) NEXT R
@@ -2892,11 +2892,11 @@ A, B, P, R, Y, T
  P1: -15019.5
  R2: 1.15908
  S1 = 71.1
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 70.9
  S1: 71.1
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 71.1
  S = 71.1
 540 F(R:510) NEXT R
@@ -2927,11 +2927,11 @@ A, B, P, R, Y, T
  P1: -14819.2
  R2: 1.16129
  S1 = 67.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 71.1
  S1: 67.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 67.6
  S = 67.6
 540 F(R:510) NEXT R
@@ -2962,11 +2962,11 @@ A, B, P, R, Y, T
  P1: -14624.2
  R2: 1.16351
  S1 = 64.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 67.6
  S1: 64.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 64.2
  S = 64.2
 540 F(R:510) NEXT R
@@ -2997,11 +2997,11 @@ A, B, P, R, Y, T
  P1: -14434.3
  R2: 1.16601
  S1 = 64.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 64.2
  S1: 64.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 64.2
  S = 64.2
 540 F(R:510) NEXT R
@@ -3032,11 +3032,11 @@ A, B, P, R, Y, T
  P1: -14249.2
  R2: 1.16824
  S1 = 60.8
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 64.2
  S1: 60.8
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 60.8
  S = 60.8
 540 F(R:510) NEXT R
@@ -3067,11 +3067,11 @@ A, B, P, R, Y, T
  P1: -14068.9
  R2: 1.17047
  S1 = 57.4
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 60.8
  S1: 57.4
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 57.4
  S = 57.4
 540 F(R:510) NEXT R
@@ -3102,11 +3102,11 @@ A, B, P, R, Y, T
  P1: -13893
  R2: 1.17298
  S1 = 57.3
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 57.4
  S1: 57.3
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 57.3
  S = 57.3
 540 F(R:510) NEXT R
@@ -3137,11 +3137,11 @@ A, B, P, R, Y, T
  P1: -13721.5
  R2: 1.17522
  S1 = 53.8
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 57.3
  S1: 53.8
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 53.8
  S = 53.8
 540 F(R:510) NEXT R
@@ -3172,11 +3172,11 @@ A, B, P, R, Y, T
  P1: -13554.2
  R2: 1.17746
  S1 = 50.4
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 53.8
  S1: 50.4
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 50.4
  S = 50.4
 540 F(R:510) NEXT R
@@ -3207,11 +3207,11 @@ A, B, P, R, Y, T
  P1: -13390.8
  R2: 1.17999
  S1 = 50.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 50.4
  S1: 50.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 50.2
  S = 50.2
 540 F(R:510) NEXT R
@@ -3242,11 +3242,11 @@ A, B, P, R, Y, T
  P1: -13231.4
  R2: 1.18224
  S1 = 46.8
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 50.2
  S1: 46.8
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 46.8
  S = 46.8
 540 F(R:510) NEXT R
@@ -3277,11 +3277,11 @@ A, B, P, R, Y, T
  P1: -13075.8
  R2: 1.1845
  S1 = 43.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 46.8
  S1: 43.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 43.5
  S = 43.5
 540 F(R:510) NEXT R
@@ -3312,11 +3312,11 @@ A, B, P, R, Y, T
  P1: -12923.7
  R2: 1.18704
  S1 = 43.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 43.5
  S1: 43.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 43.2
  S = 43.2
 540 F(R:510) NEXT R
@@ -3347,11 +3347,11 @@ A, B, P, R, Y, T
  P1: -12775.2
  R2: 1.18931
  S1 = 39.9
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 43.2
  S1: 39.9
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 39.9
  S = 39.9
 540 F(R:510) NEXT R
@@ -3382,11 +3382,11 @@ A, B, P, R, Y, T
  P1: -12630
  R2: 1.19158
  S1 = 36.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 39.9
  S1: 36.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 36.5
  S = 36.5
 540 F(R:510) NEXT R
@@ -3417,11 +3417,11 @@ A, B, P, R, Y, T
  P1: -12488.1
  R2: 1.19414
  S1 = 36.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 36.5
  S1: 36.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 36.2
  S = 36.2
 540 F(R:510) NEXT R
@@ -3452,11 +3452,11 @@ A, B, P, R, Y, T
  P1: -12349.3
  R2: 1.19641
  S1 = 32.7
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 36.2
  S1: 32.7
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 32.7
  S = 32.7
 540 F(R:510) NEXT R
@@ -3487,11 +3487,11 @@ A, B, P, R, Y, T
  P1: -12213.6
  R2: 1.1987
  S1 = 29.4
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 32.7
  S1: 29.4
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 29.4
  S = 29.4
 540 F(R:510) NEXT R
@@ -3522,11 +3522,11 @@ A, B, P, R, Y, T
  P1: -12080.9
  R2: 1.20127
  S1 = 29
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 29.4
  S1: 29
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 29
  S = 29
 540 F(R:510) NEXT R
@@ -3557,11 +3557,11 @@ A, B, P, R, Y, T
  P1: -11951
  R2: 1.20356
  S1 = 25.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 29
  S1: 25.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 25.6
  S = 25.6
 540 F(R:510) NEXT R
@@ -3592,11 +3592,11 @@ A, B, P, R, Y, T
  P1: -11823.8
  R2: 1.20585
  S1 = 22.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 25.6
  S1: 22.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 22.2
  S = 22.2
 540 F(R:510) NEXT R
@@ -3627,11 +3627,11 @@ A, B, P, R, Y, T
  P1: -11699.4
  R2: 1.20844
  S1 = 21.7
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 22.2
  S1: 21.7
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 21.7
  S = 21.7
 540 F(R:510) NEXT R
@@ -3662,11 +3662,11 @@ A, B, P, R, Y, T
  P1: -11577.5
  R2: 1.21075
  S1 = 18.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 21.7
  S1: 18.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 18.5
  S = 18.5
 540 F(R:510) NEXT R
@@ -3697,11 +3697,11 @@ A, B, P, R, Y, T
  P1: -11458.1
  R2: 1.21305
  S1 = 15
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 18.5
  S1: 15
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 15
  S = 15
 540 F(R:510) NEXT R
@@ -3732,11 +3732,11 @@ A, B, P, R, Y, T
  P1: -11341.2
  R2: 1.21566
  S1 = 14.5
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 15
  S1: 14.5
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 14.5
  S = 14.5
 540 F(R:510) NEXT R
@@ -3767,11 +3767,11 @@ A, B, P, R, Y, T
  P1: -11226.7
  R2: 1.21797
  S1 = 11.1
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 14.5
  S1: 11.1
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 11.1
  S = 11.1
 540 F(R:510) NEXT R
@@ -3802,11 +3802,11 @@ A, B, P, R, Y, T
  P1: -11114.4
  R2: 1.22029
  S1 = 7.8
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 11.1
  S1: 7.8
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 7.8
  S = 7.8
 540 F(R:510) NEXT R
@@ -3837,11 +3837,11 @@ A, B, P, R, Y, T
  P1: -11004.4
  R2: 1.22291
  S1 = 7.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 7.8
  S1: 7.2
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 7.2
  S = 7.2
 540 F(R:510) NEXT R
@@ -3872,11 +3872,11 @@ A, B, P, R, Y, T
  P1: -10896.5
  R2: 1.22524
  S1 = 3.8
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 7.2
  S1: 3.8
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 3.8
  S = 3.8
 540 F(R:510) NEXT R
@@ -3907,11 +3907,11 @@ A, B, P, R, Y, T
  P1: -10790.7
  R2: 1.22758
  S1 = 0.6
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 3.8
  S1: 0.6
- S * S1 <= 0: false
-536 F(R:510) LET S = S1
+ S * S1 > 0: true
+537 F(R:510) LET S = S1
  S1: 0.6
  S = 0.6
 540 F(R:510) NEXT R
@@ -3942,15 +3942,21 @@ A, B, P, R, Y, T
  P1: -10686.9
  R2: 1.23021
  S1 = -0.2
-535 F(R:510) IF S * S1 <= 0 THEN 550
+535 F(R:510) IF S * S1 > 0 THEN 537
  S: 0.6
  S1: -0.2
- S * S1 <= 0: true
-550 PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
+ S * S1 > 0: false
+536 F(R:510) BREAK
+540 F(R:510) NEXT R
+ terminated:true
+542 IF R = 100 THEN 550
+ R: 10.4
+ R = 100: false
+545 PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
 ANNUAL INTEREST IS BETWEEN 
  R: 10.4
  10.3 AND  10.4 PERCENT
-560 GOTO 5
+546 GOTO 5
 5 PRINT
 
 10 PRINT "A, B, P, R, Y, T";

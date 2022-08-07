@@ -1,21 +1,26 @@
-10 DIM T(100,10), V(100)
+10 LET N0 = 100
+ Variable:N0 -> .
  NumericValue:100
+ AssignmentOperator:= =. -> .
+12 DIM T(N0,10), V(N0)
+ Variable:N0 -> .
  NumericValue:10
  Declaration:T(,) -> .(,)
- NumericValue:100
+ Variable:N0 -> .
  Declaration:V() -> .()
-20 FOR I = 0 TO 100
+20 FOR I = 0 TO N0
  control: Variable:I -> .
  start:   ["NumericValue:0"]
- end:     ["NumericValue:100"]
+ end:     ["Variable:N0 -> ."]
 30    READ K
  Variable:K -> .
-40    IF K = 999 THEN 100
- WARNING: Transfer in/out of FOR/NEXT 100
+40    IF K <> 999 THEN 50
  Variable:K -> .
  NumericValue:999
- BinaryOperatorEqual:=(.,.) -> ?
- LineNumber:100
+ BinaryOperatorNotEqual:<>(.,.) -> ?
+ LineNumber:50
+45    BREAK
+ 
 50    LET T(I,0) = K
  Variable:I -> .
  NumericValue:0

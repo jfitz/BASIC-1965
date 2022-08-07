@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 69
-Number of valid statements: 55
+Number of lines: 71
+Number of valid statements: 57
 Number of comments: 7
-Number of executable statements: 55
+Number of executable statements: 57
 
 Complexity:
 
-Comment density: 0.127
-Comprehension effort: 220
-McCabe complexity: 23
+Comment density: 0.123
+Comprehension effort: 225
+McCabe complexity: 24
 Halstead complexity:
- length: 256
- volume: 1094.827
- difficulty: 25.632
- effort: 28062.676
- language: 1.666
- intelligence: 42.713
- time: 25.984
+ length: 261
+ volume: 1123.361
+ difficulty: 27.037
+ effort: 30372.353
+ language: 1.537
+ intelligence: 41.549
+ time: 28.123
 
 5 (0 2) PRINT
   Origs: :start, 140:goto, 240:goto, 340:goto, 440:goto, 546:goto, 560:goto, 820:goto, 860:goto
@@ -163,24 +163,29 @@ Halstead complexity:
 530 F(R:510) (0 8) LET S1 = B - ((A + P1) * R2 - P1)
   Origs: 520:auto
   Dests: 535:auto
-535 F(R:510) (1 5) IF S * S1 <= 0 THEN 550
-    WARNING: Transfer in/out of FOR/NEXT 550
+535 F(R:510) (1 5) IF S * S1 > 0 THEN 537
   Origs: 530:auto
-  Dests: 536:auto, 550:ifthen
-536 F(R:510) (0 3) LET S = S1
+  Dests: 536:auto, 537:ifthen
+536 F(R:510) (0 1) BREAK
   Origs: 535:auto
+  Dests: 540:fornext
+537 F(R:510) (0 3) LET S = S1
+  Origs: 535:ifthen
   Dests: 540:auto
 540 F(R:510) (0 1) NEXT R
-  Origs: 510:fornext, 536:auto
-  Dests: 545:auto
-545 (0 2) PRINT "NO ANSWER FOUND"
+  Origs: 510:fornext, 536:fornext, 537:auto
+  Dests: 542:auto
+542 (1 4) IF R = 100 THEN 550
   Origs: 540:auto
+  Dests: 545:auto, 550:ifthen
+545 (0 7) PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
+  Origs: 542:auto
   Dests: 546:auto
 546 (0 3) GOTO 5
   Origs: 545:auto
   Dests: 5:goto
-550 (0 7) PRINT "ANNUAL INTEREST IS BETWEEN " R - 0.1; "AND " R; "PERCENT"
-  Origs: 535:ifthen
+550 (0 2) PRINT "NO ANSWER FOUND"
+  Origs: 542:ifthen
   Dests: 560:auto
 560 (0 3) GOTO 5
   Origs: 550:auto

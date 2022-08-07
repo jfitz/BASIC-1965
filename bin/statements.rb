@@ -1341,12 +1341,18 @@ class BreakStatement < AbstractStatement
   end
 
   def execute_core(interpreter)
-    interpreter.break_fornext
+    fornext_control = interpreter.break_fornext
 
     raise(BASICSyntaxError, 'Line number not found') if
       @nextstmt_line_stmt.nil?
 
     interpreter.next_line_stmt_mod = @nextstmt_line_stmt
+
+    control = fornext_control.control
+    terminated = fornext_control.terminated?(interpreter)
+    io = interpreter.trace_out
+    s = " #{control} terminated:#{terminated}"
+    io.trace_output(s)
   end
 end
 

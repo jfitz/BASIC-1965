@@ -200,6 +200,10 @@
  NumericValue:0
  FunctionRnd:RND(.) -> .
  AssignmentOperator:= . -> .
+555 LET C0 = 0
+ Variable:C0 -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
 560 FOR R = 0 TO 3
  control: Variable:R -> .
  start:   ["NumericValue:0"]
@@ -212,14 +216,24 @@
  Variable:P(.,.) -> .
  BinaryOperatorMinus:-(.,.) -> .
  AssignmentOperator:= . -> .
-580 IF X < 0 THEN 620
- WARNING: Transfer in/out of FOR/NEXT 630
+580 IF X >= 0 THEN 590
  Variable:X -> .
  NumericValue:0
- BinaryOperatorLess:<(.,.) -> ?
- LineNumber:620
+ BinaryOperatorGreaterEqual:>=(.,.) -> ?
+ LineNumber:590
+582 LET C0 = 1
+ Variable:C0 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+585 BREAK
+ 
 590 NEXT R
  Variable:R -> .
+595 IF C0 = 1 THEN 620
+ Variable:C0 -> .
+ NumericValue:1
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:620
 600 LET R = 4
  Variable:R -> .
  NumericValue:4

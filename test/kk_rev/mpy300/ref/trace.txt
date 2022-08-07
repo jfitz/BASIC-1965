@@ -1,17 +1,22 @@
 9000 DATA 123, 456, 789, 333, -1
 9010 DATA 987, 654, 321, 0, -1
-10 DIM A(100), B(100), C(200), X(100)
+10 LET N0 = 100
+ N0 = 100
+20 DIM A(N0), B(N0), C(N0), X(N0)
+ N0: 100
 110 GOSUB 1000
-1010 G(1010) F(I:1010) FOR I = 0 TO 100
+1010 G(1010) F(I:1010) FOR I = 0 TO N0
+ N0: 100
  I = 0
+ N0 = 100
  terminated:false
 1020 G(1010) F(I:1010) READ X(I)
  I: 0
  X(0) = 123
-1030 G(1010) F(I:1010) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
  I: 0
  X(0): 123
- X(I) < 0: false
+ X(I) >= 0: true
 1040 G(1010) F(I:1010) NEXT I
  I: 0
  terminated:false
@@ -19,10 +24,10 @@
 1020 G(1010) F(I:1010) READ X(I)
  I: 1
  X(1) = 456
-1030 G(1010) F(I:1010) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
  I: 1
  X(1): 456
- X(I) < 0: false
+ X(I) >= 0: true
 1040 G(1010) F(I:1010) NEXT I
  I: 1
  terminated:false
@@ -30,10 +35,10 @@
 1020 G(1010) F(I:1010) READ X(I)
  I: 2
  X(2) = 789
-1030 G(1010) F(I:1010) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
  I: 2
  X(2): 789
- X(I) < 0: false
+ X(I) >= 0: true
 1040 G(1010) F(I:1010) NEXT I
  I: 2
  terminated:false
@@ -41,10 +46,10 @@
 1020 G(1010) F(I:1010) READ X(I)
  I: 3
  X(3) = 333
-1030 G(1010) F(I:1010) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
  I: 3
  X(3): 333
- X(I) < 0: false
+ X(I) >= 0: true
 1040 G(1010) F(I:1010) NEXT I
  I: 3
  terminated:false
@@ -52,10 +57,17 @@
 1020 G(1010) F(I:1010) READ X(I)
  I: 4
  X(4) = -1
-1030 G(1010) F(I:1010) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
  I: 4
  X(4): -1
- X(I) < 0: true
+ X(I) >= 0: false
+1035 G(1010) F(I:1010) BREAK
+1040 G(1010) F(I:1010) NEXT I
+ terminated:true
+1050 G(1010) IF I > N0 THEN 1200
+ I: 4
+ N0: 100
+ I > N0: false
 1100 G(1010) LET L = I - 1
  I: 4
  L = 3
@@ -179,7 +191,7 @@
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 3
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -253,7 +265,7 @@
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 2
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -327,7 +339,7 @@
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 1
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -401,9 +413,12 @@
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 0
  I = 0: true
+2320 G(2010) F(I:2210) NEXT I
+ I: 0
+ terminated:true
 2400 G(2010) PRINT
 
 2405 G(2010) PRINT
@@ -453,16 +468,18 @@ TIMES
 180 PRINT
 
 210 GOSUB 1000
-1010 G(1010) F(I:1010) FOR I = 0 TO 100
+1010 G(1010) F(I:1010) FOR I = 0 TO N0
+ N0: 100
  I = 0
+ N0 = 100
  terminated:false
 1020 G(1010) F(I:1010) READ X(I)
  I: 0
  X(0) = 987
-1030 G(1010) F(I:1010) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
  I: 0
  X(0): 987
- X(I) < 0: false
+ X(I) >= 0: true
 1040 G(1010) F(I:1010) NEXT I
  I: 0
  terminated:false
@@ -470,10 +487,10 @@ TIMES
 1020 G(1010) F(I:1010) READ X(I)
  I: 1
  X(1) = 654
-1030 G(1010) F(I:1010) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
  I: 1
  X(1): 654
- X(I) < 0: false
+ X(I) >= 0: true
 1040 G(1010) F(I:1010) NEXT I
  I: 1
  terminated:false
@@ -481,10 +498,10 @@ TIMES
 1020 G(1010) F(I:1010) READ X(I)
  I: 2
  X(2) = 321
-1030 G(1010) F(I:1010) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
  I: 2
  X(2): 321
- X(I) < 0: false
+ X(I) >= 0: true
 1040 G(1010) F(I:1010) NEXT I
  I: 2
  terminated:false
@@ -492,10 +509,10 @@ TIMES
 1020 G(1010) F(I:1010) READ X(I)
  I: 3
  X(3) = 0
-1030 G(1010) F(I:1010) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
  I: 3
  X(3): 0
- X(I) < 0: false
+ X(I) >= 0: true
 1040 G(1010) F(I:1010) NEXT I
  I: 3
  terminated:false
@@ -503,10 +520,17 @@ TIMES
 1020 G(1010) F(I:1010) READ X(I)
  I: 4
  X(4) = -1
-1030 G(1010) F(I:1010) IF X(I) < 0 THEN 1100
+1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
  I: 4
  X(4): -1
- X(I) < 0: true
+ X(I) >= 0: false
+1035 G(1010) F(I:1010) BREAK
+1040 G(1010) F(I:1010) NEXT I
+ terminated:true
+1050 G(1010) IF I > N0 THEN 1200
+ I: 4
+ N0: 100
+ I > N0: false
 1100 G(1010) LET L = I - 1
  I: 4
  L = 3
@@ -630,7 +654,7 @@ TIMES
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 3
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -704,7 +728,7 @@ TIMES
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 2
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -778,7 +802,7 @@ TIMES
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 1
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -852,9 +876,12 @@ TIMES
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 0
  I = 0: true
+2320 G(2010) F(I:2210) NEXT I
+ I: 0
+ terminated:true
 2400 G(2010) PRINT
 
 2405 G(2010) PRINT
@@ -1494,7 +1521,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 7
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -1568,7 +1595,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 6
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -1642,7 +1669,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 5
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -1716,7 +1743,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 4
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -1790,7 +1817,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 3
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -1864,7 +1891,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 2
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -1938,7 +1965,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 1
  I = 0: false
 2310 G(2010) F(I:2210) PRINT ",   ";
@@ -2012,9 +2039,12 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: 3
  terminated:true
-2300 G(2010) F(I:2210) IF I = 0 THEN 2400
+2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: 0
  I = 0: true
+2320 G(2010) F(I:2210) NEXT I
+ I: 0
+ terminated:true
 2400 G(2010) PRINT
 
 2405 G(2010) PRINT

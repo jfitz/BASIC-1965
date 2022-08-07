@@ -2,17 +2,22 @@
 910 DATA 4, 1, 18, 20, 13, 15, 21, 20, 8, 0, 20, 9, 13, 5, 19, 8, 1, 18, 9, 14, 7, 0
 920 DATA 19, 25, 19, 20, 5, 13
 999 DATA -1
-20 DIM L(100)
-30 F(I:30) FOR I = 1 TO 100
+15 LET N0 = 100
+ N0 = 100
+20 DIM L(N0)
+ N0: 100
+30 F(I:30) FOR I = 1 TO N0
+ N0: 100
  I = 1
+ N0 = 100
  terminated:false
 40 F(I:30) READ L(I)
  I: 1
  L(1) = 7
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 1
  L(1): 7
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 1
  terminated:false
@@ -20,10 +25,10 @@
 40 F(I:30) READ L(I)
  I: 2
  L(2) = 18
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 2
  L(2): 18
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 2
  terminated:false
@@ -31,10 +36,10 @@
 40 F(I:30) READ L(I)
  I: 3
  L(3) = 5
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 3
  L(3): 5
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 3
  terminated:false
@@ -42,10 +47,10 @@
 40 F(I:30) READ L(I)
  I: 4
  L(4) = 5
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 4
  L(4): 5
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 4
  terminated:false
@@ -53,10 +58,10 @@
 40 F(I:30) READ L(I)
  I: 5
  L(5) = 20
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 5
  L(5): 20
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 5
  terminated:false
@@ -64,10 +69,10 @@
 40 F(I:30) READ L(I)
  I: 6
  L(6) = 9
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 6
  L(6): 9
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 6
  terminated:false
@@ -75,10 +80,10 @@
 40 F(I:30) READ L(I)
  I: 7
  L(7) = 14
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 7
  L(7): 14
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 7
  terminated:false
@@ -86,10 +91,10 @@
 40 F(I:30) READ L(I)
  I: 8
  L(8) = 7
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 8
  L(8): 7
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 8
  terminated:false
@@ -97,10 +102,10 @@
 40 F(I:30) READ L(I)
  I: 9
  L(9) = 19
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 9
  L(9): 19
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 9
  terminated:false
@@ -108,10 +113,10 @@
 40 F(I:30) READ L(I)
  I: 10
  L(10) = 0
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 10
  L(10): 0
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 10
  terminated:false
@@ -119,10 +124,10 @@
 40 F(I:30) READ L(I)
  I: 11
  L(11) = 6
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 11
  L(11): 6
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 11
  terminated:false
@@ -130,10 +135,10 @@
 40 F(I:30) READ L(I)
  I: 12
  L(12) = 18
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 12
  L(12): 18
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 12
  terminated:false
@@ -141,10 +146,10 @@
 40 F(I:30) READ L(I)
  I: 13
  L(13) = 15
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 13
  L(13): 15
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 13
  terminated:false
@@ -152,10 +157,10 @@
 40 F(I:30) READ L(I)
  I: 14
  L(14) = 13
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 14
  L(14): 13
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 14
  terminated:false
@@ -163,10 +168,10 @@
 40 F(I:30) READ L(I)
  I: 15
  L(15) = 0
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 15
  L(15): 0
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 15
  terminated:false
@@ -174,10 +179,10 @@
 40 F(I:30) READ L(I)
  I: 16
  L(16) = 20
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 16
  L(16): 20
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 16
  terminated:false
@@ -185,10 +190,10 @@
 40 F(I:30) READ L(I)
  I: 17
  L(17) = 8
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 17
  L(17): 8
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 17
  terminated:false
@@ -196,10 +201,10 @@
 40 F(I:30) READ L(I)
  I: 18
  L(18) = 5
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 18
  L(18): 5
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 18
  terminated:false
@@ -207,10 +212,10 @@
 40 F(I:30) READ L(I)
  I: 19
  L(19) = 0
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 19
  L(19): 0
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 19
  terminated:false
@@ -218,10 +223,10 @@
 40 F(I:30) READ L(I)
  I: 20
  L(20) = 4
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 20
  L(20): 4
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 20
  terminated:false
@@ -229,10 +234,10 @@
 40 F(I:30) READ L(I)
  I: 21
  L(21) = 1
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 21
  L(21): 1
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 21
  terminated:false
@@ -240,10 +245,10 @@
 40 F(I:30) READ L(I)
  I: 22
  L(22) = 18
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 22
  L(22): 18
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 22
  terminated:false
@@ -251,10 +256,10 @@
 40 F(I:30) READ L(I)
  I: 23
  L(23) = 20
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 23
  L(23): 20
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 23
  terminated:false
@@ -262,10 +267,10 @@
 40 F(I:30) READ L(I)
  I: 24
  L(24) = 13
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 24
  L(24): 13
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 24
  terminated:false
@@ -273,10 +278,10 @@
 40 F(I:30) READ L(I)
  I: 25
  L(25) = 15
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 25
  L(25): 15
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 25
  terminated:false
@@ -284,10 +289,10 @@
 40 F(I:30) READ L(I)
  I: 26
  L(26) = 21
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 26
  L(26): 21
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 26
  terminated:false
@@ -295,10 +300,10 @@
 40 F(I:30) READ L(I)
  I: 27
  L(27) = 20
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 27
  L(27): 20
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 27
  terminated:false
@@ -306,10 +311,10 @@
 40 F(I:30) READ L(I)
  I: 28
  L(28) = 8
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 28
  L(28): 8
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 28
  terminated:false
@@ -317,10 +322,10 @@
 40 F(I:30) READ L(I)
  I: 29
  L(29) = 0
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 29
  L(29): 0
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 29
  terminated:false
@@ -328,10 +333,10 @@
 40 F(I:30) READ L(I)
  I: 30
  L(30) = 20
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 30
  L(30): 20
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 30
  terminated:false
@@ -339,10 +344,10 @@
 40 F(I:30) READ L(I)
  I: 31
  L(31) = 9
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 31
  L(31): 9
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 31
  terminated:false
@@ -350,10 +355,10 @@
 40 F(I:30) READ L(I)
  I: 32
  L(32) = 13
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 32
  L(32): 13
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 32
  terminated:false
@@ -361,10 +366,10 @@
 40 F(I:30) READ L(I)
  I: 33
  L(33) = 5
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 33
  L(33): 5
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 33
  terminated:false
@@ -372,10 +377,10 @@
 40 F(I:30) READ L(I)
  I: 34
  L(34) = 19
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 34
  L(34): 19
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 34
  terminated:false
@@ -383,10 +388,10 @@
 40 F(I:30) READ L(I)
  I: 35
  L(35) = 8
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 35
  L(35): 8
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 35
  terminated:false
@@ -394,10 +399,10 @@
 40 F(I:30) READ L(I)
  I: 36
  L(36) = 1
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 36
  L(36): 1
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 36
  terminated:false
@@ -405,10 +410,10 @@
 40 F(I:30) READ L(I)
  I: 37
  L(37) = 18
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 37
  L(37): 18
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 37
  terminated:false
@@ -416,10 +421,10 @@
 40 F(I:30) READ L(I)
  I: 38
  L(38) = 9
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 38
  L(38): 9
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 38
  terminated:false
@@ -427,10 +432,10 @@
 40 F(I:30) READ L(I)
  I: 39
  L(39) = 14
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 39
  L(39): 14
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 39
  terminated:false
@@ -438,10 +443,10 @@
 40 F(I:30) READ L(I)
  I: 40
  L(40) = 7
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 40
  L(40): 7
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 40
  terminated:false
@@ -449,10 +454,10 @@
 40 F(I:30) READ L(I)
  I: 41
  L(41) = 0
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 41
  L(41): 0
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 41
  terminated:false
@@ -460,10 +465,10 @@
 40 F(I:30) READ L(I)
  I: 42
  L(42) = 19
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 42
  L(42): 19
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 42
  terminated:false
@@ -471,10 +476,10 @@
 40 F(I:30) READ L(I)
  I: 43
  L(43) = 25
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 43
  L(43): 25
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 43
  terminated:false
@@ -482,10 +487,10 @@
 40 F(I:30) READ L(I)
  I: 44
  L(44) = 19
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 44
  L(44): 19
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 44
  terminated:false
@@ -493,10 +498,10 @@
 40 F(I:30) READ L(I)
  I: 45
  L(45) = 20
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 45
  L(45): 20
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 45
  terminated:false
@@ -504,10 +509,10 @@
 40 F(I:30) READ L(I)
  I: 46
  L(46) = 5
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 46
  L(46): 5
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 46
  terminated:false
@@ -515,10 +520,10 @@
 40 F(I:30) READ L(I)
  I: 47
  L(47) = 13
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 47
  L(47): 13
- L(I) < 0: false
+ L(I) >= 0: true
 60 F(I:30) NEXT I
  I: 47
  terminated:false
@@ -526,15 +531,18 @@
 40 F(I:30) READ L(I)
  I: 48
  L(48) = -1
-50 F(I:30) IF L(I) < 0 THEN 70
+50 F(I:30) IF L(I) >= 0 THEN 60
  I: 48
  L(48): -1
- L(I) < 0: true
+ L(I) >= 0: false
+55 F(I:30) BREAK
+60 F(I:30) NEXT I
+ terminated:true
 70 LET I9 = I - 1
  I: 48
  I9 = 47
-100 PRINT "PLEASE TYPE KEY";
-PLEASE TYPE KEY
+100 PRINT "PLEASE TYPE KEY (5 NUMBERS)";
+PLEASE TYPE KEY (5 NUMBERS)
 110 INPUT K(1), K(2), K(3), K(4), K(5)
 ? 13,1,7,9,3
  K(1) = 13

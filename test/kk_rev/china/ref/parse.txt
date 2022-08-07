@@ -9,7 +9,7 @@
 30    READ A,M
  Variable:A -> .
  Variable:M -> .
-40       FOR K = 0 TO M-1
+40    FOR K = 0 TO M-1
  control: Variable:K -> .
  start:   ["NumericValue:0"]
  end:     ["Variable:M -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
@@ -21,8 +21,7 @@
  BinaryOperatorMultiply:*(.,.) -> .
  BinaryOperatorPlus:+(.,.) -> .
  AssignmentOperator:= . -> .
-60       IF X - M*INT(X/M) = A THEN 100
- WARNING: Transfer in/out of FOR/NEXT 100
+60       IF X - M*INT(X/M) <> A THEN 70
  Variable:X -> .
  Variable:M -> .
  Variable:X -> .
@@ -32,10 +31,19 @@
  BinaryOperatorMultiply:*(.,.) -> .
  BinaryOperatorMinus:-(.,.) -> .
  Variable:A -> .
- BinaryOperatorEqual:=(.,.) -> ?
- LineNumber:100
+ BinaryOperatorNotEqual:<>(.,.) -> ?
+ LineNumber:70
+65       BREAK
+ 
 70    NEXT K
  Variable:K -> .
+75    IF K < M-1 THEN 100
+ Variable:K -> .
+ Variable:M -> .
+ NumericValue:1
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorLess:<(.,.) -> ?
+ LineNumber:100
 80    PRINT "ERROR"
  TextValue:"ERROR"
  CarriageControl:NL

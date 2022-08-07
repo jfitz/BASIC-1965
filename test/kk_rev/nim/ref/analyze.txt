@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 88
-Number of valid statements: 70
+Number of lines: 93
+Number of valid statements: 75
 Number of comments: 10
-Number of executable statements: 70
+Number of executable statements: 75
 
 Complexity:
 
-Comment density: 0.143
-Comprehension effort: 226
-McCabe complexity: 21
+Comment density: 0.133
+Comprehension effort: 237
+McCabe complexity: 22
 Halstead complexity:
- length: 357
- volume: 1511.576
- difficulty: 40.031
- effort: 60510.278
- language: 0.943
- intelligence: 37.760
- time: 56.028
+ length: 364
+ volume: 1561.727
+ difficulty: 43.470
+ effort: 67888.283
+ language: 0.826
+ intelligence: 35.927
+ time: 62.860
 
 100 (0 1) REM THIS PROGRAM PLAYS THREE-PILE NIM, WITH RANDOM NUMBERS
   Origs: 
@@ -154,22 +154,30 @@ Halstead complexity:
 540 (1 7) IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
   Origs: 510:auto
   Dests: 550:auto, 620:ifthen
-550 F(P:550) (1 3) FOR P = 1 TO 3
+550 (0 3) LET P0 = 0
   Origs: 540:auto
+  Dests: 551:auto
+551 F(P:551) (1 3) FOR P = 1 TO 3
+  Origs: 550:auto
   Dests: 560:fornext, 590:fornext
-560 F(P:550) (1 4) IF N(P) = 0 THEN 590
-  Origs: 550:fornext
+560 F(P:551) (1 4) IF N(P) = 0 THEN 590
+  Origs: 551:fornext
   Dests: 570:auto, 590:ifthen
-570 F(P:550) (0 5) LET N = INT(N(P) * RND(0)) + 1
+570 F(P:551) (0 5) LET N = INT(N(P) * RND(0)) + 1
   Origs: 560:auto
   Dests: 580:auto
-580 F(P:550) (0 2) GOTO 770
-    WARNING: Transfer in/out of FOR/NEXT 780
+580 F(P:551) (0 3) LET P0 = 1
   Origs: 570:auto
-  Dests: 780:goto
-590 F(P:550) (0 1) NEXT P
-  Origs: 550:fornext, 560:ifthen
-  Dests: 620:auto
+  Dests: 589:auto
+589 F(P:551) (0 1) BREAK
+  Origs: 580:auto
+  Dests: 590:fornext
+590 F(P:551) (0 1) NEXT P
+  Origs: 551:fornext, 560:ifthen, 589:fornext
+  Dests: 591:auto
+591 (1 4) IF P0 = 1 THEN 770
+  Origs: 590:auto
+  Dests: 620:auto, 780:ifthen
 600 (0 0) 
   Origs: 
   Dests: 
@@ -177,27 +185,31 @@ Halstead complexity:
   Origs: 
   Dests: 
 620 F(J:620) (1 3) FOR J = 1 TO 4
-  Origs: 540:ifthen, 590:auto
+  Origs: 540:ifthen, 591:auto
   Dests: 630:fornext, 640:fornext
-630 F(J:620) (1 4) IF S(J) > 0 THEN 650
-    WARNING: Transfer in/out of FOR/NEXT 650
+630 F(J:620) (1 4) IF S(J) <= 0 THEN 640
   Origs: 620:fornext
-  Dests: 640:auto, 650:ifthen
+  Dests: 639:auto, 640:ifthen
+639 F(J:620) (0 1) BREAK
+  Origs: 630:auto
+  Dests: 640:fornext
 640 F(J:620) (0 1) NEXT J
-  Origs: 620:fornext, 630:auto
+  Origs: 620:fornext, 630:ifthen, 639:fornext
   Dests: 650:auto
 650 F(P:650) (1 3) FOR P = 1 TO 3
-  Origs: 630:ifthen, 640:auto
+  Origs: 640:auto
   Dests: 660:fornext, 670:fornext
-660 F(P:650) (1 4) IF B(P, J) = 1 THEN 680
-    WARNING: Transfer in/out of FOR/NEXT 680
+660 F(P:650) (1 4) IF B(P, J) <> 1 THEN 670
   Origs: 650:fornext
-  Dests: 670:auto, 680:ifthen
+  Dests: 669:auto, 670:ifthen
+669 F(P:650) (0 1) BREAK
+  Origs: 660:auto
+  Dests: 670:fornext
 670 F(P:650) (0 1) NEXT P
-  Origs: 650:fornext, 660:auto
+  Origs: 650:fornext, 660:ifthen, 669:fornext
   Dests: 680:auto
 680 (0 3) LET N = 0
-  Origs: 660:ifthen, 670:auto
+  Origs: 670:auto
   Dests: 690:auto
 690 F(J:690) (1 3) FOR J = J TO 4
   Origs: 680:auto
@@ -227,7 +239,7 @@ Halstead complexity:
   Origs: 
   Dests: 
 780 (0 2) PRINT
-  Origs: 580:goto, 750:auto
+  Origs: 591:ifthen, 750:auto
   Dests: 790:auto
 790 (0 5) PRINT "MY MOVE:" P; "," N
   Origs: 780:auto

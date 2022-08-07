@@ -8,16 +8,16 @@ Number of executable statements: 10
 Complexity:
 
 Comment density: 0.000
-Comprehension effort: 28
+Comprehension effort: 27
 McCabe complexity: 4
 Halstead complexity:
- length: 40
- volume: 127.122
- difficulty: 8.885
- effort: 1129.431
- language: 1.610
- intelligence: 14.308
- time: 1.046
+ length: 38
+ volume: 117.460
+ difficulty: 8.333
+ effort: 978.830
+ language: 1.691
+ intelligence: 14.095
+ time: 0.906
 
 10 (0 3) PRINT "NUMBER", "LARGEST FACTOR"
   Origs: :start
@@ -37,15 +37,14 @@ Halstead complexity:
 60 F(N:20,F:40) (0 2) PRINT F
   Origs: 50:auto
   Dests: 70:auto
-70 F(N:20,F:40) (0 2) GOTO 90
-   WARNING: Transfer in/out of FOR/NEXT 90
+70 F(N:20,F:40) (0 1) BREAK
   Origs: 60:auto
-  Dests: 90:goto
+  Dests: 80:fornext
 80 F(N:20,F:40) (0 1) NEXT F
-  Origs: 40:fornext, 50:ifthen
+  Origs: 40:fornext, 50:ifthen, 70:fornext
   Dests: 90:auto
 90 F(N:20) (0 1) NEXT N
-  Origs: 20:fornext, 70:goto, 80:auto
+  Origs: 20:fornext, 80:auto
   Dests: 99:auto
 99 (0 1) END
   Origs: 90:auto

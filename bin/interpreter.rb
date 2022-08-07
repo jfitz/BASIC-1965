@@ -1326,6 +1326,8 @@ class Interpreter
     raise BASICSyntaxError.new('BREAK without FOR') if fornext.nil?
 
     fornext.broken = true
+
+    fornext
   end
 
   def add_file_names(file_names)

@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 17
-Number of valid statements: 17
+Number of lines: 19
+Number of valid statements: 19
 Number of comments: 0
-Number of executable statements: 16
+Number of executable statements: 18
 
 Complexity:
 
 Comment density: 0.000
-Comprehension effort: 48
-McCabe complexity: 7
+Comprehension effort: 55
+McCabe complexity: 8
 Halstead complexity:
- length: 73
- volume: 240.596
- difficulty: 19.500
- effort: 4691.624
- language: 0.633
- intelligence: 12.338
- time: 4.344
+ length: 80
+ volume: 272.096
+ difficulty: 18.353
+ effort: 4993.758
+ language: 0.808
+ intelligence: 14.826
+ time: 4.624
 
 10 (1 2) READ N
   Origs: :start
@@ -39,41 +39,45 @@ Halstead complexity:
   Dests: 70:auto
 70 F(I:70) (1 4) FOR I = 1 TO N - 1
   Origs: 60:auto
-  Dests: 80:fornext, 120:fornext
-80 F(I:70,J:80) (1 4) FOR J = 1 TO N - 1
+  Dests: 79:fornext, 150:fornext
+79 F(I:70) (0 3) LET J0 = 0
   Origs: 70:fornext
+  Dests: 80:auto
+80 F(I:70,J:80) (1 4) FOR J = 1 TO N - 1
+  Origs: 79:auto
   Dests: 90:fornext, 100:fornext
-90 F(I:70,J:80) (1 4) IF P(I, J) = 1 THEN 140
-   WARNING: Transfer in/out of FOR/NEXT 140
+90 F(I:70,J:80) (1 4) IF P(I, J) <> 1 THEN 100
   Origs: 80:fornext
-  Dests: 100:auto, 140:ifthen
+  Dests: 92:auto, 100:ifthen
+92 F(I:70,J:80) (0 4) PRINT I; "HAS AN INVERSE" J
+  Origs: 90:auto
+  Dests: 98:auto
+98 F(I:70,J:80) (0 3) LET J0 = 1
+  Origs: 92:auto
+  Dests: 99:auto
+99 F(I:70,J:80) (0 1) BREAK
+  Origs: 98:auto
+  Dests: 100:fornext
 100 F(I:70,J:80) (0 1) NEXT J
-  Origs: 80:fornext, 90:auto
-  Dests: 110:auto
-110 F(I:70) (0 3) PRINT I; "DOES NOT HAVE AN INVERSE"
+  Origs: 80:fornext, 90:ifthen, 99:fornext
+  Dests: 102:auto
+102 F(I:70) (1 4) IF J0 = 1 THEN 150
   Origs: 100:auto
-  Dests: 120:auto
-120 F(I:70) (0 1) NEXT I
-  Origs: 70:fornext, 110:auto, 150:goto
-  Dests: 130:auto
-130 (0 1) STOP
-  Origs: 120:auto
-  Dests: :stop
-140 (0 4) PRINT I; "HAS AN INVERSE" J
-  Origs: 90:ifthen
+  Dests: 110:auto, 150:ifthen
+110 F(I:70) (0 3) PRINT I; "DOES NOT HAVE AN INVERSE"
+  Origs: 102:auto
   Dests: 150:auto
-150 (0 3) GOTO 120
-    WARNING: Transfer in/out of FOR/NEXT 120
-  Origs: 140:auto
-  Dests: 120:goto
+150 F(I:70) (0 1) NEXT I
+  Origs: 70:fornext, 102:ifthen, 110:auto
+  Dests: 999:auto
 160 (0 2) DATA 9
   Origs: 
   Dests: 
 999 (0 1) END
-  Origs: 
+  Origs: 150:auto
   Dests: :stop
 
 Unreachable code:
 
-999: END
+All executable lines are reachable.
 

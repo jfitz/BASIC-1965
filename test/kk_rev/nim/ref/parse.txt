@@ -188,7 +188,11 @@
  NumericValue:0
  BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:610
-550 FOR P = 1 TO 3
+550 LET P0 = 0
+ Variable:P0 -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+551 FOR P = 1 TO 3
  control: Variable:P -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
@@ -209,11 +213,19 @@
  NumericValue:1
  BinaryOperatorPlus:+(.,.) -> .
  AssignmentOperator:= . -> .
-580    GOTO 770
- WARNING: Transfer in/out of FOR/NEXT 780
- LineNumber:770
+580    LET P0 = 1
+ Variable:P0 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+589    BREAK
+ 
 590 NEXT P
  Variable:P -> .
+591 IF P0 = 1 THEN 770
+ Variable:P0 -> .
+ NumericValue:1
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:770
 600
 610 REM MAKE OPTIMAL MOVE
  Remark:MAKE OPTIMAL MOVE
@@ -221,27 +233,29 @@
  control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:4"]
-630    IF S(J) > 0 THEN 650
- WARNING: Transfer in/out of FOR/NEXT 650
+630    IF S(J) <= 0 THEN 640
  Variable:J -> .
  Variable:S(.) -> .
  NumericValue:0
- BinaryOperatorGreater:>(.,.) -> ?
- LineNumber:650
+ BinaryOperatorLessEqual:<=(.,.) -> ?
+ LineNumber:640
+639    BREAK
+ 
 640 NEXT J
  Variable:J -> .
 650 FOR P = 1 TO 3
  control: Variable:P -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
-660    IF B(P,J) = 1 THEN 680
- WARNING: Transfer in/out of FOR/NEXT 680
+660    IF B(P,J) <> 1 THEN 670
  Variable:P -> .
  Variable:J -> .
  Variable:B(.,.) -> .
  NumericValue:1
- BinaryOperatorEqual:=(.,.) -> ?
- LineNumber:680
+ BinaryOperatorNotEqual:<>(.,.) -> ?
+ LineNumber:670
+669    BREAK
+ 
 670 NEXT P
  Variable:P -> .
 680 LET N = 0

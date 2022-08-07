@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 16
-Number of valid statements: 16
+Number of lines: 18
+Number of valid statements: 18
 Number of comments: 0
-Number of executable statements: 14
+Number of executable statements: 16
 
 Complexity:
 
 Comment density: 0.000
-Comprehension effort: 50
-McCabe complexity: 9
+Comprehension effort: 57
+McCabe complexity: 10
 Halstead complexity:
- length: 70
- volume: 263.284
- difficulty: 9.317
- effort: 2452.929
- language: 3.033
- intelligence: 28.259
- time: 2.271
+ length: 77
+ volume: 293.113
+ difficulty: 10.613
+ effort: 3110.780
+ language: 2.602
+ intelligence: 27.619
+ time: 2.880
 
 10 (3 4) READ N, B, P
   Origs: :start
@@ -34,22 +34,27 @@ Halstead complexity:
 50 F(I:20,K:40) (0 6) LET X = B + K * P
   Origs: 40:fornext
   Dests: 60:auto
-60 F(I:20,K:40) (1 8) IF X - M * INT(X / M) = A THEN 100
-   WARNING: Transfer in/out of FOR/NEXT 100
+60 F(I:20,K:40) (1 8) IF X - M * INT(X / M) <> A THEN 70
   Origs: 50:auto
-  Dests: 70:auto, 100:ifthen
+  Dests: 65:auto, 70:ifthen
+65 F(I:20,K:40) (0 1) BREAK
+  Origs: 60:auto
+  Dests: 70:fornext
 70 F(I:20,K:40) (0 1) NEXT K
-  Origs: 40:fornext, 60:auto
-  Dests: 80:auto
-80 F(I:20) (0 2) PRINT "ERROR"
+  Origs: 40:fornext, 60:ifthen, 65:fornext
+  Dests: 75:auto
+75 F(I:20) (1 6) IF K < M - 1 THEN 100
   Origs: 70:auto
+  Dests: 80:auto, 100:ifthen
+80 F(I:20) (0 2) PRINT "ERROR"
+  Origs: 75:auto
   Dests: 90:auto
 90 F(I:20) (0 1) STOP
    WARNING: Terminating statement in FOR/NEXT
   Origs: 80:auto
   Dests: :stop
 100 F(I:20) (0 4) LET P = P * M
-  Origs: 60:ifthen
+  Origs: 75:ifthen
   Dests: 110:auto
 110 F(I:20) (0 3) LET B = X
   Origs: 100:auto

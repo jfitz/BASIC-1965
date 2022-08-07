@@ -1,22 +1,27 @@
 10 REM  MACHINE ENCODING AND DECODING PROGRAM.
  Remark: MACHINE ENCODING AND DECODING PROGRAM.
-20 DIM L(100)
+15 LET N0 = 100
+ Variable:N0 -> .
  NumericValue:100
+ AssignmentOperator:= =. -> .
+20 DIM L(N0)
+ Variable:N0 -> .
  Declaration:L() -> .()
-30 FOR I = 1 TO 100
+30 FOR I = 1 TO N0
  control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["NumericValue:100"]
+ end:     ["Variable:N0 -> ."]
 40    READ L(I)
  Variable:I -> .
  Variable:L(.) -> .
-50    IF L(I) < 0 THEN 70
- WARNING: Transfer in/out of FOR/NEXT 70
+50    IF L(I) >= 0 THEN 60
  Variable:I -> .
  Variable:L(.) -> .
  NumericValue:0
- BinaryOperatorLess:<(.,.) -> ?
- LineNumber:70
+ BinaryOperatorGreaterEqual:>=(.,.) -> ?
+ LineNumber:60
+55    BREAK
+ 
 60 NEXT I
  Variable:I -> .
 70 LET I9 = I-1
@@ -25,8 +30,8 @@
  NumericValue:1
  BinaryOperatorMinus:-(.,.) -> .
  AssignmentOperator:= . -> .
-100 PRINT "PLEASE TYPE KEY";
- TextValue:"PLEASE TYPE KEY"
+100 PRINT "PLEASE TYPE KEY (5 NUMBERS)";
+ TextValue:"PLEASE TYPE KEY (5 NUMBERS)"
  CarriageControl:;
 110 INPUT K(1), K(2), K(3), K(4), K(5)
  NumericValue:1

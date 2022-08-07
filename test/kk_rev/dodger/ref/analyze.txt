@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 95
-Number of valid statements: 77
+Number of lines: 99
+Number of valid statements: 81
 Number of comments: 8
-Number of executable statements: 69
+Number of executable statements: 73
 
 Complexity:
 
-Comment density: 0.104
-Comprehension effort: 224
-McCabe complexity: 20
+Comment density: 0.099
+Comprehension effort: 235
+McCabe complexity: 21
 Halstead complexity:
- length: 368
- volume: 1755.612
- difficulty: 18.515
- effort: 32504.894
- language: 5.121
- intelligence: 94.822
- time: 30.097
+ length: 377
+ volume: 1811.116
+ difficulty: 19.644
+ effort: 35577.979
+ language: 4.693
+ intelligence: 92.196
+ time: 32.943
 
 100 (0 1) REM INITIALIZE
   Origs: 
@@ -150,22 +150,33 @@ Halstead complexity:
   Dests: 
 550 (0 4) LET X = RND(0)
   Origs: 520:auto
+  Dests: 555:auto
+555 (0 3) LET C0 = 0
+  Origs: 550:auto
   Dests: 560:auto
 560 F(R:560) (1 3) FOR R = 0 TO 3
-  Origs: 550:auto
+  Origs: 555:auto
   Dests: 570:fornext, 590:fornext
 570 F(R:560) (0 4) LET X = X - P(B, R)
   Origs: 560:fornext
   Dests: 580:auto
-580 F(R:560) (1 4) IF X < 0 THEN 620
-    WARNING: Transfer in/out of FOR/NEXT 630
+580 F(R:560) (1 4) IF X >= 0 THEN 590
   Origs: 570:auto
-  Dests: 590:auto, 630:ifthen
+  Dests: 582:auto, 590:ifthen
+582 F(R:560) (0 3) LET C0 = 1
+  Origs: 580:auto
+  Dests: 585:auto
+585 F(R:560) (0 1) BREAK
+  Origs: 582:auto
+  Dests: 590:fornext
 590 F(R:560) (0 1) NEXT R
-  Origs: 560:fornext, 580:auto
-  Dests: 600:auto
-600 (0 3) LET R = 4
+  Origs: 560:fornext, 580:ifthen, 585:fornext
+  Dests: 595:auto
+595 (1 4) IF C0 = 1 THEN 620
   Origs: 590:auto
+  Dests: 600:auto, 630:ifthen
+600 (0 3) LET R = 4
+  Origs: 595:auto
   Dests: 630:auto
 610 (0 0) 
   Origs: 
@@ -174,7 +185,7 @@ Halstead complexity:
   Origs: 
   Dests: 
 630 (1 4) IF R > 0 THEN 660
-  Origs: 580:ifthen, 600:auto
+  Origs: 595:ifthen, 600:auto
   Dests: 640:auto, 660:ifthen
 640 (0 2) PRINT "OUT   ";
   Origs: 630:auto
