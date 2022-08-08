@@ -12,12 +12,12 @@ Comprehension effort: 250
 McCabe complexity: 32
 Halstead complexity:
  length: 439
- volume: 1970.511
- difficulty: 37.831
- effort: 74546.184
- language: 1.377
- intelligence: 52.087
- time: 69.024
+ volume: 1965.551
+ difficulty: 38.396
+ effort: 75468.352
+ language: 1.333
+ intelligence: 51.192
+ time: 69.878
 
 70 (0 1) REM THIS IS PROGRAM TIC-2
   Origs: 
@@ -127,17 +127,15 @@ Halstead complexity:
 420 (1 5) IF M <> INT(M) THEN 550
   Origs: 415:auto
   Dests: 430:auto, 550:ifthen
-430 (1 4) IF M < 1 THEN 500
-    WARNING: Transfer in/out of FOR/NEXT 500
+430 (1 4) IF M < 1 THEN 550
   Origs: 420:auto
-  Dests: 440:auto, 500:ifthen
+  Dests: 440:auto, 550:ifthen
 440 (1 4) IF M > 9 THEN 550
   Origs: 430:auto
   Dests: 450:auto, 550:ifthen
-450 (1 4) IF B(M) <> 0 THEN 500
-    WARNING: Transfer in/out of FOR/NEXT 500
+450 (1 4) IF B(M) <> 0 THEN 550
   Origs: 440:auto
-  Dests: 460:auto, 500:ifthen
+  Dests: 460:auto, 550:ifthen
 460 (0 3) LET B(M) = F
   Origs: 450:auto, 640:goto
   Dests: 470:auto
@@ -151,7 +149,7 @@ Halstead complexity:
   Origs: 480:auto
   Dests: 500:auto, 530:ifthen
 500 F(J:470) (0 4) LET C(P) = C(P) + F
-  Origs: 430:ifthen, 450:ifthen, 490:auto
+  Origs: 490:auto
   Dests: 510:auto
 510 F(J:470) (1 6) IF C(P) = -3 THEN 860
     WARNING: Transfer in/out of FOR/NEXT 860
@@ -180,7 +178,7 @@ Halstead complexity:
   Origs: 
   Dests: 610:goto
 550 (0 2) PRINT "ILLEGAL MOVE. TRY AGAIN."
-  Origs: 420:ifthen, 440:ifthen
+  Origs: 420:ifthen, 430:ifthen, 440:ifthen, 450:ifthen
   Dests: 560:auto
 560 (0 3) GOTO 400
   Origs: 550:auto

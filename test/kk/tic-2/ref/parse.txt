@@ -163,24 +163,22 @@
  FunctionInt:INT(.) -> .
  BinaryOperatorNotEqual:<>(.,.) -> ?
  LineNumber:550
-430  IF M < 1 THEN 500
- WARNING: Transfer in/out of FOR/NEXT 500
+430  IF M < 1 THEN 550
  Variable:M -> .
  NumericValue:1
  BinaryOperatorLess:<(.,.) -> ?
- LineNumber:500
+ LineNumber:550
 440  IF M > 9 THEN 550
  Variable:M -> .
  NumericValue:9
  BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:550
-450  IF B(M) <> 0 THEN 500
- WARNING: Transfer in/out of FOR/NEXT 500
+450  IF B(M) <> 0 THEN 550
  Variable:M -> .
  Variable:B(.) -> .
  NumericValue:0
  BinaryOperatorNotEqual:<>(.,.) -> ?
- LineNumber:500
+ LineNumber:550
 460  LET B(M) = F
  Variable:M -> .
  Variable:B(.) -> .
