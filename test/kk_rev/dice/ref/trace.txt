@@ -8,29 +8,29 @@
  D2 = 5
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 3
+ D1: (510) 3
  3 
- D2: 5
+ D2: (520) 5
  5
 530 G(510) LET D = D1 + D2
- D1: 3
- D2: 5
+ D1: (510) 3
+ D2: (520) 5
  D = 8
 540 G(510) RETURN
 30 F(G:10) IF D < 4 THEN 300
- D: 8
+ D: (530) 8
  D < 4: false
 40 F(G:10) IF D = 12 THEN 300
- D: 8
+ D: (530) 8
  D = 12: false
 50 F(G:10) IF D = 7 THEN 400
- D: 8
+ D: (530) 8
  D = 7: false
 60 F(G:10) IF D = 11 THEN 400
- D: 8
+ D: (530) 8
  D = 11: false
 70 F(G:10) LET D9 = D
- D: 8
+ D: (530) 8
  D9 = 8
 100 F(G:10) GOSUB 500
 510 G(510) LET D1 = INT(6 * RND(1) + 1)
@@ -39,21 +39,21 @@ YOUR ROLL IS
  D2 = 2
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 1
+ D1: (510) 1
  1 
- D2: 2
+ D2: (520) 2
  2
 530 G(510) LET D = D1 + D2
- D1: 1
- D2: 2
+ D1: (510) 1
+ D2: (520) 2
  D = 3
 540 G(510) RETURN
 110 F(G:10) IF D = D9 THEN 200
- D: 3
- D9: 8
+ D: (530) 3
+ D9: (70) 8
  D = D9: false
 120 F(G:10) IF D = 7 THEN 250
- D: 3
+ D: (530) 3
  D = 7: false
 130 F(G:10) GOTO 100
 100 F(G:10) GOSUB 500
@@ -63,21 +63,21 @@ YOUR ROLL IS
  D2 = 1
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 1
+ D1: (510) 1
  1 
- D2: 1
+ D2: (520) 1
  1
 530 G(510) LET D = D1 + D2
- D1: 1
- D2: 1
+ D1: (510) 1
+ D2: (520) 1
  D = 2
 540 G(510) RETURN
 110 F(G:10) IF D = D9 THEN 200
- D: 2
- D9: 8
+ D: (530) 2
+ D9: (70) 8
  D = D9: false
 120 F(G:10) IF D = 7 THEN 250
- D: 2
+ D: (530) 2
  D = 7: false
 130 F(G:10) GOTO 100
 100 F(G:10) GOSUB 500
@@ -87,21 +87,21 @@ YOUR ROLL IS
  D2 = 3
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 2
+ D1: (510) 2
  2 
- D2: 3
+ D2: (520) 3
  3
 530 G(510) LET D = D1 + D2
- D1: 2
- D2: 3
+ D1: (510) 2
+ D2: (520) 3
  D = 5
 540 G(510) RETURN
 110 F(G:10) IF D = D9 THEN 200
- D: 5
- D9: 8
+ D: (530) 5
+ D9: (70) 8
  D = D9: false
 120 F(G:10) IF D = 7 THEN 250
- D: 5
+ D: (530) 5
  D = 7: false
 130 F(G:10) GOTO 100
 100 F(G:10) GOSUB 500
@@ -111,27 +111,27 @@ YOUR ROLL IS
  D2 = 4
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 3
+ D1: (510) 3
  3 
- D2: 4
+ D2: (520) 4
  4
 530 G(510) LET D = D1 + D2
- D1: 3
- D2: 4
+ D1: (510) 3
+ D2: (520) 4
  D = 7
 540 G(510) RETURN
 110 F(G:10) IF D = D9 THEN 200
- D: 7
- D9: 8
+ D: (530) 7
+ D9: (70) 8
  D = D9: false
 120 F(G:10) IF D = 7 THEN 250
- D: 7
+ D: (530) 7
  D = 7: true
 250 F(G:10) PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
 YOU LOSE -- BY FAILING TO MAKE YOUR POINT
 260 F(G:10) GOTO 410
 410 F(G:10) NEXT G
- G: 1
+ G: (10) 1
  terminated:false
  G = 2
 20 F(G:10) GOSUB 500
@@ -141,29 +141,29 @@ YOU LOSE -- BY FAILING TO MAKE YOUR POINT
  D2 = 5
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 3
+ D1: (510) 3
  3 
- D2: 5
+ D2: (520) 5
  5
 530 G(510) LET D = D1 + D2
- D1: 3
- D2: 5
+ D1: (510) 3
+ D2: (520) 5
  D = 8
 540 G(510) RETURN
 30 F(G:10) IF D < 4 THEN 300
- D: 8
+ D: (530) 8
  D < 4: false
 40 F(G:10) IF D = 12 THEN 300
- D: 8
+ D: (530) 8
  D = 12: false
 50 F(G:10) IF D = 7 THEN 400
- D: 8
+ D: (530) 8
  D = 7: false
 60 F(G:10) IF D = 11 THEN 400
- D: 8
+ D: (530) 8
  D = 11: false
 70 F(G:10) LET D9 = D
- D: 8
+ D: (530) 8
  D9 = 8
 100 F(G:10) GOSUB 500
 510 G(510) LET D1 = INT(6 * RND(1) + 1)
@@ -172,24 +172,24 @@ YOUR ROLL IS
  D2 = 6
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 2
+ D1: (510) 2
  2 
- D2: 6
+ D2: (520) 6
  6
 530 G(510) LET D = D1 + D2
- D1: 2
- D2: 6
+ D1: (510) 2
+ D2: (520) 6
  D = 8
 540 G(510) RETURN
 110 F(G:10) IF D = D9 THEN 200
- D: 8
- D9: 8
+ D: (530) 8
+ D9: (70) 8
  D = D9: true
 200 F(G:10) PRINT "YOU WIN -- BY MAKING YOUR POINT"
 YOU WIN -- BY MAKING YOUR POINT
 210 F(G:10) GOTO 410
 410 F(G:10) NEXT G
- G: 2
+ G: (410) 2
  terminated:false
  G = 3
 20 F(G:10) GOSUB 500
@@ -199,29 +199,29 @@ YOU WIN -- BY MAKING YOUR POINT
  D2 = 5
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 1
+ D1: (510) 1
  1 
- D2: 5
+ D2: (520) 5
  5
 530 G(510) LET D = D1 + D2
- D1: 1
- D2: 5
+ D1: (510) 1
+ D2: (520) 5
  D = 6
 540 G(510) RETURN
 30 F(G:10) IF D < 4 THEN 300
- D: 6
+ D: (530) 6
  D < 4: false
 40 F(G:10) IF D = 12 THEN 300
- D: 6
+ D: (530) 6
  D = 12: false
 50 F(G:10) IF D = 7 THEN 400
- D: 6
+ D: (530) 6
  D = 7: false
 60 F(G:10) IF D = 11 THEN 400
- D: 6
+ D: (530) 6
  D = 11: false
 70 F(G:10) LET D9 = D
- D: 6
+ D: (530) 6
  D9 = 6
 100 F(G:10) GOSUB 500
 510 G(510) LET D1 = INT(6 * RND(1) + 1)
@@ -230,27 +230,27 @@ YOUR ROLL IS
  D2 = 4
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 3
+ D1: (510) 3
  3 
- D2: 4
+ D2: (520) 4
  4
 530 G(510) LET D = D1 + D2
- D1: 3
- D2: 4
+ D1: (510) 3
+ D2: (520) 4
  D = 7
 540 G(510) RETURN
 110 F(G:10) IF D = D9 THEN 200
- D: 7
- D9: 6
+ D: (530) 7
+ D9: (70) 6
  D = D9: false
 120 F(G:10) IF D = 7 THEN 250
- D: 7
+ D: (530) 7
  D = 7: true
 250 F(G:10) PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
 YOU LOSE -- BY FAILING TO MAKE YOUR POINT
 260 F(G:10) GOTO 410
 410 F(G:10) NEXT G
- G: 3
+ G: (410) 3
  terminated:false
  G = 4
 20 F(G:10) GOSUB 500
@@ -260,23 +260,23 @@ YOU LOSE -- BY FAILING TO MAKE YOUR POINT
  D2 = 2
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 1
+ D1: (510) 1
  1 
- D2: 2
+ D2: (520) 2
  2
 530 G(510) LET D = D1 + D2
- D1: 1
- D2: 2
+ D1: (510) 1
+ D2: (520) 2
  D = 3
 540 G(510) RETURN
 30 F(G:10) IF D < 4 THEN 300
- D: 3
+ D: (530) 3
  D < 4: true
 300 F(G:10) PRINT "YOU LOSE ON FIRST ROLL"
 YOU LOSE ON FIRST ROLL
 310 F(G:10) GOTO 410
 410 F(G:10) NEXT G
- G: 4
+ G: (410) 4
  terminated:false
  G = 5
 20 F(G:10) GOSUB 500
@@ -286,31 +286,31 @@ YOU LOSE ON FIRST ROLL
  D2 = 6
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 5
+ D1: (510) 5
  5 
- D2: 6
+ D2: (520) 6
  6
 530 G(510) LET D = D1 + D2
- D1: 5
- D2: 6
+ D1: (510) 5
+ D2: (520) 6
  D = 11
 540 G(510) RETURN
 30 F(G:10) IF D < 4 THEN 300
- D: 11
+ D: (530) 11
  D < 4: false
 40 F(G:10) IF D = 12 THEN 300
- D: 11
+ D: (530) 11
  D = 12: false
 50 F(G:10) IF D = 7 THEN 400
- D: 11
+ D: (530) 11
  D = 7: false
 60 F(G:10) IF D = 11 THEN 400
- D: 11
+ D: (530) 11
  D = 11: true
 400 F(G:10) PRINT "YOU WIN ON FIRST ROLL"
 YOU WIN ON FIRST ROLL
 410 F(G:10) NEXT G
- G: 5
+ G: (410) 5
  terminated:false
  G = 6
 20 F(G:10) GOSUB 500
@@ -320,28 +320,28 @@ YOU WIN ON FIRST ROLL
  D2 = 5
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 2
+ D1: (510) 2
  2 
- D2: 5
+ D2: (520) 5
  5
 530 G(510) LET D = D1 + D2
- D1: 2
- D2: 5
+ D1: (510) 2
+ D2: (520) 5
  D = 7
 540 G(510) RETURN
 30 F(G:10) IF D < 4 THEN 300
- D: 7
+ D: (530) 7
  D < 4: false
 40 F(G:10) IF D = 12 THEN 300
- D: 7
+ D: (530) 7
  D = 12: false
 50 F(G:10) IF D = 7 THEN 400
- D: 7
+ D: (530) 7
  D = 7: true
 400 F(G:10) PRINT "YOU WIN ON FIRST ROLL"
 YOU WIN ON FIRST ROLL
 410 F(G:10) NEXT G
- G: 6
+ G: (410) 6
  terminated:false
  G = 7
 20 F(G:10) GOSUB 500
@@ -351,26 +351,26 @@ YOU WIN ON FIRST ROLL
  D2 = 6
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 6
+ D1: (510) 6
  6 
- D2: 6
+ D2: (520) 6
  6
 530 G(510) LET D = D1 + D2
- D1: 6
- D2: 6
+ D1: (510) 6
+ D2: (520) 6
  D = 12
 540 G(510) RETURN
 30 F(G:10) IF D < 4 THEN 300
- D: 12
+ D: (530) 12
  D < 4: false
 40 F(G:10) IF D = 12 THEN 300
- D: 12
+ D: (530) 12
  D = 12: true
 300 F(G:10) PRINT "YOU LOSE ON FIRST ROLL"
 YOU LOSE ON FIRST ROLL
 310 F(G:10) GOTO 410
 410 F(G:10) NEXT G
- G: 7
+ G: (410) 7
  terminated:false
  G = 8
 20 F(G:10) GOSUB 500
@@ -380,23 +380,23 @@ YOU LOSE ON FIRST ROLL
  D2 = 1
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 1
+ D1: (510) 1
  1 
- D2: 1
+ D2: (520) 1
  1
 530 G(510) LET D = D1 + D2
- D1: 1
- D2: 1
+ D1: (510) 1
+ D2: (520) 1
  D = 2
 540 G(510) RETURN
 30 F(G:10) IF D < 4 THEN 300
- D: 2
+ D: (530) 2
  D < 4: true
 300 F(G:10) PRINT "YOU LOSE ON FIRST ROLL"
 YOU LOSE ON FIRST ROLL
 310 F(G:10) GOTO 410
 410 F(G:10) NEXT G
- G: 8
+ G: (410) 8
  terminated:false
  G = 9
 20 F(G:10) GOSUB 500
@@ -406,29 +406,29 @@ YOU LOSE ON FIRST ROLL
  D2 = 6
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 2
+ D1: (510) 2
  2 
- D2: 6
+ D2: (520) 6
  6
 530 G(510) LET D = D1 + D2
- D1: 2
- D2: 6
+ D1: (510) 2
+ D2: (520) 6
  D = 8
 540 G(510) RETURN
 30 F(G:10) IF D < 4 THEN 300
- D: 8
+ D: (530) 8
  D < 4: false
 40 F(G:10) IF D = 12 THEN 300
- D: 8
+ D: (530) 8
  D = 12: false
 50 F(G:10) IF D = 7 THEN 400
- D: 8
+ D: (530) 8
  D = 7: false
 60 F(G:10) IF D = 11 THEN 400
- D: 8
+ D: (530) 8
  D = 11: false
 70 F(G:10) LET D9 = D
- D: 8
+ D: (530) 8
  D9 = 8
 100 F(G:10) GOSUB 500
 510 G(510) LET D1 = INT(6 * RND(1) + 1)
@@ -437,21 +437,21 @@ YOUR ROLL IS
  D2 = 3
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 1
+ D1: (510) 1
  1 
- D2: 3
+ D2: (520) 3
  3
 530 G(510) LET D = D1 + D2
- D1: 1
- D2: 3
+ D1: (510) 1
+ D2: (520) 3
  D = 4
 540 G(510) RETURN
 110 F(G:10) IF D = D9 THEN 200
- D: 4
- D9: 8
+ D: (530) 4
+ D9: (70) 8
  D = D9: false
 120 F(G:10) IF D = 7 THEN 250
- D: 4
+ D: (530) 4
  D = 7: false
 130 F(G:10) GOTO 100
 100 F(G:10) GOSUB 500
@@ -461,21 +461,21 @@ YOUR ROLL IS
  D2 = 4
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 6
+ D1: (510) 6
  6 
- D2: 4
+ D2: (520) 4
  4
 530 G(510) LET D = D1 + D2
- D1: 6
- D2: 4
+ D1: (510) 6
+ D2: (520) 4
  D = 10
 540 G(510) RETURN
 110 F(G:10) IF D = D9 THEN 200
- D: 10
- D9: 8
+ D: (530) 10
+ D9: (70) 8
  D = D9: false
 120 F(G:10) IF D = 7 THEN 250
- D: 10
+ D: (530) 10
  D = 7: false
 130 F(G:10) GOTO 100
 100 F(G:10) GOSUB 500
@@ -485,27 +485,27 @@ YOUR ROLL IS
  D2 = 2
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 5
+ D1: (510) 5
  5 
- D2: 2
+ D2: (520) 2
  2
 530 G(510) LET D = D1 + D2
- D1: 5
- D2: 2
+ D1: (510) 5
+ D2: (520) 2
  D = 7
 540 G(510) RETURN
 110 F(G:10) IF D = D9 THEN 200
- D: 7
- D9: 8
+ D: (530) 7
+ D9: (70) 8
  D = D9: false
 120 F(G:10) IF D = 7 THEN 250
- D: 7
+ D: (530) 7
  D = 7: true
 250 F(G:10) PRINT "YOU LOSE -- BY FAILING TO MAKE YOUR POINT"
 YOU LOSE -- BY FAILING TO MAKE YOUR POINT
 260 F(G:10) GOTO 410
 410 F(G:10) NEXT G
- G: 9
+ G: (410) 9
  terminated:false
  G = 10
 20 F(G:10) GOSUB 500
@@ -515,31 +515,31 @@ YOU LOSE -- BY FAILING TO MAKE YOUR POINT
  D2 = 6
 525 G(510) PRINT "YOUR ROLL IS "; D1; D2
 YOUR ROLL IS 
- D1: 5
+ D1: (510) 5
  5 
- D2: 6
+ D2: (520) 6
  6
 530 G(510) LET D = D1 + D2
- D1: 5
- D2: 6
+ D1: (510) 5
+ D2: (520) 6
  D = 11
 540 G(510) RETURN
 30 F(G:10) IF D < 4 THEN 300
- D: 11
+ D: (530) 11
  D < 4: false
 40 F(G:10) IF D = 12 THEN 300
- D: 11
+ D: (530) 11
  D = 12: false
 50 F(G:10) IF D = 7 THEN 400
- D: 11
+ D: (530) 11
  D = 7: false
 60 F(G:10) IF D = 11 THEN 400
- D: 11
+ D: (530) 11
  D = 11: true
 400 F(G:10) PRINT "YOU WIN ON FIRST ROLL"
 YOU WIN ON FIRST ROLL
 410 F(G:10) NEXT G
- G: 10
+ G: (410) 10
  terminated:true
 420 STOP
 STOP in line 420

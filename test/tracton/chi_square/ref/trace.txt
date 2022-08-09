@@ -11,15 +11,15 @@ EXPECTED FREQUENCIES =
 ? 11
  E = 11
 90 IF E = 0 THEN 130
- E: 11
+ E: (80) 11
  E = 0: false
 100 LET K = ((D - E) ^ 2) / E
- D: 10
- E: 11
+ D: (60) 10
+ E: (80) 11
  K = 0.0909091
 110 LET J = J + K
- J: 0
- K: 0.0909091
+ J: (40) 0
+ K: (100) 0.0909091
  J = 0.0909091
 120 GOTO 50
 50 PRINT "OBSERVED FREQUENCIES = "
@@ -33,15 +33,15 @@ EXPECTED FREQUENCIES =
 ? 12
  E = 12
 90 IF E = 0 THEN 130
- E: 12
+ E: (80) 12
  E = 0: false
 100 LET K = ((D - E) ^ 2) / E
- D: 10
- E: 12
+ D: (60) 10
+ E: (80) 12
  K = 0.333333
 110 LET J = J + K
- J: 0.0909091
- K: 0.333333
+ J: (110) 0.0909091
+ K: (100) 0.333333
  J = 0.424242
 120 GOTO 50
 50 PRINT "OBSERVED FREQUENCIES = "
@@ -55,11 +55,11 @@ EXPECTED FREQUENCIES =
 ? 0
  E = 0
 90 IF E = 0 THEN 130
- E: 0
+ E: (80) 0
  E = 0: true
 130 PRINT "CHI-SQUARE = "; J
 CHI-SQUARE = 
- J: 0.424242
+ J: (110) 0.424242
  0.424242
 140 PRINT "*****************"
 *****************
@@ -69,7 +69,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 170 IF L = 1 THEN 190
- L: 0
+ L: (160) 0
  L = 1: false
 180 STOP
 STOP in line 180

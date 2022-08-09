@@ -14,7 +14,7 @@ ENTER 1 TO 5
 ? 1
  A = 1
 90 IF A = 1 THEN 100
- A: 1
+ A: (80) 1
  A = 1: true
 100 GOSUB 410
 410 G(410) PRINT "PRESENT VALUE = ";
@@ -38,13 +38,13 @@ NUMBER OF TIME PERIODS =
  N = 4
 490 G(470) RETURN
 130 LET X = Y * ((1 + I) ^ N)
- Y: 100
- I: 0.1
- N: 4
+ Y: (420) 100
+ I: (450) 0.1
+ N: (480) 4
  X = 146.41
 140 PRINT "FUTURE VALUE = "; X
 FUTURE VALUE = 
- X: 146.41
+ X: (130) 146.41
  146.41
 150 GOTO 390
 390 PRINT
@@ -55,7 +55,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 402 IF L = 1 THEN 404
- L: 1
+ L: (401) 1
  L = 1: true
 404 PRINT
 
@@ -66,10 +66,10 @@ ENTER 1 TO 5
 ? 2
  A = 2
 90 IF A = 1 THEN 100
- A: 2
+ A: (80) 2
  A = 1: false
 91 IF A = 2 THEN 160
- A: 2
+ A: (80) 2
  A = 2: true
 160 GOSUB 500
 500 G(500) PRINT "FUTURE VALUE = ";
@@ -93,13 +93,13 @@ NUMBER OF TIME PERIODS =
  N = 5
 490 G(470) RETURN
 190 LET Y = X * ((1 + I) ^ N)
- X: 200
- I: 0.1
- N: 5
+ X: (510) 200
+ I: (450) 0.1
+ N: (480) 5
  Y = 322.102
 200 PRINT "PRESENT VALUE = "; Y
 PRESENT VALUE = 
- Y: 322.102
+ Y: (190) 322.102
  322.102
 210 GOTO 390
 390 PRINT
@@ -110,7 +110,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 402 IF L = 1 THEN 404
- L: 1
+ L: (401) 1
  L = 1: true
 404 PRINT
 
@@ -121,13 +121,13 @@ ENTER 1 TO 5
 ? 3
  A = 3
 90 IF A = 1 THEN 100
- A: 3
+ A: (80) 3
  A = 1: false
 91 IF A = 2 THEN 160
- A: 3
+ A: (80) 3
  A = 2: false
 92 IF A = 3 THEN 220
- A: 3
+ A: (80) 3
  A = 3: true
 220 GOSUB 410
 410 G(410) PRINT "PRESENT VALUE = ";
@@ -151,13 +151,13 @@ NUMBER OF TIME PERIODS =
  N = 6
 490 G(470) RETURN
 250 LET L = Y * ((1 + I ^ N) - 1)
- Y: 300
- I: 0.2
- N: 6
+ Y: (420) 300
+ I: (450) 0.2
+ N: (480) 6
  L = 0.018
 260 PRINT "INTEREST = "; L
 INTEREST = 
- L: 0.018
+ L: (250) 0.018
  0.018
 270 GOTO 390
 390 PRINT
@@ -168,7 +168,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 402 IF L = 1 THEN 404
- L: 1
+ L: (401) 1
  L = 1: true
 404 PRINT
 
@@ -179,16 +179,16 @@ ENTER 1 TO 5
 ? 4
  A = 4
 90 IF A = 1 THEN 100
- A: 4
+ A: (80) 4
  A = 1: false
 91 IF A = 2 THEN 160
- A: 4
+ A: (80) 4
  A = 2: false
 92 IF A = 3 THEN 220
- A: 4
+ A: (80) 4
  A = 3: false
 93 IF A = 4 THEN 280
- A: 4
+ A: (80) 4
  A = 4: true
 280 GOSUB 410
 410 G(410) PRINT "PRESENT VALUE = ";
@@ -212,13 +212,13 @@ NUMBER OF TIME PERIODS =
  N = 5
 490 G(470) RETURN
 310 LET I = ((X / Y) ^ (1 / N)) - 1
- X: 200
- Y: 100
- N: 5
+ X: (510) 200
+ Y: (420) 100
+ N: (480) 5
  I = 0.1487
 320 PRINT "INTEREST RATE = "; I
 INTEREST RATE = 
- I: 0.1487
+ I: (310) 0.1487
  0.1487
 330 GOTO 390
 390 PRINT
@@ -229,7 +229,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 402 IF L = 1 THEN 404
- L: 1
+ L: (401) 1
  L = 1: true
 404 PRINT
 
@@ -240,19 +240,19 @@ ENTER 1 TO 5
 ? 5
  A = 5
 90 IF A = 1 THEN 100
- A: 5
+ A: (80) 5
  A = 1: false
 91 IF A = 2 THEN 160
- A: 5
+ A: (80) 5
  A = 2: false
 92 IF A = 3 THEN 220
- A: 5
+ A: (80) 5
  A = 3: false
 93 IF A = 4 THEN 280
- A: 5
+ A: (80) 5
  A = 4: false
 94 IF A = 5 THEN 340
- A: 5
+ A: (80) 5
  A = 5: true
 340 GOSUB 500
 500 G(500) PRINT "FUTURE VALUE = ";
@@ -276,13 +276,13 @@ INTEREST RATE =
  I = 0.2
 460 G(440) RETURN
 370 LET N = (LOG(X / Y)) / (LOG(1 + I))
- X: 500
- Y: 250
- I: 0.2
+ X: (510) 500
+ Y: (420) 250
+ I: (450) 0.2
  N = 3.80177
 380 PRINT "NUMBER OF TIME PERIODS = "; N
 NUMBER OF TIME PERIODS = 
- N: 3.80177
+ N: (370) 3.80177
  3.80177
 390 PRINT
 
@@ -292,7 +292,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 402 IF L = 1 THEN 404
- L: 0
+ L: (401) 0
  L = 1: false
 403 STOP
 STOP in line 403

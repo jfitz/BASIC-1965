@@ -5,31 +5,31 @@
  I = 1
  terminated:false
 120 F(I:100) READ A(I)
- I: 1
+ I: (100) 1
  A(1) = 1
 140 F(I:100) NEXT I
- I: 1
+ I: (100) 1
  terminated:false
  I = 2
 120 F(I:100) READ A(I)
- I: 2
+ I: (140) 2
  A(2) = 2
 140 F(I:100) NEXT I
- I: 2
+ I: (140) 2
  terminated:false
  I = 3
 120 F(I:100) READ A(I)
- I: 3
+ I: (140) 3
  A(3) = 3
 140 F(I:100) NEXT I
- I: 3
+ I: (140) 3
  terminated:true
 150 PRINT "MATRIX A"
 MATRIX A
 160 MAT PRINT A
- A(1): 1
- A(2): 2
- A(3): 3
+ A(1): (120) 1
+ A(2): (120) 2
+ A(3): (120) 3
  1  2  3
 
 200 F(I:200) FOR I = 1 TO 3
@@ -39,97 +39,97 @@ MATRIX A
  J = 1
  terminated:false
 220 F(I:200,J:210) READ B(I, J)
- I: 1
- J: 1
+ I: (200) 1
+ J: (210) 1
  B(1,1) = 7
 230 F(I:200,J:210) NEXT J
- J: 1
+ J: (210) 1
  terminated:false
  J = 2
 220 F(I:200,J:210) READ B(I, J)
- I: 1
- J: 2
+ I: (200) 1
+ J: (230) 2
  B(1,2) = 8
 230 F(I:200,J:210) NEXT J
- J: 2
+ J: (230) 2
  terminated:true
 240 F(I:200) NEXT I
- I: 1
+ I: (200) 1
  terminated:false
  I = 2
 210 F(I:200,J:210) FOR J = 1 TO 2
  J = 1
  terminated:false
 220 F(I:200,J:210) READ B(I, J)
- I: 2
- J: 1
+ I: (240) 2
+ J: (210) 1
  B(2,1) = 9
 230 F(I:200,J:210) NEXT J
- J: 1
+ J: (210) 1
  terminated:false
  J = 2
 220 F(I:200,J:210) READ B(I, J)
- I: 2
- J: 2
+ I: (240) 2
+ J: (230) 2
  B(2,2) = 10
 230 F(I:200,J:210) NEXT J
- J: 2
+ J: (230) 2
  terminated:true
 240 F(I:200) NEXT I
- I: 2
+ I: (240) 2
  terminated:false
  I = 3
 210 F(I:200,J:210) FOR J = 1 TO 2
  J = 1
  terminated:false
 220 F(I:200,J:210) READ B(I, J)
- I: 3
- J: 1
+ I: (240) 3
+ J: (210) 1
  B(3,1) = 11
 230 F(I:200,J:210) NEXT J
- J: 1
+ J: (210) 1
  terminated:false
  J = 2
 220 F(I:200,J:210) READ B(I, J)
- I: 3
- J: 2
+ I: (240) 3
+ J: (230) 2
  B(3,2) = 12
 230 F(I:200,J:210) NEXT J
- J: 2
+ J: (230) 2
  terminated:true
 240 F(I:200) NEXT I
- I: 3
+ I: (240) 3
  terminated:true
 250 PRINT "MATRIX B"
 MATRIX B
 260 MAT PRINT B
- B(1,1): 7
- B(1,2): 8
- B(2,1): 9
- B(2,2): 10
- B(3,1): 11
- B(3,2): 12
+ B(1,1): (220) 7
+ B(1,2): (220) 8
+ B(2,1): (220) 9
+ B(2,2): (220) 10
+ B(3,1): (220) 11
+ B(3,2): (220) 12
  7  8
  9  10
  11  12
 
 300 MAT C = A * B
- A(1): 1
- A(2): 2
- A(3): 3
- B(1,1): 7
- B(1,2): 8
- B(2,1): 9
- B(2,2): 10
- B(3,1): 11
- B(3,2): 12
+ A(1): (120) 1
+ A(2): (120) 2
+ A(3): (120) 3
+ B(1,1): (220) 7
+ B(1,2): (220) 8
+ B(2,1): (220) 9
+ B(2,2): (220) 10
+ B(3,1): (220) 11
+ B(3,2): (220) 12
  C(1) = 58
  C(2) = 64
 310 PRINT "MATRIX C"
 MATRIX C
 320 MAT PRINT C
- C(1): 58
- C(2): 64
+ C(1): (300) 58
+ C(2): (300) 64
  58  64
 
 999 END

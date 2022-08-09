@@ -19,7 +19,7 @@ FOR TABLE TYPE 1, IF NOT TYPE 0
 ? 1
  C = 1
 100 IF C = 1 THEN 120
- C: 1
+ C: (90) 1
  C = 1: true
 120 PRINT "ARITHMETIC PROGRESSION"
 ARITHMETIC PROGRESSION
@@ -28,132 +28,132 @@ TERM NUMBER     TERM VALUE
 140 LET J = 0
  J = 0
 150 F(I:150) FOR I = 0 TO N - 1
- N: 5
+ N: (70) 5
  I = 0
  N - 1 = 4
  terminated:false
 160 F(I:150) LET K = I + 1
- I: 0
+ I: (150) 0
  K = 1
 170 F(I:150) LET L = A + (I * D)
- A: 10
- I: 0
- D: 2
+ A: (30) 10
+ I: (150) 0
+ D: (50) 2
  L = 10
 180 F(I:150) LET J = J + L
- J: 0
- L: 10
+ J: (140) 0
+ L: (170) 10
  J = 10
 190 F(I:150) IF C = 1 THEN 210
- C: 1
+ C: (90) 1
  C = 1: true
 210 F(I:150) PRINT K, L
- K: 1
+ K: (160) 1
  1              
- L: 10
+ L: (170) 10
  10
 220 F(I:150) NEXT I
- I: 0
+ I: (150) 0
  terminated:false
  I = 1
 160 F(I:150) LET K = I + 1
- I: 1
+ I: (220) 1
  K = 2
 170 F(I:150) LET L = A + (I * D)
- A: 10
- I: 1
- D: 2
+ A: (30) 10
+ I: (220) 1
+ D: (50) 2
  L = 12
 180 F(I:150) LET J = J + L
- J: 10
- L: 12
+ J: (180) 10
+ L: (170) 12
  J = 22
 190 F(I:150) IF C = 1 THEN 210
- C: 1
+ C: (90) 1
  C = 1: true
 210 F(I:150) PRINT K, L
- K: 2
+ K: (160) 2
  2              
- L: 12
+ L: (170) 12
  12
 220 F(I:150) NEXT I
- I: 1
+ I: (220) 1
  terminated:false
  I = 2
 160 F(I:150) LET K = I + 1
- I: 2
+ I: (220) 2
  K = 3
 170 F(I:150) LET L = A + (I * D)
- A: 10
- I: 2
- D: 2
+ A: (30) 10
+ I: (220) 2
+ D: (50) 2
  L = 14
 180 F(I:150) LET J = J + L
- J: 22
- L: 14
+ J: (180) 22
+ L: (170) 14
  J = 36
 190 F(I:150) IF C = 1 THEN 210
- C: 1
+ C: (90) 1
  C = 1: true
 210 F(I:150) PRINT K, L
- K: 3
+ K: (160) 3
  3              
- L: 14
+ L: (170) 14
  14
 220 F(I:150) NEXT I
- I: 2
+ I: (220) 2
  terminated:false
  I = 3
 160 F(I:150) LET K = I + 1
- I: 3
+ I: (220) 3
  K = 4
 170 F(I:150) LET L = A + (I * D)
- A: 10
- I: 3
- D: 2
+ A: (30) 10
+ I: (220) 3
+ D: (50) 2
  L = 16
 180 F(I:150) LET J = J + L
- J: 36
- L: 16
+ J: (180) 36
+ L: (170) 16
  J = 52
 190 F(I:150) IF C = 1 THEN 210
- C: 1
+ C: (90) 1
  C = 1: true
 210 F(I:150) PRINT K, L
- K: 4
+ K: (160) 4
  4              
- L: 16
+ L: (170) 16
  16
 220 F(I:150) NEXT I
- I: 3
+ I: (220) 3
  terminated:false
  I = 4
 160 F(I:150) LET K = I + 1
- I: 4
+ I: (220) 4
  K = 5
 170 F(I:150) LET L = A + (I * D)
- A: 10
- I: 4
- D: 2
+ A: (30) 10
+ I: (220) 4
+ D: (50) 2
  L = 18
 180 F(I:150) LET J = J + L
- J: 52
- L: 18
+ J: (180) 52
+ L: (170) 18
  J = 70
 190 F(I:150) IF C = 1 THEN 210
- C: 1
+ C: (90) 1
  C = 1: true
 210 F(I:150) PRINT K, L
- K: 5
+ K: (160) 5
  5              
- L: 18
+ L: (170) 18
  18
 220 F(I:150) NEXT I
- I: 4
+ I: (220) 4
  terminated:true
 230 PRINT "SUM = "; J
 SUM = 
- J: 70
+ J: (180) 70
  70
 240 PRINT
 
@@ -163,7 +163,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  X = 0
 270 IF X = 1 THEN 290
- X: 0
+ X: (260) 0
  X = 1: false
 290 STOP
 STOP in line 290

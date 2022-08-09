@@ -3,61 +3,61 @@
  I = 0
  terminated:false
 40 F(I:20) LET A(I) = I
- I: 0
+ I: (20) 0
  A(0) = 0
 60 F(I:20) NEXT I
- I: 0
+ I: (20) 0
  terminated:false
  I = 1
 40 F(I:20) LET A(I) = I
- I: 1
+ I: (60) 1
  A(1) = 1
 60 F(I:20) NEXT I
- I: 1
+ I: (60) 1
  terminated:false
  I = 2
 40 F(I:20) LET A(I) = I
- I: 2
+ I: (60) 2
  A(2) = 2
 60 F(I:20) NEXT I
- I: 2
+ I: (60) 2
  terminated:false
  I = 3
 40 F(I:20) LET A(I) = I
- I: 3
+ I: (60) 3
  A(3) = 3
 60 F(I:20) NEXT I
- I: 3
+ I: (60) 3
  terminated:false
  I = 4
 40 F(I:20) LET A(I) = I
- I: 4
+ I: (60) 4
  A(4) = 4
 60 F(I:20) NEXT I
- I: 4
+ I: (60) 4
  terminated:false
  I = 5
 40 F(I:20) LET A(I) = I
- I: 5
+ I: (60) 5
  A(5) = 5
 60 F(I:20) NEXT I
- I: 5
+ I: (60) 5
  terminated:false
  I = 6
 40 F(I:20) LET A(I) = I
- I: 6
+ I: (60) 6
  A(6) = 6
 60 F(I:20) NEXT I
- I: 6
+ I: (60) 6
  terminated:true
 70 ARR PRINT A;
- A(0): 0
- A(1): 1
- A(2): 2
- A(3): 3
- A(4): 4
- A(5): 5
- A(6): 6
+ A(0): (40) 0
+ A(1): (40) 1
+ A(2): (40) 2
+ A(3): (40) 3
+ A(4): (40) 4
+ A(5): (40) 5
+ A(6): (40) 6
  0  1  2  3  4  5  6 
 72 PRINT
 

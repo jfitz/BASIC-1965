@@ -13,15 +13,15 @@ INPUT SAMPLE
 ? 5
  X = 5
 110 IF X = 0 THEN 150
- X: 5
+ X: (100) 5
  X = 0: false
 120 LET J = J + (X ^ T)
- J: 0
- X: 5
- T: 4
+ J: (50) 0
+ X: (100) 5
+ T: (80) 4
  J = 625
 130 LET N = N + 1
- N: 0
+ N: (60) 0
  N = 1
 140 GOTO 90
 90 PRINT "INPUT SAMPLE";
@@ -30,20 +30,20 @@ INPUT SAMPLE
 ? 0
  X = 0
 110 IF X = 0 THEN 150
- X: 0
+ X: (100) 0
  X = 0: true
 150 LET G = (J / N) ^ (1 / T)
- J: 625
- N: 1
- T: 4
+ J: (120) 625
+ N: (130) 1
+ T: (80) 4
  G = 5
 160 PRINT "GENERALIZED MEAN"
 GENERALIZED MEAN
 170 PRINT "M(T) = "; G, "WHERE T = "; T
 M(T) = 
- G: 5
+ G: (150) 5
  5              WHERE T = 
- T: 4
+ T: (80) 4
  4
 180 PRINT
 
@@ -53,7 +53,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 210 IF L = 1 THEN 230
- L: 0
+ L: (200) 0
  L = 1: false
 220 STOP
 STOP in line 220

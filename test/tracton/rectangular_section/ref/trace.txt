@@ -9,28 +9,28 @@ HEIGHT =
 ? 5
  H = 5
 70 LET I = (B * (H ^ 3)) / 12
- B: 3
- H: 5
+ B: (40) 3
+ H: (60) 5
  I = 31.25
 80 LET J = (B * H * (B ^ 2 + H ^ 2)) / 12
- B: 3
- H: 5
+ B: (40) 3
+ H: (60) 5
  J = 42.5
 90 LET A = B * H
- B: 3
- H: 5
+ B: (40) 3
+ H: (60) 5
  A = 15
 100 PRINT "MOMENT OF INERTIA = "; I
 MOMENT OF INERTIA = 
- I: 31.25
+ I: (70) 31.25
  31.25
 110 PRINT "POLAR MOMENT OF INERTIA = "; J
 POLAR MOMENT OF INERTIA = 
- J: 42.5
+ J: (80) 42.5
  42.5
 120 PRINT "AREA OF SECTION = "; A
 AREA OF SECTION = 
- A: 15
+ A: (90) 15
  15
 130 PRINT
 
@@ -40,7 +40,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 160 IF L = 1 THEN 180
- L: 0
+ L: (150) 0
  L = 1: false
 170 STOP
 STOP in line 170

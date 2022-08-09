@@ -1,14 +1,14 @@
 120 LET N = 20 + INT(80 * RND(X))
- X: 0
+ X: (120) 0
  N = 53
 130 LET K = 5 + INT(10 * RND(X))
- X: 0
+ X: (120) 0
  K = 12
 140 PRINT "LEGAL MOVES ARE:"
 LEGAL MOVES ARE:
 150 PRINT "TAKE AWAY 1 THROUGH" K
 TAKE AWAY 1 THROUGH
- K: 12
+ K: (130) 12
  12
 160 PRINT "LAST PERSON TO MOVE LOSES"
 LAST PERSON TO MOVE LOSES
@@ -16,7 +16,7 @@ LAST PERSON TO MOVE LOSES
 
 180 PRINT "THE INITIAL NUMBER IS" N
 THE INITIAL NUMBER IS
- N: 53
+ N: (120) 53
  53
 190 PRINT
 
@@ -26,51 +26,51 @@ YOUR MOVE
 ? 12
  X = 12
 240 IF X > K THEN 270
- X: 12
- K: 12
+ X: (230) 12
+ K: (130) 12
  X > K: false
 250 IF X < 1 THEN 270
- X: 12
+ X: (230) 12
  X < 1: false
 260 IF X <= N THEN 310
- X: 12
- N: 53
+ X: (230) 12
+ N: (120) 53
  X <= N: true
 320 LET N = N - X
- N: 53
- X: 12
+ N: (120) 53
+ X: (230) 12
  N = 41
 330 IF N > 0 THEN 410
- N: 41
+ N: (320) 41
  N > 0: true
 420 LET Q = INT((N - 1) / (K + 1))
- N: 41
- K: 12
+ N: (320) 41
+ K: (130) 12
  Q = 3
 430 LET Y = N - 1 - Q * (K + 1)
- N: 41
- Q: 3
- K: 12
+ N: (320) 41
+ Q: (420) 3
+ K: (130) 12
  Y = 1
 440 IF Y = 0 THEN 530
- Y: 1
+ Y: (430) 1
  Y = 0: false
 450 LET N = N - Y
- N: 41
- Y: 1
+ N: (320) 41
+ Y: (430) 1
  N = 40
 460 PRINT "MY MOVE:" Y
 MY MOVE:
- Y: 1
+ Y: (430) 1
  1
 470 PRINT
 
 480 IF N = 0 THEN 600
- N: 40
+ N: (450) 40
  N = 0: false
 490 PRINT "NEW TOTAL IS" N
 NEW TOTAL IS
- N: 40
+ N: (450) 40
  40
 500 PRINT
 
@@ -81,51 +81,51 @@ YOUR MOVE
 ? 12
  X = 12
 240 IF X > K THEN 270
- X: 12
- K: 12
+ X: (230) 12
+ K: (130) 12
  X > K: false
 250 IF X < 1 THEN 270
- X: 12
+ X: (230) 12
  X < 1: false
 260 IF X <= N THEN 310
- X: 12
- N: 40
+ X: (230) 12
+ N: (450) 40
  X <= N: true
 320 LET N = N - X
- N: 40
- X: 12
+ N: (450) 40
+ X: (230) 12
  N = 28
 330 IF N > 0 THEN 410
- N: 28
+ N: (320) 28
  N > 0: true
 420 LET Q = INT((N - 1) / (K + 1))
- N: 28
- K: 12
+ N: (320) 28
+ K: (130) 12
  Q = 2
 430 LET Y = N - 1 - Q * (K + 1)
- N: 28
- Q: 2
- K: 12
+ N: (320) 28
+ Q: (420) 2
+ K: (130) 12
  Y = 1
 440 IF Y = 0 THEN 530
- Y: 1
+ Y: (430) 1
  Y = 0: false
 450 LET N = N - Y
- N: 28
- Y: 1
+ N: (320) 28
+ Y: (430) 1
  N = 27
 460 PRINT "MY MOVE:" Y
 MY MOVE:
- Y: 1
+ Y: (430) 1
  1
 470 PRINT
 
 480 IF N = 0 THEN 600
- N: 27
+ N: (450) 27
  N = 0: false
 490 PRINT "NEW TOTAL IS" N
 NEW TOTAL IS
- N: 27
+ N: (450) 27
  27
 500 PRINT
 
@@ -136,51 +136,51 @@ YOUR MOVE
 ? 12
  X = 12
 240 IF X > K THEN 270
- X: 12
- K: 12
+ X: (230) 12
+ K: (130) 12
  X > K: false
 250 IF X < 1 THEN 270
- X: 12
+ X: (230) 12
  X < 1: false
 260 IF X <= N THEN 310
- X: 12
- N: 27
+ X: (230) 12
+ N: (450) 27
  X <= N: true
 320 LET N = N - X
- N: 27
- X: 12
+ N: (450) 27
+ X: (230) 12
  N = 15
 330 IF N > 0 THEN 410
- N: 15
+ N: (320) 15
  N > 0: true
 420 LET Q = INT((N - 1) / (K + 1))
- N: 15
- K: 12
+ N: (320) 15
+ K: (130) 12
  Q = 1
 430 LET Y = N - 1 - Q * (K + 1)
- N: 15
- Q: 1
- K: 12
+ N: (320) 15
+ Q: (420) 1
+ K: (130) 12
  Y = 1
 440 IF Y = 0 THEN 530
- Y: 1
+ Y: (430) 1
  Y = 0: false
 450 LET N = N - Y
- N: 15
- Y: 1
+ N: (320) 15
+ Y: (430) 1
  N = 14
 460 PRINT "MY MOVE:" Y
 MY MOVE:
- Y: 1
+ Y: (430) 1
  1
 470 PRINT
 
 480 IF N = 0 THEN 600
- N: 14
+ N: (450) 14
  N = 0: false
 490 PRINT "NEW TOTAL IS" N
 NEW TOTAL IS
- N: 14
+ N: (450) 14
  14
 500 PRINT
 
@@ -191,51 +191,51 @@ YOUR MOVE
 ? 11
  X = 11
 240 IF X > K THEN 270
- X: 11
- K: 12
+ X: (230) 11
+ K: (130) 12
  X > K: false
 250 IF X < 1 THEN 270
- X: 11
+ X: (230) 11
  X < 1: false
 260 IF X <= N THEN 310
- X: 11
- N: 14
+ X: (230) 11
+ N: (450) 14
  X <= N: true
 320 LET N = N - X
- N: 14
- X: 11
+ N: (450) 14
+ X: (230) 11
  N = 3
 330 IF N > 0 THEN 410
- N: 3
+ N: (320) 3
  N > 0: true
 420 LET Q = INT((N - 1) / (K + 1))
- N: 3
- K: 12
+ N: (320) 3
+ K: (130) 12
  Q = 0
 430 LET Y = N - 1 - Q * (K + 1)
- N: 3
- Q: 0
- K: 12
+ N: (320) 3
+ Q: (420) 0
+ K: (130) 12
  Y = 2
 440 IF Y = 0 THEN 530
- Y: 2
+ Y: (430) 2
  Y = 0: false
 450 LET N = N - Y
- N: 3
- Y: 2
+ N: (320) 3
+ Y: (430) 2
  N = 1
 460 PRINT "MY MOVE:" Y
 MY MOVE:
- Y: 2
+ Y: (430) 2
  2
 470 PRINT
 
 480 IF N = 0 THEN 600
- N: 1
+ N: (450) 1
  N = 0: false
 490 PRINT "NEW TOTAL IS" N
 NEW TOTAL IS
- N: 1
+ N: (450) 1
  1
 500 PRINT
 
@@ -246,22 +246,22 @@ YOUR MOVE
 ? 1
  X = 1
 240 IF X > K THEN 270
- X: 1
- K: 12
+ X: (230) 1
+ K: (130) 12
  X > K: false
 250 IF X < 1 THEN 270
- X: 1
+ X: (230) 1
  X < 1: false
 260 IF X <= N THEN 310
- X: 1
- N: 1
+ X: (230) 1
+ N: (450) 1
  X <= N: true
 320 LET N = N - X
- N: 1
- X: 1
+ N: (450) 1
+ X: (230) 1
  N = 0
 330 IF N > 0 THEN 410
- N: 0
+ N: (320) 0
  N > 0: false
 340 PRINT "I WIN ***"
 I WIN ***
@@ -275,16 +275,16 @@ NEW GAME.
 
 390 GOTO 120
 120 LET N = 20 + INT(80 * RND(X))
- X: 1
+ X: (230) 1
  N = 20
 130 LET K = 5 + INT(10 * RND(X))
- X: 1
+ X: (230) 1
  K = 8
 140 PRINT "LEGAL MOVES ARE:"
 LEGAL MOVES ARE:
 150 PRINT "TAKE AWAY 1 THROUGH" K
 TAKE AWAY 1 THROUGH
- K: 8
+ K: (130) 8
  8
 160 PRINT "LAST PERSON TO MOVE LOSES"
 LAST PERSON TO MOVE LOSES
@@ -292,7 +292,7 @@ LAST PERSON TO MOVE LOSES
 
 180 PRINT "THE INITIAL NUMBER IS" N
 THE INITIAL NUMBER IS
- N: 20
+ N: (120) 20
  20
 190 PRINT
 

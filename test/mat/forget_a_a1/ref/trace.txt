@@ -7,114 +7,114 @@
  J = 1
  terminated:false
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 1
- J: 1
+ I: (21) 1
+ J: (22) 1
  A(1,1) = 1
 24 F(I:21,J:22) NEXT J
- J: 1
+ J: (22) 1
  terminated:false
  J = 2
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 1
- J: 2
+ I: (21) 1
+ J: (24) 2
  A(1,2) = 2
 24 F(I:21,J:22) NEXT J
- J: 2
+ J: (24) 2
  terminated:false
  J = 3
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 1
- J: 3
+ I: (21) 1
+ J: (24) 3
  A(1,3) = 3
 24 F(I:21,J:22) NEXT J
- J: 3
+ J: (24) 3
  terminated:false
  J = 4
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 1
- J: 4
+ I: (21) 1
+ J: (24) 4
  A(1,4) = 4
 24 F(I:21,J:22) NEXT J
- J: 4
+ J: (24) 4
  terminated:true
 25 F(I:21) NEXT I
- I: 1
+ I: (21) 1
  terminated:false
  I = 2
 22 F(I:21,J:22) FOR J = 1 TO 4
  J = 1
  terminated:false
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 2
- J: 1
+ I: (25) 2
+ J: (22) 1
  A(2,1) = 2
 24 F(I:21,J:22) NEXT J
- J: 1
+ J: (22) 1
  terminated:false
  J = 2
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 2
- J: 2
+ I: (25) 2
+ J: (24) 2
  A(2,2) = 4
 24 F(I:21,J:22) NEXT J
- J: 2
+ J: (24) 2
  terminated:false
  J = 3
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 2
- J: 3
+ I: (25) 2
+ J: (24) 3
  A(2,3) = 6
 24 F(I:21,J:22) NEXT J
- J: 3
+ J: (24) 3
  terminated:false
  J = 4
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 2
- J: 4
+ I: (25) 2
+ J: (24) 4
  A(2,4) = 8
 24 F(I:21,J:22) NEXT J
- J: 4
+ J: (24) 4
  terminated:true
 25 F(I:21) NEXT I
- I: 2
+ I: (25) 2
  terminated:false
  I = 3
 22 F(I:21,J:22) FOR J = 1 TO 4
  J = 1
  terminated:false
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 3
- J: 1
+ I: (25) 3
+ J: (22) 1
  A(3,1) = 3
 24 F(I:21,J:22) NEXT J
- J: 1
+ J: (22) 1
  terminated:false
  J = 2
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 3
- J: 2
+ I: (25) 3
+ J: (24) 2
  A(3,2) = 6
 24 F(I:21,J:22) NEXT J
- J: 2
+ J: (24) 2
  terminated:false
  J = 3
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 3
- J: 3
+ I: (25) 3
+ J: (24) 3
  A(3,3) = 9
 24 F(I:21,J:22) NEXT J
- J: 3
+ J: (24) 3
  terminated:false
  J = 4
 23 F(I:21,J:22) LET A(I, J) = I * J
- I: 3
- J: 4
+ I: (25) 3
+ J: (24) 4
  A(3,4) = 12
 24 F(I:21,J:22) NEXT J
- J: 4
+ J: (24) 4
  terminated:true
 25 F(I:21) NEXT I
- I: 3
+ I: (25) 3
  terminated:true
 30 DIM A1(2, 6)
 31 F(I:31) FOR I = 1 TO 2
@@ -124,139 +124,139 @@
  J = 1
  terminated:false
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 1
- J: 1
+ I: (31) 1
+ J: (32) 1
  A1(1,1) = 1
 34 F(I:31,J:32) NEXT J
- J: 1
+ J: (32) 1
  terminated:false
  J = 2
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 1
- J: 2
+ I: (31) 1
+ J: (34) 2
  A1(1,2) = 0.5
 34 F(I:31,J:32) NEXT J
- J: 2
+ J: (34) 2
  terminated:false
  J = 3
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 1
- J: 3
+ I: (31) 1
+ J: (34) 3
  A1(1,3) = 0.333333
 34 F(I:31,J:32) NEXT J
- J: 3
+ J: (34) 3
  terminated:false
  J = 4
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 1
- J: 4
+ I: (31) 1
+ J: (34) 4
  A1(1,4) = 0.25
 34 F(I:31,J:32) NEXT J
- J: 4
+ J: (34) 4
  terminated:false
  J = 5
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 1
- J: 5
+ I: (31) 1
+ J: (34) 5
  A1(1,5) = 0.2
 34 F(I:31,J:32) NEXT J
- J: 5
+ J: (34) 5
  terminated:false
  J = 6
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 1
- J: 6
+ I: (31) 1
+ J: (34) 6
  A1(1,6) = 0.166667
 34 F(I:31,J:32) NEXT J
- J: 6
+ J: (34) 6
  terminated:true
 35 F(I:31) NEXT I
- I: 1
+ I: (31) 1
  terminated:false
  I = 2
 32 F(I:31,J:32) FOR J = 1 TO 6
  J = 1
  terminated:false
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 2
- J: 1
+ I: (35) 2
+ J: (32) 1
  A1(2,1) = 2
 34 F(I:31,J:32) NEXT J
- J: 1
+ J: (32) 1
  terminated:false
  J = 2
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 2
- J: 2
+ I: (35) 2
+ J: (34) 2
  A1(2,2) = 1
 34 F(I:31,J:32) NEXT J
- J: 2
+ J: (34) 2
  terminated:false
  J = 3
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 2
- J: 3
+ I: (35) 2
+ J: (34) 3
  A1(2,3) = 0.666667
 34 F(I:31,J:32) NEXT J
- J: 3
+ J: (34) 3
  terminated:false
  J = 4
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 2
- J: 4
+ I: (35) 2
+ J: (34) 4
  A1(2,4) = 0.5
 34 F(I:31,J:32) NEXT J
- J: 4
+ J: (34) 4
  terminated:false
  J = 5
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 2
- J: 5
+ I: (35) 2
+ J: (34) 5
  A1(2,5) = 0.4
 34 F(I:31,J:32) NEXT J
- J: 5
+ J: (34) 5
  terminated:false
  J = 6
 33 F(I:31,J:32) LET A1(I, J) = I / J
- I: 2
- J: 6
+ I: (35) 2
+ J: (34) 6
  A1(2,6) = 0.333333
 34 F(I:31,J:32) NEXT J
- J: 6
+ J: (34) 6
  terminated:true
 35 F(I:31) NEXT I
- I: 2
+ I: (35) 2
  terminated:true
 40 MAT PRINT A
- A(1,1): 1
- A(1,2): 2
- A(1,3): 3
- A(1,4): 4
- A(2,1): 2
- A(2,2): 4
- A(2,3): 6
- A(2,4): 8
- A(3,1): 3
- A(3,2): 6
- A(3,3): 9
- A(3,4): 12
+ A(1,1): (23) 1
+ A(1,2): (23) 2
+ A(1,3): (23) 3
+ A(1,4): (23) 4
+ A(2,1): (23) 2
+ A(2,2): (23) 4
+ A(2,3): (23) 6
+ A(2,4): (23) 8
+ A(3,1): (23) 3
+ A(3,2): (23) 6
+ A(3,3): (23) 9
+ A(3,4): (23) 12
  1               2               3               4
  2               4               6               8
  3               6               9               12
 
 41 MAT PRINT A1
- A1(1,1): 1
- A1(1,2): 0.5
- A1(1,3): 0.333333
- A1(1,4): 0.25
- A1(1,5): 0.2
- A1(1,6): 0.166667
- A1(2,1): 2
- A1(2,2): 1
- A1(2,3): 0.666667
- A1(2,4): 0.5
- A1(2,5): 0.4
- A1(2,6): 0.333333
+ A1(1,1): (33) 1
+ A1(1,2): (33) 0.5
+ A1(1,3): (33) 0.333333
+ A1(1,4): (33) 0.25
+ A1(1,5): (33) 0.2
+ A1(1,6): (33) 0.166667
+ A1(2,1): (33) 2
+ A1(2,2): (33) 1
+ A1(2,3): (33) 0.666667
+ A1(2,4): (33) 0.5
+ A1(2,5): (33) 0.4
+ A1(2,6): (33) 0.333333
  1               0.5             0.333333        0.25            0.2             0.166667
  2               1               0.666667        0.5             0.4             0.333333
 
@@ -274,18 +274,18 @@
  A(3,3)
  A(3,4)
 90 MAT PRINT A1
- A1(1,1): 1
- A1(1,2): 0.5
- A1(1,3): 0.333333
- A1(1,4): 0.25
- A1(1,5): 0.2
- A1(1,6): 0.166667
- A1(2,1): 2
- A1(2,2): 1
- A1(2,3): 0.666667
- A1(2,4): 0.5
- A1(2,5): 0.4
- A1(2,6): 0.333333
+ A1(1,1): (33) 1
+ A1(1,2): (33) 0.5
+ A1(1,3): (33) 0.333333
+ A1(1,4): (33) 0.25
+ A1(1,5): (33) 0.2
+ A1(1,6): (33) 0.166667
+ A1(2,1): (33) 2
+ A1(2,2): (33) 1
+ A1(2,3): (33) 0.666667
+ A1(2,4): (33) 0.5
+ A1(2,5): (33) 0.4
+ A1(2,6): (33) 0.333333
  1               0.5             0.333333        0.25            0.2             0.166667
  2               1               0.666667        0.5             0.4             0.333333
 

@@ -5,266 +5,266 @@ ENTER N,R
  N = 12
  R = 5
 60 IF N < R THEN 270
- N: 12
- R: 5
+ N: (50) 12
+ R: (50) 5
  N < R: false
 70 IF R < 0 THEN 290
- R: 5
+ R: (50) 5
  R < 0: false
 80 LET T = N
- N: 12
+ N: (50) 12
  T = 12
 90 GOSUB 310
 310 G(310) IF T = 0 THEN 390
- T: 12
+ T: (80) 12
  T = 0: false
 320 G(310) IF T = 1 THEN 390
- T: 12
+ T: (80) 12
  T = 1: false
 330 G(310) LET J = 1
  J = 1
 340 G(310) F(I:340) FOR I = 2 TO T
- T: 12
+ T: (80) 12
  I = 2
  T = 12
  terminated:false
 350 G(310) F(I:340) LET J = J * I
- J: 1
- I: 2
+ J: (330) 1
+ I: (340) 2
  J = 2
 360 G(310) F(I:340) NEXT I
- I: 2
+ I: (340) 2
  terminated:false
  I = 3
 350 G(310) F(I:340) LET J = J * I
- J: 2
- I: 3
+ J: (350) 2
+ I: (360) 3
  J = 6
 360 G(310) F(I:340) NEXT I
- I: 3
+ I: (360) 3
  terminated:false
  I = 4
 350 G(310) F(I:340) LET J = J * I
- J: 6
- I: 4
+ J: (350) 6
+ I: (360) 4
  J = 24
 360 G(310) F(I:340) NEXT I
- I: 4
+ I: (360) 4
  terminated:false
  I = 5
 350 G(310) F(I:340) LET J = J * I
- J: 24
- I: 5
+ J: (350) 24
+ I: (360) 5
  J = 120
 360 G(310) F(I:340) NEXT I
- I: 5
+ I: (360) 5
  terminated:false
  I = 6
 350 G(310) F(I:340) LET J = J * I
- J: 120
- I: 6
+ J: (350) 120
+ I: (360) 6
  J = 720
 360 G(310) F(I:340) NEXT I
- I: 6
+ I: (360) 6
  terminated:false
  I = 7
 350 G(310) F(I:340) LET J = J * I
- J: 720
- I: 7
+ J: (350) 720
+ I: (360) 7
  J = 5040
 360 G(310) F(I:340) NEXT I
- I: 7
+ I: (360) 7
  terminated:false
  I = 8
 350 G(310) F(I:340) LET J = J * I
- J: 5040
- I: 8
+ J: (350) 5040
+ I: (360) 8
  J = 40320
 360 G(310) F(I:340) NEXT I
- I: 8
+ I: (360) 8
  terminated:false
  I = 9
 350 G(310) F(I:340) LET J = J * I
- J: 40320
- I: 9
+ J: (350) 40320
+ I: (360) 9
  J = 362880
 360 G(310) F(I:340) NEXT I
- I: 9
+ I: (360) 9
  terminated:false
  I = 10
 350 G(310) F(I:340) LET J = J * I
- J: 362880
- I: 10
+ J: (350) 362880
+ I: (360) 10
  J = 3628800
 360 G(310) F(I:340) NEXT I
- I: 10
+ I: (360) 10
  terminated:false
  I = 11
 350 G(310) F(I:340) LET J = J * I
- J: 3628800
- I: 11
+ J: (350) 3628800
+ I: (360) 11
  J = 39916800
 360 G(310) F(I:340) NEXT I
- I: 11
+ I: (360) 11
  terminated:false
  I = 12
 350 G(310) F(I:340) LET J = J * I
- J: 39916800
- I: 12
+ J: (350) 39916800
+ I: (360) 12
  J = 479002000
 360 G(310) F(I:340) NEXT I
- I: 12
+ I: (360) 12
  terminated:true
 370 G(310) LET T = J
- J: 479002000
+ J: (350) 479002000
  T = 479002000
 380 G(310) GOTO 400
 400 G(310) RETURN
 100 LET A = T
- T: 479002000
+ T: (370) 479002000
  A = 479002000
 110 LET T = N - R
- N: 12
- R: 5
+ N: (50) 12
+ R: (50) 5
  T = 7
 120 GOSUB 310
 310 G(310) IF T = 0 THEN 390
- T: 7
+ T: (110) 7
  T = 0: false
 320 G(310) IF T = 1 THEN 390
- T: 7
+ T: (110) 7
  T = 1: false
 330 G(310) LET J = 1
  J = 1
 340 G(310) F(I:340) FOR I = 2 TO T
- T: 7
+ T: (110) 7
  I = 2
  T = 7
  terminated:false
 350 G(310) F(I:340) LET J = J * I
- J: 1
- I: 2
+ J: (330) 1
+ I: (340) 2
  J = 2
 360 G(310) F(I:340) NEXT I
- I: 2
+ I: (340) 2
  terminated:false
  I = 3
 350 G(310) F(I:340) LET J = J * I
- J: 2
- I: 3
+ J: (350) 2
+ I: (360) 3
  J = 6
 360 G(310) F(I:340) NEXT I
- I: 3
+ I: (360) 3
  terminated:false
  I = 4
 350 G(310) F(I:340) LET J = J * I
- J: 6
- I: 4
+ J: (350) 6
+ I: (360) 4
  J = 24
 360 G(310) F(I:340) NEXT I
- I: 4
+ I: (360) 4
  terminated:false
  I = 5
 350 G(310) F(I:340) LET J = J * I
- J: 24
- I: 5
+ J: (350) 24
+ I: (360) 5
  J = 120
 360 G(310) F(I:340) NEXT I
- I: 5
+ I: (360) 5
  terminated:false
  I = 6
 350 G(310) F(I:340) LET J = J * I
- J: 120
- I: 6
+ J: (350) 120
+ I: (360) 6
  J = 720
 360 G(310) F(I:340) NEXT I
- I: 6
+ I: (360) 6
  terminated:false
  I = 7
 350 G(310) F(I:340) LET J = J * I
- J: 720
- I: 7
+ J: (350) 720
+ I: (360) 7
  J = 5040
 360 G(310) F(I:340) NEXT I
- I: 7
+ I: (360) 7
  terminated:true
 370 G(310) LET T = J
- J: 5040
+ J: (350) 5040
  T = 5040
 380 G(310) GOTO 400
 400 G(310) RETURN
 130 LET B = T
- T: 5040
+ T: (370) 5040
  B = 5040
 140 LET P = A / B
- A: 479002000
- B: 5040
+ A: (100) 479002000
+ B: (130) 5040
  P = 95040.1
 150 LET T = R
- R: 5
+ R: (50) 5
  T = 5
 160 GOSUB 310
 310 G(310) IF T = 0 THEN 390
- T: 5
+ T: (150) 5
  T = 0: false
 320 G(310) IF T = 1 THEN 390
- T: 5
+ T: (150) 5
  T = 1: false
 330 G(310) LET J = 1
  J = 1
 340 G(310) F(I:340) FOR I = 2 TO T
- T: 5
+ T: (150) 5
  I = 2
  T = 5
  terminated:false
 350 G(310) F(I:340) LET J = J * I
- J: 1
- I: 2
+ J: (330) 1
+ I: (340) 2
  J = 2
 360 G(310) F(I:340) NEXT I
- I: 2
+ I: (340) 2
  terminated:false
  I = 3
 350 G(310) F(I:340) LET J = J * I
- J: 2
- I: 3
+ J: (350) 2
+ I: (360) 3
  J = 6
 360 G(310) F(I:340) NEXT I
- I: 3
+ I: (360) 3
  terminated:false
  I = 4
 350 G(310) F(I:340) LET J = J * I
- J: 6
- I: 4
+ J: (350) 6
+ I: (360) 4
  J = 24
 360 G(310) F(I:340) NEXT I
- I: 4
+ I: (360) 4
  terminated:false
  I = 5
 350 G(310) F(I:340) LET J = J * I
- J: 24
- I: 5
+ J: (350) 24
+ I: (360) 5
  J = 120
 360 G(310) F(I:340) NEXT I
- I: 5
+ I: (360) 5
  terminated:true
 370 G(310) LET T = J
- J: 120
+ J: (350) 120
  T = 120
 380 G(310) GOTO 400
 400 G(310) RETURN
 170 LET C = A / (T * B)
- A: 479002000
- T: 120
- B: 5040
+ A: (100) 479002000
+ T: (370) 120
+ B: (130) 5040
  C = 792.001
 180 PRINT "PERMUTATIONS = "; P
 PERMUTATIONS = 
- P: 95040.1
+ P: (140) 95040.1
  95040.1
 190 PRINT "COMBINATIONS = "; C
 COMBINATIONS = 
- C: 792.001
+ C: (170) 792.001
  792.001
 200 PRINT
 
@@ -274,7 +274,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 230 IF L = 1 THEN 250
- L: 1
+ L: (220) 1
  L = 1: true
 250 PRINT
 
@@ -286,442 +286,442 @@ ENTER N,R
  N = 23
  R = 21
 60 IF N < R THEN 270
- N: 23
- R: 21
+ N: (50) 23
+ R: (50) 21
  N < R: false
 70 IF R < 0 THEN 290
- R: 21
+ R: (50) 21
  R < 0: false
 80 LET T = N
- N: 23
+ N: (50) 23
  T = 23
 90 GOSUB 310
 310 G(310) IF T = 0 THEN 390
- T: 23
+ T: (80) 23
  T = 0: false
 320 G(310) IF T = 1 THEN 390
- T: 23
+ T: (80) 23
  T = 1: false
 330 G(310) LET J = 1
  J = 1
 340 G(310) F(I:340) FOR I = 2 TO T
- T: 23
+ T: (80) 23
  I = 2
  T = 23
  terminated:false
 350 G(310) F(I:340) LET J = J * I
- J: 1
- I: 2
+ J: (330) 1
+ I: (340) 2
  J = 2
 360 G(310) F(I:340) NEXT I
- I: 2
+ I: (340) 2
  terminated:false
  I = 3
 350 G(310) F(I:340) LET J = J * I
- J: 2
- I: 3
+ J: (350) 2
+ I: (360) 3
  J = 6
 360 G(310) F(I:340) NEXT I
- I: 3
+ I: (360) 3
  terminated:false
  I = 4
 350 G(310) F(I:340) LET J = J * I
- J: 6
- I: 4
+ J: (350) 6
+ I: (360) 4
  J = 24
 360 G(310) F(I:340) NEXT I
- I: 4
+ I: (360) 4
  terminated:false
  I = 5
 350 G(310) F(I:340) LET J = J * I
- J: 24
- I: 5
+ J: (350) 24
+ I: (360) 5
  J = 120
 360 G(310) F(I:340) NEXT I
- I: 5
+ I: (360) 5
  terminated:false
  I = 6
 350 G(310) F(I:340) LET J = J * I
- J: 120
- I: 6
+ J: (350) 120
+ I: (360) 6
  J = 720
 360 G(310) F(I:340) NEXT I
- I: 6
+ I: (360) 6
  terminated:false
  I = 7
 350 G(310) F(I:340) LET J = J * I
- J: 720
- I: 7
+ J: (350) 720
+ I: (360) 7
  J = 5040
 360 G(310) F(I:340) NEXT I
- I: 7
+ I: (360) 7
  terminated:false
  I = 8
 350 G(310) F(I:340) LET J = J * I
- J: 5040
- I: 8
+ J: (350) 5040
+ I: (360) 8
  J = 40320
 360 G(310) F(I:340) NEXT I
- I: 8
+ I: (360) 8
  terminated:false
  I = 9
 350 G(310) F(I:340) LET J = J * I
- J: 40320
- I: 9
+ J: (350) 40320
+ I: (360) 9
  J = 362880
 360 G(310) F(I:340) NEXT I
- I: 9
+ I: (360) 9
  terminated:false
  I = 10
 350 G(310) F(I:340) LET J = J * I
- J: 362880
- I: 10
+ J: (350) 362880
+ I: (360) 10
  J = 3628800
 360 G(310) F(I:340) NEXT I
- I: 10
+ I: (360) 10
  terminated:false
  I = 11
 350 G(310) F(I:340) LET J = J * I
- J: 3628800
- I: 11
+ J: (350) 3628800
+ I: (360) 11
  J = 39916800
 360 G(310) F(I:340) NEXT I
- I: 11
+ I: (360) 11
  terminated:false
  I = 12
 350 G(310) F(I:340) LET J = J * I
- J: 39916800
- I: 12
+ J: (350) 39916800
+ I: (360) 12
  J = 479002000
 360 G(310) F(I:340) NEXT I
- I: 12
+ I: (360) 12
  terminated:false
  I = 13
 350 G(310) F(I:340) LET J = J * I
- J: 479002000
- I: 13
+ J: (350) 479002000
+ I: (360) 13
  J = 6227030000
 360 G(310) F(I:340) NEXT I
- I: 13
+ I: (360) 13
  terminated:false
  I = 14
 350 G(310) F(I:340) LET J = J * I
- J: 6227030000
- I: 14
+ J: (350) 6227030000
+ I: (360) 14
  J = 87178400000
 360 G(310) F(I:340) NEXT I
- I: 14
+ I: (360) 14
  terminated:false
  I = 15
 350 G(310) F(I:340) LET J = J * I
- J: 87178400000
- I: 15
+ J: (350) 87178400000
+ I: (360) 15
  J = 1307680000000
 360 G(310) F(I:340) NEXT I
- I: 15
+ I: (360) 15
  terminated:false
  I = 16
 350 G(310) F(I:340) LET J = J * I
- J: 1307680000000
- I: 16
+ J: (350) 1307680000000
+ I: (360) 16
  J = 20922900000000
 360 G(310) F(I:340) NEXT I
- I: 16
+ I: (360) 16
  terminated:false
  I = 17
 350 G(310) F(I:340) LET J = J * I
- J: 20922900000000
- I: 17
+ J: (350) 20922900000000
+ I: (360) 17
  J = 355689000000000
 360 G(310) F(I:340) NEXT I
- I: 17
+ I: (360) 17
  terminated:false
  I = 18
 350 G(310) F(I:340) LET J = J * I
- J: 355689000000000
- I: 18
+ J: (350) 355689000000000
+ I: (360) 18
  J = 6402400000000000
 360 G(310) F(I:340) NEXT I
- I: 18
+ I: (360) 18
  terminated:false
  I = 19
 350 G(310) F(I:340) LET J = J * I
- J: 6402400000000000
- I: 19
+ J: (350) 6402400000000000
+ I: (360) 19
  J = 121646000000000000
 360 G(310) F(I:340) NEXT I
- I: 19
+ I: (360) 19
  terminated:false
  I = 20
 350 G(310) F(I:340) LET J = J * I
- J: 121646000000000000
- I: 20
+ J: (350) 121646000000000000
+ I: (360) 20
  J = 2432920000000000000
 360 G(310) F(I:340) NEXT I
- I: 20
+ I: (360) 20
  terminated:false
  I = 21
 350 G(310) F(I:340) LET J = J * I
- J: 2432920000000000000
- I: 21
+ J: (350) 2432920000000000000
+ I: (360) 21
  J = 51091300000000000000
 360 G(310) F(I:340) NEXT I
- I: 21
+ I: (360) 21
  terminated:false
  I = 22
 350 G(310) F(I:340) LET J = J * I
- J: 51091300000000000000
- I: 22
+ J: (350) 51091300000000000000
+ I: (360) 22
  J = 1124010000000000000000
 360 G(310) F(I:340) NEXT I
- I: 22
+ I: (360) 22
  terminated:false
  I = 23
 350 G(310) F(I:340) LET J = J * I
- J: 1124010000000000000000
- I: 23
+ J: (350) 1124010000000000000000
+ I: (360) 23
  J = 25852200000000000000000
 360 G(310) F(I:340) NEXT I
- I: 23
+ I: (360) 23
  terminated:true
 370 G(310) LET T = J
- J: 25852200000000000000000
+ J: (350) 25852200000000000000000
  T = 25852200000000000000000
 380 G(310) GOTO 400
 400 G(310) RETURN
 100 LET A = T
- T: 25852200000000000000000
+ T: (370) 25852200000000000000000
  A = 25852200000000000000000
 110 LET T = N - R
- N: 23
- R: 21
+ N: (50) 23
+ R: (50) 21
  T = 2
 120 GOSUB 310
 310 G(310) IF T = 0 THEN 390
- T: 2
+ T: (110) 2
  T = 0: false
 320 G(310) IF T = 1 THEN 390
- T: 2
+ T: (110) 2
  T = 1: false
 330 G(310) LET J = 1
  J = 1
 340 G(310) F(I:340) FOR I = 2 TO T
- T: 2
+ T: (110) 2
  I = 2
  T = 2
  terminated:false
 350 G(310) F(I:340) LET J = J * I
- J: 1
- I: 2
+ J: (330) 1
+ I: (340) 2
  J = 2
 360 G(310) F(I:340) NEXT I
- I: 2
+ I: (340) 2
  terminated:true
 370 G(310) LET T = J
- J: 2
+ J: (350) 2
  T = 2
 380 G(310) GOTO 400
 400 G(310) RETURN
 130 LET B = T
- T: 2
+ T: (370) 2
  B = 2
 140 LET P = A / B
- A: 25852200000000000000000
- B: 2
+ A: (100) 25852200000000000000000
+ B: (130) 2
  P = 12926100000000000000000
 150 LET T = R
- R: 21
+ R: (50) 21
  T = 21
 160 GOSUB 310
 310 G(310) IF T = 0 THEN 390
- T: 21
+ T: (150) 21
  T = 0: false
 320 G(310) IF T = 1 THEN 390
- T: 21
+ T: (150) 21
  T = 1: false
 330 G(310) LET J = 1
  J = 1
 340 G(310) F(I:340) FOR I = 2 TO T
- T: 21
+ T: (150) 21
  I = 2
  T = 21
  terminated:false
 350 G(310) F(I:340) LET J = J * I
- J: 1
- I: 2
+ J: (330) 1
+ I: (340) 2
  J = 2
 360 G(310) F(I:340) NEXT I
- I: 2
+ I: (340) 2
  terminated:false
  I = 3
 350 G(310) F(I:340) LET J = J * I
- J: 2
- I: 3
+ J: (350) 2
+ I: (360) 3
  J = 6
 360 G(310) F(I:340) NEXT I
- I: 3
+ I: (360) 3
  terminated:false
  I = 4
 350 G(310) F(I:340) LET J = J * I
- J: 6
- I: 4
+ J: (350) 6
+ I: (360) 4
  J = 24
 360 G(310) F(I:340) NEXT I
- I: 4
+ I: (360) 4
  terminated:false
  I = 5
 350 G(310) F(I:340) LET J = J * I
- J: 24
- I: 5
+ J: (350) 24
+ I: (360) 5
  J = 120
 360 G(310) F(I:340) NEXT I
- I: 5
+ I: (360) 5
  terminated:false
  I = 6
 350 G(310) F(I:340) LET J = J * I
- J: 120
- I: 6
+ J: (350) 120
+ I: (360) 6
  J = 720
 360 G(310) F(I:340) NEXT I
- I: 6
+ I: (360) 6
  terminated:false
  I = 7
 350 G(310) F(I:340) LET J = J * I
- J: 720
- I: 7
+ J: (350) 720
+ I: (360) 7
  J = 5040
 360 G(310) F(I:340) NEXT I
- I: 7
+ I: (360) 7
  terminated:false
  I = 8
 350 G(310) F(I:340) LET J = J * I
- J: 5040
- I: 8
+ J: (350) 5040
+ I: (360) 8
  J = 40320
 360 G(310) F(I:340) NEXT I
- I: 8
+ I: (360) 8
  terminated:false
  I = 9
 350 G(310) F(I:340) LET J = J * I
- J: 40320
- I: 9
+ J: (350) 40320
+ I: (360) 9
  J = 362880
 360 G(310) F(I:340) NEXT I
- I: 9
+ I: (360) 9
  terminated:false
  I = 10
 350 G(310) F(I:340) LET J = J * I
- J: 362880
- I: 10
+ J: (350) 362880
+ I: (360) 10
  J = 3628800
 360 G(310) F(I:340) NEXT I
- I: 10
+ I: (360) 10
  terminated:false
  I = 11
 350 G(310) F(I:340) LET J = J * I
- J: 3628800
- I: 11
+ J: (350) 3628800
+ I: (360) 11
  J = 39916800
 360 G(310) F(I:340) NEXT I
- I: 11
+ I: (360) 11
  terminated:false
  I = 12
 350 G(310) F(I:340) LET J = J * I
- J: 39916800
- I: 12
+ J: (350) 39916800
+ I: (360) 12
  J = 479002000
 360 G(310) F(I:340) NEXT I
- I: 12
+ I: (360) 12
  terminated:false
  I = 13
 350 G(310) F(I:340) LET J = J * I
- J: 479002000
- I: 13
+ J: (350) 479002000
+ I: (360) 13
  J = 6227030000
 360 G(310) F(I:340) NEXT I
- I: 13
+ I: (360) 13
  terminated:false
  I = 14
 350 G(310) F(I:340) LET J = J * I
- J: 6227030000
- I: 14
+ J: (350) 6227030000
+ I: (360) 14
  J = 87178400000
 360 G(310) F(I:340) NEXT I
- I: 14
+ I: (360) 14
  terminated:false
  I = 15
 350 G(310) F(I:340) LET J = J * I
- J: 87178400000
- I: 15
+ J: (350) 87178400000
+ I: (360) 15
  J = 1307680000000
 360 G(310) F(I:340) NEXT I
- I: 15
+ I: (360) 15
  terminated:false
  I = 16
 350 G(310) F(I:340) LET J = J * I
- J: 1307680000000
- I: 16
+ J: (350) 1307680000000
+ I: (360) 16
  J = 20922900000000
 360 G(310) F(I:340) NEXT I
- I: 16
+ I: (360) 16
  terminated:false
  I = 17
 350 G(310) F(I:340) LET J = J * I
- J: 20922900000000
- I: 17
+ J: (350) 20922900000000
+ I: (360) 17
  J = 355689000000000
 360 G(310) F(I:340) NEXT I
- I: 17
+ I: (360) 17
  terminated:false
  I = 18
 350 G(310) F(I:340) LET J = J * I
- J: 355689000000000
- I: 18
+ J: (350) 355689000000000
+ I: (360) 18
  J = 6402400000000000
 360 G(310) F(I:340) NEXT I
- I: 18
+ I: (360) 18
  terminated:false
  I = 19
 350 G(310) F(I:340) LET J = J * I
- J: 6402400000000000
- I: 19
+ J: (350) 6402400000000000
+ I: (360) 19
  J = 121646000000000000
 360 G(310) F(I:340) NEXT I
- I: 19
+ I: (360) 19
  terminated:false
  I = 20
 350 G(310) F(I:340) LET J = J * I
- J: 121646000000000000
- I: 20
+ J: (350) 121646000000000000
+ I: (360) 20
  J = 2432920000000000000
 360 G(310) F(I:340) NEXT I
- I: 20
+ I: (360) 20
  terminated:false
  I = 21
 350 G(310) F(I:340) LET J = J * I
- J: 2432920000000000000
- I: 21
+ J: (350) 2432920000000000000
+ I: (360) 21
  J = 51091300000000000000
 360 G(310) F(I:340) NEXT I
- I: 21
+ I: (360) 21
  terminated:true
 370 G(310) LET T = J
- J: 51091300000000000000
+ J: (350) 51091300000000000000
  T = 51091300000000000000
 380 G(310) GOTO 400
 400 G(310) RETURN
 170 LET C = A / (T * B)
- A: 25852200000000000000000
- T: 51091300000000000000
- B: 2
+ A: (100) 25852200000000000000000
+ T: (370) 51091300000000000000
+ B: (130) 2
  C = 252.999
 180 PRINT "PERMUTATIONS = "; P
 PERMUTATIONS = 
- P: 12926100000000000000000
+ P: (140) 12926100000000000000000
  12926100000000000000000
 190 PRINT "COMBINATIONS = "; C
 COMBINATIONS = 
- C: 252.999
+ C: (170) 252.999
  252.999
 200 PRINT
 
@@ -731,7 +731,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 230 IF L = 1 THEN 250
- L: 0
+ L: (220) 0
  L = 1: false
 240 STOP
 STOP in line 240

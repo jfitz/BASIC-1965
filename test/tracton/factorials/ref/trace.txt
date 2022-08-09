@@ -6,54 +6,54 @@ X =
 50 LET Z = 1
  Z = 1
 60 F(I:60) FOR I = 1 TO X
- X: 5
+ X: (40) 5
  I = 1
  X = 5
  terminated:false
 70 F(I:60) LET Z = Z * I
- Z: 1
- I: 1
+ Z: (50) 1
+ I: (60) 1
  Z = 1
 80 F(I:60) NEXT I
- I: 1
+ I: (60) 1
  terminated:false
  I = 2
 70 F(I:60) LET Z = Z * I
- Z: 1
- I: 2
+ Z: (70) 1
+ I: (80) 2
  Z = 2
 80 F(I:60) NEXT I
- I: 2
+ I: (80) 2
  terminated:false
  I = 3
 70 F(I:60) LET Z = Z * I
- Z: 2
- I: 3
+ Z: (70) 2
+ I: (80) 3
  Z = 6
 80 F(I:60) NEXT I
- I: 3
+ I: (80) 3
  terminated:false
  I = 4
 70 F(I:60) LET Z = Z * I
- Z: 6
- I: 4
+ Z: (70) 6
+ I: (80) 4
  Z = 24
 80 F(I:60) NEXT I
- I: 4
+ I: (80) 4
  terminated:false
  I = 5
 70 F(I:60) LET Z = Z * I
- Z: 24
- I: 5
+ Z: (70) 24
+ I: (80) 5
  Z = 120
 80 F(I:60) NEXT I
- I: 5
+ I: (80) 5
  terminated:true
 90 PRINT "X = "; X, "X! = "; Z
 X = 
- X: 5
+ X: (40) 5
  5              X! = 
- Z: 120
+ Z: (70) 120
  120
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
@@ -61,7 +61,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 120 IF L = 1 THEN 140
- L: 1
+ L: (110) 1
  L = 1: true
 140 PRINT
 
@@ -74,70 +74,70 @@ X =
 50 LET Z = 1
  Z = 1
 60 F(I:60) FOR I = 1 TO X
- X: 7
+ X: (40) 7
  I = 1
  X = 7
  terminated:false
 70 F(I:60) LET Z = Z * I
- Z: 1
- I: 1
+ Z: (50) 1
+ I: (60) 1
  Z = 1
 80 F(I:60) NEXT I
- I: 1
+ I: (60) 1
  terminated:false
  I = 2
 70 F(I:60) LET Z = Z * I
- Z: 1
- I: 2
+ Z: (70) 1
+ I: (80) 2
  Z = 2
 80 F(I:60) NEXT I
- I: 2
+ I: (80) 2
  terminated:false
  I = 3
 70 F(I:60) LET Z = Z * I
- Z: 2
- I: 3
+ Z: (70) 2
+ I: (80) 3
  Z = 6
 80 F(I:60) NEXT I
- I: 3
+ I: (80) 3
  terminated:false
  I = 4
 70 F(I:60) LET Z = Z * I
- Z: 6
- I: 4
+ Z: (70) 6
+ I: (80) 4
  Z = 24
 80 F(I:60) NEXT I
- I: 4
+ I: (80) 4
  terminated:false
  I = 5
 70 F(I:60) LET Z = Z * I
- Z: 24
- I: 5
+ Z: (70) 24
+ I: (80) 5
  Z = 120
 80 F(I:60) NEXT I
- I: 5
+ I: (80) 5
  terminated:false
  I = 6
 70 F(I:60) LET Z = Z * I
- Z: 120
- I: 6
+ Z: (70) 120
+ I: (80) 6
  Z = 720
 80 F(I:60) NEXT I
- I: 6
+ I: (80) 6
  terminated:false
  I = 7
 70 F(I:60) LET Z = Z * I
- Z: 720
- I: 7
+ Z: (70) 720
+ I: (80) 7
  Z = 5040
 80 F(I:60) NEXT I
- I: 7
+ I: (80) 7
  terminated:true
 90 PRINT "X = "; X, "X! = "; Z
 X = 
- X: 7
+ X: (40) 7
  7              X! = 
- Z: 5040
+ Z: (70) 5040
  5040
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
@@ -145,7 +145,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 120 IF L = 1 THEN 140
- L: 1
+ L: (110) 1
  L = 1: true
 140 PRINT
 
@@ -158,158 +158,158 @@ X =
 50 LET Z = 1
  Z = 1
 60 F(I:60) FOR I = 1 TO X
- X: 18
+ X: (40) 18
  I = 1
  X = 18
  terminated:false
 70 F(I:60) LET Z = Z * I
- Z: 1
- I: 1
+ Z: (50) 1
+ I: (60) 1
  Z = 1
 80 F(I:60) NEXT I
- I: 1
+ I: (60) 1
  terminated:false
  I = 2
 70 F(I:60) LET Z = Z * I
- Z: 1
- I: 2
+ Z: (70) 1
+ I: (80) 2
  Z = 2
 80 F(I:60) NEXT I
- I: 2
+ I: (80) 2
  terminated:false
  I = 3
 70 F(I:60) LET Z = Z * I
- Z: 2
- I: 3
+ Z: (70) 2
+ I: (80) 3
  Z = 6
 80 F(I:60) NEXT I
- I: 3
+ I: (80) 3
  terminated:false
  I = 4
 70 F(I:60) LET Z = Z * I
- Z: 6
- I: 4
+ Z: (70) 6
+ I: (80) 4
  Z = 24
 80 F(I:60) NEXT I
- I: 4
+ I: (80) 4
  terminated:false
  I = 5
 70 F(I:60) LET Z = Z * I
- Z: 24
- I: 5
+ Z: (70) 24
+ I: (80) 5
  Z = 120
 80 F(I:60) NEXT I
- I: 5
+ I: (80) 5
  terminated:false
  I = 6
 70 F(I:60) LET Z = Z * I
- Z: 120
- I: 6
+ Z: (70) 120
+ I: (80) 6
  Z = 720
 80 F(I:60) NEXT I
- I: 6
+ I: (80) 6
  terminated:false
  I = 7
 70 F(I:60) LET Z = Z * I
- Z: 720
- I: 7
+ Z: (70) 720
+ I: (80) 7
  Z = 5040
 80 F(I:60) NEXT I
- I: 7
+ I: (80) 7
  terminated:false
  I = 8
 70 F(I:60) LET Z = Z * I
- Z: 5040
- I: 8
+ Z: (70) 5040
+ I: (80) 8
  Z = 40320
 80 F(I:60) NEXT I
- I: 8
+ I: (80) 8
  terminated:false
  I = 9
 70 F(I:60) LET Z = Z * I
- Z: 40320
- I: 9
+ Z: (70) 40320
+ I: (80) 9
  Z = 362880
 80 F(I:60) NEXT I
- I: 9
+ I: (80) 9
  terminated:false
  I = 10
 70 F(I:60) LET Z = Z * I
- Z: 362880
- I: 10
+ Z: (70) 362880
+ I: (80) 10
  Z = 3628800
 80 F(I:60) NEXT I
- I: 10
+ I: (80) 10
  terminated:false
  I = 11
 70 F(I:60) LET Z = Z * I
- Z: 3628800
- I: 11
+ Z: (70) 3628800
+ I: (80) 11
  Z = 39916800
 80 F(I:60) NEXT I
- I: 11
+ I: (80) 11
  terminated:false
  I = 12
 70 F(I:60) LET Z = Z * I
- Z: 39916800
- I: 12
+ Z: (70) 39916800
+ I: (80) 12
  Z = 479002000
 80 F(I:60) NEXT I
- I: 12
+ I: (80) 12
  terminated:false
  I = 13
 70 F(I:60) LET Z = Z * I
- Z: 479002000
- I: 13
+ Z: (70) 479002000
+ I: (80) 13
  Z = 6227030000
 80 F(I:60) NEXT I
- I: 13
+ I: (80) 13
  terminated:false
  I = 14
 70 F(I:60) LET Z = Z * I
- Z: 6227030000
- I: 14
+ Z: (70) 6227030000
+ I: (80) 14
  Z = 87178400000
 80 F(I:60) NEXT I
- I: 14
+ I: (80) 14
  terminated:false
  I = 15
 70 F(I:60) LET Z = Z * I
- Z: 87178400000
- I: 15
+ Z: (70) 87178400000
+ I: (80) 15
  Z = 1307680000000
 80 F(I:60) NEXT I
- I: 15
+ I: (80) 15
  terminated:false
  I = 16
 70 F(I:60) LET Z = Z * I
- Z: 1307680000000
- I: 16
+ Z: (70) 1307680000000
+ I: (80) 16
  Z = 20922900000000
 80 F(I:60) NEXT I
- I: 16
+ I: (80) 16
  terminated:false
  I = 17
 70 F(I:60) LET Z = Z * I
- Z: 20922900000000
- I: 17
+ Z: (70) 20922900000000
+ I: (80) 17
  Z = 355689000000000
 80 F(I:60) NEXT I
- I: 17
+ I: (80) 17
  terminated:false
  I = 18
 70 F(I:60) LET Z = Z * I
- Z: 355689000000000
- I: 18
+ Z: (70) 355689000000000
+ I: (80) 18
  Z = 6402400000000000
 80 F(I:60) NEXT I
- I: 18
+ I: (80) 18
  terminated:true
 90 PRINT "X = "; X, "X! = "; Z
 X = 
- X: 18
+ X: (40) 18
  18             X! = 
- Z: 6402400000000000
+ Z: (70) 6402400000000000
  6402400000000000
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
@@ -317,7 +317,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 120 IF L = 1 THEN 140
- L: 0
+ L: (110) 0
  L = 1: false
 130 STOP
 STOP in line 130

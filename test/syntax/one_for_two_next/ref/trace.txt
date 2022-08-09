@@ -2,43 +2,43 @@
  I = 1
  terminated:false
 30 F(I:20) IF MOD(I, 2) = 0 THEN 70
- I: 1
+ I: (20) 1
  MOD(I, 2) = 0: false
 40 F(I:20) PRINT I; " IS ODD"
- I: 1
+ I: (20) 1
  1  IS ODD
 50 F(I:20) NEXT I
- I: 1
+ I: (20) 1
  terminated:false
  I = 2
 30 F(I:20) IF MOD(I, 2) = 0 THEN 70
- I: 2
+ I: (50) 2
  MOD(I, 2) = 0: true
 70 PRINT I; " IS EVEN"
- I: 2
+ I: (50) 2
  2  IS EVEN
 80 NEXT I
- I: 2
+ I: (50) 2
  terminated:false
  I = 3
 30 F(I:20) IF MOD(I, 2) = 0 THEN 70
- I: 3
+ I: (80) 3
  MOD(I, 2) = 0: false
 40 F(I:20) PRINT I; " IS ODD"
- I: 3
+ I: (80) 3
  3  IS ODD
 50 F(I:20) NEXT I
- I: 3
+ I: (80) 3
  terminated:false
  I = 4
 30 F(I:20) IF MOD(I, 2) = 0 THEN 70
- I: 4
+ I: (50) 4
  MOD(I, 2) = 0: true
 70 PRINT I; " IS EVEN"
- I: 4
+ I: (50) 4
  4  IS EVEN
 80 NEXT I
- I: 4
+ I: (50) 4
  terminated:true
 90 END
 STOP in line 90

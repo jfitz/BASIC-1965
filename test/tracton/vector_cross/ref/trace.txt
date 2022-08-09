@@ -13,32 +13,32 @@ ENTER 2ND VECTOR (B1,B2,B3)
  B2 = 3
  B3 = 4
 70 LET X = (A2 * B3) - (A3 * B2)
- A2: 11
- B3: 4
- A3: 10
- B2: 3
+ A2: (40) 11
+ B3: (60) 4
+ A3: (40) 10
+ B2: (60) 3
  X = 14
 80 LET Y = (A3 * B1) - (A1 * B3)
- A3: 10
- B1: 4
- A1: 10
- B3: 4
+ A3: (40) 10
+ B1: (60) 4
+ A1: (40) 10
+ B3: (60) 4
  Y = 0
 90 LET Z = (A1 * B2) - (A2 * B1)
- A1: 10
- B2: 3
- A2: 11
- B1: 4
+ A1: (40) 10
+ B2: (60) 3
+ A2: (40) 11
+ B1: (60) 4
  Z = -14
 100 PRINT "VECTOR CROSS PRODUCT"
 VECTOR CROSS PRODUCT
 110 PRINT "X = "; X, "Y = "; Y, "Z = "; Z
 X = 
- X: 14
+ X: (70) 14
  14             Y = 
- Y: 0
+ Y: (80) 0
  0              Z = 
- Z: -14
+ Z: (90) -14
 -14
 120 PRINT "++++++++++++++++++++"
 ++++++++++++++++++++
@@ -48,7 +48,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 150 IF L = 1 THEN 170
- L: 1
+ L: (140) 1
  L = 1: true
 170 PRINT
 
@@ -68,32 +68,32 @@ ENTER 2ND VECTOR (B1,B2,B3)
  B2 = 41
  B3 = 67
 70 LET X = (A2 * B3) - (A3 * B2)
- A2: 23
- B3: 67
- A3: 34
- B2: 41
+ A2: (40) 23
+ B3: (60) 67
+ A3: (40) 34
+ B2: (60) 41
  X = 147
 80 LET Y = (A3 * B1) - (A1 * B3)
- A3: 34
- B1: 23
- A1: 12
- B3: 67
+ A3: (40) 34
+ B1: (60) 23
+ A1: (40) 12
+ B3: (60) 67
  Y = -22
 90 LET Z = (A1 * B2) - (A2 * B1)
- A1: 12
- B2: 41
- A2: 23
- B1: 23
+ A1: (40) 12
+ B2: (60) 41
+ A2: (40) 23
+ B1: (60) 23
  Z = -37
 100 PRINT "VECTOR CROSS PRODUCT"
 VECTOR CROSS PRODUCT
 110 PRINT "X = "; X, "Y = "; Y, "Z = "; Z
 X = 
- X: 147
+ X: (70) 147
  147            Y = 
- Y: -22
+ Y: (80) -22
 -22             Z = 
- Z: -37
+ Z: (90) -37
 -37
 120 PRINT "++++++++++++++++++++"
 ++++++++++++++++++++
@@ -103,7 +103,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 150 IF L = 1 THEN 170
- L: 0
+ L: (140) 0
  L = 1: false
 160 STOP
 STOP in line 160

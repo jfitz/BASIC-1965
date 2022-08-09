@@ -9,14 +9,14 @@ X =
 ? 54
  X = 54
 80 LET J = LOG(X) / LOG(Y)
- X: 54
- Y: 16
+ X: (70) 54
+ Y: (50) 16
  J = 1.43872
 90 PRINT "LOG"; X; " = "; J
 LOG
- X: 54
+ X: (70) 54
  54  = 
- J: 1.43872
+ J: (80) 1.43872
  1.43872
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
@@ -24,7 +24,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 120 IF L = 1 THEN 140
- L: 1
+ L: (110) 1
  L = 1: true
 140 PRINT
 
@@ -40,14 +40,14 @@ X =
 ? 23
  X = 23
 80 LET J = LOG(X) / LOG(Y)
- X: 23
- Y: 567
+ X: (70) 23
+ Y: (50) 567
  J = 0.494529
 90 PRINT "LOG"; X; " = "; J
 LOG
- X: 23
+ X: (70) 23
  23  = 
- J: 0.494529
+ J: (80) 0.494529
  0.494529
 100 PRINT "TYPE 1 TO CONTINUE, 0 TO STOP"
 TYPE 1 TO CONTINUE, 0 TO STOP
@@ -55,7 +55,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 120 IF L = 1 THEN 140
- L: 0
+ L: (110) 0
  L = 1: false
 130 STOP
 STOP in line 130

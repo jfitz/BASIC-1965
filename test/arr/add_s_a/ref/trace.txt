@@ -3,53 +3,53 @@
  I = 0
  terminated:false
 50 F(I:30) LET A(I) = I
- I: 0
+ I: (30) 0
  A(0) = 0
 70 F(I:30) NEXT I
- I: 0
+ I: (30) 0
  terminated:false
  I = 1
 50 F(I:30) LET A(I) = I
- I: 1
+ I: (70) 1
  A(1) = 1
 70 F(I:30) NEXT I
- I: 1
+ I: (70) 1
  terminated:false
  I = 2
 50 F(I:30) LET A(I) = I
- I: 2
+ I: (70) 2
  A(2) = 2
 70 F(I:30) NEXT I
- I: 2
+ I: (70) 2
  terminated:false
  I = 3
 50 F(I:30) LET A(I) = I
- I: 3
+ I: (70) 3
  A(3) = 3
 70 F(I:30) NEXT I
- I: 3
+ I: (70) 3
  terminated:false
  I = 4
 50 F(I:30) LET A(I) = I
- I: 4
+ I: (70) 4
  A(4) = 4
 70 F(I:30) NEXT I
- I: 4
+ I: (70) 4
  terminated:false
  I = 5
 50 F(I:30) LET A(I) = I
- I: 5
+ I: (70) 5
  A(5) = 5
 70 F(I:30) NEXT I
- I: 5
+ I: (70) 5
  terminated:true
 100 ARR B = 1 + A
- A(0): 0
- A(1): 1
- A(2): 2
- A(3): 3
- A(4): 4
- A(5): 5
+ A(0): (50) 0
+ A(1): (50) 1
+ A(2): (50) 2
+ A(3): (50) 3
+ A(4): (50) 4
+ A(5): (50) 5
  B(0) = 1
  B(1) = 2
  B(2) = 3
@@ -59,24 +59,24 @@
 110 PRINT "ARRAY A"
 ARRAY A
 120 ARR PRINT A;
- A(0): 0
- A(1): 1
- A(2): 2
- A(3): 3
- A(4): 4
- A(5): 5
+ A(0): (50) 0
+ A(1): (50) 1
+ A(2): (50) 2
+ A(3): (50) 3
+ A(4): (50) 4
+ A(5): (50) 5
  0  1  2  3  4  5 
 122 PRINT
 
 130 PRINT "ARRAY B"
 ARRAY B
 140 ARR PRINT B;
- B(0): 1
- B(1): 2
- B(2): 3
- B(3): 4
- B(4): 5
- B(5): 6
+ B(0): (100) 1
+ B(1): (100) 2
+ B(2): (100) 3
+ B(3): (100) 4
+ B(4): (100) 5
+ B(5): (100) 6
  1  2  3  4  5  6 
 142 PRINT
 

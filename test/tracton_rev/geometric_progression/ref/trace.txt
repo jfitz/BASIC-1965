@@ -19,7 +19,7 @@ FOR TABLE TYPE 1, IF NOT TYPE 0
 ? 1
  C = 1
 110 IF C = 1 THEN 130
- C: 1
+ C: (100) 1
  C = 1: true
 130 PRINT
 
@@ -30,133 +30,133 @@ TERM NUMBER     TERM VALUE
 160 LET J = 0
  J = 0
 170 F(I:170) FOR I = 0 TO N - 1
- N: 5
+ N: (80) 5
  I = 0
  N - 1 = 4
  terminated:false
 180 F(I:170) LET K = I + 1
- I: 0
+ I: (170) 0
  K = 1
 190 F(I:170) LET L = A * (R ^ I)
- A: 10
- R: 2
- I: 0
+ A: (40) 10
+ R: (60) 2
+ I: (170) 0
  L = 10
 200 F(I:170) LET J = J + L
- J: 0
- L: 10
+ J: (160) 0
+ L: (190) 10
  J = 10
 210 F(I:170) IF C = 1 THEN 230
- C: 1
+ C: (100) 1
  C = 1: true
 230 F(I:170) PRINT K, L
- K: 1
+ K: (180) 1
  1              
- L: 10
+ L: (190) 10
  10
 240 F(I:170) NEXT I
- I: 0
+ I: (170) 0
  terminated:false
  I = 1
 180 F(I:170) LET K = I + 1
- I: 1
+ I: (240) 1
  K = 2
 190 F(I:170) LET L = A * (R ^ I)
- A: 10
- R: 2
- I: 1
+ A: (40) 10
+ R: (60) 2
+ I: (240) 1
  L = 20
 200 F(I:170) LET J = J + L
- J: 10
- L: 20
+ J: (200) 10
+ L: (190) 20
  J = 30
 210 F(I:170) IF C = 1 THEN 230
- C: 1
+ C: (100) 1
  C = 1: true
 230 F(I:170) PRINT K, L
- K: 2
+ K: (180) 2
  2              
- L: 20
+ L: (190) 20
  20
 240 F(I:170) NEXT I
- I: 1
+ I: (240) 1
  terminated:false
  I = 2
 180 F(I:170) LET K = I + 1
- I: 2
+ I: (240) 2
  K = 3
 190 F(I:170) LET L = A * (R ^ I)
- A: 10
- R: 2
- I: 2
+ A: (40) 10
+ R: (60) 2
+ I: (240) 2
  L = 40
 200 F(I:170) LET J = J + L
- J: 30
- L: 40
+ J: (200) 30
+ L: (190) 40
  J = 70
 210 F(I:170) IF C = 1 THEN 230
- C: 1
+ C: (100) 1
  C = 1: true
 230 F(I:170) PRINT K, L
- K: 3
+ K: (180) 3
  3              
- L: 40
+ L: (190) 40
  40
 240 F(I:170) NEXT I
- I: 2
+ I: (240) 2
  terminated:false
  I = 3
 180 F(I:170) LET K = I + 1
- I: 3
+ I: (240) 3
  K = 4
 190 F(I:170) LET L = A * (R ^ I)
- A: 10
- R: 2
- I: 3
+ A: (40) 10
+ R: (60) 2
+ I: (240) 3
  L = 80
 200 F(I:170) LET J = J + L
- J: 70
- L: 80
+ J: (200) 70
+ L: (190) 80
  J = 150
 210 F(I:170) IF C = 1 THEN 230
- C: 1
+ C: (100) 1
  C = 1: true
 230 F(I:170) PRINT K, L
- K: 4
+ K: (180) 4
  4              
- L: 80
+ L: (190) 80
  80
 240 F(I:170) NEXT I
- I: 3
+ I: (240) 3
  terminated:false
  I = 4
 180 F(I:170) LET K = I + 1
- I: 4
+ I: (240) 4
  K = 5
 190 F(I:170) LET L = A * (R ^ I)
- A: 10
- R: 2
- I: 4
+ A: (40) 10
+ R: (60) 2
+ I: (240) 4
  L = 160
 200 F(I:170) LET J = J + L
- J: 150
- L: 160
+ J: (200) 150
+ L: (190) 160
  J = 310
 210 F(I:170) IF C = 1 THEN 230
- C: 1
+ C: (100) 1
  C = 1: true
 230 F(I:170) PRINT K, L
- K: 5
+ K: (180) 5
  5              
- L: 160
+ L: (190) 160
  160
 240 F(I:170) NEXT I
- I: 4
+ I: (240) 4
  terminated:true
  I
 250 PRINT "SUM = "; J
 SUM = 
- J: 310
+ J: (200) 310
  310
 260 PRINT
 
@@ -166,7 +166,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  X = 0
 290 IF X = 1 THEN 310
- X: 0
+ X: (280) 0
  X = 1: false
 300 STOP
 STOP in line 300

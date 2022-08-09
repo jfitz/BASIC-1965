@@ -13,82 +13,82 @@ TABLE
 120 PRINT "X", "Y"
 X               Y
 130 F(I:130) FOR I = X TO W
- X: 5
- W: 10
+ X: (80) 5
+ W: (100) 10
  I = 5
  X = 5
  W = 10
  terminated:false
 140 F(I:130) LET Y = 2 * I + 6
- I: 5
+ I: (130) 5
  Y = 16
 150 F(I:130) PRINT I, Y
- I: 5
+ I: (130) 5
  5              
- Y: 16
+ Y: (140) 16
  16
 160 F(I:130) NEXT I
- I: 5
+ I: (130) 5
  terminated:false
  I = 6
 140 F(I:130) LET Y = 2 * I + 6
- I: 6
+ I: (160) 6
  Y = 18
 150 F(I:130) PRINT I, Y
- I: 6
+ I: (160) 6
  6              
- Y: 18
+ Y: (140) 18
  18
 160 F(I:130) NEXT I
- I: 6
+ I: (160) 6
  terminated:false
  I = 7
 140 F(I:130) LET Y = 2 * I + 6
- I: 7
+ I: (160) 7
  Y = 20
 150 F(I:130) PRINT I, Y
- I: 7
+ I: (160) 7
  7              
- Y: 20
+ Y: (140) 20
  20
 160 F(I:130) NEXT I
- I: 7
+ I: (160) 7
  terminated:false
  I = 8
 140 F(I:130) LET Y = 2 * I + 6
- I: 8
+ I: (160) 8
  Y = 22
 150 F(I:130) PRINT I, Y
- I: 8
+ I: (160) 8
  8              
- Y: 22
+ Y: (140) 22
  22
 160 F(I:130) NEXT I
- I: 8
+ I: (160) 8
  terminated:false
  I = 9
 140 F(I:130) LET Y = 2 * I + 6
- I: 9
+ I: (160) 9
  Y = 24
 150 F(I:130) PRINT I, Y
- I: 9
+ I: (160) 9
  9              
- Y: 24
+ Y: (140) 24
  24
 160 F(I:130) NEXT I
- I: 9
+ I: (160) 9
  terminated:false
  I = 10
 140 F(I:130) LET Y = 2 * I + 6
- I: 10
+ I: (160) 10
  Y = 26
 150 F(I:130) PRINT I, Y
- I: 10
+ I: (160) 10
  10             
- Y: 26
+ Y: (140) 26
  26
 160 F(I:130) NEXT I
- I: 10
+ I: (160) 10
  terminated:true
 170 PRINT
 
@@ -98,7 +98,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 200 IF L = 1 THEN 220
- L: 0
+ L: (190) 0
  L = 1: false
 210 STOP
 STOP in line 210

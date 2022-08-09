@@ -6,30 +6,30 @@ RADIUS
 50 LET P = 3.14159
  P = 3.14159
 60 LET D = 2 * R
- R: 5
+ R: (40) 5
  D = 10
 70 LET I = (P * (D ^ 4)) / 64
- P: 3.14159
- D: 10
+ P: (50) 3.14159
+ D: (60) 10
  I = 490.873
 80 LET J = I * 2
- I: 490.873
+ I: (70) 490.873
  J = 981.746
 90 LET A = (P * (D ^ 2)) / 4
- P: 3.14159
- D: 10
+ P: (50) 3.14159
+ D: (60) 10
  A = 78.5398
 100 PRINT "MOMENT OF INERTIA = "; I
 MOMENT OF INERTIA = 
- I: 490.873
+ I: (70) 490.873
  490.873
 110 PRINT "POLAR MOMENT OF INERTIA = "; J
 POLAR MOMENT OF INERTIA = 
- J: 981.746
+ J: (80) 981.746
  981.746
 120 PRINT "AREA OF SECTION = "; A
 AREA OF SECTION = 
- A: 78.5398
+ A: (90) 78.5398
  78.5398
 130 PRINT "*************************"
 *************************
@@ -39,7 +39,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 160 IF L = 1 THEN 180
- L: 0
+ L: (150) 0
  L = 1: false
 170 STOP
 STOP in line 170

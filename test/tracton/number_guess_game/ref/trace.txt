@@ -18,15 +18,15 @@ YOUR GUESS IS =
 ? 45
  X = 45
 140 LET Y = Y + 1
- Y: 0
+ Y: (60) 0
  Y = 1
 150 IF X = R THEN 180
- X: 45
- R: 42
+ X: (130) 45
+ R: (50) 42
  X = R: false
 160 IF X > R THEN 280
- X: 45
- R: 42
+ X: (130) 45
+ R: (50) 42
  X > R: true
 280 PRINT "TOO HIGH, TRY AGAIN"
 TOO HIGH, TRY AGAIN
@@ -37,15 +37,15 @@ YOUR GUESS IS =
 ? 25
  X = 25
 140 LET Y = Y + 1
- Y: 1
+ Y: (140) 1
  Y = 2
 150 IF X = R THEN 180
- X: 25
- R: 42
+ X: (130) 25
+ R: (50) 42
  X = R: false
 160 IF X > R THEN 280
- X: 25
- R: 42
+ X: (130) 25
+ R: (50) 42
  X > R: false
 170 GOTO 300
 300 PRINT "TOO LOW, TRY AGAIN"
@@ -57,15 +57,15 @@ YOUR GUESS IS =
 ? 35
  X = 35
 140 LET Y = Y + 1
- Y: 2
+ Y: (140) 2
  Y = 3
 150 IF X = R THEN 180
- X: 35
- R: 42
+ X: (130) 35
+ R: (50) 42
  X = R: false
 160 IF X > R THEN 280
- X: 35
- R: 42
+ X: (130) 35
+ R: (50) 42
  X > R: false
 170 GOTO 300
 300 PRINT "TOO LOW, TRY AGAIN"
@@ -77,17 +77,17 @@ YOUR GUESS IS =
 ? 42
  X = 42
 140 LET Y = Y + 1
- Y: 3
+ Y: (140) 3
  Y = 4
 150 IF X = R THEN 180
- X: 42
- R: 42
+ X: (130) 42
+ R: (50) 42
  X = R: true
 180 PRINT "NOT BAD!!!-YOU GOT IT!!!"
 NOT BAD!!!-YOU GOT IT!!!
 190 PRINT "YOUR NUMBER OF TRIES WERE"; Y
 YOUR NUMBER OF TRIES WERE
- Y: 4
+ Y: (140) 4
  4
 200 PRINT
 
@@ -99,7 +99,7 @@ IF NOT TYPE 0
 ? 0
  L = 0
 240 IF L = 1 THEN 260
- L: 0
+ L: (230) 0
  L = 1: false
 250 STOP
 STOP in line 250

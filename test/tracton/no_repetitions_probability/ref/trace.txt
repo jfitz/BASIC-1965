@@ -13,24 +13,24 @@ SIZE OF SAMPLE
 70 LET J = 1
  J = 1
 80 F(I:80) FOR I = 1 TO N - 1
- N: 2
+ N: (60) 2
  I = 1
  N - 1 = 1
  terminated:false
 90 F(I:80) LET K = 1 - (I / M)
- I: 1
- M: 56
+ I: (80) 1
+ M: (40) 56
  K = 0.982143
 100 F(I:80) LET J = J * K
- J: 1
- K: 0.982143
+ J: (70) 1
+ K: (90) 0.982143
  J = 0.982143
 110 F(I:80) NEXT I
- I: 1
+ I: (80) 1
  terminated:true
 120 PRINT "PROBABILITY = "; J
 PROBABILITY = 
- J: 0.982143
+ J: (100) 0.982143
  0.982143
 130 PRINT
 
@@ -40,7 +40,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 160 IF L = 1 THEN 30
- L: 1
+ L: (150) 1
  L = 1: true
 30 PRINT "********************"
 ********************
@@ -57,48 +57,48 @@ SIZE OF SAMPLE
 70 LET J = 1
  J = 1
 80 F(I:80) FOR I = 1 TO N - 1
- N: 4
+ N: (60) 4
  I = 1
  N - 1 = 3
  terminated:false
 90 F(I:80) LET K = 1 - (I / M)
- I: 1
- M: 9
+ I: (80) 1
+ M: (40) 9
  K = 0.888889
 100 F(I:80) LET J = J * K
- J: 1
- K: 0.888889
+ J: (70) 1
+ K: (90) 0.888889
  J = 0.888889
 110 F(I:80) NEXT I
- I: 1
+ I: (80) 1
  terminated:false
  I = 2
 90 F(I:80) LET K = 1 - (I / M)
- I: 2
- M: 9
+ I: (110) 2
+ M: (40) 9
  K = 0.777778
 100 F(I:80) LET J = J * K
- J: 0.888889
- K: 0.777778
+ J: (100) 0.888889
+ K: (90) 0.777778
  J = 0.691358
 110 F(I:80) NEXT I
- I: 2
+ I: (110) 2
  terminated:false
  I = 3
 90 F(I:80) LET K = 1 - (I / M)
- I: 3
- M: 9
+ I: (110) 3
+ M: (40) 9
  K = 0.666667
 100 F(I:80) LET J = J * K
- J: 0.691358
- K: 0.666667
+ J: (100) 0.691358
+ K: (90) 0.666667
  J = 0.460906
 110 F(I:80) NEXT I
- I: 3
+ I: (110) 3
  terminated:true
 120 PRINT "PROBABILITY = "; J
 PROBABILITY = 
- J: 0.460906
+ J: (100) 0.460906
  0.460906
 130 PRINT
 
@@ -108,7 +108,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 160 IF L = 1 THEN 30
- L: 0
+ L: (150) 0
  L = 1: false
 170 STOP
 STOP in line 170

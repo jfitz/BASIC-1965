@@ -30,2211 +30,2212 @@
 10 LET N0 = 100
  N0 = 100
 12 DIM T(N0, 10), V(N0)
- N0: 100
+ N0: (10) 100
 20 F(I:20) FOR I = 0 TO N0
- N0: 100
+ N0: (10) 100
  I = 0
  N0 = 100
  terminated:false
 30 F(I:20) READ K
  K = -3
 40 F(I:20) IF K <> 999 THEN 50
- K: -3
+ K: (30) -3
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 0
- K: -3
+ I: (20) 0
+ K: (30) -3
  T(0,0) = -3
 60 F(I:20) LET K1 = ABS(K)
- K: -3
+ K: (30) -3
  K1 = 3
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 3
+ K1: (60) 3
  J = 1
  2 * K1 + 1 - SGN(K1) = 6
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 0
- J: 1
+ I: (20) 0
+ J: (70) 1
  T(0,1) = 1
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 0
- J: 2
+ I: (20) 0
+ J: (90) 2
  T(0,2) = 1
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 0
- J: 3
+ I: (20) 0
+ J: (90) 3
  T(0,3) = 2
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 0
- J: 4
+ I: (20) 0
+ J: (90) 4
  T(0,4) = 2
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:false
  J = 5
 80 F(I:20,J:70) READ T(I, J)
- I: 0
- J: 5
+ I: (20) 0
+ J: (90) 5
  T(0,5) = 3
 90 F(I:20,J:70) NEXT J
- J: 5
+ J: (90) 5
  terminated:false
  J = 6
 80 F(I:20,J:70) READ T(I, J)
- I: 0
- J: 6
+ I: (20) 0
+ J: (90) 6
  T(0,6) = 3
 90 F(I:20,J:70) NEXT J
- J: 6
+ J: (90) 6
  terminated:true
 95 F(I:20) NEXT I
- I: 0
+ I: (20) 0
  terminated:false
  I = 1
 30 F(I:20) READ K
  K = 2
 40 F(I:20) IF K <> 999 THEN 50
- K: 2
+ K: (30) 2
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 1
- K: 2
+ I: (95) 1
+ K: (30) 2
  T(1,0) = 2
 60 F(I:20) LET K1 = ABS(K)
- K: 2
+ K: (30) 2
  K1 = 2
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 2
+ K1: (60) 2
  J = 1
  2 * K1 + 1 - SGN(K1) = 4
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 1
- J: 1
+ I: (95) 1
+ J: (70) 1
  T(1,1) = 0.5
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 1
- J: 2
+ I: (95) 1
+ J: (90) 2
  T(1,2) = 4
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 1
- J: 3
+ I: (95) 1
+ J: (90) 3
  T(1,3) = 0.5
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 1
- J: 4
+ I: (95) 1
+ J: (90) 4
  T(1,4) = 5
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:true
 95 F(I:20) NEXT I
- I: 1
+ I: (95) 1
  terminated:false
  I = 2
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 2
- K: 0
+ I: (95) 2
+ K: (30) 0
  T(2,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 2
- J: 1
+ I: (95) 2
+ J: (70) 1
  T(2,1) = 0
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 2
+ I: (95) 2
  terminated:false
  I = 3
 30 F(I:20) READ K
  K = 3
 40 F(I:20) IF K <> 999 THEN 50
- K: 3
+ K: (30) 3
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 3
- K: 3
+ I: (95) 3
+ K: (30) 3
  T(3,0) = 3
 60 F(I:20) LET K1 = ABS(K)
- K: 3
+ K: (30) 3
  K1 = 3
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 3
+ K1: (60) 3
  J = 1
  2 * K1 + 1 - SGN(K1) = 6
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 3
- J: 1
+ I: (95) 3
+ J: (70) 1
  T(3,1) = 0.333
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 3
- J: 2
+ I: (95) 3
+ J: (90) 2
  T(3,2) = 6
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 3
- J: 3
+ I: (95) 3
+ J: (90) 3
  T(3,3) = 0.167
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 3
- J: 4
+ I: (95) 3
+ J: (90) 4
  T(3,4) = 7
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:false
  J = 5
 80 F(I:20,J:70) READ T(I, J)
- I: 3
- J: 5
+ I: (95) 3
+ J: (90) 5
  T(3,5) = 0.5
 90 F(I:20,J:70) NEXT J
- J: 5
+ J: (90) 5
  terminated:false
  J = 6
 80 F(I:20,J:70) READ T(I, J)
- I: 3
- J: 6
+ I: (95) 3
+ J: (90) 6
  T(3,6) = 8
 90 F(I:20,J:70) NEXT J
- J: 6
+ J: (90) 6
  terminated:true
 95 F(I:20) NEXT I
- I: 3
+ I: (95) 3
  terminated:false
  I = 4
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 4
- K: 0
+ I: (95) 4
+ K: (30) 0
  T(4,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 4
- J: 1
+ I: (95) 4
+ J: (70) 1
  T(4,1) = 100
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 4
+ I: (95) 4
  terminated:false
  I = 5
 30 F(I:20) READ K
  K = -2
 40 F(I:20) IF K <> 999 THEN 50
- K: -2
+ K: (30) -2
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 5
- K: -2
+ I: (95) 5
+ K: (30) -2
  T(5,0) = -2
 60 F(I:20) LET K1 = ABS(K)
- K: -2
+ K: (30) -2
  K1 = 2
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 2
+ K1: (60) 2
  J = 1
  2 * K1 + 1 - SGN(K1) = 4
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 5
- J: 1
+ I: (95) 5
+ J: (70) 1
  T(5,1) = 4
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 5
- J: 2
+ I: (95) 5
+ J: (90) 2
  T(5,2) = 9
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 5
- J: 3
+ I: (95) 5
+ J: (90) 3
  T(5,3) = 5
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 5
- J: 4
+ I: (95) 5
+ J: (90) 4
  T(5,4) = 10
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:true
 95 F(I:20) NEXT I
- I: 5
+ I: (95) 5
  terminated:false
  I = 6
 30 F(I:20) READ K
  K = 2
 40 F(I:20) IF K <> 999 THEN 50
- K: 2
+ K: (30) 2
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 6
- K: 2
+ I: (95) 6
+ K: (30) 2
  T(6,0) = 2
 60 F(I:20) LET K1 = ABS(K)
- K: 2
+ K: (30) 2
  K1 = 2
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 2
+ K1: (60) 2
  J = 1
  2 * K1 + 1 - SGN(K1) = 4
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 6
- J: 1
+ I: (95) 6
+ J: (70) 1
  T(6,1) = 0.5
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 6
- J: 2
+ I: (95) 6
+ J: (90) 2
  T(6,2) = 11
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 6
- J: 3
+ I: (95) 6
+ J: (90) 3
  T(6,3) = 0.5
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 6
- J: 4
+ I: (95) 6
+ J: (90) 4
  T(6,4) = 12
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:true
 95 F(I:20) NEXT I
- I: 6
+ I: (95) 6
  terminated:false
  I = 7
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 7
- K: 0
+ I: (95) 7
+ K: (30) 0
  T(7,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 7
- J: 1
+ I: (95) 7
+ J: (70) 1
  T(7,1) = -10
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 7
+ I: (95) 7
  terminated:false
  I = 8
 30 F(I:20) READ K
  K = 2
 40 F(I:20) IF K <> 999 THEN 50
- K: 2
+ K: (30) 2
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 8
- K: 2
+ I: (95) 8
+ K: (30) 2
  T(8,0) = 2
 60 F(I:20) LET K1 = ABS(K)
- K: 2
+ K: (30) 2
  K1 = 2
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 2
+ K1: (60) 2
  J = 1
  2 * K1 + 1 - SGN(K1) = 4
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 8
- J: 1
+ I: (95) 8
+ J: (70) 1
  T(8,1) = 0.75
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 8
- J: 2
+ I: (95) 8
+ J: (90) 2
  T(8,2) = 13
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 8
- J: 3
+ I: (95) 8
+ J: (90) 3
  T(8,3) = 0.25
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 8
- J: 4
+ I: (95) 8
+ J: (90) 4
  T(8,4) = 14
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:true
 95 F(I:20) NEXT I
- I: 8
+ I: (95) 8
  terminated:false
  I = 9
 30 F(I:20) READ K
  K = 3
 40 F(I:20) IF K <> 999 THEN 50
- K: 3
+ K: (30) 3
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 9
- K: 3
+ I: (95) 9
+ K: (30) 3
  T(9,0) = 3
 60 F(I:20) LET K1 = ABS(K)
- K: 3
+ K: (30) 3
  K1 = 3
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 3
+ K1: (60) 3
  J = 1
  2 * K1 + 1 - SGN(K1) = 6
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 9
- J: 1
+ I: (95) 9
+ J: (70) 1
  T(9,1) = 0.167
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 9
- J: 2
+ I: (95) 9
+ J: (90) 2
  T(9,2) = 15
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 9
- J: 3
+ I: (95) 9
+ J: (90) 3
  T(9,3) = 0.333
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 9
- J: 4
+ I: (95) 9
+ J: (90) 4
  T(9,4) = 16
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:false
  J = 5
 80 F(I:20,J:70) READ T(I, J)
- I: 9
- J: 5
+ I: (95) 9
+ J: (90) 5
  T(9,5) = 0.5
 90 F(I:20,J:70) NEXT J
- J: 5
+ J: (90) 5
  terminated:false
  J = 6
 80 F(I:20,J:70) READ T(I, J)
- I: 9
- J: 6
+ I: (95) 9
+ J: (90) 6
  T(9,6) = 17
 90 F(I:20,J:70) NEXT J
- J: 6
+ J: (90) 6
  terminated:true
 95 F(I:20) NEXT I
- I: 9
+ I: (95) 9
  terminated:false
  I = 10
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 10
- K: 0
+ I: (95) 10
+ K: (30) 0
  T(10,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 10
- J: 1
+ I: (95) 10
+ J: (70) 1
  T(10,1) = -100
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 10
+ I: (95) 10
  terminated:false
  I = 11
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 11
- K: 0
+ I: (95) 11
+ K: (30) 0
  T(11,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 11
- J: 1
+ I: (95) 11
+ J: (70) 1
  T(11,1) = 90
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 11
+ I: (95) 11
  terminated:false
  I = 12
 30 F(I:20) READ K
  K = -2
 40 F(I:20) IF K <> 999 THEN 50
- K: -2
+ K: (30) -2
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 12
- K: -2
+ I: (95) 12
+ K: (30) -2
  T(12,0) = -2
 60 F(I:20) LET K1 = ABS(K)
- K: -2
+ K: (30) -2
  K1 = 2
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 2
+ K1: (60) 2
  J = 1
  2 * K1 + 1 - SGN(K1) = 4
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 12
- J: 1
+ I: (95) 12
+ J: (70) 1
  T(12,1) = 6
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 12
- J: 2
+ I: (95) 12
+ J: (90) 2
  T(12,2) = 18
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 12
- J: 3
+ I: (95) 12
+ J: (90) 3
  T(12,3) = 7
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 12
- J: 4
+ I: (95) 12
+ J: (90) 4
  T(12,4) = 19
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:true
 95 F(I:20) NEXT I
- I: 12
+ I: (95) 12
  terminated:false
  I = 13
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 13
- K: 0
+ I: (95) 13
+ K: (30) 0
  T(13,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 13
- J: 1
+ I: (95) 13
+ J: (70) 1
  T(13,1) = 90
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 13
+ I: (95) 13
  terminated:false
  I = 14
 30 F(I:20) READ K
  K = -2
 40 F(I:20) IF K <> 999 THEN 50
- K: -2
+ K: (30) -2
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 14
- K: -2
+ I: (95) 14
+ K: (30) -2
  T(14,0) = -2
 60 F(I:20) LET K1 = ABS(K)
- K: -2
+ K: (30) -2
  K1 = 2
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 2
+ K1: (60) 2
  J = 1
  2 * K1 + 1 - SGN(K1) = 4
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 14
- J: 1
+ I: (95) 14
+ J: (70) 1
  T(14,1) = 8
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 14
- J: 2
+ I: (95) 14
+ J: (90) 2
  T(14,2) = 20
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 14
- J: 3
+ I: (95) 14
+ J: (90) 3
  T(14,3) = 9
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 14
- J: 4
+ I: (95) 14
+ J: (90) 4
  T(14,4) = 21
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:true
 95 F(I:20) NEXT I
- I: 14
+ I: (95) 14
  terminated:false
  I = 15
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 15
- K: 0
+ I: (95) 15
+ K: (30) 0
  T(15,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 15
- J: 1
+ I: (95) 15
+ J: (70) 1
  T(15,1) = 100
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 15
+ I: (95) 15
  terminated:false
  I = 16
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 16
- K: 0
+ I: (95) 16
+ K: (30) 0
  T(16,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 16
- J: 1
+ I: (95) 16
+ J: (70) 1
  T(16,1) = 0
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 16
+ I: (95) 16
  terminated:false
  I = 17
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 17
- K: 0
+ I: (95) 17
+ K: (30) 0
  T(17,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 17
- J: 1
+ I: (95) 17
+ J: (70) 1
  T(17,1) = -100
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 17
+ I: (95) 17
  terminated:false
  I = 18
 30 F(I:20) READ K
  K = 3
 40 F(I:20) IF K <> 999 THEN 50
- K: 3
+ K: (30) 3
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 18
- K: 3
+ I: (95) 18
+ K: (30) 3
  T(18,0) = 3
 60 F(I:20) LET K1 = ABS(K)
- K: 3
+ K: (30) 3
  K1 = 3
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 3
+ K1: (60) 3
  J = 1
  2 * K1 + 1 - SGN(K1) = 6
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 18
- J: 1
+ I: (95) 18
+ J: (70) 1
  T(18,1) = 0.167
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 18
- J: 2
+ I: (95) 18
+ J: (90) 2
  T(18,2) = 22
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 18
- J: 3
+ I: (95) 18
+ J: (90) 3
  T(18,3) = 0.333
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 18
- J: 4
+ I: (95) 18
+ J: (90) 4
  T(18,4) = 23
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:false
  J = 5
 80 F(I:20,J:70) READ T(I, J)
- I: 18
- J: 5
+ I: (95) 18
+ J: (90) 5
  T(18,5) = 0.5
 90 F(I:20,J:70) NEXT J
- J: 5
+ J: (90) 5
  terminated:false
  J = 6
 80 F(I:20,J:70) READ T(I, J)
- I: 18
- J: 6
+ I: (95) 18
+ J: (90) 6
  T(18,6) = 24
 90 F(I:20,J:70) NEXT J
- J: 6
+ J: (90) 6
  terminated:true
 95 F(I:20) NEXT I
- I: 18
+ I: (95) 18
  terminated:false
  I = 19
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 19
- K: 0
+ I: (95) 19
+ K: (30) 0
  T(19,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 19
- J: 1
+ I: (95) 19
+ J: (70) 1
  T(19,1) = -110
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 19
+ I: (95) 19
  terminated:false
  I = 20
 30 F(I:20) READ K
  K = 3
 40 F(I:20) IF K <> 999 THEN 50
- K: 3
+ K: (30) 3
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 20
- K: 3
+ I: (95) 20
+ K: (30) 3
  T(20,0) = 3
 60 F(I:20) LET K1 = ABS(K)
- K: 3
+ K: (30) 3
  K1 = 3
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 3
+ K1: (60) 3
  J = 1
  2 * K1 + 1 - SGN(K1) = 6
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 20
- J: 1
+ I: (95) 20
+ J: (70) 1
  T(20,1) = 0.167
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(I:20,J:70) READ T(I, J)
- I: 20
- J: 2
+ I: (95) 20
+ J: (90) 2
  T(20,2) = 25
 90 F(I:20,J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(I:20,J:70) READ T(I, J)
- I: 20
- J: 3
+ I: (95) 20
+ J: (90) 3
  T(20,3) = 0.333
 90 F(I:20,J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(I:20,J:70) READ T(I, J)
- I: 20
- J: 4
+ I: (95) 20
+ J: (90) 4
  T(20,4) = 26
 90 F(I:20,J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:false
  J = 5
 80 F(I:20,J:70) READ T(I, J)
- I: 20
- J: 5
+ I: (95) 20
+ J: (90) 5
  T(20,5) = 0.5
 90 F(I:20,J:70) NEXT J
- J: 5
+ J: (90) 5
  terminated:false
  J = 6
 80 F(I:20,J:70) READ T(I, J)
- I: 20
- J: 6
+ I: (95) 20
+ J: (90) 6
  T(20,6) = 27
 90 F(I:20,J:70) NEXT J
- J: 6
+ J: (90) 6
  terminated:true
 95 F(I:20) NEXT I
- I: 20
+ I: (95) 20
  terminated:false
  I = 21
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 21
- K: 0
+ I: (95) 21
+ K: (30) 0
  T(21,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 21
- J: 1
+ I: (95) 21
+ J: (70) 1
  T(21,1) = -110
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 21
+ I: (95) 21
  terminated:false
  I = 22
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 22
- K: 0
+ I: (95) 22
+ K: (30) 0
  T(22,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 22
- J: 1
+ I: (95) 22
+ J: (70) 1
  T(22,1) = 90
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 22
+ I: (95) 22
  terminated:false
  I = 23
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 23
- K: 0
+ I: (95) 23
+ K: (30) 0
  T(23,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 23
- J: 1
+ I: (95) 23
+ J: (70) 1
  T(23,1) = -10
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 23
+ I: (95) 23
  terminated:false
  I = 24
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 24
- K: 0
+ I: (95) 24
+ K: (30) 0
  T(24,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 24
- J: 1
+ I: (95) 24
+ J: (70) 1
  T(24,1) = -110
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 24
+ I: (95) 24
  terminated:false
  I = 25
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 25
- K: 0
+ I: (95) 25
+ K: (30) 0
  T(25,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 25
- J: 1
+ I: (95) 25
+ J: (70) 1
  T(25,1) = 90
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 25
+ I: (95) 25
  terminated:false
  I = 26
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 26
- K: 0
+ I: (95) 26
+ K: (30) 0
  T(26,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 26
- J: 1
+ I: (95) 26
+ J: (70) 1
  T(26,1) = -10
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 26
+ I: (95) 26
  terminated:false
  I = 27
 30 F(I:20) READ K
  K = 0
 40 F(I:20) IF K <> 999 THEN 50
- K: 0
+ K: (30) 0
  K <> 999: true
 50 F(I:20) LET T(I, 0) = K
- I: 27
- K: 0
+ I: (95) 27
+ K: (30) 0
  T(27,0) = 0
 60 F(I:20) LET K1 = ABS(K)
- K: 0
+ K: (30) 0
  K1 = 0
 70 F(I:20,J:70) FOR J = 1 TO 2 * K1 + 1 - SGN(K1)
- K1: 0
+ K1: (60) 0
  J = 1
  2 * K1 + 1 - SGN(K1) = 1
  terminated:false
 80 F(I:20,J:70) READ T(I, J)
- I: 27
- J: 1
+ I: (95) 27
+ J: (70) 1
  T(27,1) = -110
 90 F(I:20,J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:true
 95 F(I:20) NEXT I
- I: 27
+ I: (95) 27
  terminated:false
  I = 28
 30 F(I:20) READ K
  K = 999
 40 F(I:20) IF K <> 999 THEN 50
- K: 999
+ K: (30) 999
  K <> 999: false
 45 F(I:20) BREAK
+ I terminated:true
 95 F(I:20) NEXT I
  terminated:true
 100 PRINT "SELECTED ACTS: ";
 SELECTED ACTS: 
 105 F(I:105) FOR I = I - 1 TO 0 STEP -1
- I: 28
+ I: (95) 28
  I = 27
  I - 1 = 27
  -1 = -1
  terminated:false
 110 F(I:105) LET K = T(I, 0)
- I: 27
- T(27,0): 0
+ I: (105) 27
+ T(27,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 27
- T(27,1): -110
+ I: (105) 27
+ T(27,1): (80) -110
  V(27) = -110
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 27
+ I: (105) 27
  terminated:false
  I = 26
 110 F(I:105) LET K = T(I, 0)
- I: 26
- T(26,0): 0
+ I: (399) 26
+ T(26,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 26
- T(26,1): -10
+ I: (399) 26
+ T(26,1): (80) -10
  V(26) = -10
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 26
+ I: (399) 26
  terminated:false
  I = 25
 110 F(I:105) LET K = T(I, 0)
- I: 25
- T(25,0): 0
+ I: (399) 25
+ T(25,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 25
- T(25,1): 90
+ I: (399) 25
+ T(25,1): (80) 90
  V(25) = 90
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 25
+ I: (399) 25
  terminated:false
  I = 24
 110 F(I:105) LET K = T(I, 0)
- I: 24
- T(24,0): 0
+ I: (399) 24
+ T(24,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 24
- T(24,1): -110
+ I: (399) 24
+ T(24,1): (80) -110
  V(24) = -110
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 24
+ I: (399) 24
  terminated:false
  I = 23
 110 F(I:105) LET K = T(I, 0)
- I: 23
- T(23,0): 0
+ I: (399) 23
+ T(23,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 23
- T(23,1): -10
+ I: (399) 23
+ T(23,1): (80) -10
  V(23) = -10
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 23
+ I: (399) 23
  terminated:false
  I = 22
 110 F(I:105) LET K = T(I, 0)
- I: 22
- T(22,0): 0
+ I: (399) 22
+ T(22,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 22
- T(22,1): 90
+ I: (399) 22
+ T(22,1): (80) 90
  V(22) = 90
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 22
+ I: (399) 22
  terminated:false
  I = 21
 110 F(I:105) LET K = T(I, 0)
- I: 21
- T(21,0): 0
+ I: (399) 21
+ T(21,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 21
- T(21,1): -110
+ I: (399) 21
+ T(21,1): (80) -110
  V(21) = -110
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 21
+ I: (399) 21
  terminated:false
  I = 20
 110 F(I:105) LET K = T(I, 0)
- I: 20
- T(20,0): 3
+ I: (399) 20
+ T(20,0): (50) 3
  K = 3
 120 F(I:105) IF K > 0 THEN 200
- K: 3
+ K: (110) 3
  K > 0: true
 200 F(I:105) LET S = 0
  S = 0
 210 F(I:105,J:210) FOR J = 2 TO 2 * K STEP 2
- K: 3
+ K: (110) 3
  J = 2
  2 * K = 6
  terminated:false
 220 F(I:105,J:210) LET B = T(I, J)
- I: 20
- J: 2
- T(20,2): 25
+ I: (399) 20
+ J: (210) 2
+ T(20,2): (80) 25
  B = 25
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 0
- I: 20
- J: 2
- T(20,1): 0.167
- B: 25
- V(25): 90
+ S: (200) 0
+ I: (399) 20
+ J: (210) 2
+ T(20,1): (80) 0.167
+ B: (220) 25
+ V(25): (140) 90
  S = 15.03
 240 F(I:105,J:210) NEXT J
- J: 2
+ J: (210) 2
  terminated:false
  J = 4
 220 F(I:105,J:210) LET B = T(I, J)
- I: 20
- J: 4
- T(20,4): 26
+ I: (399) 20
+ J: (240) 4
+ T(20,4): (80) 26
  B = 26
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 15.03
- I: 20
- J: 4
- T(20,3): 0.333
- B: 26
- V(26): -10
+ S: (230) 15.03
+ I: (399) 20
+ J: (240) 4
+ T(20,3): (80) 0.333
+ B: (220) 26
+ V(26): (140) -10
  S = 11.7
 240 F(I:105,J:210) NEXT J
- J: 4
+ J: (240) 4
  terminated:false
  J = 6
 220 F(I:105,J:210) LET B = T(I, J)
- I: 20
- J: 6
- T(20,6): 27
+ I: (399) 20
+ J: (240) 6
+ T(20,6): (80) 27
  B = 27
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 11.7
- I: 20
- J: 6
- T(20,5): 0.5
- B: 27
- V(27): -110
+ S: (230) 11.7
+ I: (399) 20
+ J: (240) 6
+ T(20,5): (80) 0.5
+ B: (220) 27
+ V(27): (140) -110
  S = -43.3
 240 F(I:105,J:210) NEXT J
- J: 6
+ J: (240) 6
  terminated:true
 250 F(I:105) LET V(I) = S
- I: 20
- S: -43.3
+ I: (399) 20
+ S: (230) -43.3
  V(20) = -43.3
 260 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 20
+ I: (399) 20
  terminated:false
  I = 19
 110 F(I:105) LET K = T(I, 0)
- I: 19
- T(19,0): 0
+ I: (399) 19
+ T(19,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 19
- T(19,1): -110
+ I: (399) 19
+ T(19,1): (80) -110
  V(19) = -110
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 19
+ I: (399) 19
  terminated:false
  I = 18
 110 F(I:105) LET K = T(I, 0)
- I: 18
- T(18,0): 3
+ I: (399) 18
+ T(18,0): (50) 3
  K = 3
 120 F(I:105) IF K > 0 THEN 200
- K: 3
+ K: (110) 3
  K > 0: true
 200 F(I:105) LET S = 0
  S = 0
 210 F(I:105,J:210) FOR J = 2 TO 2 * K STEP 2
- K: 3
+ K: (110) 3
  J = 2
  2 * K = 6
  terminated:false
 220 F(I:105,J:210) LET B = T(I, J)
- I: 18
- J: 2
- T(18,2): 22
+ I: (399) 18
+ J: (210) 2
+ T(18,2): (80) 22
  B = 22
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 0
- I: 18
- J: 2
- T(18,1): 0.167
- B: 22
- V(22): 90
+ S: (200) 0
+ I: (399) 18
+ J: (210) 2
+ T(18,1): (80) 0.167
+ B: (220) 22
+ V(22): (140) 90
  S = 15.03
 240 F(I:105,J:210) NEXT J
- J: 2
+ J: (210) 2
  terminated:false
  J = 4
 220 F(I:105,J:210) LET B = T(I, J)
- I: 18
- J: 4
- T(18,4): 23
+ I: (399) 18
+ J: (240) 4
+ T(18,4): (80) 23
  B = 23
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 15.03
- I: 18
- J: 4
- T(18,3): 0.333
- B: 23
- V(23): -10
+ S: (230) 15.03
+ I: (399) 18
+ J: (240) 4
+ T(18,3): (80) 0.333
+ B: (220) 23
+ V(23): (140) -10
  S = 11.7
 240 F(I:105,J:210) NEXT J
- J: 4
+ J: (240) 4
  terminated:false
  J = 6
 220 F(I:105,J:210) LET B = T(I, J)
- I: 18
- J: 6
- T(18,6): 24
+ I: (399) 18
+ J: (240) 6
+ T(18,6): (80) 24
  B = 24
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 11.7
- I: 18
- J: 6
- T(18,5): 0.5
- B: 24
- V(24): -110
+ S: (230) 11.7
+ I: (399) 18
+ J: (240) 6
+ T(18,5): (80) 0.5
+ B: (220) 24
+ V(24): (140) -110
  S = -43.3
 240 F(I:105,J:210) NEXT J
- J: 6
+ J: (240) 6
  terminated:true
 250 F(I:105) LET V(I) = S
- I: 18
- S: -43.3
+ I: (399) 18
+ S: (230) -43.3
  V(18) = -43.3
 260 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 18
+ I: (399) 18
  terminated:false
  I = 17
 110 F(I:105) LET K = T(I, 0)
- I: 17
- T(17,0): 0
+ I: (399) 17
+ T(17,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 17
- T(17,1): -100
+ I: (399) 17
+ T(17,1): (80) -100
  V(17) = -100
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 17
+ I: (399) 17
  terminated:false
  I = 16
 110 F(I:105) LET K = T(I, 0)
- I: 16
- T(16,0): 0
+ I: (399) 16
+ T(16,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 16
- T(16,1): 0
+ I: (399) 16
+ T(16,1): (80) 0
  V(16) = 0
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 16
+ I: (399) 16
  terminated:false
  I = 15
 110 F(I:105) LET K = T(I, 0)
- I: 15
- T(15,0): 0
+ I: (399) 15
+ T(15,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 15
- T(15,1): 100
+ I: (399) 15
+ T(15,1): (80) 100
  V(15) = 100
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 15
+ I: (399) 15
  terminated:false
  I = 14
 110 F(I:105) LET K = T(I, 0)
- I: 14
- T(14,0): -2
+ I: (399) 14
+ T(14,0): (50) -2
  K = -2
 120 F(I:105) IF K > 0 THEN 200
- K: -2
+ K: (110) -2
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: -2
+ K: (110) -2
  K < 0: true
 300 F(I:105) LET M = -1E+09
  M = -1000000000
 310 F(I:105,J:310) FOR J = 2 TO 2 * ABS(K) STEP 2
- K: -2
+ K: (110) -2
  J = 2
  2 * ABS(K) = 4
  terminated:false
 320 F(I:105,J:310) LET V = V(T(I, J))
- I: 14
- J: 2
- T(14,2): 20
- V(20): -43.3
+ I: (399) 14
+ J: (310) 2
+ T(14,2): (80) 20
+ V(20): (250) -43.3
  V = -43.3
 330 F(I:105,J:310) IF V <= M THEN 360
- V: -43.3
- M: -1000000000
+ V: (320) -43.3
+ M: (300) -1000000000
  V <= M: false
 340 F(I:105,J:310) LET M = V
- V: -43.3
+ V: (320) -43.3
  M = -43.3
 350 F(I:105,J:310) LET A = T(I, J - 1)
- I: 14
- J: 2
- T(14,1): 8
+ I: (399) 14
+ J: (310) 2
+ T(14,1): (80) 8
  A = 8
 360 F(I:105,J:310) NEXT J
- J: 2
+ J: (310) 2
  terminated:false
  J = 4
 320 F(I:105,J:310) LET V = V(T(I, J))
- I: 14
- J: 4
- T(14,4): 21
- V(21): -110
+ I: (399) 14
+ J: (360) 4
+ T(14,4): (80) 21
+ V(21): (140) -110
  V = -110
 330 F(I:105,J:310) IF V <= M THEN 360
- V: -110
- M: -43.3
+ V: (320) -110
+ M: (340) -43.3
  V <= M: true
 360 F(I:105,J:310) NEXT J
- J: 4
+ J: (360) 4
  terminated:true
 370 F(I:105) PRINT A;
- A: 8
+ A: (350) 8
  8 
 380 F(I:105) LET V(I) = M
- I: 14
- M: -43.3
+ I: (399) 14
+ M: (340) -43.3
  V(14) = -43.3
 399 F(I:105) NEXT I
- I: 14
+ I: (399) 14
  terminated:false
  I = 13
 110 F(I:105) LET K = T(I, 0)
- I: 13
- T(13,0): 0
+ I: (399) 13
+ T(13,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 13
- T(13,1): 90
+ I: (399) 13
+ T(13,1): (80) 90
  V(13) = 90
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 13
+ I: (399) 13
  terminated:false
  I = 12
 110 F(I:105) LET K = T(I, 0)
- I: 12
- T(12,0): -2
+ I: (399) 12
+ T(12,0): (50) -2
  K = -2
 120 F(I:105) IF K > 0 THEN 200
- K: -2
+ K: (110) -2
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: -2
+ K: (110) -2
  K < 0: true
 300 F(I:105) LET M = -1E+09
  M = -1000000000
 310 F(I:105,J:310) FOR J = 2 TO 2 * ABS(K) STEP 2
- K: -2
+ K: (110) -2
  J = 2
  2 * ABS(K) = 4
  terminated:false
 320 F(I:105,J:310) LET V = V(T(I, J))
- I: 12
- J: 2
- T(12,2): 18
- V(18): -43.3
+ I: (399) 12
+ J: (310) 2
+ T(12,2): (80) 18
+ V(18): (250) -43.3
  V = -43.3
 330 F(I:105,J:310) IF V <= M THEN 360
- V: -43.3
- M: -1000000000
+ V: (320) -43.3
+ M: (300) -1000000000
  V <= M: false
 340 F(I:105,J:310) LET M = V
- V: -43.3
+ V: (320) -43.3
  M = -43.3
 350 F(I:105,J:310) LET A = T(I, J - 1)
- I: 12
- J: 2
- T(12,1): 6
+ I: (399) 12
+ J: (310) 2
+ T(12,1): (80) 6
  A = 6
 360 F(I:105,J:310) NEXT J
- J: 2
+ J: (310) 2
  terminated:false
  J = 4
 320 F(I:105,J:310) LET V = V(T(I, J))
- I: 12
- J: 4
- T(12,4): 19
- V(19): -110
+ I: (399) 12
+ J: (360) 4
+ T(12,4): (80) 19
+ V(19): (140) -110
  V = -110
 330 F(I:105,J:310) IF V <= M THEN 360
- V: -110
- M: -43.3
+ V: (320) -110
+ M: (340) -43.3
  V <= M: true
 360 F(I:105,J:310) NEXT J
- J: 4
+ J: (360) 4
  terminated:true
 370 F(I:105) PRINT A;
- A: 6
+ A: (350) 6
  6 
 380 F(I:105) LET V(I) = M
- I: 12
- M: -43.3
+ I: (399) 12
+ M: (340) -43.3
  V(12) = -43.3
 399 F(I:105) NEXT I
- I: 12
+ I: (399) 12
  terminated:false
  I = 11
 110 F(I:105) LET K = T(I, 0)
- I: 11
- T(11,0): 0
+ I: (399) 11
+ T(11,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 11
- T(11,1): 90
+ I: (399) 11
+ T(11,1): (80) 90
  V(11) = 90
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 11
+ I: (399) 11
  terminated:false
  I = 10
 110 F(I:105) LET K = T(I, 0)
- I: 10
- T(10,0): 0
+ I: (399) 10
+ T(10,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 10
- T(10,1): -100
+ I: (399) 10
+ T(10,1): (80) -100
  V(10) = -100
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 10
+ I: (399) 10
  terminated:false
  I = 9
 110 F(I:105) LET K = T(I, 0)
- I: 9
- T(9,0): 3
+ I: (399) 9
+ T(9,0): (50) 3
  K = 3
 120 F(I:105) IF K > 0 THEN 200
- K: 3
+ K: (110) 3
  K > 0: true
 200 F(I:105) LET S = 0
  S = 0
 210 F(I:105,J:210) FOR J = 2 TO 2 * K STEP 2
- K: 3
+ K: (110) 3
  J = 2
  2 * K = 6
  terminated:false
 220 F(I:105,J:210) LET B = T(I, J)
- I: 9
- J: 2
- T(9,2): 15
+ I: (399) 9
+ J: (210) 2
+ T(9,2): (80) 15
  B = 15
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 0
- I: 9
- J: 2
- T(9,1): 0.167
- B: 15
- V(15): 100
+ S: (200) 0
+ I: (399) 9
+ J: (210) 2
+ T(9,1): (80) 0.167
+ B: (220) 15
+ V(15): (140) 100
  S = 16.7
 240 F(I:105,J:210) NEXT J
- J: 2
+ J: (210) 2
  terminated:false
  J = 4
 220 F(I:105,J:210) LET B = T(I, J)
- I: 9
- J: 4
- T(9,4): 16
+ I: (399) 9
+ J: (240) 4
+ T(9,4): (80) 16
  B = 16
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 16.7
- I: 9
- J: 4
- T(9,3): 0.333
- B: 16
- V(16): 0
+ S: (230) 16.7
+ I: (399) 9
+ J: (240) 4
+ T(9,3): (80) 0.333
+ B: (220) 16
+ V(16): (140) 0
  S = 16.7
 240 F(I:105,J:210) NEXT J
- J: 4
+ J: (240) 4
  terminated:false
  J = 6
 220 F(I:105,J:210) LET B = T(I, J)
- I: 9
- J: 6
- T(9,6): 17
+ I: (399) 9
+ J: (240) 6
+ T(9,6): (80) 17
  B = 17
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 16.7
- I: 9
- J: 6
- T(9,5): 0.5
- B: 17
- V(17): -100
+ S: (230) 16.7
+ I: (399) 9
+ J: (240) 6
+ T(9,5): (80) 0.5
+ B: (220) 17
+ V(17): (140) -100
  S = -33.3
 240 F(I:105,J:210) NEXT J
- J: 6
+ J: (240) 6
  terminated:true
 250 F(I:105) LET V(I) = S
- I: 9
- S: -33.3
+ I: (399) 9
+ S: (230) -33.3
  V(9) = -33.3
 260 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 9
+ I: (399) 9
  terminated:false
  I = 8
 110 F(I:105) LET K = T(I, 0)
- I: 8
- T(8,0): 2
+ I: (399) 8
+ T(8,0): (50) 2
  K = 2
 120 F(I:105) IF K > 0 THEN 200
- K: 2
+ K: (110) 2
  K > 0: true
 200 F(I:105) LET S = 0
  S = 0
 210 F(I:105,J:210) FOR J = 2 TO 2 * K STEP 2
- K: 2
+ K: (110) 2
  J = 2
  2 * K = 4
  terminated:false
 220 F(I:105,J:210) LET B = T(I, J)
- I: 8
- J: 2
- T(8,2): 13
+ I: (399) 8
+ J: (210) 2
+ T(8,2): (80) 13
  B = 13
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 0
- I: 8
- J: 2
- T(8,1): 0.75
- B: 13
- V(13): 90
+ S: (200) 0
+ I: (399) 8
+ J: (210) 2
+ T(8,1): (80) 0.75
+ B: (220) 13
+ V(13): (140) 90
  S = 67.5
 240 F(I:105,J:210) NEXT J
- J: 2
+ J: (210) 2
  terminated:false
  J = 4
 220 F(I:105,J:210) LET B = T(I, J)
- I: 8
- J: 4
- T(8,4): 14
+ I: (399) 8
+ J: (240) 4
+ T(8,4): (80) 14
  B = 14
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 67.5
- I: 8
- J: 4
- T(8,3): 0.25
- B: 14
- V(14): -43.3
+ S: (230) 67.5
+ I: (399) 8
+ J: (240) 4
+ T(8,3): (80) 0.25
+ B: (220) 14
+ V(14): (380) -43.3
  S = 56.675
 240 F(I:105,J:210) NEXT J
- J: 4
+ J: (240) 4
  terminated:true
 250 F(I:105) LET V(I) = S
- I: 8
- S: 56.675
+ I: (399) 8
+ S: (230) 56.675
  V(8) = 56.675
 260 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 8
+ I: (399) 8
  terminated:false
  I = 7
 110 F(I:105) LET K = T(I, 0)
- I: 7
- T(7,0): 0
+ I: (399) 7
+ T(7,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 7
- T(7,1): -10
+ I: (399) 7
+ T(7,1): (80) -10
  V(7) = -10
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 7
+ I: (399) 7
  terminated:false
  I = 6
 110 F(I:105) LET K = T(I, 0)
- I: 6
- T(6,0): 2
+ I: (399) 6
+ T(6,0): (50) 2
  K = 2
 120 F(I:105) IF K > 0 THEN 200
- K: 2
+ K: (110) 2
  K > 0: true
 200 F(I:105) LET S = 0
  S = 0
 210 F(I:105,J:210) FOR J = 2 TO 2 * K STEP 2
- K: 2
+ K: (110) 2
  J = 2
  2 * K = 4
  terminated:false
 220 F(I:105,J:210) LET B = T(I, J)
- I: 6
- J: 2
- T(6,2): 11
+ I: (399) 6
+ J: (210) 2
+ T(6,2): (80) 11
  B = 11
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 0
- I: 6
- J: 2
- T(6,1): 0.5
- B: 11
- V(11): 90
+ S: (200) 0
+ I: (399) 6
+ J: (210) 2
+ T(6,1): (80) 0.5
+ B: (220) 11
+ V(11): (140) 90
  S = 45
 240 F(I:105,J:210) NEXT J
- J: 2
+ J: (210) 2
  terminated:false
  J = 4
 220 F(I:105,J:210) LET B = T(I, J)
- I: 6
- J: 4
- T(6,4): 12
+ I: (399) 6
+ J: (240) 4
+ T(6,4): (80) 12
  B = 12
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 45
- I: 6
- J: 4
- T(6,3): 0.5
- B: 12
- V(12): -43.3
+ S: (230) 45
+ I: (399) 6
+ J: (240) 4
+ T(6,3): (80) 0.5
+ B: (220) 12
+ V(12): (380) -43.3
  S = 23.35
 240 F(I:105,J:210) NEXT J
- J: 4
+ J: (240) 4
  terminated:true
 250 F(I:105) LET V(I) = S
- I: 6
- S: 23.35
+ I: (399) 6
+ S: (230) 23.35
  V(6) = 23.35
 260 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 6
+ I: (399) 6
  terminated:false
  I = 5
 110 F(I:105) LET K = T(I, 0)
- I: 5
- T(5,0): -2
+ I: (399) 5
+ T(5,0): (50) -2
  K = -2
 120 F(I:105) IF K > 0 THEN 200
- K: -2
+ K: (110) -2
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: -2
+ K: (110) -2
  K < 0: true
 300 F(I:105) LET M = -1E+09
  M = -1000000000
 310 F(I:105,J:310) FOR J = 2 TO 2 * ABS(K) STEP 2
- K: -2
+ K: (110) -2
  J = 2
  2 * ABS(K) = 4
  terminated:false
 320 F(I:105,J:310) LET V = V(T(I, J))
- I: 5
- J: 2
- T(5,2): 9
- V(9): -33.3
+ I: (399) 5
+ J: (310) 2
+ T(5,2): (80) 9
+ V(9): (250) -33.3
  V = -33.3
 330 F(I:105,J:310) IF V <= M THEN 360
- V: -33.3
- M: -1000000000
+ V: (320) -33.3
+ M: (300) -1000000000
  V <= M: false
 340 F(I:105,J:310) LET M = V
- V: -33.3
+ V: (320) -33.3
  M = -33.3
 350 F(I:105,J:310) LET A = T(I, J - 1)
- I: 5
- J: 2
- T(5,1): 4
+ I: (399) 5
+ J: (310) 2
+ T(5,1): (80) 4
  A = 4
 360 F(I:105,J:310) NEXT J
- J: 2
+ J: (310) 2
  terminated:false
  J = 4
 320 F(I:105,J:310) LET V = V(T(I, J))
- I: 5
- J: 4
- T(5,4): 10
- V(10): -100
+ I: (399) 5
+ J: (360) 4
+ T(5,4): (80) 10
+ V(10): (140) -100
  V = -100
 330 F(I:105,J:310) IF V <= M THEN 360
- V: -100
- M: -33.3
+ V: (320) -100
+ M: (340) -33.3
  V <= M: true
 360 F(I:105,J:310) NEXT J
- J: 4
+ J: (360) 4
  terminated:true
 370 F(I:105) PRINT A;
- A: 4
+ A: (350) 4
  4 
 380 F(I:105) LET V(I) = M
- I: 5
- M: -33.3
+ I: (399) 5
+ M: (340) -33.3
  V(5) = -33.3
 399 F(I:105) NEXT I
- I: 5
+ I: (399) 5
  terminated:false
  I = 4
 110 F(I:105) LET K = T(I, 0)
- I: 4
- T(4,0): 0
+ I: (399) 4
+ T(4,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 4
- T(4,1): 100
+ I: (399) 4
+ T(4,1): (80) 100
  V(4) = 100
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 4
+ I: (399) 4
  terminated:false
  I = 3
 110 F(I:105) LET K = T(I, 0)
- I: 3
- T(3,0): 3
+ I: (399) 3
+ T(3,0): (50) 3
  K = 3
 120 F(I:105) IF K > 0 THEN 200
- K: 3
+ K: (110) 3
  K > 0: true
 200 F(I:105) LET S = 0
  S = 0
 210 F(I:105,J:210) FOR J = 2 TO 2 * K STEP 2
- K: 3
+ K: (110) 3
  J = 2
  2 * K = 6
  terminated:false
 220 F(I:105,J:210) LET B = T(I, J)
- I: 3
- J: 2
- T(3,2): 6
+ I: (399) 3
+ J: (210) 2
+ T(3,2): (80) 6
  B = 6
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 0
- I: 3
- J: 2
- T(3,1): 0.333
- B: 6
- V(6): 23.35
+ S: (200) 0
+ I: (399) 3
+ J: (210) 2
+ T(3,1): (80) 0.333
+ B: (220) 6
+ V(6): (250) 23.35
  S = 7.77555
 240 F(I:105,J:210) NEXT J
- J: 2
+ J: (210) 2
  terminated:false
  J = 4
 220 F(I:105,J:210) LET B = T(I, J)
- I: 3
- J: 4
- T(3,4): 7
+ I: (399) 3
+ J: (240) 4
+ T(3,4): (80) 7
  B = 7
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 7.77555
- I: 3
- J: 4
- T(3,3): 0.167
- B: 7
- V(7): -10
+ S: (230) 7.77555
+ I: (399) 3
+ J: (240) 4
+ T(3,3): (80) 0.167
+ B: (220) 7
+ V(7): (140) -10
  S = 6.10555
 240 F(I:105,J:210) NEXT J
- J: 4
+ J: (240) 4
  terminated:false
  J = 6
 220 F(I:105,J:210) LET B = T(I, J)
- I: 3
- J: 6
- T(3,6): 8
+ I: (399) 3
+ J: (240) 6
+ T(3,6): (80) 8
  B = 8
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 6.10555
- I: 3
- J: 6
- T(3,5): 0.5
- B: 8
- V(8): 56.675
+ S: (230) 6.10555
+ I: (399) 3
+ J: (240) 6
+ T(3,5): (80) 0.5
+ B: (220) 8
+ V(8): (250) 56.675
  S = 34.4431
 240 F(I:105,J:210) NEXT J
- J: 6
+ J: (240) 6
  terminated:true
 250 F(I:105) LET V(I) = S
- I: 3
- S: 34.4431
+ I: (399) 3
+ S: (230) 34.4431
  V(3) = 34.4431
 260 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 3
+ I: (399) 3
  terminated:false
  I = 2
 110 F(I:105) LET K = T(I, 0)
- I: 2
- T(2,0): 0
+ I: (399) 2
+ T(2,0): (50) 0
  K = 0
 120 F(I:105) IF K > 0 THEN 200
- K: 0
+ K: (110) 0
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: 0
+ K: (110) 0
  K < 0: false
 140 F(I:105) LET V(I) = T(I, 1)
- I: 2
- T(2,1): 0
+ I: (399) 2
+ T(2,1): (80) 0
  V(2) = 0
 150 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 2
+ I: (399) 2
  terminated:false
  I = 1
 110 F(I:105) LET K = T(I, 0)
- I: 1
- T(1,0): 2
+ I: (399) 1
+ T(1,0): (50) 2
  K = 2
 120 F(I:105) IF K > 0 THEN 200
- K: 2
+ K: (110) 2
  K > 0: true
 200 F(I:105) LET S = 0
  S = 0
 210 F(I:105,J:210) FOR J = 2 TO 2 * K STEP 2
- K: 2
+ K: (110) 2
  J = 2
  2 * K = 4
  terminated:false
 220 F(I:105,J:210) LET B = T(I, J)
- I: 1
- J: 2
- T(1,2): 4
+ I: (399) 1
+ J: (210) 2
+ T(1,2): (80) 4
  B = 4
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 0
- I: 1
- J: 2
- T(1,1): 0.5
- B: 4
- V(4): 100
+ S: (200) 0
+ I: (399) 1
+ J: (210) 2
+ T(1,1): (80) 0.5
+ B: (220) 4
+ V(4): (140) 100
  S = 50
 240 F(I:105,J:210) NEXT J
- J: 2
+ J: (210) 2
  terminated:false
  J = 4
 220 F(I:105,J:210) LET B = T(I, J)
- I: 1
- J: 4
- T(1,4): 5
+ I: (399) 1
+ J: (240) 4
+ T(1,4): (80) 5
  B = 5
 230 F(I:105,J:210) LET S = S + T(I, J - 1) * V(B)
- S: 50
- I: 1
- J: 4
- T(1,3): 0.5
- B: 5
- V(5): -33.3
+ S: (230) 50
+ I: (399) 1
+ J: (240) 4
+ T(1,3): (80) 0.5
+ B: (220) 5
+ V(5): (380) -33.3
  S = 33.35
 240 F(I:105,J:210) NEXT J
- J: 4
+ J: (240) 4
  terminated:true
 250 F(I:105) LET V(I) = S
- I: 1
- S: 33.35
+ I: (399) 1
+ S: (230) 33.35
  V(1) = 33.35
 260 F(I:105) GOTO 399
 399 F(I:105) NEXT I
- I: 1
+ I: (399) 1
  terminated:false
  I = 0
 110 F(I:105) LET K = T(I, 0)
- I: 0
- T(0,0): -3
+ I: (399) 0
+ T(0,0): (50) -3
  K = -3
 120 F(I:105) IF K > 0 THEN 200
- K: -3
+ K: (110) -3
  K > 0: false
 130 F(I:105) IF K < 0 THEN 300
- K: -3
+ K: (110) -3
  K < 0: true
 300 F(I:105) LET M = -1E+09
  M = -1000000000
 310 F(I:105,J:310) FOR J = 2 TO 2 * ABS(K) STEP 2
- K: -3
+ K: (110) -3
  J = 2
  2 * ABS(K) = 6
  terminated:false
 320 F(I:105,J:310) LET V = V(T(I, J))
- I: 0
- J: 2
- T(0,2): 1
- V(1): 33.35
+ I: (399) 0
+ J: (310) 2
+ T(0,2): (80) 1
+ V(1): (250) 33.35
  V = 33.35
 330 F(I:105,J:310) IF V <= M THEN 360
- V: 33.35
- M: -1000000000
+ V: (320) 33.35
+ M: (300) -1000000000
  V <= M: false
 340 F(I:105,J:310) LET M = V
- V: 33.35
+ V: (320) 33.35
  M = 33.35
 350 F(I:105,J:310) LET A = T(I, J - 1)
- I: 0
- J: 2
- T(0,1): 1
+ I: (399) 0
+ J: (310) 2
+ T(0,1): (80) 1
  A = 1
 360 F(I:105,J:310) NEXT J
- J: 2
+ J: (310) 2
  terminated:false
  J = 4
 320 F(I:105,J:310) LET V = V(T(I, J))
- I: 0
- J: 4
- T(0,4): 2
- V(2): 0
+ I: (399) 0
+ J: (360) 4
+ T(0,4): (80) 2
+ V(2): (140) 0
  V = 0
 330 F(I:105,J:310) IF V <= M THEN 360
- V: 0
- M: 33.35
+ V: (320) 0
+ M: (340) 33.35
  V <= M: true
 360 F(I:105,J:310) NEXT J
- J: 4
+ J: (360) 4
  terminated:false
  J = 6
 320 F(I:105,J:310) LET V = V(T(I, J))
- I: 0
- J: 6
- T(0,6): 3
- V(3): 34.4431
+ I: (399) 0
+ J: (360) 6
+ T(0,6): (80) 3
+ V(3): (250) 34.4431
  V = 34.4431
 330 F(I:105,J:310) IF V <= M THEN 360
- V: 34.4431
- M: 33.35
+ V: (320) 34.4431
+ M: (340) 33.35
  V <= M: false
 340 F(I:105,J:310) LET M = V
- V: 34.4431
+ V: (320) 34.4431
  M = 34.4431
 350 F(I:105,J:310) LET A = T(I, J - 1)
- I: 0
- J: 6
- T(0,5): 3
+ I: (399) 0
+ J: (360) 6
+ T(0,5): (80) 3
  A = 3
 360 F(I:105,J:310) NEXT J
- J: 6
+ J: (360) 6
  terminated:true
 370 F(I:105) PRINT A;
- A: 3
+ A: (350) 3
  3 
 380 F(I:105) LET V(I) = M
- I: 0
- M: 34.4431
+ I: (399) 0
+ M: (340) 34.4431
  V(0) = 34.4431
 399 F(I:105) NEXT I
- I: 0
+ I: (399) 0
  terminated:true
 400 PRINT
 
@@ -2242,7 +2243,7 @@ SELECTED ACTS:
 
 420 PRINT "EXPECTED GAIN = $" V(0)
 EXPECTED GAIN = $
- V(0): 34.4431
+ V(0): (380) 34.4431
  34.4431
 999 END
 STOP in line 999

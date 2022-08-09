@@ -4,38 +4,38 @@
  I = 1
  terminated:false
 40 F(I:30) PRINT I
- I: 1
+ I: (30) 1
  1
 50 F(I:30) GOTO 90
 90 F(I:30,I:70) NEXT I
- I: 1
+ I: (30) 1
  terminated:false
  I = 2
 40 F(I:30) PRINT I
- I: 2
+ I: (90) 2
  2
 50 F(I:30) GOTO 90
 90 F(I:30,I:70) NEXT I
- I: 2
+ I: (90) 2
  terminated:false
  I = 3
 40 F(I:30) PRINT I
- I: 3
+ I: (90) 3
  3
 50 F(I:30) GOTO 90
 90 F(I:30,I:70) NEXT I
- I: 3
+ I: (90) 3
  terminated:false
  I = 4
 40 F(I:30) PRINT I
- I: 4
+ I: (90) 4
  4
 50 F(I:30) GOTO 90
 90 F(I:30,I:70) NEXT I
- I: 4
+ I: (90) 4
  terminated:true
 100 IF F = 0 THEN 60
- F: 0
+ F: (20) 0
  F = 0: true
 60 F(I:30) LET F = 1
  F = 1
@@ -43,41 +43,41 @@
  I = 10
  terminated:false
 80 F(I:30,I:70) PRINT I
- I: 10
+ I: (70) 10
  10
 90 F(I:30,I:70) NEXT I
- I: 10
+ I: (70) 10
  terminated:false
  I = 11
 80 F(I:30,I:70) PRINT I
- I: 11
+ I: (90) 11
  11
 90 F(I:30,I:70) NEXT I
- I: 11
+ I: (90) 11
  terminated:false
  I = 12
 80 F(I:30,I:70) PRINT I
- I: 12
+ I: (90) 12
  12
 90 F(I:30,I:70) NEXT I
- I: 12
+ I: (90) 12
  terminated:false
  I = 13
 80 F(I:30,I:70) PRINT I
- I: 13
+ I: (90) 13
  13
 90 F(I:30,I:70) NEXT I
- I: 13
+ I: (90) 13
  terminated:false
  I = 14
 80 F(I:30,I:70) PRINT I
- I: 14
+ I: (90) 14
  14
 90 F(I:30,I:70) NEXT I
- I: 14
+ I: (90) 14
  terminated:true
 100 IF F = 0 THEN 60
- F: 1
+ F: (60) 1
  F = 0: false
 900 END
 STOP in line 900

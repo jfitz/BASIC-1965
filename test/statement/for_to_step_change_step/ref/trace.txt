@@ -5,62 +5,62 @@
 40 LET S = 1
  S = 1
 50 F(I:50) FOR I = B TO E STEP S
- B: 1
- S: 1
- E: 5
+ B: (20) 1
+ S: (40) 1
+ E: (30) 5
  I = 1
  B = 1
  E = 5
  S = 1
  terminated:false
 60 F(I:50) PRINT I
- I: 1
+ I: (50) 1
  1
 70 F(I:50) LET S = S + 1
- S: 1
+ S: (40) 1
  S = 2
 80 F(I:50) NEXT I
- I: 1
+ I: (50) 1
  terminated:false
  I = 2
 60 F(I:50) PRINT I
- I: 2
+ I: (80) 2
  2
 70 F(I:50) LET S = S + 1
- S: 2
+ S: (70) 2
  S = 3
 80 F(I:50) NEXT I
- I: 2
+ I: (80) 2
  terminated:false
  I = 3
 60 F(I:50) PRINT I
- I: 3
+ I: (80) 3
  3
 70 F(I:50) LET S = S + 1
- S: 3
+ S: (70) 3
  S = 4
 80 F(I:50) NEXT I
- I: 3
+ I: (80) 3
  terminated:false
  I = 4
 60 F(I:50) PRINT I
- I: 4
+ I: (80) 4
  4
 70 F(I:50) LET S = S + 1
- S: 4
+ S: (70) 4
  S = 5
 80 F(I:50) NEXT I
- I: 4
+ I: (80) 4
  terminated:false
  I = 5
 60 F(I:50) PRINT I
- I: 5
+ I: (80) 5
  5
 70 F(I:50) LET S = S + 1
- S: 5
+ S: (70) 5
  S = 6
 80 F(I:50) NEXT I
- I: 5
+ I: (80) 5
  terminated:true
 99 END
 STOP in line 99

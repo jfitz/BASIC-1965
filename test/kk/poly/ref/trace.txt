@@ -4,1161 +4,1161 @@
 20 READ N
  N = 2
 30 F(I:30) FOR I = 0 TO N
- N: 2
+ N: (20) 2
  I = 0
  N = 2
  terminated:false
 40 F(I:30) READ A(I)
- I: 0
+ I: (30) 0
  A(0) = 2
 50 F(I:30) NEXT I
- I: 0
+ I: (30) 0
  terminated:false
  I = 1
 40 F(I:30) READ A(I)
- I: 1
+ I: (50) 1
  A(1) = -3
 50 F(I:30) NEXT I
- I: 1
+ I: (50) 1
  terminated:false
  I = 2
 40 F(I:30) READ A(I)
- I: 2
+ I: (50) 2
  A(2) = 1
 50 F(I:30) NEXT I
- I: 2
+ I: (50) 2
  terminated:true
 60 READ X9
  X9 = 8
 70 F(J:70) FOR J = 1 TO X9
- X9: 8
+ X9: (60) 8
  J = 1
  X9 = 8
  terminated:false
 80 F(J:70) READ X(J)
- J: 1
+ J: (70) 1
  X(1) = -3
 90 F(J:70) NEXT J
- J: 1
+ J: (70) 1
  terminated:false
  J = 2
 80 F(J:70) READ X(J)
- J: 2
+ J: (90) 2
  X(2) = -1
 90 F(J:70) NEXT J
- J: 2
+ J: (90) 2
  terminated:false
  J = 3
 80 F(J:70) READ X(J)
- J: 3
+ J: (90) 3
  X(3) = 0
 90 F(J:70) NEXT J
- J: 3
+ J: (90) 3
  terminated:false
  J = 4
 80 F(J:70) READ X(J)
- J: 4
+ J: (90) 4
  X(4) = 0.5
 90 F(J:70) NEXT J
- J: 4
+ J: (90) 4
  terminated:false
  J = 5
 80 F(J:70) READ X(J)
- J: 5
+ J: (90) 5
  X(5) = 0.75
 90 F(J:70) NEXT J
- J: 5
+ J: (90) 5
  terminated:false
  J = 6
 80 F(J:70) READ X(J)
- J: 6
+ J: (90) 6
  X(6) = 1
 90 F(J:70) NEXT J
- J: 6
+ J: (90) 6
  terminated:false
  J = 7
 80 F(J:70) READ X(J)
- J: 7
+ J: (90) 7
  X(7) = 2.5
 90 F(J:70) NEXT J
- J: 7
+ J: (90) 7
  terminated:false
  J = 8
 80 F(J:70) READ X(J)
- J: 8
+ J: (90) 8
  X(8) = 5
 90 F(J:70) NEXT J
- J: 8
+ J: (90) 8
  terminated:true
 110 LET K = 0
  K = 0
 120 GOSUB 500
 510 G(510) F(J:510) FOR J = 1 TO X9
- X9: 8
+ X9: (60) 8
  J = 1
  X9 = 8
  terminated:false
 520 G(510) F(J:510) LET X = X(J)
- J: 1
- X(1): -3
+ J: (510) 1
+ X(1): (80) -3
  X = -3
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 2
+ N: (20) 2
  I = 0
  N = 2
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: -3
- I: 0
- A(0): 2
+ Y: (1010) 0
+ X: (520) -3
+ I: (1020) 0
+ A(0): (40) 2
  Y = 2
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 2
- X: -3
- I: 1
- A(1): -3
+ Y: (1030) 2
+ X: (520) -3
+ I: (1040) 1
+ A(1): (40) -3
  Y = -9
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:false
  I = 2
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: -9
- X: -3
- I: 2
- A(2): 1
+ Y: (1030) -9
+ X: (520) -3
+ I: (1040) 2
+ A(2): (40) 1
  Y = 28
 1040 G(1010) F(I:1020) NEXT I
- I: 2
+ I: (1040) 2
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 1
- K: 0
- Y: 28
+ J: (510) 1
+ K: (110) 0
+ Y: (1030) 28
  T(1,0) = 28
 550 G(510) F(J:510) NEXT J
- J: 1
+ J: (510) 1
  terminated:false
  J = 2
 520 G(510) F(J:510) LET X = X(J)
- J: 2
- X(2): -1
+ J: (550) 2
+ X(2): (80) -1
  X = -1
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 2
+ N: (20) 2
  I = 0
  N = 2
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: -1
- I: 0
- A(0): 2
+ Y: (1010) 0
+ X: (520) -1
+ I: (1020) 0
+ A(0): (40) 2
  Y = 2
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 2
- X: -1
- I: 1
- A(1): -3
+ Y: (1030) 2
+ X: (520) -1
+ I: (1040) 1
+ A(1): (40) -3
  Y = -5
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:false
  I = 2
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: -5
- X: -1
- I: 2
- A(2): 1
+ Y: (1030) -5
+ X: (520) -1
+ I: (1040) 2
+ A(2): (40) 1
  Y = 6
 1040 G(1010) F(I:1020) NEXT I
- I: 2
+ I: (1040) 2
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 2
- K: 0
- Y: 6
+ J: (550) 2
+ K: (110) 0
+ Y: (1030) 6
  T(2,0) = 6
 550 G(510) F(J:510) NEXT J
- J: 2
+ J: (550) 2
  terminated:false
  J = 3
 520 G(510) F(J:510) LET X = X(J)
- J: 3
- X(3): 0
+ J: (550) 3
+ X(3): (80) 0
  X = 0
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 2
+ N: (20) 2
  I = 0
  N = 2
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 0
- I: 0
- A(0): 2
+ Y: (1010) 0
+ X: (520) 0
+ I: (1020) 0
+ A(0): (40) 2
  Y = 2
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 2
- X: 0
- I: 1
- A(1): -3
+ Y: (1030) 2
+ X: (520) 0
+ I: (1040) 1
+ A(1): (40) -3
  Y = -3
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:false
  I = 2
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: -3
- X: 0
- I: 2
- A(2): 1
+ Y: (1030) -3
+ X: (520) 0
+ I: (1040) 2
+ A(2): (40) 1
  Y = 1
 1040 G(1010) F(I:1020) NEXT I
- I: 2
+ I: (1040) 2
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 3
- K: 0
- Y: 1
+ J: (550) 3
+ K: (110) 0
+ Y: (1030) 1
  T(3,0) = 1
 550 G(510) F(J:510) NEXT J
- J: 3
+ J: (550) 3
  terminated:false
  J = 4
 520 G(510) F(J:510) LET X = X(J)
- J: 4
- X(4): 0.5
+ J: (550) 4
+ X(4): (80) 0.5
  X = 0.5
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 2
+ N: (20) 2
  I = 0
  N = 2
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 0.5
- I: 0
- A(0): 2
+ Y: (1010) 0
+ X: (520) 0.5
+ I: (1020) 0
+ A(0): (40) 2
  Y = 2
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 2
- X: 0.5
- I: 1
- A(1): -3
+ Y: (1030) 2
+ X: (520) 0.5
+ I: (1040) 1
+ A(1): (40) -3
  Y = -2
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:false
  I = 2
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: -2
- X: 0.5
- I: 2
- A(2): 1
+ Y: (1030) -2
+ X: (520) 0.5
+ I: (1040) 2
+ A(2): (40) 1
  Y = 0
 1040 G(1010) F(I:1020) NEXT I
- I: 2
+ I: (1040) 2
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 4
- K: 0
- Y: 0
+ J: (550) 4
+ K: (110) 0
+ Y: (1030) 0
  T(4,0) = 0
 550 G(510) F(J:510) NEXT J
- J: 4
+ J: (550) 4
  terminated:false
  J = 5
 520 G(510) F(J:510) LET X = X(J)
- J: 5
- X(5): 0.75
+ J: (550) 5
+ X(5): (80) 0.75
  X = 0.75
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 2
+ N: (20) 2
  I = 0
  N = 2
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 0.75
- I: 0
- A(0): 2
+ Y: (1010) 0
+ X: (520) 0.75
+ I: (1020) 0
+ A(0): (40) 2
  Y = 2
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 2
- X: 0.75
- I: 1
- A(1): -3
+ Y: (1030) 2
+ X: (520) 0.75
+ I: (1040) 1
+ A(1): (40) -3
  Y = -1.5
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:false
  I = 2
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: -1.5
- X: 0.75
- I: 2
- A(2): 1
+ Y: (1030) -1.5
+ X: (520) 0.75
+ I: (1040) 2
+ A(2): (40) 1
  Y = -0.125
 1040 G(1010) F(I:1020) NEXT I
- I: 2
+ I: (1040) 2
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 5
- K: 0
- Y: -0.125
+ J: (550) 5
+ K: (110) 0
+ Y: (1030) -0.125
  T(5,0) = -0.125
 550 G(510) F(J:510) NEXT J
- J: 5
+ J: (550) 5
  terminated:false
  J = 6
 520 G(510) F(J:510) LET X = X(J)
- J: 6
- X(6): 1
+ J: (550) 6
+ X(6): (80) 1
  X = 1
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 2
+ N: (20) 2
  I = 0
  N = 2
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 1
- I: 0
- A(0): 2
+ Y: (1010) 0
+ X: (520) 1
+ I: (1020) 0
+ A(0): (40) 2
  Y = 2
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 2
- X: 1
- I: 1
- A(1): -3
+ Y: (1030) 2
+ X: (520) 1
+ I: (1040) 1
+ A(1): (40) -3
  Y = -1
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:false
  I = 2
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: -1
- X: 1
- I: 2
- A(2): 1
+ Y: (1030) -1
+ X: (520) 1
+ I: (1040) 2
+ A(2): (40) 1
  Y = 0
 1040 G(1010) F(I:1020) NEXT I
- I: 2
+ I: (1040) 2
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 6
- K: 0
- Y: 0
+ J: (550) 6
+ K: (110) 0
+ Y: (1030) 0
  T(6,0) = 0
 550 G(510) F(J:510) NEXT J
- J: 6
+ J: (550) 6
  terminated:false
  J = 7
 520 G(510) F(J:510) LET X = X(J)
- J: 7
- X(7): 2.5
+ J: (550) 7
+ X(7): (80) 2.5
  X = 2.5
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 2
+ N: (20) 2
  I = 0
  N = 2
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 2.5
- I: 0
- A(0): 2
+ Y: (1010) 0
+ X: (520) 2.5
+ I: (1020) 0
+ A(0): (40) 2
  Y = 2
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 2
- X: 2.5
- I: 1
- A(1): -3
+ Y: (1030) 2
+ X: (520) 2.5
+ I: (1040) 1
+ A(1): (40) -3
  Y = 2
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:false
  I = 2
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 2
- X: 2.5
- I: 2
- A(2): 1
+ Y: (1030) 2
+ X: (520) 2.5
+ I: (1040) 2
+ A(2): (40) 1
  Y = 6
 1040 G(1010) F(I:1020) NEXT I
- I: 2
+ I: (1040) 2
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 7
- K: 0
- Y: 6
+ J: (550) 7
+ K: (110) 0
+ Y: (1030) 6
  T(7,0) = 6
 550 G(510) F(J:510) NEXT J
- J: 7
+ J: (550) 7
  terminated:false
  J = 8
 520 G(510) F(J:510) LET X = X(J)
- J: 8
- X(8): 5
+ J: (550) 8
+ X(8): (80) 5
  X = 5
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 2
+ N: (20) 2
  I = 0
  N = 2
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 5
- I: 0
- A(0): 2
+ Y: (1010) 0
+ X: (520) 5
+ I: (1020) 0
+ A(0): (40) 2
  Y = 2
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 2
- X: 5
- I: 1
- A(1): -3
+ Y: (1030) 2
+ X: (520) 5
+ I: (1040) 1
+ A(1): (40) -3
  Y = 7
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:false
  I = 2
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 7
- X: 5
- I: 2
- A(2): 1
+ Y: (1030) 7
+ X: (520) 5
+ I: (1040) 2
+ A(2): (40) 1
  Y = 36
 1040 G(1010) F(I:1020) NEXT I
- I: 2
+ I: (1040) 2
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 8
- K: 0
- Y: 36
+ J: (550) 8
+ K: (110) 0
+ Y: (1030) 36
  T(8,0) = 36
 550 G(510) F(J:510) NEXT J
- J: 8
+ J: (550) 8
  terminated:true
 560 G(510) RETURN
 130 GOSUB 2000
 2010 G(2010) F(I:2010) FOR I = 0 TO N
- N: 2
+ N: (20) 2
  I = 0
  N = 2
  terminated:false
 2020 G(2010) F(I:2010) LET A(I) = A(I) * (N - I)
- I: 0
- A(0): 2
- N: 2
+ I: (2010) 0
+ A(0): (40) 2
+ N: (20) 2
  A(0) = 4
 2030 G(2010) F(I:2010) NEXT I
- I: 0
+ I: (2010) 0
  terminated:false
  I = 1
 2020 G(2010) F(I:2010) LET A(I) = A(I) * (N - I)
- I: 1
- A(1): -3
- N: 2
+ I: (2030) 1
+ A(1): (40) -3
+ N: (20) 2
  A(1) = -3
 2030 G(2010) F(I:2010) NEXT I
- I: 1
+ I: (2030) 1
  terminated:false
  I = 2
 2020 G(2010) F(I:2010) LET A(I) = A(I) * (N - I)
- I: 2
- A(2): 1
- N: 2
+ I: (2030) 2
+ A(2): (40) 1
+ N: (20) 2
  A(2) = 0
 2030 G(2010) F(I:2010) NEXT I
- I: 2
+ I: (2030) 2
  terminated:true
 2040 G(2010) LET N = N - 1
- N: 2
+ N: (20) 2
  N = 1
 2050 G(2010) RETURN
 140 LET K = 1
  K = 1
 150 GOSUB 500
 510 G(510) F(J:510) FOR J = 1 TO X9
- X9: 8
+ X9: (60) 8
  J = 1
  X9 = 8
  terminated:false
 520 G(510) F(J:510) LET X = X(J)
- J: 1
- X(1): -3
+ J: (510) 1
+ X(1): (80) -3
  X = -3
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 1
+ N: (2040) 1
  I = 0
  N = 1
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: -3
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) -3
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 4
- X: -3
- I: 1
- A(1): -3
+ Y: (1030) 4
+ X: (520) -3
+ I: (1040) 1
+ A(1): (2020) -3
  Y = -15
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 1
- K: 1
- Y: -15
+ J: (510) 1
+ K: (140) 1
+ Y: (1030) -15
  T(1,1) = -15
 550 G(510) F(J:510) NEXT J
- J: 1
+ J: (510) 1
  terminated:false
  J = 2
 520 G(510) F(J:510) LET X = X(J)
- J: 2
- X(2): -1
+ J: (550) 2
+ X(2): (80) -1
  X = -1
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 1
+ N: (2040) 1
  I = 0
  N = 1
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: -1
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) -1
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 4
- X: -1
- I: 1
- A(1): -3
+ Y: (1030) 4
+ X: (520) -1
+ I: (1040) 1
+ A(1): (2020) -3
  Y = -7
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 2
- K: 1
- Y: -7
+ J: (550) 2
+ K: (140) 1
+ Y: (1030) -7
  T(2,1) = -7
 550 G(510) F(J:510) NEXT J
- J: 2
+ J: (550) 2
  terminated:false
  J = 3
 520 G(510) F(J:510) LET X = X(J)
- J: 3
- X(3): 0
+ J: (550) 3
+ X(3): (80) 0
  X = 0
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 1
+ N: (2040) 1
  I = 0
  N = 1
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 0
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 0
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 4
- X: 0
- I: 1
- A(1): -3
+ Y: (1030) 4
+ X: (520) 0
+ I: (1040) 1
+ A(1): (2020) -3
  Y = -3
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 3
- K: 1
- Y: -3
+ J: (550) 3
+ K: (140) 1
+ Y: (1030) -3
  T(3,1) = -3
 550 G(510) F(J:510) NEXT J
- J: 3
+ J: (550) 3
  terminated:false
  J = 4
 520 G(510) F(J:510) LET X = X(J)
- J: 4
- X(4): 0.5
+ J: (550) 4
+ X(4): (80) 0.5
  X = 0.5
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 1
+ N: (2040) 1
  I = 0
  N = 1
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 0.5
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 0.5
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 4
- X: 0.5
- I: 1
- A(1): -3
+ Y: (1030) 4
+ X: (520) 0.5
+ I: (1040) 1
+ A(1): (2020) -3
  Y = -1
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 4
- K: 1
- Y: -1
+ J: (550) 4
+ K: (140) 1
+ Y: (1030) -1
  T(4,1) = -1
 550 G(510) F(J:510) NEXT J
- J: 4
+ J: (550) 4
  terminated:false
  J = 5
 520 G(510) F(J:510) LET X = X(J)
- J: 5
- X(5): 0.75
+ J: (550) 5
+ X(5): (80) 0.75
  X = 0.75
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 1
+ N: (2040) 1
  I = 0
  N = 1
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 0.75
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 0.75
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 4
- X: 0.75
- I: 1
- A(1): -3
+ Y: (1030) 4
+ X: (520) 0.75
+ I: (1040) 1
+ A(1): (2020) -3
  Y = 0
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 5
- K: 1
- Y: 0
+ J: (550) 5
+ K: (140) 1
+ Y: (1030) 0
  T(5,1) = 0
 550 G(510) F(J:510) NEXT J
- J: 5
+ J: (550) 5
  terminated:false
  J = 6
 520 G(510) F(J:510) LET X = X(J)
- J: 6
- X(6): 1
+ J: (550) 6
+ X(6): (80) 1
  X = 1
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 1
+ N: (2040) 1
  I = 0
  N = 1
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 1
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 1
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 4
- X: 1
- I: 1
- A(1): -3
+ Y: (1030) 4
+ X: (520) 1
+ I: (1040) 1
+ A(1): (2020) -3
  Y = 1
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 6
- K: 1
- Y: 1
+ J: (550) 6
+ K: (140) 1
+ Y: (1030) 1
  T(6,1) = 1
 550 G(510) F(J:510) NEXT J
- J: 6
+ J: (550) 6
  terminated:false
  J = 7
 520 G(510) F(J:510) LET X = X(J)
- J: 7
- X(7): 2.5
+ J: (550) 7
+ X(7): (80) 2.5
  X = 2.5
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 1
+ N: (2040) 1
  I = 0
  N = 1
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 2.5
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 2.5
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 4
- X: 2.5
- I: 1
- A(1): -3
+ Y: (1030) 4
+ X: (520) 2.5
+ I: (1040) 1
+ A(1): (2020) -3
  Y = 7
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 7
- K: 1
- Y: 7
+ J: (550) 7
+ K: (140) 1
+ Y: (1030) 7
  T(7,1) = 7
 550 G(510) F(J:510) NEXT J
- J: 7
+ J: (550) 7
  terminated:false
  J = 8
 520 G(510) F(J:510) LET X = X(J)
- J: 8
- X(8): 5
+ J: (550) 8
+ X(8): (80) 5
  X = 5
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 1
+ N: (2040) 1
  I = 0
  N = 1
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 5
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 5
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:false
  I = 1
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 4
- X: 5
- I: 1
- A(1): -3
+ Y: (1030) 4
+ X: (520) 5
+ I: (1040) 1
+ A(1): (2020) -3
  Y = 17
 1040 G(1010) F(I:1020) NEXT I
- I: 1
+ I: (1040) 1
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 8
- K: 1
- Y: 17
+ J: (550) 8
+ K: (140) 1
+ Y: (1030) 17
  T(8,1) = 17
 550 G(510) F(J:510) NEXT J
- J: 8
+ J: (550) 8
  terminated:true
 560 G(510) RETURN
 160 GOSUB 2000
 2010 G(2010) F(I:2010) FOR I = 0 TO N
- N: 1
+ N: (2040) 1
  I = 0
  N = 1
  terminated:false
 2020 G(2010) F(I:2010) LET A(I) = A(I) * (N - I)
- I: 0
- A(0): 4
- N: 1
+ I: (2010) 0
+ A(0): (2020) 4
+ N: (2040) 1
  A(0) = 4
 2030 G(2010) F(I:2010) NEXT I
- I: 0
+ I: (2010) 0
  terminated:false
  I = 1
 2020 G(2010) F(I:2010) LET A(I) = A(I) * (N - I)
- I: 1
- A(1): -3
- N: 1
+ I: (2030) 1
+ A(1): (2020) -3
+ N: (2040) 1
  A(1) = 0
 2030 G(2010) F(I:2010) NEXT I
- I: 1
+ I: (2030) 1
  terminated:true
 2040 G(2010) LET N = N - 1
- N: 1
+ N: (2040) 1
  N = 0
 2050 G(2010) RETURN
 170 LET K = 2
  K = 2
 180 GOSUB 500
 510 G(510) F(J:510) FOR J = 1 TO X9
- X9: 8
+ X9: (60) 8
  J = 1
  X9 = 8
  terminated:false
 520 G(510) F(J:510) LET X = X(J)
- J: 1
- X(1): -3
+ J: (510) 1
+ X(1): (80) -3
  X = -3
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 0
+ N: (2040) 0
  I = 0
  N = 0
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: -3
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) -3
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 1
- K: 2
- Y: 4
+ J: (510) 1
+ K: (170) 2
+ Y: (1030) 4
  T(1,2) = 4
 550 G(510) F(J:510) NEXT J
- J: 1
+ J: (510) 1
  terminated:false
  J = 2
 520 G(510) F(J:510) LET X = X(J)
- J: 2
- X(2): -1
+ J: (550) 2
+ X(2): (80) -1
  X = -1
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 0
+ N: (2040) 0
  I = 0
  N = 0
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: -1
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) -1
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 2
- K: 2
- Y: 4
+ J: (550) 2
+ K: (170) 2
+ Y: (1030) 4
  T(2,2) = 4
 550 G(510) F(J:510) NEXT J
- J: 2
+ J: (550) 2
  terminated:false
  J = 3
 520 G(510) F(J:510) LET X = X(J)
- J: 3
- X(3): 0
+ J: (550) 3
+ X(3): (80) 0
  X = 0
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 0
+ N: (2040) 0
  I = 0
  N = 0
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 0
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 0
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 3
- K: 2
- Y: 4
+ J: (550) 3
+ K: (170) 2
+ Y: (1030) 4
  T(3,2) = 4
 550 G(510) F(J:510) NEXT J
- J: 3
+ J: (550) 3
  terminated:false
  J = 4
 520 G(510) F(J:510) LET X = X(J)
- J: 4
- X(4): 0.5
+ J: (550) 4
+ X(4): (80) 0.5
  X = 0.5
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 0
+ N: (2040) 0
  I = 0
  N = 0
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 0.5
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 0.5
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 4
- K: 2
- Y: 4
+ J: (550) 4
+ K: (170) 2
+ Y: (1030) 4
  T(4,2) = 4
 550 G(510) F(J:510) NEXT J
- J: 4
+ J: (550) 4
  terminated:false
  J = 5
 520 G(510) F(J:510) LET X = X(J)
- J: 5
- X(5): 0.75
+ J: (550) 5
+ X(5): (80) 0.75
  X = 0.75
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 0
+ N: (2040) 0
  I = 0
  N = 0
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 0.75
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 0.75
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 5
- K: 2
- Y: 4
+ J: (550) 5
+ K: (170) 2
+ Y: (1030) 4
  T(5,2) = 4
 550 G(510) F(J:510) NEXT J
- J: 5
+ J: (550) 5
  terminated:false
  J = 6
 520 G(510) F(J:510) LET X = X(J)
- J: 6
- X(6): 1
+ J: (550) 6
+ X(6): (80) 1
  X = 1
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 0
+ N: (2040) 0
  I = 0
  N = 0
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 1
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 1
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 6
- K: 2
- Y: 4
+ J: (550) 6
+ K: (170) 2
+ Y: (1030) 4
  T(6,2) = 4
 550 G(510) F(J:510) NEXT J
- J: 6
+ J: (550) 6
  terminated:false
  J = 7
 520 G(510) F(J:510) LET X = X(J)
- J: 7
- X(7): 2.5
+ J: (550) 7
+ X(7): (80) 2.5
  X = 2.5
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 0
+ N: (2040) 0
  I = 0
  N = 0
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 2.5
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 2.5
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 7
- K: 2
- Y: 4
+ J: (550) 7
+ K: (170) 2
+ Y: (1030) 4
  T(7,2) = 4
 550 G(510) F(J:510) NEXT J
- J: 7
+ J: (550) 7
  terminated:false
  J = 8
 520 G(510) F(J:510) LET X = X(J)
- J: 8
- X(8): 5
+ J: (550) 8
+ X(8): (80) 5
  X = 5
 530 G(510) F(J:510) GOSUB 1000
 1010 G(1010) LET Y = 0
  Y = 0
 1020 G(1010) F(I:1020) FOR I = 0 TO N
- N: 0
+ N: (2040) 0
  I = 0
  N = 0
  terminated:false
 1030 G(1010) F(I:1020) LET Y = Y * X + A(I)
- Y: 0
- X: 5
- I: 0
- A(0): 4
+ Y: (1010) 0
+ X: (520) 5
+ I: (1020) 0
+ A(0): (2020) 4
  Y = 4
 1040 G(1010) F(I:1020) NEXT I
- I: 0
+ I: (1020) 0
  terminated:true
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
- J: 8
- K: 2
- Y: 4
+ J: (550) 8
+ K: (170) 2
+ Y: (1030) 4
  T(8,2) = 4
 550 G(510) F(J:510) NEXT J
- J: 8
+ J: (550) 8
  terminated:true
 560 G(510) RETURN
 210 PRINT " X", "POLY.", "1ST DER.", "2D DER."
@@ -1166,120 +1166,120 @@
 220 PRINT
 
 230 F(J:230) FOR J = 1 TO X9
- X9: 8
+ X9: (60) 8
  J = 1
  X9 = 8
  terminated:false
 240 F(J:230) PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
- J: 1
- X(1): -3
+ J: (230) 1
+ X(1): (80) -3
 -3              
- T(1,0): 28
+ T(1,0): (540) 28
  28             
- T(1,1): -15
+ T(1,1): (540) -15
 -15             
- T(1,2): 4
+ T(1,2): (540) 4
  4
 250 F(J:230) NEXT J
- J: 1
+ J: (230) 1
  terminated:false
  J = 2
 240 F(J:230) PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
- J: 2
- X(2): -1
+ J: (250) 2
+ X(2): (80) -1
 -1              
- T(2,0): 6
+ T(2,0): (540) 6
  6              
- T(2,1): -7
+ T(2,1): (540) -7
 -7              
- T(2,2): 4
+ T(2,2): (540) 4
  4
 250 F(J:230) NEXT J
- J: 2
+ J: (250) 2
  terminated:false
  J = 3
 240 F(J:230) PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
- J: 3
- X(3): 0
+ J: (250) 3
+ X(3): (80) 0
  0              
- T(3,0): 1
+ T(3,0): (540) 1
  1              
- T(3,1): -3
+ T(3,1): (540) -3
 -3              
- T(3,2): 4
+ T(3,2): (540) 4
  4
 250 F(J:230) NEXT J
- J: 3
+ J: (250) 3
  terminated:false
  J = 4
 240 F(J:230) PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
- J: 4
- X(4): 0.5
+ J: (250) 4
+ X(4): (80) 0.5
  0.5            
- T(4,0): 0
+ T(4,0): (540) 0
  0              
- T(4,1): -1
+ T(4,1): (540) -1
 -1              
- T(4,2): 4
+ T(4,2): (540) 4
  4
 250 F(J:230) NEXT J
- J: 4
+ J: (250) 4
  terminated:false
  J = 5
 240 F(J:230) PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
- J: 5
- X(5): 0.75
+ J: (250) 5
+ X(5): (80) 0.75
  0.75           
- T(5,0): -0.125
+ T(5,0): (540) -0.125
 -0.125          
- T(5,1): 0
+ T(5,1): (540) 0
  0              
- T(5,2): 4
+ T(5,2): (540) 4
  4
 250 F(J:230) NEXT J
- J: 5
+ J: (250) 5
  terminated:false
  J = 6
 240 F(J:230) PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
- J: 6
- X(6): 1
+ J: (250) 6
+ X(6): (80) 1
  1              
- T(6,0): 0
+ T(6,0): (540) 0
  0              
- T(6,1): 1
+ T(6,1): (540) 1
  1              
- T(6,2): 4
+ T(6,2): (540) 4
  4
 250 F(J:230) NEXT J
- J: 6
+ J: (250) 6
  terminated:false
  J = 7
 240 F(J:230) PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
- J: 7
- X(7): 2.5
+ J: (250) 7
+ X(7): (80) 2.5
  2.5            
- T(7,0): 6
+ T(7,0): (540) 6
  6              
- T(7,1): 7
+ T(7,1): (540) 7
  7              
- T(7,2): 4
+ T(7,2): (540) 4
  4
 250 F(J:230) NEXT J
- J: 7
+ J: (250) 7
  terminated:false
  J = 8
 240 F(J:230) PRINT X(J), T(J, 0), T(J, 1), T(J, 2)
- J: 8
- X(8): 5
+ J: (250) 8
+ X(8): (80) 5
  5              
- T(8,0): 36
+ T(8,0): (540) 36
  36             
- T(8,1): 17
+ T(8,1): (540) 17
  17             
- T(8,2): 4
+ T(8,2): (540) 4
  4
 250 F(J:230) NEXT J
- J: 8
+ J: (250) 8
  terminated:true
 260 STOP
 STOP in line 260

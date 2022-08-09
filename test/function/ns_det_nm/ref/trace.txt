@@ -14,84 +14,84 @@
  R = 1
  C = 1
 405 G(400) DIM M1(R, C)
- R: 1
- C: 1
+ R: (400) 1
+ C: (400) 1
 410 G(400) F(I:410) FOR I = B TO R
- B: 0
- R: 1
+ B: (22) 0
+ R: (400) 1
  I = 0
  B = 0
  R = 1
  terminated:false
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 0
- C: 1
+ B: (22) 0
+ C: (400) 1
  J = 0
  B = 0
  C = 1
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 0
- J: 0
+ I: (410) 0
+ J: (420) 0
  M1(0,0) = 3
 440 G(400) F(I:410,J:420) NEXT J
- J: 0
+ J: (420) 0
  terminated:false
  J = 1
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 0
- J: 1
+ I: (410) 0
+ J: (440) 1
  M1(0,1) = 4
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (440) 1
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 0
+ I: (410) 0
  terminated:false
  I = 1
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 0
- C: 1
+ B: (22) 0
+ C: (400) 1
  J = 0
  B = 0
  C = 1
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 0
+ I: (450) 1
+ J: (420) 0
  M1(1,0) = 8
 440 G(400) F(I:410,J:420) NEXT J
- J: 0
+ J: (420) 0
  terminated:false
  J = 1
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 1
+ I: (450) 1
+ J: (440) 1
  M1(1,1) = 10
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (440) 1
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 1
+ I: (450) 1
  terminated:true
 460 G(400) PRINT "MATRIX:"
 MATRIX:
 470 G(400) MAT PRINT M1;
- M1(0,0): 3
- M1(0,1): 4
- M1(1,0): 8
- M1(1,1): 10
+ M1(0,0): (430) 3
+ M1(0,1): (430) 4
+ M1(1,0): (430) 8
+ M1(1,1): (430) 10
  3               4
  8               10
 480 G(400) LET D = DET(M1)
- M1(0,0): 3
- M1(0,1): 4
- M1(1,0): 8
- M1(1,1): 10
+ M1(0,0): (430) 3
+ M1(0,1): (430) 4
+ M1(1,0): (430) 8
+ M1(1,1): (430) 10
  D = 10
 490 G(400) PRINT "DETERMINANT:" D
 DETERMINANT:
- D: 10
+ D: (480) 10
  10
 495 G(400) PRINT
 
@@ -101,226 +101,226 @@ DETERMINANT:
  R = 3
  C = 3
 405 G(400) DIM M1(R, C)
- R: 3
- C: 3
+ R: (400) 3
+ C: (400) 3
 410 G(400) F(I:410) FOR I = B TO R
- B: 0
- R: 3
+ B: (22) 0
+ R: (400) 3
  I = 0
  B = 0
  R = 3
  terminated:false
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 0
- C: 3
+ B: (22) 0
+ C: (400) 3
  J = 0
  B = 0
  C = 3
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 0
- J: 0
+ I: (410) 0
+ J: (420) 0
  M1(0,0) = 1
 440 G(400) F(I:410,J:420) NEXT J
- J: 0
+ J: (420) 0
  terminated:false
  J = 1
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 0
- J: 1
+ I: (410) 0
+ J: (440) 1
  M1(0,1) = 0
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (440) 1
  terminated:false
  J = 2
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 0
- J: 2
+ I: (410) 0
+ J: (440) 2
  M1(0,2) = 2
 440 G(400) F(I:410,J:420) NEXT J
- J: 2
+ J: (440) 2
  terminated:false
  J = 3
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 0
- J: 3
+ I: (410) 0
+ J: (440) 3
  M1(0,3) = -1
 440 G(400) F(I:410,J:420) NEXT J
- J: 3
+ J: (440) 3
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 0
+ I: (410) 0
  terminated:false
  I = 1
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 0
- C: 3
+ B: (22) 0
+ C: (400) 3
  J = 0
  B = 0
  C = 3
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 0
+ I: (450) 1
+ J: (420) 0
  M1(1,0) = 3
 440 G(400) F(I:410,J:420) NEXT J
- J: 0
+ J: (420) 0
  terminated:false
  J = 1
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 1
+ I: (450) 1
+ J: (440) 1
  M1(1,1) = 0
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (440) 1
  terminated:false
  J = 2
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 2
+ I: (450) 1
+ J: (440) 2
  M1(1,2) = 0
 440 G(400) F(I:410,J:420) NEXT J
- J: 2
+ J: (440) 2
  terminated:false
  J = 3
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 3
+ I: (450) 1
+ J: (440) 3
  M1(1,3) = 5
 440 G(400) F(I:410,J:420) NEXT J
- J: 3
+ J: (440) 3
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 1
+ I: (450) 1
  terminated:false
  I = 2
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 0
- C: 3
+ B: (22) 0
+ C: (400) 3
  J = 0
  B = 0
  C = 3
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 2
- J: 0
+ I: (450) 2
+ J: (420) 0
  M1(2,0) = 2
 440 G(400) F(I:410,J:420) NEXT J
- J: 0
+ J: (420) 0
  terminated:false
  J = 1
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 2
- J: 1
+ I: (450) 2
+ J: (440) 1
  M1(2,1) = 1
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (440) 1
  terminated:false
  J = 2
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 2
- J: 2
+ I: (450) 2
+ J: (440) 2
  M1(2,2) = 4
 440 G(400) F(I:410,J:420) NEXT J
- J: 2
+ J: (440) 2
  terminated:false
  J = 3
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 2
- J: 3
+ I: (450) 2
+ J: (440) 3
  M1(2,3) = -3
 440 G(400) F(I:410,J:420) NEXT J
- J: 3
+ J: (440) 3
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 2
+ I: (450) 2
  terminated:false
  I = 3
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 0
- C: 3
+ B: (22) 0
+ C: (400) 3
  J = 0
  B = 0
  C = 3
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 3
- J: 0
+ I: (450) 3
+ J: (420) 0
  M1(3,0) = 1
 440 G(400) F(I:410,J:420) NEXT J
- J: 0
+ J: (420) 0
  terminated:false
  J = 1
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 3
- J: 1
+ I: (450) 3
+ J: (440) 1
  M1(3,1) = 0
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (440) 1
  terminated:false
  J = 2
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 3
- J: 2
+ I: (450) 3
+ J: (440) 2
  M1(3,2) = 5
 440 G(400) F(I:410,J:420) NEXT J
- J: 2
+ J: (440) 2
  terminated:false
  J = 3
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 3
- J: 3
+ I: (450) 3
+ J: (440) 3
  M1(3,3) = 0
 440 G(400) F(I:410,J:420) NEXT J
- J: 3
+ J: (440) 3
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 3
+ I: (450) 3
  terminated:true
 460 G(400) PRINT "MATRIX:"
 MATRIX:
 470 G(400) MAT PRINT M1;
- M1(0,0): 1
- M1(0,1): 0
- M1(0,2): 2
- M1(0,3): -1
- M1(1,0): 3
- M1(1,1): 0
- M1(1,2): 0
- M1(1,3): 5
- M1(2,0): 2
- M1(2,1): 1
- M1(2,2): 4
- M1(2,3): -3
- M1(3,0): 1
- M1(3,1): 0
- M1(3,2): 5
- M1(3,3): 0
+ M1(0,0): (430) 1
+ M1(0,1): (430) 0
+ M1(0,2): (430) 2
+ M1(0,3): (430) -1
+ M1(1,0): (430) 3
+ M1(1,1): (430) 0
+ M1(1,2): (430) 0
+ M1(1,3): (430) 5
+ M1(2,0): (430) 2
+ M1(2,1): (430) 1
+ M1(2,2): (430) 4
+ M1(2,3): (430) -3
+ M1(3,0): (430) 1
+ M1(3,1): (430) 0
+ M1(3,2): (430) 5
+ M1(3,3): (430) 0
  1               0               2              -1
  3               0               0               5
  2               1               4              -3
  1               0               5               0
 480 G(400) LET D = DET(M1)
- M1(0,0): 1
- M1(0,1): 0
- M1(0,2): 2
- M1(0,3): -1
- M1(1,0): 3
- M1(1,1): 0
- M1(1,2): 0
- M1(1,3): 5
- M1(2,0): 2
- M1(2,1): 1
- M1(2,2): 4
- M1(2,3): -3
- M1(3,0): 1
- M1(3,1): 0
- M1(3,2): 5
- M1(3,3): 0
+ M1(0,0): (430) 1
+ M1(0,1): (430) 0
+ M1(0,2): (430) 2
+ M1(0,3): (430) -1
+ M1(1,0): (430) 3
+ M1(1,1): (430) 0
+ M1(1,2): (430) 0
+ M1(1,3): (430) 5
+ M1(2,0): (430) 2
+ M1(2,1): (430) 1
+ M1(2,2): (430) 4
+ M1(2,3): (430) -3
+ M1(3,0): (430) 1
+ M1(3,1): (430) 0
+ M1(3,2): (430) 5
+ M1(3,3): (430) 0
  D = -11
 490 G(400) PRINT "DETERMINANT:" D
 DETERMINANT:
- D: -11
+ D: (480) -11
 -11
 495 G(400) PRINT
 
@@ -333,84 +333,84 @@ DETERMINANT:
  R = 2
  C = 2
 405 G(400) DIM M1(R, C)
- R: 2
- C: 2
+ R: (400) 2
+ C: (400) 2
 410 G(400) F(I:410) FOR I = B TO R
- B: 1
- R: 2
+ B: (122) 1
+ R: (400) 2
  I = 1
  B = 1
  R = 2
  terminated:false
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 1
- C: 2
+ B: (122) 1
+ C: (400) 2
  J = 1
  B = 1
  C = 2
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 1
+ I: (410) 1
+ J: (420) 1
  M1(1,1) = 3
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (420) 1
  terminated:false
  J = 2
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 2
+ I: (410) 1
+ J: (440) 2
  M1(1,2) = 4
 440 G(400) F(I:410,J:420) NEXT J
- J: 2
+ J: (440) 2
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 1
+ I: (410) 1
  terminated:false
  I = 2
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 1
- C: 2
+ B: (122) 1
+ C: (400) 2
  J = 1
  B = 1
  C = 2
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 2
- J: 1
+ I: (450) 2
+ J: (420) 1
  M1(2,1) = 8
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (420) 1
  terminated:false
  J = 2
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 2
- J: 2
+ I: (450) 2
+ J: (440) 2
  M1(2,2) = 10
 440 G(400) F(I:410,J:420) NEXT J
- J: 2
+ J: (440) 2
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 2
+ I: (450) 2
  terminated:true
 460 G(400) PRINT "MATRIX:"
 MATRIX:
 470 G(400) MAT PRINT M1;
- M1(1,1): 3
- M1(1,2): 4
- M1(2,1): 8
- M1(2,2): 10
+ M1(1,1): (430) 3
+ M1(1,2): (430) 4
+ M1(2,1): (430) 8
+ M1(2,2): (430) 10
  3               4
  8               10
 480 G(400) LET D = DET(M1)
- M1(1,1): 3
- M1(1,2): 4
- M1(2,1): 8
- M1(2,2): 10
+ M1(1,1): (430) 3
+ M1(1,2): (430) 4
+ M1(2,1): (430) 8
+ M1(2,2): (430) 10
  D = -2
 490 G(400) PRINT "DETERMINANT:" D
 DETERMINANT:
- D: -2
+ D: (480) -2
 -2
 495 G(400) PRINT
 
@@ -420,226 +420,226 @@ DETERMINANT:
  R = 4
  C = 4
 405 G(400) DIM M1(R, C)
- R: 4
- C: 4
+ R: (400) 4
+ C: (400) 4
 410 G(400) F(I:410) FOR I = B TO R
- B: 1
- R: 4
+ B: (122) 1
+ R: (400) 4
  I = 1
  B = 1
  R = 4
  terminated:false
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 1
- C: 4
+ B: (122) 1
+ C: (400) 4
  J = 1
  B = 1
  C = 4
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 1
+ I: (410) 1
+ J: (420) 1
  M1(1,1) = 1
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (420) 1
  terminated:false
  J = 2
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 2
+ I: (410) 1
+ J: (440) 2
  M1(1,2) = 0
 440 G(400) F(I:410,J:420) NEXT J
- J: 2
+ J: (440) 2
  terminated:false
  J = 3
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 3
+ I: (410) 1
+ J: (440) 3
  M1(1,3) = 2
 440 G(400) F(I:410,J:420) NEXT J
- J: 3
+ J: (440) 3
  terminated:false
  J = 4
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 1
- J: 4
+ I: (410) 1
+ J: (440) 4
  M1(1,4) = -1
 440 G(400) F(I:410,J:420) NEXT J
- J: 4
+ J: (440) 4
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 1
+ I: (410) 1
  terminated:false
  I = 2
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 1
- C: 4
+ B: (122) 1
+ C: (400) 4
  J = 1
  B = 1
  C = 4
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 2
- J: 1
+ I: (450) 2
+ J: (420) 1
  M1(2,1) = 3
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (420) 1
  terminated:false
  J = 2
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 2
- J: 2
+ I: (450) 2
+ J: (440) 2
  M1(2,2) = 0
 440 G(400) F(I:410,J:420) NEXT J
- J: 2
+ J: (440) 2
  terminated:false
  J = 3
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 2
- J: 3
+ I: (450) 2
+ J: (440) 3
  M1(2,3) = 0
 440 G(400) F(I:410,J:420) NEXT J
- J: 3
+ J: (440) 3
  terminated:false
  J = 4
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 2
- J: 4
+ I: (450) 2
+ J: (440) 4
  M1(2,4) = 5
 440 G(400) F(I:410,J:420) NEXT J
- J: 4
+ J: (440) 4
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 2
+ I: (450) 2
  terminated:false
  I = 3
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 1
- C: 4
+ B: (122) 1
+ C: (400) 4
  J = 1
  B = 1
  C = 4
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 3
- J: 1
+ I: (450) 3
+ J: (420) 1
  M1(3,1) = 2
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (420) 1
  terminated:false
  J = 2
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 3
- J: 2
+ I: (450) 3
+ J: (440) 2
  M1(3,2) = 1
 440 G(400) F(I:410,J:420) NEXT J
- J: 2
+ J: (440) 2
  terminated:false
  J = 3
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 3
- J: 3
+ I: (450) 3
+ J: (440) 3
  M1(3,3) = 4
 440 G(400) F(I:410,J:420) NEXT J
- J: 3
+ J: (440) 3
  terminated:false
  J = 4
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 3
- J: 4
+ I: (450) 3
+ J: (440) 4
  M1(3,4) = -3
 440 G(400) F(I:410,J:420) NEXT J
- J: 4
+ J: (440) 4
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 3
+ I: (450) 3
  terminated:false
  I = 4
 420 G(400) F(I:410,J:420) FOR J = B TO C
- B: 1
- C: 4
+ B: (122) 1
+ C: (400) 4
  J = 1
  B = 1
  C = 4
  terminated:false
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 4
- J: 1
+ I: (450) 4
+ J: (420) 1
  M1(4,1) = 1
 440 G(400) F(I:410,J:420) NEXT J
- J: 1
+ J: (420) 1
  terminated:false
  J = 2
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 4
- J: 2
+ I: (450) 4
+ J: (440) 2
  M1(4,2) = 0
 440 G(400) F(I:410,J:420) NEXT J
- J: 2
+ J: (440) 2
  terminated:false
  J = 3
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 4
- J: 3
+ I: (450) 4
+ J: (440) 3
  M1(4,3) = 5
 440 G(400) F(I:410,J:420) NEXT J
- J: 3
+ J: (440) 3
  terminated:false
  J = 4
 430 G(400) F(I:410,J:420) READ M1(I, J)
- I: 4
- J: 4
+ I: (450) 4
+ J: (440) 4
  M1(4,4) = 0
 440 G(400) F(I:410,J:420) NEXT J
- J: 4
+ J: (440) 4
  terminated:true
 450 G(400) F(I:410) NEXT I
- I: 4
+ I: (450) 4
  terminated:true
 460 G(400) PRINT "MATRIX:"
 MATRIX:
 470 G(400) MAT PRINT M1;
- M1(1,1): 1
- M1(1,2): 0
- M1(1,3): 2
- M1(1,4): -1
- M1(2,1): 3
- M1(2,2): 0
- M1(2,3): 0
- M1(2,4): 5
- M1(3,1): 2
- M1(3,2): 1
- M1(3,3): 4
- M1(3,4): -3
- M1(4,1): 1
- M1(4,2): 0
- M1(4,3): 5
- M1(4,4): 0
+ M1(1,1): (430) 1
+ M1(1,2): (430) 0
+ M1(1,3): (430) 2
+ M1(1,4): (430) -1
+ M1(2,1): (430) 3
+ M1(2,2): (430) 0
+ M1(2,3): (430) 0
+ M1(2,4): (430) 5
+ M1(3,1): (430) 2
+ M1(3,2): (430) 1
+ M1(3,3): (430) 4
+ M1(3,4): (430) -3
+ M1(4,1): (430) 1
+ M1(4,2): (430) 0
+ M1(4,3): (430) 5
+ M1(4,4): (430) 0
  1               0               2              -1
  3               0               0               5
  2               1               4              -3
  1               0               5               0
 480 G(400) LET D = DET(M1)
- M1(1,1): 1
- M1(1,2): 0
- M1(1,3): 2
- M1(1,4): -1
- M1(2,1): 3
- M1(2,2): 0
- M1(2,3): 0
- M1(2,4): 5
- M1(3,1): 2
- M1(3,2): 1
- M1(3,3): 4
- M1(3,4): -3
- M1(4,1): 1
- M1(4,2): 0
- M1(4,3): 5
- M1(4,4): 0
+ M1(1,1): (430) 1
+ M1(1,2): (430) 0
+ M1(1,3): (430) 2
+ M1(1,4): (430) -1
+ M1(2,1): (430) 3
+ M1(2,2): (430) 0
+ M1(2,3): (430) 0
+ M1(2,4): (430) 5
+ M1(3,1): (430) 2
+ M1(3,2): (430) 1
+ M1(3,3): (430) 4
+ M1(3,4): (430) -3
+ M1(4,1): (430) 1
+ M1(4,2): (430) 0
+ M1(4,3): (430) 5
+ M1(4,4): (430) 0
  D = 30
 490 G(400) PRINT "DETERMINANT:" D
 DETERMINANT:
- D: 30
+ D: (480) 30
  30
 495 G(400) PRINT
 

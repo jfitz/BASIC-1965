@@ -4,153 +4,153 @@
  I = 1
  terminated:false
 22 F(I:21) LET A(I) = 1
- I: 1
+ I: (21) 1
  A(1) = 1
 23 F(I:21) NEXT I
- I: 1
+ I: (21) 1
  terminated:false
  I = 2
 22 F(I:21) LET A(I) = 1
- I: 2
+ I: (23) 2
  A(2) = 1
 23 F(I:21) NEXT I
- I: 2
+ I: (23) 2
  terminated:false
  I = 3
 22 F(I:21) LET A(I) = 1
- I: 3
+ I: (23) 3
  A(3) = 1
 23 F(I:21) NEXT I
- I: 3
+ I: (23) 3
  terminated:false
  I = 4
 22 F(I:21) LET A(I) = 1
- I: 4
+ I: (23) 4
  A(4) = 1
 23 F(I:21) NEXT I
- I: 4
+ I: (23) 4
  terminated:false
  I = 5
 22 F(I:21) LET A(I) = 1
- I: 5
+ I: (23) 5
  A(5) = 1
 23 F(I:21) NEXT I
- I: 5
+ I: (23) 5
  terminated:false
  I = 6
 22 F(I:21) LET A(I) = 1
- I: 6
+ I: (23) 6
  A(6) = 1
 23 F(I:21) NEXT I
- I: 6
+ I: (23) 6
  terminated:false
  I = 7
 22 F(I:21) LET A(I) = 1
- I: 7
+ I: (23) 7
  A(7) = 1
 23 F(I:21) NEXT I
- I: 7
+ I: (23) 7
  terminated:false
  I = 8
 22 F(I:21) LET A(I) = 1
- I: 8
+ I: (23) 8
  A(8) = 1
 23 F(I:21) NEXT I
- I: 8
+ I: (23) 8
  terminated:false
  I = 9
 22 F(I:21) LET A(I) = 1
- I: 9
+ I: (23) 9
  A(9) = 1
 23 F(I:21) NEXT I
- I: 9
+ I: (23) 9
  terminated:false
  I = 10
 22 F(I:21) LET A(I) = 1
- I: 10
+ I: (23) 10
  A(10) = 1
 23 F(I:21) NEXT I
- I: 10
+ I: (23) 10
  terminated:true
 24 F(I:24) FOR I = 1 TO 8
  I = 1
  terminated:false
 25 F(I:24) LET A1(I) = 8 - I
- I: 1
+ I: (24) 1
  A1(1) = 7
 26 F(I:24) NEXT I
- I: 1
+ I: (24) 1
  terminated:false
  I = 2
 25 F(I:24) LET A1(I) = 8 - I
- I: 2
+ I: (26) 2
  A1(2) = 6
 26 F(I:24) NEXT I
- I: 2
+ I: (26) 2
  terminated:false
  I = 3
 25 F(I:24) LET A1(I) = 8 - I
- I: 3
+ I: (26) 3
  A1(3) = 5
 26 F(I:24) NEXT I
- I: 3
+ I: (26) 3
  terminated:false
  I = 4
 25 F(I:24) LET A1(I) = 8 - I
- I: 4
+ I: (26) 4
  A1(4) = 4
 26 F(I:24) NEXT I
- I: 4
+ I: (26) 4
  terminated:false
  I = 5
 25 F(I:24) LET A1(I) = 8 - I
- I: 5
+ I: (26) 5
  A1(5) = 3
 26 F(I:24) NEXT I
- I: 5
+ I: (26) 5
  terminated:false
  I = 6
 25 F(I:24) LET A1(I) = 8 - I
- I: 6
+ I: (26) 6
  A1(6) = 2
 26 F(I:24) NEXT I
- I: 6
+ I: (26) 6
  terminated:false
  I = 7
 25 F(I:24) LET A1(I) = 8 - I
- I: 7
+ I: (26) 7
  A1(7) = 1
 26 F(I:24) NEXT I
- I: 7
+ I: (26) 7
  terminated:false
  I = 8
 25 F(I:24) LET A1(I) = 8 - I
- I: 8
+ I: (26) 8
  A1(8) = 0
 26 F(I:24) NEXT I
- I: 8
+ I: (26) 8
  terminated:true
 30 ARR PRINT A
- A(1): 1
- A(2): 1
- A(3): 1
- A(4): 1
- A(5): 1
- A(6): 1
- A(7): 1
- A(8): 1
- A(9): 1
- A(10): 1
+ A(1): (22) 1
+ A(2): (22) 1
+ A(3): (22) 1
+ A(4): (22) 1
+ A(5): (22) 1
+ A(6): (22) 1
+ A(7): (22) 1
+ A(8): (22) 1
+ A(9): (22) 1
+ A(10): (22) 1
  1               1               1               1               1               1               1               1               1               1
 31 ARR PRINT A1
- A1(1): 7
- A1(2): 6
- A1(3): 5
- A1(4): 4
- A1(5): 3
- A1(6): 2
- A1(7): 1
- A1(8): 0
+ A1(1): (25) 7
+ A1(2): (25) 6
+ A1(3): (25) 5
+ A1(4): (25) 4
+ A1(5): (25) 3
+ A1(6): (25) 2
+ A1(7): (25) 1
+ A1(8): (25) 0
  7               6               5               4               3               2               1               0
 40 ARR FORGET A
  A(1)
@@ -164,14 +164,14 @@
  A(9)
  A(10)
 90 ARR PRINT A1
- A1(1): 7
- A1(2): 6
- A1(3): 5
- A1(4): 4
- A1(5): 3
- A1(6): 2
- A1(7): 1
- A1(8): 0
+ A1(1): (25) 7
+ A1(2): (25) 6
+ A1(3): (25) 5
+ A1(4): (25) 4
+ A1(5): (25) 3
+ A1(6): (25) 2
+ A1(7): (25) 1
+ A1(8): (25) 0
  7               6               5               4               3               2               1               0
 91 ARR PRINT A
 Variable A has no dimensions in line 91

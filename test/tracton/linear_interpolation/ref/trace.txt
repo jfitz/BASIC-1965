@@ -16,20 +16,20 @@ INTERPOLATE F(X) AT X =
 ? 60
  X = 60
 80 LET G = ((X2 - X) * Y1) + ((X - X1) * Y2)
- X2: 50
- X: 60
- Y1: 15
- X1: 10
- Y2: 55
+ X2: (30) 50
+ X: (70) 60
+ Y1: (50) 15
+ X1: (30) 10
+ Y2: (50) 55
  G = 2600
 90 LET F = G / (X2 - X1)
- G: 2600
- X2: 50
- X1: 10
+ G: (80) 2600
+ X2: (30) 50
+ X1: (30) 10
  F = 65
 100 PRINT "INTERPOLATED F(X) = "; F
 INTERPOLATED F(X) = 
- F: 65
+ F: (90) 65
  65
 110 PRINT
 
@@ -39,7 +39,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 1
  L = 1
 140 IF L = 1 THEN 160
- L: 1
+ L: (130) 1
  L = 1: true
 160 PRINT
 
@@ -62,20 +62,20 @@ INTERPOLATE F(X) AT X =
 ? 1234
  X = 1234
 80 LET G = ((X2 - X) * Y1) + ((X - X1) * Y2)
- X2: 98
- X: 1234
- Y1: 86
- X1: 43
- Y2: 196
+ X2: (30) 98
+ X: (70) 1234
+ Y1: (50) 86
+ X1: (30) 43
+ Y2: (50) 196
  G = 135740
 90 LET F = G / (X2 - X1)
- G: 135740
- X2: 98
- X1: 43
+ G: (80) 135740
+ X2: (30) 98
+ X1: (30) 43
  F = 2468
 100 PRINT "INTERPOLATED F(X) = "; F
 INTERPOLATED F(X) = 
- F: 2468
+ F: (90) 2468
  2468
 110 PRINT
 
@@ -85,7 +85,7 @@ TYPE 1 TO CONTINUE, 0 TO STOP
 ? 0
  L = 0
 140 IF L = 1 THEN 160
- L: 0
+ L: (130) 0
  L = 1: false
 150 STOP
 STOP in line 150
