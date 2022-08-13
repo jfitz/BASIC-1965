@@ -153,6 +153,10 @@
  Variable:I1 -> .
  NumericValue:1
  AssignmentOperator:= =. -> .
+509 LET I0 = 0
+ Variable:I0 -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
 510 FOR I = I1 TO 6
  WARNING: FORNEXT length exceeds limit 40
  control: Variable:I -> .
@@ -206,7 +210,11 @@
  BinaryOperatorPlus:+(.,.) -> .
  Variable:S(.,.) -> .
  AssignmentOperator:= . -> .
-570 FOR J = 1 TO 2
+570 LET J0 = 0
+ Variable:J0 -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+571 FOR J = 1 TO 2
  control: Variable:J -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:2"]
@@ -226,11 +234,19 @@
  BinaryOperatorMinus:-(.,.) -> .
  Variable:D(.) -> .
  AssignmentOperator:= . -> .
-600 GOTO 660
- WARNING: Transfer in/out of FOR/NEXT 660
- LineNumber:660
+600 LET J0 = 1
+ Variable:J0 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+609 BREAK
+ 
 610 NEXT J
  Variable:J -> .
+611 IF J0 = 1 THEN 660
+ Variable:J0 -> .
+ NumericValue:1
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:660
 620 IF S > S(1,N+1) THEN 650
  Variable:S -> .
  NumericValue:1
@@ -351,10 +367,15 @@
 1000 REM  TEST CASES IN W-TABLE
  Remark: TEST CASES IN W-TABLE
 1010 FOR L = 0 TO 6
+ WARNING: FORNEXT length exceeds limit 40
  control: Variable:L -> .
  start:   ["NumericValue:0"]
  end:     ["NumericValue:6"]
-1020 FOR V = 2 TO 3
+1020 LET V0 = 0
+ Variable:V0 -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+1021 FOR V = 2 TO 3
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V -> .
  start:   ["NumericValue:2"]
@@ -365,8 +386,7 @@
  Variable:L -> .
  Variable:W(.,.) -> .
  AssignmentOperator:= . -> .
-1040 IF ABS(B-S(V,N+1)) > 5 THEN 1260
- WARNING: Transfer in/out of FOR/NEXT 1260
+1040 IF ABS(B-S(V,N+1)) <= 5 THEN 1050
  Variable:B -> .
  Variable:V -> .
  Variable:N -> .
@@ -376,36 +396,51 @@
  BinaryOperatorMinus:-(.,.) -> .
  FunctionAbs:ABS(.) -> .
  NumericValue:5
- BinaryOperatorGreater:>(.,.) -> ?
- LineNumber:1260
-1050 IF B > 17-4*V THEN 1260
- WARNING: Transfer in/out of FOR/NEXT 1260
+ BinaryOperatorLessEqual:<=(.,.) -> ?
+ LineNumber:1050
+1048 LET V0 = 1
+ Variable:V0 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+1049 BREAK
+ 
+1050 IF B <= 17-4*V THEN 1060
  Variable:B -> .
  NumericValue:17
  NumericValue:4
  Variable:V -> .
  BinaryOperatorMultiply:*(.,.) -> .
  BinaryOperatorMinus:-(.,.) -> .
- BinaryOperatorGreater:>(.,.) -> ?
- LineNumber:1260
-1060 IF B < 5-4*V THEN 1260
- WARNING: Transfer in/out of FOR/NEXT 1260
+ BinaryOperatorLessEqual:<=(.,.) -> ?
+ LineNumber:1060
+1058 LET V0 = 1
+ Variable:V0 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+1059 BREAK
+ 
+1060 IF B >= 5-4*V THEN 1070
  Variable:B -> .
  NumericValue:5
  NumericValue:4
  Variable:V -> .
  BinaryOperatorMultiply:*(.,.) -> .
  BinaryOperatorMinus:-(.,.) -> .
- BinaryOperatorLess:<(.,.) -> ?
- LineNumber:1260
+ BinaryOperatorGreaterEqual:>=(.,.) -> ?
+ LineNumber:1070
+1068 LET V0 = 1
+ Variable:V0 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+1069 BREAK
+ 
 1070 LET S(V,N) = B
  Variable:V -> .
  Variable:N -> .
  Variable:S(.,.) -> .
  Variable:B -> .
  AssignmentOperator:= . -> .
-1080 IF S(2*V-3,N) <= S(2*V-2,N) THEN 1260
- WARNING: Transfer in/out of FOR/NEXT 1260
+1080 IF S(2*V-3,N) > S(2*V-2,N) THEN 1090
  NumericValue:2
  Variable:V -> .
  BinaryOperatorMultiply:*(.,.) -> .
@@ -420,10 +455,21 @@
  BinaryOperatorMinus:-(.,.) -> .
  Variable:N -> .
  Variable:S(.,.) -> .
- BinaryOperatorLessEqual:<=(.,.) -> ?
- LineNumber:1260
+ BinaryOperatorGreater:>(.,.) -> ?
+ LineNumber:1090
+1088 LET V0 = 1
+ Variable:V0 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+1089 BREAK
+ 
 1090 NEXT V
  Variable:V -> .
+1091 IF V0 = 1 THEN 1260
+ Variable:V0 -> .
+ NumericValue:1
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:1260
 1095
 1100 REM  CHECK FOR BAD TRANSITIONS
  Remark: CHECK FOR BAD TRANSITIONS
@@ -432,12 +478,20 @@
  Variable:C2 -> .
  BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:1200
-1105 FOR V1 = 1 TO 4
+1105 LET V3 = 0
+ Variable:V3 -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+1106 FOR V1 = 1 TO 4
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V1 -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:4"]
-1110 FOR V2 = V1+1 TO 4
+1110 LET V4 = 0
+ Variable:V4 -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+1111 FOR V2 = V1+1 TO 4
  WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V2 -> .
  start:   ["Variable:V1 -> .", "NumericValue:1", "BinaryOperatorPlus:+(.,.) -> ."]
@@ -468,8 +522,8 @@
  NumericValue:4
  BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:1145
-1140 GOTO 1160
- LineNumber:1160
+1140 CONTINUE
+ 
 1145 LET S1 = S(V1,N)-S(V1,N+1)
  Variable:S1 -> .
  Variable:V1 -> .
@@ -494,16 +548,37 @@
  Variable:S(.,.) -> .
  BinaryOperatorMinus:-(.,.) -> .
  AssignmentOperator:= . -> .
-1155 IF S1 = S2 THEN 1260
- WARNING: Transfer in/out of FOR/NEXT 1260
+1155 IF S1 <> S2 THEN 1160
  Variable:S1 -> .
  Variable:S2 -> .
- BinaryOperatorEqual:=(.,.) -> ?
- LineNumber:1260
+ BinaryOperatorNotEqual:<>(.,.) -> ?
+ LineNumber:1160
+1158 LET V4 = 1
+ Variable:V4 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+1159 BREAK
+ 
 1160 NEXT V2
  Variable:V2 -> .
+1161 IF V4 = 0 THEN 1165
+ Variable:V4 -> .
+ NumericValue:0
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:1165
+1163 LET V3 = 1
+ Variable:V3 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+1164 BREAK
+ 
 1165 NEXT V1
  Variable:V1 -> .
+1166 IF V3 = 1 THEN 1260
+ Variable:V3 -> .
+ NumericValue:1
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:1260
 1170
 1200 REM COMPUTE DISTANCE
  Remark:COMPUTE DISTANCE
@@ -601,14 +676,22 @@
  Variable:L9 -> .
  Variable:W(.,.) -> .
  AssignmentOperator:= . -> .
-1630 GOTO 6000
- WARNING: Transfer in/out of FOR/NEXT 6001
- LineNumber:6000
+1630 LET I0 = 1
+ Variable:I0 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+1631 BREAK
+ 
 1640
 4000 REM  REJECT CHORD
  Remark: REJECT CHORD
 4001 NEXT I
  Variable:I -> .
+4002 IF I0 = 1 THEN 6000
+ Variable:I0 -> .
+ NumericValue:1
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:6000
 5000 REM  BACK UP
  Remark: BACK UP
 5005 LET N = N+1
@@ -642,20 +725,34 @@
  BinaryOperatorPlus:+(.,.) -> .
  Variable:S(.,.) -> .
  AssignmentOperator:= . -> .
-5120 FOR I = 1 TO 6
+5120 LET I0 = 0
+ Variable:I0 -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+5121 FOR I = 1 TO 6
  control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:6"]
-5130 IF C2 = P(C1,I) THEN 5200
- WARNING: Transfer in/out of FOR/NEXT 5200
+5130 IF C2 <> P(C1,I) THEN 5140
  Variable:C2 -> .
  Variable:C1 -> .
  Variable:I -> .
  Variable:P(.,.) -> .
- BinaryOperatorEqual:=(.,.) -> ?
- LineNumber:5200
+ BinaryOperatorNotEqual:<>(.,.) -> ?
+ LineNumber:5140
+5138 LET I0 = 1
+ Variable:I0 -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+5139 BREAK
+ 
 5140 NEXT I
  Variable:I -> .
+5141 IF I0 = 1 THEN 5200
+ Variable:I0 -> .
+ NumericValue:1
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:5200
 5200 LET I1 = I+1
  Variable:I1 -> .
  Variable:I -> .
