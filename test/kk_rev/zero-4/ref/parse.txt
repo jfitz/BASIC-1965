@@ -84,10 +84,8 @@
  
 240 NEXT I
  Variable:I -> .
-245 IF I < 1000 THEN 270
- Variable:I -> .
- NumericValue:1000
- BinaryOperatorLess:<(.,.) -> ?
+245 IF BROKEN() THEN 270
+ FunctionBroken:BROKEN() -> ?
  LineNumber:270
 250 PRINT "NO CHANGE OF SIGN FOUND"
  TextValue:"NO CHANGE OF SIGN FOUND"

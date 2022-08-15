@@ -718,8 +718,6 @@ INNING
  B = 1
 550 LET X = RND(0)
  X = 0.417022
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -732,15 +730,12 @@ INNING
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.226978
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -765,8 +760,6 @@ OUT
  B = 2
 550 LET X = RND(0)
  X = 0.720324
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -792,15 +785,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.113676
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (590) 1
  R > 0: true
@@ -844,8 +834,6 @@ SINGLE
  B = 3
 550 LET X = RND(0)
  X = 0.000114375
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -858,15 +846,12 @@ SINGLE
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.719886
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -891,8 +876,6 @@ OUT
  B = 4
 550 LET X = RND(0)
  X = 0.302333
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -905,15 +888,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.338667
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -966,8 +946,6 @@ INNING
  B = 5
 550 LET X = RND(0)
  X = 0.146756
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -980,15 +958,12 @@ INNING
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.526244
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1013,8 +988,6 @@ OUT
  B = 6
 550 LET X = RND(0)
  X = 0.0923386
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1027,15 +1000,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.558661
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1060,8 +1030,6 @@ OUT
  B = 7
 550 LET X = RND(0)
  X = 0.18626
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1074,15 +1042,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.51774
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1135,8 +1100,6 @@ INNING
  B = 8
 550 LET X = RND(0)
  X = 0.345561
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1149,15 +1112,12 @@ INNING
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.363439
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1182,8 +1142,6 @@ OUT
  B = 9
 550 LET X = RND(0)
  X = 0.396767
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1196,15 +1154,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.439233
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1231,8 +1186,6 @@ OUT
  B = 1
 550 LET X = RND(0)
  X = 0.538817
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1245,15 +1198,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.105183
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1306,8 +1256,6 @@ INNING
  B = 2
 550 LET X = RND(0)
  X = 0.419195
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1320,15 +1268,12 @@ INNING
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.224805
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1353,8 +1298,6 @@ OUT
  B = 3
 550 LET X = RND(0)
  X = 0.68522
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1367,15 +1310,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.03478
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1400,8 +1340,6 @@ OUT
  B = 4
 550 LET X = RND(0)
  X = 0.204452
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1414,15 +1352,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.436548
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1475,8 +1410,6 @@ INNING
  B = 5
 550 LET X = RND(0)
  X = 0.878117
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1515,15 +1448,12 @@ INNING
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.020883
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (590) 2
  R > 0: true
@@ -1567,8 +1497,6 @@ WALK
  B = 6
 550 LET X = RND(0)
  X = 0.0273876
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1581,15 +1509,12 @@ WALK
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.623612
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1614,8 +1539,6 @@ OUT
  B = 7
 550 LET X = RND(0)
  X = 0.670468
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1628,15 +1551,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.033532
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1661,8 +1581,6 @@ OUT
  B = 8
 550 LET X = RND(0)
  X = 0.417305
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1675,15 +1593,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.291695
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1736,8 +1651,6 @@ INNING
  B = 9
 550 LET X = RND(0)
  X = 0.55869
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1750,15 +1663,12 @@ INNING
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.27731
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1785,8 +1695,6 @@ OUT
  B = 1
 550 LET X = RND(0)
  X = 0.140387
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1799,15 +1707,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.503613
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1832,8 +1737,6 @@ OUT
  B = 2
 550 LET X = RND(0)
  X = 0.198101
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1846,15 +1749,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.445899
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -1907,8 +1807,6 @@ INNING
  B = 3
 550 LET X = RND(0)
  X = 0.800745
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -1934,15 +1832,12 @@ INNING
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.086255
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (590) 1
  R > 0: true
@@ -1986,8 +1881,6 @@ SINGLE
  B = 4
 550 LET X = RND(0)
  X = 0.968262
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2039,15 +1932,12 @@ SINGLE
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.004738
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (590) 3
  R > 0: true
@@ -2097,8 +1987,6 @@ DOUBLE
  B = 5
 550 LET X = RND(0)
  X = 0.313424
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2111,15 +1999,12 @@ DOUBLE
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.359576
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -2144,8 +2029,6 @@ OUT
  B = 6
 550 LET X = RND(0)
  X = 0.692323
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2171,15 +2054,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.140677
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (590) 1
  R > 0: true
@@ -2223,8 +2103,6 @@ SINGLE
  B = 7
 550 LET X = RND(0)
  X = 0.876389
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2263,15 +2141,12 @@ SINGLE
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.068611
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (590) 2
  R > 0: true
@@ -2315,8 +2190,6 @@ WALK
  B = 8
 550 LET X = RND(0)
  X = 0.894607
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2355,15 +2228,12 @@ WALK
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.047393
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (590) 2
  R > 0: true
@@ -2407,8 +2277,6 @@ WALK
  B = 9
 550 LET X = RND(0)
  X = 0.0850442
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2421,15 +2289,12 @@ WALK
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.750956
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -2456,8 +2321,6 @@ OUT
  B = 1
 550 LET X = RND(0)
  X = 0.0390548
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2470,15 +2333,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.604945
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -2531,8 +2391,6 @@ INNING
  B = 2
 550 LET X = RND(0)
  X = 0.16983
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2545,15 +2403,12 @@ INNING
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.47417
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -2578,8 +2433,6 @@ OUT
  B = 3
 550 LET X = RND(0)
  X = 0.878143
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2605,15 +2458,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.008857
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (590) 1
  R > 0: true
@@ -2657,8 +2507,6 @@ SINGLE
  B = 4
 550 LET X = RND(0)
  X = 0.0983468
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2671,15 +2519,12 @@ SINGLE
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.542653
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false
@@ -2704,8 +2549,6 @@ OUT
  B = 5
 550 LET X = RND(0)
  X = 0.421108
-555 LET C0 = 0
- C0 = 0
 560 F(R:560) FOR R = 0 TO 3
  R = 0
  terminated:false
@@ -2718,15 +2561,12 @@ OUT
 580 F(R:560) IF X >= 0 THEN 590
  X: (570) -0.251892
  X >= 0: false
-582 F(R:560) LET C0 = 1
- C0 = 1
 585 F(R:560) BREAK
  R terminated:true
 590 F(R:560) NEXT R
  terminated:true
-595 IF C0 = 1 THEN 620
- C0: (582) 1
- C0 = 1: true
+595 IF BROKEN() THEN 620
+ BROKEN(): true
 630 IF R > 0 THEN 660
  R: (560) 0
  R > 0: false

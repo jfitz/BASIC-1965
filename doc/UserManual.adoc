@@ -2059,6 +2059,18 @@ AVG(a)
 
 Computes average of elements in array a.
 
+BROKEN()
+~~~~~~~~
+
+boolean
+
+Reports on the state of the last completed loop.
+Returns TRUE if the loop was ended by a BREAK statement.
+Returns FALSE if the loop ran to normal completion.
+
+CONTINUE statements in the loop have no effect on this value.
+Reports TRUE if a BREAK was used in the last "normal" iteration.
+
 CON1(n)
 ~~~~~~~
 

@@ -3,7 +3,7 @@
 # Helper class for FOR/NEXT
 class AbstractForControl
   attr_reader :control, :start
-  attr_accessor :start_line_stmt_mod, :forget
+  attr_accessor :start_line_stmt_mod, :forget, :broken
 
   def initialize(control, start, step, start_line_stmt_mod)
     @control = control
@@ -11,6 +11,7 @@ class AbstractForControl
     @step = step
     @start_line_stmt_mod = start_line_stmt_mod
     @forget = false
+    @broken = false
   end
 
   def bump_early?
@@ -30,13 +31,11 @@ end
 # Helper class for FOR-TO/NEXT
 class ForToControl < AbstractForControl
   attr_reader :end
-  attr_writer :broken
 
   def initialize(control, start, step, endv, start_line_stmt_mod)
     super(control, start, step, start_line_stmt_mod)
 
     @end = endv
-    @broken = false
   end
 
   def bump_early?
@@ -149,7 +148,7 @@ end
 class Interpreter
   attr_writer :program
   attr_reader :current_line_stmt_mod, :console_io, :trace_out
-  attr_accessor :next_line_stmt_mod
+  attr_accessor :next_line_stmt_mod, :loop_broken
 
   def initialize(console_io)
     @randomizer = Random.new(1)

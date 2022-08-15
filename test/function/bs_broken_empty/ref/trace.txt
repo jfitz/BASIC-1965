@@ -1,0 +1,60 @@
+20 F(I:20) FOR I = 1 TO 10
+ I = 1
+ terminated:false
+30 F(I:20) PRINT I
+ I: (20) 1
+ 1
+40 F(I:20) IF I < 5 THEN 60
+ I: (20) 1
+ I < 5: true
+60 F(I:20) NEXT I
+ I: (20) 1
+ terminated:false
+ I = 2
+30 F(I:20) PRINT I
+ I: (60) 2
+ 2
+40 F(I:20) IF I < 5 THEN 60
+ I: (60) 2
+ I < 5: true
+60 F(I:20) NEXT I
+ I: (60) 2
+ terminated:false
+ I = 3
+30 F(I:20) PRINT I
+ I: (60) 3
+ 3
+40 F(I:20) IF I < 5 THEN 60
+ I: (60) 3
+ I < 5: true
+60 F(I:20) NEXT I
+ I: (60) 3
+ terminated:false
+ I = 4
+30 F(I:20) PRINT I
+ I: (60) 4
+ 4
+40 F(I:20) IF I < 5 THEN 60
+ I: (60) 4
+ I < 5: true
+60 F(I:20) NEXT I
+ I: (60) 4
+ terminated:false
+ I = 5
+30 F(I:20) PRINT I
+ I: (60) 5
+ 5
+40 F(I:20) IF I < 5 THEN 60
+ I: (60) 5
+ I < 5: false
+50 F(I:20) BREAK
+ I terminated:true
+60 F(I:20) NEXT I
+ terminated:true
+70 IF BROKEN() THEN 78
+ BROKEN(): true
+78 PRINT "BROKEN"
+BROKEN
+90 STOP
+STOP in line 90
+

@@ -689,148 +689,142 @@ THE COMPUTER WILL MOVE FIRST.
 
 370 GOTO 600
 610 GOSUB 1000
-1010 G(1010) LET P0 = 0
- P0 = 0
-1011 G(1010) F(P:1011) FOR P = 1 TO 8
+1010 G(1010) F(P:1010) FOR P = 1 TO 8
  P = 1
  terminated:false
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
- P: (1011) 1
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
+ P: (1010) 1
  C(1): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
- P: (1011) 1
+1030 G(1010) F(P:1010) NEXT P
+ P: (1010) 1
  terminated:false
  P = 2
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 2
  C(2): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 2
  terminated:false
  P = 3
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 3
  C(3): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 3
  terminated:false
  P = 4
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 4
  C(4): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 4
  terminated:false
  P = 5
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 5
  C(5): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 5
  terminated:false
  P = 6
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 6
  C(6): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 6
  terminated:false
  P = 7
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 7
  C(7): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 7
  terminated:false
  P = 8
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 8
  C(8): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 8
  terminated:true
-1031 G(1010) IF P0 = 1 THEN 1100
- P0: (1010) 0
- P0 = 1: false
-1040 G(1010) LET P0 = 0
- P0 = 0
-1041 G(1010) F(P:1041) FOR P = 1 TO 8
+1031 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): false
+1040 G(1010) F(P:1040) FOR P = 1 TO 8
  P = 1
  terminated:false
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
- P: (1041) 1
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
+ P: (1040) 1
  C(1): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
- P: (1041) 1
+1060 G(1010) F(P:1040) NEXT P
+ P: (1040) 1
  terminated:false
  P = 2
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 2
  C(2): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 2
  terminated:false
  P = 3
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 3
  C(3): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 3
  terminated:false
  P = 4
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 4
  C(4): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 4
  terminated:false
  P = 5
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 5
  C(5): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 5
  terminated:false
  P = 6
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 6
  C(6): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 6
  terminated:false
  P = 7
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 7
  C(7): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 7
  terminated:false
  P = 8
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 8
  C(8): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 8
  terminated:true
-1061 G(1010) IF P0 = 1 THEN 1100
- P0: (1040) 0
- P0 = 1: false
+1061 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): false
 1070 G(1010) GOTO 1200
 1200 G(1010) F(S:1200) FOR S = 1 TO 9
  S = 1
@@ -1626,7 +1620,7 @@ THE COMPUTER WILL MOVE FIRST.
 1350 G(1010) F(S:1310) NEXT S
  S: (1350) 9
  terminated:true
-1999 G(1010) RETURN
+1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: (1340) 9
@@ -1889,148 +1883,142 @@ YOUR MOVE
  F = 1: false
 538 GOTO 600
 610 GOSUB 1000
-1010 G(1010) LET P0 = 0
- P0 = 0
-1011 G(1010) F(P:1011) FOR P = 1 TO 8
+1010 G(1010) F(P:1010) FOR P = 1 TO 8
  P = 1
  terminated:false
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
- P: (1011) 1
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
+ P: (1010) 1
  C(1): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
- P: (1011) 1
+1030 G(1010) F(P:1010) NEXT P
+ P: (1010) 1
  terminated:false
  P = 2
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 2
  C(2): (500) 1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 2
  terminated:false
  P = 3
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 3
  C(3): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 3
  terminated:false
  P = 4
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 4
  C(4): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 4
  terminated:false
  P = 5
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 5
  C(5): (500) 1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 5
  terminated:false
  P = 6
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 6
  C(6): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 6
  terminated:false
  P = 7
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 7
  C(7): (500) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 7
  terminated:false
  P = 8
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 8
  C(8): (500) 1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 8
  terminated:true
-1031 G(1010) IF P0 = 1 THEN 1100
- P0: (1010) 0
- P0 = 1: false
-1040 G(1010) LET P0 = 0
- P0 = 0
-1041 G(1010) F(P:1041) FOR P = 1 TO 8
+1031 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): false
+1040 G(1010) F(P:1040) FOR P = 1 TO 8
  P = 1
  terminated:false
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
- P: (1041) 1
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
+ P: (1040) 1
  C(1): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
- P: (1041) 1
+1060 G(1010) F(P:1040) NEXT P
+ P: (1040) 1
  terminated:false
  P = 2
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 2
  C(2): (500) 1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 2
  terminated:false
  P = 3
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 3
  C(3): (500) -1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 3
  terminated:false
  P = 4
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 4
  C(4): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 4
  terminated:false
  P = 5
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 5
  C(5): (500) 1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 5
  terminated:false
  P = 6
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 6
  C(6): (500) -1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 6
  terminated:false
  P = 7
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 7
  C(7): (500) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 7
  terminated:false
  P = 8
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 8
  C(8): (500) 1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 8
  terminated:true
-1061 G(1010) IF P0 = 1 THEN 1100
- P0: (1040) 0
- P0 = 1: false
+1061 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): false
 1070 G(1010) GOTO 1200
 1200 G(1010) F(S:1200) FOR S = 1 TO 9
  S = 1
@@ -2684,7 +2672,7 @@ YOUR MOVE
 1350 G(1010) F(S:1310) NEXT S
  S: (1350) 9
  terminated:true
-1999 G(1010) RETURN
+1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: (1340) 3
@@ -2921,104 +2909,94 @@ YOUR MOVE
  F = 1: false
 538 GOTO 600
 610 GOSUB 1000
-1010 G(1010) LET P0 = 0
- P0 = 0
-1011 G(1010) F(P:1011) FOR P = 1 TO 8
+1010 G(1010) F(P:1010) FOR P = 1 TO 8
  P = 1
  terminated:false
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
- P: (1011) 1
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
+ P: (1010) 1
  C(1): (500) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
- P: (1011) 1
+1030 G(1010) F(P:1010) NEXT P
+ P: (1010) 1
  terminated:false
  P = 2
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 2
  C(2): (500) 1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 2
  terminated:false
  P = 3
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 3
  C(3): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 3
  terminated:false
  P = 4
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 4
  C(4): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 4
  terminated:false
  P = 5
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 5
  C(5): (500) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 5
  terminated:false
  P = 6
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 6
  C(6): (500) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 6
  terminated:false
  P = 7
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 7
  C(7): (500) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 7
  terminated:false
  P = 8
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 8
  C(8): (500) 2
  C(P) <> 2: false
-1028 G(1010) F(P:1011) LET P0 = 1
- P0 = 1
-1029 G(1010) F(P:1011) BREAK
+1029 G(1010) F(P:1010) BREAK
  P terminated:true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  terminated:true
-1031 G(1010) IF P0 = 1 THEN 1100
- P0: (1028) 1
- P0 = 1: true
-1100 G(1010) LET I0 = 0
- I0 = 0
-1101 G(1010) F(I:1101) FOR I = 1 TO 3
+1031 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): true
+1100 G(1010) F(I:1100) FOR I = 1 TO 3
  I = 1
  terminated:false
-1110 G(1010) F(I:1101) LET M = T(P, I)
+1110 G(1010) F(I:1100) LET M = T(P, I)
  P: (1030) 8
- I: (1101) 1
+ I: (1100) 1
  T(8,1): (120) 7
  M = 7
-1120 G(1010) F(I:1101) IF B(M) <> 0 THEN 1130
+1120 G(1010) F(I:1100) IF B(M) <> 0 THEN 1130
  M: (1110) 7
  B(7): (280) 0
  B(M) <> 0: false
-1128 G(1010) F(I:1101) LET I0 = 1
- I0 = 1
-1129 G(1010) F(I:1101) BREAK
+1129 G(1010) F(I:1100) BREAK
  I terminated:true
-1130 G(1010) F(I:1101) NEXT I
+1130 G(1010) F(I:1100) NEXT I
  terminated:true
-1132 G(1010) IF I0 = 0 THEN 1140
- I0: (1128) 1
- I0 = 0: false
-1138 G(1010) RETURN
+1132 G(1010) IF BROKEN() THEN 1390
+ BROKEN(): true
+1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: (1110) 7
@@ -3373,148 +3351,142 @@ YOUR MOVE
  F = 1: false
 538 GOTO 600
 610 GOSUB 1000
-1010 G(1010) LET P0 = 0
- P0 = 0
-1011 G(1010) F(P:1011) FOR P = 1 TO 8
+1010 G(1010) F(P:1010) FOR P = 1 TO 8
  P = 1
  terminated:false
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
- P: (1011) 1
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
+ P: (1010) 1
  C(1): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
- P: (1011) 1
+1030 G(1010) F(P:1010) NEXT P
+ P: (1010) 1
  terminated:false
  P = 2
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 2
  C(2): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 2
  terminated:false
  P = 3
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 3
  C(3): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 3
  terminated:false
  P = 4
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 4
  C(4): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 4
  terminated:false
  P = 5
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 5
  C(5): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 5
  terminated:false
  P = 6
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 6
  C(6): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 6
  terminated:false
  P = 7
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 7
  C(7): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 7
  terminated:false
  P = 8
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 8
  C(8): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 8
  terminated:true
-1031 G(1010) IF P0 = 1 THEN 1100
- P0: (1010) 0
- P0 = 1: false
-1040 G(1010) LET P0 = 0
- P0 = 0
-1041 G(1010) F(P:1041) FOR P = 1 TO 8
+1031 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): false
+1040 G(1010) F(P:1040) FOR P = 1 TO 8
  P = 1
  terminated:false
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
- P: (1041) 1
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
+ P: (1040) 1
  C(1): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
- P: (1041) 1
+1060 G(1010) F(P:1040) NEXT P
+ P: (1040) 1
  terminated:false
  P = 2
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 2
  C(2): (500) -1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 2
  terminated:false
  P = 3
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 3
  C(3): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 3
  terminated:false
  P = 4
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 4
  C(4): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 4
  terminated:false
  P = 5
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 5
  C(5): (500) -1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 5
  terminated:false
  P = 6
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 6
  C(6): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 6
  terminated:false
  P = 7
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 7
  C(7): (500) -1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 7
  terminated:false
  P = 8
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 8
  C(8): (500) -1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 8
  terminated:true
-1061 G(1010) IF P0 = 1 THEN 1100
- P0: (1040) 0
- P0 = 1: false
+1061 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): false
 1070 G(1010) GOTO 1200
 1200 G(1010) F(S:1200) FOR S = 1 TO 9
  S = 1
@@ -4229,7 +4201,7 @@ YOUR MOVE
 1350 G(1010) F(S:1310) NEXT S
  S: (1350) 9
  terminated:true
-1999 G(1010) RETURN
+1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: (1340) 1
@@ -4479,175 +4451,162 @@ YOUR MOVE
  F = 1: false
 538 GOTO 600
 610 GOSUB 1000
-1010 G(1010) LET P0 = 0
- P0 = 0
-1011 G(1010) F(P:1011) FOR P = 1 TO 8
+1010 G(1010) F(P:1010) FOR P = 1 TO 8
  P = 1
  terminated:false
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
- P: (1011) 1
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
+ P: (1010) 1
  C(1): (500) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
- P: (1011) 1
+1030 G(1010) F(P:1010) NEXT P
+ P: (1010) 1
  terminated:false
  P = 2
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 2
  C(2): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 2
  terminated:false
  P = 3
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 3
  C(3): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 3
  terminated:false
  P = 4
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 4
  C(4): (500) 1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 4
  terminated:false
  P = 5
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 5
  C(5): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 5
  terminated:false
  P = 6
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 6
  C(6): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 6
  terminated:false
  P = 7
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 7
  C(7): (500) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 7
  terminated:false
  P = 8
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 8
  C(8): (500) -2
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 8
  terminated:true
-1031 G(1010) IF P0 = 1 THEN 1100
- P0: (1010) 0
- P0 = 1: false
-1040 G(1010) LET P0 = 0
- P0 = 0
-1041 G(1010) F(P:1041) FOR P = 1 TO 8
+1031 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): false
+1040 G(1010) F(P:1040) FOR P = 1 TO 8
  P = 1
  terminated:false
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
- P: (1041) 1
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
+ P: (1040) 1
  C(1): (500) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
- P: (1041) 1
+1060 G(1010) F(P:1040) NEXT P
+ P: (1040) 1
  terminated:false
  P = 2
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 2
  C(2): (500) -1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 2
  terminated:false
  P = 3
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 3
  C(3): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 3
  terminated:false
  P = 4
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 4
  C(4): (500) 1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 4
  terminated:false
  P = 5
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 5
  C(5): (500) -1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 5
  terminated:false
  P = 6
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 6
  C(6): (500) -1
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 6
  terminated:false
  P = 7
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 7
  C(7): (500) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 7
  terminated:false
  P = 8
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 8
  C(8): (500) -2
  C(P) <> -2: false
-1058 G(1010) F(P:1041) LET P0 = 1
- P0 = 1
-1059 G(1010) F(P:1041) BREAK
+1059 G(1010) F(P:1040) BREAK
  P terminated:true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  terminated:true
-1061 G(1010) IF P0 = 1 THEN 1100
- P0: (1058) 1
- P0 = 1: true
-1100 G(1010) LET I0 = 0
- I0 = 0
-1101 G(1010) F(I:1101) FOR I = 1 TO 3
+1061 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): true
+1100 G(1010) F(I:1100) FOR I = 1 TO 3
  I = 1
  terminated:false
-1110 G(1010) F(I:1101) LET M = T(P, I)
+1110 G(1010) F(I:1100) LET M = T(P, I)
  P: (1060) 8
- I: (1101) 1
+ I: (1100) 1
  T(8,1): (120) 7
  M = 7
-1120 G(1010) F(I:1101) IF B(M) <> 0 THEN 1130
+1120 G(1010) F(I:1100) IF B(M) <> 0 THEN 1130
  M: (1110) 7
  B(7): (280) 0
  B(M) <> 0: false
-1128 G(1010) F(I:1101) LET I0 = 1
- I0 = 1
-1129 G(1010) F(I:1101) BREAK
+1129 G(1010) F(I:1100) BREAK
  I terminated:true
-1130 G(1010) F(I:1101) NEXT I
+1130 G(1010) F(I:1100) NEXT I
  terminated:true
-1132 G(1010) IF I0 = 0 THEN 1140
- I0: (1128) 1
- I0 = 0: false
-1138 G(1010) RETURN
+1132 G(1010) IF BROKEN() THEN 1390
+ BROKEN(): true
+1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: (1110) 7
@@ -4897,85 +4856,75 @@ YOUR MOVE
  F = 1: false
 538 GOTO 600
 610 GOSUB 1000
-1010 G(1010) LET P0 = 0
- P0 = 0
-1011 G(1010) F(P:1011) FOR P = 1 TO 8
+1010 G(1010) F(P:1010) FOR P = 1 TO 8
  P = 1
  terminated:false
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
- P: (1011) 1
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
+ P: (1010) 1
  C(1): (500) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
- P: (1011) 1
+1030 G(1010) F(P:1010) NEXT P
+ P: (1010) 1
  terminated:false
  P = 2
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 2
  C(2): (500) -1
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 2
  terminated:false
  P = 3
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 3
  C(3): (500) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 3
  terminated:false
  P = 4
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 4
  C(4): (500) 2
  C(P) <> 2: false
-1028 G(1010) F(P:1011) LET P0 = 1
- P0 = 1
-1029 G(1010) F(P:1011) BREAK
+1029 G(1010) F(P:1010) BREAK
  P terminated:true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  terminated:true
-1031 G(1010) IF P0 = 1 THEN 1100
- P0: (1028) 1
- P0 = 1: true
-1100 G(1010) LET I0 = 0
- I0 = 0
-1101 G(1010) F(I:1101) FOR I = 1 TO 3
+1031 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): true
+1100 G(1010) F(I:1100) FOR I = 1 TO 3
  I = 1
  terminated:false
-1110 G(1010) F(I:1101) LET M = T(P, I)
+1110 G(1010) F(I:1100) LET M = T(P, I)
  P: (1030) 4
- I: (1101) 1
+ I: (1100) 1
  T(4,1): (120) 1
  M = 1
-1120 G(1010) F(I:1101) IF B(M) <> 0 THEN 1130
+1120 G(1010) F(I:1100) IF B(M) <> 0 THEN 1130
  M: (1110) 1
  B(1): (460) 1
  B(M) <> 0: true
-1130 G(1010) F(I:1101) NEXT I
- I: (1101) 1
+1130 G(1010) F(I:1100) NEXT I
+ I: (1100) 1
  terminated:false
  I = 2
-1110 G(1010) F(I:1101) LET M = T(P, I)
+1110 G(1010) F(I:1100) LET M = T(P, I)
  P: (1030) 4
  I: (1130) 2
  T(4,2): (120) 8
  M = 8
-1120 G(1010) F(I:1101) IF B(M) <> 0 THEN 1130
+1120 G(1010) F(I:1100) IF B(M) <> 0 THEN 1130
  M: (1110) 8
  B(8): (280) 0
  B(M) <> 0: false
-1128 G(1010) F(I:1101) LET I0 = 1
- I0 = 1
-1129 G(1010) F(I:1101) BREAK
+1129 G(1010) F(I:1100) BREAK
  I terminated:true
-1130 G(1010) F(I:1101) NEXT I
+1130 G(1010) F(I:1100) NEXT I
  terminated:true
-1132 G(1010) IF I0 = 0 THEN 1140
- I0: (1128) 1
- I0 = 0: false
-1138 G(1010) RETURN
+1132 G(1010) IF BROKEN() THEN 1390
+ BROKEN(): true
+1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: (1110) 8
@@ -5161,148 +5110,142 @@ THE COMPUTER WILL MOVE FIRST.
 
 370 GOTO 600
 610 GOSUB 1000
-1010 G(1010) LET P0 = 0
- P0 = 0
-1011 G(1010) F(P:1011) FOR P = 1 TO 8
+1010 G(1010) F(P:1010) FOR P = 1 TO 8
  P = 1
  terminated:false
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
- P: (1011) 1
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
+ P: (1010) 1
  C(1): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
- P: (1011) 1
+1030 G(1010) F(P:1010) NEXT P
+ P: (1010) 1
  terminated:false
  P = 2
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 2
  C(2): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 2
  terminated:false
  P = 3
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 3
  C(3): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 3
  terminated:false
  P = 4
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 4
  C(4): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 4
  terminated:false
  P = 5
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 5
  C(5): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 5
  terminated:false
  P = 6
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 6
  C(6): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 6
  terminated:false
  P = 7
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 7
  C(7): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 7
  terminated:false
  P = 8
-1020 G(1010) F(P:1011) IF C(P) <> 2 THEN 1030
+1020 G(1010) F(P:1010) IF C(P) <> 2 THEN 1030
  P: (1030) 8
  C(8): (275) 0
  C(P) <> 2: true
-1030 G(1010) F(P:1011) NEXT P
+1030 G(1010) F(P:1010) NEXT P
  P: (1030) 8
  terminated:true
-1031 G(1010) IF P0 = 1 THEN 1100
- P0: (1010) 0
- P0 = 1: false
-1040 G(1010) LET P0 = 0
- P0 = 0
-1041 G(1010) F(P:1041) FOR P = 1 TO 8
+1031 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): false
+1040 G(1010) F(P:1040) FOR P = 1 TO 8
  P = 1
  terminated:false
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
- P: (1041) 1
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
+ P: (1040) 1
  C(1): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
- P: (1041) 1
+1060 G(1010) F(P:1040) NEXT P
+ P: (1040) 1
  terminated:false
  P = 2
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 2
  C(2): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 2
  terminated:false
  P = 3
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 3
  C(3): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 3
  terminated:false
  P = 4
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 4
  C(4): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 4
  terminated:false
  P = 5
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 5
  C(5): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 5
  terminated:false
  P = 6
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 6
  C(6): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 6
  terminated:false
  P = 7
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 7
  C(7): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 7
  terminated:false
  P = 8
-1050 G(1010) F(P:1041) IF C(P) <> -2 THEN 1060
+1050 G(1010) F(P:1040) IF C(P) <> -2 THEN 1060
  P: (1060) 8
  C(8): (275) 0
  C(P) <> -2: true
-1060 G(1010) F(P:1041) NEXT P
+1060 G(1010) F(P:1040) NEXT P
  P: (1060) 8
  terminated:true
-1061 G(1010) IF P0 = 1 THEN 1100
- P0: (1040) 0
- P0 = 1: false
+1061 G(1010) IF BROKEN() THEN 1100
+ BROKEN(): false
 1070 G(1010) GOTO 1200
 1200 G(1010) F(S:1200) FOR S = 1 TO 9
  S = 1
@@ -6098,7 +6041,7 @@ THE COMPUTER WILL MOVE FIRST.
 1350 G(1010) F(S:1310) NEXT S
  S: (1350) 9
  terminated:true
-1999 G(1010) RETURN
+1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
  M: (1340) 9

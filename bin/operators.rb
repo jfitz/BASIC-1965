@@ -1052,11 +1052,8 @@ class BinaryOperatorEqual < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
-      a_type != :numeric
-
-    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
-      b_type != :numeric
+    raise(BASICExpressionError, "Bad expression #{a_type} #{@op} #{b_type}") if
+      a_type != b_type
 
     @content_type = :boolean
     type_stack.push(@content_type)
@@ -1083,11 +1080,8 @@ class BinaryOperatorNotEqual < BinaryOperator
     a_type = type_stack.pop
     @arg_types = [a_type, b_type]
 
-    raise(BASICExpressionError, "Bad expression a #{@op} #{a_type}") if
-      a_type != :numeric
-
-    raise(BASICExpressionError, "Bad expression #{@op} b #{b_type}") if
-      b_type != :numeric
+    raise(BASICExpressionError, "Bad expression #{a_type} #{@op} #{b_type}") if
+      a_type != b_type
 
     @content_type = :boolean
     type_stack.push(@content_type)

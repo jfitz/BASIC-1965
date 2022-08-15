@@ -188,11 +188,7 @@
  NumericValue:0
  BinaryOperatorGreater:>(.,.) -> ?
  LineNumber:610
-550 LET P0 = 0
- Variable:P0 -> .
- NumericValue:0
- AssignmentOperator:= =. -> .
-551 FOR P = 1 TO 3
+550 FOR P = 1 TO 3
  control: Variable:P -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:3"]
@@ -213,18 +209,12 @@
  NumericValue:1
  BinaryOperatorPlus:+(.,.) -> .
  AssignmentOperator:= . -> .
-580    LET P0 = 1
- Variable:P0 -> .
- NumericValue:1
- AssignmentOperator:= =. -> .
-589    BREAK
+580    BREAK
  
 590 NEXT P
  Variable:P -> .
-591 IF P0 = 1 THEN 770
- Variable:P0 -> .
- NumericValue:1
- BinaryOperatorEqual:=(.,.) -> ?
+591 IF BROKEN() THEN 770
+ FunctionBroken:BROKEN() -> ?
  LineNumber:770
 600
 610 REM MAKE OPTIMAL MOVE

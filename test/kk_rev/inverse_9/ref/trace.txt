@@ -650,8 +650,6 @@
  I = 1
  N - 1 = 8
  terminated:false
-79 F(I:70) LET J0 = 0
- J0 = 0
 80 F(I:70,J:80) FOR J = 1 TO N - 1
  N: (10) 9
  J = 1
@@ -667,21 +665,16 @@
  1 HAS AN INVERSE
  J: (80) 1
  1
-98 F(I:70,J:80) LET J0 = 1
- J0 = 1
 99 F(I:70,J:80) BREAK
  J terminated:true
 100 F(I:70,J:80) NEXT J
  terminated:true
-102 F(I:70) IF J0 = 1 THEN 150
- J0: (98) 1
- J0 = 1: true
+102 F(I:70) IF BROKEN() THEN 150
+ BROKEN(): true
 150 F(I:70) NEXT I
  I: (70) 1
  terminated:false
  I = 2
-79 F(I:70) LET J0 = 0
- J0 = 0
 80 F(I:70,J:80) FOR J = 1 TO N - 1
  N: (10) 9
  J = 1
@@ -733,21 +726,16 @@
  2 HAS AN INVERSE
  J: (100) 5
  5
-98 F(I:70,J:80) LET J0 = 1
- J0 = 1
 99 F(I:70,J:80) BREAK
  J terminated:true
 100 F(I:70,J:80) NEXT J
  terminated:true
-102 F(I:70) IF J0 = 1 THEN 150
- J0: (98) 1
- J0 = 1: true
+102 F(I:70) IF BROKEN() THEN 150
+ BROKEN(): true
 150 F(I:70) NEXT I
  I: (150) 2
  terminated:false
  I = 3
-79 F(I:70) LET J0 = 0
- J0 = 0
 80 F(I:70,J:80) FOR J = 1 TO N - 1
  N: (10) 9
  J = 1
@@ -824,9 +812,8 @@
 100 F(I:70,J:80) NEXT J
  J: (100) 8
  terminated:true
-102 F(I:70) IF J0 = 1 THEN 150
- J0: (79) 0
- J0 = 1: false
+102 F(I:70) IF BROKEN() THEN 150
+ BROKEN(): false
 110 F(I:70) PRINT I; "DOES NOT HAVE AN INVERSE"
  I: (150) 3
  3 DOES NOT HAVE AN INVERSE
@@ -834,8 +821,6 @@
  I: (150) 3
  terminated:false
  I = 4
-79 F(I:70) LET J0 = 0
- J0 = 0
 80 F(I:70,J:80) FOR J = 1 TO N - 1
  N: (10) 9
  J = 1
@@ -905,21 +890,16 @@
  4 HAS AN INVERSE
  J: (100) 7
  7
-98 F(I:70,J:80) LET J0 = 1
- J0 = 1
 99 F(I:70,J:80) BREAK
  J terminated:true
 100 F(I:70,J:80) NEXT J
  terminated:true
-102 F(I:70) IF J0 = 1 THEN 150
- J0: (98) 1
- J0 = 1: true
+102 F(I:70) IF BROKEN() THEN 150
+ BROKEN(): true
 150 F(I:70) NEXT I
  I: (150) 4
  terminated:false
  I = 5
-79 F(I:70) LET J0 = 0
- J0 = 0
 80 F(I:70,J:80) FOR J = 1 TO N - 1
  N: (10) 9
  J = 1
@@ -944,21 +924,16 @@
  5 HAS AN INVERSE
  J: (100) 2
  2
-98 F(I:70,J:80) LET J0 = 1
- J0 = 1
 99 F(I:70,J:80) BREAK
  J terminated:true
 100 F(I:70,J:80) NEXT J
  terminated:true
-102 F(I:70) IF J0 = 1 THEN 150
- J0: (98) 1
- J0 = 1: true
+102 F(I:70) IF BROKEN() THEN 150
+ BROKEN(): true
 150 F(I:70) NEXT I
  I: (150) 5
  terminated:false
  I = 6
-79 F(I:70) LET J0 = 0
- J0 = 0
 80 F(I:70,J:80) FOR J = 1 TO N - 1
  N: (10) 9
  J = 1
@@ -1035,9 +1010,8 @@
 100 F(I:70,J:80) NEXT J
  J: (100) 8
  terminated:true
-102 F(I:70) IF J0 = 1 THEN 150
- J0: (79) 0
- J0 = 1: false
+102 F(I:70) IF BROKEN() THEN 150
+ BROKEN(): false
 110 F(I:70) PRINT I; "DOES NOT HAVE AN INVERSE"
  I: (150) 6
  6 DOES NOT HAVE AN INVERSE
@@ -1045,8 +1019,6 @@
  I: (150) 6
  terminated:false
  I = 7
-79 F(I:70) LET J0 = 0
- J0 = 0
 80 F(I:70,J:80) FOR J = 1 TO N - 1
  N: (10) 9
  J = 1
@@ -1089,21 +1061,16 @@
  7 HAS AN INVERSE
  J: (100) 4
  4
-98 F(I:70,J:80) LET J0 = 1
- J0 = 1
 99 F(I:70,J:80) BREAK
  J terminated:true
 100 F(I:70,J:80) NEXT J
  terminated:true
-102 F(I:70) IF J0 = 1 THEN 150
- J0: (98) 1
- J0 = 1: true
+102 F(I:70) IF BROKEN() THEN 150
+ BROKEN(): true
 150 F(I:70) NEXT I
  I: (150) 7
  terminated:false
  I = 8
-79 F(I:70) LET J0 = 0
- J0 = 0
 80 F(I:70,J:80) FOR J = 1 TO N - 1
  N: (10) 9
  J = 1
@@ -1182,15 +1149,12 @@
  8 HAS AN INVERSE
  J: (100) 8
  8
-98 F(I:70,J:80) LET J0 = 1
- J0 = 1
 99 F(I:70,J:80) BREAK
  J terminated:true
 100 F(I:70,J:80) NEXT J
  terminated:true
-102 F(I:70) IF J0 = 1 THEN 150
- J0: (98) 1
- J0 = 1: true
+102 F(I:70) IF BROKEN() THEN 150
+ BROKEN(): true
 150 F(I:70) NEXT I
  I: (150) 8
  terminated:true

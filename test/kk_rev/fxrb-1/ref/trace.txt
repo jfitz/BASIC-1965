@@ -5458,8 +5458,6 @@
  J = 20
  -1 = -1
  terminated:false
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -5612,15 +5610,12 @@
  J: (300) 20
  G(17,20): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -5823,8 +5818,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 17
  K = 18
@@ -5907,15 +5900,12 @@
  J: (300) 20
  G(26,20): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 17
  terminated:false
@@ -6023,8 +6013,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 26
  K = 27
@@ -6335,9 +6323,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -6348,8 +6335,6 @@
  J: (300) 20
  terminated:false
  J = 19
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -6448,15 +6433,12 @@
  J: (470) 19
  G(11,19): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -6587,8 +6569,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 11
  K = 12
@@ -7034,9 +7014,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -7047,8 +7026,6 @@
  J: (470) 19
  terminated:false
  J = 18
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -7591,9 +7568,8 @@
 330 F(J:300,I:310) NEXT I
  I: (330) 60
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (305) 0
- I0 = 1: false
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): false
 340 F(J:300) PRINT
 
 350 F(J:300) GOTO 470
@@ -7601,8 +7577,6 @@
  J: (470) 18
  terminated:false
  J = 17
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -7665,15 +7639,12 @@
  J: (470) 17
  G(7,17): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -7756,8 +7727,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 7
  K = 8
@@ -8038,15 +8007,12 @@
  J: (470) 17
  G(38,17): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 7
  terminated:false
@@ -8418,8 +8384,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 38
  K = 39
@@ -8622,9 +8586,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -8635,8 +8598,6 @@
  J: (470) 17
  terminated:false
  J = 16
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -9179,9 +9140,8 @@
 330 F(J:300,I:310) NEXT I
  I: (330) 60
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (305) 0
- I0 = 1: false
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): false
 340 F(J:300) PRINT
 
 350 F(J:300) GOTO 470
@@ -9189,8 +9149,6 @@
  J: (470) 16
  terminated:false
  J = 15
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -9244,15 +9202,12 @@
  J: (470) 15
  G(6,15): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -9323,8 +9278,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 6
  K = 7
@@ -9815,9 +9768,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -9828,8 +9780,6 @@
  J: (470) 15
  terminated:false
  J = 14
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -10372,9 +10322,8 @@
 330 F(J:300,I:310) NEXT I
  I: (330) 60
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (305) 0
- I0 = 1: false
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): false
 340 F(J:300) PRINT
 
 350 F(J:300) GOTO 470
@@ -10382,8 +10331,6 @@
  J: (470) 14
  terminated:false
  J = 13
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -10419,15 +10366,12 @@
  J: (470) 13
  G(4,13): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -10474,8 +10418,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 4
  K = 5
@@ -10873,15 +10815,12 @@
  J: (470) 13
  G(48,13): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 4
  terminated:false
@@ -11409,8 +11348,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 48
  K = 49
@@ -11523,9 +11460,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -11536,8 +11472,6 @@
  J: (470) 13
  terminated:false
  J = 12
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -12080,9 +12014,8 @@
 330 F(J:300,I:310) NEXT I
  I: (330) 60
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (305) 0
- I0 = 1: false
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): false
 340 F(J:300) PRINT
 
 350 F(J:300) GOTO 470
@@ -12090,8 +12023,6 @@
  J: (470) 12
  terminated:false
  J = 11
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -12127,15 +12058,12 @@
  J: (470) 11
  G(4,11): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -12182,8 +12110,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 4
  K = 5
@@ -12692,9 +12618,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -12705,8 +12630,6 @@
  J: (470) 11
  terminated:false
  J = 10
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -13249,9 +13172,8 @@
 330 F(J:300,I:310) NEXT I
  I: (330) 60
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (305) 0
- I0 = 1: false
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): false
 340 F(J:300) PRINT
 
 350 F(J:300) GOTO 470
@@ -13259,8 +13181,6 @@
  J: (470) 10
  terminated:false
  J = 9
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -13296,15 +13216,12 @@
  J: (470) 9
  G(4,9): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -13351,8 +13268,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 4
  K = 5
@@ -13795,15 +13710,12 @@
  J: (470) 9
  G(53,9): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 4
  terminated:false
@@ -14391,8 +14303,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 53
  K = 54
@@ -14460,9 +14370,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -14473,8 +14382,6 @@
  J: (470) 9
  terminated:false
  J = 8
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -14510,15 +14417,12 @@
  J: (470) 8
  G(4,8): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -14565,8 +14469,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 4
  K = 5
@@ -15075,9 +14977,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -15088,8 +14989,6 @@
  J: (470) 8
  terminated:false
  J = 7
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -15125,15 +15024,12 @@
  J: (470) 7
  G(4,7): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -15180,8 +15076,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 4
  K = 5
@@ -15690,9 +15584,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -15703,8 +15596,6 @@
  J: (470) 7
  terminated:false
  J = 6
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -15740,15 +15631,12 @@
  J: (470) 6
  G(4,6): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -15795,8 +15683,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 4
  K = 5
@@ -16221,15 +16107,12 @@
  J: (470) 6
  G(51,6): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 4
  terminated:false
@@ -16793,8 +16676,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 51
  K = 52
@@ -16880,9 +16761,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -16893,8 +16773,6 @@
  J: (470) 6
  terminated:false
  J = 5
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -16930,15 +16808,12 @@
  J: (470) 5
  G(4,5): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -16985,8 +16860,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 4
  K = 5
@@ -17495,9 +17368,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -17508,8 +17380,6 @@
  J: (470) 5
  terminated:false
  J = 4
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -17554,15 +17424,12 @@
  J: (470) 4
  G(5,4): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -17621,8 +17488,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 5
  K = 6
@@ -17993,15 +17858,12 @@
  J: (470) 4
  G(46,4): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 5
  terminated:false
@@ -18493,8 +18355,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 46
  K = 47
@@ -18625,9 +18485,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -18638,8 +18497,6 @@
  J: (470) 4
  terminated:false
  J = 3
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -18693,15 +18550,12 @@
  J: (470) 3
  G(6,3): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -18772,8 +18626,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 6
  K = 7
@@ -18784,15 +18636,12 @@
  J: (470) 3
  G(7,3): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 6
  terminated:false
@@ -18804,8 +18653,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 7
  K = 8
@@ -18816,15 +18663,12 @@
  J: (470) 3
  G(8,3): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 7
  terminated:false
@@ -18836,8 +18680,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 8
  K = 9
@@ -19064,15 +18906,12 @@
  J: (470) 3
  G(33,3): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 8
  terminated:false
@@ -19372,8 +19211,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 33
  K = 34
@@ -19429,15 +19266,12 @@
  J: (470) 3
  G(39,3): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 33
  terminated:false
@@ -19509,8 +19343,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 39
  K = 40
@@ -19704,9 +19536,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -19717,8 +19548,6 @@
  J: (470) 3
  terminated:false
  J = 2
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -19799,15 +19628,12 @@
  J: (470) 2
  G(9,2): (270) 1
  G(I, J) <= 0: false
-322 F(J:300,I:310) LET I0 = 1
- I0 = 1
 325 F(J:300,I:310) BREAK
  I terminated:true
 330 F(J:300,I:310) NEXT I
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (322) 1
- I0 = 1: true
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): true
 360 F(J:300,I:360) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -19914,8 +19740,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 9
  K = 10
@@ -19944,15 +19768,12 @@
  J: (470) 2
  G(12,2): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 9
  terminated:false
@@ -19988,8 +19809,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 12
  K = 13
@@ -20009,15 +19828,12 @@
  J: (470) 2
  G(14,2): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 12
  terminated:false
@@ -20041,8 +19857,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 14
  K = 15
@@ -20071,15 +19885,12 @@
  J: (470) 2
  G(17,2): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 14
  terminated:false
@@ -20115,8 +19926,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 17
  K = 18
@@ -20127,15 +19936,12 @@
  J: (470) 2
  G(18,2): (210) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 17
  terminated:false
@@ -20147,8 +19953,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 18
  K = 19
@@ -20177,15 +19981,12 @@
  J: (470) 2
  G(21,2): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 18
  terminated:false
@@ -20221,8 +20022,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 21
  K = 22
@@ -20233,15 +20032,12 @@
  J: (470) 2
  G(22,2): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 21
  terminated:false
@@ -20253,8 +20049,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 22
  K = 23
@@ -20301,15 +20095,12 @@
  J: (470) 2
  G(27,2): (270) 1
  G(K, J) <= 0: false
-422 F(J:300,I:360,K:410) LET K0 = 1
- K0 = 1
 425 F(J:300,I:360,K:410) BREAK
  K terminated:true
 430 F(J:300,I:360,K:410) NEXT K
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (422) 1
- K0 = 1: true
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): true
 450 F(J:300,I:360) NEXT I
  I: (450) 22
  terminated:false
@@ -20369,8 +20160,6 @@
  G(I, J) > 0: true
 400 F(J:300,I:360) PRINT "*";
 *
-405 F(J:300,I:360) LET K0 = 0
- K0 = 0
 410 F(J:300,I:360,K:410) FOR K = I + 1 TO 60
  I: (450) 27
  K = 28
@@ -20672,9 +20461,8 @@
 430 F(J:300,I:360,K:410) NEXT K
  K: (430) 60
  terminated:true
-435 F(J:300,I:360) IF K0 = 1 THEN 450
- K0: (405) 0
- K0 = 1: false
+435 F(J:300,I:360) IF BROKEN() THEN 450
+ BROKEN(): false
 440 F(J:300,I:360) BREAK
  I terminated:true
 450 F(J:300,I:360) NEXT I
@@ -20685,8 +20473,6 @@
  J: (470) 2
  terminated:false
  J = 1
-305 F(J:300) LET I0 = 0
- I0 = 0
 310 F(J:300,I:310) FOR I = 1 TO 60
  I = 1
  terminated:false
@@ -21229,9 +21015,8 @@
 330 F(J:300,I:310) NEXT I
  I: (330) 60
  terminated:true
-335 F(J:300) IF I0 = 1 THEN 360
- I0: (305) 0
- I0 = 1: false
+335 F(J:300) IF BROKEN() THEN 360
+ BROKEN(): false
 340 F(J:300) PRINT
 
 350 F(J:300) GOTO 470

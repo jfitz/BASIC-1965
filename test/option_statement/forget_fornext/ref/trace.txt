@@ -6,28 +6,28 @@ OPTION FORGET_FORNEXT FALSE
  I = 1
  terminated:false
 23 F(I:22) PRINT I
- I: 1
+ I: (22) 1
  1
 24 F(I:22) NEXT I
- I: 1
+ I: (22) 1
  terminated:false
  I = 2
 23 F(I:22) PRINT I
- I: 2
+ I: (24) 2
  2
 24 F(I:22) NEXT I
- I: 2
+ I: (24) 2
  terminated:false
  I = 3
 23 F(I:22) PRINT I
- I: 3
+ I: (24) 3
  3
 24 F(I:22) NEXT I
- I: 3
+ I: (24) 3
  terminated:true
 25 PRINT "I IS NOW"; I
 I IS NOW
- I: 3
+ I: (24) 3
  3
 26 FORGET I
  I
@@ -38,24 +38,24 @@ OPTION FORGET_FORNEXT TRUE
  I = 1
  terminated:false
 33 F(I:32) PRINT I
- I: 1
+ I: (32) 1
  1
 34 F(I:32) NEXT I
- I: 1
+ I: (32) 1
  terminated:false
  I = 2
 33 F(I:32) PRINT I
- I: 2
+ I: (34) 2
  2
 34 F(I:32) NEXT I
- I: 2
+ I: (34) 2
  terminated:false
  I = 3
 33 F(I:32) PRINT I
- I: 3
+ I: (34) 3
  3
 34 F(I:32) NEXT I
- I: 3
+ I: (34) 3
  terminated:true
  I
 35 PRINT "I IS NOW"; I

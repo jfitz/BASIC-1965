@@ -8,111 +8,111 @@ OPTION MATCH_FORNEXT FALSE
  J = 1
  terminated:false
 60 F(I:40,J:50) PRINT I, J
- I: 1
+ I: (40) 1
  1              
- J: 1
+ J: (50) 1
  1
 70 F(I:40,J:50) IF J = 2 THEN 90
- J: 1
+ J: (50) 1
  J = 2: false
 80 F(I:40,J:50) NEXT J
- J: 1
+ J: (50) 1
  terminated:false
  J = 2
 60 F(I:40,J:50) PRINT I, J
- I: 1
+ I: (40) 1
  1              
- J: 2
+ J: (80) 2
  2
 70 F(I:40,J:50) IF J = 2 THEN 90
- J: 2
+ J: (80) 2
  J = 2: true
-90 F(I:40,J:50) NEXT I
- I: 1
+90 F(I:40) NEXT I
+ I: (40) 1
  terminated:false
  I = 2
 50 F(I:40,J:50) FOR J = 1 TO 3
  J = 1
  terminated:false
 60 F(I:40,J:50) PRINT I, J
- I: 2
+ I: (90) 2
  2              
- J: 1
+ J: (50) 1
  1
 70 F(I:40,J:50) IF J = 2 THEN 90
- J: 1
+ J: (50) 1
  J = 2: false
 80 F(I:40,J:50) NEXT J
- J: 1
+ J: (50) 1
  terminated:false
  J = 2
 60 F(I:40,J:50) PRINT I, J
- I: 2
+ I: (90) 2
  2              
- J: 2
+ J: (80) 2
  2
 70 F(I:40,J:50) IF J = 2 THEN 90
- J: 2
+ J: (80) 2
  J = 2: true
-90 F(I:40,J:50) NEXT I
- I: 2
+90 F(I:40) NEXT I
+ I: (90) 2
  terminated:false
  I = 3
 50 F(I:40,J:50) FOR J = 1 TO 3
  J = 1
  terminated:false
 60 F(I:40,J:50) PRINT I, J
- I: 3
+ I: (90) 3
  3              
- J: 1
+ J: (50) 1
  1
 70 F(I:40,J:50) IF J = 2 THEN 90
- J: 1
+ J: (50) 1
  J = 2: false
 80 F(I:40,J:50) NEXT J
- J: 1
+ J: (50) 1
  terminated:false
  J = 2
 60 F(I:40,J:50) PRINT I, J
- I: 3
+ I: (90) 3
  3              
- J: 2
+ J: (80) 2
  2
 70 F(I:40,J:50) IF J = 2 THEN 90
- J: 2
+ J: (80) 2
  J = 2: true
-90 F(I:40,J:50) NEXT I
- I: 3
+90 F(I:40) NEXT I
+ I: (90) 3
  terminated:true
-120 F(J:50) PRINT "OPTION MATCH_FORNEXT TRUE"
+120 PRINT "OPTION MATCH_FORNEXT TRUE"
 OPTION MATCH_FORNEXT TRUE
-130 F(J:50) OPTION MATCH_FORNEXT TRUE
-140 F(J:50,I:140) FOR I = 1 TO 3
+130 OPTION MATCH_FORNEXT TRUE
+140 F(I:140) FOR I = 1 TO 3
  I = 1
  terminated:false
-150 F(J:50,I:140,J:150) FOR J = 1 TO 3
+150 F(I:140,J:150) FOR J = 1 TO 3
  J = 1
  terminated:false
-160 F(J:50,I:140,J:150) PRINT I, J
- I: 1
+160 F(I:140,J:150) PRINT I, J
+ I: (140) 1
  1              
- J: 1
+ J: (150) 1
  1
-170 F(J:50,I:140,J:150) IF J = 2 THEN 190
- J: 1
+170 F(I:140,J:150) IF J = 2 THEN 190
+ J: (150) 1
  J = 2: false
-180 F(J:50,I:140,J:150) NEXT J
- J: 1
+180 F(I:140,J:150) NEXT J
+ J: (150) 1
  terminated:false
  J = 2
-160 F(J:50,I:140,J:150) PRINT I, J
- I: 1
+160 F(I:140,J:150) PRINT I, J
+ I: (140) 1
  1              
- J: 2
+ J: (180) 2
  2
-170 F(J:50,I:140,J:150) IF J = 2 THEN 190
- J: 2
+170 F(I:140,J:150) IF J = 2 THEN 190
+ J: (180) 2
  J = 2: true
-190 F(J:50,I:140,J:150) NEXT I
+190 F(I:140) NEXT I
 Found NEXT I when expecting J in line 190
 

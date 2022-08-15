@@ -108,10 +108,6 @@
  start:   ["NumericValue:20"]
  end:     ["NumericValue:1"]
  step:    ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
-305 LET I0 = 0
- Variable:I0 -> .
- NumericValue:0
- AssignmentOperator:= =. -> .
 310 FOR I = 1 TO 60
  control: Variable:I -> .
  start:   ["NumericValue:1"]
@@ -123,18 +119,12 @@
  NumericValue:0
  BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:330
-322 LET I0 = 1
- Variable:I0 -> .
- NumericValue:1
- AssignmentOperator:= =. -> .
 325 BREAK
  
 330 NEXT I
  Variable:I -> .
-335 IF I0 = 1 THEN 360
- Variable:I0 -> .
- NumericValue:1
- BinaryOperatorEqual:=(.,.) -> ?
+335 IF BROKEN() THEN 360
+ FunctionBroken:BROKEN() -> ?
  LineNumber:360
 340 PRINT
  CarriageControl:NL
@@ -159,10 +149,6 @@
 400 PRINT "*";
  TextValue:"*"
  CarriageControl:;
-405 LET K0 = 0
- Variable:K0 -> .
- NumericValue:0
- AssignmentOperator:= =. -> .
 410 FOR K = I+1 TO 60
  control: Variable:K -> .
  start:   ["Variable:I -> .", "NumericValue:1", "BinaryOperatorPlus:+(.,.) -> ."]
@@ -174,18 +160,12 @@
  NumericValue:0
  BinaryOperatorLessEqual:<=(.,.) -> ?
  LineNumber:430
-422 LET K0 = 1
- Variable:K0 -> .
- NumericValue:1
- AssignmentOperator:= =. -> .
 425 BREAK
  
 430 NEXT K
  Variable:K -> .
-435 IF K0 = 1 THEN 450
- Variable:K0 -> .
- NumericValue:1
- BinaryOperatorEqual:=(.,.) -> ?
+435 IF BROKEN() THEN 450
+ FunctionBroken:BROKEN() -> ?
  LineNumber:450
 440 BREAK
  

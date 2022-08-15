@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 121
-Number of valid statements: 108
+Number of lines: 114
+Number of valid statements: 101
 Number of comments: 7
-Number of executable statements: 105
+Number of executable statements: 98
 
 Complexity:
 
-Comment density: 0.065
-Comprehension effort: 303
+Comment density: 0.069
+Comprehension effort: 284
 McCabe complexity: 37
 Halstead complexity:
- length: 483
- volume: 2209.585
- difficulty: 38.408
- effort: 84865.524
- language: 1.498
- intelligence: 57.529
- time: 78.579
+ length: 470
+ volume: 2135.349
+ difficulty: 39.722
+ effort: 84820.790
+ language: 1.353
+ intelligence: 53.757
+ time: 78.538
 
 70 (0 1) REM THIS IS PROGRAM TIC-2
   Origs: 
@@ -256,83 +256,62 @@ Halstead complexity:
 1000 (0 1) REM SELECT A MOVE
   Origs: 
   Dests: 
-1010 G(1010) (0 3) LET P0 = 0
+1010 G(1010) F(P:1010) (1 3) FOR P = 1 TO 8
   Origs: 610:gosub
-  Dests: 1011:auto
-1011 G(1010) F(P:1011) (1 3) FOR P = 1 TO 8
-  Origs: 1010:auto
   Dests: 1020:fornext, 1030:fornext
-1020 G(1010) F(P:1011) (1 4) IF C(P) <> 2 THEN 1030
-  Origs: 1011:fornext
-  Dests: 1028:auto, 1030:ifthen
-1028 G(1010) F(P:1011) (0 3) LET P0 = 1
+1020 G(1010) F(P:1010) (1 4) IF C(P) <> 2 THEN 1030
+  Origs: 1010:fornext
+  Dests: 1029:auto, 1030:ifthen
+1029 G(1010) F(P:1010) (0 1) BREAK
   Origs: 1020:auto
-  Dests: 1029:auto
-1029 G(1010) F(P:1011) (0 1) BREAK
-  Origs: 1028:auto
   Dests: 1030:fornext
-1030 G(1010) F(P:1011) (0 1) NEXT P
-  Origs: 1011:fornext, 1020:ifthen, 1029:fornext
+1030 G(1010) F(P:1010) (0 1) NEXT P
+  Origs: 1010:fornext, 1020:ifthen, 1029:fornext
   Dests: 1031:auto
-1031 G(1010) (1 4) IF P0 = 1 THEN 1100
+1031 G(1010) (1 4) IF BROKEN() THEN 1100
   Origs: 1030:auto
   Dests: 1040:auto, 1100:ifthen
-1040 G(1010) (0 3) LET P0 = 0
+1040 G(1010) F(P:1040) (1 3) FOR P = 1 TO 8
   Origs: 1031:auto
-  Dests: 1041:auto
-1041 G(1010) F(P:1041) (1 3) FOR P = 1 TO 8
-  Origs: 1040:auto
   Dests: 1050:fornext, 1060:fornext
-1050 G(1010) F(P:1041) (1 6) IF C(P) <> -2 THEN 1060
-  Origs: 1041:fornext
-  Dests: 1058:auto, 1060:ifthen
-1058 G(1010) F(P:1041) (0 3) LET P0 = 1
+1050 G(1010) F(P:1040) (1 6) IF C(P) <> -2 THEN 1060
+  Origs: 1040:fornext
+  Dests: 1059:auto, 1060:ifthen
+1059 G(1010) F(P:1040) (0 1) BREAK
   Origs: 1050:auto
-  Dests: 1059:auto
-1059 G(1010) F(P:1041) (0 1) BREAK
-  Origs: 1058:auto
   Dests: 1060:fornext
-1060 G(1010) F(P:1041) (0 1) NEXT P
-  Origs: 1041:fornext, 1050:ifthen, 1059:fornext
+1060 G(1010) F(P:1040) (0 1) NEXT P
+  Origs: 1040:fornext, 1050:ifthen, 1059:fornext
   Dests: 1061:auto
-1061 G(1010) (1 4) IF P0 = 1 THEN 1100
+1061 G(1010) (1 4) IF BROKEN() THEN 1100
   Origs: 1060:auto
   Dests: 1070:auto, 1100:ifthen
 1070 G(1010) (0 2) GOTO 1200
   Origs: 1061:auto
   Dests: 1200:goto
-1100 G(1010) (0 3) LET I0 = 0
+1100 G(1010) F(I:1100) (1 3) FOR I = 1 TO 3
   Origs: 1031:ifthen, 1061:ifthen
-  Dests: 1101:auto
-1101 G(1010) F(I:1101) (1 3) FOR I = 1 TO 3
-  Origs: 1100:auto
   Dests: 1110:fornext, 1130:fornext
-1110 G(1010) F(I:1101) (0 3) LET M = T(P, I)
-  Origs: 1101:fornext
+1110 G(1010) F(I:1100) (0 3) LET M = T(P, I)
+  Origs: 1100:fornext
   Dests: 1120:auto
-1120 G(1010) F(I:1101) (1 4) IF B(M) <> 0 THEN 1130
+1120 G(1010) F(I:1100) (1 4) IF B(M) <> 0 THEN 1130
   Origs: 1110:auto
-  Dests: 1128:auto, 1130:ifthen
-1128 G(1010) F(I:1101) (0 3) LET I0 = 1
+  Dests: 1129:auto, 1130:ifthen
+1129 G(1010) F(I:1100) (0 1) BREAK
   Origs: 1120:auto
-  Dests: 1129:auto
-1129 G(1010) F(I:1101) (0 1) BREAK
-  Origs: 1128:auto
   Dests: 1130:fornext
-1130 G(1010) F(I:1101) (0 1) NEXT I
-  Origs: 1101:fornext, 1120:ifthen, 1129:fornext
+1130 G(1010) F(I:1100) (0 1) NEXT I
+  Origs: 1100:fornext, 1120:ifthen, 1129:fornext
   Dests: 1132:auto
-1132 G(1010) (1 4) IF I0 = 0 THEN 1140
+1132 G(1010) (1 4) IF BROKEN() THEN 1390
   Origs: 1130:auto
-  Dests: 1138:auto, 1200:ifthen
-1138 G(1010) (0 1) RETURN
-  Origs: 1132:auto
-  Dests: 
+  Dests: 1200:auto, 1390:ifthen
 1140 (0 0) 
   Origs: 
   Dests: 
 1200 G(1010) F(S:1200) (1 3) FOR S = 1 TO 9
-  Origs: 1070:goto, 1132:ifthen
+  Origs: 1070:goto, 1132:auto
   Dests: 1210:fornext, 1270:fornext
 1210 G(1010) F(S:1200) (0 3) LET V(S) = 0
   Origs: 1200:fornext
@@ -375,9 +354,9 @@ Halstead complexity:
   Dests: 1350:auto
 1350 G(1010) F(S:1310) (0 1) NEXT S
   Origs: 1310:fornext, 1320:ifthen, 1340:auto
-  Dests: 1999:auto
-1999 G(1010) (0 1) RETURN
-  Origs: 1350:auto
+  Dests: 1390:auto
+1390 G(1010) (0 1) RETURN
+  Origs: 1132:ifthen, 1350:auto
   Dests: 
 9999 (0 1) END
   Origs: 

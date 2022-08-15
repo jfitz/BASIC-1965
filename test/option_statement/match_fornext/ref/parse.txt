@@ -19,6 +19,7 @@
  Variable:J -> .
  CarriageControl:NL
 70 IF J = 2 THEN 90
+ WARNING: Transfer in/out of FOR/NEXT 90
  Variable:J -> .
  NumericValue:2
  BinaryOperatorEqual:=(.,.) -> ?
@@ -46,6 +47,7 @@
  Variable:J -> .
  CarriageControl:NL
 170 IF J = 2 THEN 190
+ WARNING: Transfer in/out of FOR/NEXT 190
  Variable:J -> .
  NumericValue:2
  BinaryOperatorEqual:=(.,.) -> ?
@@ -55,6 +57,5 @@
 190 NEXT I
  Variable:I -> .
 999 END
- WARNING: Terminating statement in FOR/NEXT
  
 

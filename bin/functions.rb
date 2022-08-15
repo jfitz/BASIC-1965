@@ -531,6 +531,68 @@ class FunctionAvg < AbstractFunction
   end
 end
 
+# function BROKEN
+class FunctionBroken < AbstractFunction
+  def initialize(text)
+    super
+
+    @content_type = :boolean
+    @shape = :scalar
+    @constant = false
+
+    @default_shape = :scalar
+    @signature = []
+  end
+
+  def set_content_type(type_stack)
+    if !type_stack.empty? && (type_stack[-1].class.to_s == 'Array')
+      @arg_types = type_stack.pop
+    end
+
+    type_stack.push(@content_type)
+  end
+
+  def set_shape(shape_stack)
+    if !shape_stack.empty? && (shape_stack[-1].class.to_s == 'Array')
+      @arg_shapes = shape_stack.pop
+    end
+
+    shape_stack.push(@shape)
+  end
+
+  def set_constant(constant_stack)
+    if !constant_stack.empty? && (constant_stack[-1].class.to_s == 'Array')
+      constants = constant_stack.pop
+    end
+
+    # BROKEN() is never constant
+
+    res = constant_stack.push(@constant)
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+
+  def evaluate(interpreter, arg_stack)
+    if previous_is_array(arg_stack)
+      args = arg_stack.pop
+
+      return @cached unless @cached.nil?
+
+      if match_args_to_signature(args, @signature)
+        res = BooleanValue.new(interpreter.loop_broken)
+      else
+        raise BASICRuntimeError.new(:te_args_no_match, @name)
+      end
+    else
+      res = BooleanValue.new(interpreter.loop_broken)
+    end
+
+    @cached = res if @constant && $options['cache_const_expr']
+    res
+  end
+end
+
 # function CON1
 class FunctionCon1 < AbstractFunction
   def initialize(text)
@@ -2166,6 +2228,7 @@ class FunctionFactory
     'ARCTAN' => FunctionArcTan,
     'ATN' => FunctionArcTan,
     'AVG' => FunctionAvg,
+    'BROKEN' => FunctionBroken,
     'CON' => FunctionCon2,
     'CON1' => FunctionCon1,
     'CON2' => FunctionCon2,

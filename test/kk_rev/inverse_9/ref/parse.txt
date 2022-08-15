@@ -33,10 +33,6 @@
  control: Variable:I -> .
  start:   ["NumericValue:1"]
  end:     ["Variable:N -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
-79 LET J0 = 0
- Variable:J0 -> .
- NumericValue:0
- AssignmentOperator:= =. -> .
 80 FOR J = 1 TO N-1
  control: Variable:J -> .
  start:   ["NumericValue:1"]
@@ -55,18 +51,12 @@
  CarriageControl:
  Variable:J -> .
  CarriageControl:NL
-98 LET J0 = 1
- Variable:J0 -> .
- NumericValue:1
- AssignmentOperator:= =. -> .
 99 BREAK
  
 100 NEXT J
  Variable:J -> .
-102 IF J0 = 1 THEN 150
- Variable:J0 -> .
- NumericValue:1
- BinaryOperatorEqual:=(.,.) -> ?
+102 IF BROKEN() THEN 150
+ FunctionBroken:BROKEN() -> ?
  LineNumber:150
 110 PRINT I; "DOES NOT HAVE AN INVERSE"
  Variable:I -> .

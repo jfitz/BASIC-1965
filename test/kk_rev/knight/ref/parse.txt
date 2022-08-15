@@ -64,11 +64,7 @@
 290
 300 REMARK WE NOW START THE SERIES OF MOVES
  Remark:WE NOW START THE SERIES OF MOVES
-310 LET C0 = 0
- Variable:C0 -> .
- NumericValue:0
- AssignmentOperator:= =. -> .
-315 LET C1 = 9
+310 LET C1 = 9
  Variable:C1 -> .
  NumericValue:9
  AssignmentOperator:= =. -> .
@@ -154,27 +150,21 @@
  NumericValue:1
  BinaryOperatorPlus:+(.,.) -> .
  AssignmentOperator:= . -> .
-460       LET C0 = 1
- Variable:C0 -> .
- NumericValue:1
- AssignmentOperator:= =. -> .
 465       BREAK
  
 470    NEXT J1
  Variable:J1 -> .
-472    IF C0 = 0 THEN 480
- Variable:C0 -> .
- NumericValue:0
- BinaryOperatorEqual:=(.,.) -> ?
+472    IF BROKEN = FALSE THEN 480
+ FunctionBroken:BROKEN -> ?
+ BooleanValue:false
+ BinaryOperatorEqual:=(?,?) -> ?
  LineNumber:480
 475    BREAK
  
 480 NEXT I1
  Variable:I1 -> .
-485 IF C0 = 1 THEN 310
- Variable:C0 -> .
- NumericValue:1
- BinaryOperatorEqual:=(.,.) -> ?
+485 IF BROKEN() THEN 310
+ FunctionBroken:BROKEN() -> ?
  LineNumber:310
 490 IF C = 0 THEN 600
  Variable:C -> .

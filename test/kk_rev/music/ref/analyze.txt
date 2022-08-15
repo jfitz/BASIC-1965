@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 163
-Number of valid statements: 140
+Number of lines: 148
+Number of valid statements: 125
 Number of comments: 11
-Number of executable statements: 133
+Number of executable statements: 118
 
 Complexity:
 
-Comment density: 0.079
-Comprehension effort: 430
+Comment density: 0.088
+Comprehension effort: 386
 McCabe complexity: 41
 Halstead complexity:
- length: 836
- volume: 4088.332
- difficulty: 46.180
- effort: 188799.902
- language: 1.917
- intelligence: 88.530
- time: 174.815
+ length: 805
+ volume: 3893.207
+ difficulty: 52.475
+ effort: 204296.998
+ language: 1.414
+ intelligence: 74.191
+ time: 189.164
 
 10 (0 4) DIM S(4, 100), P(6, 6), M(100)
   Origs: :start
@@ -100,13 +100,10 @@ Halstead complexity:
   Dests: 
 505 F(N:450) (0 3) LET I1 = 1
   Origs: 460:auto
-  Dests: 509:auto
-509 F(N:450) (0 3) LET I0 = 0
-  Origs: 505:auto
   Dests: 510:auto
 510 F(N:450,I:510) (1 3) FOR I = I1 TO 6
     WARNING: FORNEXT length exceeds limit 40
-  Origs: 509:auto, 5210:goto
+  Origs: 505:auto, 5210:goto
   Dests: 520:fornext, 4001:fornext
 520 F(N:450,I:510) (0 3) LET C2 = P(C1, I)
   Origs: 510:fornext
@@ -135,28 +132,22 @@ Halstead complexity:
 565 F(N:450,I:510) (0 3) LET D = S(4, N + 1)
   Origs: 560:auto
   Dests: 570:auto
-570 F(N:450,I:510) (0 3) LET J0 = 0
+570 F(N:450,I:510,J:570) (1 3) FOR J = 1 TO 2
   Origs: 565:auto
-  Dests: 571:auto
-571 F(N:450,I:510,J:571) (1 3) FOR J = 1 TO 2
-  Origs: 570:auto
   Dests: 580:fornext, 610:fornext
-580 F(N:450,I:510,J:571) (1 5) IF ABS(D(J) - D) <= 5 THEN 610
-  Origs: 571:fornext
+580 F(N:450,I:510,J:570) (1 5) IF ABS(D(J) - D) <= 5 THEN 610
+  Origs: 570:fornext
   Dests: 590:auto, 610:ifthen
-590 F(N:450,I:510,J:571) (0 3) LET R = D(3 - J)
+590 F(N:450,I:510,J:570) (0 3) LET R = D(3 - J)
   Origs: 580:auto
   Dests: 600:auto
-600 F(N:450,I:510,J:571) (0 3) LET J0 = 1
+600 F(N:450,I:510,J:570) (0 1) BREAK
   Origs: 590:auto
-  Dests: 609:auto
-609 F(N:450,I:510,J:571) (0 1) BREAK
-  Origs: 600:auto
   Dests: 610:fornext
-610 F(N:450,I:510,J:571) (0 1) NEXT J
-  Origs: 571:fornext, 580:ifthen, 609:fornext
+610 F(N:450,I:510,J:570) (0 1) NEXT J
+  Origs: 570:fornext, 580:ifthen, 600:fornext
   Dests: 611:auto
-611 F(N:450,I:510) (1 4) IF J0 = 1 THEN 660
+611 F(N:450,I:510) (1 4) IF BROKEN THEN 660
   Origs: 610:auto
   Dests: 620:auto, 660:ifthen
 620 F(N:450,I:510) (1 4) IF S > S(1, N + 1) THEN 650
@@ -238,62 +229,46 @@ Halstead complexity:
   Origs: 
   Dests: 
 1010 F(N:450,I:510,L:1010) (1 3) FOR L = 0 TO 6
-     WARNING: FORNEXT length exceeds limit 40
   Origs: 880:auto
   Dests: 1020:fornext, 1261:fornext
-1020 F(N:450,I:510,L:1010) (0 3) LET V0 = 0
-  Origs: 1010:fornext
-  Dests: 1021:auto
-1021 F(N:450,I:510,L:1010,V:1021) (1 3) FOR V = 2 TO 3
+1020 F(N:450,I:510,L:1010,V:1020) (1 3) FOR V = 2 TO 3
      WARNING: FOR/NEXT nesting exceeds limit 3
-  Origs: 1020:auto
+  Origs: 1010:fornext
   Dests: 1030:fornext, 1090:fornext
-1030 F(N:450,I:510,L:1010,V:1021) (0 3) LET B = W(V, L)
-  Origs: 1021:fornext
+1030 F(N:450,I:510,L:1010,V:1020) (0 3) LET B = W(V, L)
+  Origs: 1020:fornext
   Dests: 1040:auto
-1040 F(N:450,I:510,L:1010,V:1021) (1 5) IF ABS(B - S(V, N + 1)) <= 5 THEN 1050
+1040 F(N:450,I:510,L:1010,V:1020) (1 5) IF ABS(B - S(V, N + 1)) <= 5 THEN 1050
   Origs: 1030:auto
-  Dests: 1048:auto, 1050:ifthen
-1048 F(N:450,I:510,L:1010,V:1021) (0 3) LET V0 = 1
+  Dests: 1049:auto, 1050:ifthen
+1049 F(N:450,I:510,L:1010,V:1020) (0 1) BREAK
   Origs: 1040:auto
-  Dests: 1049:auto
-1049 F(N:450,I:510,L:1010,V:1021) (0 1) BREAK
-  Origs: 1048:auto
   Dests: 1090:fornext
-1050 F(N:450,I:510,L:1010,V:1021) (1 8) IF B <= 17 - 4 * V THEN 1060
+1050 F(N:450,I:510,L:1010,V:1020) (1 8) IF B <= 17 - 4 * V THEN 1060
   Origs: 1040:ifthen
-  Dests: 1058:auto, 1060:ifthen
-1058 F(N:450,I:510,L:1010,V:1021) (0 3) LET V0 = 1
+  Dests: 1059:auto, 1060:ifthen
+1059 F(N:450,I:510,L:1010,V:1020) (0 1) BREAK
   Origs: 1050:auto
-  Dests: 1059:auto
-1059 F(N:450,I:510,L:1010,V:1021) (0 1) BREAK
-  Origs: 1058:auto
   Dests: 1090:fornext
-1060 F(N:450,I:510,L:1010,V:1021) (1 8) IF B >= 5 - 4 * V THEN 1070
+1060 F(N:450,I:510,L:1010,V:1020) (1 8) IF B >= 5 - 4 * V THEN 1070
   Origs: 1050:ifthen
-  Dests: 1068:auto, 1070:ifthen
-1068 F(N:450,I:510,L:1010,V:1021) (0 3) LET V0 = 1
+  Dests: 1069:auto, 1070:ifthen
+1069 F(N:450,I:510,L:1010,V:1020) (0 1) BREAK
   Origs: 1060:auto
-  Dests: 1069:auto
-1069 F(N:450,I:510,L:1010,V:1021) (0 1) BREAK
-  Origs: 1068:auto
   Dests: 1090:fornext
-1070 F(N:450,I:510,L:1010,V:1021) (0 3) LET S(V, N) = B
+1070 F(N:450,I:510,L:1010,V:1020) (0 3) LET S(V, N) = B
   Origs: 1060:ifthen
   Dests: 1080:auto
-1080 F(N:450,I:510,L:1010,V:1021) (1 4) IF S(2 * V - 3, N) > S(2 * V - 2, N) THEN 1090
+1080 F(N:450,I:510,L:1010,V:1020) (1 4) IF S(2 * V - 3, N) > S(2 * V - 2, N) THEN 1090
   Origs: 1070:auto
-  Dests: 1088:auto, 1090:ifthen
-1088 F(N:450,I:510,L:1010,V:1021) (0 3) LET V0 = 1
+  Dests: 1089:auto, 1090:ifthen
+1089 F(N:450,I:510,L:1010,V:1020) (0 1) BREAK
   Origs: 1080:auto
-  Dests: 1089:auto
-1089 F(N:450,I:510,L:1010,V:1021) (0 1) BREAK
-  Origs: 1088:auto
   Dests: 1090:fornext
-1090 F(N:450,I:510,L:1010,V:1021) (0 1) NEXT V
-  Origs: 1021:fornext, 1049:fornext, 1059:fornext, 1069:fornext, 1080:ifthen, 1089:fornext
+1090 F(N:450,I:510,L:1010,V:1020) (0 1) NEXT V
+  Origs: 1020:fornext, 1049:fornext, 1059:fornext, 1069:fornext, 1080:ifthen, 1089:fornext
   Dests: 1091:auto
-1091 F(N:450,I:510,L:1010) (1 4) IF V0 = 1 THEN 1260
+1091 F(N:450,I:510,L:1010) (1 4) IF BROKEN() THEN 1260
   Origs: 1090:auto
   Dests: 1102:auto, 1260:ifthen
 1095 (0 0) 
@@ -305,63 +280,51 @@ Halstead complexity:
 1102 F(N:450,I:510,L:1010) (1 4) IF C1 = C2 THEN 1200
   Origs: 1091:auto
   Dests: 1105:auto, 1210:ifthen
-1105 F(N:450,I:510,L:1010) (0 3) LET V3 = 0
+1105 F(N:450,I:510,L:1010,V1:1105) (1 3) FOR V1 = 1 TO 4
+     WARNING: FOR/NEXT nesting exceeds limit 3
   Origs: 1102:auto
-  Dests: 1106:auto
-1106 F(N:450,I:510,L:1010,V1:1106) (1 3) FOR V1 = 1 TO 4
-     WARNING: FOR/NEXT nesting exceeds limit 3
-  Origs: 1105:auto
   Dests: 1110:fornext, 1165:fornext
-1110 F(N:450,I:510,L:1010,V1:1106) (0 3) LET V4 = 0
-  Origs: 1106:fornext
-  Dests: 1111:auto
-1111 F(N:450,I:510,L:1010,V1:1106,V2:1111) (1 4) FOR V2 = V1 + 1 TO 4
+1110 F(N:450,I:510,L:1010,V1:1105,V2:1110) (1 4) FOR V2 = V1 + 1 TO 4
      WARNING: FOR/NEXT nesting exceeds limit 3
-  Origs: 1110:auto
+  Origs: 1105:fornext
   Dests: 1115:fornext, 1160:fornext
-1115 F(N:450,I:510,L:1010,V1:1106,V2:1111) (0 4) LET D = S(V1, N + 1) - S(V2, N + 1)
-  Origs: 1111:fornext
+1115 F(N:450,I:510,L:1010,V1:1105,V2:1110) (0 4) LET D = S(V1, N + 1) - S(V2, N + 1)
+  Origs: 1110:fornext
   Dests: 1120:auto
-1120 F(N:450,I:510,L:1010,V1:1106,V2:1111) (1 6) IF FNC(D) = 0 THEN 1145
+1120 F(N:450,I:510,L:1010,V1:1105,V2:1110) (1 6) IF FNC(D) = 0 THEN 1145
   Origs: 1115:auto
   Dests: 1130:auto, 1145:ifthen
-1130 F(N:450,I:510,L:1010,V1:1106,V2:1111) (1 6) IF FNC(D) = 4 THEN 1145
+1130 F(N:450,I:510,L:1010,V1:1105,V2:1110) (1 6) IF FNC(D) = 4 THEN 1145
   Origs: 1120:auto
   Dests: 1140:auto, 1145:ifthen
-1140 F(N:450,I:510,L:1010,V1:1106,V2:1111) (0 1) CONTINUE
+1140 F(N:450,I:510,L:1010,V1:1105,V2:1110) (0 1) CONTINUE
   Origs: 1130:auto
   Dests: 1160:fornext
-1145 F(N:450,I:510,L:1010,V1:1106,V2:1111) (0 4) LET S1 = S(V1, N) - S(V1, N + 1)
+1145 F(N:450,I:510,L:1010,V1:1105,V2:1110) (0 4) LET S1 = S(V1, N) - S(V1, N + 1)
   Origs: 1120:ifthen, 1130:ifthen
   Dests: 1150:auto
-1150 F(N:450,I:510,L:1010,V1:1106,V2:1111) (0 4) LET S2 = S(V2, N) - S(V2, N + 1)
+1150 F(N:450,I:510,L:1010,V1:1105,V2:1110) (0 4) LET S2 = S(V2, N) - S(V2, N + 1)
   Origs: 1145:auto
   Dests: 1155:auto
-1155 F(N:450,I:510,L:1010,V1:1106,V2:1111) (1 4) IF S1 <> S2 THEN 1160
+1155 F(N:450,I:510,L:1010,V1:1105,V2:1110) (1 4) IF S1 <> S2 THEN 1160
   Origs: 1150:auto
-  Dests: 1158:auto, 1160:ifthen
-1158 F(N:450,I:510,L:1010,V1:1106,V2:1111) (0 3) LET V4 = 1
+  Dests: 1159:auto, 1160:ifthen
+1159 F(N:450,I:510,L:1010,V1:1105,V2:1110) (0 1) BREAK
   Origs: 1155:auto
-  Dests: 1159:auto
-1159 F(N:450,I:510,L:1010,V1:1106,V2:1111) (0 1) BREAK
-  Origs: 1158:auto
   Dests: 1160:fornext
-1160 F(N:450,I:510,L:1010,V1:1106,V2:1111) (0 1) NEXT V2
-  Origs: 1111:fornext, 1140:fornext, 1155:ifthen, 1159:fornext
+1160 F(N:450,I:510,L:1010,V1:1105,V2:1110) (0 1) NEXT V2
+  Origs: 1110:fornext, 1140:fornext, 1155:ifthen, 1159:fornext
   Dests: 1161:auto
-1161 F(N:450,I:510,L:1010,V1:1106) (1 4) IF V4 = 0 THEN 1165
+1161 F(N:450,I:510,L:1010,V1:1105) (1 5) IF BROKEN() = FALSE THEN 1165
   Origs: 1160:auto
-  Dests: 1163:auto, 1165:ifthen
-1163 F(N:450,I:510,L:1010,V1:1106) (0 3) LET V3 = 1
+  Dests: 1164:auto, 1165:ifthen
+1164 F(N:450,I:510,L:1010,V1:1105) (0 1) BREAK
   Origs: 1161:auto
-  Dests: 1164:auto
-1164 F(N:450,I:510,L:1010,V1:1106) (0 1) BREAK
-  Origs: 1163:auto
   Dests: 1165:fornext
-1165 F(N:450,I:510,L:1010,V1:1106) (0 1) NEXT V1
-  Origs: 1106:fornext, 1161:ifthen, 1164:fornext
+1165 F(N:450,I:510,L:1010,V1:1105) (0 1) NEXT V1
+  Origs: 1105:fornext, 1161:ifthen, 1164:fornext
   Dests: 1166:auto
-1166 F(N:450,I:510,L:1010) (1 4) IF V3 = 1 THEN 1260
+1166 F(N:450,I:510,L:1010) (1 4) IF BROKEN() THEN 1260
   Origs: 1165:auto
   Dests: 1210:auto, 1260:ifthen
 1170 (0 0) 
@@ -428,11 +391,8 @@ Halstead complexity:
 1620 F(N:450,I:510) (0 3) LET S(3, N) = W(3, L9)
   Origs: 1610:auto
   Dests: 1630:auto
-1630 F(N:450,I:510) (0 3) LET I0 = 1
+1630 F(N:450,I:510) (0 1) BREAK
   Origs: 1620:auto
-  Dests: 1631:auto
-1631 F(N:450,I:510) (0 1) BREAK
-  Origs: 1630:auto
   Dests: 4001:fornext
 1640 (0 0) 
   Origs: 
@@ -441,9 +401,9 @@ Halstead complexity:
   Origs: 
   Dests: 
 4001 F(N:450,I:510) (0 1) NEXT I
-  Origs: 510:fornext, 760:ifthen, 1600:ifthen, 1631:fornext
+  Origs: 510:fornext, 760:ifthen, 1600:ifthen, 1630:fornext
   Dests: 4002:auto
-4002 F(N:450) (1 4) IF I0 = 1 THEN 6000
+4002 F(N:450) (1 4) IF BROKEN() THEN 6000
   Origs: 4001:auto
   Dests: 5005:auto, 6001:ifthen
 5000 (0 1) REM  BACK UP
@@ -468,25 +428,19 @@ Halstead complexity:
 5110 F(N:450) (0 3) LET C1 = S(0, N + 1)
   Origs: 5100:auto
   Dests: 5120:auto
-5120 F(N:450) (0 3) LET I0 = 0
+5120 F(N:450,I:5120) (1 3) FOR I = 1 TO 6
   Origs: 5110:auto
-  Dests: 5121:auto
-5121 F(N:450,I:5121) (1 3) FOR I = 1 TO 6
-  Origs: 5120:auto
   Dests: 5130:fornext, 5140:fornext
-5130 F(N:450,I:5121) (1 4) IF C2 <> P(C1, I) THEN 5140
-  Origs: 5121:fornext
-  Dests: 5138:auto, 5140:ifthen
-5138 F(N:450,I:5121) (0 3) LET I0 = 1
+5130 F(N:450,I:5120) (1 4) IF C2 <> P(C1, I) THEN 5140
+  Origs: 5120:fornext
+  Dests: 5139:auto, 5140:ifthen
+5139 F(N:450,I:5120) (0 1) BREAK
   Origs: 5130:auto
-  Dests: 5139:auto
-5139 F(N:450,I:5121) (0 1) BREAK
-  Origs: 5138:auto
   Dests: 5140:fornext
-5140 F(N:450,I:5121) (0 1) NEXT I
-  Origs: 5121:fornext, 5130:ifthen, 5139:fornext
+5140 F(N:450,I:5120) (0 1) NEXT I
+  Origs: 5120:fornext, 5130:ifthen, 5139:fornext
   Dests: 5141:auto
-5141 F(N:450) (1 4) IF I0 = 1 THEN 5200
+5141 F(N:450) (1 4) IF BROKEN() THEN 5200
   Origs: 5140:auto
   Dests: 5200:auto, 5200:ifthen
 5200 F(N:450) (0 4) LET I1 = I + 1

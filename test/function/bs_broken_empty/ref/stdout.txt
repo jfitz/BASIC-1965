@@ -1,0 +1,21 @@
+ 1
+ 2
+ 3
+ 4
+ 5
+BROKEN
+STOP in line 90
+
+10 (0) REM This is a test
+20 F(I:20) (1) FOR I = 1 TO 10
+30 F(I:20) (5) PRINT I
+40 F(I:20) (5) IF I < 5 THEN 60
+50 F(I:20) (1) BREAK
+60 F(I:20) (5) NEXT I
+70 (1) IF BROKEN() THEN 78
+72 (0) PRINT "NOT BROKEN"
+74 (0) GOTO 90
+78 (1) PRINT "BROKEN"
+90 (1) STOP
+99 (0) END
+

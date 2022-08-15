@@ -1,0 +1,34 @@
+10 REM This is a test
+ Remark:This is a test
+20 FOR I = 1 TO 10
+ control: Variable:I -> .
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:10"]
+30 PRINT I
+ Variable:I -> .
+ CarriageControl:NL
+40 IF I < 5 THEN 60
+ Variable:I -> .
+ NumericValue:5
+ BinaryOperatorLess:<(.,.) -> ?
+ LineNumber:60
+50 BREAK
+ 
+60 NEXT I
+ Variable:I -> .
+70 IF BROKEN() THEN 78
+ FunctionBroken:BROKEN() -> ?
+ LineNumber:78
+72 PRINT "NOT BROKEN"
+ TextValue:"NOT BROKEN"
+ CarriageControl:NL
+74 GOTO 90
+ LineNumber:90
+78 PRINT "BROKEN"
+ TextValue:"BROKEN"
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 
+

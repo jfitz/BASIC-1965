@@ -200,10 +200,6 @@
  NumericValue:0
  FunctionRnd:RND(.) -> .
  AssignmentOperator:= . -> .
-555 LET C0 = 0
- Variable:C0 -> .
- NumericValue:0
- AssignmentOperator:= =. -> .
 560 FOR R = 0 TO 3
  control: Variable:R -> .
  start:   ["NumericValue:0"]
@@ -221,18 +217,12 @@
  NumericValue:0
  BinaryOperatorGreaterEqual:>=(.,.) -> ?
  LineNumber:590
-582 LET C0 = 1
- Variable:C0 -> .
- NumericValue:1
- AssignmentOperator:= =. -> .
 585 BREAK
  
 590 NEXT R
  Variable:R -> .
-595 IF C0 = 1 THEN 620
- Variable:C0 -> .
- NumericValue:1
- BinaryOperatorEqual:=(.,.) -> ?
+595 IF BROKEN() THEN 620
+ FunctionBroken:BROKEN() -> ?
  LineNumber:620
 600 LET R = 4
  Variable:R -> .

@@ -2490,15 +2490,18 @@ class NextStatement < AbstractStatement
 
     if terminated
       interpreter.unlock_variable(@control) if $options['lock_fornext'].value
-      interpreter.exit_fornext(fornext_control.forget, fornext_control.control)
+
+      interpreter.exit_fornext(fornext_control.forget,
+                               fornext_control.control)
+
+      interpreter.loop_broken = fornext_control.broken
+      fornext_control.broken = false
     else
       # set next line from top item
       interpreter.next_line_stmt_mod = fornext_control.start_line_stmt_mod
       # change control variable value for FOR-TO
       fornext_control.bump_control(interpreter) unless bump_early
     end
-
-    fornext_control.broken = false
   end
 end
 
