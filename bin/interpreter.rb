@@ -1302,12 +1302,17 @@ class Interpreter
     @fornext_stack.push(variable)
   end
 
-  def exit_fornext(forget, control)
+  def exit_fornext(fornext_control)
     raise BASICSyntaxError.new('NEXT without FOR') if @fornext_stack.empty?
 
     @fornext_stack.pop
 
+    forget = fornext_control.forget
+    control = fornext_control.control
+
+    unlock_variable(control) if $options['lock_fornext'].value
     forget_value(control) if $options['forget_fornext'].value && forget
+    @loop_broken = fornext_control.broken
   end
 
   def top_fornext
