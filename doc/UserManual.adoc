@@ -431,6 +431,7 @@ The OPTION command overrides the command-line setting.
 |BASE |NLP |numeric |0 |Sets the base for arrays and matrices to either 0 or 1
 |CACHE_CONST_EXPR |NLP |TRUE or FALSE |TRUE |Cache result of operations on constant values and re-use instead of re-calculate
 |DEFAULT_PROMPT |NLP |String |"? " |Changes the prompt for INPUT statements
+|DEGREES |NLP |String |"DEG" |Specifies the name for units of degrees
 |DETECT_INFINITE_LOOP |NLP |TRUE or FALSE |TRUE |Enables the detection of infinite loops
 |FIELD_SEP |NLP |COMMA, SEMI, NL, or NONE |COMMA |Controls spacing of values in ARR PRINT and MAT PRINT statements
 |FORGET_FORNEXT |NLP |TRUE or FALSE |FALSE |Forgets value of control value after final NEXT, if value was not defined at start
@@ -452,6 +453,7 @@ The OPTION command overrides the command-line setting.
 |PROMPT_COUNT |NLP |TRUE or FALSE |FALSE |Displays the number of items to be input
 |PROVENANCE |NLP |TRUE or FALSE |FALSE |Expands trace display to include the line in which a variable was assigned its value
 |QMARK_AFTER_PROMPT |NLP |TRUE or FALSE |FALSE |Display '?' after a prompt in an INPUT statement
+|RADIANS |NLP |String |"RAD" |Specifies the name for units of radians
 |RANDOMIZE |NLP |TRUE or FALSE |FALSE |Randomize RND(); without this each run uses the same random sequence
 |REQUIRE_INITIALIZED |NLP |TRUE or FALSE |FALSE |Variables must be initialized before use
 |TIMING |NLP |TRUE or FALSE |TRUE |After running a program, display time to execute (user time and system time)
@@ -468,7 +470,7 @@ The OPTION command overrides the command-line setting.
 Options can be changed when no program is loaded ('N'), when a program is loaded ('L'), or when a program is running ('P').
 Options that affect the parsing or analyzing of programs can be changed only when no program is loaded.
 
-When values to constant expressions are cached, setting the BASE, PRECISION, or WRAP option clears the cached values.
+When values to constant expressions are cached, setting the BASE, DEGREES, PRECISION, RADIANS, or WRAP option clears the cached values.
 This is because calculations of constant values can be different after those options change.
 
 When a program is running, BASIC maintains a stack of values for each option.

@@ -766,7 +766,8 @@ class Interpreter
       @trace_out = v ? @console_io : @null_out
     end
 
-    @program.uncache if %w[cache_const_expr precision base].include?(name)
+    uncachers = %w[base cache_const_expr degrees precision radians wrap]
+    @program.uncache if uncachers.include?(name)
   end
 
   def push_option(name, v)
@@ -776,7 +777,8 @@ class Interpreter
       @trace_out = v ? @console_io : @null_out
     end
 
-    @program.uncache if %w[cache_const_expr precision base].include?(name)
+    uncachers = %w[base cache_const_expr degrees precision radians wrap]
+    @program.uncache if uncachers.include?(name)
   end
 
   def pop_option(name)
@@ -786,7 +788,8 @@ class Interpreter
       @trace_out = v ? @console_io : @null_out
     end
 
-    @program.uncache if %w[cache_const_expr precision base].include?(name)
+    uncachers = %w[base cache_const_expr degrees precision radians wrap]
+    @program.uncache if uncachers.include?(name)
   end
 
   def clear_variables

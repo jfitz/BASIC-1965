@@ -93,7 +93,8 @@ $error_codes = {
   te_power_not_pure: 244,
   te_power_not_even: 245,
   te_divisor_not_pure: 246,
-  te_require_units: 247
+  te_require_units: 247,
+  te_wrong_units: 248
 }
 
 $error_messages = {
@@ -155,5 +156,6 @@ $error_messages = {
   te_power_not_pure: 'Power must be pure number',
   te_power_not_even: 'Power must be even',
   te_divisor_not_pure: 'Divisor must be pure integer',
-  te_require_units: 'Units are required'
+  te_require_units: 'Units are required',
+  te_wrong_units: 'Wrong units'
 }
