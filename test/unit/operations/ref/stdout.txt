@@ -1,0 +1,20 @@
+Hours: 40{Hr}
+Rate: 15{Dol Hr-1}
+Gross pay: 600{Dol}
+Taxes: 90{Dol}
+Net pay: 510{Dol}
+STOP in line 99
+
+10 (0) REM Test operations on variables with units
+20 (1) LET R = 15{Dol Hr-1}
+21 (1) LET H = 40{Hr}
+22 (1) LET G = H * R
+23 (1) LET T = G * 0.15
+24 (1) LET N = G - T
+40 (1) PRINT "Hours:"; H
+41 (1) PRINT "Rate:"; R
+42 (1) PRINT "Gross pay:"; G
+43 (1) PRINT "Taxes:"; T
+44 (1) PRINT "Net pay:"; N
+99 (1) END
+

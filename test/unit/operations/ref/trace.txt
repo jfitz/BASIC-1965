@@ -1,0 +1,38 @@
+20 LET R = 15{Dol Hr-1}
+ R = 15{Dol Hr-1}
+21 LET H = 40{Hr}
+ H = 40{Hr}
+22 LET G = H * R
+ H: (21) 40{Hr}
+ R: (20) 15{Dol Hr-1}
+ G = 600{Dol}
+23 LET T = G * 0.15
+ G: (22) 600{Dol}
+ T = 90{Dol}
+24 LET N = G - T
+ G: (22) 600{Dol}
+ T: (23) 90{Dol}
+ N = 510{Dol}
+40 PRINT "Hours:"; H
+Hours:
+ H: (21) 40{Hr}
+ 40{Hr}
+41 PRINT "Rate:"; R
+Rate:
+ R: (20) 15{Dol Hr-1}
+ 15{Dol Hr-1}
+42 PRINT "Gross pay:"; G
+Gross pay:
+ G: (22) 600{Dol}
+ 600{Dol}
+43 PRINT "Taxes:"; T
+Taxes:
+ T: (23) 90{Dol}
+ 90{Dol}
+44 PRINT "Net pay:"; N
+Net pay:
+ N: (24) 510{Dol}
+ 510{Dol}
+99 END
+STOP in line 99
+

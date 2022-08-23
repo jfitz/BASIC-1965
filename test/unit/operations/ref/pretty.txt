@@ -1,0 +1,13 @@
+10 REM Test operations on variables with units
+20 LET R = 15{Dol Hr-1}
+21 LET H = 40{Hr}
+22 LET G = H * R
+23 LET T = G * 0.15
+24 LET N = G - T
+40 PRINT "Hours:"; H
+41 PRINT "Rate:"; R
+42 PRINT "Gross pay:"; G
+43 PRINT "Taxes:"; T
+44 PRINT "Net pay:"; N
+99 END
+

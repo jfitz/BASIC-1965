@@ -1,0 +1,56 @@
+10 REM Test operations on variables with units
+ Remark:Test operations on variables with units
+20 LET R = 15{Dol1 Hr-1}
+ Variable:R -> .
+ NumericValue:15{Dol1Hr-1}
+ AssignmentOperator:= =. -> .
+21 LET H = 40{Hr}
+ Variable:H -> .
+ NumericValue:40{Hr}
+ AssignmentOperator:= =. -> .
+22 LET G = H * R
+ Variable:G -> .
+ Variable:H -> .
+ Variable:R -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
+23 LET T = G * 0.15
+ Variable:T -> .
+ Variable:G -> .
+ NumericValue:0.15
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
+24 LET N = G - T
+ Variable:N -> .
+ Variable:G -> .
+ Variable:T -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
+40 PRINT "Hours:"; H
+ TextValue:"Hours:"
+ CarriageControl:;
+ Variable:H -> .
+ CarriageControl:NL
+41 PRINT "Rate:"; R
+ TextValue:"Rate:"
+ CarriageControl:;
+ Variable:R -> .
+ CarriageControl:NL
+42 PRINT "Gross pay:"; G
+ TextValue:"Gross pay:"
+ CarriageControl:;
+ Variable:G -> .
+ CarriageControl:NL
+43 PRINT "Taxes:"; T
+ TextValue:"Taxes:"
+ CarriageControl:;
+ Variable:T -> .
+ CarriageControl:NL
+44 PRINT "Net pay:"; N
+ TextValue:"Net pay:"
+ CarriageControl:;
+ Variable:N -> .
+ CarriageControl:NL
+99 END
+ 
+

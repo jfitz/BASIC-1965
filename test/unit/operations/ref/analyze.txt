@@ -1,0 +1,62 @@
+Statistics:
+
+Number of lines: 12
+Number of valid statements: 11
+Number of comments: 1
+Number of executable statements: 11
+
+Complexity:
+
+Comment density: 0.091
+Comprehension effort: 35
+McCabe complexity: 1
+Halstead complexity:
+ length: 31
+ volume: 94.380
+ difficulty: 1.917
+ effort: 180.895
+ language: 25.691
+ intelligence: 49.242
+ time: 0.167
+
+10 (0 1) REM Test operations on variables with units
+  Origs: 
+  Dests: 
+20 (0 3) LET R = 15{Dol Hr-1}
+  Origs: :start
+  Dests: 21:auto
+21 (0 3) LET H = 40{Hr}
+  Origs: 20:auto
+  Dests: 22:auto
+22 (0 4) LET G = H * R
+  Origs: 21:auto
+  Dests: 23:auto
+23 (0 4) LET T = G * 0.15
+  Origs: 22:auto
+  Dests: 24:auto
+24 (0 4) LET N = G - T
+  Origs: 23:auto
+  Dests: 40:auto
+40 (0 3) PRINT "Hours:"; H
+  Origs: 24:auto
+  Dests: 41:auto
+41 (0 3) PRINT "Rate:"; R
+  Origs: 40:auto
+  Dests: 42:auto
+42 (0 3) PRINT "Gross pay:"; G
+  Origs: 41:auto
+  Dests: 43:auto
+43 (0 3) PRINT "Taxes:"; T
+  Origs: 42:auto
+  Dests: 44:auto
+44 (0 3) PRINT "Net pay:"; N
+  Origs: 43:auto
+  Dests: 99:auto
+99 (0 1) END
+  Origs: 44:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+
