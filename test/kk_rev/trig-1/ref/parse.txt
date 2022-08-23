@@ -1,23 +1,5 @@
 100 REM SIDE-ANGLE-SIDE
  Remark:SIDE-ANGLE-SIDE
-110 LET P = 3.14159265
- Variable:P -> .
- NumericValue:3.14159265
- AssignmentOperator:= =. -> .
-120 DEF FND(X)=X*P/180
- UserFunctionName:FND -> .
- VariableName:X -> .
- Variable:X -> .
- Variable:P -> .
- BinaryOperatorMultiply:*(.,.) -> .
- NumericValue:180
- BinaryOperatorDivide:/(.,.) -> .
-130 DEF FNC(X)=COS(FND(X))
- UserFunctionName:FNC -> .
- VariableName:X -> .
- Variable:X -> .
- UserFunction:FND(.) -> .
- FunctionCos:COS(.) -> .
 140 PRINT "SIDE", "ANGLE", "SIDE", "THIRD SIDE"
  TextValue:"SIDE"
  CarriageControl:,
@@ -31,7 +13,7 @@
  Variable:X -> .
  Variable:A -> .
  Variable:Y -> .
-160 LET Z = SQR(X^2 + Y^2 - 2*X*Y*FNC(A))
+160 LET Z = SQR(X^2 + Y^2 - 2*X*Y*COS(A))
  Variable:Z -> .
  Variable:X -> .
  NumericValue:2
@@ -46,7 +28,7 @@
  Variable:Y -> .
  BinaryOperatorMultiply:*(.,.) -> .
  Variable:A -> .
- UserFunction:FNC(.) -> .
+ FunctionCos:COS(.) -> .
  BinaryOperatorMultiply:*(.,.) -> .
  BinaryOperatorMinus:-(.,.) -> .
  FunctionSqr:SQR(.) -> .
@@ -62,15 +44,15 @@
  CarriageControl:NL
 180 GOTO 150
  LineNumber:150
-190 DATA 10,60,20, 3,90,4, 10,120,10
+190 DATA 10,60{DEG},20, 3,90{DEG},4, 10,120{DEG},10
  NumericValue:10
- NumericValue:60
+ NumericValue:60{DEG}
  NumericValue:20
  NumericValue:3
- NumericValue:90
+ NumericValue:90{DEG}
  NumericValue:4
  NumericValue:10
- NumericValue:120
+ NumericValue:120{DEG}
  NumericValue:10
 200 END
  

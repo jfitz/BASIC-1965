@@ -1,58 +1,49 @@
 Statistics:
 
-Number of lines: 13
-Number of valid statements: 12
+Number of lines: 10
+Number of valid statements: 9
 Number of comments: 1
-Number of executable statements: 9
+Number of executable statements: 8
 
 Complexity:
 
-Comment density: 0.083
-Comprehension effort: 56
+Comment density: 0.111
+Comprehension effort: 42
 McCabe complexity: 4
 Halstead complexity:
- length: 94
- volume: 344.375
- difficulty: 9.556
- effort: 3290.692
- language: 3.772
- intelligence: 36.039
- time: 3.047
+ length: 72
+ volume: 249.533
+ difficulty: 5.833
+ effort: 1455.609
+ language: 7.333
+ intelligence: 42.777
+ time: 1.348
 
 100 (0 1) REM ANGLE-SIDE-ANGLE
   Origs: 
   Dests: 
-110 (0 3) LET P = 3.1416
-  Origs: :start
-  Dests: 140:auto
-120 FND(.) (0 4) DEF FND(X) = X * P / 180
-  Origs: 
-  Dests: 
-130 FNS(.) (0 3) DEF FNS(X) = SIN(FND(X))
-  Origs: 170:function, 180:function
-  Dests: 
 140 (0 6) PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
-  Origs: 110:auto
+  Origs: :start
   Dests: 150:auto
 150 (3 4) READ A, X, B
   Origs: 140:auto, 200:goto
   Dests: 160:auto
-160 (0 5) LET C = 180 - A - B
+160 (0 5) LET C = 180{DEG} - A - B
   Origs: 150:auto
   Dests: 170:auto
-170 (0 9) LET Y = X * FNS(B) / FNS(C)
+170 (0 7) LET Y = X * SIN(B) / SIN(C)
   Origs: 160:auto
-  Dests: 130:function, 180:auto
-180 (0 9) LET Z = X * FNS(A) / FNS(C)
+  Dests: 180:auto
+180 (0 7) LET Z = X * SIN(A) / SIN(C)
   Origs: 170:auto
-  Dests: 130:function, 190:auto
+  Dests: 190:auto
 190 (0 6) PRINT A, X, B, Y, Z
   Origs: 180:auto
   Dests: 200:auto
 200 (0 3) GOTO 150
   Origs: 190:auto
   Dests: 150:goto
-210 (0 2) DATA 60, 5, 60, 60, 5, 90, 15, 10, 63
+210 (0 2) DATA 60{DEG}, 5, 60{DEG}, 60{DEG}, 5, 90{DEG}, 15{DEG}, 10, 63{DEG}
   Origs: 
   Dests: 
 220 (0 1) END

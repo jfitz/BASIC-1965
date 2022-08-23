@@ -1,23 +1,7 @@
 100 REM ANGLE-SIDE-SIDE
  Remark:ANGLE-SIDE-SIDE
-110 LET P = 3.14159265
- Variable:P -> .
- NumericValue:3.14159265
- AssignmentOperator:= =. -> .
-120 DEF FND(X) = X*P/180
- UserFunctionName:FND -> .
- VariableName:X -> .
- Variable:X -> .
- Variable:P -> .
- BinaryOperatorMultiply:*(.,.) -> .
- NumericValue:180
- BinaryOperatorDivide:/(.,.) -> .
-130 DEF FNS(X) = SIN(FND(X))
- UserFunctionName:FNS -> .
- VariableName:X -> .
- Variable:X -> .
- UserFunction:FND(.) -> .
- FunctionSin:SIN(.) -> .
+110 OPTION TRIG_REQUIRE_UNITS TRUE
+ BooleanValue:true
 135 DEF FNR(X) = INT(100*X+0.5)/100
  UserFunctionName:FNR -> .
  VariableName:X -> .
@@ -51,11 +35,11 @@
  CarriageControl:,
  Variable:Y -> .
  CarriageControl:,
-170 LET S = X*FNS(B)/Y
+170 LET S = X*SIN(B)/Y
  Variable:S -> .
  Variable:X -> .
  Variable:B -> .
- UserFunction:FNS(.) -> .
+ FunctionSin:SIN(.) -> .
  BinaryOperatorMultiply:*(.,.) -> .
  Variable:Y -> .
  BinaryOperatorDivide:/(.,.) -> .
@@ -85,18 +69,15 @@
  FunctionSqr:SQR(.) -> .
  BinaryOperatorDivide:/(.,.) -> .
  AssignmentOperator:= . -> .
-220 LET C = ATN(T)*180/P
+220 LET C = DEG(ATN(T))
  Variable:C -> .
  Variable:T -> .
  FunctionArcTan:ATN(.) -> .
- NumericValue:180
- BinaryOperatorMultiply:*(.,.) -> .
- Variable:P -> .
- BinaryOperatorDivide:/(.,.) -> .
+ FunctionDeg:DEG(.) -> .
  AssignmentOperator:= . -> .
-230 LET A = 180 - B - C
+230 LET A = 180{DEG} - B - C
  Variable:A -> .
- NumericValue:180
+ NumericValue:180{DEG}
  Variable:B -> .
  BinaryOperatorMinus:-(.,.) -> .
  Variable:C -> .
@@ -104,15 +85,15 @@
  AssignmentOperator:= . -> .
 240 GOSUB 370
  LineNumber:370
-250 LET C = 180 - C
+250 LET C = 180{DEG} - C
  Variable:C -> .
- NumericValue:180
+ NumericValue:180{DEG}
  Variable:C -> .
  BinaryOperatorMinus:-(.,.) -> .
  AssignmentOperator:= . -> .
-260 LET A = 180 - B - C
+260 LET A = 180{DEG} - B - C
  Variable:A -> .
- NumericValue:180
+ NumericValue:180{DEG}
  Variable:B -> .
  BinaryOperatorMinus:-(.,.) -> .
  Variable:C -> .
@@ -137,9 +118,9 @@
 315
 320 REM ONE POINT OF INTERSECTION
  Remark:ONE POINT OF INTERSECTION
-330 LET A = 90 - B
+330 LET A = 90{DEG} - B
  Variable:A -> .
- NumericValue:90
+ NumericValue:90{DEG}
  Variable:B -> .
  BinaryOperatorMinus:-(.,.) -> .
  AssignmentOperator:= . -> .
@@ -153,11 +134,11 @@
 365
 370 REM ANGLE-SIDE-ANGLE ROUTINE
  Remark:ANGLE-SIDE-ANGLE ROUTINE
-380 LET Z = X*FNS(A)/S
+380 LET Z = X*SIN(A)/S
  Variable:Z -> .
  Variable:X -> .
  Variable:A -> .
- UserFunction:FNS(.) -> .
+ FunctionSin:SIN(.) -> .
  BinaryOperatorMultiply:*(.,.) -> .
  Variable:S -> .
  BinaryOperatorDivide:/(.,.) -> .
@@ -178,33 +159,35 @@
 430 RETURN
  
 440
-450 DATA 60,10,8, 60,10,9, 60,10,11, 120,10,8, 120,10,9
- NumericValue:60
+450 DATA 60{DEG},10,8, 60{DEG},10,9, 60{DEG},10,11, 120{DEG},10,8, 120{DEG},10,9
+ WARNING: Line exceeds LIST width limit 72
+ WARNING: Line exceeds PRETTY width limit 72
+ NumericValue:60{DEG}
  NumericValue:10
  NumericValue:8
- NumericValue:60
+ NumericValue:60{DEG}
  NumericValue:10
  NumericValue:9
- NumericValue:60
+ NumericValue:60{DEG}
  NumericValue:10
  NumericValue:11
- NumericValue:120
+ NumericValue:120{DEG}
  NumericValue:10
  NumericValue:8
- NumericValue:120
+ NumericValue:120{DEG}
  NumericValue:10
  NumericValue:9
-460 DATA 120,10,11, 90,3,5, 60,5,5, 30,10,5
- NumericValue:120
+460 DATA 120{DEG},10,11, 90{DEG},3,5, 60{DEG},5,5, 30{DEG},10,5
+ NumericValue:120{DEG}
  NumericValue:10
  NumericValue:11
- NumericValue:90
+ NumericValue:90{DEG}
  NumericValue:3
  NumericValue:5
- NumericValue:60
+ NumericValue:60{DEG}
  NumericValue:5
  NumericValue:5
- NumericValue:30
+ NumericValue:30{DEG}
  NumericValue:10
  NumericValue:5
 470 END

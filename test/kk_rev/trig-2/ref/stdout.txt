@@ -1,20 +1,17 @@
 ANGLE           SIDE            ANGLE           SECOND SIDE     THIRD SIDE
- 60              5               60              5               5
- 60              5               90              9.999989618     8.660251041
- 15              10              63              9.109131191     2.646016271
+ 60{DEG}         5               60{DEG}         5               5
+ 60{DEG}         5               90{DEG}         10.00006753     8.660273533
+ 15{DEG}         10              63{DEG}         9.109057731     2.645985459
 Error 103 Out of data in line 150
 
 100 (0) REM ANGLE-SIDE-ANGLE
-110 (1) LET P = 3.1416
-120 FND(.) (0) DEF FND(X) = X * P / 180
-130 FNS(.) (0) DEF FNS(X) = SIN(FND(X))
 140 (1) PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
 150 (3) READ A, X, B
-160 (3) LET C = 180 - A - B
-170 (3) LET Y = X * FNS(B) / FNS(C)
-180 (3) LET Z = X * FNS(A) / FNS(C)
+160 (3) LET C = 180{DEG} - A - B
+170 (3) LET Y = X * SIN(B) / SIN(C)
+180 (3) LET Z = X * SIN(A) / SIN(C)
 190 (3) PRINT A, X, B, Y, Z
 200 (3) GOTO 150
-210 (0) DATA 60, 5, 60, 60, 5, 90, 15, 10, 63
+210 (0) DATA 60{DEG}, 5, 60{DEG}, 60{DEG}, 5, 90{DEG}, 15{DEG}, 10, 63{DEG}
 220 (0) END
 

@@ -1,55 +1,55 @@
-40 DATA 1.2, 2.15, 0.65, 4.3, 2
+40 DATA 1.2{USD}, 2.15{USD}, 0.65{USD}, 4.3{USD}, 2{USD}
 900 DATA 5, 3, 0, 2, 2
 10 F(I:10) FOR I = 1 TO 5
  I = 1
  terminated:false
 20 F(I:10) READ P(I)
  I: (10) 1
- P(1) = 1.2
+ P(1) = 1.2{USD}
 30 F(I:10) NEXT I
  I: (10) 1
  terminated:false
  I = 2
 20 F(I:10) READ P(I)
  I: (30) 2
- P(2) = 2.15
+ P(2) = 2.15{USD}
 30 F(I:10) NEXT I
  I: (30) 2
  terminated:false
  I = 3
 20 F(I:10) READ P(I)
  I: (30) 3
- P(3) = 0.65
+ P(3) = 0.65{USD}
 30 F(I:10) NEXT I
  I: (30) 3
  terminated:false
  I = 4
 20 F(I:10) READ P(I)
  I: (30) 4
- P(4) = 4.3
+ P(4) = 4.3{USD}
 30 F(I:10) NEXT I
  I: (30) 4
  terminated:false
  I = 5
 20 F(I:10) READ P(I)
  I: (30) 5
- P(5) = 2
+ P(5) = 2{USD}
 30 F(I:10) NEXT I
  I: (30) 5
  terminated:true
-100 LET S = 0
- S = 0
+100 LET S = 0{USD}
+ S = 0{USD}
 110 F(I:110) FOR I = 1 TO 5
  I = 1
  terminated:false
 120 F(I:110) READ N
  N = 5
 130 F(I:110) LET S = S + N * P(I)
- S: (100) 0
+ S: (100) 0{USD}
  N: (120) 5
  I: (110) 1
- P(1): (20) 1.2
- S = 6
+ P(1): (20) 1.2{USD}
+ S = 6{USD}
 140 F(I:110) NEXT I
  I: (110) 1
  terminated:false
@@ -57,11 +57,11 @@
 120 F(I:110) READ N
  N = 3
 130 F(I:110) LET S = S + N * P(I)
- S: (130) 6
+ S: (130) 6{USD}
  N: (120) 3
  I: (140) 2
- P(2): (20) 2.15
- S = 12.45
+ P(2): (20) 2.15{USD}
+ S = 12.45{USD}
 140 F(I:110) NEXT I
  I: (140) 2
  terminated:false
@@ -69,11 +69,11 @@
 120 F(I:110) READ N
  N = 0
 130 F(I:110) LET S = S + N * P(I)
- S: (130) 12.45
+ S: (130) 12.45{USD}
  N: (120) 0
  I: (140) 3
- P(3): (20) 0.65
- S = 12.45
+ P(3): (20) 0.65{USD}
+ S = 12.45{USD}
 140 F(I:110) NEXT I
  I: (140) 3
  terminated:false
@@ -81,11 +81,11 @@
 120 F(I:110) READ N
  N = 2
 130 F(I:110) LET S = S + N * P(I)
- S: (130) 12.45
+ S: (130) 12.45{USD}
  N: (120) 2
  I: (140) 4
- P(4): (20) 4.3
- S = 21.05
+ P(4): (20) 4.3{USD}
+ S = 21.05{USD}
 140 F(I:110) NEXT I
  I: (140) 4
  terminated:false
@@ -93,18 +93,18 @@
 120 F(I:110) READ N
  N = 2
 130 F(I:110) LET S = S + N * P(I)
- S: (130) 21.05
+ S: (130) 21.05{USD}
  N: (120) 2
  I: (140) 5
- P(5): (20) 2
- S = 25.05
+ P(5): (20) 2{USD}
+ S = 25.05{USD}
 140 F(I:110) NEXT I
  I: (140) 5
  terminated:true
 150 PRINT "TOTAL ORDER $" S
 TOTAL ORDER $
- S: (130) 25.05
- 25.05
+ S: (130) 25.05{USD}
+ 25.05{USD}
 999 END
 STOP in line 999
 

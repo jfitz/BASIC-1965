@@ -1,23 +1,5 @@
 100 REM ANGLE-SIDE-ANGLE
  Remark:ANGLE-SIDE-ANGLE
-110 LET P = 3.14159625
- Variable:P -> .
- NumericValue:3.14159625
- AssignmentOperator:= =. -> .
-120 DEF FND(X) = X*P/180
- UserFunctionName:FND -> .
- VariableName:X -> .
- Variable:X -> .
- Variable:P -> .
- BinaryOperatorMultiply:*(.,.) -> .
- NumericValue:180
- BinaryOperatorDivide:/(.,.) -> .
-130 DEF FNS(X) = SIN(FND(X))
- UserFunctionName:FNS -> .
- VariableName:X -> .
- Variable:X -> .
- UserFunction:FND(.) -> .
- FunctionSin:SIN(.) -> .
 140 PRINT "ANGLE", "SIDE", "ANGLE", "SECOND SIDE", "THIRD SIDE"
  TextValue:"ANGLE"
  CarriageControl:,
@@ -33,32 +15,32 @@
  Variable:A -> .
  Variable:X -> .
  Variable:B -> .
-160 LET C = 180 - A - B
+160 LET C = 180{DEG} - A - B
  Variable:C -> .
- NumericValue:180
+ NumericValue:180{DEG}
  Variable:A -> .
  BinaryOperatorMinus:-(.,.) -> .
  Variable:B -> .
  BinaryOperatorMinus:-(.,.) -> .
  AssignmentOperator:= . -> .
-170 LET Y = X*FNS(B)/FNS(C)
+170 LET Y = X*SIN(B)/SIN(C)
  Variable:Y -> .
  Variable:X -> .
  Variable:B -> .
- UserFunction:FNS(.) -> .
+ FunctionSin:SIN(.) -> .
  BinaryOperatorMultiply:*(.,.) -> .
  Variable:C -> .
- UserFunction:FNS(.) -> .
+ FunctionSin:SIN(.) -> .
  BinaryOperatorDivide:/(.,.) -> .
  AssignmentOperator:= . -> .
-180 LET Z = X*FNS(A)/FNS(C)
+180 LET Z = X*SIN(A)/SIN(C)
  Variable:Z -> .
  Variable:X -> .
  Variable:A -> .
- UserFunction:FNS(.) -> .
+ FunctionSin:SIN(.) -> .
  BinaryOperatorMultiply:*(.,.) -> .
  Variable:C -> .
- UserFunction:FNS(.) -> .
+ FunctionSin:SIN(.) -> .
  BinaryOperatorDivide:/(.,.) -> .
  AssignmentOperator:= . -> .
 190 PRINT A,X,B,Y,Z
@@ -74,16 +56,16 @@
  CarriageControl:NL
 200 GOTO 150
  LineNumber:150
-210 DATA 60,5,60, 60,5,90, 15,10,63
- NumericValue:60
+210 DATA 60{DEG},5,60{DEG}, 60{DEG},5,90{DEG}, 15{DEG},10,63{DEG}
+ NumericValue:60{DEG}
  NumericValue:5
- NumericValue:60
- NumericValue:60
+ NumericValue:60{DEG}
+ NumericValue:60{DEG}
  NumericValue:5
- NumericValue:90
- NumericValue:15
+ NumericValue:90{DEG}
+ NumericValue:15{DEG}
  NumericValue:10
- NumericValue:63
+ NumericValue:63{DEG}
 220 END
  
 

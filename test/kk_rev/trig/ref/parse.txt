@@ -1,27 +1,5 @@
-10 LET P = 3.14159625
- Variable:P -> .
- NumericValue:3.14159625
- AssignmentOperator:= =. -> .
-20 DEF FND(X) = X*P/180
- UserFunctionName:FND -> .
- VariableName:X -> .
- Variable:X -> .
- Variable:P -> .
- BinaryOperatorMultiply:*(.,.) -> .
- NumericValue:180
- BinaryOperatorDivide:/(.,.) -> .
-30 DEF FNS(X) = SIN(FND(X))
- UserFunctionName:FNS -> .
- VariableName:X -> .
- Variable:X -> .
- UserFunction:FND(.) -> .
- FunctionSin:SIN(.) -> .
-40 DEF FNC(X) = COS(FND(X))
- UserFunctionName:FNC -> .
- VariableName:X -> .
- Variable:X -> .
- UserFunction:FND(.) -> .
- FunctionCos:COS(.) -> .
+10 REM BUILD TRIG TABLE
+ Remark:BUILD TRIG TABLE
 50 PRINT "DEGREES","SINE","COSINE"
  TextValue:"DEGREES"
  CarriageControl:,
@@ -29,19 +7,19 @@
  CarriageControl:,
  TextValue:"COSINE"
  CarriageControl:NL
-60 FOR X = 0 TO 90 STEP 10
+60 FOR X = 0{DEG} TO 90{DEG} STEP 10{DEG}
  control: Variable:X -> .
- start:   ["NumericValue:0"]
- end:     ["NumericValue:90"]
- step:    ["NumericValue:10"]
-70     PRINT X, FNS(X), FNC(X)
+ start:   ["NumericValue:0{DEG}"]
+ end:     ["NumericValue:90{DEG}"]
+ step:    ["NumericValue:10{DEG}"]
+70     PRINT X, SIN(X), COS(X)
  Variable:X -> .
  CarriageControl:,
  Variable:X -> .
- UserFunction:FNS(.) -> .
+ FunctionSin:SIN(.) -> .
  CarriageControl:,
  Variable:X -> .
- UserFunction:FNC(.) -> .
+ FunctionCos:COS(.) -> .
  CarriageControl:NL
 80 NEXT X
  Variable:X -> .

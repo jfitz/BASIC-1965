@@ -1,101 +1,76 @@
-20 FND(.) DEF FND(X) = X * P / 180
-30 FNS(.) DEF FNS(X) = SIN(FND(X))
-40 FNC(.) DEF FNC(X) = COS(FND(X))
-10 LET P = 3.1416
- P = 3.14159625
 50 PRINT "DEGREES", "SINE", "COSINE"
 DEGREES         SINE            COSINE
-60 F(X:60) FOR X = 0 TO 90 STEP 10
- X = 0
+60 F(X:60) FOR X = 0{DEG} TO 90{DEG} STEP 10{DEG}
+ X = 0{DEG}
  terminated:false
-70 F(X:60) PRINT X, FNS(X), FNC(X)
- X: (60) 0
- 0              
- P: (10) 3.14159625
- 0               1
+70 F(X:60) PRINT X, SIN(X), COS(X)
+ X: (60) 0{DEG}
+ 0{DEG}          0               1
 80 F(X:60) NEXT X
- X: (60) 0
+ X: (60) 0{DEG}
  terminated:false
- X = 10
-70 F(X:60) PRINT X, FNS(X), FNC(X)
- X: (80) 10
- 10             
- P: (10) 3.14159625
- 0.1736483744    0.9848077183
+ X = 10{DEG}
+70 F(X:60) PRINT X, SIN(X), COS(X)
+ X: (80) 10{DEG}
+ 10{DEG}         0.1736468978    0.9848079787
 80 F(X:60) NEXT X
- X: (80) 10
+ X: (80) 10{DEG}
  terminated:false
- X = 20
-70 F(X:60) PRINT X, FNS(X), FNC(X)
- X: (80) 20
- 20             
- P: (10) 3.14159625
- 0.3420205188    0.9396924841
+ X = 20{DEG}
+70 F(X:60) PRINT X, SIN(X), COS(X)
+ X: (80) 20{DEG}
+ 20{DEG}         0.3420177008    0.9396935098
 80 F(X:60) NEXT X
- X: (80) 20
+ X: (80) 20{DEG}
  terminated:false
- X = 30
-70 F(X:60) PRINT X, FNS(X), FNC(X)
- X: (80) 30
- 30             
- P: (10) 3.14159625
- 0.5000005191    0.8660251041
+ X = 30{DEG}
+70 F(X:60) PRINT X, SIN(X), COS(X)
+ X: (80) 30{DEG}
+ 30{DEG}         0.4999966234    0.8660273532
 80 F(X:60) NEXT X
- X: (80) 30
+ X: (80) 30{DEG}
  terminated:false
- X = 40
-70 F(X:60) PRINT X, FNS(X), FNC(X)
- X: (80) 40
- 40             
- P: (10) 3.14159625
- 0.6427882219    0.7660439294
+ X = 40{DEG}
+70 F(X:60) PRINT X, SIN(X), COS(X)
+ X: (80) 40{DEG}
+ 40{DEG}         0.6427836273    0.7660477847
 80 F(X:60) NEXT X
- X: (80) 40
+ X: (80) 40{DEG}
  terminated:false
- X = 50
-70 F(X:60) PRINT X, FNS(X), FNC(X)
- X: (80) 50
- 50             
- P: (10) 3.14159625
- 0.7660450853    0.6427868444
+ X = 50{DEG}
+70 F(X:60) PRINT X, SIN(X), COS(X)
+ X: (80) 50{DEG}
+ 50{DEG}         0.7660402661    0.6427925876
 80 F(X:60) NEXT X
- X: (80) 50
+ X: (80) 50{DEG}
  terminated:false
- X = 60
-70 F(X:60) PRINT X, FNS(X), FNC(X)
- X: (80) 60
- 60             
- P: (10) 3.14159625
- 0.8660260032    0.4999989618
+ X = 60{DEG}
+70 F(X:60) PRINT X, SIN(X), COS(X)
+ X: (80) 60{DEG}
+ 60{DEG}         0.8660215048    0.5000067531
 80 F(X:60) NEXT X
- X: (80) 60
+ X: (80) 60{DEG}
  terminated:false
- X = 70
-70 F(X:60) PRINT X, FNS(X), FNC(X)
- X: (80) 70
- 70             
- P: (10) 3.14159625
- 0.9396930991    0.3420188291
+ X = 70{DEG}
+70 F(X:60) PRINT X, SIN(X), COS(X)
+ X: (80) 70{DEG}
+ 70{DEG}         0.9396895092    0.3420286922
 80 F(X:60) NEXT X
- X: (80) 70
+ X: (80) 70{DEG}
  terminated:false
- X = 80
-70 F(X:60) PRINT X, FNS(X), FNC(X)
- X: (80) 80
- 80             
- P: (10) 3.14159625
- 0.9848080306    0.1736466035
+ X = 80{DEG}
+70 F(X:60) PRINT X, SIN(X), COS(X)
+ X: (80) 80{DEG}
+ 80{DEG}         0.9848059475    0.1736584169
 80 F(X:60) NEXT X
- X: (80) 80
+ X: (80) 80{DEG}
  terminated:false
- X = 90
-70 F(X:60) PRINT X, FNS(X), FNC(X)
- X: (80) 90
- 90             
- P: (10) 3.14159625
- 1              -1.798205103E-06
+ X = 90{DEG}
+70 F(X:60) PRINT X, SIN(X), COS(X)
+ X: (80) 90{DEG}
+ 90{DEG}         0.9999999999    1.16967949E-05
 80 F(X:60) NEXT X
- X: (80) 90
+ X: (80) 90{DEG}
  terminated:true
 99 END
 STOP in line 99

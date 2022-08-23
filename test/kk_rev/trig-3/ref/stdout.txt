@@ -1,34 +1,32 @@
 ANGLE           SIDE            SIDE            THIRD SIDE      CASE 2
- 60              10              8              NONE            NONE
- 60              10              9               7.449489749     2.550510247    
- 60              10              11              11.78232999    NONE            
- 120             10              8              NONE            NONE
- 120             10              9              NONE            NONE            
- 120             10              11              1.782329943    NONE            
- 90              3               5               3.999999995    NONE            
- 60              5               5               5               0              
- 30              10              5               8.660254041    NONE
+ 60{DEG}         10              8              NONE            NONE
+ 60{DEG}         10              9               7.449525615     2.550439935    
+ 60{DEG}         10              11              11.78233631    NONE            
+ 120{DEG}        10              8              NONE            NONE
+ 120{DEG}        10              9              NONE            NONE            
+ 120{DEG}        10              11              1.782071283    NONE            
+ 90{DEG}         3               5               3.999964908    NONE            
+ 60{DEG}         5               5               5               0              
+ 30{DEG}         10              5               8.660273533    NONE
 Error 103 Out of data in line 150
 
 100 (0) REM ANGLE-SIDE-SIDE
-110 (1) LET P = 3.14159
-120 FND(.) (0) DEF FND(X) = X * P / 180
-130 FNS(.) (0) DEF FNS(X) = SIN(FND(X))
+110 (1) OPTION TRIG_REQUIRE_UNITS TRUE
 135 FNR(.) (0) DEF FNR(X) = INT(100 * X + 0.5) / 100
 140 (1) PRINT "ANGLE", "SIDE", "SIDE", "THIRD SIDE", "CASE 2"
 150 (9) READ B, X, Y
 160 (9) PRINT B, X, Y,
-170 (9) LET S = X * FNS(B) / Y
+170 (9) LET S = X * SIN(B) / Y
 180 (9) IF S > 1 THEN 290
 190 (7) IF FNR(S) = 1 THEN 320
 195 (0) 
 200 (0) REM TWO POINTS OF INTERSECTION
 210 (6) LET T = S / SQR(1 - S ^ 2)
-220 (6) LET C = ATN(T) * 180 / P
-230 (6) LET A = 180 - B - C
+220 (6) LET C = DEG(ATN(T))
+230 (6) LET A = 180{DEG} - B - C
 240 (6) GOSUB 370
-250 (6) LET C = 180 - C
-260 (6) LET A = 180 - B - C
+250 (6) LET C = 180{DEG} - C
+260 (6) LET A = 180{DEG} - B - C
 270 (6) GOSUB 370
 275 (6) PRINT
 280 (6) GOTO 150
@@ -38,20 +36,20 @@ Error 103 Out of data in line 150
 310 (2) GOTO 150
 315 (0) 
 320 (0) REM ONE POINT OF INTERSECTION
-330 (1) LET A = 90 - B
+330 (1) LET A = 90{DEG} - B
 340 (1) GOSUB 370
 350 (1) PRINT "NONE"
 360 (1) GOTO 150
 365 (0) 
 370 (0) REM ANGLE-SIDE-ANGLE ROUTINE
-380 G(380) (13) LET Z = X * FNS(A) / S
+380 G(380) (13) LET Z = X * SIN(A) / S
 390 G(380) (13) IF Z >= 0 THEN 420
 400 G(380) (5) PRINT "NONE",
 410 G(380) (5) RETURN
 420 G(380) (8) PRINT Z,
 430 G(380) (8) RETURN
 440 (0) 
-450 (0) DATA 60, 10, 8, 60, 10, 9, 60, 10, 11, 120, 10, 8, 120, 10, 9
-460 (0) DATA 120, 10, 11, 90, 3, 5, 60, 5, 5, 30, 10, 5
+450 (0) DATA 60{DEG}, 10, 8, 60{DEG}, 10, 9, 60{DEG}, 10, 11, 120{DEG}, 10, 8, 120{DEG}, 10, 9
+460 (0) DATA 120{DEG}, 10, 11, 90{DEG}, 3, 5, 60{DEG}, 5, 5, 30{DEG}, 10, 5
 470 (0) END
 

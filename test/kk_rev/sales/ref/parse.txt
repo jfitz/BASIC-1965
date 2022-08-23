@@ -7,15 +7,15 @@
  Variable:P(.) -> .
 30 NEXT I
  Variable:I -> .
-40 DATA 1.20,2.15,0.65,4.30,2.00
- NumericValue:1.20
- NumericValue:2.15
- NumericValue:0.65
- NumericValue:4.30
- NumericValue:2.00
-100 LET S = 0
+40 DATA 1.20{USD},2.15{USD},0.65{USD},4.30{USD},2.00{USD}
+ NumericValue:1.20{USD}
+ NumericValue:2.15{USD}
+ NumericValue:0.65{USD}
+ NumericValue:4.30{USD}
+ NumericValue:2.00{USD}
+100 LET S = 0{USD}
  Variable:S -> .
- NumericValue:0
+ NumericValue:0{USD}
  AssignmentOperator:= =. -> .
 110 FOR I = 1 TO 5
  control: Variable:I -> .

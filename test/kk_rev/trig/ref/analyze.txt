@@ -1,43 +1,34 @@
 Statistics:
 
-Number of lines: 9
-Number of valid statements: 9
-Number of comments: 0
-Number of executable statements: 6
+Number of lines: 6
+Number of valid statements: 5
+Number of comments: 1
+Number of executable statements: 5
 
 Complexity:
 
-Comment density: 0.000
-Comprehension effort: 31
+Comment density: 0.200
+Comprehension effort: 17
 McCabe complexity: 2
 Halstead complexity:
- length: 56
- volume: 184.567
- difficulty: 13.125
- effort: 2422.440
- language: 1.071
- intelligence: 14.062
- time: 2.243
+ length: 23
+ volume: 62.285
+ difficulty: 4.812
+ effort: 299.747
+ language: 2.689
+ intelligence: 12.942
+ time: 0.278
 
-10 (0 3) LET P = 3.1416
-  Origs: :start
-  Dests: 50:auto
-20 FND(.) (0 4) DEF FND(X) = X * P / 180
-  Origs: 
-  Dests: 
-30 FNS(.) (0 3) DEF FNS(X) = SIN(FND(X))
-  Origs: 
-  Dests: 
-40 FNC(.) (0 3) DEF FNC(X) = COS(FND(X))
+10 (0 1) REM BUILD TRIG TABLE
   Origs: 
   Dests: 
 50 (0 4) PRINT "DEGREES", "SINE", "COSINE"
-  Origs: 10:auto
+  Origs: :start
   Dests: 60:auto
-60 F(X:60) (1 4) FOR X = 0 TO 90 STEP 10
+60 F(X:60) (1 4) FOR X = 0{DEG} TO 90{DEG} STEP 10{DEG}
   Origs: 50:auto
   Dests: 70:fornext, 80:fornext
-70 F(X:60) (0 8) PRINT X, FNS(X), FNC(X)
+70 F(X:60) (0 6) PRINT X, SIN(X), COS(X)
   Origs: 60:fornext
   Dests: 80:auto
 80 F(X:60) (0 1) NEXT X
