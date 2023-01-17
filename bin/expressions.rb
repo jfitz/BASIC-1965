@@ -1577,12 +1577,12 @@ class Expression
     my_shape
   end
 
-  def constant
+  def constant?
     constant = false
 
     unless @elements.empty?
       element0 = @elements[-1]
-      constant = element0.constant
+      constant = element0.constant?
     end
 
     constant
@@ -1599,7 +1599,7 @@ class Expression
   end
 
   def signature
-    c = constant ? '=' : ''
+    c = constant? ? '=' : ''
     c + Sigils.make_type_sigil(content_type) + Sigils.make_shape_sigil(shape)
   end
 
@@ -2043,11 +2043,11 @@ class ValueExpressionSet < AbstractExpressionSet
     last_element.shape
   end
 
-  def constant
+  def constant?
     expression = @expressions[0]
     elements = expression.elements
     last_element = elements[-1]
-    last_element.constant
+    last_element.constant?
   end
 
   def filehandle?

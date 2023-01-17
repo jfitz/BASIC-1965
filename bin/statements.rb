@@ -2253,7 +2253,7 @@ class IfStatement < AbstractIfStatement
 
       begin
         @expression = ValueExpressionSet.new(tokens_lists[0], :scalar)
-        @warnings << 'Constant expression' if @expression.constant
+        @warnings << 'Constant expression' if @expression.constant?
         @elements = make_references(nil, @expression)
 
         @comprehension_effort += @expression.comprehension_effort
