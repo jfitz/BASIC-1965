@@ -524,34 +524,28 @@ class AbstractStatement
     []
   end
 
+  def stop?
+    false
+  end
+
+  def end?
+    false
+  end
+
   def for?
-    @keywords.size == 1 && @keywords[0].to_s == 'FOR'
+    false
   end
 
   def next?
-    @keywords.size == 1 && @keywords[0].to_s == 'NEXT'
+    false
   end
 
   def user_def?
-    @keywords.size == 1 && @keywords[0].to_s == 'DEF'
+    false
   end
 
   def end_user_def?
-    result = false
-
-    if @keywords.size == 1
-      result = true if @keywords[0].to_s == 'FNEND'
-      result = true if @keywords[0].to_s == 'ENDFN'
-      result = true if @keywords[0].to_s == 'ENDFUNCTION'
-    end
-
-    if @keywords.size == 2
-      result == true if
-        @keywords[0].to_s == 'END' &&
-        @keywords[1].to_s == 'FUNCTION'
-    end
-
-    result
+    false
   end
 
   def procedure?
@@ -1506,6 +1500,10 @@ class DefineFunctionStatement < AbstractStatement
     end
   end
 
+  def user_def?
+    true
+  end
+
   def singledef?
     return false if @definition.nil?
 
@@ -1618,6 +1616,10 @@ class EndStatement < AbstractStatement
   def set_transfers(_)
     empty_line_number = LineNumber.new(nil)
     @transfers << TransferRefLineStmt.new(empty_line_number, 0, :stop)
+  end
+
+  def end?
+    true
   end
 
   def dump
@@ -1839,6 +1841,10 @@ class ForStatement < AbstractStatement
     @start&.uncache
     @step&.uncache
     @end&.uncache
+  end
+
+  def for?
+    true
   end
 
   def dump
@@ -2458,6 +2464,10 @@ class NextStatement < AbstractStatement
     end
   end
 
+  def next?
+    true
+  end
+
   def dump
     [@control.dump]
   end
@@ -2745,6 +2755,10 @@ class StopStatement < AbstractStatement
   def set_transfers(_)
     empty_line_number = LineNumber.new(nil)
     @transfers << TransferRefLineStmt.new(empty_line_number, 0, :stop)
+  end
+
+  def stop?
+    true
   end
 
   def dump
