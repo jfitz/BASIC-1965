@@ -2,7 +2,7 @@
 
 # function (provides a scalar)
 class AbstractFunction < AbstractElement
-  attr_reader :name, :default_shape, :content_type, :shape, :constant, :warnings
+  attr_reader :name, :default_shape, :content_type, :shape, :warnings
 
   def initialize(text)
     super()
@@ -84,6 +84,10 @@ class AbstractFunction < AbstractElement
     result = Sigils.make_type_sigil(@content_type) + Sigils.make_shape_sigil(@shape)
     const = @constant ? '=' : ''
     "#{self.class}:#{signature} -> #{const}#{result}"
+  end
+
+  def constant?
+    @constant
   end
 
   def to_s
