@@ -1,0 +1,99 @@
+10 REM MATRIX ASSIGNMENT
+ Remark:MATRIX ASSIGNMENT
+15 OPTION BASE 0
+ NumericValue:0
+20 DIM A(5,5)
+ NumericValue:5
+ NumericValue:5
+ Declaration:A(,) -> .(,)
+30 FOR I = 0 TO 5
+ control: Variable:I -> .
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:5"]
+40 FOR J = 0 TO 5
+ control: Variable:J -> .
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:5"]
+45 LET V = (I+J) * 1{M1 S-1}
+ Variable:V -> .
+ Variable:I -> .
+ Variable:J -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ NumericValue:1{M1S-1}
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
+50 LET A(I,J) = V
+ Variable:I -> .
+ Variable:J -> .
+ Variable:A(.,.) -> .
+ Variable:V -> .
+ AssignmentOperator:= . -> .
+60 NEXT J
+ Variable:J -> .
+70 NEXT I
+ Variable:I -> .
+80 MAT LET B = A
+ Variable:B(,) -> .(,)
+ Variable:A(,) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
+82 MAT PRINT B
+ Variable:B(,) -> .(,)
+ CarriageControl:NL
+90 MAT LET C = NOU2(A)
+ Variable:C(,) -> .(,)
+ Variable:A(,) -> .(,)
+ FunctionNou2:NOU2(.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
+92 MAT PRINT C
+ Variable:C(,) -> .(,)
+ CarriageControl:NL
+115 OPTION BASE 1
+ NumericValue:1
+120 DIM A(5,5)
+ NumericValue:5
+ NumericValue:5
+ Declaration:A(,) -> .(,)
+130 FOR I = 1 TO 5
+ control: Variable:I -> .
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:5"]
+140 FOR J = 1 TO 5
+ control: Variable:J -> .
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:5"]
+145 LET V = (I+J) * 1{M1 S-1}
+ Variable:V -> .
+ Variable:I -> .
+ Variable:J -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ NumericValue:1{M1S-1}
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
+150 LET A(I,J) = V
+ Variable:I -> .
+ Variable:J -> .
+ Variable:A(.,.) -> .
+ Variable:V -> .
+ AssignmentOperator:= . -> .
+160 NEXT J
+ Variable:J -> .
+170 NEXT I
+ Variable:I -> .
+180 MAT LET B = A
+ Variable:B(,) -> .(,)
+ Variable:A(,) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
+182 MAT PRINT B
+ Variable:B(,) -> .(,)
+ CarriageControl:NL
+190 MAT LET C = NOU2(A)
+ Variable:C(,) -> .(,)
+ Variable:A(,) -> .(,)
+ FunctionNou2:NOU2(.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
+192 MAT PRINT C
+ Variable:C(,) -> .(,)
+ CarriageControl:NL
+999 END
+ 
+

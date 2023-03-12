@@ -1061,9 +1061,16 @@ class NumericValue < AbstractValue
   end
 
   def abs
-    value = @value >= 0 ? @value : -@value
+    value = @value >= 0 ? @value.clone : -@value
 
     NumericValue.new_2(value, @units)
+  end
+
+  def no_units
+    value = @value.clone
+    units = Units.new_empty
+
+    NumericValue.new_2(value, units)
   end
 
   def round(places)

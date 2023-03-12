@@ -1,0 +1,44 @@
+10 REM ARRAY ASSIGNMENT
+ Remark:ARRAY ASSIGNMENT
+20 DIM A(5)
+ NumericValue:5
+ Declaration:A() -> .()
+30 FOR I = 0 TO 5
+ control: Variable:I -> .
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:5"]
+40 LET V = I * 1{M1 S-1}
+ Variable:V -> .
+ Variable:I -> .
+ NumericValue:1{M1S-1}
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
+50 LET A(I) = V
+ Variable:I -> .
+ Variable:A(.) -> .
+ Variable:V -> .
+ AssignmentOperator:= . -> .
+70 NEXT I
+ Variable:I -> .
+100 ARR LET B = A
+ Variable:B() -> .()
+ Variable:A() -> .()
+ AssignmentOperator:= .() -> .()
+110 ARR PRINT B
+ Variable:B() -> .()
+ CarriageControl:NL
+112 PRINT
+ CarriageControl:NL
+120 ARR LET C = NOU1(A)
+ Variable:C() -> .()
+ Variable:A() -> .()
+ FunctionNou1:NOU1(.()) -> .()
+ AssignmentOperator:= .() -> .()
+130 ARR PRINT C
+ Variable:C() -> .()
+ CarriageControl:NL
+132 PRINT
+ CarriageControl:NL
+999 END
+ 
+

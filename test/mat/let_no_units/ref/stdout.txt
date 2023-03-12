@@ -1,0 +1,55 @@
+ 0{M S-1}        1{M S-1}        2{M S-1}        3{M S-1}        4{M S-1}        5{M S-1}
+ 1{M S-1}        2{M S-1}        3{M S-1}        4{M S-1}        5{M S-1}        6{M S-1}
+ 2{M S-1}        3{M S-1}        4{M S-1}        5{M S-1}        6{M S-1}        7{M S-1}
+ 3{M S-1}        4{M S-1}        5{M S-1}        6{M S-1}        7{M S-1}        8{M S-1}
+ 4{M S-1}        5{M S-1}        6{M S-1}        7{M S-1}        8{M S-1}        9{M S-1}
+ 5{M S-1}        6{M S-1}        7{M S-1}        8{M S-1}        9{M S-1}        10{M S-1}
+
+ 0               1               2               3               4               5
+ 1               2               3               4               5               6
+ 2               3               4               5               6               7
+ 3               4               5               6               7               8
+ 4               5               6               7               8               9
+ 5               6               7               8               9               10
+
+ 2{M S-1}        3{M S-1}        4{M S-1}        5{M S-1}        6{M S-1}
+ 3{M S-1}        4{M S-1}        5{M S-1}        6{M S-1}        7{M S-1}
+ 4{M S-1}        5{M S-1}        6{M S-1}        7{M S-1}        8{M S-1}
+ 5{M S-1}        6{M S-1}        7{M S-1}        8{M S-1}        9{M S-1}
+ 6{M S-1}        7{M S-1}        8{M S-1}        9{M S-1}        10{M S-1}
+
+ 2               3               4               5               6
+ 3               4               5               6               7
+ 4               5               6               7               8
+ 5               6               7               8               9
+ 6               7               8               9               10
+
+STOP in line 999
+
+10 (0) REM MATRIX ASSIGNMENT
+15 (1) OPTION BASE 0
+20 (1) DIM A(5, 5)
+30 F(I:30) (1) FOR I = 0 TO 5
+40 F(I:30,J:40) (6) FOR J = 0 TO 5
+45 F(I:30,J:40) (36) LET V = (I + J) * 1{M S-1}
+50 F(I:30,J:40) (36) LET A(I, J) = V
+60 F(I:30,J:40) (36) NEXT J
+70 F(I:30) (6) NEXT I
+80 (1) MAT LET B = A
+82 (1) MAT PRINT B
+90 (1) MAT LET C = NOU2(A)
+92 (1) MAT PRINT C
+115 (1) OPTION BASE 1
+120 (1) DIM A(5, 5)
+130 F(I:130) (1) FOR I = 1 TO 5
+140 F(I:130,J:140) (5) FOR J = 1 TO 5
+145 F(I:130,J:140) (25) LET V = (I + J) * 1{M S-1}
+150 F(I:130,J:140) (25) LET A(I, J) = V
+160 F(I:130,J:140) (25) NEXT J
+170 F(I:130) (5) NEXT I
+180 (1) MAT LET B = A
+182 (1) MAT PRINT B
+190 (1) MAT LET C = NOU2(A)
+192 (1) MAT PRINT C
+999 (1) END
+

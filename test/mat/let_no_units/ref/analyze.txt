@@ -1,0 +1,104 @@
+Statistics:
+
+Number of lines: 26
+Number of valid statements: 25
+Number of comments: 1
+Number of executable statements: 25
+
+Complexity:
+
+Comment density: 0.040
+Comprehension effort: 64
+McCabe complexity: 5
+Halstead complexity:
+ length: 86
+ volume: 273.313
+ difficulty: 13.000
+ effort: 3553.064
+ language: 1.617
+ intelligence: 21.024
+ time: 3.290
+
+10 (0 1) REM MATRIX ASSIGNMENT
+  Origs: 
+  Dests: 
+15 (0 2) OPTION BASE 0
+  Origs: :start
+  Dests: 20:auto
+20 (0 2) DIM A(5, 5)
+  Origs: 15:auto
+  Dests: 30:auto
+30 F(I:30) (1 3) FOR I = 0 TO 5
+  Origs: 20:auto
+  Dests: 40:fornext, 70:fornext
+40 F(I:30,J:40) (1 3) FOR J = 0 TO 5
+  Origs: 30:fornext
+  Dests: 45:fornext, 60:fornext
+45 F(I:30,J:40) (0 5) LET V = (I + J) * 1{M S-1}
+  Origs: 40:fornext
+  Dests: 50:auto
+50 F(I:30,J:40) (0 3) LET A(I, J) = V
+  Origs: 45:auto
+  Dests: 60:auto
+60 F(I:30,J:40) (0 1) NEXT J
+  Origs: 40:fornext, 50:auto
+  Dests: 70:auto
+70 F(I:30) (0 1) NEXT I
+  Origs: 30:fornext, 60:auto
+  Dests: 80:auto
+80 (0 3) MAT LET B = A
+  Origs: 70:auto
+  Dests: 82:auto
+82 (0 2) MAT PRINT B
+  Origs: 80:auto
+  Dests: 90:auto
+90 (0 4) MAT LET C = NOU2(A)
+  Origs: 82:auto
+  Dests: 92:auto
+92 (0 2) MAT PRINT C
+  Origs: 90:auto
+  Dests: 115:auto
+115 (0 2) OPTION BASE 1
+  Origs: 92:auto
+  Dests: 120:auto
+120 (0 2) DIM A(5, 5)
+  Origs: 115:auto
+  Dests: 130:auto
+130 F(I:130) (1 3) FOR I = 1 TO 5
+  Origs: 120:auto
+  Dests: 140:fornext, 170:fornext
+140 F(I:130,J:140) (1 3) FOR J = 1 TO 5
+  Origs: 130:fornext
+  Dests: 145:fornext, 160:fornext
+145 F(I:130,J:140) (0 5) LET V = (I + J) * 1{M S-1}
+  Origs: 140:fornext
+  Dests: 150:auto
+150 F(I:130,J:140) (0 3) LET A(I, J) = V
+  Origs: 145:auto
+  Dests: 160:auto
+160 F(I:130,J:140) (0 1) NEXT J
+  Origs: 140:fornext, 150:auto
+  Dests: 170:auto
+170 F(I:130) (0 1) NEXT I
+  Origs: 130:fornext, 160:auto
+  Dests: 180:auto
+180 (0 3) MAT LET B = A
+  Origs: 170:auto
+  Dests: 182:auto
+182 (0 2) MAT PRINT B
+  Origs: 180:auto
+  Dests: 190:auto
+190 (0 4) MAT LET C = NOU2(A)
+  Origs: 182:auto
+  Dests: 192:auto
+192 (0 2) MAT PRINT C
+  Origs: 190:auto
+  Dests: 999:auto
+999 (0 1) END
+  Origs: 192:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

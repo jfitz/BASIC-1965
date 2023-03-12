@@ -629,6 +629,29 @@ class BASICArray < AbstractCompound
     end
   end
 
+  def no_units
+    base = $options['base'].value
+
+    # get all values
+    values = []
+
+    (base..@dimensions[0].to_i).each do |col|
+      v = get_value_1(col)
+      values << v.no_units
+    end
+
+    # set all values
+    new_values = {}
+
+    values.each_with_index do |value, index|
+      col = index + base
+      coord = AbstractElement.make_coord(col)
+      new_values[coord] = value
+    end
+
+    new_values
+  end
+
   def reverse_values
     new_values = {}
 
@@ -869,6 +892,44 @@ class Matrix < AbstractCompound
     else
       raise BASICSyntaxError, 'Too many dimensions in matrix'
     end
+  end
+
+  def no_units
+    base = $options['base'].value
+
+    # get all values
+    rows = []
+
+    (base..@dimensions[0].to_i).each do |row|
+      values = []
+
+      (base..@dimensions[1].to_i).each do |col|
+        v = get_value_2(row, col)
+        values << v.no_units
+      end
+
+      rows << values
+    end
+
+    # set all values
+    new_values = {}
+
+    row = base
+
+    rows.each do |values|
+      col = base
+
+      values.each do |value|
+        coords = AbstractElement.make_coords(row, col)
+        new_values[coords] = value
+
+        col += 1
+      end
+
+      row += 1
+    end
+
+    new_values
   end
 
   def transpose_values
