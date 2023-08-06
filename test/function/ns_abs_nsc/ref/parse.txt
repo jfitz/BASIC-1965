@@ -1,0 +1,56 @@
+10 REM This is a test
+ Remark:This is a test
+15 PRINT "NUMBER","ABSOLUTE"
+ TextValue:"NUMBER"
+ CarriageControl:,
+ TextValue:"ABSOLUTE"
+ CarriageControl:NL
+20 LET A=10
+ Variable:A -> .
+ NumericValue:10
+ AssignmentOperator:= =. -> .
+22 LET A1=ABS(10)
+ Variable:A1 -> .
+ NumericValue:10
+ FunctionAbs:ABS(.) -> =.
+ AssignmentOperator:= =. -> .
+25 PRINT A,A1
+ Variable:A -> .
+ CarriageControl:,
+ Variable:A1 -> .
+ CarriageControl:NL
+30 LET B=-20
+ Variable:B -> .
+ NumericValue:20
+ UnaryOperatorMinus:-(.) -> =.
+ AssignmentOperator:= =. -> .
+32 LET B1=ABS(-20)
+ Variable:B1 -> .
+ NumericValue:20
+ UnaryOperatorMinus:-(.) -> =.
+ FunctionAbs:ABS(.) -> =.
+ AssignmentOperator:= =. -> .
+35 PRINT B,B1
+ Variable:B -> .
+ CarriageControl:,
+ Variable:B1 -> .
+ CarriageControl:NL
+40 LET C=0
+ Variable:C -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+42 LET C1=ABS(0)
+ Variable:C1 -> .
+ NumericValue:0
+ FunctionAbs:ABS(.) -> =.
+ AssignmentOperator:= =. -> .
+45 PRINT C,C1
+ Variable:C -> .
+ CarriageControl:,
+ Variable:C1 -> .
+ CarriageControl:NL
+90 STOP
+ 
+99 END
+ 
+

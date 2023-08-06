@@ -1,134 +1,77 @@
-10 REM BUFFON NEEDLE SIMULATION
- Remark:BUFFON NEEDLE SIMULATION
-30 LET L0 = 2 ' DISTANCE BETWEEN LINES
- Variable:L0 -> .
- NumericValue:2
- AssignmentOperator:= =. -> .
-32 LET L = 1' NEEDLE SIZE
- Variable:L -> .
- NumericValue:1
- AssignmentOperator:= =. -> .
-40 READ N,M
- Variable:N -> .
- Variable:M -> .
-100 PRINT "COUNT","HITS","RATIO","INVERSE"
- TextValue:"COUNT"
- CarriageControl:,
- TextValue:"HITS"
- CarriageControl:,
- TextValue:"RATIO"
- CarriageControl:,
- TextValue:"INVERSE"
- CarriageControl:NL
-110 REM MAIN LOOP
- Remark:MAIN LOOP
-120 LET C = 0
- Variable:C -> .
- NumericValue:0
- AssignmentOperator:= =. -> .
-130 FOR I = 1 TO N
- control: Variable:I -> .
- start:   ["NumericValue:1"]
- end:     ["Variable:N -> ."]
-140 GOSUB 200
- LineNumber:200
-150 IF MOD(I, M) <> 0 THEN 170
- Variable:I -> .
- Variable:M -> .
- FunctionMod:MOD(.,.) -> .
- NumericValue:0
- BinaryOperatorNotEqual:<>(.,.) -> ?
- LineNumber:170
-160 GOSUB 300
- LineNumber:300
-170 REM CONTINUE
- Remark:CONTINUE
-180 NEXT I
- Variable:I -> .
-190 GOSUB 300
- LineNumber:300
-199 STOP
- 
-200 REM PROCEDURE A
- Remark:PROCEDURE A
-210 LET D = RND(L0)
- Variable:D -> .
- Variable:L0 -> .
- FunctionRnd:RND(.) -> .
- AssignmentOperator:= . -> .
-211 IF D < 0.5 * L0 THEN 220
- Variable:D -> .
- NumericValue:0.5
- Variable:L0 -> .
- BinaryOperatorMultiply:*(.,.) -> .
- BinaryOperatorLess:<(.,.) -> ?
- LineNumber:220
-212 LET D = L0 - D
- Variable:D -> .
- Variable:L0 -> .
- Variable:D -> .
- BinaryOperatorMinus:-(.,.) -> .
- AssignmentOperator:= . -> .
-220 LET T0 = RND(180)
- Variable:T0 -> .
- NumericValue:180
- FunctionRnd:RND(.) -> .
- AssignmentOperator:= . -> .
-230 LET T1 = RAD(T0)
- Variable:T1 -> .
- Variable:T0 -> .
- FunctionRad:RAD(.) -> .
- AssignmentOperator:= . -> .
-240 LET X = 0.5*SIN(T1)
+10 REM SOLVE 25^X + 5^X = 20
+ Remark:SOLVE 25^X + 5^X = 20
+20 DEF FNF(X) = 25^X + 5^X
+ UserFunctionName:FNF -> .
+ VariableName:X -> .
+ NumericValue:25
  Variable:X -> .
- NumericValue:0.5
- Variable:T1 -> .
- FunctionSin:SIN(.) -> .
- BinaryOperatorMultiply:*(.,.) -> .
- AssignmentOperator:= . -> .
-250 IF D > X THEN 270
- Variable:D -> .
+ BinaryOperatorPower:^(.,.) -> .
+ NumericValue:5
  Variable:X -> .
- BinaryOperatorGreater:>(.,.) -> ?
- LineNumber:270
-260 LET C = C + 1
- Variable:C -> .
- Variable:C -> .
- NumericValue:1
+ BinaryOperatorPower:^(.,.) -> .
  BinaryOperatorPlus:+(.,.) -> .
- AssignmentOperator:= . -> .
-270 REM CONTINUE
- Remark:CONTINUE
-290 RETURN
- 
-300 REM PROCEDURE B
- Remark:PROCEDURE B
-310 LET R = C / I
- Variable:R -> .
- Variable:C -> .
- Variable:I -> .
- BinaryOperatorDivide:/(.,.) -> .
- AssignmentOperator:= . -> .
-320 LET R1 = 1 / R
- Variable:R1 -> .
+100 LET L = 0
+ Variable:L -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+110 LET U = 1
+ Variable:U -> .
  NumericValue:1
- Variable:R -> .
+ AssignmentOperator:= =. -> .
+120 PRINT "X","VALUE"
+ TextValue:"X"
+ CarriageControl:,
+ TextValue:"VALUE"
+ CarriageControl:NL
+200 LET M = (L + U) / 2
+ Variable:M -> .
+ Variable:L -> .
+ Variable:U -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ NumericValue:2
  BinaryOperatorDivide:/(.,.) -> .
  AssignmentOperator:= . -> .
-330 PRINT I,C,R,R1
- Variable:I -> .
+210 LET M1 = FNF(M)
+ Variable:M1 -> .
+ Variable:M -> .
+ UserFunction:FNF(.) -> .
+ AssignmentOperator:= . -> .
+220 PRINT M,M1
+ Variable:M -> .
  CarriageControl:,
- Variable:C -> .
- CarriageControl:,
- Variable:R -> .
- CarriageControl:,
- Variable:R1 -> .
+ Variable:M1 -> .
  CarriageControl:NL
-390 RETURN
- 
-900 DATA 10000,500
- NumericValue:10000
- NumericValue:500
+230 IF M1 = 20 THEN 500
+ Variable:M1 -> .
+ NumericValue:20
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:500
+240 IF M1 < 20 THEN 400
+ Variable:M1 -> .
+ NumericValue:20
+ BinaryOperatorLess:<(.,.) -> ?
+ LineNumber:400
+300 REM TOO HIGH... MOVE TO LOWER HALF
+ Remark:TOO HIGH... MOVE TO LOWER HALF
+310 LET U = M
+ Variable:U -> .
+ Variable:M -> .
+ AssignmentOperator:= . -> .
+320 GOTO 200
+ LineNumber:200
+400 REM TOO LOW... MOVE TO UPPER HALF
+ Remark:TOO LOW... MOVE TO UPPER HALF
+410 LET L = M
+ Variable:L -> .
+ Variable:M -> .
+ AssignmentOperator:= . -> .
+420 GOTO 200
+ LineNumber:200
+500 PRINT "SOLVED FOR X:";M
+ TextValue:"SOLVED FOR X:"
+ CarriageControl:;
+ Variable:M -> .
+ CarriageControl:NL
 999 END
  
 
