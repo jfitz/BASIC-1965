@@ -19,17 +19,41 @@ module Reader
     tokenbuilders << WhitespaceTokenBuilder.new
   end
 
+  def insert_empty_string(tokens)
+    new_tokens = []
+
+    prev_was_sep = true
+
+    tokens.each do |token|
+      # if previous item was a separator, add a blank value
+      if token.separator? && prev_was_sep
+        new_tokens << NumericLiteralToken.new('0')
+      end
+
+      prev_was_sep = token.separator?
+
+      new_tokens << token
+    end
+
+    # if last item was a separator, add a blank value
+    if prev_was_sep && !new_tokens.empty?
+      new_tokens << NumericLiteralToken.new('0')
+    end
+
+    new_tokens
+  end
+
   def verify_tokens(tokens)
     state = :want_value
     tokens.each do |token|
       case state
       when :want_value
-        raise BASICRuntimeError, :te_inp_no_num_text unless
+        raise BASICRuntimeError.new(:te_inp_no_num_text, token.to_s) unless
           token.numeric_constant?
 
         state = :want_sep
       when :want_sep
-        raise BASICRuntimeError, :te_exp_sep unless
+        raise BASICRuntimeError.new(:te_exp_sep, token.to_s) unless
           token.separator?
         
         state = :want_value
@@ -49,6 +73,9 @@ module Inputter
 
     # drop whitespace
     tokens.delete_if(&:whitespace?)
+
+    # insert empty string tokens between separator tokens
+    tokens = insert_empty_string(tokens)
 
     # verify values between separators
     verify_tokens(tokens)
@@ -394,7 +421,12 @@ class FileHandler
       line = line.strip
 
       tokens = tokenizer.tokenize_line(line)
-      tokens.delete_if { |token| token.separator? || token.whitespace? }
+      tokens.delete_if { |token| token.whitespace? }
+
+      # insert empty string tokens between separator tokens
+      tokens = insert_empty_string(tokens)
+
+      tokens.delete_if { |token| token.separator? }
 
       elements = read_convert(tokens)
       data_store += elements

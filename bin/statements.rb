@@ -3086,6 +3086,7 @@ class ArrReadStatement < AbstractStatement
     if check_template(tokens_lists, template)
       items = split_tokens(tokens_lists[0], false)
       @items = tokens_to_expressions(items, :array, true)
+
       @file_tokens = extract_file_handle(@items)
       @elements = make_references(@items, @file_tokens)
 

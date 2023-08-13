@@ -1,0 +1,31 @@
+10 REM This is a test
+ Remark:This is a test
+20 FILES "input.txt"
+ TextValue:"input.txt"
+30 FOR I = 1 TO 4
+ control: Variable:I -> .
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:4"]
+40 READ #1;A,B,C,D
+ NumericValue:1
+ UnaryOperatorHash:#(.) -> =FH
+ Variable:A -> .
+ Variable:B -> .
+ Variable:C -> .
+ Variable:D -> .
+50 WRITE A;B;C;D
+ Variable:A -> .
+ CarriageControl:;
+ Variable:B -> .
+ CarriageControl:;
+ Variable:C -> .
+ CarriageControl:;
+ Variable:D -> .
+ CarriageControl:NL
+60 NEXT I
+ Variable:I -> .
+90 STOP
+ 
+99 END
+ 
+

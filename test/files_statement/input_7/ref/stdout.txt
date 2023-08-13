@@ -1,0 +1,15 @@
+ 17;-34; 0; 1024
+ 1; 0; 0; 999
+ 0; 100; 102; 140
+ 1; 99; 101; 0
+STOP in line 90
+
+10 (0) REM This is a test
+20 (0) FILES "input.txt"
+30 F(I:30) (1) FOR I = 1 TO 4
+40 F(I:30) (4) INPUT #1; A, B, C, D
+50 F(I:30) (4) WRITE A; B; C; D
+60 F(I:30) (4) NEXT I
+90 (1) STOP
+99 (0) END
+
