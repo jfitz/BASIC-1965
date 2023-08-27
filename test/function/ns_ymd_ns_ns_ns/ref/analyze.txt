@@ -1,0 +1,56 @@
+Statistics:
+
+Number of lines: 10
+Number of valid statements: 10
+Number of comments: 0
+Number of executable statements: 10
+
+Complexity:
+
+Comment density: 0.000
+Comprehension effort: 30
+McCabe complexity: 3
+Halstead complexity:
+ length: 43
+ volume: 140.098
+ difficulty: 5.824
+ effort: 815.866
+ language: 4.131
+ intelligence: 24.057
+ time: 0.755
+
+10 F(Y:10) (1 3) FOR Y = 1970 TO 1980
+  Origs: :start
+  Dests: 20:fornext, 60:fornext
+20 F(Y:10,M:20) (1 3) FOR M = 1 TO 12
+  Origs: 10:fornext
+  Dests: 30:fornext, 50:fornext
+30 F(Y:10,M:20) (0 4) LET A = YMD(Y, M, 10)
+  Origs: 20:fornext
+  Dests: 32:auto
+32 F(Y:10,M:20) (0 4) LET B = YMDY(A)
+  Origs: 30:auto
+  Dests: 34:auto
+34 F(Y:10,M:20) (0 4) LET C = YMDM(A)
+  Origs: 32:auto
+  Dests: 36:auto
+36 F(Y:10,M:20) (0 4) LET D = YMDD(A)
+  Origs: 34:auto
+  Dests: 40:auto
+40 F(Y:10,M:20) (0 5) PRINT A, B, C, D
+  Origs: 36:auto
+  Dests: 50:auto
+50 F(Y:10,M:20) (0 1) NEXT M
+  Origs: 20:fornext, 40:auto
+  Dests: 60:auto
+60 F(Y:10) (0 1) NEXT Y
+  Origs: 10:fornext, 50:auto
+  Dests: 99:auto
+99 (0 1) END
+  Origs: 60:auto
+  Dests: :stop
+
+Unreachable code:
+
+All executable lines are reachable.
+

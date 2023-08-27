@@ -1,0 +1,3503 @@
+10 F(Y:10) FOR Y = 1970 TO 1980
+ Y = 1970
+ terminated:false
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (20) 1
+ A = 40596
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40596
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40596
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40596
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40596
+ 40596          
+ B: (32) 1970
+ 1970           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 2
+ A = 40627
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40627
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40627
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40627
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40627
+ 40627          
+ B: (32) 1970
+ 1970           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 3
+ A = 40655
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40655
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40655
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40655
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40655
+ 40655          
+ B: (32) 1970
+ 1970           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 4
+ A = 40686
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40686
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40686
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40686
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40686
+ 40686          
+ B: (32) 1970
+ 1970           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 5
+ A = 40716
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40716
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40716
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40716
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40716
+ 40716          
+ B: (32) 1970
+ 1970           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 6
+ A = 40747
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40747
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40747
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40747
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40747
+ 40747          
+ B: (32) 1970
+ 1970           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 7
+ A = 40777
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40777
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40777
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40777
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40777
+ 40777          
+ B: (32) 1970
+ 1970           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 8
+ A = 40808
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40808
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40808
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40808
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40808
+ 40808          
+ B: (32) 1970
+ 1970           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 9
+ A = 40839
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40839
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40839
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40839
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40839
+ 40839          
+ B: (32) 1970
+ 1970           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 10
+ A = 40869
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40869
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40869
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40869
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40869
+ 40869          
+ B: (32) 1970
+ 1970           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 11
+ A = 40900
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40900
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40900
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40900
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40900
+ 40900          
+ B: (32) 1970
+ 1970           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (10) 1970
+ M: (50) 12
+ A = 40930
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40930
+ B = 1970
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40930
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40930
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40930
+ 40930          
+ B: (32) 1970
+ 1970           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (10) 1970
+ terminated:false
+ Y = 1971
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (20) 1
+ A = 40961
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40961
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40961
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40961
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40961
+ 40961          
+ B: (32) 1971
+ 1971           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 2
+ A = 40992
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 40992
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 40992
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 40992
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 40992
+ 40992          
+ B: (32) 1971
+ 1971           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 3
+ A = 41020
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41020
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41020
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41020
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41020
+ 41020          
+ B: (32) 1971
+ 1971           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 4
+ A = 41051
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41051
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41051
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41051
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41051
+ 41051          
+ B: (32) 1971
+ 1971           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 5
+ A = 41081
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41081
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41081
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41081
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41081
+ 41081          
+ B: (32) 1971
+ 1971           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 6
+ A = 41112
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41112
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41112
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41112
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41112
+ 41112          
+ B: (32) 1971
+ 1971           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 7
+ A = 41142
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41142
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41142
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41142
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41142
+ 41142          
+ B: (32) 1971
+ 1971           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 8
+ A = 41173
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41173
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41173
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41173
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41173
+ 41173          
+ B: (32) 1971
+ 1971           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 9
+ A = 41204
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41204
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41204
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41204
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41204
+ 41204          
+ B: (32) 1971
+ 1971           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 10
+ A = 41234
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41234
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41234
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41234
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41234
+ 41234          
+ B: (32) 1971
+ 1971           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 11
+ A = 41265
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41265
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41265
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41265
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41265
+ 41265          
+ B: (32) 1971
+ 1971           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1971
+ M: (50) 12
+ A = 41295
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41295
+ B = 1971
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41295
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41295
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41295
+ 41295          
+ B: (32) 1971
+ 1971           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (60) 1971
+ terminated:false
+ Y = 1972
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (20) 1
+ A = 41326
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41326
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41326
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41326
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41326
+ 41326          
+ B: (32) 1972
+ 1972           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 2
+ A = 41357
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41357
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41357
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41357
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41357
+ 41357          
+ B: (32) 1972
+ 1972           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 3
+ A = 41386
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41386
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41386
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41386
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41386
+ 41386          
+ B: (32) 1972
+ 1972           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 4
+ A = 41417
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41417
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41417
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41417
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41417
+ 41417          
+ B: (32) 1972
+ 1972           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 5
+ A = 41447
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41447
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41447
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41447
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41447
+ 41447          
+ B: (32) 1972
+ 1972           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 6
+ A = 41478
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41478
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41478
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41478
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41478
+ 41478          
+ B: (32) 1972
+ 1972           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 7
+ A = 41508
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41508
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41508
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41508
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41508
+ 41508          
+ B: (32) 1972
+ 1972           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 8
+ A = 41539
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41539
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41539
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41539
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41539
+ 41539          
+ B: (32) 1972
+ 1972           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 9
+ A = 41570
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41570
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41570
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41570
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41570
+ 41570          
+ B: (32) 1972
+ 1972           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 10
+ A = 41600
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41600
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41600
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41600
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41600
+ 41600          
+ B: (32) 1972
+ 1972           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 11
+ A = 41631
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41631
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41631
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41631
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41631
+ 41631          
+ B: (32) 1972
+ 1972           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1972
+ M: (50) 12
+ A = 41661
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41661
+ B = 1972
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41661
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41661
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41661
+ 41661          
+ B: (32) 1972
+ 1972           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (60) 1972
+ terminated:false
+ Y = 1973
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (20) 1
+ A = 41692
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41692
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41692
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41692
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41692
+ 41692          
+ B: (32) 1973
+ 1973           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 2
+ A = 41723
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41723
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41723
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41723
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41723
+ 41723          
+ B: (32) 1973
+ 1973           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 3
+ A = 41751
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41751
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41751
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41751
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41751
+ 41751          
+ B: (32) 1973
+ 1973           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 4
+ A = 41782
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41782
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41782
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41782
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41782
+ 41782          
+ B: (32) 1973
+ 1973           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 5
+ A = 41812
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41812
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41812
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41812
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41812
+ 41812          
+ B: (32) 1973
+ 1973           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 6
+ A = 41843
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41843
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41843
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41843
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41843
+ 41843          
+ B: (32) 1973
+ 1973           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 7
+ A = 41873
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41873
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41873
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41873
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41873
+ 41873          
+ B: (32) 1973
+ 1973           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 8
+ A = 41904
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41904
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41904
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41904
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41904
+ 41904          
+ B: (32) 1973
+ 1973           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 9
+ A = 41935
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41935
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41935
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41935
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41935
+ 41935          
+ B: (32) 1973
+ 1973           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 10
+ A = 41965
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41965
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41965
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41965
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41965
+ 41965          
+ B: (32) 1973
+ 1973           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 11
+ A = 41996
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 41996
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 41996
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 41996
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 41996
+ 41996          
+ B: (32) 1973
+ 1973           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1973
+ M: (50) 12
+ A = 42026
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42026
+ B = 1973
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42026
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42026
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42026
+ 42026          
+ B: (32) 1973
+ 1973           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (60) 1973
+ terminated:false
+ Y = 1974
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (20) 1
+ A = 42057
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42057
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42057
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42057
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42057
+ 42057          
+ B: (32) 1974
+ 1974           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 2
+ A = 42088
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42088
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42088
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42088
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42088
+ 42088          
+ B: (32) 1974
+ 1974           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 3
+ A = 42116
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42116
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42116
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42116
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42116
+ 42116          
+ B: (32) 1974
+ 1974           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 4
+ A = 42147
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42147
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42147
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42147
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42147
+ 42147          
+ B: (32) 1974
+ 1974           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 5
+ A = 42177
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42177
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42177
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42177
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42177
+ 42177          
+ B: (32) 1974
+ 1974           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 6
+ A = 42208
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42208
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42208
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42208
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42208
+ 42208          
+ B: (32) 1974
+ 1974           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 7
+ A = 42238
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42238
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42238
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42238
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42238
+ 42238          
+ B: (32) 1974
+ 1974           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 8
+ A = 42269
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42269
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42269
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42269
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42269
+ 42269          
+ B: (32) 1974
+ 1974           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 9
+ A = 42300
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42300
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42300
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42300
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42300
+ 42300          
+ B: (32) 1974
+ 1974           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 10
+ A = 42330
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42330
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42330
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42330
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42330
+ 42330          
+ B: (32) 1974
+ 1974           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 11
+ A = 42361
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42361
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42361
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42361
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42361
+ 42361          
+ B: (32) 1974
+ 1974           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1974
+ M: (50) 12
+ A = 42391
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42391
+ B = 1974
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42391
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42391
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42391
+ 42391          
+ B: (32) 1974
+ 1974           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (60) 1974
+ terminated:false
+ Y = 1975
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (20) 1
+ A = 42422
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42422
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42422
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42422
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42422
+ 42422          
+ B: (32) 1975
+ 1975           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 2
+ A = 42453
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42453
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42453
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42453
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42453
+ 42453          
+ B: (32) 1975
+ 1975           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 3
+ A = 42481
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42481
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42481
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42481
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42481
+ 42481          
+ B: (32) 1975
+ 1975           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 4
+ A = 42512
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42512
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42512
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42512
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42512
+ 42512          
+ B: (32) 1975
+ 1975           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 5
+ A = 42542
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42542
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42542
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42542
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42542
+ 42542          
+ B: (32) 1975
+ 1975           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 6
+ A = 42573
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42573
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42573
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42573
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42573
+ 42573          
+ B: (32) 1975
+ 1975           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 7
+ A = 42603
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42603
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42603
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42603
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42603
+ 42603          
+ B: (32) 1975
+ 1975           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 8
+ A = 42634
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42634
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42634
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42634
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42634
+ 42634          
+ B: (32) 1975
+ 1975           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 9
+ A = 42665
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42665
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42665
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42665
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42665
+ 42665          
+ B: (32) 1975
+ 1975           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 10
+ A = 42695
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42695
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42695
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42695
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42695
+ 42695          
+ B: (32) 1975
+ 1975           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 11
+ A = 42726
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42726
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42726
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42726
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42726
+ 42726          
+ B: (32) 1975
+ 1975           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1975
+ M: (50) 12
+ A = 42756
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42756
+ B = 1975
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42756
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42756
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42756
+ 42756          
+ B: (32) 1975
+ 1975           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (60) 1975
+ terminated:false
+ Y = 1976
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (20) 1
+ A = 42787
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42787
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42787
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42787
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42787
+ 42787          
+ B: (32) 1976
+ 1976           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 2
+ A = 42818
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42818
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42818
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42818
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42818
+ 42818          
+ B: (32) 1976
+ 1976           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 3
+ A = 42847
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42847
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42847
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42847
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42847
+ 42847          
+ B: (32) 1976
+ 1976           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 4
+ A = 42878
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42878
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42878
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42878
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42878
+ 42878          
+ B: (32) 1976
+ 1976           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 5
+ A = 42908
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42908
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42908
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42908
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42908
+ 42908          
+ B: (32) 1976
+ 1976           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 6
+ A = 42939
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42939
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42939
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42939
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42939
+ 42939          
+ B: (32) 1976
+ 1976           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 7
+ A = 42969
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 42969
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 42969
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 42969
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 42969
+ 42969          
+ B: (32) 1976
+ 1976           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 8
+ A = 43000
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43000
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43000
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43000
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43000
+ 43000          
+ B: (32) 1976
+ 1976           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 9
+ A = 43031
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43031
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43031
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43031
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43031
+ 43031          
+ B: (32) 1976
+ 1976           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 10
+ A = 43061
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43061
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43061
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43061
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43061
+ 43061          
+ B: (32) 1976
+ 1976           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 11
+ A = 43092
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43092
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43092
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43092
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43092
+ 43092          
+ B: (32) 1976
+ 1976           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1976
+ M: (50) 12
+ A = 43122
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43122
+ B = 1976
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43122
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43122
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43122
+ 43122          
+ B: (32) 1976
+ 1976           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (60) 1976
+ terminated:false
+ Y = 1977
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (20) 1
+ A = 43153
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43153
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43153
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43153
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43153
+ 43153          
+ B: (32) 1977
+ 1977           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 2
+ A = 43184
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43184
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43184
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43184
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43184
+ 43184          
+ B: (32) 1977
+ 1977           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 3
+ A = 43212
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43212
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43212
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43212
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43212
+ 43212          
+ B: (32) 1977
+ 1977           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 4
+ A = 43243
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43243
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43243
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43243
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43243
+ 43243          
+ B: (32) 1977
+ 1977           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 5
+ A = 43273
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43273
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43273
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43273
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43273
+ 43273          
+ B: (32) 1977
+ 1977           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 6
+ A = 43304
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43304
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43304
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43304
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43304
+ 43304          
+ B: (32) 1977
+ 1977           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 7
+ A = 43334
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43334
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43334
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43334
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43334
+ 43334          
+ B: (32) 1977
+ 1977           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 8
+ A = 43365
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43365
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43365
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43365
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43365
+ 43365          
+ B: (32) 1977
+ 1977           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 9
+ A = 43396
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43396
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43396
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43396
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43396
+ 43396          
+ B: (32) 1977
+ 1977           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 10
+ A = 43426
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43426
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43426
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43426
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43426
+ 43426          
+ B: (32) 1977
+ 1977           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 11
+ A = 43457
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43457
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43457
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43457
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43457
+ 43457          
+ B: (32) 1977
+ 1977           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1977
+ M: (50) 12
+ A = 43487
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43487
+ B = 1977
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43487
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43487
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43487
+ 43487          
+ B: (32) 1977
+ 1977           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (60) 1977
+ terminated:false
+ Y = 1978
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (20) 1
+ A = 43518
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43518
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43518
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43518
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43518
+ 43518          
+ B: (32) 1978
+ 1978           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 2
+ A = 43549
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43549
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43549
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43549
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43549
+ 43549          
+ B: (32) 1978
+ 1978           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 3
+ A = 43577
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43577
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43577
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43577
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43577
+ 43577          
+ B: (32) 1978
+ 1978           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 4
+ A = 43608
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43608
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43608
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43608
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43608
+ 43608          
+ B: (32) 1978
+ 1978           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 5
+ A = 43638
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43638
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43638
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43638
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43638
+ 43638          
+ B: (32) 1978
+ 1978           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 6
+ A = 43669
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43669
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43669
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43669
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43669
+ 43669          
+ B: (32) 1978
+ 1978           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 7
+ A = 43699
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43699
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43699
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43699
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43699
+ 43699          
+ B: (32) 1978
+ 1978           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 8
+ A = 43730
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43730
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43730
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43730
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43730
+ 43730          
+ B: (32) 1978
+ 1978           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 9
+ A = 43761
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43761
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43761
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43761
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43761
+ 43761          
+ B: (32) 1978
+ 1978           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 10
+ A = 43791
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43791
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43791
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43791
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43791
+ 43791          
+ B: (32) 1978
+ 1978           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 11
+ A = 43822
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43822
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43822
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43822
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43822
+ 43822          
+ B: (32) 1978
+ 1978           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1978
+ M: (50) 12
+ A = 43852
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43852
+ B = 1978
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43852
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43852
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43852
+ 43852          
+ B: (32) 1978
+ 1978           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (60) 1978
+ terminated:false
+ Y = 1979
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (20) 1
+ A = 43883
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43883
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43883
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43883
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43883
+ 43883          
+ B: (32) 1979
+ 1979           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 2
+ A = 43914
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43914
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43914
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43914
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43914
+ 43914          
+ B: (32) 1979
+ 1979           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 3
+ A = 43942
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43942
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43942
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43942
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43942
+ 43942          
+ B: (32) 1979
+ 1979           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 4
+ A = 43973
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 43973
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 43973
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 43973
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 43973
+ 43973          
+ B: (32) 1979
+ 1979           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 5
+ A = 44003
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44003
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44003
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44003
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44003
+ 44003          
+ B: (32) 1979
+ 1979           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 6
+ A = 44034
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44034
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44034
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44034
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44034
+ 44034          
+ B: (32) 1979
+ 1979           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 7
+ A = 44064
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44064
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44064
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44064
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44064
+ 44064          
+ B: (32) 1979
+ 1979           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 8
+ A = 44095
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44095
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44095
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44095
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44095
+ 44095          
+ B: (32) 1979
+ 1979           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 9
+ A = 44126
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44126
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44126
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44126
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44126
+ 44126          
+ B: (32) 1979
+ 1979           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 10
+ A = 44156
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44156
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44156
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44156
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44156
+ 44156          
+ B: (32) 1979
+ 1979           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 11
+ A = 44187
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44187
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44187
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44187
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44187
+ 44187          
+ B: (32) 1979
+ 1979           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1979
+ M: (50) 12
+ A = 44217
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44217
+ B = 1979
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44217
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44217
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44217
+ 44217          
+ B: (32) 1979
+ 1979           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (60) 1979
+ terminated:false
+ Y = 1980
+20 F(Y:10,M:20) FOR M = 1 TO 12
+ M = 1
+ terminated:false
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (20) 1
+ A = 44248
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44248
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44248
+ C = 1
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44248
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44248
+ 44248          
+ B: (32) 1980
+ 1980           
+ C: (34) 1
+ 1              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (20) 1
+ terminated:false
+ M = 2
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 2
+ A = 44279
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44279
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44279
+ C = 2
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44279
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44279
+ 44279          
+ B: (32) 1980
+ 1980           
+ C: (34) 2
+ 2              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 2
+ terminated:false
+ M = 3
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 3
+ A = 44308
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44308
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44308
+ C = 3
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44308
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44308
+ 44308          
+ B: (32) 1980
+ 1980           
+ C: (34) 3
+ 3              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 3
+ terminated:false
+ M = 4
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 4
+ A = 44339
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44339
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44339
+ C = 4
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44339
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44339
+ 44339          
+ B: (32) 1980
+ 1980           
+ C: (34) 4
+ 4              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 4
+ terminated:false
+ M = 5
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 5
+ A = 44369
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44369
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44369
+ C = 5
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44369
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44369
+ 44369          
+ B: (32) 1980
+ 1980           
+ C: (34) 5
+ 5              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 5
+ terminated:false
+ M = 6
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 6
+ A = 44400
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44400
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44400
+ C = 6
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44400
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44400
+ 44400          
+ B: (32) 1980
+ 1980           
+ C: (34) 6
+ 6              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 6
+ terminated:false
+ M = 7
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 7
+ A = 44430
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44430
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44430
+ C = 7
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44430
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44430
+ 44430          
+ B: (32) 1980
+ 1980           
+ C: (34) 7
+ 7              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 7
+ terminated:false
+ M = 8
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 8
+ A = 44461
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44461
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44461
+ C = 8
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44461
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44461
+ 44461          
+ B: (32) 1980
+ 1980           
+ C: (34) 8
+ 8              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 8
+ terminated:false
+ M = 9
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 9
+ A = 44492
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44492
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44492
+ C = 9
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44492
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44492
+ 44492          
+ B: (32) 1980
+ 1980           
+ C: (34) 9
+ 9              
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 9
+ terminated:false
+ M = 10
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 10
+ A = 44522
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44522
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44522
+ C = 10
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44522
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44522
+ 44522          
+ B: (32) 1980
+ 1980           
+ C: (34) 10
+ 10             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 10
+ terminated:false
+ M = 11
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 11
+ A = 44553
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44553
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44553
+ C = 11
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44553
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44553
+ 44553          
+ B: (32) 1980
+ 1980           
+ C: (34) 11
+ 11             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 11
+ terminated:false
+ M = 12
+30 F(Y:10,M:20) LET A = YMD(Y, M, 10)
+ Y: (60) 1980
+ M: (50) 12
+ A = 44583
+32 F(Y:10,M:20) LET B = YMDY(A)
+ A: (30) 44583
+ B = 1980
+34 F(Y:10,M:20) LET C = YMDM(A)
+ A: (30) 44583
+ C = 12
+36 F(Y:10,M:20) LET D = YMDD(A)
+ A: (30) 44583
+ D = 10
+40 F(Y:10,M:20) PRINT A, B, C, D
+ A: (30) 44583
+ 44583          
+ B: (32) 1980
+ 1980           
+ C: (34) 12
+ 12             
+ D: (36) 10
+ 10
+50 F(Y:10,M:20) NEXT M
+ M: (50) 12
+ terminated:true
+60 F(Y:10) NEXT Y
+ Y: (60) 1980
+ terminated:true
+99 END
+STOP in line 99
+

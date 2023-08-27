@@ -1,0 +1,46 @@
+10 FOR Y = 1970 TO 1980
+ control: Variable:Y -> .
+ start:   ["NumericValue:1970"]
+ end:     ["NumericValue:1980"]
+20 FOR M = 1 TO 12
+ control: Variable:M -> .
+ start:   ["NumericValue:1"]
+ end:     ["NumericValue:12"]
+30 LET A = YMD(Y, M, 10)
+ Variable:A -> .
+ Variable:Y -> .
+ Variable:M -> .
+ NumericValue:10
+ FunctionYmd:YMD(.,.,.) -> .
+ AssignmentOperator:= . -> .
+32 LET B = YMDY(A)
+ Variable:B -> .
+ Variable:A -> .
+ FunctionYmdy:YMDY(.) -> .
+ AssignmentOperator:= . -> .
+34 LET C = YMDM(A)
+ Variable:C -> .
+ Variable:A -> .
+ FunctionYmdm:YMDM(.) -> .
+ AssignmentOperator:= . -> .
+36 LET D = YMDD(A)
+ Variable:D -> .
+ Variable:A -> .
+ FunctionYmdd:YMDD(.) -> .
+ AssignmentOperator:= . -> .
+40 PRINT A, B, C, D
+ Variable:A -> .
+ CarriageControl:,
+ Variable:B -> .
+ CarriageControl:,
+ Variable:C -> .
+ CarriageControl:,
+ Variable:D -> .
+ CarriageControl:NL
+50 NEXT M
+ Variable:M -> .
+60 NEXT Y
+ Variable:Y -> .
+99 END
+ 
+

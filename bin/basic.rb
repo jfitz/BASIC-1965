@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require 'benchmark'
+require 'date'
 require 'optparse'
 require 'singleton'
 
