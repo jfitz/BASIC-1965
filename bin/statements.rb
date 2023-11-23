@@ -328,6 +328,10 @@ class AbstractStatement
     @program_warnings = []
     @transfers = []
     @origins = []
+    @part_of_user_function = nil
+    @part_of_sub = []
+    @part_of_onerror = []
+    @part_of_fornext = []
   end
 
   def set_destinations(_, _, _) end
