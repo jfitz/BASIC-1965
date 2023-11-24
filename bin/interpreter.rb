@@ -1,11 +1,24 @@
 # frozen_string_literal: true
 
+# Helper class for loops
+class AbstractLoopControl
+  attr_reader :is_for, :is_while
+
+  def initialize
+    @is_for = false
+    @is_while = false
+  end
+end
+
 # Helper class for FOR/NEXT
-class AbstractForControl
+class AbstractForControl < AbstractLoopControl
   attr_reader :control, :start
   attr_accessor :start_line_stmt_mod, :forget, :broken
 
   def initialize(control, start, step, start_line_stmt_mod)
+    super()
+
+    @is_for = true
     @control = control
     @start = start
     @step = step
@@ -164,7 +177,7 @@ class Interpreter
     @line_breakpoints = {}
     @line_cond_breakpoints = {}
     @locked_variables = []
-    @fornext_stack = []
+    @loop_stack = []
     @data_store = DataStore.new
     @file_handlers = {}
     @return_stack = []
@@ -1302,13 +1315,13 @@ class Interpreter
   end
 
   def enter_fornext(fornext_control)
-    @fornext_stack.push(fornext_control)
+    @loop_stack.push(fornext_control)
   end
 
   def exit_fornext(fornext_control)
-    raise BASICSyntaxError.new('NEXT without FOR') if @fornext_stack.empty?
+    raise BASICSyntaxError.new('NEXT without FOR') if @loop_stack.empty?
 
-    @fornext_stack.pop
+    @loop_stack.pop
 
     forget = fornext_control.forget
     control = fornext_control.control
@@ -1319,15 +1332,15 @@ class Interpreter
   end
 
   def top_fornext
-    raise BASICSyntaxError.new('Implied NEXT without FOR') if @fornext_stack.empty?
+    raise BASICSyntaxError.new('Implied NEXT without FOR') if @loop_stack.empty?
 
-    @fornext_stack[-1]
+    @loop_stack[-1]
   end
 
   def break_fornext
-    raise BASICSyntaxError.new('BREAK without FOR') if @fornext_stack.empty?
+    raise BASICSyntaxError.new('BREAK without FOR') if @loop_stack.empty?
 
-    @fornext_stack[-1].broken = true
+    @loop_stack[-1].broken = true
   end
 
   def add_file_names(file_names)
