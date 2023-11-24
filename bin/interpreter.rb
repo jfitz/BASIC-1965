@@ -1301,8 +1301,8 @@ class Interpreter
     fornext
   end
 
-  def enter_fornext(variable)
-    @fornext_stack.push(variable)
+  def enter_fornext(fornext_control)
+    @fornext_stack.push(fornext_control)
   end
 
   def exit_fornext(fornext_control)
@@ -1327,14 +1327,7 @@ class Interpreter
   def break_fornext
     raise BASICSyntaxError.new('BREAK without FOR') if @fornext_stack.empty?
 
-    control = @fornext_stack[-1]
-    fornext = @fornexts[control]
-
-    raise BASICSyntaxError.new('BREAK without FOR') if fornext.nil?
-
-    fornext.broken = true
-
-    fornext
+    @fornext_stack[-1].broken = true
   end
 
   def add_file_names(file_names)

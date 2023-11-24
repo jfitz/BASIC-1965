@@ -1339,18 +1339,12 @@ class BreakStatement < AbstractStatement
   end
 
   def execute_core(interpreter)
-    fornext_control = interpreter.break_fornext
+    interpreter.break_fornext
 
     raise(BASICSyntaxError, 'Line number not found') if
       @nextstmt_line_stmt.nil?
 
     interpreter.next_line_stmt_mod = @nextstmt_line_stmt
-
-    control = fornext_control.control
-    terminated = fornext_control.terminated?(interpreter)
-    io = interpreter.trace_out
-    s = " #{control} terminated:#{terminated}"
-    io.trace_output(s)
   end
 end
 
@@ -1885,7 +1879,7 @@ class ForStatement < AbstractStatement
     interpreter.assign_fornext(fornext_control)
 
     interpreter.lock_variable(@control) if $options['lock_fornext'].value
-    interpreter.enter_fornext(@control)
+    interpreter.enter_fornext(fornext_control)
     terminated = fornext_control.front_terminated?(interpreter)
 
     interpreter.next_line_stmt_mod = @loopstart_line_stmt_mod
