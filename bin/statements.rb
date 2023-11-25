@@ -1339,7 +1339,7 @@ class BreakStatement < AbstractStatement
   end
 
   def execute_core(interpreter)
-    interpreter.break_fornext
+    interpreter.break_loop
 
     raise(BASICSyntaxError, 'Line number not found') if
       @nextstmt_line_stmt.nil?
@@ -1879,7 +1879,7 @@ class ForStatement < AbstractStatement
     interpreter.assign_fornext(fornext_control)
 
     interpreter.lock_variable(@control) if $options['lock_fornext'].value
-    interpreter.enter_fornext(fornext_control)
+    interpreter.enter_loop(fornext_control)
     terminated = fornext_control.front_terminated?(interpreter)
 
     interpreter.next_line_stmt_mod = @loopstart_line_stmt_mod
