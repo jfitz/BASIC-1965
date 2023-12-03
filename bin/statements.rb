@@ -1878,7 +1878,6 @@ class ForStatement < AbstractStatement
 
     interpreter.assign_fornext(fornext_control)
 
-    interpreter.lock_variable(@control) if $options['lock_fornext'].value
     interpreter.enter_loop(fornext_control)
     terminated = fornext_control.front_terminated?(interpreter)
 

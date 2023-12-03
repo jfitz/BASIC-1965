@@ -206,16 +206,16 @@ then
 	RUN_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/run_options.txt")
     fi
 
-    echo Trace program with options $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS --provenance
+    echo Trace program with options $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS
 
     if [ -e "$TESTBED/$TESTNAME/stdin.txt" ]
     then
 	cd "$TESTBED/$TESTNAME"
-	ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --print-width 0 --no-heading --trace <stdin.txt >trace.txt $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS --provenance
+	ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --print-width 0 --no-heading --trace <stdin.txt >trace.txt $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS
 	cd ../..
     else
 	cd "$TESTBED/$TESTNAME"
-	ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --print-width 0 --no-heading --trace >trace.txt $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS --provenance
+	ruby basic.rb --no-timing $OPTIONS --run $TESTNAME.bas --print-width 0 --no-heading --trace >trace.txt $GROUP_OPTIONS $TEST_OPTIONS $GROUP_RUN_OPTIONS $RUN_OPTIONS
 	cd ../..
     fi
 
