@@ -2492,6 +2492,7 @@ class NextStatement < AbstractStatement
     # check control variable value
     # if matches end value, stop here
     terminated = fornext_control.terminated?(interpreter)
+
     io = interpreter.trace_out
     s = " terminated:#{terminated}"
     io.trace_output(s)

@@ -3,17 +3,19 @@
 # Helper class for loops
 class AbstractLoopControl
   attr_reader :is_for, :is_while
+  attr_accessor :broken
 
   def initialize
     @is_for = false
     @is_while = false
+    @broken = false
   end
 end
 
 # Helper class for FOR/NEXT
 class AbstractForControl < AbstractLoopControl
   attr_reader :control, :start
-  attr_accessor :start_line_stmt_mod, :forget, :broken
+  attr_accessor :start_line_stmt_mod, :forget
 
   def initialize(control, start, step, start_line_stmt_mod)
     super()
@@ -24,7 +26,6 @@ class AbstractForControl < AbstractLoopControl
     @step = step
     @start_line_stmt_mod = start_line_stmt_mod
     @forget = false
-    @broken = false
   end
 
   def bump_early?
@@ -107,6 +108,8 @@ class ForUntilControl < AbstractForControl
   end
 
   def terminated?(interpreter)
+    return true if @broken
+
     values = @expression.evaluate(interpreter)
 
     raise(BASICExpressionError, 'Expression error') unless values.size == 1
@@ -144,6 +147,8 @@ class ForWhileControl < AbstractForControl
   end
 
   def terminated?(interpreter)
+    return true if @broken
+
     values = @expression.evaluate(interpreter)
 
     raise(BASICExpressionError, 'Expression error') unless values.size == 1
@@ -1113,6 +1118,7 @@ class Interpreter
       dict = @variables[var]
       old_value = dict['value']
       old_provenance = dict['provenance']
+
       # a different value resets 'infinite loop' check
       if value != old_value || @current_line_stmt_mod != old_provenance
         clear_previous_lines
@@ -1321,6 +1327,9 @@ class Interpreter
   def exit_fornext(fornext_control)
     raise BASICSyntaxError.new('NEXT without FOR') if @loop_stack.empty?
 
+    raise BASICError.new('NEXT without FOR') if !@loop_stack[0].is_for
+
+    @loop_broken = fornext_control.broken
     @loop_stack.pop
 
     forget = fornext_control.forget
@@ -1328,7 +1337,6 @@ class Interpreter
 
     unlock_variable(control) if $options['lock_fornext'].value
     forget_value(control) if $options['forget_fornext'].value && forget
-    @loop_broken = fornext_control.broken
   end
 
   def top_fornext
