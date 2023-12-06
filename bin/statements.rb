@@ -237,34 +237,36 @@ end
 
 # class for for-next marker
 class ForNextMarker
-  attr_reader :control, :line_stmt
+  attr_reader :variable_name, :line_stmt
 
-  def initialize(control, line_stmt)
-    @control = control
+  def initialize(variable_name, line_stmt)
+    @variable_name = variable_name
     @line_stmt = line_stmt
   end
 
   def hash
-    @control.hash ^ @line_stmt.hash
+    @variable_name.hash ^ @line_stmt.hash
   end
 
   def eql?(other)
-    @control == other.control && @line_stmt == other.line_stmt
+    @variable_name == other.variable_name && @line_stmt == other.line_stmt
   end
 
   def ==(other)
-    @control == other.control && @line_stmt == other.line_stmt
+    @variable_name == other.variable_name && @line_stmt == other.line_stmt
   end
 
   def <=>(other)
-    return @line_stmt <=> other.line_stmt if @control == other.control
+    return @line_stmt <=> other.line_stmt if
+      @variable_name == other.variable_name
 
-    @control <=> other.control
+    @variable_name <=> other.variable_name
   end
 
   def to_s
-    "#{@control}:#{@line_stmt}"
+    "#{@variable_name}:#{@line_stmt}"
   end
+  
 end
 
 # parent of all statement classes
@@ -1705,7 +1707,7 @@ class ForStatement < AbstractStatement
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
         variable_name = VariableName.new(tokens1[0])
-        @control = Variable.new(variable_name, :scalar, [], [])
+        @variable_name = Variable.new(variable_name, :scalar, [], [])
         @start = ValueExpressionSet.new(tokens2, :scalar)
         @end = ValueExpressionSet.new(tokens_lists[2], :scalar)
         @step = nil
@@ -1716,7 +1718,7 @@ class ForStatement < AbstractStatement
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
         variable_name = VariableName.new(tokens1[0])
-        @control = Variable.new(variable_name, :scalar, [], [])
+        @variable_name = Variable.new(variable_name, :scalar, [], [])
         @start = ValueExpressionSet.new(tokens2, :scalar)
         @end = ValueExpressionSet.new(tokens_lists[2], :scalar)
         @step = ValueExpressionSet.new(tokens_lists[4], :scalar)
@@ -1727,7 +1729,7 @@ class ForStatement < AbstractStatement
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
         variable_name = VariableName.new(tokens1[0])
-        @control = Variable.new(variable_name, :scalar, [], [])
+        @variable_name = Variable.new(variable_name, :scalar, [], [])
         @start = ValueExpressionSet.new(tokens2, :scalar)
         @step = ValueExpressionSet.new(tokens_lists[2], :scalar)
         @end = ValueExpressionSet.new(tokens_lists[4], :scalar)
@@ -1740,7 +1742,7 @@ class ForStatement < AbstractStatement
 
     @mccabe = 1
 
-    control = XrefEntry.new(@control.to_s, nil, true)
+    xref = XrefEntry.new(@variable_name.to_s, nil, true)
 
     @elements[:numerics] = []
     @elements[:strings] = []
@@ -1754,7 +1756,7 @@ class ForStatement < AbstractStatement
       @elements[:numerics] += @start.numerics
       @elements[:strings] += @start.strings
       @elements[:booleans] += @start.booleans
-      @elements[:variables] += [control] + @start.variables
+      @elements[:variables] += [xref] + @start.variables
       @elements[:operators] += @start.operators
       @elements[:functions] += @start.functions
       @elements[:userfuncs] += @start.userfuncs
@@ -1789,9 +1791,9 @@ class ForStatement < AbstractStatement
     @loopstart_line_stmt_mod = program.find_next_line_stmt_mod(line_stmt)
 
     begin
-      unless @control.nil?
+      unless @variable_name.nil?
         @nextstmt_line_stmt =
-          program.find_closing_next_line_stmt(@control, line_stmt)
+          program.find_closing_next_line_stmt(@variable_name, line_stmt)
       end
     rescue BASICSyntaxError => e
       @program_errors << e.message
@@ -1815,7 +1817,7 @@ class ForStatement < AbstractStatement
   def assign_fornext_markers(program, current_line_stmt)
     return if @nextstmt_line_stmt.nil?
 
-    marker = ForNextMarker.new(@control, current_line_stmt)
+    marker = ForNextMarker.new(@variable_name, current_line_stmt)
     
     walk_line_stmt = current_line_stmt
 
@@ -1847,7 +1849,7 @@ class ForStatement < AbstractStatement
 
   def dump
     lines = []
-    lines << ("control: #{@control.dump}") unless @control.nil?
+    lines << ("control: #{@variable_name.dump}") unless @variable_name.nil?
     lines << ("start:   #{@start.dump}") unless @start.nil?
     lines << ("end:     #{@end.dump}") unless @end.nil?
     lines << ("step:    #{@step.dump}") unless @step.nil?
@@ -1873,7 +1875,7 @@ class ForStatement < AbstractStatement
       to = @end.evaluate(interpreter)[0]
 
       fornext_control =
-        ForToControl.new(@control, from, step, to, @loopstart_line_stmt_mod)
+        ForToControl.new(@variable_name, from, step, to, @loopstart_line_stmt_mod)
     end
 
     interpreter.assign_fornext(fornext_control)
@@ -1891,7 +1893,7 @@ class ForStatement < AbstractStatement
   end
 
   def part_of_fornext_short(this_line_stmt)
-    marker = ForNextMarker.new(@control, this_line_stmt)
+    marker = ForNextMarker.new(@variable_name, this_line_stmt)
 
     @part_of_fornext - [marker]
   end
@@ -2438,7 +2440,7 @@ class NextStatement < AbstractStatement
     ]
   end
 
-  attr_reader :control
+  attr_reader :variable_name
 
   def initialize(_, keywords, tokens_lists)
     super
@@ -2447,12 +2449,12 @@ class NextStatement < AbstractStatement
 
     if check_template(tokens_lists, template)
       # parse control variable
-      @control = nil
+      @variable_name = nil
       if tokens_lists[0][0].variable?
         variable_name = VariableName.new(tokens_lists[0][0])
-        @control = Variable.new(variable_name, :scalar, [], [])
-        controlx = XrefEntry.new(@control.to_s, nil, false)
-        @elements[:variables] = [controlx]
+        @variable_name = Variable.new(variable_name, :scalar, [], [])
+        xref = XrefEntry.new(@variable_name.to_s, nil, false)
+        @elements[:variables] = [xref]
       else
         @errors << "Invalid control variable #{tokens[0]}"
       end
@@ -2466,16 +2468,16 @@ class NextStatement < AbstractStatement
   end
 
   def dump
-    [@control.dump]
+    [@variable_name.dump]
   end
 
   def execute_core(interpreter)
-    fornext_control = interpreter.retrieve_fornext(@control)
+    fornext_control = interpreter.retrieve_fornext(@variable_name)
 
     if $options['match_fornext'].value
       # check control variable matches current loop
-      expected = interpreter.top_fornext.control
-      actual = fornext_control.control
+      expected = interpreter.top_fornext.variable_name
+      actual = fornext_control.variable_name
 
       if actual != expected
         raise(BASICSyntaxError,

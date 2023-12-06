@@ -14,14 +14,14 @@ end
 
 # Helper class for FOR/NEXT
 class AbstractForControl < AbstractLoopControl
-  attr_reader :control, :start
+  attr_reader :variable_name, :start
   attr_accessor :start_line_stmt_mod, :forget
 
-  def initialize(control, start, step, start_line_stmt_mod)
+  def initialize(variable_name, start, step, start_line_stmt_mod)
     super()
 
     @is_for = true
-    @control = control
+    @variable_name = variable_name
     @start = start
     @step = step
     @start_line_stmt_mod = start_line_stmt_mod
@@ -33,12 +33,12 @@ class AbstractForControl < AbstractLoopControl
   end
 
   def bump_control(interpreter)
-    current_value = interpreter.get_value(@control)
+    current_value = interpreter.get_value(@variable_name)
     current_value = current_value.add(@step)
 
-    interpreter.unlock_variable(@control) if $options['lock_fornext'].value
-    interpreter.set_value(@control, current_value)
-    interpreter.lock_variable(@control) if $options['lock_fornext'].value
+    interpreter.unlock_variable(@variable_name) if $options['lock_fornext'].value
+    interpreter.set_value(@variable_name, current_value)
+    interpreter.lock_variable(@variable_name) if $options['lock_fornext'].value
   end
 end
 
@@ -46,8 +46,8 @@ end
 class ForToControl < AbstractForControl
   attr_reader :end
 
-  def initialize(control, start, step, endv, start_line_stmt_mod)
-    super(control, start, step, start_line_stmt_mod)
+  def initialize(variable_name, start, step, endv, start_line_stmt_mod)
+    super(variable_name, start, step, start_line_stmt_mod)
 
     @end = endv
   end
@@ -72,7 +72,7 @@ class ForToControl < AbstractForControl
     return true if @broken
 
     zero = NumericValue.new(0)
-    current_value = interpreter.get_value(@control)
+    current_value = interpreter.get_value(@variable_name)
 
     if @step > zero
       current_value.add(@step) > @end
@@ -88,8 +88,8 @@ end
 class ForUntilControl < AbstractForControl
   attr_reader :end
 
-  def initialize(control, start, step, expression, start_line_stmt_mod)
-    super(control, start, step, start_line_stmt_mod)
+  def initialize(variable_name, start, step, expression, start_line_stmt_mod)
+    super(variable_name, start, step, start_line_stmt_mod)
 
     @expression = expression
   end
@@ -127,8 +127,8 @@ end
 class ForWhileControl < AbstractForControl
   attr_reader :end
 
-  def initialize(control, start, step, expression, start_line_stmt_mod)
-    super(control, start, step, start_line_stmt_mod)
+  def initialize(variable_name, start, step, expression, start_line_stmt_mod)
+    super(variable_name, start, step, start_line_stmt_mod)
 
     @expression = expression
   end
@@ -1304,16 +1304,16 @@ class Interpreter
   end
 
   def assign_fornext(fornext_control)
-    control = fornext_control.control
-    v = control.to_s
+    variable_name = fornext_control.variable_name
+    v = variable_name.to_s
     fornext_control.forget = !@variables.key?(v)
-    @fornexts[control] = fornext_control
+    @fornexts[variable_name] = fornext_control
     from = fornext_control.start
-    set_value(control, from)
+    set_value(variable_name, from)
   end
 
-  def retrieve_fornext(control)
-    fornext = @fornexts[control]
+  def retrieve_fornext(variable_name)
+    fornext = @fornexts[variable_name]
 
     raise BASICSyntaxError.new('NEXT without FOR') if fornext.nil?
 
@@ -1322,8 +1322,9 @@ class Interpreter
 
   def enter_loop(loop_control)
     if loop_control.is_for
-      control_variable = loop_control.control
-      lock_variable(control_variable) if $options['lock_fornext'].value
+      variable_name = loop_control.variable_name
+      # control variables never have subscripts
+      lock_variable(variable_name) if $options['lock_fornext'].value
     end
 
     @loop_stack.push(loop_control)
@@ -1338,10 +1339,10 @@ class Interpreter
     @loop_stack.pop
 
     forget = fornext_control.forget
-    control = fornext_control.control
+    variable_name = fornext_control.variable_name
 
-    unlock_variable(control) if $options['lock_fornext'].value
-    forget_value(control) if $options['forget_fornext'].value && forget
+    unlock_variable(variable_name) if $options['lock_fornext'].value
+    forget_value(variable_name) if $options['forget_fornext'].value && forget
   end
 
   def top_fornext
