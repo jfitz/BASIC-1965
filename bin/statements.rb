@@ -2490,8 +2490,6 @@ class NextStatement < AbstractStatement
     # change control variable value for FOR-WHILE and FOR-UNTIL
     fornext_control.bump_control(interpreter) if bump_early
 
-    # check control variable value
-    # if matches end value, stop here
     terminated = fornext_control.terminated?(interpreter)
 
     io = interpreter.trace_out
