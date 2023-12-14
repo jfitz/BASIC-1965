@@ -92,13 +92,23 @@ class StatementFactory
     statement
   end
 
-  def keywords_definitions
+  # lead keywords let us identify the statement
+  def lead_keywords
     keywords = []
 
     statement_classes.each do |cl|
       kwds = cl.lead_keywords.flatten
-      kwds.each { |kwd| keywords << kwd.to_s }
+      keywords += kwds.map(&:to_s)
+    end
 
+    keywords.uniq
+  end
+
+  # statement keywords occur later in the text
+  def stmt_keywords
+    keywords = []
+
+    statement_classes.each do |cl|
       keywords += cl.extra_keywords
     end
 

@@ -1924,12 +1924,12 @@ class AbstractExpressionSet
 
     @expressions.each do |expression|
       elements = expression.elements
-      x = elements.map(&:dump)
+      dump_text = elements.map(&:dump)
       # TODO: remove Array check
-      if x.class.to_s == 'Array'
-        lines += x.flatten
+      if dump_text.class.to_s == 'Array'
+        lines += dump_text.flatten
       else
-        lines << x
+        lines << dump_text
       end
     end
 
