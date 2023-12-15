@@ -1,14 +1,17 @@
 # frozen_string_literal: true
 
+# abstract class
+class AbstractTokenBuilder
+  def count
+    @token.size
+  end
+end
+
 # accept any characters
-class InvalidTokenBuilder
+class InvalidTokenBuilder < AbstractTokenBuilder
   def try(text)
     @token = ''
     @token += text.empty? ? '' : text[0]
-  end
-
-  def count
-    @token.size
   end
 
   def tokens
@@ -17,13 +20,15 @@ class InvalidTokenBuilder
 end
 
 # accept characters to match item in list
-class ListTokenBuilder
-  attr_reader :count
-
+class ListTokenBuilder < AbstractTokenBuilder
   def initialize(legals, class_name)
     @legals = legals
     @class = class_name
     @count = 0
+  end
+
+  def count
+    @count
   end
 
   def try(text)
@@ -87,12 +92,14 @@ class ListTokenBuilder
 end
 
 # Remark tokens (returns 2)
-class RemarkTokenBuilder
-  attr_reader :count
-
+class RemarkTokenBuilder < AbstractTokenBuilder
   def initialize
     @legals = %w[REMARK REM]
     @count = 0
+  end
+
+  def count
+    @count
   end
 
   def try(text)
@@ -161,15 +168,11 @@ class RemarkTokenBuilder
 end
 
 # token reader for whitespace
-class WhitespaceTokenBuilder
+class WhitespaceTokenBuilder < AbstractTokenBuilder
   def try(text)
     @token = ''
 
     /\A\s+/.match(text) { |m| @token = m[0] }
-  end
-
-  def count
-    @token.size
   end
 
   def tokens
@@ -178,9 +181,7 @@ class WhitespaceTokenBuilder
 end
 
 # token reader for comments
-class CommentTokenBuilder
-  attr_reader :count
-
+class CommentTokenBuilder < AbstractTokenBuilder
   def initialize(lead_chars)
     @lead_chars = lead_chars
   end
@@ -198,7 +199,7 @@ class CommentTokenBuilder
 end
 
 # token reader for text constants
-class QuotedTextTokenBuilder
+class QuotedTextTokenBuilder < AbstractTokenBuilder
   def initialize(quotes)
     @quotes = quotes
   end
@@ -223,17 +224,13 @@ class QuotedTextTokenBuilder
     end
   end
 
-  def count
-    @token.size
-  end
-
   def tokens
     [QuotedTextLiteralToken.new(@token)]
   end
 end
 
 # token reader for numeric constants in input channels (READ, INPUT)
-class InputNumberTokenBuilder
+class InputNumberTokenBuilder < AbstractTokenBuilder
   def try(text)
     regexes = [
       /\A[+-]?\d+(\{[A-Za-z0-9\+\- _]*\})?/,
@@ -251,19 +248,13 @@ class InputNumberTokenBuilder
     regexes.each { |regex| regex.match(text) { |m| @token = m[0] } }
   end
 
-  def count
-    @token.size
-  end
-
   def tokens
     [NumericLiteralToken.new(@token)]
   end
 end
 
 # token reader for numeric constants
-class NumberTokenBuilder
-  attr_reader :count
-
+class NumberTokenBuilder < AbstractTokenBuilder
   def try(text)
     candidate = ''
 
@@ -358,9 +349,7 @@ class NumberTokenBuilder
 end
 
 # token reader for numeric symbols
-class NumericSymbolTokenBuilder
-  attr_reader :count
-
+class NumericSymbolTokenBuilder < AbstractTokenBuilder
   def try(text)
     legals = %w[PI EUL AUR]
 
@@ -389,8 +378,10 @@ class NumericSymbolTokenBuilder
 end
 
 # token reader for variables
-class VariableTokenBuilder
-  attr_reader :count
+class VariableTokenBuilder < AbstractTokenBuilder
+  def count
+    @count
+  end
 
   def try(text)
     @token = ''
@@ -451,14 +442,10 @@ class VariableTokenBuilder
 end
 
 # token reader for token separator
-class BreakTokenBuilder
+class BreakTokenBuilder < AbstractTokenBuilder
   def try(text)
     @token = ''
     @token = text[0] if text[0] == '_'
-  end
-
-  def count
-    @token.size
   end
 
   def tokens
