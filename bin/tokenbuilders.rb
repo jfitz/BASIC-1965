@@ -2,6 +2,12 @@
 
 # abstract class
 class AbstractTokenBuilder
+  def initialize
+    @enabled = true
+    @token = ''
+    @count = 0
+  end
+
   def count
     @token.size
   end
@@ -9,8 +15,16 @@ end
 
 # accept any characters
 class InvalidTokenBuilder < AbstractTokenBuilder
+  def initialize
+    super()
+  end
+
   def try(text)
     @token = ''
+    @count = 0
+
+    return unless @enabled
+    
     @token += text.empty? ? '' : text[0]
   end
 
@@ -22,9 +36,10 @@ end
 # accept characters to match item in list
 class ListTokenBuilder < AbstractTokenBuilder
   def initialize(legals, class_name)
+    super()
+
     @legals = legals
     @class = class_name
-    @count = 0
   end
 
   def count
@@ -32,6 +47,11 @@ class ListTokenBuilder < AbstractTokenBuilder
   end
 
   def try(text)
+    @token = ''
+    @count = 0
+
+    return unless @enabled
+    
     best_candidate = ''
     best_count = 0
 
@@ -62,14 +82,10 @@ class ListTokenBuilder < AbstractTokenBuilder
       end
     end
 
-    @count = 0
+    return if best_candidate.empty?
 
-    unless best_candidate.empty?
-      @token = best_candidate
-      @count = best_count
-    end
-
-    @count.positive?
+    @token = best_candidate
+    @count = best_count
   end
 
   def tokens
@@ -94,8 +110,9 @@ end
 # Remark tokens (returns 2)
 class RemarkTokenBuilder < AbstractTokenBuilder
   def initialize
+    super()
+
     @legals = %w[REMARK REM]
-    @count = 0
   end
 
   def count
@@ -103,6 +120,11 @@ class RemarkTokenBuilder < AbstractTokenBuilder
   end
 
   def try(text)
+    @token = ''
+    @count = 0
+
+    return unless @enabled
+    
     best_candidate = ''
     best_count = 0
 
@@ -133,16 +155,12 @@ class RemarkTokenBuilder < AbstractTokenBuilder
       end
     end
 
-    @count = 0
+    return if best_candidate.empty?
 
-    unless best_candidate.empty?
-      @keyword_token = best_candidate
-      remark = text[best_count..-1]
-      @remark_token = remark[0] == ' ' ? remark[1..-1] : remark
-      @count = text.size
-    end
-
-    @count.positive?
+    @keyword_token = best_candidate
+    remark = text[best_count..-1]
+    @remark_token = remark[0] == ' ' ? remark[1..-1] : remark
+    @count = text.size
   end
 
   def tokens
@@ -169,9 +187,16 @@ end
 
 # token reader for whitespace
 class WhitespaceTokenBuilder < AbstractTokenBuilder
+  def initialize
+    super()
+  end
+
   def try(text)
     @token = ''
+    @count = 0
 
+    return unless @enabled
+    
     /\A\s+/.match(text) { |m| @token = m[0] }
   end
 
@@ -183,13 +208,18 @@ end
 # token reader for comments
 class CommentTokenBuilder < AbstractTokenBuilder
   def initialize(lead_chars)
+    super()
+
     @lead_chars = lead_chars
   end
 
   def try(text)
     @token = ''
-    @token = text if !text.empty? && @lead_chars.include?(text[0])
+    @count = 0
 
+    return unless @enabled
+    
+    @token = text if !text.empty? && @lead_chars.include?(text[0])
     @count = @token.size
   end
 
@@ -201,12 +231,17 @@ end
 # token reader for text constants
 class QuotedTextTokenBuilder < AbstractTokenBuilder
   def initialize(quotes)
+    super()
+
     @quotes = quotes
   end
 
   def try(text)
     @token = ''
+    @count = 0
 
+    return unless @enabled
+    
     /\A"[^"]*"/.match(text) { |m| @token = m[0] } if @quotes.include?('"')
 
     /\A'[^']*'/.match(text) { |m| @token = m[0] } if @quotes.include?("'")
@@ -231,7 +266,16 @@ end
 
 # token reader for numeric constants in input channels (READ, INPUT)
 class InputNumberTokenBuilder < AbstractTokenBuilder
+  def initialize
+    super()
+  end
+
   def try(text)
+    @token = ''
+    @count = 0
+
+    return unless @enabled
+    
     regexes = [
       /\A[+-]?\d+(\{[A-Za-z0-9\+\- _]*\})?/,
       /\A[+-]?\d+\.(\{[A-Za-z0-9\+\- _]*\})?/,
@@ -243,8 +287,6 @@ class InputNumberTokenBuilder < AbstractTokenBuilder
       /\A[+-]?\.\d+E[+-]?\d+(\{[A-Za-z0-9\+\- _]*\})?/
     ]
 
-    @token = ''
-
     regexes.each { |regex| regex.match(text) { |m| @token = m[0] } }
   end
 
@@ -255,7 +297,16 @@ end
 
 # token reader for numeric constants
 class NumberTokenBuilder < AbstractTokenBuilder
+  def initialize
+    super()
+  end
+
   def try(text)
+    @token = ''
+    @count = 0
+
+    return unless @enabled
+    
     candidate = ''
 
     if !text.empty? && text[0] != ' '
@@ -301,14 +352,9 @@ class NumberTokenBuilder < AbstractTokenBuilder
       /\A\.\d+(E[+-]?\d+)?(\{[A-Za-z0-9\+\- _]*\})?\z/
     ]
 
-    @token = ''
-
     regexes.each { |regex| regex.match(candidate) { |m| @token = m[0] } }
 
-    @count = 0
     @count = i unless @token.empty?
-
-    @count.positive?
   end
 
   def tokens
@@ -350,7 +396,16 @@ end
 
 # token reader for numeric symbols
 class NumericSymbolTokenBuilder < AbstractTokenBuilder
+  def initialize
+    super()
+  end
+
   def try(text)
+    @token = ''
+    @count = 0
+
+    return unless @enabled
+    
     legals = %w[PI EUL AUR]
 
     candidate = ''
@@ -363,13 +418,8 @@ class NumericSymbolTokenBuilder < AbstractTokenBuilder
       end
     end
 
-    @token = ''
     @token = candidate if legals.include?(candidate)
-
-    @count = 0
     @count = i unless @token.empty?
-
-    @count.positive?
   end
 
   def tokens
@@ -379,13 +429,20 @@ end
 
 # token reader for variables
 class VariableTokenBuilder < AbstractTokenBuilder
+  def initialize
+    super()
+  end
+
   def count
     @count
   end
 
   def try(text)
     @token = ''
+    @count = 0
 
+    return unless @enabled
+    
     candidate = ''
     i = 0
 
@@ -415,13 +472,9 @@ class VariableTokenBuilder < AbstractTokenBuilder
       /\A[A-Z]\d\z/
     ]
 
-    @token = ''
     regexes.each { |regex| regex.match(candidate) { |m| @token = m[0] } }
 
-    @count = 0
     @count = i unless @token.empty?
-
-    @count.positive?
   end
 
   def tokens
@@ -443,8 +496,16 @@ end
 
 # token reader for token separator
 class BreakTokenBuilder < AbstractTokenBuilder
+  def initialize
+    super()
+  end
+
   def try(text)
     @token = ''
+    @count = 0
+
+    return unless @enabled
+    
     @token = text[0] if text[0] == '_'
   end
 
