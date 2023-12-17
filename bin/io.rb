@@ -14,9 +14,9 @@ module Reader
 
   def make_tokenbuilders
     tokenbuilders = []
-    tokenbuilders << InputNumberTokenBuilder.new
-    tokenbuilders << ListTokenBuilder.new([',', ';'], ParamSeparatorToken)
-    tokenbuilders << WhitespaceTokenBuilder.new
+    tokenbuilders << InputNumberTokenBuilder.new(true)
+    tokenbuilders << ListTokenBuilder.new(true, [',', ';'], ParamSeparatorToken)
+    tokenbuilders << WhitespaceTokenBuilder.new(true)
   end
 
   def insert_empty_string(tokens)
@@ -404,7 +404,8 @@ class FileHandler
   def read
     set_mode(:read)
     tokenbuilders = make_tokenbuilders
-    tokenizer = Tokenizer.new(tokenbuilders, InvalidTokenBuilder.new)
+    invalid_tokenbuilder = InvalidTokenBuilder.new(true)
+    tokenizer = Tokenizer.new(tokenbuilders, invalid_tokenbuilder)
     @data_store = refill(@data_store, tokenizer)
     @data_store.shift
   end

@@ -219,7 +219,7 @@ class StatementFactory
   end
 
   def tokenize(text)
-    invalid_tokenbuilder = InvalidTokenBuilder.new
+    invalid_tokenbuilder = InvalidTokenBuilder.new(true)
     general_tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
     data_tokenizer = Tokenizer.new(@data_tokenbuilders, invalid_tokenbuilder)
 

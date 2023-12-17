@@ -2,10 +2,15 @@
 
 # abstract class
 class AbstractTokenBuilder
-  def initialize
+  def initialize(default_enabled)
+    @default_enabled = default_enabled
     @enabled = true
     @token = ''
     @count = 0
+  end
+
+  def reset
+    @enabled = @default_enabled
   end
 
   def count
@@ -15,8 +20,8 @@ end
 
 # accept any characters
 class InvalidTokenBuilder < AbstractTokenBuilder
-  def initialize
-    super()
+  def initialize(default_enabled)
+    super(default_enabled)
   end
 
   def try(text)
@@ -35,8 +40,8 @@ end
 
 # accept characters to match item in list
 class ListTokenBuilder < AbstractTokenBuilder
-  def initialize(legals, class_name)
-    super()
+  def initialize(default_enabled, legals, class_name)
+    super(default_enabled)
 
     @legals = legals
     @class = class_name
@@ -109,8 +114,8 @@ end
 
 # Remark tokens (returns 2)
 class RemarkTokenBuilder < AbstractTokenBuilder
-  def initialize
-    super()
+  def initialize(default_enabled)
+    super(default_enabled)
 
     @legals = %w[REMARK REM]
   end
@@ -187,8 +192,8 @@ end
 
 # token reader for whitespace
 class WhitespaceTokenBuilder < AbstractTokenBuilder
-  def initialize
-    super()
+  def initialize(default_enabled)
+    super(default_enabled)
   end
 
   def try(text)
@@ -207,8 +212,8 @@ end
 
 # token reader for comments
 class CommentTokenBuilder < AbstractTokenBuilder
-  def initialize(lead_chars)
-    super()
+  def initialize(default_enabled, lead_chars)
+    super(default_enabled)
 
     @lead_chars = lead_chars
   end
@@ -230,8 +235,8 @@ end
 
 # token reader for text constants
 class QuotedTextTokenBuilder < AbstractTokenBuilder
-  def initialize(quotes)
-    super()
+  def initialize(default_enabled, quotes)
+    super(default_enabled)
 
     @quotes = quotes
   end
@@ -266,8 +271,8 @@ end
 
 # token reader for numeric constants in input channels (READ, INPUT)
 class InputNumberTokenBuilder < AbstractTokenBuilder
-  def initialize
-    super()
+  def initialize(default_enabled)
+    super(default_enabled)
   end
 
   def try(text)
@@ -297,8 +302,8 @@ end
 
 # token reader for numeric constants
 class NumberTokenBuilder < AbstractTokenBuilder
-  def initialize
-    super()
+  def initialize(default_enabled)
+    super(default_enabled)
   end
 
   def try(text)
@@ -396,8 +401,8 @@ end
 
 # token reader for numeric symbols
 class NumericSymbolTokenBuilder < AbstractTokenBuilder
-  def initialize
-    super()
+  def initialize(default_enabled)
+    super(default_enabled)
   end
 
   def try(text)
@@ -429,8 +434,8 @@ end
 
 # token reader for variables
 class VariableTokenBuilder < AbstractTokenBuilder
-  def initialize
-    super()
+  def initialize(default_enabled)
+    super(default_enabled)
   end
 
   def count
@@ -496,8 +501,8 @@ end
 
 # token reader for token separator
 class BreakTokenBuilder < AbstractTokenBuilder
-  def initialize
-    super()
+  def initialize(default_enabled)
+    super(default_enabled)
   end
 
   def try(text)
