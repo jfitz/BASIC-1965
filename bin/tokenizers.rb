@@ -38,6 +38,8 @@ class Tokenizer
       text = text[count..-1]
     end
 
+    reset_enabled
+
     tokens
   end
 

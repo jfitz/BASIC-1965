@@ -21,7 +21,7 @@ class StatementFactory
       number = IntegerValue.new(token)
       line_number = LineNumber.new(number)
       line_text = m.post_match
-      all_tokens = tokenize(line_text)
+      all_tokens = tokenize_line(line_text)
       all_tokens.delete_if(&:break?)
       all_tokens.delete_if(&:whitespace?)
       comment = nil
@@ -216,28 +216,10 @@ class StatementFactory
     results
   end
 
-  def tokenize(text)
+  def tokenize_line(text)
     invalid_tokenbuilder = InvalidTokenBuilder.new(true, [])
-    general_tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
-
-    tokens = []
-
-    tokenizer = general_tokenizer
-
-    until text.nil? || text.empty?
-      new_tokens, count = tokenizer.tokenize(text)
-
-      tokens += new_tokens
-
-      general_tokenizer.handle_token(new_tokens[0])
-      general_tokenizer.reset_enabled if new_tokens[0].statement_separator?
-
-      text = text[count..-1]
-    end
-
-    general_tokenizer.reset_enabled
-
-    tokens
+    tokenizer = Tokenizer.new(@tokenbuilders, invalid_tokenbuilder)
+    tokenizer.tokenize_line(text)
   end
 end
 

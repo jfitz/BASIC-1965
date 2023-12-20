@@ -68,7 +68,8 @@ module Inputter
     line = read_line
 
     tokenbuilders = make_tokenbuilders
-    tokenizer = Tokenizer.new(tokenbuilders, nil)
+    invalid_tokenbuilder = InvalidTokenBuilder.new(true, [])
+    tokenizer = Tokenizer.new(tokenbuilders, invalid_tokenbuilder)
     tokens = tokenizer.tokenize_line(line)
 
     # drop whitespace
