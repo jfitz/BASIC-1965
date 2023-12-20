@@ -689,10 +689,9 @@ end
 class Program
   attr_reader :lines, :first_line_number_stmt_mod
 
-  def initialize(console_io, tokenbuilders)
+  def initialize(console_io, statement_factory)
     @console_io = console_io
-    @statement_factory = StatementFactory.instance
-    @statement_factory.tokenbuilders = tokenbuilders
+    @statement_factory = statement_factory
     @lines = {}
     @errors = []
   end

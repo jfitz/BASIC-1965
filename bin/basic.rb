@@ -484,21 +484,17 @@ class Shell
   end
 end
 
-def make_interpreter_tokenbuilders(quotes, comment_leads)
+def make_interpreter_tokenbuilders(quotes, comment_leads, lead_keywords, stmt_keywords)
   normal_tb = true
   tokenbuilders = []
 
   tokenbuilders << CommentTokenBuilder.new(normal_tb, [], comment_leads)
   tokenbuilders << RemarkTokenBuilder.new(normal_tb, ['DATA'])
 
-  statement_factory = StatementFactory.instance
-
   # lead keywords let us identify the statement
-  lead_keywords = statement_factory.lead_keywords
   tokenbuilders << ListTokenBuilder.new(normal_tb, ['DATA'], lead_keywords, KeywordToken)
 
   # statement keywords occur later in the text
-  stmt_keywords = statement_factory.stmt_keywords
   tokenbuilders << ListTokenBuilder.new(normal_tb, ['DATA'], stmt_keywords, KeywordToken)
 
   un_ops = UnaryOperator.operators
@@ -866,11 +862,15 @@ console_io = ConsoleIo.new
 
 quotes = ['"']
 comment_leads = ["'"]
-tokenbuilders = make_interpreter_tokenbuilders(quotes, comment_leads)
+statement_factory = StatementFactory.instance
+lead_keywords = statement_factory.lead_keywords
+stmt_keywords = statement_factory.stmt_keywords
+tokenbuilders = make_interpreter_tokenbuilders(quotes, comment_leads, lead_keywords, stmt_keywords)
+statement_factory.tokenbuilders = tokenbuilders
 
 interpreter = Interpreter.new(console_io)
 interpreter.set_default_args('RND', NumericValue.new(1))
-program = Program.new(console_io, tokenbuilders)
+program = Program.new(console_io, statement_factory)
 interpreter.program = program
 
 if $options['heading'].value
