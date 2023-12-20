@@ -138,7 +138,7 @@ class Shell
     @console_io = console_io
     @interpreter = interpreter
     @tokenbuilders = tokenbuilders
-    @invalid_tokenbuilder = InvalidTokenBuilder.new(true)
+    @invalid_tokenbuilder = InvalidTokenBuilder.new(true, [])
   end
 
   def run
@@ -488,62 +488,64 @@ def make_interpreter_tokenbuilders(quotes, comment_leads)
   normal_tb = true
   tokenbuilders = []
 
-  tokenbuilders << CommentTokenBuilder.new(normal_tb, comment_leads)
-  tokenbuilders << RemarkTokenBuilder.new(normal_tb)
+  tokenbuilders << CommentTokenBuilder.new(normal_tb, [], comment_leads)
+  tokenbuilders << RemarkTokenBuilder.new(normal_tb, ['DATA'])
 
   statement_factory = StatementFactory.instance
 
   # lead keywords let us identify the statement
   lead_keywords = statement_factory.lead_keywords
-  tokenbuilders << ListTokenBuilder.new(normal_tb, lead_keywords, KeywordToken)
+  tokenbuilders << ListTokenBuilder.new(normal_tb, ['DATA'], lead_keywords, KeywordToken)
 
   # statement keywords occur later in the text
   stmt_keywords = statement_factory.stmt_keywords
-  tokenbuilders << ListTokenBuilder.new(normal_tb, stmt_keywords, KeywordToken)
+  tokenbuilders << ListTokenBuilder.new(normal_tb, ['DATA'], stmt_keywords, KeywordToken)
 
   un_ops = UnaryOperator.operators
-  tokenbuilders << ListTokenBuilder.new(normal_tb, un_ops, OperatorToken)
+  tokenbuilders << ListTokenBuilder.new(normal_tb, [], un_ops, OperatorToken)
 
   bi_ops = BinaryOperator.operators
-  tokenbuilders << ListTokenBuilder.new(normal_tb, bi_ops, OperatorToken)
+  tokenbuilders << ListTokenBuilder.new(normal_tb, ['DATA'], bi_ops, OperatorToken)
 
-  tokenbuilders << BreakTokenBuilder.new(normal_tb)
+  tokenbuilders << BreakTokenBuilder.new(normal_tb, [])
 
-  tokenbuilders << ListTokenBuilder.new(normal_tb, ['('], GroupStartToken)
-  tokenbuilders << ListTokenBuilder.new(normal_tb, [')'], GroupEndToken)
-  tokenbuilders << ListTokenBuilder.new(normal_tb, [',', ';'], ParamSeparatorToken)
+  tokenbuilders << ListTokenBuilder.new(normal_tb, ['DATA'], ['('], GroupStartToken)
+  tokenbuilders << ListTokenBuilder.new(normal_tb, ['DATA'], [')'], GroupEndToken)
+  tokenbuilders << ListTokenBuilder.new(normal_tb, [], [',', ';'], ParamSeparatorToken)
 
+  function_names = FunctionFactory.function_names
   tokenbuilders <<
-    ListTokenBuilder.new(normal_tb, FunctionFactory.function_names, FunctionToken)
+    ListTokenBuilder.new(normal_tb, ['DATA'], function_names, FunctionToken)
 
+  user_function_names = FunctionFactory.user_function_names
   tokenbuilders <<
-    ListTokenBuilder.new(normal_tb, FunctionFactory.user_function_names, UserFunctionToken)
+    ListTokenBuilder.new(normal_tb, ['DATA'], user_function_names, UserFunctionToken)
 
-  tokenbuilders << QuotedTextTokenBuilder.new(normal_tb, quotes)
-  tokenbuilders << NumberTokenBuilder.new(normal_tb)
-  tokenbuilders << NumericSymbolTokenBuilder.new(normal_tb)
-  tokenbuilders << VariableTokenBuilder.new(normal_tb)
-  tokenbuilders << ListTokenBuilder.new(normal_tb, %w[TRUE FALSE], BooleanLiteralToken)
-  tokenbuilders << WhitespaceTokenBuilder.new(normal_tb)
+  tokenbuilders << QuotedTextTokenBuilder.new(normal_tb, [], quotes)
+  tokenbuilders << NumberTokenBuilder.new(normal_tb, [])
+  tokenbuilders << NumericSymbolTokenBuilder.new(normal_tb, [])
+  tokenbuilders << VariableTokenBuilder.new(normal_tb, ['DATA'])
+  tokenbuilders << ListTokenBuilder.new(normal_tb, [], %w[TRUE FALSE], BooleanLiteralToken)
+  tokenbuilders << WhitespaceTokenBuilder.new(normal_tb, [])
 end
 
 def make_interpreter_data_tokenbuilders(quotes, comment_leads)
   normal_tb = true
   tokenbuilders = []
 
-  tokenbuilders << CommentTokenBuilder.new(normal_tb, comment_leads)
+  tokenbuilders << CommentTokenBuilder.new(normal_tb, [], comment_leads)
 
   # operators for negative numeric values
   un_ops = UnaryOperator.operators
-  tokenbuilders << ListTokenBuilder.new(normal_tb, un_ops, OperatorToken)
+  tokenbuilders << ListTokenBuilder.new(normal_tb, [], un_ops, OperatorToken)
 
-  tokenbuilders << BreakTokenBuilder.new(normal_tb)
-  tokenbuilders << ListTokenBuilder.new(normal_tb, [',', ';'], ParamSeparatorToken)
-  tokenbuilders << QuotedTextTokenBuilder.new(normal_tb, quotes)
-  tokenbuilders << NumberTokenBuilder.new(normal_tb)
-  tokenbuilders << NumericSymbolTokenBuilder.new(normal_tb)
-  tokenbuilders << ListTokenBuilder.new(normal_tb, %w[TRUE FALSE], BooleanLiteralToken)
-  tokenbuilders << WhitespaceTokenBuilder.new(normal_tb)
+  tokenbuilders << BreakTokenBuilder.new(normal_tb, [])
+  tokenbuilders << ListTokenBuilder.new(normal_tb, [], [',', ';'], ParamSeparatorToken)
+  tokenbuilders << QuotedTextTokenBuilder.new(normal_tb, [], quotes)
+  tokenbuilders << NumberTokenBuilder.new(normal_tb, [])
+  tokenbuilders << NumericSymbolTokenBuilder.new(normal_tb, [])
+  tokenbuilders << ListTokenBuilder.new(normal_tb, [], %w[TRUE FALSE], BooleanLiteralToken)
+  tokenbuilders << WhitespaceTokenBuilder.new(normal_tb, [])
 end
 
 def make_command_tokenbuilders(quotes)
@@ -572,31 +574,33 @@ def make_command_tokenbuilders(quotes)
     WARN_GOSUB_LENGTH WARN_LIST_WIDTH WARN_PRETTY_WIDTH WRAP
     ZONE_WIDTH
   ]
-  tokenbuilders << ListTokenBuilder.new(command_tb, keywords, KeywordToken)
+  tokenbuilders << ListTokenBuilder.new(command_tb, [], keywords, KeywordToken)
 
   un_ops = UnaryOperator.operators
-  tokenbuilders << ListTokenBuilder.new(command_tb, un_ops, OperatorToken)
+  tokenbuilders << ListTokenBuilder.new(command_tb, [], un_ops, OperatorToken)
 
   bi_ops = BinaryOperator.operators
-  tokenbuilders << ListTokenBuilder.new(command_tb, bi_ops, OperatorToken)
+  tokenbuilders << ListTokenBuilder.new(command_tb, [], bi_ops, OperatorToken)
 
-  tokenbuilders << BreakTokenBuilder.new(command_tb)
+  tokenbuilders << BreakTokenBuilder.new(command_tb, [])
 
-  tokenbuilders << ListTokenBuilder.new(command_tb, ['('], GroupStartToken)
-  tokenbuilders << ListTokenBuilder.new(command_tb, [')'], GroupEndToken)
-  tokenbuilders << ListTokenBuilder.new(command_tb, [',', ';'], ParamSeparatorToken)
+  tokenbuilders << ListTokenBuilder.new(command_tb, [], ['('], GroupStartToken)
+  tokenbuilders << ListTokenBuilder.new(command_tb, [], [')'], GroupEndToken)
+  tokenbuilders << ListTokenBuilder.new(command_tb, [], [',', ';'], ParamSeparatorToken)
 
+  function_names = FunctionFactory.function_names
   tokenbuilders <<
-    ListTokenBuilder.new(command_tb, FunctionFactory.function_names, FunctionToken)
+    ListTokenBuilder.new(command_tb, [], function_names, FunctionToken)
 
+  user_function_names = FunctionFactory.user_function_names
   tokenbuilders <<
-    ListTokenBuilder.new(command_tb, FunctionFactory.user_function_names, UserFunctionToken)
+    ListTokenBuilder.new(command_tb, [], user_function_names, UserFunctionToken)
 
-  tokenbuilders << QuotedTextTokenBuilder.new(command_tb, quotes)
-  tokenbuilders << NumberTokenBuilder.new(command_tb)
-  tokenbuilders << VariableTokenBuilder.new(command_tb)
-  tokenbuilders << ListTokenBuilder.new(command_tb, %w[TRUE FALSE], BooleanLiteralToken)
-  tokenbuilders << WhitespaceTokenBuilder.new(command_tb)
+  tokenbuilders << QuotedTextTokenBuilder.new(command_tb, [], quotes)
+  tokenbuilders << NumberTokenBuilder.new(command_tb, [])
+  tokenbuilders << VariableTokenBuilder.new(command_tb, [])
+  tokenbuilders << ListTokenBuilder.new(command_tb, [], %w[TRUE FALSE], BooleanLiteralToken)
+  tokenbuilders << WhitespaceTokenBuilder.new(command_tb, [])
 end
 
 def print_timing(timing, console_io)
@@ -863,11 +867,10 @@ console_io = ConsoleIo.new
 quotes = ['"']
 comment_leads = ["'"]
 tokenbuilders = make_interpreter_tokenbuilders(quotes, comment_leads)
-data_tokenbuilders = make_interpreter_data_tokenbuilders(quotes, comment_leads)
 
 interpreter = Interpreter.new(console_io)
 interpreter.set_default_args('RND', NumericValue.new(1))
-program = Program.new(console_io, tokenbuilders, data_tokenbuilders)
+program = Program.new(console_io, tokenbuilders)
 interpreter.program = program
 
 if $options['heading'].value

@@ -7,13 +7,33 @@ class Tokenizer
     @invalid_tokenbuilder = invalid_tokenbuilder
   end
 
+  def handle_token(token)
+    @tokenbuilders.each { |tokenbuilder| tokenbuilder.handle_token(token) }
+    @invalid_tokenbuilder.handle_token(token)
+  end
+
+  def reset_enabled
+    @tokenbuilders.map(&:reset)
+    @invalid_tokenbuilder.reset
+  end
+
   def tokenize_line(text)
     tokens = []
+    seen_only_keywords = true
 
     until text.nil? || text.empty?
       new_tokens, count = tokenize(text)
 
       tokens += new_tokens
+
+      tokens.each do |token|
+        if token.keyword?
+          @tokenbuilders.each { |tb| tb.handle_token(token) }
+          @invalid_tokenbuilder.handle_token(token)
+        else
+          seen_only_keywords = false
+        end
+      end
 
       text = text[count..-1]
     end
