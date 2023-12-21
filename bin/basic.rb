@@ -525,25 +525,6 @@ def make_interpreter_tokenbuilders(quotes, comment_leads, lead_keywords, stmt_ke
   tokenbuilders << WhitespaceTokenBuilder.new(normal_tb, [])
 end
 
-def make_interpreter_data_tokenbuilders(quotes, comment_leads)
-  normal_tb = true
-  tokenbuilders = []
-
-  tokenbuilders << CommentTokenBuilder.new(normal_tb, [], comment_leads)
-
-  # operators for negative numeric values
-  un_ops = UnaryOperator.operators
-  tokenbuilders << ListTokenBuilder.new(normal_tb, [], un_ops, OperatorToken)
-
-  tokenbuilders << BreakTokenBuilder.new(normal_tb, [])
-  tokenbuilders << ListTokenBuilder.new(normal_tb, [], [',', ';'], ParamSeparatorToken)
-  tokenbuilders << QuotedTextTokenBuilder.new(normal_tb, [], quotes)
-  tokenbuilders << NumberTokenBuilder.new(normal_tb, [])
-  tokenbuilders << NumericSymbolTokenBuilder.new(normal_tb, [])
-  tokenbuilders << ListTokenBuilder.new(normal_tb, [], %w[TRUE FALSE], BooleanLiteralToken)
-  tokenbuilders << WhitespaceTokenBuilder.new(normal_tb, [])
-end
-
 def make_command_tokenbuilders(quotes)
   command_tb = true
   tokenbuilders = []
