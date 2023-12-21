@@ -486,6 +486,7 @@ end
 
 def make_interpreter_tokenbuilders(quotes, comment_leads, lead_keywords, stmt_keywords)
   normal_tb = true
+  extra_tb = false
   tokenbuilders = []
 
   tokenbuilders << CommentTokenBuilder.new(normal_tb, [], comment_leads)
@@ -497,6 +498,9 @@ def make_interpreter_tokenbuilders(quotes, comment_leads, lead_keywords, stmt_ke
   # statement keywords occur later in the text
   tokenbuilders << ListTokenBuilder.new(normal_tb, ['DATA'], stmt_keywords, KeywordToken)
 
+  option_keywords = $options.keys.map(&:upcase)
+  tokenbuilders << ListTokenBuilder.new(extra_tb, ['OPTION'], option_keywords, KeywordToken)
+  
   un_ops = UnaryOperator.operators
   tokenbuilders << ListTokenBuilder.new(normal_tb, [], un_ops, OperatorToken)
 
@@ -527,11 +531,16 @@ end
 
 def make_command_tokenbuilders(quotes)
   command_tb = true
+  extra_tb = false
   tokenbuilders = []
 
   keywords = %w[
     ANALYZE BKPT NOBKPT BYE CROSSREF DELETE DIMS IF LIST LOAD
     NEW OPTION PARSE PRETTY PROFILE RENUMBER RUN SAVE TOKENS UDFS VARS
+  ]
+  tokenbuilders << ListTokenBuilder.new(command_tb, [], keywords, KeywordToken)
+
+  option_keywords = %w[
     BASE
     CACHE_CONST_EXPR
     DEFAULT_PROMPT DEGREES DETECT_INFINITE_LOOP
@@ -539,19 +548,23 @@ def make_command_tokenbuilders(quotes)
     HEADING
     IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
     LOCK_FORNEXT
-    MATCH_FORNEXT MAX_DIM MAX_LINE_NUM MIN_LINE_NUM
+    MATCH_FORNEXT
+    MAX_DIM MAX_LINE_NUM MIN_LINE_NUM
     NEWLINE_SPEED
     PRECISION PRINT_SPEED PRINT_WIDTH
-    PROMPT PROMPTD PROMPT_COUNT PROVENANCE
+    PROMPT PROMPTD PROMPT_COUNT
+    PROVENANCE
     QMARK_AFTER_PROMPT
-    RADIANS RANDOMIZE REQUIRE_INITIALIZED
+    RADIANS REQUIRE_INITIALIZED
     SEMICOLON_ZONE_WIDTH
     TIMING TRACE TRIG_REQUIRE_UNITS
     WARN_FORNEXT_LENGTH WARN_FORNEXT_LEVEL
-    WARN_GOSUB_LENGTH WARN_LIST_WIDTH WARN_PRETTY_WIDTH WRAP
+    WARN_GOSUB_LENGTH
+    WARN_LIST_WIDTH WARN_PRETTY_WIDTH
+    WRAP
     ZONE_WIDTH
   ]
-  tokenbuilders << ListTokenBuilder.new(command_tb, [], keywords, KeywordToken)
+  tokenbuilders << ListTokenBuilder.new(extra_tb, ['OPTION'], option_keywords, KeywordToken)
 
   un_ops = UnaryOperator.operators
   tokenbuilders << ListTokenBuilder.new(command_tb, [], un_ops, OperatorToken)

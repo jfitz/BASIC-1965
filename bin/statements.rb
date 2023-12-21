@@ -2281,14 +2281,10 @@ class OptionStatement < AbstractStatement
     ]
   end
 
-  def self.extra_keywords
-    $options.keys.map(&:upcase)
-  end
-
   def initialize(_, keywords, tokens_lists)
     super
 
-    extras = OptionStatement.extra_keywords
+    extras = $options.keys.map(&:upcase)
     template = [extras, [1, '>=']]
 
     if check_template(tokens_lists, template)
