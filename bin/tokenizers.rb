@@ -19,8 +19,9 @@ class Tokenizer
 
   def tokenize_line(text)
     tokens = []
-    seen_only_keywords = true
 
+    reset_tokens = ['THEN', 'ELSE']
+    
     until text.nil? || text.empty?
       new_tokens, count = tokenize(text)
 
@@ -28,10 +29,10 @@ class Tokenizer
 
       tokens.each do |token|
         if token.keyword?
+          reset_enabled if reset_tokens.include?(token.to_s)
+
           @tokenbuilders.each { |tb| tb.handle_token(token) }
           @invalid_tokenbuilder.handle_token(token)
-        else
-          seen_only_keywords = false
         end
       end
 
