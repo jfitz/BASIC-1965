@@ -484,7 +484,7 @@ class Shell
   end
 end
 
-def make_interpreter_tokenbuilders(quotes, lead_keywords, stmt_keywords)
+def make_interpreter_tokenbuilders(lead_keywords, stmt_keywords)
   normal_tb = true
   extra_tb = false
   tokenbuilders = []
@@ -521,7 +521,7 @@ def make_interpreter_tokenbuilders(quotes, lead_keywords, stmt_keywords)
   tokenbuilders <<
     ListTokenBuilder.new(normal_tb, ['DATA'], user_function_names, UserFunctionToken)
 
-  tokenbuilders << QuotedTextTokenBuilder.new(normal_tb, [], quotes)
+  tokenbuilders << QuotedTextTokenBuilder.new(normal_tb, [])
   tokenbuilders << NumberTokenBuilder.new(normal_tb, [])
   tokenbuilders << NumericSymbolTokenBuilder.new(normal_tb, [])
   tokenbuilders << VariableTokenBuilder.new(normal_tb, ['DATA'])
@@ -529,7 +529,7 @@ def make_interpreter_tokenbuilders(quotes, lead_keywords, stmt_keywords)
   tokenbuilders << WhitespaceTokenBuilder.new(normal_tb, [])
 end
 
-def make_command_tokenbuilders(quotes)
+def make_command_tokenbuilders()
   command_tb = true
   extra_tb = false
   tokenbuilders = []
@@ -586,7 +586,7 @@ def make_command_tokenbuilders(quotes)
   tokenbuilders <<
     ListTokenBuilder.new(command_tb, [], user_function_names, UserFunctionToken)
 
-  tokenbuilders << QuotedTextTokenBuilder.new(command_tb, [], quotes)
+  tokenbuilders << QuotedTextTokenBuilder.new(command_tb, [])
   tokenbuilders << NumberTokenBuilder.new(command_tb, [])
   tokenbuilders << VariableTokenBuilder.new(command_tb, [])
   tokenbuilders << ListTokenBuilder.new(command_tb, [], %w[TRUE FALSE], BooleanLiteralToken)
@@ -854,11 +854,10 @@ $options['zone_width'] = Option.new(all_types, int40, zone_width)
 
 console_io = ConsoleIo.new
 
-quotes = ['"']
 statement_factory = StatementFactory.instance
 lead_keywords = statement_factory.lead_keywords
 stmt_keywords = statement_factory.stmt_keywords
-tokenbuilders = make_interpreter_tokenbuilders(quotes, lead_keywords, stmt_keywords)
+tokenbuilders = make_interpreter_tokenbuilders(lead_keywords, stmt_keywords)
 statement_factory.tokenbuilders = tokenbuilders
 
 interpreter = Interpreter.new(console_io)
@@ -1027,8 +1026,7 @@ end
 if list_filename.nil? && parse_filename.nil? && analyze_filename.nil? &&
    pretty_filename.nil? && cref_filename.nil? && run_filename.nil?
 
-  quotes = ['"']
-  tokenbuilders = make_command_tokenbuilders(quotes)
+  tokenbuilders = make_command_tokenbuilders
 
   shell = Shell.new(console_io, interpreter, tokenbuilders)
   shell.run

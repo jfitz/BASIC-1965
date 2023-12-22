@@ -173,7 +173,6 @@ class Interpreter
     randomize_option = $options['randomize']
     @randomizer = Random.new if randomize_option.value
 
-    @quotes = ['"']
     @console_io = console_io
     @tokenbuilders = make_debug_tokenbuilders
 
@@ -233,7 +232,7 @@ class Interpreter
     user_function_names = ('FNA'..'FNZ').to_a
     tokenbuilders << ListTokenBuilder.new(debug_tb, [], user_function_names, UserFunctionToken)
 
-    tokenbuilders << QuotedTextTokenBuilder.new(debug_tb, [], @quotes)
+    tokenbuilders << QuotedTextTokenBuilder.new(debug_tb, [])
     tokenbuilders << NumberTokenBuilder.new(debug_tb, [])
     tokenbuilders << VariableTokenBuilder.new(debug_tb, [])
     tokenbuilders << ListTokenBuilder.new(debug_tb, [], %w[TRUE FALSE], BooleanLiteralToken)
