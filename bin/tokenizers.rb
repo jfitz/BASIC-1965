@@ -27,12 +27,12 @@ class Tokenizer
 
       tokens += new_tokens
 
-      tokens.each do |token|
-        if token.keyword?
-          reset_enabled if reset_tokens.include?(token.to_s)
+      new_tokens.each do |new_token|
+        if new_token.keyword?
+          reset_enabled if reset_tokens.include?(new_token.to_s)
 
-          @tokenbuilders.each { |tb| tb.handle_token(token) }
-          @invalid_tokenbuilder.handle_token(token)
+          @tokenbuilders.each { |tb| tb.handle_token(new_token) }
+          @invalid_tokenbuilder.handle_token(new_token)
         end
       end
 
