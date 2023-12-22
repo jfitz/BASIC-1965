@@ -229,10 +229,8 @@ end
 
 # token reader for comments
 class CommentTokenBuilder < AbstractTokenBuilder
-  def initialize(default_enabled, trigger_tokens, lead_chars)
+  def initialize(default_enabled, trigger_tokens)
     super(default_enabled, trigger_tokens)
-
-    @lead_chars = lead_chars
   end
 
   def try(text)
@@ -241,7 +239,9 @@ class CommentTokenBuilder < AbstractTokenBuilder
 
     return unless @enabled
     
-    @token = text if !text.empty? && @lead_chars.include?(text[0])
+    comment_leads = ["'"]
+
+    @token = text if !text.empty? && comment_leads.include?(text[0])
     @count = @token.size
   end
 

@@ -484,12 +484,12 @@ class Shell
   end
 end
 
-def make_interpreter_tokenbuilders(quotes, comment_leads, lead_keywords, stmt_keywords)
+def make_interpreter_tokenbuilders(quotes, lead_keywords, stmt_keywords)
   normal_tb = true
   extra_tb = false
   tokenbuilders = []
 
-  tokenbuilders << CommentTokenBuilder.new(normal_tb, [], comment_leads)
+  tokenbuilders << CommentTokenBuilder.new(normal_tb, [])
   tokenbuilders << RemarkTokenBuilder.new(normal_tb, ['DATA'])
 
   # lead keywords let us identify the statement
@@ -855,11 +855,10 @@ $options['zone_width'] = Option.new(all_types, int40, zone_width)
 console_io = ConsoleIo.new
 
 quotes = ['"']
-comment_leads = ["'"]
 statement_factory = StatementFactory.instance
 lead_keywords = statement_factory.lead_keywords
 stmt_keywords = statement_factory.stmt_keywords
-tokenbuilders = make_interpreter_tokenbuilders(quotes, comment_leads, lead_keywords, stmt_keywords)
+tokenbuilders = make_interpreter_tokenbuilders(quotes, lead_keywords, stmt_keywords)
 statement_factory.tokenbuilders = tokenbuilders
 
 interpreter = Interpreter.new(console_io)
