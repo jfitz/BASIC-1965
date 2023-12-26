@@ -2281,6 +2281,38 @@ class OptionStatement < AbstractStatement
     ]
   end
 
+  def self.stmt_keywords
+    # build list from all defined options
+    $options.keys.map(&:upcase)
+  end
+
+  def self.cmd_keywords
+    %w[
+      BASE
+      CACHE_CONST_EXPR
+      DEFAULT_PROMPT DEGREES DETECT_INFINITE_LOOP
+      FIELD_SEP FORGET_FORNEXT
+      HEADING
+      IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
+      LOCK_FORNEXT
+      MATCH_FORNEXT
+      MAX_DIM MAX_LINE_NUM MIN_LINE_NUM
+      NEWLINE_SPEED
+      PRECISION PRINT_SPEED PRINT_WIDTH
+      PROMPT PROMPTD PROMPT_COUNT
+      PROVENANCE
+      QMARK_AFTER_PROMPT
+      RADIANS REQUIRE_INITIALIZED
+      SEMICOLON_ZONE_WIDTH
+      TIMING TRACE TRIG_REQUIRE_UNITS
+      WARN_FORNEXT_LENGTH WARN_FORNEXT_LEVEL
+      WARN_GOSUB_LENGTH
+      WARN_LIST_WIDTH WARN_PRETTY_WIDTH
+      WRAP
+      ZONE_WIDTH
+    ]
+  end
+
   def initialize(_, keywords, tokens_lists)
     super
 

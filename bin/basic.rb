@@ -498,7 +498,7 @@ def make_interpreter_tokenbuilders(lead_keywords, stmt_keywords)
   # statement keywords occur later in the text
   tokenbuilders << ListTokenBuilder.new(normal_tb, ['DATA'], stmt_keywords, KeywordToken)
 
-  option_keywords = $options.keys.map(&:upcase)
+  option_keywords = OptionStatement.stmt_keywords
   tokenbuilders << ListTokenBuilder.new(extra_tb, ['OPTION'], option_keywords, KeywordToken)
   
   un_ops = UnaryOperator.operators
@@ -540,30 +540,7 @@ def make_command_tokenbuilders()
   ]
   tokenbuilders << ListTokenBuilder.new(command_tb, [], keywords, KeywordToken)
 
-  option_keywords = %w[
-    BASE
-    CACHE_CONST_EXPR
-    DEFAULT_PROMPT DEGREES DETECT_INFINITE_LOOP
-    FIELD_SEP FORGET_FORNEXT
-    HEADING
-    IGNORE_RND_ARG IMPLIED_SEMICOLON INT_FLOOR
-    LOCK_FORNEXT
-    MATCH_FORNEXT
-    MAX_DIM MAX_LINE_NUM MIN_LINE_NUM
-    NEWLINE_SPEED
-    PRECISION PRINT_SPEED PRINT_WIDTH
-    PROMPT PROMPTD PROMPT_COUNT
-    PROVENANCE
-    QMARK_AFTER_PROMPT
-    RADIANS REQUIRE_INITIALIZED
-    SEMICOLON_ZONE_WIDTH
-    TIMING TRACE TRIG_REQUIRE_UNITS
-    WARN_FORNEXT_LENGTH WARN_FORNEXT_LEVEL
-    WARN_GOSUB_LENGTH
-    WARN_LIST_WIDTH WARN_PRETTY_WIDTH
-    WRAP
-    ZONE_WIDTH
-  ]
+  option_keywords = OptionStatement.cmd_keywords
   tokenbuilders << ListTokenBuilder.new(extra_tb, ['OPTION'], option_keywords, KeywordToken)
 
   un_ops = UnaryOperator.operators
