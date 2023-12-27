@@ -14,7 +14,7 @@ class AbstractTokenBuilder
     @count = 0
   end
 
-  def handle_token(token)
+  def see_token(token)
     return if token.whitespace?
 
     @seen_tokens << token.to_s

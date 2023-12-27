@@ -7,11 +7,6 @@ class Tokenizer
     @invalid_tokenbuilder = invalid_tokenbuilder
   end
 
-  def handle_token(token)
-    @tokenbuilders.each { |tokenbuilder| tokenbuilder.handle_token(token) }
-    @invalid_tokenbuilder.handle_token(token)
-  end
-
   def reset_enabled
     @tokenbuilders.map(&:reset)
     @invalid_tokenbuilder.reset
@@ -29,10 +24,10 @@ class Tokenizer
 
       new_tokens.each do |new_token|
         if new_token.keyword?
-          reset_enabled if reset_tokens.include?(new_token.to_s)
+          @tokenbuilders.each { |tb| tb.see_token(new_token) }
+          @invalid_tokenbuilder.see_token(new_token)
 
-          @tokenbuilders.each { |tb| tb.handle_token(new_token) }
-          @invalid_tokenbuilder.handle_token(new_token)
+          reset_enabled if reset_tokens.include?(new_token.to_s)
         end
       end
 
