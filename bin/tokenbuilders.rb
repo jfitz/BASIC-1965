@@ -7,26 +7,21 @@ class AbstractTokenBuilder
     @default_enabled = default_enabled
     @trigger_tokens = trigger_tokens
     # state
-    @seen_tokens = []
     @enabled = @default_enabled
     # properties
     @token = ''
     @count = 0
   end
 
-  def see_token(token)
+  def see_keyword(token, seen_keywords)
     return if token.whitespace?
 
-    @seen_tokens << token.to_s
-
-    if @seen_tokens == @trigger_tokens
+    if seen_keywords == @trigger_tokens
       @enabled = !@default_enabled
     end
   end
 
   def reset
-    # state
-    @seen_tokens = []
     @enabled = @default_enabled
   end
 
