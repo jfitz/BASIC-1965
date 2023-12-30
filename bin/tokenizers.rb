@@ -14,7 +14,6 @@ class Tokenizer
 
   def tokenize_line(text)
     tokens = []
-    @seen_keywords = []
 
     reset_tokens = ['THEN', 'ELSE']
     
@@ -25,13 +24,12 @@ class Tokenizer
 
       new_tokens.each do |new_token|
         if new_token.keyword?
-          @seen_keywords << new_token.to_s
+          seen_keyword = new_token.to_s
 
-          @tokenbuilders.each { |tb| tb.see_keyword(new_token, @seen_keywords) }
-          @invalid_tokenbuilder.see_keyword(new_token, @seen_keywords)
+          @tokenbuilders.each { |tb| tb.see_keyword(new_token, seen_keyword) }
+          @invalid_tokenbuilder.see_keyword(new_token, seen_keyword)
 
-          reset_enabled if reset_tokens.include?(new_token.to_s)
-          @seen_keywords = [] if reset_tokens.include?(new_token.to_s)
+          reset_enabled if reset_tokens.include?(seen_keyword)
         end
       end
 
