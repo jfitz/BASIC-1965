@@ -553,6 +553,7 @@ class AbstractStatement
 
         # control array and value array implies an expression
         result &= value.size == control[0] if control.size == 1
+
         result &= value.size >= control[0] if
           control.size == 2 && control[1] == '>='
 
@@ -573,6 +574,7 @@ class AbstractStatement
         result = false
       end
     end
+
     result
   end
 
@@ -593,6 +595,7 @@ class AbstractStatement
       else
         list << token
       end
+
       parens_level += 1 if token.group_start?
       parens_level -= 1 if token.group_end? && !parens_level.zero?
     end
@@ -748,7 +751,7 @@ class UnknownStatement < AbstractStatement
     @valid = false
     @executable = :none
     @text = text
-    @errors << "Unknown statement '#{@text.strip}'"
+    @errors << "Unknown statement '#{text.strip}'"
   end
 
   def to_s
@@ -1383,18 +1386,18 @@ class EndStatement < AbstractStatement
     @transfers << TransferRefLineStmt.new(empty_line_number, 0, :stop)
   end
 
+  def check_program(program, line_number_stmt)
+    next_line_stmt = program.find_next_line_stmt(line_number_stmt)
+
+    @program_errors << 'Statements after END' unless next_line_stmt.nil?
+  end
+
   def end?
     true
   end
 
   def dump
     ['']
-  end
-
-  def check_program(program, line_number_stmt)
-    next_line_stmt = program.find_next_line_stmt(line_number_stmt)
-
-    @program_errors << 'Statements after END' unless next_line_stmt.nil?
   end
 
   def execute_core(interpreter)
@@ -3540,28 +3543,44 @@ class MatLetStatement < AbstractLetStatement
     l_values = @assignment.eval_target(interpreter)
     l_value0 = l_values[0]
     l_dims = interpreter.get_dimensions(l_value0.name)
+    set_default_args(interpreter, l_dims)
 
+    r_value = first_value(interpreter)
+
+    clear_default_args(interpreter)
+
+    set_dimensions(interpreter, r_value, l_values)
+  end
+
+  def set_default_args(interpreter, l_dims)
     interpreter.set_default_args('CON2', l_dims)
     interpreter.set_default_args('CON', l_dims)
     interpreter.set_default_args('IDN', l_dims)
     interpreter.set_default_args('RND2', l_dims)
     interpreter.set_default_args('ZER2', l_dims)
     interpreter.set_default_args('ZER', l_dims)
+  end
 
-    # evaluate, use default args if needed
+  def first_value(interpreter)
     r_values = @assignment.eval_value(interpreter)
     r_value = r_values[0]
 
     raise(BASICSyntaxError, 'Expected Matrix') if
       r_value.class.to_s != 'Matrix'
 
+    r_value
+  end
+
+  def clear_default_args(interpreter)
     interpreter.set_default_args('CON2', nil)
     interpreter.set_default_args('CON', nil)
     interpreter.set_default_args('IDN', nil)
     interpreter.set_default_args('RND2', nil)
     interpreter.set_default_args('ZER2', nil)
     interpreter.set_default_args('ZER', nil)
+  end
 
+  def set_dimensions(interpreter, r_value, l_values)
     r_dims = r_value.dimensions
 
     values = r_value.values_1 if r_dims.size == 1
@@ -3651,8 +3670,7 @@ class StatementFactory
             statement_definition.new(line_number, keywords, tokens_lists)
         elsif keywords.empty?
           if statement.nil?
-            statement = UnknownStatement.new(line_number,
-                                             text)
+            statement = UnknownStatement.new(line_number, text)
           end
         else
           keyword = keywords.pop
@@ -3748,6 +3766,7 @@ class StatementFactory
   def split_on_statement_separators(tokens)
     tokens_lists = []
     statement_tokens = []
+
     tokens.each do |token|
       if token.statement_separator?
         tokens_lists << statement_tokens
@@ -3756,6 +3775,7 @@ class StatementFactory
         statement_tokens << token
       end
     end
+
     tokens_lists << statement_tokens unless statement_tokens.empty?
     tokens_lists
   end
@@ -3770,6 +3790,7 @@ class StatementFactory
       keywords << token unless saw_non_keyword
       tokens << token if saw_non_keyword
     end
+
     [keywords, tokens]
   end
 
@@ -3787,6 +3808,7 @@ class StatementFactory
       end
     end
     results << nonkeywords unless nonkeywords.empty?
+
     results
   end
 

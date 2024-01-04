@@ -234,7 +234,7 @@ class Shell
         value = option[1].to_s
         lines << ("OPTION #{name} #{value}")
       end
-    elsif args.size == 1
+    elsif args.size == 1 && args[0].keyword?
       kwd = args[0].to_s
       kwd_d = kwd.downcase
 
@@ -243,7 +243,7 @@ class Shell
 
       value = $options[kwd_d].to_s
       lines << ("OPTION #{kwd} #{value}")
-    elsif args.size == 2
+    elsif args.size == 2 && args[0].keyword?
       kwd = args[0].to_s
       kwd_d = kwd.downcase
 
@@ -360,15 +360,20 @@ class Shell
     when 'LIST'
       texts = @interpreter.program_list(args, false)
       texts.each { |text| @console_io.print_line(text) }
+
       texts = @interpreter.program_errors
       texts.each { |text| @console_io.print_line(text) }
+
       @console_io.newline
     when 'PRETTY'
       pretty_multiline = false
+
       texts = @interpreter.program_pretty(args, pretty_multiline)
       texts.each { |text| @console_io.print_line(text) }
+
       texts = @interpreter.program_errors
       texts.each { |text| @console_io.print_line(text) }
+
       @console_io.newline
     when 'DELETE'
       @interpreter.program_delete(args)
@@ -376,8 +381,10 @@ class Shell
       show_timing = $options['timing'].value
       texts = @interpreter.program_profile(args, show_timing)
       texts.each { |text| @console_io.print_line(text) }
+
       texts = @interpreter.program_errors
       texts.each { |text| @console_io.print_line(text) }
+
       @console_io.newline
     when 'RENUMBER'
       @interpreter.program_optimize
@@ -398,24 +405,29 @@ class Shell
 
       texts = @interpreter.program_crossref
       texts.each { |text| @console_io.print_line(text) }
+
       @console_io.newline
     when 'DIMS'
       @interpreter.dump_dims
     when 'PARSE'
       texts = @interpreter.program_parse(args)
       texts.each { |text| @console_io.print_line(text) }
+
       texts = @interpreter.program_errors
       texts.each { |text| @console_io.print_line(text) }
+
       @console_io.newline
     when 'ANALYZE'
       @interpreter.program_optimize
 
       texts = @interpreter.program_analyze
       texts.each { |text| @console_io.print_line(text) }
+
       @console_io.newline
     when 'TOKENS'
       texts = @interpreter.program_list(args, true)
       texts.each { |text| @console_io.print_line(text) }
+
       @console_io.newline
     when 'UDFS'
       @interpreter.dump_user_functions
@@ -424,6 +436,7 @@ class Shell
     when 'OPTION'
       texts = option_command(args, true)
       texts.each { |text| @console_io.print_line(text) }
+
       @console_io.newline
     else
       @console_io.print_line("Unknown command #{keyword}")
@@ -523,9 +536,12 @@ def make_interpreter_tokenbuilders(lead_keywords, stmt_keywords)
 
   tokenbuilders << QuotedTextTokenBuilder.new(normal_tb, '')
   tokenbuilders << NumberTokenBuilder.new(normal_tb, '')
+
   tokenbuilders << NumericSymbolTokenBuilder.new(normal_tb, '')
+
   tokenbuilders << VariableTokenBuilder.new(normal_tb, 'DATA')
   tokenbuilders << ListTokenBuilder.new(normal_tb, '', %w[TRUE FALSE], BooleanLiteralToken)
+
   tokenbuilders << WhitespaceTokenBuilder.new(normal_tb, '')
 end
 
@@ -613,8 +629,8 @@ OptionParser.new do |opt|
   opt.on('-c', '--crossref SOURCE') { |o| options[:cref_name] = o }
   opt.on('--parse SOURCE') { |o| options[:parse_name] = o }
   opt.on('--analyze SOURCE') { |o| options[:analyze_name] = o }
-  opt.on('--base BASE') { |o| options[:base] = o }
 
+  opt.on('--base BASE') { |o| options[:base] = o }
   opt.on('--no-cache-const-expr') { |o| options[:no_cache_const_expr] = o }
 
   opt.on('--no-detect-infinite-loop') do |o|
