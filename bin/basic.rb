@@ -511,6 +511,9 @@ def make_interpreter_tokenbuilders(lead_keywords, stmt_keywords)
   # statement keywords occur later in the text
   tokenbuilders << ListTokenBuilder.new(normal_tb, 'DATA', stmt_keywords, KeywordToken)
 
+  for_keywords = ForStatement.stmt_keywords
+  tokenbuilders << ListTokenBuilder.new(extra_tb, 'FOR', for_keywords, KeywordToken)
+  
   option_keywords = OptionStatement.stmt_keywords
   tokenbuilders << ListTokenBuilder.new(extra_tb, 'OPTION', option_keywords, KeywordToken)
   

@@ -1458,7 +1458,7 @@ class ForStatement < AbstractStatement
     ]
   end
 
-  def self.extra_keywords
+  def self.stmt_keywords
     %w[TO STEP]
   end
 
