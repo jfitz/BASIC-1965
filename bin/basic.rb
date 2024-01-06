@@ -497,7 +497,7 @@ class Shell
   end
 end
 
-def make_interpreter_tokenbuilders(lead_keywords, stmt_keywords)
+def make_interpreter_tokenbuilders(lead_keywords)
   normal_tb = true
   extra_tb = false
   tokenbuilders = []
@@ -505,14 +505,14 @@ def make_interpreter_tokenbuilders(lead_keywords, stmt_keywords)
   tokenbuilders << CommentTokenBuilder.new(normal_tb, '')
   tokenbuilders << RemarkTokenBuilder.new(normal_tb, 'DATA')
 
-  # lead keywords let us identify the statement
+  # DATA disables statement keywords
   tokenbuilders << ListTokenBuilder.new(normal_tb, 'DATA', lead_keywords, KeywordToken)
-
-  # statement keywords occur later in the text
-  tokenbuilders << ListTokenBuilder.new(normal_tb, 'DATA', stmt_keywords, KeywordToken)
 
   for_keywords = ForStatement.stmt_keywords
   tokenbuilders << ListTokenBuilder.new(extra_tb, 'FOR', for_keywords, KeywordToken)
+
+  if_keywords = ['THEN']
+  tokenbuilders << ListTokenBuilder.new(extra_tb, 'IF', if_keywords, KeywordToken)
   
   option_keywords = OptionStatement.stmt_keywords
   tokenbuilders << ListTokenBuilder.new(extra_tb, 'OPTION', option_keywords, KeywordToken)
@@ -852,8 +852,7 @@ console_io = ConsoleIo.new
 
 statement_factory = StatementFactory.instance
 lead_keywords = statement_factory.lead_keywords
-stmt_keywords = statement_factory.stmt_keywords
-tokenbuilders = make_interpreter_tokenbuilders(lead_keywords, stmt_keywords)
+tokenbuilders = make_interpreter_tokenbuilders(lead_keywords)
 statement_factory.tokenbuilders = tokenbuilders
 
 interpreter = Interpreter.new(console_io)
