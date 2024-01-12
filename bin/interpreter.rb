@@ -181,6 +181,9 @@ class Interpreter
     @line_breakpoints = {}
     @line_cond_breakpoints = {}
     @locked_variables = []
+    @locked_arr_dims = []
+    @locked_mat_dims = []
+    @locked_options = []
     @loop_stack = []
     @data_store = DataStore.new
     @file_handlers = {}
@@ -791,6 +794,10 @@ class Interpreter
   end
 
   def push_option(name, v)
+    if @locked_options.include?(name)
+      raise BASICRuntimeError.new(:te_opt_lock, name)
+    end
+
     $options[name].push(v)
 
     if name == 'trace'
@@ -802,6 +809,10 @@ class Interpreter
   end
 
   def pop_option(name)
+    if @locked_options.include?(name)
+      raise BASICRuntimeError.new(:te_opt_lock, name)
+    end
+
     v = $options[name].pop
 
     if name == 'trace'
@@ -1287,6 +1298,54 @@ class Interpreter
     end
 
     @locked_variables.delete(variable)
+  end
+
+  def lock_arr_dims(variable)
+    if @locked_arr_dims.include?(variable)
+      raise BASICRuntimeError.new(:te_arr_dim_lock, variable.to_s)
+    end
+
+    @locked_arr_dims << variable
+  end
+
+  def unlock_arr_dims(variable)
+    unless @locked_arr_dims.include?(variable)
+      raise BASICRuntimeError.new(:te_arr_dim_no_lock, variable.to_s)
+    end
+
+    @locked_arr_dims.delete(variable)
+  end
+
+  def lock_mat_dims(variable)
+    if @locked_mat_dims.include?(variable)
+      raise BASICRuntimeError.new(:te_mat_dim_lock, variable.to_s)
+    end
+
+    @locked_mat_dims << variable
+  end
+
+  def unlock_mat_dims(variable)
+    unless @locked_mat_dims.include?(variable)
+      raise BASICRuntimeError.new(:te_mat_dim_no_lock, variable.to_s)
+    end
+
+    @locked_arr_dims.delete(variable)
+  end
+
+  def lock_option(name)
+    if @locked_options.include?(name)
+      raise BASICRuntimeError.new(:te_option_lock, name)
+    end
+
+    @locked_options << name
+  end
+
+  def unlock_option(name)
+    unless @locked_options.include?(name)
+      raise BASICRuntimeError.new(:te_option_no_lock, name)
+    end
+
+    @locked_options.delete(name)
   end
 
   def push_return(destination)
