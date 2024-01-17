@@ -2257,7 +2257,7 @@ class NextStatement < AbstractStatement
     io.trace_output(s)
 
     if terminated
-      interpreter.exit_fornext(fornext_control)
+      interpreter.exit_loop(fornext_control)
       fornext_control.broken = false
     else
       # set next line from top item
