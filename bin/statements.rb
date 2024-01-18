@@ -2236,7 +2236,8 @@ class NextStatement < AbstractStatement
 
     if $options['match_fornext'].value
       # check control variable matches current loop
-      expected = interpreter.top_fornext.control_variable
+      top_fornext_control = interpreter.top_fornext
+      expected = top_fornext_control.control_variable
       actual = fornext_control.control_variable
 
       if actual != expected

@@ -2,14 +2,11 @@
 
 # Helper class for loops
 class AbstractLoopControl
-  attr_reader :type, :is_for, :is_while, :is_until
+  attr_reader :type
   attr_accessor :broken
 
   def initialize(type)
     @type = type
-    @is_for = false
-    @is_while = false
-    @is_until = false
     @broken = false
   end
 
@@ -26,7 +23,6 @@ class AbstractForControl < AbstractLoopControl
   def initialize(control_variable, start, step, start_line_stmt_mod)
     super(:for)
 
-    @is_for = true
     @control_variable = control_variable
     @start = start
     @step = step
@@ -1407,15 +1403,16 @@ class Interpreter
     @loop_stack.push(loop_control)
   end
 
-  def exit_loop(fornext_control)
-    raise BASICSyntaxError.new('NEXT without FOR') if @loop_stack.empty?
+  def exit_loop(loop_control)
+    raise BASICError.new('Loop end without start') if @loop_stack.empty?
 
-    raise BASICError.new('NEXT without FOR') if !@loop_stack[0].is_for
+    raise BASICError.new('Loop end mismatch') if
+      @loop_stack[0].type != loop_control.type
 
-    @loop_broken = fornext_control.broken
+    @loop_broken = loop_control.broken
     @loop_stack.pop
 
-    fornext_control.exit(self)
+    loop_control.exit(self)
   end
 
   def top_fornext
@@ -1423,7 +1420,7 @@ class Interpreter
       @loop_stack.empty?
 
     raise BASICSyntaxError.new('Implied NEXT without FOR') if
-      !@loop_stack[0].is_for
+      @loop_stack[0].type != :for
 
     @loop_stack[-1]
   end
