@@ -364,7 +364,8 @@ class AbstractStatement
       if [:goto, :ifthen].include?(xfer.type)
         dest_line_number = xfer.line_number
       
-        if dest_line_number < @part_of_sub.min && dest_line_number < line_number
+        if dest_line_number < @part_of_sub.min &&
+           dest_line_number < line_number
           @program_warnings << "Branch to line before GOSUB start"
         end
       end
@@ -423,7 +424,7 @@ class AbstractStatement
   def check_terminating_in_onerror
     return if @part_of_onerror.empty?
 
-    # warn about STOP, END, CHAIN in GOSUB block
+    # warn about STOP, END, CHAIN in ON-ERROR block
     @transfers.each do |xfer|
       if [:stop, :chain].include?(xfer.type)
         @program_warnings << "Terminating statement in ON-ERROR"
@@ -434,7 +435,7 @@ class AbstractStatement
   def check_terminating_in_fornext
     return if @part_of_fornext.empty?
 
-    # warn about STOP, END, CHAIN in GOSUB block
+    # warn about STOP, END, CHAIN in FORNEXT block
     @transfers.each do |xfer|
       if [:stop, :chain].include?(xfer.type)
         @program_warnings << "Terminating statement in FOR/NEXT"
@@ -2298,7 +2299,8 @@ class OptionStatement < AbstractStatement
       PROMPT PROMPTD PROMPT_COUNT
       PROVENANCE
       QMARK_AFTER_PROMPT
-      RADIANS REQUIRE_INITIALIZED
+      RADIANS
+      REQUIRE_INITIALIZED
       SEMICOLON_ZONE_WIDTH
       TIMING TRACE TRIG_REQUIRE_UNITS
       WARN_FORNEXT_LENGTH WARN_FORNEXT_LEVEL

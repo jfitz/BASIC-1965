@@ -52,9 +52,13 @@ class AbstractForControl < AbstractLoopControl
     current_value = interpreter.get_value(@control_variable)
     current_value = current_value.add(@step)
 
-    interpreter.unlock_variable(@control_variable) if $options['lock_fornext'].value
+    interpreter.unlock_variable(@control_variable) if
+      $options['lock_fornext'].value
+
     interpreter.set_value(@control_variable, current_value)
-    interpreter.lock_variable(@control_variable) if $options['lock_fornext'].value
+
+    interpreter.lock_variable(@control_variable) if
+      $options['lock_fornext'].value
   end
 end
 
@@ -553,6 +557,7 @@ class Interpreter
     line_statement = @current_line_stmt_mod.statement
     line_index = @current_line_stmt_mod.index
 
+    # breakpoint may have already been set by another test
     breakpoint = false
 
     # look for line breakpoint
@@ -1176,9 +1181,7 @@ class Interpreter
   end
 
   def forget_value(variable)
-    legals = [
-      'Variable'
-    ]
+    legals = %w[Variable]
 
     unless legals.include?(variable.class.to_s)
       raise(BASICSyntaxError,
@@ -1404,9 +1407,9 @@ class Interpreter
   end
 
   def exit_loop(loop_control)
-    raise BASICError.new('Loop end without start') if @loop_stack.empty?
+    raise BASICSyntaxError.new('Loop end without start') if @loop_stack.empty?
 
-    raise BASICError.new('Loop end mismatch') if
+    raise BASICSyntaxError.new('Loop end mismatch') if
       @loop_stack[0].type != loop_control.type
 
     @loop_broken = loop_control.broken
