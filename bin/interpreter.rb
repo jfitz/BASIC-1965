@@ -252,8 +252,9 @@ class Interpreter
     tokenbuilders <<
       ListTokenBuilder.new(debug_tb, [], function_names, FunctionToken)
 
-    user_function_names = ('FNA'..'FNZ').to_a
-    tokenbuilders << ListTokenBuilder.new(debug_tb, [], user_function_names, UserFunctionToken)
+    user_function_names = FunctionFactory.user_function_names
+    tokenbuilders <<
+      ListTokenBuilder.new(debug_tb, [], user_function_names, UserFunctionToken)
 
     tokenbuilders << QuotedTextTokenBuilder.new(debug_tb, [])
     tokenbuilders << NumberTokenBuilder.new(debug_tb, [])
