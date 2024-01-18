@@ -136,12 +136,12 @@
  NumericValue:1
  AssignmentOperator:= =. -> .
 250
-450 FOR N = N9 TO 1 STEP -1
- WARNING: FORNEXT length exceeds limit 40
- control: Variable:N -> .
- start:   ["Variable:N9 -> ."]
- end:     ["NumericValue:1"]
- step:    ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
+450 LET N = N9
+ Variable:N -> .
+ Variable:N9 -> .
+ AssignmentOperator:= . -> .
+451 REM LOOP START
+ Remark:LOOP START
 460 IF N = N9 THEN 6000
  Variable:N -> .
  Variable:N9 -> .
@@ -357,7 +357,6 @@
  start:   ["NumericValue:0"]
  end:     ["NumericValue:6"]
 1020 FOR V = 2 TO 3
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V -> .
  start:   ["NumericValue:2"]
  end:     ["NumericValue:3"]
@@ -442,7 +441,6 @@
  BinaryOperatorEqual:=(.,.) -> ?
  LineNumber:1200
 1105 FOR V1 = 1 TO 4
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V1 -> .
  start:   ["NumericValue:1"]
  end:     ["NumericValue:4"]
@@ -528,7 +526,6 @@
 1200 REM COMPUTE DISTANCE
  Remark:COMPUTE DISTANCE
 1210 FOR V = 2 TO 3
- WARNING: FOR/NEXT nesting exceeds limit 3
  control: Variable:V -> .
  start:   ["NumericValue:2"]
  end:     ["NumericValue:3"]
@@ -648,7 +645,6 @@
  TextValue:"STUCK"
  CarriageControl:NL
 5030 STOP
- WARNING: Terminating statement in FOR/NEXT
  
 5100 LET C2 = S(0,N)
  Variable:C2 -> .
@@ -720,9 +716,18 @@
  Variable:C1 -> .
  Variable:C2 -> .
  AssignmentOperator:= . -> .
-6003 NEXT N
+6003 LET N = N - 1
  Variable:N -> .
-6004
+ Variable:N -> .
+ NumericValue:1
+ BinaryOperatorMinus:-(.,.) -> .
+ AssignmentOperator:= . -> .
+6004 IF N > 0 THEN 451
+ Variable:N -> .
+ NumericValue:0
+ BinaryOperatorGreater:>(.,.) -> ?
+ LineNumber:451
+9900
 9999 END
  
 
