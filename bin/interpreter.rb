@@ -201,9 +201,9 @@ class Interpreter
     @line_breakpoints = {}
     @line_cond_breakpoints = {}
     @locked_variables = []
-    @locked_arr_dims = []
-    @locked_mat_dims = []
-    @locked_options = []
+    @locked_arr_dims = {}
+    @locked_mat_dims = {}
+    @locked_options = {}
     @loop_stack = []
     @data_store = DataStore.new
     @file_handlers = {}
@@ -350,6 +350,8 @@ class Interpreter
       raise(BASICCommandError, text)
     end
 
+    @locked_options = {}
+
     @program.reset_profile_metrics
 
     @step_mode = false
@@ -357,11 +359,16 @@ class Interpreter
     @trace_out = trace ? @console_io : @null_out
 
     @variables = {}
+    @locked_variables = []
+    @locked_arr_dims = {}
+    @locked_mat_dims = {}
+
     @data_store = DataStore.new
     @user_function_defs = {}
 
     @previous_stack = []
     clear_previous_lines
+
     run_program
   end
 
@@ -817,7 +824,7 @@ class Interpreter
 
   def push_option(name, v)
     if @locked_options.include?(name)
-      raise BASICRuntimeError.new(:te_opt_lock, name)
+      raise BASICRuntimeError.new(:te_option_lock, name)
     end
 
     $options[name].push(v)
@@ -832,7 +839,7 @@ class Interpreter
 
   def pop_option(name)
     if @locked_options.include?(name)
-      raise BASICRuntimeError.new(:te_opt_lock, name)
+      raise BASICRuntimeError.new(:te_option_lock, name)
     end
 
     v = $options[name].pop
@@ -1353,19 +1360,21 @@ class Interpreter
   end
 
   def lock_option(name)
-    if @locked_options.include?(name)
-      raise BASICRuntimeError.new(:te_option_lock, name)
-    end
+    # allow multiple locks; first one makes an entry of '1'
+    @locked_options[name] = 0 unless @locked_options.include?(name)
 
-    @locked_options << name
+    @locked_options[name] += 1
   end
 
   def unlock_option(name)
+    # there should be at least one lock
     unless @locked_options.include?(name)
       raise BASICRuntimeError.new(:te_option_no_lock, name)
     end
 
-    @locked_options.delete(name)
+    # allow multiple locks; removal of last deletes the entry
+    @locked_options[name] -= 1
+    @locked_options.delete(name) if @locked_options[name] < 1
   end
 
   def push_return(destination)
