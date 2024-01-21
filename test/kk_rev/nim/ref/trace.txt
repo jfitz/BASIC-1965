@@ -21,6 +21,7 @@
 160 F(P:140) NEXT P
  P: (160) 3
  terminated:true
+ forget P
 170 PRINT "INITIAL CONFIGURATION:"
 INITIAL CONFIGURATION:
 180 PRINT
@@ -58,6 +59,7 @@ PILE
 930 G(910) F(P:910) NEXT P
  P: (930) 3
  terminated:true
+ forget P
 940 G(910) PRINT
 
 950 G(910) PRINT
@@ -157,6 +159,7 @@ PILE, NUMBER TAKEN
 440 F(P:380,J:400) NEXT J
  J: (440) 1
  terminated:true
+ forget J
 450 F(P:380) NEXT P
  P: (380) 1
  terminated:false
@@ -232,6 +235,7 @@ PILE, NUMBER TAKEN
 440 F(P:380,J:400) NEXT J
  J: (440) 1
  terminated:true
+ forget J
 450 F(P:380) NEXT P
  P: (450) 2
  terminated:false
@@ -307,6 +311,7 @@ PILE, NUMBER TAKEN
 440 F(P:380,J:400) NEXT J
  J: (440) 1
  terminated:true
+ forget J
 450 F(P:380) NEXT P
  P: (450) 3
  terminated:true
@@ -368,12 +373,15 @@ PILE, NUMBER TAKEN
 510 F(J:480) NEXT J
  J: (510) 4
  terminated:true
+ forget J
 540 IF S(1) + S(2) + S(3) + S(4) > 0 THEN 610
  S(1): (500) 1
  S(2): (500) 1
  S(3): (500) 0
  S(4): (500) 0
  S(1) + S(2) + S(3) + S(4) > 0: true
+618 OPTION FORGET_FORNEXT FALSE
+ FORGET_FORNEXT = false
 620 F(J:620) FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -384,6 +392,8 @@ PILE, NUMBER TAKEN
 639 F(J:620) BREAK
 640 F(J:620) NEXT J
  terminated:true
+642 OPTION FORGET_FORNEXT
+ FORGET_FORNEXT = true
 650 F(P:650) FOR P = 1 TO 3
  P = 1
  terminated:false
@@ -836,6 +846,8 @@ PILE, NUMBER TAKEN
  S(3): (500) 1
  S(4): (500) 1
  S(1) + S(2) + S(3) + S(4) > 0: true
+618 OPTION FORGET_FORNEXT FALSE
+ FORGET_FORNEXT = false
 620 F(J:620) FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -862,6 +874,8 @@ PILE, NUMBER TAKEN
 639 F(J:620) BREAK
 640 F(J:620) NEXT J
  terminated:true
+642 OPTION FORGET_FORNEXT
+ FORGET_FORNEXT = true
 650 F(P:650) FOR P = 1 TO 3
  P = 1
  terminated:false
@@ -1306,6 +1320,8 @@ PILE, NUMBER TAKEN
  S(3): (500) 0
  S(4): (500) 1
  S(1) + S(2) + S(3) + S(4) > 0: true
+618 OPTION FORGET_FORNEXT FALSE
+ FORGET_FORNEXT = false
 620 F(J:620) FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -1324,6 +1340,8 @@ PILE, NUMBER TAKEN
 639 F(J:620) BREAK
 640 F(J:620) NEXT J
  terminated:true
+642 OPTION FORGET_FORNEXT
+ FORGET_FORNEXT = true
 650 F(P:650) FOR P = 1 TO 3
  P = 1
  terminated:false
@@ -1777,6 +1795,8 @@ PILE, NUMBER TAKEN
  S(3): (500) 0
  S(4): (500) 1
  S(1) + S(2) + S(3) + S(4) > 0: true
+618 OPTION FORGET_FORNEXT FALSE
+ FORGET_FORNEXT = false
 620 F(J:620) FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -1811,6 +1831,8 @@ PILE, NUMBER TAKEN
 639 F(J:620) BREAK
 640 F(J:620) NEXT J
  terminated:true
+642 OPTION FORGET_FORNEXT
+ FORGET_FORNEXT = true
 650 F(P:650) FOR P = 1 TO 3
  P = 1
  terminated:false
@@ -2250,6 +2272,8 @@ PILE, NUMBER TAKEN
  S(3): (500) 0
  S(4): (500) 1
  S(1) + S(2) + S(3) + S(4) > 0: true
+618 OPTION FORGET_FORNEXT FALSE
+ FORGET_FORNEXT = false
 620 F(J:620) FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -2260,6 +2284,8 @@ PILE, NUMBER TAKEN
 639 F(J:620) BREAK
 640 F(J:620) NEXT J
  terminated:true
+642 OPTION FORGET_FORNEXT
+ FORGET_FORNEXT = true
 650 F(P:650) FOR P = 1 TO 3
  P = 1
  terminated:false
@@ -2712,6 +2738,8 @@ PILE, NUMBER TAKEN
  S(3): (500) 1
  S(4): (500) 1
  S(1) + S(2) + S(3) + S(4) > 0: true
+618 OPTION FORGET_FORNEXT FALSE
+ FORGET_FORNEXT = false
 620 F(J:620) FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -2738,6 +2766,8 @@ PILE, NUMBER TAKEN
 639 F(J:620) BREAK
 640 F(J:620) NEXT J
  terminated:true
+642 OPTION FORGET_FORNEXT
+ FORGET_FORNEXT = true
 650 F(P:650) FOR P = 1 TO 3
  P = 1
  terminated:false
@@ -3174,6 +3204,8 @@ PILE, NUMBER TAKEN
  S(3): (500) 0
  S(4): (500) 1
  S(1) + S(2) + S(3) + S(4) > 0: true
+618 OPTION FORGET_FORNEXT FALSE
+ FORGET_FORNEXT = false
 620 F(J:620) FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -3192,6 +3224,8 @@ PILE, NUMBER TAKEN
 639 F(J:620) BREAK
 640 F(J:620) NEXT J
  terminated:true
+642 OPTION FORGET_FORNEXT
+ FORGET_FORNEXT = true
 650 F(P:650) FOR P = 1 TO 3
  P = 1
  terminated:false
@@ -3626,6 +3660,8 @@ PILE, NUMBER TAKEN
  S(3): (500) 0
  S(4): (500) 1
  S(1) + S(2) + S(3) + S(4) > 0: true
+618 OPTION FORGET_FORNEXT FALSE
+ FORGET_FORNEXT = false
 620 F(J:620) FOR J = 1 TO 4
  J = 1
  terminated:false
@@ -3660,6 +3696,8 @@ PILE, NUMBER TAKEN
 639 F(J:620) BREAK
 640 F(J:620) NEXT J
  terminated:true
+642 OPTION FORGET_FORNEXT
+ FORGET_FORNEXT = true
 650 F(P:650) FOR P = 1 TO 3
  P = 1
  terminated:false

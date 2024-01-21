@@ -51,6 +51,7 @@
 170 F(I:150) NEXT I
  I: (170) 6
  terminated:true
+ forget I
 180 F(J:180) FOR J = 1 TO N
  N: (140) 4
  J = 1
@@ -83,6 +84,7 @@
 200 F(J:180) NEXT J
  J: (200) 4
  terminated:true
+ forget J
 250 F(K:250) FOR K = 1 TO M
  M: (140) 6
  K = 1
@@ -153,6 +155,7 @@
 280 F(K:250) NEXT K
  K: (280) 6
  terminated:true
+ forget K
 290 F(K:290) FOR K = 1 TO N
  N: (140) 4
  K = 1
@@ -209,6 +212,7 @@
 320 F(K:290) NEXT K
  K: (320) 4
  terminated:true
+ forget K
 360 F(K:360) FOR K = 1 TO M + N - 1
  M: (140) 6
  N: (140) 4
@@ -312,6 +316,7 @@
 450 F(K:360,L:370) NEXT L
  L: (450) 10
  terminated:true
+ forget L
 460 F(K:360) NEXT K
  K: (360) 1
  terminated:false
@@ -429,6 +434,7 @@
 450 F(K:360,L:370) NEXT L
  L: (450) 10
  terminated:true
+ forget L
 460 F(K:360) NEXT K
  K: (460) 2
  terminated:false
@@ -562,6 +568,7 @@
 450 F(K:360,L:370) NEXT L
  L: (450) 10
  terminated:true
+ forget L
 460 F(K:360) NEXT K
  K: (460) 3
  terminated:false
@@ -685,6 +692,7 @@
 450 F(K:360,L:370) NEXT L
  L: (450) 10
  terminated:true
+ forget L
 460 F(K:360) NEXT K
  K: (460) 4
  terminated:false
@@ -798,6 +806,7 @@
 450 F(K:360,L:370) NEXT L
  L: (450) 10
  terminated:true
+ forget L
 460 F(K:360) NEXT K
  K: (460) 5
  terminated:false
@@ -875,6 +884,7 @@
 450 F(K:360,L:370) NEXT L
  L: (450) 10
  terminated:true
+ forget L
 460 F(K:360) NEXT K
  K: (460) 6
  terminated:false
@@ -942,6 +952,7 @@
 450 F(K:360,L:370) NEXT L
  L: (450) 10
  terminated:true
+ forget L
 460 F(K:360) NEXT K
  K: (460) 7
  terminated:false
@@ -973,6 +984,7 @@
 450 F(K:360,L:370) NEXT L
  L: (450) 10
  terminated:true
+ forget L
 460 F(K:360) NEXT K
  K: (460) 8
  terminated:false
@@ -994,9 +1006,11 @@
 450 F(K:360,L:370) NEXT L
  L: (370) 10
  terminated:true
+ forget L
 460 F(K:360) NEXT K
  K: (460) 9
  terminated:true
+ forget K
 500 LET J = 1
  J = 1
 510 LET K = 1
@@ -1036,6 +1050,7 @@
 620 F(L:600) NEXT L
  L: (600) 1
  terminated:true
+ forget L
 630 IF J <= M + N THEN 510
  J: (540) 2
  M: (140) 6
@@ -1109,6 +1124,7 @@
 620 F(L:600) NEXT L
  L: (620) 3
  terminated:true
+ forget L
 630 IF J <= M + N THEN 510
  J: (540) 4
  M: (140) 6
@@ -1151,6 +1167,7 @@
 620 F(L:600) NEXT L
  L: (600) 4
  terminated:true
+ forget L
 630 IF J <= M + N THEN 510
  J: (540) 5
  M: (140) 6
@@ -1193,6 +1210,7 @@
 620 F(L:600) NEXT L
  L: (600) 5
  terminated:true
+ forget L
 630 IF J <= M + N THEN 510
  J: (540) 6
  M: (140) 6
@@ -1235,6 +1253,7 @@
 620 F(L:600) NEXT L
  L: (600) 6
  terminated:true
+ forget L
 630 IF J <= M + N THEN 510
  J: (540) 7
  M: (140) 6
@@ -1277,6 +1296,7 @@
 620 F(L:600) NEXT L
  L: (600) 7
  terminated:true
+ forget L
 630 IF J <= M + N THEN 510
  J: (540) 8
  M: (140) 6
@@ -1350,6 +1370,7 @@
 620 F(L:600) NEXT L
  L: (620) 9
  terminated:true
+ forget L
 630 IF J <= M + N THEN 510
  J: (540) 10
  M: (140) 6
@@ -1386,6 +1407,7 @@
 620 F(L:600) NEXT L
  L: (600) 10
  terminated:true
+ forget L
 630 IF J <= M + N THEN 510
  J: (540) 11
  M: (140) 6

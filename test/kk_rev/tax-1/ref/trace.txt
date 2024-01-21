@@ -23,6 +23,7 @@ CHANGE IN YEAR
 150 F(Y1:100,I:110) NEXT I
  I: (110) 1
  terminated:true
+ forget I
 160 F(Y1:100) LET D = A1 / (Y - Y1 + 1)
  A1: (108) 5000
  Y: (20) 7
@@ -125,6 +126,7 @@ CHANGE IN YEAR
 190 F(Y1:100,I:170) NEXT I
  I: (190) 7
  terminated:true
+ forget I
 195 F(Y1:100) PRINT
 
 290 F(Y1:100) NEXT Y1
@@ -180,6 +182,7 @@ CHANGE IN YEAR
 150 F(Y1:100,I:110) NEXT I
  I: (150) 2
  terminated:true
+ forget I
 160 F(Y1:100) LET D = A1 / (Y - Y1 + 1)
  A1: (130) 2551.02
  Y: (20) 7
@@ -256,6 +259,7 @@ CHANGE IN YEAR
 190 F(Y1:100,I:170) NEXT I
  I: (190) 7
  terminated:true
+ forget I
 195 F(Y1:100) PRINT
 
 290 F(Y1:100) NEXT Y1
@@ -349,6 +353,7 @@ CHANGE IN YEAR
 150 F(Y1:100,I:110) NEXT I
  I: (150) 4
  terminated:true
+ forget I
 160 F(Y1:100) LET D = A1 / (Y - Y1 + 1)
  A1: (130) 1301.54
  Y: (20) 7
@@ -399,6 +404,7 @@ CHANGE IN YEAR
 190 F(Y1:100,I:170) NEXT I
  I: (190) 7
  terminated:true
+ forget I
 195 F(Y1:100) PRINT
 
 290 F(Y1:100) NEXT Y1
@@ -530,6 +536,7 @@ CHANGE IN YEAR
 150 F(Y1:100,I:110) NEXT I
  I: (150) 6
  terminated:true
+ forget I
 160 F(Y1:100) LET D = A1 / (Y - Y1 + 1)
  A1: (130) 664.051
  Y: (20) 7
@@ -554,11 +561,13 @@ CHANGE IN YEAR
 190 F(Y1:100,I:170) NEXT I
  I: (170) 7
  terminated:true
+ forget I
 195 F(Y1:100) PRINT
 
 290 F(Y1:100) NEXT Y1
  Y1: (290) 7
  terminated:true
+ forget Y1
 999 END
 STOP in line 999
 

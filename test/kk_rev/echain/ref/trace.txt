@@ -101,6 +101,7 @@ TRANSITION PROBABILITIES
 230 F(I:210) NEXT I
  I: (230) 3
  terminated:true
+ forget I
 240 MAT M = INV(Z)
  Z(1,1): (200) 0.5
  Z(1,2): (200) -0.25
@@ -156,6 +157,7 @@ TRANSITION PROBABILITIES
 270 F(J:250) NEXT J
  J: (270) 3
  terminated:true
+ forget J
 280 PRINT "LIMITING PROBABILITIES"
 LIMITING PROBABILITIES
 290 PRINT
@@ -244,6 +246,7 @@ LIMITING PROBABILITIES
 370 F(I:340,J:350) NEXT J
  J: (370) 3
  terminated:true
+ forget J
 380 F(I:340) NEXT I
  I: (340) 1
  terminated:false
@@ -282,6 +285,7 @@ LIMITING PROBABILITIES
 370 F(I:340,J:350) NEXT J
  J: (370) 3
  terminated:true
+ forget J
 380 F(I:340) NEXT I
  I: (380) 2
  terminated:false
@@ -320,9 +324,11 @@ LIMITING PROBABILITIES
 370 F(I:340,J:350) NEXT J
  J: (370) 3
  terminated:true
+ forget J
 380 F(I:340) NEXT I
  I: (380) 3
  terminated:true
+ forget I
 390 MAT Z = INV(M)
  M(1,1): (360) 0.9
  M(1,2): (360) -0.05
@@ -383,6 +389,7 @@ LIMITING PROBABILITIES
 440 F(I:410,J:420) NEXT J
  J: (440) 3
  terminated:true
+ forget J
 450 F(I:410) NEXT I
  I: (410) 1
  terminated:false
@@ -423,6 +430,7 @@ LIMITING PROBABILITIES
 440 F(I:410,J:420) NEXT J
  J: (440) 3
  terminated:true
+ forget J
 450 F(I:410) NEXT I
  I: (450) 2
  terminated:false
@@ -463,9 +471,11 @@ LIMITING PROBABILITIES
 440 F(I:410,J:420) NEXT J
  J: (440) 3
  terminated:true
+ forget J
 450 F(I:410) NEXT I
  I: (450) 3
  terminated:true
+ forget I
 460 PRINT "MEAN PASSAGE TIMES"
 MEAN PASSAGE TIMES
 470 PRINT

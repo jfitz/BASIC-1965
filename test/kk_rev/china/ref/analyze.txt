@@ -8,16 +8,16 @@ Number of executable statements: 16
 Complexity:
 
 Comment density: 0.000
-Comprehension effort: 57
+Comprehension effort: 55
 McCabe complexity: 10
 Halstead complexity:
- length: 77
- volume: 293.113
- difficulty: 10.613
- effort: 3110.780
- language: 2.602
- intelligence: 27.619
- time: 2.880
+ length: 75
+ volume: 285.500
+ difficulty: 9.935
+ effort: 2836.578
+ language: 2.892
+ intelligence: 28.735
+ time: 2.626
 
 10 (3 4) READ N, B, P
   Origs: :start
@@ -43,7 +43,7 @@ Halstead complexity:
 70 F(I:20,K:40) (0 1) NEXT K
   Origs: 40:fornext, 60:ifthen, 65:fornext
   Dests: 75:auto
-75 F(I:20) (1 6) IF K < M - 1 THEN 100
+75 F(I:20) (1 4) IF BROKEN() THEN 100
   Origs: 70:auto
   Dests: 80:auto, 100:ifthen
 80 F(I:20) (0 2) PRINT "ERROR"

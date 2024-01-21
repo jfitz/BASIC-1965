@@ -54,6 +54,7 @@
 50 F(I:20,J:30) NEXT J
  J: (50) 5
  terminated:true
+ forget J
 60 F(I:20) NEXT I
  I: (20) 1
  terminated:false
@@ -102,6 +103,7 @@
 50 F(I:20,J:30) NEXT J
  J: (50) 5
  terminated:true
+ forget J
 60 F(I:20) NEXT I
  I: (60) 2
  terminated:false
@@ -150,9 +152,11 @@
 50 F(I:20,J:30) NEXT J
  J: (50) 5
  terminated:true
+ forget J
 60 F(I:20) NEXT I
  I: (60) 3
  terminated:true
+ forget I
 70 F(I:70) FOR I = 1 TO R
  R: (10) 3
  I = 1
@@ -214,6 +218,7 @@
 110 F(I:70,J:90) NEXT J
  J: (110) 5
  terminated:true
+ forget J
 120 F(I:70) PRINT "SUM OF ROW" I; "EQUALS" S
 SUM OF ROW
  I: (70) 1
@@ -280,6 +285,7 @@ SUM OF ROW
 110 F(I:70,J:90) NEXT J
  J: (110) 5
  terminated:true
+ forget J
 120 F(I:70) PRINT "SUM OF ROW" I; "EQUALS" S
 SUM OF ROW
  I: (130) 2
@@ -346,6 +352,7 @@ SUM OF ROW
 110 F(I:70,J:90) NEXT J
  J: (110) 5
  terminated:true
+ forget J
 120 F(I:70) PRINT "SUM OF ROW" I; "EQUALS" S
 SUM OF ROW
  I: (130) 3
@@ -355,6 +362,7 @@ SUM OF ROW
 130 F(I:70) NEXT I
  I: (130) 3
  terminated:true
+ forget I
 140 PRINT
 
 150 F(J:150) FOR J = 1 TO C
@@ -398,6 +406,7 @@ SUM OF ROW
 190 F(J:150,I:170) NEXT I
  I: (190) 3
  terminated:true
+ forget I
 200 F(J:150) PRINT "SUM OF COLUMN" J; "EQUALS" S
 SUM OF COLUMN
  J: (150) 1
@@ -444,6 +453,7 @@ SUM OF COLUMN
 190 F(J:150,I:170) NEXT I
  I: (190) 3
  terminated:true
+ forget I
 200 F(J:150) PRINT "SUM OF COLUMN" J; "EQUALS" S
 SUM OF COLUMN
  J: (210) 2
@@ -490,6 +500,7 @@ SUM OF COLUMN
 190 F(J:150,I:170) NEXT I
  I: (190) 3
  terminated:true
+ forget I
 200 F(J:150) PRINT "SUM OF COLUMN" J; "EQUALS" S
 SUM OF COLUMN
  J: (210) 3
@@ -536,6 +547,7 @@ SUM OF COLUMN
 190 F(J:150,I:170) NEXT I
  I: (190) 3
  terminated:true
+ forget I
 200 F(J:150) PRINT "SUM OF COLUMN" J; "EQUALS" S
 SUM OF COLUMN
  J: (210) 4
@@ -582,6 +594,7 @@ SUM OF COLUMN
 190 F(J:150,I:170) NEXT I
  I: (190) 3
  terminated:true
+ forget I
 200 F(J:150) PRINT "SUM OF COLUMN" J; "EQUALS" S
 SUM OF COLUMN
  J: (210) 5
@@ -591,6 +604,7 @@ SUM OF COLUMN
 210 F(J:150) NEXT J
  J: (210) 5
  terminated:true
+ forget J
 260 END
 STOP in line 260
 

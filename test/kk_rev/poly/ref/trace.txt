@@ -28,6 +28,7 @@
 50 F(I:30) NEXT I
  I: (50) 2
  terminated:true
+ forget I
 60 READ X9
  X9 = 8
 70 F(J:70) FOR J = 1 TO X9
@@ -90,6 +91,7 @@
 90 F(J:70) NEXT J
  J: (90) 8
  terminated:true
+ forget J
 110 LET K = 0
  K = 0
 120 GOSUB 500
@@ -139,6 +141,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 2
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (510) 1
@@ -190,6 +193,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 2
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 2
@@ -241,6 +245,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 2
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 3
@@ -292,6 +297,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 2
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 4
@@ -343,6 +349,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 2
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 5
@@ -394,6 +401,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 2
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 6
@@ -445,6 +453,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 2
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 7
@@ -496,6 +505,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 2
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 8
@@ -505,6 +515,7 @@
 550 G(510) F(J:510) NEXT J
  J: (550) 8
  terminated:true
+ forget J
 560 G(510) RETURN
 130 GOSUB 2000
 2010 G(2010) F(I:2010) FOR I = 0 TO N
@@ -538,6 +549,7 @@
 2030 G(2010) F(I:2010) NEXT I
  I: (2030) 2
  terminated:true
+ forget I
 2040 G(2010) LET N = N - 1
  N: (20) 2
  N = 1
@@ -581,6 +593,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 1
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (510) 1
@@ -622,6 +635,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 1
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 2
@@ -663,6 +677,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 1
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 3
@@ -704,6 +719,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 1
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 4
@@ -745,6 +761,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 1
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 5
@@ -786,6 +803,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 1
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 6
@@ -827,6 +845,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 1
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 7
@@ -868,6 +887,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1040) 1
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 8
@@ -877,6 +897,7 @@
 550 G(510) F(J:510) NEXT J
  J: (550) 8
  terminated:true
+ forget J
 560 G(510) RETURN
 160 GOSUB 2000
 2010 G(2010) F(I:2010) FOR I = 0 TO N
@@ -901,6 +922,7 @@
 2030 G(2010) F(I:2010) NEXT I
  I: (2030) 1
  terminated:true
+ forget I
 2040 G(2010) LET N = N - 1
  N: (2040) 1
  N = 0
@@ -934,6 +956,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1020) 0
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (510) 1
@@ -965,6 +988,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1020) 0
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 2
@@ -996,6 +1020,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1020) 0
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 3
@@ -1027,6 +1052,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1020) 0
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 4
@@ -1058,6 +1084,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1020) 0
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 5
@@ -1089,6 +1116,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1020) 0
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 6
@@ -1120,6 +1148,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1020) 0
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 7
@@ -1151,6 +1180,7 @@
 1040 G(1010) F(I:1020) NEXT I
  I: (1020) 0
  terminated:true
+ forget I
 1050 G(1010) RETURN
 540 G(510) F(J:510) LET T(J, K) = Y
  J: (550) 8
@@ -1160,6 +1190,7 @@
 550 G(510) F(J:510) NEXT J
  J: (550) 8
  terminated:true
+ forget J
 560 G(510) RETURN
 210 PRINT " X", "POLY.", "1ST DER.", "2D DER."
  X              POLY.           1ST DER.        2D DER.
@@ -1281,6 +1312,7 @@
 250 F(J:230) NEXT J
  J: (250) 8
  terminated:true
+ forget J
 260 STOP
 STOP in line 260
 

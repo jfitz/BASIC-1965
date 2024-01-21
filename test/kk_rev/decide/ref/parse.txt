@@ -14,13 +14,17 @@
  end:     ["Variable:N0 -> ."]
 30    READ K
  Variable:K -> .
-40    IF K <> 999 THEN 50
+40    IF K <> 999 THEN 48
  Variable:K -> .
  NumericValue:999
  BinaryOperatorNotEqual:<>(.,.) -> ?
- LineNumber:50
+ LineNumber:48
 45    BREAK
  
+48    LET I0 = I
+ Variable:I0 -> .
+ Variable:I -> .
+ AssignmentOperator:= . -> .
 50    LET T(I,0) = K
  Variable:I -> .
  NumericValue:0
@@ -48,9 +52,9 @@
 100 PRINT "SELECTED ACTS: ";
  TextValue:"SELECTED ACTS: "
  CarriageControl:;
-105 FOR I = I-1 TO 0 STEP -1
+105 FOR I = I0 TO 0 STEP -1
  control: Variable:I -> .
- start:   ["Variable:I -> .", "NumericValue:1", "BinaryOperatorMinus:-(.,.) -> ."]
+ start:   ["Variable:I0 -> ."]
  end:     ["NumericValue:0"]
  step:    ["NumericValue:1", "UnaryOperatorMinus:-(.) -> =."]
 110    LET K = T(I,0)
@@ -181,9 +185,9 @@
  NumericValue:2
  NumericValue:3
  NumericValue:3
-901 DATA 2,.5,4,0.5,5
+901 DATA 2,0.5,4,0.5,5
  NumericValue:2
- NumericValue:.5
+ NumericValue:0.5
  NumericValue:4
  NumericValue:0.5
  NumericValue:5

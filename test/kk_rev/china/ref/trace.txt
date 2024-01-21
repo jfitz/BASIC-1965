@@ -576,10 +576,9 @@
 65 F(I:20,K:40) BREAK
 70 F(I:20,K:40) NEXT K
  terminated:true
-75 F(I:20) IF K < M - 1 THEN 100
- K: (70) 39
- M: (30) 100
- K < M - 1: true
+ forget K
+75 F(I:20) IF BROKEN() THEN 100
+ BROKEN(): true
 100 F(I:20) LET P = P * M
  P: (10) 3
  M: (30) 100
@@ -990,10 +989,9 @@
 65 F(I:20,K:40) BREAK
 70 F(I:20,K:40) NEXT K
  terminated:true
-75 F(I:20) IF K < M - 1 THEN 100
- K: (70) 27
- M: (30) 31
- K < M - 1: true
+ forget K
+75 F(I:20) IF BROKEN() THEN 100
+ BROKEN(): true
 100 F(I:20) LET P = P * M
  P: (100) 300
  M: (30) 31
@@ -1180,10 +1178,9 @@
 65 F(I:20,K:40) BREAK
 70 F(I:20,K:40) NEXT K
  terminated:true
-75 F(I:20) IF K < M - 1 THEN 100
- K: (70) 11
- M: (30) 101
- K < M - 1: true
+ forget K
+75 F(I:20) IF BROKEN() THEN 100
+ BROKEN(): true
 100 F(I:20) LET P = P * M
  P: (100) 9300
  M: (30) 101
@@ -1194,6 +1191,7 @@
 120 F(I:20) NEXT I
  I: (120) 4
  terminated:true
+ forget I
 130 PRINT "X  IS CONGRUENT TO " B; " MODULO " P
 X  IS CONGRUENT TO 
  B: (110) 110519

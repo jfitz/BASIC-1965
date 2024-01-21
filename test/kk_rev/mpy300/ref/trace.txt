@@ -5,113 +5,117 @@
 20 DIM A(N0), B(N0), C(N0), X(N0)
  N0: (10) 100
 110 GOSUB 1000
-1010 G(1010) F(I:1010) FOR I = 0 TO N0
+1008 G(1008) OPTION FORGET_FORNEXT FALSE
+ FORGET_FORNEXT = false
+1010 G(1008) F(I:1010) FOR I = 0 TO N0
  N0: (10) 100
  I = 0
  N0 = 100
  terminated:false
-1020 G(1010) F(I:1010) READ X(I)
+1020 G(1008) F(I:1010) READ X(I)
  I: (1010) 0
  X(0) = 123
-1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) IF X(I) >= 0 THEN 1040
  I: (1010) 0
  X(0): (1020) 123
  X(I) >= 0: true
-1040 G(1010) F(I:1010) NEXT I
+1040 G(1008) F(I:1010) NEXT I
  I: (1010) 0
  terminated:false
  I = 1
-1020 G(1010) F(I:1010) READ X(I)
+1020 G(1008) F(I:1010) READ X(I)
  I: (1040) 1
  X(1) = 456
-1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) IF X(I) >= 0 THEN 1040
  I: (1040) 1
  X(1): (1020) 456
  X(I) >= 0: true
-1040 G(1010) F(I:1010) NEXT I
+1040 G(1008) F(I:1010) NEXT I
  I: (1040) 1
  terminated:false
  I = 2
-1020 G(1010) F(I:1010) READ X(I)
+1020 G(1008) F(I:1010) READ X(I)
  I: (1040) 2
  X(2) = 789
-1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) IF X(I) >= 0 THEN 1040
  I: (1040) 2
  X(2): (1020) 789
  X(I) >= 0: true
-1040 G(1010) F(I:1010) NEXT I
+1040 G(1008) F(I:1010) NEXT I
  I: (1040) 2
  terminated:false
  I = 3
-1020 G(1010) F(I:1010) READ X(I)
+1020 G(1008) F(I:1010) READ X(I)
  I: (1040) 3
  X(3) = 333
-1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) IF X(I) >= 0 THEN 1040
  I: (1040) 3
  X(3): (1020) 333
  X(I) >= 0: true
-1040 G(1010) F(I:1010) NEXT I
+1040 G(1008) F(I:1010) NEXT I
  I: (1040) 3
  terminated:false
  I = 4
-1020 G(1010) F(I:1010) READ X(I)
+1020 G(1008) F(I:1010) READ X(I)
  I: (1040) 4
  X(4) = -1
-1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) IF X(I) >= 0 THEN 1040
  I: (1040) 4
  X(4): (1020) -1
  X(I) >= 0: false
-1035 G(1010) F(I:1010) BREAK
-1040 G(1010) F(I:1010) NEXT I
+1035 G(1008) F(I:1010) BREAK
+1040 G(1008) F(I:1010) NEXT I
  terminated:true
-1050 G(1010) IF I > N0 THEN 1200
+1042 G(1008) OPTION FORGET_FORNEXT
+ FORGET_FORNEXT = true
+1050 G(1008) IF I > N0 THEN 1200
  I: (1040) 4
  N0: (10) 100
  I > N0: false
-1100 G(1010) LET L = I - 1
+1100 G(1008) LET L = I - 1
  I: (1040) 4
  L = 3
-1110 G(1010) F(I:1110) FOR I = 0 TO L
+1110 G(1008) F(I:1110) FOR I = 0 TO L
  L: (1100) 3
  I = 0
  L = 3
  terminated:false
-1120 G(1010) F(I:1110) LET C(I) = X(L - I)
+1120 G(1008) F(I:1110) LET C(I) = X(L - I)
  I: (1110) 0
  L: (1100) 3
  X(3): (1020) 333
  C(0) = 333
-1130 G(1010) F(I:1110) NEXT I
+1130 G(1008) F(I:1110) NEXT I
  I: (1110) 0
  terminated:false
  I = 1
-1120 G(1010) F(I:1110) LET C(I) = X(L - I)
+1120 G(1008) F(I:1110) LET C(I) = X(L - I)
  I: (1130) 1
  L: (1100) 3
  X(2): (1020) 789
  C(1) = 789
-1130 G(1010) F(I:1110) NEXT I
+1130 G(1008) F(I:1110) NEXT I
  I: (1130) 1
  terminated:false
  I = 2
-1120 G(1010) F(I:1110) LET C(I) = X(L - I)
+1120 G(1008) F(I:1110) LET C(I) = X(L - I)
  I: (1130) 2
  L: (1100) 3
  X(1): (1020) 456
  C(2) = 456
-1130 G(1010) F(I:1110) NEXT I
+1130 G(1008) F(I:1110) NEXT I
  I: (1130) 2
  terminated:false
  I = 3
-1120 G(1010) F(I:1110) LET C(I) = X(L - I)
+1120 G(1008) F(I:1110) LET C(I) = X(L - I)
  I: (1130) 3
  L: (1100) 3
  X(0): (1020) 123
  C(3) = 123
-1130 G(1010) F(I:1110) NEXT I
+1130 G(1008) F(I:1110) NEXT I
  I: (1130) 3
  terminated:true
-1140 G(1010) RETURN
+1140 G(1008) RETURN
 120 GOSUB 2000
 2010 G(2010) IF C(L) >= 100 THEN 2200
  L: (1100) 3
@@ -191,6 +195,7 @@
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2210) 3
  I = 0: false
@@ -265,6 +270,7 @@
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 2
  I = 0: false
@@ -339,6 +345,7 @@
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 1
  I = 0: false
@@ -413,6 +420,7 @@
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 0
  I = 0: true
@@ -468,113 +476,117 @@ TIMES
 180 PRINT
 
 210 GOSUB 1000
-1010 G(1010) F(I:1010) FOR I = 0 TO N0
+1008 G(1008) OPTION FORGET_FORNEXT FALSE
+ FORGET_FORNEXT = false
+1010 G(1008) F(I:1010) FOR I = 0 TO N0
  N0: (10) 100
  I = 0
  N0 = 100
  terminated:false
-1020 G(1010) F(I:1010) READ X(I)
+1020 G(1008) F(I:1010) READ X(I)
  I: (1010) 0
  X(0) = 987
-1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) IF X(I) >= 0 THEN 1040
  I: (1010) 0
  X(0): (1020) 987
  X(I) >= 0: true
-1040 G(1010) F(I:1010) NEXT I
+1040 G(1008) F(I:1010) NEXT I
  I: (1010) 0
  terminated:false
  I = 1
-1020 G(1010) F(I:1010) READ X(I)
+1020 G(1008) F(I:1010) READ X(I)
  I: (1040) 1
  X(1) = 654
-1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) IF X(I) >= 0 THEN 1040
  I: (1040) 1
  X(1): (1020) 654
  X(I) >= 0: true
-1040 G(1010) F(I:1010) NEXT I
+1040 G(1008) F(I:1010) NEXT I
  I: (1040) 1
  terminated:false
  I = 2
-1020 G(1010) F(I:1010) READ X(I)
+1020 G(1008) F(I:1010) READ X(I)
  I: (1040) 2
  X(2) = 321
-1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) IF X(I) >= 0 THEN 1040
  I: (1040) 2
  X(2): (1020) 321
  X(I) >= 0: true
-1040 G(1010) F(I:1010) NEXT I
+1040 G(1008) F(I:1010) NEXT I
  I: (1040) 2
  terminated:false
  I = 3
-1020 G(1010) F(I:1010) READ X(I)
+1020 G(1008) F(I:1010) READ X(I)
  I: (1040) 3
  X(3) = 0
-1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) IF X(I) >= 0 THEN 1040
  I: (1040) 3
  X(3): (1020) 0
  X(I) >= 0: true
-1040 G(1010) F(I:1010) NEXT I
+1040 G(1008) F(I:1010) NEXT I
  I: (1040) 3
  terminated:false
  I = 4
-1020 G(1010) F(I:1010) READ X(I)
+1020 G(1008) F(I:1010) READ X(I)
  I: (1040) 4
  X(4) = -1
-1030 G(1010) F(I:1010) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) IF X(I) >= 0 THEN 1040
  I: (1040) 4
  X(4): (1020) -1
  X(I) >= 0: false
-1035 G(1010) F(I:1010) BREAK
-1040 G(1010) F(I:1010) NEXT I
+1035 G(1008) F(I:1010) BREAK
+1040 G(1008) F(I:1010) NEXT I
  terminated:true
-1050 G(1010) IF I > N0 THEN 1200
+1042 G(1008) OPTION FORGET_FORNEXT
+ FORGET_FORNEXT = true
+1050 G(1008) IF I > N0 THEN 1200
  I: (1040) 4
  N0: (10) 100
  I > N0: false
-1100 G(1010) LET L = I - 1
+1100 G(1008) LET L = I - 1
  I: (1040) 4
  L = 3
-1110 G(1010) F(I:1110) FOR I = 0 TO L
+1110 G(1008) F(I:1110) FOR I = 0 TO L
  L: (1100) 3
  I = 0
  L = 3
  terminated:false
-1120 G(1010) F(I:1110) LET C(I) = X(L - I)
+1120 G(1008) F(I:1110) LET C(I) = X(L - I)
  I: (1110) 0
  L: (1100) 3
  X(3): (1020) 0
  C(0) = 0
-1130 G(1010) F(I:1110) NEXT I
+1130 G(1008) F(I:1110) NEXT I
  I: (1110) 0
  terminated:false
  I = 1
-1120 G(1010) F(I:1110) LET C(I) = X(L - I)
+1120 G(1008) F(I:1110) LET C(I) = X(L - I)
  I: (1130) 1
  L: (1100) 3
  X(2): (1020) 321
  C(1) = 321
-1130 G(1010) F(I:1110) NEXT I
+1130 G(1008) F(I:1110) NEXT I
  I: (1130) 1
  terminated:false
  I = 2
-1120 G(1010) F(I:1110) LET C(I) = X(L - I)
+1120 G(1008) F(I:1110) LET C(I) = X(L - I)
  I: (1130) 2
  L: (1100) 3
  X(1): (1020) 654
  C(2) = 654
-1130 G(1010) F(I:1110) NEXT I
+1130 G(1008) F(I:1110) NEXT I
  I: (1130) 2
  terminated:false
  I = 3
-1120 G(1010) F(I:1110) LET C(I) = X(L - I)
+1120 G(1008) F(I:1110) LET C(I) = X(L - I)
  I: (1130) 3
  L: (1100) 3
  X(0): (1020) 987
  C(3) = 987
-1130 G(1010) F(I:1110) NEXT I
+1130 G(1008) F(I:1110) NEXT I
  I: (1130) 3
  terminated:true
-1140 G(1010) RETURN
+1140 G(1008) RETURN
 220 GOSUB 2000
 2010 G(2010) IF C(L) >= 100 THEN 2200
  L: (1100) 3
@@ -654,6 +666,7 @@ TIMES
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2210) 3
  I = 0: false
@@ -728,6 +741,7 @@ TIMES
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 2
  I = 0: false
@@ -802,6 +816,7 @@ TIMES
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 1
  I = 0: false
@@ -876,6 +891,7 @@ TIMES
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 0
  I = 0: true
@@ -1060,6 +1076,7 @@ EQUALS
 390 F(J:350,K:360) NEXT K
  K: (390) 3
  terminated:true
+ forget K
 400 F(J:350) NEXT J
  J: (350) 0
  terminated:false
@@ -1132,6 +1149,7 @@ EQUALS
 390 F(J:350,K:360) NEXT K
  K: (390) 3
  terminated:true
+ forget K
 400 F(J:350) NEXT J
  J: (400) 1
  terminated:false
@@ -1204,6 +1222,7 @@ EQUALS
 390 F(J:350,K:360) NEXT K
  K: (390) 3
  terminated:true
+ forget K
 400 F(J:350) NEXT J
  J: (400) 2
  terminated:false
@@ -1276,9 +1295,11 @@ EQUALS
 390 F(J:350,K:360) NEXT K
  K: (390) 3
  terminated:true
+ forget K
 400 F(J:350) NEXT J
  J: (400) 3
  terminated:true
+ forget J
 410 GOTO 600
 610 GOSUB 3000
 3010 G(3010) LET C(L + 1) = 0
@@ -1521,6 +1542,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2210) 7
  I = 0: false
@@ -1595,6 +1617,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 6
  I = 0: false
@@ -1669,6 +1692,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 5
  I = 0: false
@@ -1743,6 +1767,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 4
  I = 0: false
@@ -1817,6 +1842,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 3
  I = 0: false
@@ -1891,6 +1917,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 2
  I = 0: false
@@ -1965,6 +1992,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 1
  I = 0: false
@@ -2039,6 +2067,7 @@ EQUALS
 2290 G(2010) F(I:2210,J:2240) NEXT J
  J: (2290) 3
  terminated:true
+ forget J
 2300 G(2010) F(I:2210) IF I = 0 THEN 2320
  I: (2320) 0
  I = 0: true

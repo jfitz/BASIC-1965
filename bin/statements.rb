@@ -2255,8 +2255,7 @@ class NextStatement < AbstractStatement
     terminated = fornext_control.terminated?(interpreter)
 
     io = interpreter.trace_out
-    s = " terminated:#{terminated}"
-    io.trace_output(s)
+    io.trace_output(" terminated:#{terminated}")
 
     if terminated
       interpreter.exit_loop(fornext_control)

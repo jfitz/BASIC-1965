@@ -6,6 +6,8 @@
  N0 = 100
 20 DIM L(N0)
  N0: (15) 100
+22 LET I9 = 0
+ I9 = 0
 30 F(I:30) FOR I = 1 TO N0
  N0: (15) 100
  I = 1
@@ -14,10 +16,13 @@
 40 F(I:30) READ L(I)
  I: (30) 1
  L(1) = 7
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (30) 1
  L(1): (40) 7
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (30) 1
+ I9 = 1
 60 F(I:30) NEXT I
  I: (30) 1
  terminated:false
@@ -25,10 +30,13 @@
 40 F(I:30) READ L(I)
  I: (60) 2
  L(2) = 18
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 2
  L(2): (40) 18
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 2
+ I9 = 2
 60 F(I:30) NEXT I
  I: (60) 2
  terminated:false
@@ -36,10 +44,13 @@
 40 F(I:30) READ L(I)
  I: (60) 3
  L(3) = 5
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 3
  L(3): (40) 5
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 3
+ I9 = 3
 60 F(I:30) NEXT I
  I: (60) 3
  terminated:false
@@ -47,10 +58,13 @@
 40 F(I:30) READ L(I)
  I: (60) 4
  L(4) = 5
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 4
  L(4): (40) 5
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 4
+ I9 = 4
 60 F(I:30) NEXT I
  I: (60) 4
  terminated:false
@@ -58,10 +72,13 @@
 40 F(I:30) READ L(I)
  I: (60) 5
  L(5) = 20
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 5
  L(5): (40) 20
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 5
+ I9 = 5
 60 F(I:30) NEXT I
  I: (60) 5
  terminated:false
@@ -69,10 +86,13 @@
 40 F(I:30) READ L(I)
  I: (60) 6
  L(6) = 9
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 6
  L(6): (40) 9
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 6
+ I9 = 6
 60 F(I:30) NEXT I
  I: (60) 6
  terminated:false
@@ -80,10 +100,13 @@
 40 F(I:30) READ L(I)
  I: (60) 7
  L(7) = 14
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 7
  L(7): (40) 14
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 7
+ I9 = 7
 60 F(I:30) NEXT I
  I: (60) 7
  terminated:false
@@ -91,10 +114,13 @@
 40 F(I:30) READ L(I)
  I: (60) 8
  L(8) = 7
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 8
  L(8): (40) 7
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 8
+ I9 = 8
 60 F(I:30) NEXT I
  I: (60) 8
  terminated:false
@@ -102,10 +128,13 @@
 40 F(I:30) READ L(I)
  I: (60) 9
  L(9) = 19
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 9
  L(9): (40) 19
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 9
+ I9 = 9
 60 F(I:30) NEXT I
  I: (60) 9
  terminated:false
@@ -113,10 +142,13 @@
 40 F(I:30) READ L(I)
  I: (60) 10
  L(10) = 0
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 10
  L(10): (40) 0
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 10
+ I9 = 10
 60 F(I:30) NEXT I
  I: (60) 10
  terminated:false
@@ -124,10 +156,13 @@
 40 F(I:30) READ L(I)
  I: (60) 11
  L(11) = 6
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 11
  L(11): (40) 6
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 11
+ I9 = 11
 60 F(I:30) NEXT I
  I: (60) 11
  terminated:false
@@ -135,10 +170,13 @@
 40 F(I:30) READ L(I)
  I: (60) 12
  L(12) = 18
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 12
  L(12): (40) 18
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 12
+ I9 = 12
 60 F(I:30) NEXT I
  I: (60) 12
  terminated:false
@@ -146,10 +184,13 @@
 40 F(I:30) READ L(I)
  I: (60) 13
  L(13) = 15
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 13
  L(13): (40) 15
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 13
+ I9 = 13
 60 F(I:30) NEXT I
  I: (60) 13
  terminated:false
@@ -157,10 +198,13 @@
 40 F(I:30) READ L(I)
  I: (60) 14
  L(14) = 13
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 14
  L(14): (40) 13
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 14
+ I9 = 14
 60 F(I:30) NEXT I
  I: (60) 14
  terminated:false
@@ -168,10 +212,13 @@
 40 F(I:30) READ L(I)
  I: (60) 15
  L(15) = 0
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 15
  L(15): (40) 0
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 15
+ I9 = 15
 60 F(I:30) NEXT I
  I: (60) 15
  terminated:false
@@ -179,10 +226,13 @@
 40 F(I:30) READ L(I)
  I: (60) 16
  L(16) = 20
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 16
  L(16): (40) 20
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 16
+ I9 = 16
 60 F(I:30) NEXT I
  I: (60) 16
  terminated:false
@@ -190,10 +240,13 @@
 40 F(I:30) READ L(I)
  I: (60) 17
  L(17) = 8
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 17
  L(17): (40) 8
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 17
+ I9 = 17
 60 F(I:30) NEXT I
  I: (60) 17
  terminated:false
@@ -201,10 +254,13 @@
 40 F(I:30) READ L(I)
  I: (60) 18
  L(18) = 5
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 18
  L(18): (40) 5
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 18
+ I9 = 18
 60 F(I:30) NEXT I
  I: (60) 18
  terminated:false
@@ -212,10 +268,13 @@
 40 F(I:30) READ L(I)
  I: (60) 19
  L(19) = 0
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 19
  L(19): (40) 0
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 19
+ I9 = 19
 60 F(I:30) NEXT I
  I: (60) 19
  terminated:false
@@ -223,10 +282,13 @@
 40 F(I:30) READ L(I)
  I: (60) 20
  L(20) = 4
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 20
  L(20): (40) 4
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 20
+ I9 = 20
 60 F(I:30) NEXT I
  I: (60) 20
  terminated:false
@@ -234,10 +296,13 @@
 40 F(I:30) READ L(I)
  I: (60) 21
  L(21) = 1
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 21
  L(21): (40) 1
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 21
+ I9 = 21
 60 F(I:30) NEXT I
  I: (60) 21
  terminated:false
@@ -245,10 +310,13 @@
 40 F(I:30) READ L(I)
  I: (60) 22
  L(22) = 18
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 22
  L(22): (40) 18
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 22
+ I9 = 22
 60 F(I:30) NEXT I
  I: (60) 22
  terminated:false
@@ -256,10 +324,13 @@
 40 F(I:30) READ L(I)
  I: (60) 23
  L(23) = 20
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 23
  L(23): (40) 20
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 23
+ I9 = 23
 60 F(I:30) NEXT I
  I: (60) 23
  terminated:false
@@ -267,10 +338,13 @@
 40 F(I:30) READ L(I)
  I: (60) 24
  L(24) = 13
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 24
  L(24): (40) 13
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 24
+ I9 = 24
 60 F(I:30) NEXT I
  I: (60) 24
  terminated:false
@@ -278,10 +352,13 @@
 40 F(I:30) READ L(I)
  I: (60) 25
  L(25) = 15
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 25
  L(25): (40) 15
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 25
+ I9 = 25
 60 F(I:30) NEXT I
  I: (60) 25
  terminated:false
@@ -289,10 +366,13 @@
 40 F(I:30) READ L(I)
  I: (60) 26
  L(26) = 21
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 26
  L(26): (40) 21
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 26
+ I9 = 26
 60 F(I:30) NEXT I
  I: (60) 26
  terminated:false
@@ -300,10 +380,13 @@
 40 F(I:30) READ L(I)
  I: (60) 27
  L(27) = 20
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 27
  L(27): (40) 20
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 27
+ I9 = 27
 60 F(I:30) NEXT I
  I: (60) 27
  terminated:false
@@ -311,10 +394,13 @@
 40 F(I:30) READ L(I)
  I: (60) 28
  L(28) = 8
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 28
  L(28): (40) 8
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 28
+ I9 = 28
 60 F(I:30) NEXT I
  I: (60) 28
  terminated:false
@@ -322,10 +408,13 @@
 40 F(I:30) READ L(I)
  I: (60) 29
  L(29) = 0
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 29
  L(29): (40) 0
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 29
+ I9 = 29
 60 F(I:30) NEXT I
  I: (60) 29
  terminated:false
@@ -333,10 +422,13 @@
 40 F(I:30) READ L(I)
  I: (60) 30
  L(30) = 20
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 30
  L(30): (40) 20
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 30
+ I9 = 30
 60 F(I:30) NEXT I
  I: (60) 30
  terminated:false
@@ -344,10 +436,13 @@
 40 F(I:30) READ L(I)
  I: (60) 31
  L(31) = 9
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 31
  L(31): (40) 9
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 31
+ I9 = 31
 60 F(I:30) NEXT I
  I: (60) 31
  terminated:false
@@ -355,10 +450,13 @@
 40 F(I:30) READ L(I)
  I: (60) 32
  L(32) = 13
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 32
  L(32): (40) 13
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 32
+ I9 = 32
 60 F(I:30) NEXT I
  I: (60) 32
  terminated:false
@@ -366,10 +464,13 @@
 40 F(I:30) READ L(I)
  I: (60) 33
  L(33) = 5
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 33
  L(33): (40) 5
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 33
+ I9 = 33
 60 F(I:30) NEXT I
  I: (60) 33
  terminated:false
@@ -377,10 +478,13 @@
 40 F(I:30) READ L(I)
  I: (60) 34
  L(34) = 19
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 34
  L(34): (40) 19
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 34
+ I9 = 34
 60 F(I:30) NEXT I
  I: (60) 34
  terminated:false
@@ -388,10 +492,13 @@
 40 F(I:30) READ L(I)
  I: (60) 35
  L(35) = 8
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 35
  L(35): (40) 8
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 35
+ I9 = 35
 60 F(I:30) NEXT I
  I: (60) 35
  terminated:false
@@ -399,10 +506,13 @@
 40 F(I:30) READ L(I)
  I: (60) 36
  L(36) = 1
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 36
  L(36): (40) 1
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 36
+ I9 = 36
 60 F(I:30) NEXT I
  I: (60) 36
  terminated:false
@@ -410,10 +520,13 @@
 40 F(I:30) READ L(I)
  I: (60) 37
  L(37) = 18
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 37
  L(37): (40) 18
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 37
+ I9 = 37
 60 F(I:30) NEXT I
  I: (60) 37
  terminated:false
@@ -421,10 +534,13 @@
 40 F(I:30) READ L(I)
  I: (60) 38
  L(38) = 9
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 38
  L(38): (40) 9
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 38
+ I9 = 38
 60 F(I:30) NEXT I
  I: (60) 38
  terminated:false
@@ -432,10 +548,13 @@
 40 F(I:30) READ L(I)
  I: (60) 39
  L(39) = 14
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 39
  L(39): (40) 14
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 39
+ I9 = 39
 60 F(I:30) NEXT I
  I: (60) 39
  terminated:false
@@ -443,10 +562,13 @@
 40 F(I:30) READ L(I)
  I: (60) 40
  L(40) = 7
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 40
  L(40): (40) 7
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 40
+ I9 = 40
 60 F(I:30) NEXT I
  I: (60) 40
  terminated:false
@@ -454,10 +576,13 @@
 40 F(I:30) READ L(I)
  I: (60) 41
  L(41) = 0
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 41
  L(41): (40) 0
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 41
+ I9 = 41
 60 F(I:30) NEXT I
  I: (60) 41
  terminated:false
@@ -465,10 +590,13 @@
 40 F(I:30) READ L(I)
  I: (60) 42
  L(42) = 19
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 42
  L(42): (40) 19
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 42
+ I9 = 42
 60 F(I:30) NEXT I
  I: (60) 42
  terminated:false
@@ -476,10 +604,13 @@
 40 F(I:30) READ L(I)
  I: (60) 43
  L(43) = 25
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 43
  L(43): (40) 25
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 43
+ I9 = 43
 60 F(I:30) NEXT I
  I: (60) 43
  terminated:false
@@ -487,10 +618,13 @@
 40 F(I:30) READ L(I)
  I: (60) 44
  L(44) = 19
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 44
  L(44): (40) 19
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 44
+ I9 = 44
 60 F(I:30) NEXT I
  I: (60) 44
  terminated:false
@@ -498,10 +632,13 @@
 40 F(I:30) READ L(I)
  I: (60) 45
  L(45) = 20
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 45
  L(45): (40) 20
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 45
+ I9 = 45
 60 F(I:30) NEXT I
  I: (60) 45
  terminated:false
@@ -509,10 +646,13 @@
 40 F(I:30) READ L(I)
  I: (60) 46
  L(46) = 5
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 46
  L(46): (40) 5
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 46
+ I9 = 46
 60 F(I:30) NEXT I
  I: (60) 46
  terminated:false
@@ -520,10 +660,13 @@
 40 F(I:30) READ L(I)
  I: (60) 47
  L(47) = 13
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 47
  L(47): (40) 13
  L(I) >= 0: true
+58 F(I:30) LET I9 = I
+ I: (60) 47
+ I9 = 47
 60 F(I:30) NEXT I
  I: (60) 47
  terminated:false
@@ -531,16 +674,14 @@
 40 F(I:30) READ L(I)
  I: (60) 48
  L(48) = -1
-50 F(I:30) IF L(I) >= 0 THEN 60
+50 F(I:30) IF L(I) >= 0 THEN 58
  I: (60) 48
  L(48): (40) -1
  L(I) >= 0: false
 55 F(I:30) BREAK
 60 F(I:30) NEXT I
  terminated:true
-70 LET I9 = I - 1
- I: (60) 48
- I9 = 47
+ forget I
 100 PRINT "PLEASE TYPE KEY (5 NUMBERS)";
 PLEASE TYPE KEY (5 NUMBERS)
 110 INPUT K(1), K(2), K(3), K(4), K(5)
@@ -569,7 +710,7 @@ ENCODED MESSAGE:
 215 LET J = 1
  J = 1
 220 F(I:220) FOR I = 1 TO I9
- I9: (70) 47
+ I9: (58) 47
  I = 1
  I9 = 47
  terminated:false
@@ -3798,12 +3939,13 @@ N
 300 F(I:220) NEXT I
  I: (300) 47
  terminated:true
+ forget I
 310 PRINT
 
 315 LET J = 1
  J = 1
 320 F(I:320) FOR I = 1 TO I9
- I9: (70) 47
+ I9: (58) 47
  I = 1
  I9 = 47
  terminated:false
@@ -4879,6 +5021,7 @@ N
 400 F(I:320) NEXT I
  I: (400) 47
  terminated:true
+ forget I
 800 STOP
 STOP in line 800
 

@@ -6,7 +6,7 @@
 60       IF X - M*INT(X/M) <> A THEN 70
 65       BREAK
 70    NEXT K
-75    IF K < M-1 THEN 100
+75    IF BROKEN() THEN 100
 80    PRINT "ERROR"
 90    STOP
 100 LET P = P*M

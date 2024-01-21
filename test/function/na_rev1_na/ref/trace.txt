@@ -1,4 +1,5 @@
 10 OPTION BASE 0
+ BASE = 0
 20 DIM A(6)
 30 F(I:30) FOR I = 0 TO 6
  I = 0
@@ -91,6 +92,7 @@ ARRAY B
  60              50              40              30              20              10              0
 890 G(810) RETURN
 120 OPTION BASE 1
+ BASE = 1
 130 ARR B = REV1(A)
  A(1): (40) 10
  A(2): (40) 20
@@ -105,6 +107,7 @@ ARRAY B
  B(5) = 20
  B(6) = 10
 140 OPTION BASE 0
+ BASE = 0
 150 GOSUB 800
 810 G(810) PRINT "ARRAY A"
 ARRAY A

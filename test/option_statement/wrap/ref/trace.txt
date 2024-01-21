@@ -1,5 +1,6 @@
 190 DATA 1, 2, 3, 4, 5
 20 OPTION BASE 1
+ BASE = 1
 30 DIM A(5)
 40 ARR READ A
  A(1) = 1
@@ -15,6 +16,7 @@
  A(5): (40) 5
  1               2               3               4               5
 100 OPTION WRAP TRUE
+ WRAP = true
 110 PRINT "LAST: "; A(0); " FIRST: "; A(6)
 LAST: 
  A(0): (40) 5
@@ -22,6 +24,7 @@ LAST:
  A(6): (40) 1
  1
 120 OPTION WRAP FALSE
+ WRAP = false
 130 PRINT "LAST: "; A(0); " FIRST: "; A(6)
 LAST: 
 Error 118 Subscript out of range for 0 in line 130

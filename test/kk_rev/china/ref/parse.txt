@@ -37,12 +37,8 @@
  
 70    NEXT K
  Variable:K -> .
-75    IF K < M-1 THEN 100
- Variable:K -> .
- Variable:M -> .
- NumericValue:1
- BinaryOperatorMinus:-(.,.) -> .
- BinaryOperatorLess:<(.,.) -> ?
+75    IF BROKEN() THEN 100
+ FunctionBroken:BROKEN() -> ?
  LineNumber:100
 80    PRINT "ERROR"
  TextValue:"ERROR"

@@ -660,6 +660,8 @@
  BinaryOperatorPlus:+(.,.) -> .
  Variable:S(.,.) -> .
  AssignmentOperator:= . -> .
+5118 OPTION FORGET_FORNEXT FALSE
+ BooleanValue:false
 5120 FOR I = 1 TO 6
  control: Variable:I -> .
  start:   ["NumericValue:1"]
@@ -675,9 +677,7 @@
  
 5140 NEXT I
  Variable:I -> .
-5141 IF BROKEN() THEN 5200
- FunctionBroken:BROKEN() -> ?
- LineNumber:5200
+5142 OPTION FORGET_FORNEXT
 5200 LET I1 = I+1
  Variable:I1 -> .
  Variable:I -> .

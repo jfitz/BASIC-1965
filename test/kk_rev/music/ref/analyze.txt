@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 150
-Number of valid statements: 126
+Number of lines: 151
+Number of valid statements: 127
 Number of comments: 12
-Number of executable statements: 119
+Number of executable statements: 120
 
 Complexity:
 
-Comment density: 0.095
-Comprehension effort: 393
-McCabe complexity: 41
+Comment density: 0.094
+Comprehension effort: 392
+McCabe complexity: 40
 Halstead complexity:
- length: 808
- volume: 3907.716
- difficulty: 52.847
- effort: 206509.237
- language: 1.399
- intelligence: 73.945
- time: 191.212
+ length: 803
+ volume: 3877.136
+ difficulty: 53.250
+ effort: 206457.488
+ language: 1.367
+ intelligence: 72.810
+ time: 191.164
 
 10 (0 4) DIM S(4, 100), P(6, 6), M(100)
   Origs: :start
@@ -425,9 +425,12 @@ Halstead complexity:
   Dests: 5110:auto
 5110 (0 3) LET C1 = S(0, N + 1)
   Origs: 5100:auto
+  Dests: 5118:auto
+5118 (0 2) OPTION FORGET_FORNEXT FALSE
+  Origs: 5110:auto
   Dests: 5120:auto
 5120 F(I:5120) (1 3) FOR I = 1 TO 6
-  Origs: 5110:auto
+  Origs: 5118:auto
   Dests: 5130:fornext, 5140:fornext
 5130 F(I:5120) (1 4) IF C2 <> P(C1, I) THEN 5140
   Origs: 5120:fornext
@@ -437,12 +440,12 @@ Halstead complexity:
   Dests: 5140:fornext
 5140 F(I:5120) (0 1) NEXT I
   Origs: 5120:fornext, 5130:ifthen, 5139:fornext
-  Dests: 5141:auto
-5141 (1 4) IF BROKEN() THEN 5200
+  Dests: 5142:auto
+5142 (0 1) OPTION FORGET_FORNEXT
   Origs: 5140:auto
-  Dests: 5200:auto, 5200:ifthen
+  Dests: 5200:auto
 5200 (0 4) LET I1 = I + 1
-  Origs: 5141:auto, 5141:ifthen
+  Origs: 5142:auto
   Dests: 5210:auto
 5210 (0 3) GOTO 510
   Origs: 5200:auto

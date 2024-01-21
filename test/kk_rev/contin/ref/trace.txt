@@ -42,6 +42,7 @@
 170 F(I:120,J:140) NEXT J
  J: (170) 2
  terminated:true
+ forget J
 180 F(I:120) LET R(I) = S
  I: (120) 1
  S: (160) 59
@@ -84,6 +85,7 @@
 170 F(I:120,J:140) NEXT J
  J: (170) 2
  terminated:true
+ forget J
 180 F(I:120) LET R(I) = S
  I: (190) 2
  S: (160) 100
@@ -126,6 +128,7 @@
 170 F(I:120,J:140) NEXT J
  J: (170) 2
  terminated:true
+ forget J
 180 F(I:120) LET R(I) = S
  I: (190) 3
  S: (160) 175
@@ -133,6 +136,7 @@
 190 F(I:120) NEXT I
  I: (190) 3
  terminated:true
+ forget I
 210 LET S1 = 0
  S1 = 0
 220 F(J:220) FOR J = 1 TO N
@@ -176,6 +180,7 @@
 260 F(J:220,I:240) NEXT I
  I: (260) 3
  terminated:true
+ forget I
 270 F(J:220) LET C(J) = S
  J: (220) 1
  S: (250) 181
@@ -224,6 +229,7 @@
 260 F(J:220,I:240) NEXT I
  I: (260) 3
  terminated:true
+ forget I
 270 F(J:220) LET C(J) = S
  J: (290) 2
  S: (250) 153
@@ -235,6 +241,7 @@
 290 F(J:220) NEXT J
  J: (290) 2
  terminated:true
+ forget J
 310 PRINT
 
 320 LET C = 0
@@ -294,6 +301,7 @@
 380 F(I:330,J:340) NEXT J
  J: (380) 2
  terminated:true
+ forget J
 390 F(I:330) PRINT
 
 400 F(I:330) NEXT I
@@ -350,6 +358,7 @@
 380 F(I:330,J:340) NEXT J
  J: (380) 2
  terminated:true
+ forget J
 390 F(I:330) PRINT
 
 400 F(I:330) NEXT I
@@ -406,11 +415,13 @@
 380 F(I:330,J:340) NEXT J
  J: (380) 2
  terminated:true
+ forget J
 390 F(I:330) PRINT
 
 400 F(I:330) NEXT I
  I: (400) 3
  terminated:true
+ forget I
 410 PRINT
 
 420 PRINT "CHI-SQUARE EQUALS"; C; "ON"; (M - 1) * (N - 1); "DEGREES OF FREEDOM"

@@ -219,6 +219,8 @@
 600
 610 REM MAKE OPTIMAL MOVE
  Remark:MAKE OPTIMAL MOVE
+618 OPTION FORGET_FORNEXT FALSE
+ BooleanValue:false
 620 FOR J = 1 TO 4
  control: Variable:J -> .
  start:   ["NumericValue:1"]
@@ -233,6 +235,7 @@
  
 640 NEXT J
  Variable:J -> .
+642 OPTION FORGET_FORNEXT
 650 FOR P = 1 TO 3
  control: Variable:P -> .
  start:   ["NumericValue:1"]

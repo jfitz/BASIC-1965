@@ -6,10 +6,14 @@
  Variable:C -> .
  NumericValue:0
  AssignmentOperator:= =. -> .
-120 FOR N = 1 TO 1000
- control: Variable:N -> .
+112 LET N = 1000
+ Variable:N -> .
+ NumericValue:1000
+ AssignmentOperator:= =. -> .
+120 FOR I = 1 TO N
+ control: Variable:I -> .
  start:   ["NumericValue:1"]
- end:     ["NumericValue:1000"]
+ end:     ["Variable:N -> ."]
 130    LET Y = RND(1)
  Variable:Y -> .
  NumericValue:1
@@ -62,8 +66,8 @@
  NumericValue:1
  BinaryOperatorPlus:+(.,.) -> .
  AssignmentOperator:= . -> .
-200 NEXT N
- Variable:N -> .
+200 NEXT I
+ Variable:I -> .
 210 LET F = C/N
  Variable:F -> .
  Variable:C -> .

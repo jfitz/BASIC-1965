@@ -1,58 +1,61 @@
 Statistics:
 
-Number of lines: 16
-Number of valid statements: 16
+Number of lines: 17
+Number of valid statements: 17
 Number of comments: 0
-Number of executable statements: 16
+Number of executable statements: 17
 
 Complexity:
 
 Comment density: 0.000
-Comprehension effort: 62
+Comprehension effort: 65
 McCabe complexity: 3
 Halstead complexity:
- length: 74
- volume: 272.977
- difficulty: 9.389
- effort: 2562.951
- language: 3.097
- intelligence: 29.074
- time: 2.373
+ length: 76
+ volume: 284.063
+ difficulty: 9.190
+ effort: 2610.440
+ language: 3.364
+ intelligence: 30.911
+ time: 2.417
 
 100 (0 3) LET P = 3.14159
   Origs: :start
   Dests: 110:auto
 110 (0 3) LET C = 0
   Origs: 100:auto
-  Dests: 120:auto
-120 F(N:120) (1 3) FOR N = 1 TO 1000
+  Dests: 112:auto
+112 (0 3) LET N = 1000
   Origs: 110:auto
+  Dests: 120:auto
+120 F(I:120) (1 3) FOR I = 1 TO N
+  Origs: 112:auto
   Dests: 130:fornext, 200:fornext
-130 F(N:120) (0 4) LET Y = RND(1)
+130 F(I:120) (0 4) LET Y = RND(1)
   Origs: 120:fornext
   Dests: 140:auto
-140 F(N:120) (0 4) LET R = RND(1)
+140 F(I:120) (0 4) LET R = RND(1)
   Origs: 130:auto
   Dests: 150:auto
-150 F(N:120) (0 8) LET A = P * (R - 1 / 2)
+150 F(I:120) (0 8) LET A = P * (R - 1 / 2)
   Origs: 140:auto
   Dests: 160:auto
-160 F(N:120) (0 5) LET Y1 = Y - COS(A)
+160 F(I:120) (0 5) LET Y1 = Y - COS(A)
   Origs: 150:auto
   Dests: 170:auto
-170 F(N:120) (0 5) LET Y2 = Y + COS(A)
+170 F(I:120) (0 5) LET Y2 = Y + COS(A)
   Origs: 160:auto
   Dests: 172:auto
-172 F(N:120) (0 4) LET C2 = COS(A)
+172 F(I:120) (0 4) LET C2 = COS(A)
   Origs: 170:auto
   Dests: 180:auto
-180 F(N:120) (1 6) IF SGN(Y1) = SGN(Y2) THEN 200
+180 F(I:120) (1 6) IF SGN(Y1) = SGN(Y2) THEN 200
   Origs: 172:auto
   Dests: 190:auto, 200:ifthen
-190 F(N:120) (0 4) LET C = C + 1
+190 F(I:120) (0 4) LET C = C + 1
   Origs: 180:auto
   Dests: 200:auto
-200 F(N:120) (0 1) NEXT N
+200 F(I:120) (0 1) NEXT I
   Origs: 120:fornext, 180:ifthen, 190:auto
   Dests: 210:auto
 210 (0 4) LET F = C / N

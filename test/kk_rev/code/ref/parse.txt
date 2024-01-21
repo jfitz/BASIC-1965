@@ -7,6 +7,10 @@
 20 DIM L(N0)
  Variable:N0 -> .
  Declaration:L() -> .()
+22 LET I9 = 0
+ Variable:I9 -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
 30 FOR I = 1 TO N0
  control: Variable:I -> .
  start:   ["NumericValue:1"]
@@ -14,22 +18,20 @@
 40    READ L(I)
  Variable:I -> .
  Variable:L(.) -> .
-50    IF L(I) >= 0 THEN 60
+50    IF L(I) >= 0 THEN 58
  Variable:I -> .
  Variable:L(.) -> .
  NumericValue:0
  BinaryOperatorGreaterEqual:>=(.,.) -> ?
- LineNumber:60
+ LineNumber:58
 55    BREAK
  
-60 NEXT I
- Variable:I -> .
-70 LET I9 = I-1
+58    LET I9 = I
  Variable:I9 -> .
  Variable:I -> .
- NumericValue:1
- BinaryOperatorMinus:-(.,.) -> .
  AssignmentOperator:= . -> .
+60 NEXT I
+ Variable:I -> .
 100 PRINT "PLEASE TYPE KEY (5 NUMBERS)";
  TextValue:"PLEASE TYPE KEY (5 NUMBERS)"
  CarriageControl:;

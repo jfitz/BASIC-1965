@@ -38,9 +38,12 @@
  terminated:false
 30 F(I:20) READ K
  K = -3
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) -3
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (20) 0
+ I0 = 0
 50 F(I:20) LET T(I, 0) = K
  I: (20) 0
  K: (30) -3
@@ -100,15 +103,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 6
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (20) 0
  terminated:false
  I = 1
 30 F(I:20) READ K
  K = 2
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 2
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 1
+ I0 = 1
 50 F(I:20) LET T(I, 0) = K
  I: (95) 1
  K: (30) 2
@@ -152,15 +159,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 4
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 1
  terminated:false
  I = 2
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 2
+ I0 = 2
 50 F(I:20) LET T(I, 0) = K
  I: (95) 2
  K: (30) 0
@@ -180,15 +191,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 2
  terminated:false
  I = 3
 30 F(I:20) READ K
  K = 3
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 3
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 3
+ I0 = 3
 50 F(I:20) LET T(I, 0) = K
  I: (95) 3
  K: (30) 3
@@ -248,15 +263,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 6
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 3
  terminated:false
  I = 4
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 4
+ I0 = 4
 50 F(I:20) LET T(I, 0) = K
  I: (95) 4
  K: (30) 0
@@ -276,15 +295,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 4
  terminated:false
  I = 5
 30 F(I:20) READ K
  K = -2
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) -2
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 5
+ I0 = 5
 50 F(I:20) LET T(I, 0) = K
  I: (95) 5
  K: (30) -2
@@ -328,15 +351,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 4
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 5
  terminated:false
  I = 6
 30 F(I:20) READ K
  K = 2
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 2
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 6
+ I0 = 6
 50 F(I:20) LET T(I, 0) = K
  I: (95) 6
  K: (30) 2
@@ -380,15 +407,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 4
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 6
  terminated:false
  I = 7
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 7
+ I0 = 7
 50 F(I:20) LET T(I, 0) = K
  I: (95) 7
  K: (30) 0
@@ -408,15 +439,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 7
  terminated:false
  I = 8
 30 F(I:20) READ K
  K = 2
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 2
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 8
+ I0 = 8
 50 F(I:20) LET T(I, 0) = K
  I: (95) 8
  K: (30) 2
@@ -460,15 +495,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 4
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 8
  terminated:false
  I = 9
 30 F(I:20) READ K
  K = 3
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 3
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 9
+ I0 = 9
 50 F(I:20) LET T(I, 0) = K
  I: (95) 9
  K: (30) 3
@@ -528,15 +567,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 6
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 9
  terminated:false
  I = 10
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 10
+ I0 = 10
 50 F(I:20) LET T(I, 0) = K
  I: (95) 10
  K: (30) 0
@@ -556,15 +599,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 10
  terminated:false
  I = 11
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 11
+ I0 = 11
 50 F(I:20) LET T(I, 0) = K
  I: (95) 11
  K: (30) 0
@@ -584,15 +631,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 11
  terminated:false
  I = 12
 30 F(I:20) READ K
  K = -2
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) -2
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 12
+ I0 = 12
 50 F(I:20) LET T(I, 0) = K
  I: (95) 12
  K: (30) -2
@@ -636,15 +687,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 4
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 12
  terminated:false
  I = 13
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 13
+ I0 = 13
 50 F(I:20) LET T(I, 0) = K
  I: (95) 13
  K: (30) 0
@@ -664,15 +719,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 13
  terminated:false
  I = 14
 30 F(I:20) READ K
  K = -2
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) -2
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 14
+ I0 = 14
 50 F(I:20) LET T(I, 0) = K
  I: (95) 14
  K: (30) -2
@@ -716,15 +775,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 4
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 14
  terminated:false
  I = 15
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 15
+ I0 = 15
 50 F(I:20) LET T(I, 0) = K
  I: (95) 15
  K: (30) 0
@@ -744,15 +807,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 15
  terminated:false
  I = 16
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 16
+ I0 = 16
 50 F(I:20) LET T(I, 0) = K
  I: (95) 16
  K: (30) 0
@@ -772,15 +839,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 16
  terminated:false
  I = 17
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 17
+ I0 = 17
 50 F(I:20) LET T(I, 0) = K
  I: (95) 17
  K: (30) 0
@@ -800,15 +871,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 17
  terminated:false
  I = 18
 30 F(I:20) READ K
  K = 3
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 3
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 18
+ I0 = 18
 50 F(I:20) LET T(I, 0) = K
  I: (95) 18
  K: (30) 3
@@ -868,15 +943,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 6
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 18
  terminated:false
  I = 19
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 19
+ I0 = 19
 50 F(I:20) LET T(I, 0) = K
  I: (95) 19
  K: (30) 0
@@ -896,15 +975,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 19
  terminated:false
  I = 20
 30 F(I:20) READ K
  K = 3
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 3
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 20
+ I0 = 20
 50 F(I:20) LET T(I, 0) = K
  I: (95) 20
  K: (30) 3
@@ -964,15 +1047,19 @@
 90 F(I:20,J:70) NEXT J
  J: (90) 6
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 20
  terminated:false
  I = 21
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 21
+ I0 = 21
 50 F(I:20) LET T(I, 0) = K
  I: (95) 21
  K: (30) 0
@@ -992,15 +1079,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 21
  terminated:false
  I = 22
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 22
+ I0 = 22
 50 F(I:20) LET T(I, 0) = K
  I: (95) 22
  K: (30) 0
@@ -1020,15 +1111,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 22
  terminated:false
  I = 23
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 23
+ I0 = 23
 50 F(I:20) LET T(I, 0) = K
  I: (95) 23
  K: (30) 0
@@ -1048,15 +1143,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 23
  terminated:false
  I = 24
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 24
+ I0 = 24
 50 F(I:20) LET T(I, 0) = K
  I: (95) 24
  K: (30) 0
@@ -1076,15 +1175,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 24
  terminated:false
  I = 25
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 25
+ I0 = 25
 50 F(I:20) LET T(I, 0) = K
  I: (95) 25
  K: (30) 0
@@ -1104,15 +1207,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 25
  terminated:false
  I = 26
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 26
+ I0 = 26
 50 F(I:20) LET T(I, 0) = K
  I: (95) 26
  K: (30) 0
@@ -1132,15 +1239,19 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 26
  terminated:false
  I = 27
 30 F(I:20) READ K
  K = 0
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 0
  K <> 999: true
+48 F(I:20) LET I0 = I
+ I: (95) 27
+ I0 = 27
 50 F(I:20) LET T(I, 0) = K
  I: (95) 27
  K: (30) 0
@@ -1160,24 +1271,26 @@
 90 F(I:20,J:70) NEXT J
  J: (70) 1
  terminated:true
+ forget J
 95 F(I:20) NEXT I
  I: (95) 27
  terminated:false
  I = 28
 30 F(I:20) READ K
  K = 999
-40 F(I:20) IF K <> 999 THEN 50
+40 F(I:20) IF K <> 999 THEN 48
  K: (30) 999
  K <> 999: false
 45 F(I:20) BREAK
 95 F(I:20) NEXT I
  terminated:true
+ forget I
 100 PRINT "SELECTED ACTS: ";
 SELECTED ACTS: 
-105 F(I:105) FOR I = I - 1 TO 0 STEP -1
- I: (95) 28
+105 F(I:105) FOR I = I0 TO 0 STEP -1
+ I0: (48) 27
  I = 27
- I - 1 = 27
+ I0 = 27
  -1 = -1
  terminated:false
 110 F(I:105) LET K = T(I, 0)
@@ -1377,6 +1490,7 @@ SELECTED ACTS:
 240 F(I:105,J:210) NEXT J
  J: (240) 6
  terminated:true
+ forget J
 250 F(I:105) LET V(I) = S
  I: (399) 20
  S: (230) -43.3
@@ -1469,6 +1583,7 @@ SELECTED ACTS:
 240 F(I:105,J:210) NEXT J
  J: (240) 6
  terminated:true
+ forget J
 250 F(I:105) LET V(I) = S
  I: (399) 18
  S: (230) -43.3
@@ -1587,6 +1702,7 @@ SELECTED ACTS:
 360 F(I:105,J:310) NEXT J
  J: (360) 4
  terminated:true
+ forget J
 370 F(I:105) PRINT A;
  A: (350) 8
  8 
@@ -1669,6 +1785,7 @@ SELECTED ACTS:
 360 F(I:105,J:310) NEXT J
  J: (360) 4
  terminated:true
+ forget J
 370 F(I:105) PRINT A;
  A: (350) 6
  6 
@@ -1782,6 +1899,7 @@ SELECTED ACTS:
 240 F(I:105,J:210) NEXT J
  J: (240) 6
  terminated:true
+ forget J
 250 F(I:105) LET V(I) = S
  I: (399) 9
  S: (230) -33.3
@@ -1838,6 +1956,7 @@ SELECTED ACTS:
 240 F(I:105,J:210) NEXT J
  J: (240) 4
  terminated:true
+ forget J
 250 F(I:105) LET V(I) = S
  I: (399) 8
  S: (230) 56.675
@@ -1913,6 +2032,7 @@ SELECTED ACTS:
 240 F(I:105,J:210) NEXT J
  J: (240) 4
  terminated:true
+ forget J
 250 F(I:105) LET V(I) = S
  I: (399) 6
  S: (230) 23.35
@@ -1974,6 +2094,7 @@ SELECTED ACTS:
 360 F(I:105,J:310) NEXT J
  J: (360) 4
  terminated:true
+ forget J
 370 F(I:105) PRINT A;
  A: (350) 4
  4 
@@ -2068,6 +2189,7 @@ SELECTED ACTS:
 240 F(I:105,J:210) NEXT J
  J: (240) 6
  terminated:true
+ forget J
 250 F(I:105) LET V(I) = S
  I: (399) 3
  S: (230) 34.4431
@@ -2143,6 +2265,7 @@ SELECTED ACTS:
 240 F(I:105,J:210) NEXT J
  J: (240) 4
  terminated:true
+ forget J
 250 F(I:105) LET V(I) = S
  I: (399) 1
  S: (230) 33.35
@@ -2226,6 +2349,7 @@ SELECTED ACTS:
 360 F(I:105,J:310) NEXT J
  J: (360) 6
  terminated:true
+ forget J
 370 F(I:105) PRINT A;
  A: (350) 3
  3 
@@ -2236,6 +2360,7 @@ SELECTED ACTS:
 399 F(I:105) NEXT I
  I: (399) 0
  terminated:true
+ forget I
 400 PRINT
 
 410 PRINT

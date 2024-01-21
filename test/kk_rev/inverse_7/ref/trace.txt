@@ -64,6 +64,7 @@
 50 F(I:20,J:30) NEXT J
  J: (50) 6
  terminated:true
+ forget J
 60 F(I:20) NEXT I
  I: (20) 1
  terminated:false
@@ -126,6 +127,7 @@
 50 F(I:20,J:30) NEXT J
  J: (50) 6
  terminated:true
+ forget J
 60 F(I:20) NEXT I
  I: (60) 2
  terminated:false
@@ -188,6 +190,7 @@
 50 F(I:20,J:30) NEXT J
  J: (50) 6
  terminated:true
+ forget J
 60 F(I:20) NEXT I
  I: (60) 3
  terminated:false
@@ -250,6 +253,7 @@
 50 F(I:20,J:30) NEXT J
  J: (50) 6
  terminated:true
+ forget J
 60 F(I:20) NEXT I
  I: (60) 4
  terminated:false
@@ -312,6 +316,7 @@
 50 F(I:20,J:30) NEXT J
  J: (50) 6
  terminated:true
+ forget J
 60 F(I:20) NEXT I
  I: (60) 5
  terminated:false
@@ -374,9 +379,11 @@
 50 F(I:20,J:30) NEXT J
  J: (50) 6
  terminated:true
+ forget J
 60 F(I:20) NEXT I
  I: (60) 6
  terminated:true
+ forget I
 70 F(I:70) FOR I = 1 TO N - 1
  N: (10) 7
  I = 1
@@ -400,6 +407,7 @@
 99 F(I:70,J:80) BREAK
 100 F(I:70,J:80) NEXT J
  terminated:true
+ forget J
 102 F(I:70) IF BROKEN() THEN 150
  BROKEN(): true
 150 F(I:70) NEXT I
@@ -451,6 +459,7 @@
 99 F(I:70,J:80) BREAK
 100 F(I:70,J:80) NEXT J
  terminated:true
+ forget J
 102 F(I:70) IF BROKEN() THEN 150
  BROKEN(): true
 150 F(I:70) NEXT I
@@ -511,6 +520,7 @@
 99 F(I:70,J:80) BREAK
 100 F(I:70,J:80) NEXT J
  terminated:true
+ forget J
 102 F(I:70) IF BROKEN() THEN 150
  BROKEN(): true
 150 F(I:70) NEXT I
@@ -544,6 +554,7 @@
 99 F(I:70,J:80) BREAK
 100 F(I:70,J:80) NEXT J
  terminated:true
+ forget J
 102 F(I:70) IF BROKEN() THEN 150
  BROKEN(): true
 150 F(I:70) NEXT I
@@ -586,6 +597,7 @@
 99 F(I:70,J:80) BREAK
 100 F(I:70,J:80) NEXT J
  terminated:true
+ forget J
 102 F(I:70) IF BROKEN() THEN 150
  BROKEN(): true
 150 F(I:70) NEXT I
@@ -655,11 +667,13 @@
 99 F(I:70,J:80) BREAK
 100 F(I:70,J:80) NEXT J
  terminated:true
+ forget J
 102 F(I:70) IF BROKEN() THEN 150
  BROKEN(): true
 150 F(I:70) NEXT I
  I: (150) 6
  terminated:true
+ forget I
 999 END
 STOP in line 999
 

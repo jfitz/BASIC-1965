@@ -1,14 +1,14 @@
 Statistics:
 
-Number of lines: 99
-Number of valid statements: 87
+Number of lines: 101
+Number of valid statements: 89
 Number of comments: 6
-Number of executable statements: 85
+Number of executable statements: 87
 
 Complexity:
 
-Comment density: 0.069
-Comprehension effort: 243
+Comment density: 0.067
+Comprehension effort: 246
 McCabe complexity: 19
 Halstead complexity:
  length: 355
@@ -30,7 +30,7 @@ Halstead complexity:
   Dests: 
 110 (0 2) GOSUB 1000
   Origs: 20:auto
-  Dests: 120:auto, 1010:gosub
+  Dests: 120:auto, 1008:gosub
 120 (0 2) GOSUB 2000
   Origs: 110:auto
   Dests: 130:auto, 2010:gosub
@@ -54,7 +54,7 @@ Halstead complexity:
   Dests: 210:auto
 210 (0 2) GOSUB 1000
   Origs: 180:auto
-  Dests: 220:auto, 1010:gosub
+  Dests: 220:auto, 1008:gosub
 220 (0 2) GOSUB 2000
   Origs: 210:auto
   Dests: 230:auto, 2010:gosub
@@ -142,43 +142,49 @@ Halstead complexity:
 1000 (0 1) REM READ A NUMBER C
   Origs: 
   Dests: 
-1010 G(1010) F(I:1010) (1 3) FOR I = 0 TO N0
+1008 G(1008) (0 2) OPTION FORGET_FORNEXT FALSE
   Origs: 110:gosub, 210:gosub
+  Dests: 1010:auto
+1010 G(1008) F(I:1010) (1 3) FOR I = 0 TO N0
+  Origs: 1008:auto
   Dests: 1020:fornext, 1040:fornext
-1020 G(1010) F(I:1010) (1 2) READ X(I)
+1020 G(1008) F(I:1010) (1 2) READ X(I)
   Origs: 1010:fornext
   Dests: 1030:auto
-1030 G(1010) F(I:1010) (1 4) IF X(I) >= 0 THEN 1040
+1030 G(1008) F(I:1010) (1 4) IF X(I) >= 0 THEN 1040
   Origs: 1020:auto
   Dests: 1035:auto, 1040:ifthen
-1035 G(1010) F(I:1010) (0 1) BREAK
+1035 G(1008) F(I:1010) (0 1) BREAK
   Origs: 1030:auto
   Dests: 1040:fornext
-1040 G(1010) F(I:1010) (0 1) NEXT I
+1040 G(1008) F(I:1010) (0 1) NEXT I
   Origs: 1010:fornext, 1030:ifthen, 1035:fornext
-  Dests: 1050:auto
-1050 G(1010) (1 4) IF I > N0 THEN 1200
+  Dests: 1042:auto
+1042 G(1008) (0 1) OPTION FORGET_FORNEXT
   Origs: 1040:auto
+  Dests: 1050:auto
+1050 G(1008) (1 4) IF I > N0 THEN 1200
+  Origs: 1042:auto
   Dests: 1100:auto, 1200:ifthen
-1100 G(1010) (0 4) LET L = I - 1
+1100 G(1008) (0 4) LET L = I - 1
   Origs: 1050:auto
   Dests: 1110:auto
-1110 G(1010) F(I:1110) (1 3) FOR I = 0 TO L
+1110 G(1008) F(I:1110) (1 3) FOR I = 0 TO L
   Origs: 1100:auto
   Dests: 1120:fornext, 1130:fornext
-1120 G(1010) F(I:1110) (0 3) LET C(I) = X(L - I)
+1120 G(1008) F(I:1110) (0 3) LET C(I) = X(L - I)
   Origs: 1110:fornext
   Dests: 1130:auto
-1130 G(1010) F(I:1110) (0 1) NEXT I
+1130 G(1008) F(I:1110) (0 1) NEXT I
   Origs: 1110:fornext, 1120:auto
   Dests: 1140:auto
-1140 G(1010) (0 1) RETURN
+1140 G(1008) (0 1) RETURN
   Origs: 1130:auto
   Dests: 
-1200 G(1010) (0 2) PRINT "NUMBER TOO LONG"
+1200 G(1008) (0 2) PRINT "NUMBER TOO LONG"
   Origs: 1050:ifthen
   Dests: 1210:auto
-1210 G(1010) (0 1) STOP
+1210 G(1008) (0 1) STOP
      WARNING: Terminating statement in GOSUB
   Origs: 1200:auto
   Dests: :stop

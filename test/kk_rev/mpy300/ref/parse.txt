@@ -157,6 +157,8 @@
 640
 1000 REM READ A NUMBER C
  Remark:READ A NUMBER C
+1008 OPTION FORGET_FORNEXT FALSE
+ BooleanValue:false
 1010 FOR I = 0 TO N0
  control: Variable:I -> .
  start:   ["NumericValue:0"]
@@ -174,6 +176,7 @@
  
 1040 NEXT I
  Variable:I -> .
+1042 OPTION FORGET_FORNEXT
 1050 IF I > N0 THEN 1200
  Variable:I -> .
  Variable:N0 -> .

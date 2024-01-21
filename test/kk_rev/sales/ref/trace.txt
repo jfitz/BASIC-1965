@@ -37,6 +37,7 @@
 30 F(I:10) NEXT I
  I: (30) 5
  terminated:true
+ forget I
 100 LET S = 0{USD}
  S = 0{USD}
 110 F(I:110) FOR I = 1 TO 5
@@ -101,6 +102,7 @@
 140 F(I:110) NEXT I
  I: (140) 5
  terminated:true
+ forget I
 150 PRINT "TOTAL ORDER $" S
 TOTAL ORDER $
  S: (130) 25.05{USD}

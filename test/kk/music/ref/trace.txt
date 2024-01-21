@@ -13,6 +13,7 @@ NOTE NUMBER     CHORD
 50 PRINT
 
 105 OPTION BASE 1
+ BASE = 1
 110 MAT READ P
  P(1,1) = 5
  P(1,2) = 4
@@ -83,6 +84,7 @@ NOTE NUMBER     CHORD
  M(27) = 1
  M(28) = 0
 170 OPTION BASE 0
+ BASE = 0
 190 F(V:190) FOR V = 0 TO 4
  V = 0
  terminated:false

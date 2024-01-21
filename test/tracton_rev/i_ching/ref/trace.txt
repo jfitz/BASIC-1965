@@ -104,7 +104,7 @@ ENTER TIME AS H,M(24 HOUR CLOCK)
 120 F(I:80) NEXT I
  I: (120) 6
  terminated:true
- I
+ forget I
 130 F(I:130) FOR I = 1 TO 6
  I = 1
  terminated:false
@@ -171,7 +171,7 @@ ENTER TIME AS H,M(24 HOUR CLOCK)
 180 F(I:130) NEXT I
  I: (180) 6
  terminated:true
- I
+ forget I
 190 PRINT
 
 200 PRINT "TO CONTINUE TYPE 1, IF NOT TYPE 0"

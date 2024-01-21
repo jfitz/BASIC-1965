@@ -30,6 +30,7 @@
 130 F(P:100,I:110) NEXT I
  I: (130) 3
  terminated:true
+ forget I
 140 F(P:100) NEXT P
  P: (100) 1
  terminated:false
@@ -60,6 +61,7 @@
 130 F(P:100,I:110) NEXT I
  I: (130) 3
  terminated:true
+ forget I
 140 F(P:100) NEXT P
  P: (140) 2
  terminated:false
@@ -90,6 +92,7 @@
 130 F(P:100,I:110) NEXT I
  I: (130) 3
  terminated:true
+ forget I
 140 F(P:100) NEXT P
  P: (140) 3
  terminated:false
@@ -120,6 +123,7 @@
 130 F(P:100,I:110) NEXT I
  I: (130) 3
  terminated:true
+ forget I
 140 F(P:100) NEXT P
  P: (140) 4
  terminated:false
@@ -150,6 +154,7 @@
 130 F(P:100,I:110) NEXT I
  I: (130) 3
  terminated:true
+ forget I
 140 F(P:100) NEXT P
  P: (140) 5
  terminated:false
@@ -180,6 +185,7 @@
 130 F(P:100,I:110) NEXT I
  I: (130) 3
  terminated:true
+ forget I
 140 F(P:100) NEXT P
  P: (140) 6
  terminated:false
@@ -210,6 +216,7 @@
 130 F(P:100,I:110) NEXT I
  I: (130) 3
  terminated:true
+ forget I
 140 F(P:100) NEXT P
  P: (140) 7
  terminated:false
@@ -240,9 +247,11 @@
 130 F(P:100,I:110) NEXT I
  I: (130) 3
  terminated:true
+ forget I
 140 F(P:100) NEXT P
  P: (140) 8
  terminated:true
+ forget P
 200 F(S:200) FOR S = 1 TO 9
  S = 1
  terminated:false
@@ -280,6 +289,7 @@
 230 F(S:200,J:210) NEXT J
  J: (230) 4
  terminated:true
+ forget J
 240 F(S:200) NEXT S
  S: (200) 1
  terminated:false
@@ -318,6 +328,7 @@
 230 F(S:200,J:210) NEXT J
  J: (230) 4
  terminated:true
+ forget J
 240 F(S:200) NEXT S
  S: (240) 2
  terminated:false
@@ -356,6 +367,7 @@
 230 F(S:200,J:210) NEXT J
  J: (230) 4
  terminated:true
+ forget J
 240 F(S:200) NEXT S
  S: (240) 3
  terminated:false
@@ -394,6 +406,7 @@
 230 F(S:200,J:210) NEXT J
  J: (230) 4
  terminated:true
+ forget J
 240 F(S:200) NEXT S
  S: (240) 4
  terminated:false
@@ -432,6 +445,7 @@
 230 F(S:200,J:210) NEXT J
  J: (230) 4
  terminated:true
+ forget J
 240 F(S:200) NEXT S
  S: (240) 5
  terminated:false
@@ -470,6 +484,7 @@
 230 F(S:200,J:210) NEXT J
  J: (230) 4
  terminated:true
+ forget J
 240 F(S:200) NEXT S
  S: (240) 6
  terminated:false
@@ -508,6 +523,7 @@
 230 F(S:200,J:210) NEXT J
  J: (230) 4
  terminated:true
+ forget J
 240 F(S:200) NEXT S
  S: (240) 7
  terminated:false
@@ -546,6 +562,7 @@
 230 F(S:200,J:210) NEXT J
  J: (230) 4
  terminated:true
+ forget J
 240 F(S:200) NEXT S
  S: (240) 8
  terminated:false
@@ -584,9 +601,11 @@
 230 F(S:200,J:210) NEXT J
  J: (230) 4
  terminated:true
+ forget J
 240 F(S:200) NEXT S
  S: (240) 9
  terminated:true
+ forget S
 265 LET N = 0
  N = 0
 270 F(S:270) FOR S = 1 TO 9
@@ -681,6 +700,7 @@
 285 F(S:270) NEXT S
  S: (285) 9
  terminated:true
+ forget S
 310 IF RND(1) < 1 / 2 THEN 350
  RND(1) < 1 / 2: true
 350 PRINT "THE COMPUTER WILL MOVE FIRST."
@@ -755,6 +775,7 @@ THE COMPUTER WILL MOVE FIRST.
 1030 G(1010) F(P:1010) NEXT P
  P: (1030) 8
  terminated:true
+ forget P
 1031 G(1010) IF BROKEN() THEN 1100
  BROKEN(): false
 1040 G(1010) F(P:1040) FOR P = 1 TO 8
@@ -823,6 +844,7 @@ THE COMPUTER WILL MOVE FIRST.
 1060 G(1010) F(P:1040) NEXT P
  P: (1060) 8
  terminated:true
+ forget P
 1061 G(1010) IF BROKEN() THEN 1100
  BROKEN(): false
 1070 G(1010) GOTO 1200
@@ -904,6 +926,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1200) 1
  terminated:false
@@ -977,6 +1000,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 2
  terminated:false
@@ -1056,6 +1080,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 3
  terminated:false
@@ -1129,6 +1154,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 4
  terminated:false
@@ -1208,6 +1234,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 5
  terminated:false
@@ -1281,6 +1308,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 6
  terminated:false
@@ -1360,6 +1388,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 7
  terminated:false
@@ -1433,6 +1462,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 8
  terminated:false
@@ -1518,9 +1548,11 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 9
  terminated:true
+ forget S
 1300 G(1010) LET V = 0
  V = 0
 1310 G(1010) F(S:1310) FOR S = 1 TO 9
@@ -1620,6 +1652,7 @@ THE COMPUTER WILL MOVE FIRST.
 1350 G(1010) F(S:1310) NEXT S
  S: (1350) 9
  terminated:true
+ forget S
 1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
@@ -1736,6 +1769,7 @@ THE COMPUTER MOVES
 530 F(J:471) NEXT J
  J: (530) 4
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (470) 0
  J0 = 1: false
@@ -1866,6 +1900,7 @@ YOUR MOVE
 530 F(J:471) NEXT J
  J: (530) 4
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (470) 0
  J0 = 1: false
@@ -2098,6 +2133,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1200) 1
  terminated:false
@@ -2171,6 +2207,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 2
  terminated:false
@@ -2250,6 +2287,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 3
  terminated:false
@@ -2323,6 +2361,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 4
  terminated:false
@@ -2407,6 +2446,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 6
  terminated:false
@@ -2486,6 +2526,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 7
  terminated:false
@@ -2559,6 +2600,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 8
  terminated:false
@@ -2573,6 +2615,7 @@ YOUR MOVE
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 9
  terminated:true
+ forget S
 1300 G(1010) LET V = 0
  V = 0
 1310 G(1010) F(S:1310) FOR S = 1 TO 9
@@ -2672,6 +2715,7 @@ YOUR MOVE
 1350 G(1010) F(S:1310) NEXT S
  S: (1350) 9
  terminated:true
+ forget S
 1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
@@ -2775,6 +2819,7 @@ THE COMPUTER MOVES
 530 F(J:471) NEXT J
  J: (530) 4
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (470) 0
  J0 = 1: false
@@ -2892,6 +2937,7 @@ YOUR MOVE
 530 F(J:471) NEXT J
  J: (530) 4
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (470) 0
  J0 = 1: false
@@ -2992,6 +3038,7 @@ YOUR MOVE
 1129 G(1010) F(I:1100) BREAK
 1130 G(1010) F(I:1100) NEXT I
  terminated:true
+ forget I
 1132 G(1010) IF BROKEN() THEN 1390
  BROKEN(): true
 1390 G(1010) RETURN
@@ -3087,6 +3134,7 @@ THE COMPUTER MOVES
 522 F(J:471) BREAK
 530 F(J:471) NEXT J
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (521) 2
  J0 = 1: false
@@ -3196,6 +3244,7 @@ NEW GAME.
 285 F(S:270) NEXT S
  S: (285) 9
  terminated:true
+ forget S
 310 IF RND(1) < 1 / 2 THEN 350
  RND(1) < 1 / 2: false
 320 PRINT "YOU WILL MOVE FIRST."
@@ -3331,6 +3380,7 @@ YOUR MOVE
 530 F(J:471) NEXT J
  J: (530) 4
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (470) 0
  J0 = 1: false
@@ -3563,6 +3613,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1200) 1
  terminated:false
@@ -3636,6 +3687,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 2
  terminated:false
@@ -3715,6 +3767,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 3
  terminated:false
@@ -3788,6 +3841,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 4
  terminated:false
@@ -3867,6 +3921,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 5
  terminated:false
@@ -3940,6 +3995,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 6
  terminated:false
@@ -4019,6 +4075,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 7
  terminated:false
@@ -4092,6 +4149,7 @@ YOUR MOVE
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 8
  terminated:false
@@ -4106,6 +4164,7 @@ YOUR MOVE
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 9
  terminated:true
+ forget S
 1300 G(1010) LET V = 0
  V = 0
 1310 G(1010) F(S:1310) FOR S = 1 TO 9
@@ -4198,6 +4257,7 @@ YOUR MOVE
 1350 G(1010) F(S:1310) NEXT S
  S: (1350) 9
  terminated:true
+ forget S
 1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
@@ -4301,6 +4361,7 @@ THE COMPUTER MOVES
 530 F(J:471) NEXT J
  J: (530) 4
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (470) 0
  J0 = 1: false
@@ -4431,6 +4492,7 @@ YOUR MOVE
 530 F(J:471) NEXT J
  J: (530) 4
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (470) 0
  J0 = 1: false
@@ -4599,6 +4661,7 @@ YOUR MOVE
 1129 G(1010) F(I:1100) BREAK
 1130 G(1010) F(I:1100) NEXT I
  terminated:true
+ forget I
 1132 G(1010) IF BROKEN() THEN 1390
  BROKEN(): true
 1390 G(1010) RETURN
@@ -4704,6 +4767,7 @@ THE COMPUTER MOVES
 530 F(J:471) NEXT J
  J: (530) 4
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (470) 0
  J0 = 1: false
@@ -4834,6 +4898,7 @@ YOUR MOVE
 530 F(J:471) NEXT J
  J: (530) 4
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (470) 0
  J0 = 1: false
@@ -4915,6 +4980,7 @@ YOUR MOVE
 1129 G(1010) F(I:1100) BREAK
 1130 G(1010) F(I:1100) NEXT I
  terminated:true
+ forget I
 1132 G(1010) IF BROKEN() THEN 1390
  BROKEN(): true
 1390 G(1010) RETURN
@@ -4985,6 +5051,7 @@ THE COMPUTER MOVES
 522 F(J:471) BREAK
 530 F(J:471) NEXT J
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (521) 2
  J0 = 1: false
@@ -5094,6 +5161,7 @@ NEW GAME.
 285 F(S:270) NEXT S
  S: (285) 9
  terminated:true
+ forget S
 310 IF RND(1) < 1 / 2 THEN 350
  RND(1) < 1 / 2: true
 350 PRINT "THE COMPUTER WILL MOVE FIRST."
@@ -5317,6 +5385,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1200) 1
  terminated:false
@@ -5390,6 +5459,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 2
  terminated:false
@@ -5469,6 +5539,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 3
  terminated:false
@@ -5542,6 +5613,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 4
  terminated:false
@@ -5621,6 +5693,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 5
  terminated:false
@@ -5694,6 +5767,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 6
  terminated:false
@@ -5773,6 +5847,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 7
  terminated:false
@@ -5846,6 +5921,7 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 8
  terminated:false
@@ -5931,9 +6007,11 @@ THE COMPUTER WILL MOVE FIRST.
 1260 G(1010) F(S:1200,J:1220) NEXT J
  J: (1260) 4
  terminated:true
+ forget J
 1270 G(1010) F(S:1200) NEXT S
  S: (1270) 9
  terminated:true
+ forget S
 1300 G(1010) LET V = 0
  V = 0
 1310 G(1010) F(S:1310) FOR S = 1 TO 9
@@ -6033,6 +6111,7 @@ THE COMPUTER WILL MOVE FIRST.
 1350 G(1010) F(S:1310) NEXT S
  S: (1350) 9
  terminated:true
+ forget S
 1390 G(1010) RETURN
 620 PRINT "THE COMPUTER MOVES" M
 THE COMPUTER MOVES
@@ -6149,6 +6228,7 @@ THE COMPUTER MOVES
 530 F(J:471) NEXT J
  J: (530) 4
  terminated:true
+ forget J
 531 IF J0 = 1 THEN 860
  J0: (470) 0
  J0 = 1: false

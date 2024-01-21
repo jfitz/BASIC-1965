@@ -200,6 +200,8 @@
  NumericValue:0
  FunctionRnd:RND(.) -> .
  AssignmentOperator:= . -> .
+558 OPTION FORGET_FORNEXT FALSE
+ BooleanValue:false
 560 FOR R = 0 TO 3
  control: Variable:R -> .
  start:   ["NumericValue:0"]
@@ -221,6 +223,7 @@
  
 590 NEXT R
  Variable:R -> .
+592 OPTION FORGET_FORNEXT
 595 IF BROKEN() THEN 620
  FunctionBroken:BROKEN() -> ?
  LineNumber:620

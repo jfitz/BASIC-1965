@@ -1,23 +1,23 @@
 Statistics:
 
-Number of lines: 71
-Number of valid statements: 69
+Number of lines: 72
+Number of valid statements: 70
 Number of comments: 0
-Number of executable statements: 40
+Number of executable statements: 41
 
 Complexity:
 
 Comment density: 0.000
-Comprehension effort: 190
+Comprehension effort: 192
 McCabe complexity: 12
 Halstead complexity:
  length: 377
- volume: 1708.790
- difficulty: 24.960
- effort: 42651.399
- language: 2.743
- intelligence: 68.461
- time: 39.492
+ volume: 1712.822
+ difficulty: 24.750
+ effort: 42392.348
+ language: 2.796
+ intelligence: 69.205
+ time: 39.252
 
 10 (0 3) LET N0 = 100
   Origs: :start
@@ -31,14 +31,17 @@ Halstead complexity:
 30 F(I:20) (1 2) READ K
   Origs: 20:fornext
   Dests: 40:auto
-40 F(I:20) (1 4) IF K <> 999 THEN 50
+40 F(I:20) (1 4) IF K <> 999 THEN 48
   Origs: 30:auto
-  Dests: 45:auto, 50:ifthen
+  Dests: 45:auto, 48:ifthen
 45 F(I:20) (0 1) BREAK
   Origs: 40:auto
   Dests: 95:fornext
-50 F(I:20) (0 3) LET T(I, 0) = K
+48 F(I:20) (0 3) LET I0 = I
   Origs: 40:ifthen
+  Dests: 50:auto
+50 F(I:20) (0 3) LET T(I, 0) = K
+  Origs: 48:auto
   Dests: 60:auto
 60 F(I:20) (0 4) LET K1 = ABS(K)
   Origs: 50:auto
@@ -61,7 +64,7 @@ Halstead complexity:
 100 (0 2) PRINT "SELECTED ACTS: ";
   Origs: 95:auto
   Dests: 105:auto
-105 F(I:105) (1 6) FOR I = I - 1 TO 0 STEP -1
+105 F(I:105) (1 5) FOR I = I0 TO 0 STEP -1
   Origs: 100:auto
   Dests: 110:fornext, 399:fornext
 110 F(I:105) (0 3) LET K = T(I, 0)
