@@ -2254,7 +2254,8 @@ end
 # Define the user function name, arguments, and expression
 class UserFunctionDefinition
   attr_reader :name, :arguments, :sigils, :signature, :expression, :numerics,
-              :strings, :booleans, :variables, :operators, :functions, :userfuncs, :comprehension_effort
+              :strings, :booleans, :variables, :operators, :functions,
+              :userfuncs, :comprehension_effort
 
   def initialize(tokens)
     # parse into name '=' expression

@@ -2190,11 +2190,11 @@ class AbstractFunctionName < AbstractElement
   def initialize(token)
     super()
 
-    @name = token
+    @name = token.text
     @function = true
     @operand = true
     @precedence = 10
-    @content_type = @name.content_type
+    @content_type = token.content_type
   end
 
   def hash
