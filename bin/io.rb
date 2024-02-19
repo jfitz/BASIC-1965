@@ -55,7 +55,7 @@ module Reader
       when :want_sep
         raise BASICRuntimeError.new(:te_exp_sep, token.to_s) unless
           token.separator?
-        
+
         state = :want_value
       end
     end
@@ -112,15 +112,13 @@ class ConsoleIo
 
   def prompt(text, remaining)
     if text.nil?
-      print_item("(#{remaining})") if
-        $options['prompt_count'].value
+      print_item("(#{remaining})") if $options['prompt_count'].value
 
       print_item($options['default_prompt'].value)
     else
       print_item(text.value)
 
-      print_item("(#{remaining})") if
-        $options['prompt_count'].value
+      print_item("(#{remaining})") if $options['prompt_count'].value
 
       print_item($options['default_prompt'].value) if
         $options['qmark_after_prompt'].value
@@ -404,6 +402,7 @@ class FileHandler
 
   def read
     set_mode(:read)
+
     tokenbuilders = make_tokenbuilders
     invalid_tokenbuilder = InvalidTokenBuilder.new(true, [])
     tokenizer = Tokenizer.new(tokenbuilders, invalid_tokenbuilder)
@@ -431,6 +430,7 @@ class FileHandler
       tokens.delete_if { |token| token.separator? }
 
       elements = read_convert(tokens)
+
       data_store += elements
     end
 

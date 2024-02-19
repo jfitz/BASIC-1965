@@ -55,9 +55,6 @@ class UnaryOperator < Operator
     attr_reader :operators
   end
 
-  attr_reader :content_type, :shape, :warnings, :arguments,
-              :precedence
-
   def initialize(text)
     super
   end
@@ -179,7 +176,7 @@ class BinaryOperator < Operator
     true
   end
 
-  def evaluate(_, arg_stack)
+  def evaluate(_interpreter, arg_stack)
     raise(BASICExpressionError, 'Not enough operands') if arg_stack.size < 2
 
     y = arg_stack.pop
@@ -807,10 +804,6 @@ class UnaryOperatorHash < UnaryOperator
 
     @content_type = :filehandle
     @precedence = 9
-  end
-
-  def pound?
-    true
   end
 
   def set_content_type(type_stack)
