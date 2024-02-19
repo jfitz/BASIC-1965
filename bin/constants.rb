@@ -877,7 +877,7 @@ class NumericValue < AbstractValue
     @constant = true
 
     @numeric_constant = true
-    @units = Units.new_text('{}')
+    @units = Units.new_empty
     @units = obj.units if obj.class.to_s == 'NumericLiteralToken'
   end
 
@@ -1097,7 +1097,7 @@ class NumericValue < AbstractValue
   def to_radians
     rad_name = $options['radians'].value
 
-    new_units = Units.new_text('')
+    new_units = Units.new_empty
     new_units = Units.new_values({ rad_name => 1 }) if
       $options['trig_require_units'].value
 
@@ -1112,7 +1112,7 @@ class NumericValue < AbstractValue
   def to_degrees
     deg_name = $options['degrees'].value
 
-    new_units = Units.new_text('')
+    new_units = Units.new_empty
     new_units = Units.new_values({ deg_name => 1 }) if
       $options['trig_require_units'].value
 
@@ -1148,7 +1148,7 @@ class NumericValue < AbstractValue
     deg_name = $options['degrees'].value
     rad_name = $options['radians'].value
 
-    new_units = Units.new_text('')
+    new_units = Units.new_empty
     new_units = Units.new_values({ rad_name => 1 }) if
       $options['trig_require_units'].value
 
@@ -1186,7 +1186,7 @@ class NumericValue < AbstractValue
     deg_name = $options['degrees'].value
     rad_name = $options['radians'].value
 
-    new_units = Units.new_text('')
+    new_units = Units.new_empty
     new_units = Units.new_values({ rad_name => 1 }) if
       $options['trig_require_units'].value
 
@@ -1224,7 +1224,7 @@ class NumericValue < AbstractValue
     deg_name = $options['degrees'].value
     rad_name = $options['radians'].value
 
-    new_units = Units.new_text('')
+    new_units = Units.new_empty
     new_units = Units.new_values({ rad_name => 1 }) if
       $options['trig_require_units'].value
 
@@ -1241,7 +1241,7 @@ class NumericValue < AbstractValue
     deg_name = $options['degrees'].value
     rad_name = $options['radians'].value
 
-    new_units = Units.new_text('')
+    new_units = Units.new_empty
     new_units = Units.new_values({ rad_name => 1 }) if
       $options['trig_require_units'].value
 
@@ -1365,6 +1365,7 @@ class NumericValue < AbstractValue
 
   def write(printer)
     s = to_formatted_s
+    s = s.upcase
     printer.print_item s
   end
 
@@ -1426,7 +1427,7 @@ class IntegerValue < AbstractValue
     @constant = true
 
     @numeric_constant = true
-    @units = Units.new_text('{}')
+    @units = Units.new_empty
     @units = obj.units if obj.class.to_s == 'IntegerLiteralToken'
   end
 
@@ -1693,6 +1694,7 @@ class IntegerValue < AbstractValue
 
   def write(printer)
     s = to_formatted_s
+    s = s.upcase
     printer.print_item s
   end
 
@@ -1927,6 +1929,7 @@ class BooleanValue < AbstractValue
 
   def write(printer)
     s = to_formatted_s
+    s = s.upcase
     printer.print_item s
   end
 
@@ -2111,11 +2114,11 @@ class VariableName < AbstractElement
     raise(BASICSyntaxError, "'#{token}' is not a variable token") unless
       token.class.to_s == 'VariableToken'
 
-    @name = token
+    @name = token.text
     @variable = true
     @operand = true
     @precedence = 10
-    @content_type = @name.content_type
+    @content_type = token.content_type
     @shape = :scalar
   end
 

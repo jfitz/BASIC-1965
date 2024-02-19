@@ -855,6 +855,7 @@ class Interpreter
     @program.uncache if uncachers.include?(name)
 
     v = $options[name].value
+
     @trace_out.newline_when_needed
     @trace_out.print_line(" #{name.upcase} = #{v}")
   end
@@ -940,6 +941,11 @@ class Interpreter
     variable_name = variable.name
     int_subscripts = normalize_subscripts(subscripts)
 
+    if int_subscripts.size == 1
+      raise BASICRuntimeError.new(:te_arr_dim_lock, variable_name.to_s) if
+        @locked_arr_dims.include?(variable_name)
+    end
+
     int_subscripts.each do |subscript|
       raise BASICRuntimeError.new(:te_subscript_out, variable_name.to_s) if
         subscript.to_i > $options['max_dim'].value
@@ -1011,7 +1017,7 @@ class Interpreter
   def set_user_function(definition)
     signature = definition.signature
 
-    raise BASICError, "invalid signature #{signature.class}" unless
+    raise BASICSyntaxError, "invalid signature #{signature.class}" unless
       signature.class.to_s == 'UserFunctionSignature'
 
     raise BASICRuntimeError.new(:te_func_alr, signature) if
@@ -1335,35 +1341,39 @@ class Interpreter
   end
 
   def lock_arr_dims(variable)
-    if @locked_arr_dims.include?(variable)
-      raise BASICRuntimeError.new(:te_arr_dim_lock, variable.to_s)
-    end
+    # allow multiple locks; first one makes an entry of '1'
+    @locked_arr_dims[name] = 0 unless @locked_arr_dims.include?(name)
 
-    @locked_arr_dims << variable
+    @locked_arr_dims[name] += 1
   end
 
   def unlock_arr_dims(variable)
-    unless @locked_arr_dims.include?(variable)
-      raise BASICRuntimeError.new(:te_arr_dim_no_lock, variable.to_s)
+    # there should be at least one lock
+    unless @locked_arr_dims.include?(name)
+      raise BASICRuntimeError.new(:te_arr_dim_no_lock, name)
     end
 
-    @locked_arr_dims.delete(variable)
+    # allow multiple locks; removal of last deletes the entry
+    @locked_arr_dims[name] -= 1
+    @locked_arr_dims.delete(name) if @locked_arr_dims[name] < 1
   end
 
   def lock_mat_dims(variable)
-    if @locked_mat_dims.include?(variable)
-      raise BASICRuntimeError.new(:te_mat_dim_lock, variable.to_s)
-    end
+    # allow multiple locks; first one makes an entry of '1'
+    @locked_mat_dims[name] = 0 unless @locked_mat_dims.include?(name)
 
-    @locked_mat_dims << variable
+    @locked_mat_dims[name] += 1
   end
 
   def unlock_mat_dims(variable)
-    unless @locked_mat_dims.include?(variable)
-      raise BASICRuntimeError.new(:te_mat_dim_no_lock, variable.to_s)
+    # there should be at least one lock
+    unless @locked_mat_dims.include?(name)
+      raise BASICRuntimeError.new(:te_mat_dim_no_lock, name)
     end
 
-    @locked_arr_dims.delete(variable)
+    # allow multiple locks; removal of last deletes the entry
+    @locked_mat_dims[name] -= 1
+    @locked_mat_dims.delete(name) if @locked_mat_dims[name] < 1
   end
 
   def lock_option(name)
