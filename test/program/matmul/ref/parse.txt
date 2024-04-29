@@ -1,0 +1,100 @@
+10 REM MATRIX MULTIPLICATION
+ Remark:MATRIX MULTIPLICATION
+11 OPTION BASE 0
+ NumericValue:0
+12 OPTION MAX_DIM 200
+ NumericValue:200
+20 LET N = 149
+ Variable:N -> .
+ NumericValue:149
+ AssignmentOperator:= =. -> .
+21 LET N1 = N + 1
+ Variable:N1 -> .
+ Variable:N -> .
+ NumericValue:1
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
+22 LET N2 = N1 / 2
+ Variable:N2 -> .
+ Variable:N1 -> .
+ NumericValue:2
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
+30 DIM M(N,N)
+ Variable:N -> .
+ Variable:N -> .
+ Declaration:M(,) -> .(,)
+40 PRINT "GENERATING MATRIX..."
+ TextValue:"GENERATING MATRIX..."
+ CarriageControl:NL
+42 GOSUB 100
+ LineNumber:100
+50 PRINT "MULTIPLYING..."
+ TextValue:"MULTIPLYING..."
+ CarriageControl:NL
+52 MAT LET M2 = M * M
+ Variable:M2(,) -> .(,)
+ Variable:M(,) -> .(,)
+ Variable:M(,) -> .(,)
+ BinaryOperatorMultiply:*(.(,),.(,)) -> .(,)
+ AssignmentOperator:= .(,) -> .(,)
+60 PRINT M(N2,N2)
+ Variable:N2 -> .
+ Variable:N2 -> .
+ Variable:M(.,.) -> .
+ CarriageControl:NL
+70 PRINT "INPUT MATRIX:"
+ TextValue:"INPUT MATRIX:"
+ CarriageControl:NL
+72 MAT PRINT M
+ Variable:M(,) -> .(,)
+ CarriageControl:NL
+80 PRINT "OUTPUT MATRIX:"
+ TextValue:"OUTPUT MATRIX:"
+ CarriageControl:NL
+82 MAT PRINT M2
+ Variable:M2(,) -> .(,)
+ CarriageControl:NL
+90 STOP
+ 
+100 REM GENERATE MATRIX
+ Remark:GENERATE MATRIX
+110 LET T = 1.0 / N1 / N1
+ Variable:T -> .
+ NumericValue:1.0
+ Variable:N1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ Variable:N1 -> .
+ BinaryOperatorDivide:/(.,.) -> .
+ AssignmentOperator:= . -> .
+120 FOR I = 0 TO N
+ control: Variable:I -> .
+ start:   ["NumericValue:0"]
+ end:     ["Variable:N -> ."]
+130 FOR J = 0 TO N
+ control: Variable:J -> .
+ start:   ["NumericValue:0"]
+ end:     ["Variable:N -> ."]
+140 LET M(I,J) = T * (I - J) * (I + J)
+ Variable:I -> .
+ Variable:J -> .
+ Variable:M(.,.) -> .
+ Variable:T -> .
+ Variable:I -> .
+ Variable:J -> .
+ BinaryOperatorMinus:-(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ Variable:I -> .
+ Variable:J -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ BinaryOperatorMultiply:*(.,.) -> .
+ AssignmentOperator:= . -> .
+150 NEXT J
+ Variable:J -> .
+160 NEXT I
+ Variable:I -> .
+190 RETURN
+ 
+199 END
+ 
+

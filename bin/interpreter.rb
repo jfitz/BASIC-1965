@@ -312,6 +312,10 @@ class Interpreter
     @program.analyze
   end
 
+  def program_metrics
+    @program.metrics
+  end
+
   def program_renumber(args)
     renumber_map = @program.renumber(args)
     renumber_breakpoints(renumber_map)

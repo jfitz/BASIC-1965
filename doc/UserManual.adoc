@@ -402,13 +402,19 @@ Syntax:	PARSE [line specification]
 
 The line specification is the same as the line specification for the LIST command.
 
+METRICS
+~~~~~~~
+
+Compiles metrics for complexity.
+Complexity metrics include lines of code, comment density, comprehension effort, McCabe complexity, and Halstead complexity.
+Comprehension effort is my own measure of complexity, counting the number of operations in each statement.
+
 ANALYZE
 ~~~~~~~
 
 Analyzes the code.
-Compiles metrics for complexity and lists lines which are not reachable.
-Complexity metrics include lines of code, comment density, comprehension effort, McCabe complexity, and Halstead complexity.
-Comprehension effort is my own measure of complexity, counting the number of operations in each statement.
+For each line, identifies the possible origins and the possible destinations.
+Lists lines which are not reachable.
 
 OPTION
 ~~~~~~

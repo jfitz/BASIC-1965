@@ -359,11 +359,11 @@ class Line
     pretty_lines
   end
 
-  def analyze_pretty(number)
+  def analyze(number)
     texts = []
 
     @statements.each do |statement|
-      texts += statement.analyze_pretty(number)
+      texts += statement.analyze(number)
 
       number = ' ' * number.size
     end
@@ -1001,8 +1001,46 @@ class Program
     parse_lines_errors(line_numbers)
   end
 
-  # report statistics, complexity, and the lines which are unreachable
+  # list program and show origin and destination lines
   def analyze
+    raise(BASICCommandError, 'No program loaded') if @lines.empty?
+
+    texts = []
+
+    build_line_destinations
+    build_line_origins
+
+    @lines.keys.sort.each do |line_number|
+      line = @lines[line_number]
+
+      # pretty-print the line with complexity statistics
+      number = line_number.to_s
+
+      texts += line.analyze(number)
+
+      # print origins to this line
+      origs = line.origins.sort.uniq.map(&:to_s).join(', ')
+      texts << ("  Origs: #{origs}")
+
+      # print destinations from this line
+      dests = line.destinations.sort.uniq.map(&:to_s).join(', ')
+      texts << ("  Dests: #{dests}")
+    end
+
+    texts << ''
+
+    set_unreachable_code
+
+    # report unreachable lines
+    texts << 'Unreachable code:'
+    texts << ''
+    texts += unreachable_code
+
+    texts += check_for_reachable_stop
+  end
+
+  # report statistics, complexity, and the lines which are unreachable
+  def metrics
     raise(BASICCommandError, 'No program loaded') if @lines.empty?
 
     texts = []
@@ -1025,45 +1063,6 @@ class Program
     texts << 'Complexity:'
     texts << ''
     texts += code_complexity
-    texts << ''
-
-    set_unreachable_code
-
-    texts += analyze_pretty
-
-    # report unreachable lines
-    texts << 'Unreachable code:'
-    texts << ''
-    texts += unreachable_code
-
-    texts += check_for_reachable_stop
-  end
-
-  def analyze_pretty
-    raise(BASICCommandError, 'No program loaded') if @lines.empty?
-
-    texts = []
-
-    build_line_destinations
-    build_line_origins
-
-    @lines.keys.sort.each do |line_number|
-      line = @lines[line_number]
-
-      # pretty-print the line with complexity statistics
-      number = line_number.to_s
-
-      texts += line.analyze_pretty(number)
-
-      # print origins to this line
-      origs = line.origins.sort.uniq.map(&:to_s).join(', ')
-      texts << ("  Origs: #{origs}")
-
-      # print destinations from this line
-      dests = line.destinations.sort.uniq.map(&:to_s).join(', ')
-      texts << ("  Dests: #{dests}")
-    end
-
     texts << ''
   end
 

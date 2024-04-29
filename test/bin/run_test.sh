@@ -126,6 +126,29 @@ then
     fi
 fi
 
+if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/metrics.txt" ]
+then
+    if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/data/metrics_options.txt" ]
+    then
+	METRICS_OPTIONS=$(<"$TESTROOT/$TESTGROUP/$TESTNAME/data/metrics_options.txt")
+    fi
+
+    echo Metrics program with options $GROUP_OPTIONS $TEST_OPTIONS $METRICS_OPTIONS
+    cd "$TESTBED/$TESTNAME"
+    ruby basic.rb --metrics $TESTNAME.bas --no-heading --print-width 0 >metrics.txt $GROUP_OPTIONS $TEST_OPTIONS $METRICS_OPTIONS
+    cd ../..
+
+    echo Compare metrics...
+    diff "$TESTROOT/$TESTGROUP/$TESTNAME/ref/metrics.txt" "$TESTBED/$TESTNAME/metrics.txt"
+    ((ECODE=$?))
+
+    if [ $ECODE -ne 0 ]
+    then
+	((NUM_FAIL+=1))
+	cp "$TESTBED/$TESTNAME/metrics.txt" "$TESTROOT/$TESTGROUP/$TESTNAME/ref/metrics.txt"
+    fi
+fi
+
 if [ -e "$TESTROOT/$TESTGROUP/$TESTNAME/ref/crossref.txt" ]
 then
     echo Crossref program with options $GROUP_OPTIONS $TEST_OPTIONS
