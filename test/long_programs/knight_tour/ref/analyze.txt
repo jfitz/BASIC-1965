@@ -1,23 +1,423 @@
-Statistics:
-
-Number of lines: 140
-Number of valid statements: 101
-Number of comments: 39
-Number of executable statements: 97
-
-Complexity:
-
-Comment density: 0.386
-Comprehension effort: 350
-McCabe complexity: 15
-Halstead complexity:
- length: 390
- volume: 1750.568
- difficulty: 49.427
- effort: 86526.068
- language: 0.717
- intelligence: 35.417
- time: 80.117
+100 (0 2) OPTION BASE 0
+  Origs: :start
+  Dests: 112:auto
+110 (0 1) REM size of board
+  Origs: 
+  Dests: 
+112 (0 3) LET R0 = 8
+  Origs: 100:auto
+  Dests: 114:auto
+114 (0 3) LET C0 = 8
+  Origs: 112:auto
+  Dests: 116:auto
+116 (0 4) LET B0 = R0 * C0
+  Origs: 114:auto
+  Dests: 122:auto
+120 (0 1) REM squares visited
+  Origs: 
+  Dests: 
+122 (0 2) DIM V(B0)
+  Origs: 116:auto
+  Dests: 132:auto
+130 (0 1) REM square at each level
+  Origs: 
+  Dests: 
+132 (0 2) DIM S(B0)
+  Origs: 122:auto
+  Dests: 142:auto
+140 (0 1) REM possible moves for each level
+  Origs: 
+  Dests: 
+142 (0 2) DIM P(B0, 8)
+  Origs: 132:auto
+  Dests: 152:auto
+150 (0 1) REM stop at this level
+  Origs: 
+  Dests: 
+152 (0 3) LET L0 = 57
+  Origs: 142:auto
+  Dests: 402:auto
+200 (0 1) REM Calculate row from square
+  Origs: 
+  Dests: 
+202 FNR(.) (0 4) DEF FNR(S) = INT(S / C0) + 1
+  Origs: 602:function, 920:function
+  Dests: 
+210 (0 1) REM Calculate column from square
+  Origs: 
+  Dests: 
+212 FNC(.) (0 4) DEF FNC(S) = MOD(S, C0) + 1
+  Origs: 604:function, 922:function
+  Dests: 
+220 (0 1) REM Calculate square from row and column
+  Origs: 
+  Dests: 
+222 FNS(.,.) (0 7) DEF FNS(R, C) = (R - 1) * C0 + (C - 1)
+  Origs: 732:function
+  Dests: 
+400 (0 1) REM current level
+  Origs: 
+  Dests: 
+402 (0 3) LET L = 0
+  Origs: 152:auto
+  Dests: 412:auto
+410 (0 1) REM go to a square (a1, or 1,1, or 1)
+  Origs: 
+  Dests: 
+412 (0 3) LET S = 0
+  Origs: 402:auto
+  Dests: 512:auto
+500 (0 1) REM MAIN LOOP
+  Origs: 
+  Dests: 
+510 (0 1) REM ENTER NEXT LEVEL
+  Origs: 
+  Dests: 
+512 (0 4) LET L = L + 1
+  Origs: 412:auto, 548:goto
+  Dests: 514:auto
+513 (0 1) REM PRINT "GOING TO LEVEL";L;" SQUARE";S;" (";FNR(S);",";FNC(S);")"
+  Origs: 
+  Dests: 
+514 (0 3) LET S(L) = S
+  Origs: 512:auto
+  Dests: 515:auto
+515 (0 3) LET V(S) = 1
+  Origs: 514:auto
+  Dests: 518:auto
+516 (0 1) REM if top level, we are done
+  Origs: 
+  Dests: 
+518 (1 4) IF L = L0 THEN 800
+  Origs: 515:auto
+  Dests: 522:auto, 800:ifthen
+520 (0 1) REM COMPUTE POSSIBLE MOVES
+  Origs: 
+  Dests: 
+522 (0 2) GOSUB 600
+  Origs: 518:auto
+  Dests: 532:auto, 602:gosub
+530 (0 1) REM while possible move
+  Origs: 
+  Dests: 
+531 (0 1) REM GOSUB 1520
+  Origs: 
+  Dests: 
+532 (0 4) LET S2 = -1
+  Origs: 522:auto, 590:goto
+  Dests: 534:auto
+534 F(I:534) (1 5) FOR I = 8 TO 1 STEP -1
+  Origs: 532:auto
+  Dests: 536:fornext, 538:fornext
+536 F(I:534) (1 6) IF P(L, I) = -1 THEN 538
+  Origs: 534:fornext
+  Dests: 537:auto, 538:ifthen
+537 F(I:534) (0 3) LET S2 = P(L, I)
+  Origs: 536:auto
+  Dests: 538:auto
+538 F(I:534) (0 1) NEXT I
+  Origs: 534:fornext, 536:ifthen, 537:auto
+  Dests: 542:auto
+542 (1 6) IF S2 = -1 THEN 550
+  Origs: 538:auto
+  Dests: 546:auto, 552:ifthen
+544 (0 1) REM GO TO SQUARE S2
+  Origs: 
+  Dests: 
+546 (0 3) LET S = S2
+  Origs: 542:auto
+  Dests: 548:auto
+548 (0 3) GOTO 510
+  Origs: 546:auto
+  Dests: 512:goto
+550 (0 1) REM MARK SQUARE AS NOT VISITED
+  Origs: 
+  Dests: 
+552 (0 3) LET V(S) = 0
+  Origs: 542:ifthen
+  Dests: 562:auto
+560 (0 1) REM revert to previous level
+  Origs: 
+  Dests: 
+562 (0 4) LET L = L - 1
+  Origs: 552:auto
+  Dests: 564:auto
+564 (1 4) IF L = 0 THEN 820
+  Origs: 562:auto
+  Dests: 572:auto, 820:ifthen
+570 (0 1) REM mark first possible square as not possible
+  Origs: 
+  Dests: 
+572 F(I:572) (1 3) FOR I = 1 TO 8
+  Origs: 564:auto
+  Dests: 574:fornext, 577:fornext
+574 F(I:572) (1 4) IF P(L, I) <> S THEN 577
+  Origs: 572:fornext
+  Dests: 575:auto, 577:ifthen
+575 F(I:572) (0 4) LET P(L, I) = -1
+  Origs: 574:auto
+  Dests: 577:auto
+577 F(I:572) (0 1) NEXT I
+  Origs: 572:fornext, 574:ifthen, 575:auto
+  Dests: 582:auto
+580 (0 1) REM RETURN TO PREVIOUS SQUARE
+  Origs: 
+  Dests: 
+582 (0 3) LET S = S(L)
+  Origs: 577:auto
+  Dests: 590:auto
+584 (0 1) REM PRINT "REVERTING TO LEVEL";L;" SQUARE";S
+  Origs: 
+  Dests: 
+590 (0 3) GOTO 530
+  Origs: 582:auto
+  Dests: 532:goto
+600 (0 1) REM build possible moves
+  Origs: 
+  Dests: 
+602 G(602) (0 5) LET R = FNR(S)
+  Origs: 522:gosub
+  Dests: 202:function, 604:auto
+604 G(602) (0 5) LET C = FNC(S)
+  Origs: 602:auto
+  Dests: 212:function, 611:auto
+610 (0 1) REM up up left
+  Origs: 
+  Dests: 
+611 G(602) (0 3) LET P = 1
+  Origs: 604:auto
+  Dests: 612:auto
+612 G(602) (0 4) LET R5 = R - 2
+  Origs: 611:auto
+  Dests: 613:auto
+613 G(602) (0 4) LET C5 = C - 1
+  Origs: 612:auto
+  Dests: 615:auto
+615 G(602) (0 2) GOSUB 700
+  Origs: 613:auto
+  Dests: 621:auto, 710:gosub
+620 (0 1) REM up up right
+  Origs: 
+  Dests: 
+621 G(602) (0 3) LET P = 2
+  Origs: 615:auto
+  Dests: 622:auto
+622 G(602) (0 4) LET R5 = R - 2
+  Origs: 621:auto
+  Dests: 623:auto
+623 G(602) (0 4) LET C5 = C + 1
+  Origs: 622:auto
+  Dests: 625:auto
+625 G(602) (0 2) GOSUB 700
+  Origs: 623:auto
+  Dests: 631:auto, 710:gosub
+630 (0 1) REM down down left
+  Origs: 
+  Dests: 
+631 G(602) (0 3) LET P = 3
+  Origs: 625:auto
+  Dests: 632:auto
+632 G(602) (0 4) LET R5 = R + 2
+  Origs: 631:auto
+  Dests: 633:auto
+633 G(602) (0 4) LET C5 = C - 1
+  Origs: 632:auto
+  Dests: 635:auto
+635 G(602) (0 2) GOSUB 700
+  Origs: 633:auto
+  Dests: 641:auto, 710:gosub
+640 (0 1) REM down down right
+  Origs: 
+  Dests: 
+641 G(602) (0 3) LET P = 4
+  Origs: 635:auto
+  Dests: 642:auto
+642 G(602) (0 4) LET R5 = R + 2
+  Origs: 641:auto
+  Dests: 643:auto
+643 G(602) (0 4) LET C5 = C + 1
+  Origs: 642:auto
+  Dests: 645:auto
+645 G(602) (0 2) GOSUB 700
+  Origs: 643:auto
+  Dests: 651:auto, 710:gosub
+650 (0 1) REM left left up
+  Origs: 
+  Dests: 
+651 G(602) (0 3) LET P = 5
+  Origs: 645:auto
+  Dests: 652:auto
+652 G(602) (0 4) LET R5 = R - 1
+  Origs: 651:auto
+  Dests: 653:auto
+653 G(602) (0 4) LET C5 = C - 2
+  Origs: 652:auto
+  Dests: 655:auto
+655 G(602) (0 2) GOSUB 700
+  Origs: 653:auto
+  Dests: 661:auto, 710:gosub
+660 (0 1) REM left left down
+  Origs: 
+  Dests: 
+661 G(602) (0 3) LET P = 6
+  Origs: 655:auto
+  Dests: 662:auto
+662 G(602) (0 4) LET R5 = R + 1
+  Origs: 661:auto
+  Dests: 663:auto
+663 G(602) (0 4) LET C5 = C - 2
+  Origs: 662:auto
+  Dests: 665:auto
+665 G(602) (0 2) GOSUB 700
+  Origs: 663:auto
+  Dests: 671:auto, 710:gosub
+670 (0 1) REM right right up
+  Origs: 
+  Dests: 
+671 G(602) (0 3) LET P = 7
+  Origs: 665:auto
+  Dests: 672:auto
+672 G(602) (0 4) LET R5 = R - 1
+  Origs: 671:auto
+  Dests: 673:auto
+673 G(602) (0 4) LET C5 = C + 2
+  Origs: 672:auto
+  Dests: 675:auto
+675 G(602) (0 2) GOSUB 700
+  Origs: 673:auto
+  Dests: 681:auto, 710:gosub
+680 (0 1) REM right right down
+  Origs: 
+  Dests: 
+681 G(602) (0 3) LET P = 8
+  Origs: 675:auto
+  Dests: 682:auto
+682 G(602) (0 4) LET R5 = R + 1
+  Origs: 681:auto
+  Dests: 683:auto
+683 G(602) (0 4) LET C5 = C + 2
+  Origs: 682:auto
+  Dests: 685:auto
+685 G(602) (0 2) GOSUB 700
+  Origs: 683:auto
+  Dests: 690:auto, 710:gosub
+690 G(602) (0 1) RETURN
+  Origs: 685:auto
+  Dests: 
+700 (0 1) REM VALIDATE POSSIBLE MOVE
+  Origs: 
+  Dests: 
+701 (0 1) REM moves off the board are illegal
+  Origs: 
+  Dests: 
+710 G(710) (1 4) IF R5 < 1 THEN 770
+  Origs: 615:gosub, 625:gosub, 635:gosub, 645:gosub, 655:gosub, 665:gosub, 675:gosub, 685:gosub
+  Dests: 715:auto, 772:ifthen
+715 G(710) (1 4) IF R5 > R0 THEN 770
+  Origs: 710:auto
+  Dests: 720:auto, 772:ifthen
+720 G(710) (1 4) IF C5 < 1 THEN 770
+  Origs: 715:auto
+  Dests: 725:auto, 772:ifthen
+725 G(710) (1 4) IF C5 > C0 THEN 770
+  Origs: 720:auto
+  Dests: 732:auto, 772:ifthen
+730 (0 1) REM moves to squares already visited are illegal
+  Origs: 
+  Dests: 
+732 G(710) (0 5) LET S5 = FNS(R5, C5)
+  Origs: 725:auto
+  Dests: 222:function, 734:auto
+734 G(710) (1 4) IF V(S5) > 0 THEN 770
+  Origs: 732:auto
+  Dests: 752:auto, 772:ifthen
+750 (0 1) REM THE MOVE IS LEGAL
+  Origs: 
+  Dests: 
+752 G(710) (0 3) LET P(L, P) = S5
+  Origs: 734:auto
+  Dests: 755:auto
+755 G(710) (0 2) GOTO 790
+  Origs: 752:auto
+  Dests: 790:goto
+770 (0 1) REM THE MOVE IS NOT LEGAL
+  Origs: 
+  Dests: 
+772 G(710) (0 4) LET P(L, P) = -1
+  Origs: 710:ifthen, 715:ifthen, 720:ifthen, 725:ifthen, 734:ifthen
+  Dests: 790:auto
+790 G(710) (0 1) RETURN
+  Origs: 755:goto, 772:auto
+  Dests: 
+800 (0 2) PRINT "SUCCESS!"
+  Origs: 518:ifthen
+  Dests: 810:auto
+810 (0 2) GOSUB 900
+  Origs: 800:auto
+  Dests: 812:auto, 900:gosub
+812 (0 1) STOP
+  Origs: 810:auto
+  Dests: :stop
+820 (0 2) PRINT "INCOMPLETE"
+  Origs: 564:ifthen
+  Dests: 830:auto
+830 (0 2) GOSUB 900
+  Origs: 820:auto
+  Dests: 832:auto, 900:gosub
+832 (0 1) STOP
+  Origs: 830:auto
+  Dests: :stop
+900 G(900) (0 2) PRINT "TOUR: ";
+  Origs: 810:gosub, 830:gosub
+  Dests: 910:auto
+910 G(900) F(I:910) (1 3) FOR I = 1 TO L
+  Origs: 900:auto
+  Dests: 920:fornext, 940:fornext
+920 G(900) F(I:910) (0 5) LET R = FNR(S(I))
+  Origs: 910:fornext
+  Dests: 202:function, 922:auto
+922 G(900) F(I:910) (0 5) LET C = FNC(S(I))
+  Origs: 920:auto
+  Dests: 212:function, 932:auto
+930 (0 1) REM PRINT STR$(R);",";STR$(C);"; ";
+  Origs: 
+  Dests: 
+932 G(900) F(I:910) (0 2) PRINT S(I);
+  Origs: 922:auto
+  Dests: 940:auto
+940 G(900) F(I:910) (0 1) NEXT I
+  Origs: 910:fornext, 932:auto
+  Dests: 950:auto
+950 G(900) (0 2) PRINT "END"
+  Origs: 940:auto
+  Dests: 960:auto
+960 G(900) (0 1) RETURN
+  Origs: 950:auto
+  Dests: 
+1520 (0 1) REM PRINT POSSIBLE MOVES
+  Origs: 
+  Dests: 
+1523 (0 2) PRINT "POSSIBLE MOVES:";
+  Origs: 
+  Dests: 1524:auto
+1524 F(I:1524) (1 3) FOR I = 1 TO 8
+  Origs: 1523:auto
+  Dests: 1525:fornext, 1526:fornext
+1525 F(I:1524) (0 2) PRINT P(L, I);
+  Origs: 1524:fornext
+  Dests: 1526:auto
+1526 F(I:1524) (0 1) NEXT I
+  Origs: 1524:fornext, 1525:auto
+  Dests: 1527:auto
+1527 (0 2) PRINT
+  Origs: 1526:auto
+  Dests: 1529:auto
+1529 (0 1) RETURN
+  Origs: 1527:auto
+  Dests: 
+1999 (0 1) END
+  Origs: 
+  Dests: :stop
 
 Unreachable code:
 
@@ -27,4 +427,5 @@ Unreachable code:
 1526: NEXT I
 1527: PRINT
 1529: RETURN
+1999: END
 

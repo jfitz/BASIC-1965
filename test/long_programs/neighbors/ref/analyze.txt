@@ -1,25 +1,420 @@
-Statistics:
-
-Number of lines: 138
-Number of valid statements: 115
-Number of comments: 23
-Number of executable statements: 101
-
-Complexity:
-
-Comment density: 0.200
-Comprehension effort: 347
-McCabe complexity: 29
-Halstead complexity:
- length: 731
- volume: 3637.992
- difficulty: 37.516
- effort: 136484.353
- language: 2.585
- intelligence: 96.971
- time: 126.374
+10 (0 1) REM SIMULATION OF NEIGHBORS AND MOVES
+  Origs: 
+  Dests: 
+20 (0 2) OPTION BASE 0
+  Origs: :start
+  Dests: 21:auto
+21 (0 2) OPTION FIELD_SEP "SEMI"
+  Origs: 20:auto
+  Dests: 110:auto
+100 (0 1) REM collect data
+  Origs: 
+  Dests: 
+110 (2 3) READ R0, C0
+  Origs: 21:auto
+  Dests: 120:auto
+120 (1 2) READ N0
+  Origs: 110:auto
+  Dests: 122:auto
+122 (0 2) DIM M(N0)
+  Origs: 120:auto
+  Dests: 130:auto
+130 (1 2) READ D0
+  Origs: 122:auto
+  Dests: 132:auto
+132 (1 2) READ I0
+  Origs: 130:auto
+  Dests: 134:auto
+134 (1 2) READ Z8
+  Origs: 132:auto
+  Dests: 136:auto
+136 (0 8) LET Z0 = R0 * 2 + C0 * 2 + Z8
+  Origs: 134:auto
+  Dests: 150:auto
+150 (0 7) PRINT "Board size:"; R0 + 1; "x"; C0 + 1
+  Origs: 136:auto
+  Dests: 152:auto
+152 (0 3) PRINT "Number of populations:"; N0
+  Origs: 150:auto
+  Dests: 154:auto
+154 (0 3) PRINT "Discomfort threshold:"; D0
+  Origs: 152:auto
+  Dests: 156:auto
+156 (0 3) PRINT "Iteration threshold:"; I0
+  Origs: 154:auto
+  Dests: 158:auto
+158 (0 3) PRINT "Number of zero cells:"; Z0
+  Origs: 156:auto
+  Dests: 210:auto
+200 (0 1) REM configure initial board
+  Origs: 
+  Dests: 
+210 (0 2) PRINT "Initializing board... ";
+  Origs: 158:auto
+  Dests: 220:auto
+220 (0 2) GOSUB 1100
+  Origs: 210:auto
+  Dests: 230:auto, 1112:gosub
+230 (0 2) PRINT "done."
+  Origs: 220:auto
+  Dests: 240:auto
+240 (0 3) LET I1 = 1
+  Origs: 230:auto
+  Dests: 242:auto
+242 (0 3) LET P2 = 0.99
+  Origs: 240:auto
+  Dests: 310:auto
+300 (0 1) REM display board
+  Origs: 
+  Dests: 
+310 (0 2) PRINT
+  Origs: 242:auto, 800:goto
+  Dests: 312:auto
+312 (0 4) PRINT "Iteration"; I1; ":"
+  Origs: 310:auto
+  Dests: 314:auto
+314 (0 2) PRINT
+  Origs: 312:auto
+  Dests: 320:auto
+320 (0 2) GOSUB 1200
+  Origs: 314:auto
+  Dests: 410:auto, 1210:gosub
+400 (0 1) REM ask to continue
+  Origs: 
+  Dests: 
+410 (1 4) IF P2 < I0 THEN 900
+  Origs: 320:auto
+  Dests: 430:auto, 910:ifthen
+430 (0 4) LET I1 = I1 + 1
+  Origs: 410:auto
+  Dests: 510:auto
+500 (0 1) REM calculate comfort
+  Origs: 
+  Dests: 
+510 (0 2) PRINT "Calculating moves... ";
+  Origs: 430:auto
+  Dests: 520:auto
+520 (0 2) GOSUB 1300
+  Origs: 510:auto
+  Dests: 530:auto, 1302:gosub
+530 (0 2) PRINT "done."
+  Origs: 520:auto
+  Dests: 540:auto
+540 (0 2) PRINT "Moves: ";
+  Origs: 530:auto
+  Dests: 542:auto
+542 (0 2) ARR PRINT M;
+  Origs: 540:auto
+  Dests: 550:auto
+550 (0 3) LET M = 0
+  Origs: 542:auto
+  Dests: 552:auto
+552 F(I:552) (1 3) FOR I = 1 TO N0
+  Origs: 550:auto
+  Dests: 554:fornext, 556:fornext
+554 F(I:552) (0 4) LET M = M + M(I)
+  Origs: 552:fornext
+  Dests: 556:auto
+556 F(I:552) (0 1) NEXT I
+  Origs: 552:fornext, 554:auto
+  Dests: 558:auto
+558 (0 8) LET T = (R0 + 1) * (C0 + 1) - Z0
+  Origs: 556:auto
+  Dests: 560:auto
+560 (0 4) LET P2 = M / T
+  Origs: 558:auto
+  Dests: 562:auto
+562 (0 5) PRINT "("; P2 * 100; "%)"
+  Origs: 560:auto
+  Dests: 570:auto
+570 (0 2) PRINT
+  Origs: 562:auto
+  Dests: 610:auto
+600 (0 1) REM fill in new board
+  Origs: 
+  Dests: 
+610 (0 2) PRINT "Filling in new board... ";
+  Origs: 570:auto
+  Dests: 620:auto
+620 (0 2) GOSUB 1400
+  Origs: 610:auto
+  Dests: 630:auto, 1410:gosub
+630 (0 2) PRINT "done."
+  Origs: 620:auto
+  Dests: 710:auto
+700 (0 1) REM new board becomes the board
+  Origs: 
+  Dests: 
+710 (0 3) MAT B = B1
+  Origs: 630:auto
+  Dests: 800:auto
+800 (0 3) GOTO 300
+  Origs: 710:auto
+  Dests: 310:goto
+900 (0 1) REM End the simulation
+  Origs: 
+  Dests: 
+910 (0 2) PRINT
+  Origs: 410:ifthen
+  Dests: 920:auto
+920 (0 2) PRINT "SIMULATION TERMINATED"
+  Origs: 910:auto
+  Dests: 990:auto
+990 (0 1) STOP
+  Origs: 920:auto
+  Dests: :stop
+1100 (0 1) REM configure initial board
+  Origs: 
+  Dests: 
+1110 (0 1) REM SET EVERYTHING TO -1
+  Origs: 
+  Dests: 
+1112 G(1112) (0 7) MAT B = CON(R0, C0) * -1
+  Origs: 220:gosub
+  Dests: 1122:auto
+1120 (0 1) REM SET HORIZONTAL BORDERS TO 0
+  Origs: 
+  Dests: 
+1122 G(1112) F(C:1122) (1 3) FOR C = 0 TO C0
+  Origs: 1112:auto
+  Dests: 1124:fornext, 1128:fornext
+1124 G(1112) F(C:1122) (0 3) LET B(0, C) = 0
+  Origs: 1122:fornext
+  Dests: 1126:auto
+1126 G(1112) F(C:1122) (0 3) LET B(R0, C) = 0
+  Origs: 1124:auto
+  Dests: 1128:auto
+1128 G(1112) F(C:1122) (0 1) NEXT C
+  Origs: 1122:fornext, 1126:auto
+  Dests: 1132:auto
+1130 (0 1) REM SET VERTICAL BORDERS TO 0
+  Origs: 
+  Dests: 
+1132 G(1112) F(R:1132) (1 3) FOR R = 0 TO R0
+  Origs: 1128:auto
+  Dests: 1134:fornext, 1138:fornext
+1134 G(1112) F(R:1132) (0 3) LET B(R, 0) = 0
+  Origs: 1132:fornext
+  Dests: 1136:auto
+1136 G(1112) F(R:1132) (0 3) LET B(R, C0) = 0
+  Origs: 1134:auto
+  Dests: 1138:auto
+1138 G(1112) F(R:1132) (0 1) NEXT R
+  Origs: 1132:fornext, 1136:auto
+  Dests: 1142:auto
+1140 (0 1) REM SET INSIDE EMPTY AREAS TO 0
+  Origs: 
+  Dests: 
+1142 G(1112) F(I:1142) (1 3) FOR I = 1 TO Z8
+  Origs: 1138:auto
+  Dests: 1144:fornext, 1148:fornext
+1144 G(1112) F(I:1142) (2 3) READ R, C
+  Origs: 1142:fornext
+  Dests: 1146:auto
+1146 G(1112) F(I:1142) (0 3) LET B(R, C) = 0
+  Origs: 1144:auto
+  Dests: 1148:auto
+1148 G(1112) F(I:1142) (0 1) NEXT I
+  Origs: 1142:fornext, 1146:auto
+  Dests: 1152:auto
+1150 (0 1) REM SET REMAINING CELLS TO POPULATION GROUP
+  Origs: 
+  Dests: 
+1152 G(1112) F(R:1152) (1 4) FOR R = 1 TO R0 - 1
+  Origs: 1148:auto
+  Dests: 1153:fornext, 1158:fornext
+1153 G(1112) F(R:1152,C:1153) (1 4) FOR C = 1 TO C0 - 1
+  Origs: 1152:fornext
+  Dests: 1154:fornext, 1157:fornext
+1154 G(1112) F(R:1152,C:1153) (1 6) IF B(R, C) <> -1 THEN 1157
+  Origs: 1153:fornext
+  Dests: 1155:auto, 1157:ifthen
+1155 G(1112) F(R:1152,C:1153) (0 4) LET B(R, C) = INT(RND(N0) + 1)
+  Origs: 1154:auto
+  Dests: 1157:auto
+1157 G(1112) F(R:1152,C:1153) (0 1) NEXT C
+  Origs: 1153:fornext, 1154:ifthen, 1155:auto
+  Dests: 1158:auto
+1158 G(1112) F(R:1152) (0 1) NEXT R
+  Origs: 1152:fornext, 1157:auto
+  Dests: 1190:auto
+1190 G(1112) (0 1) RETURN
+  Origs: 1158:auto
+  Dests: 
+1200 (0 1) REM display board
+  Origs: 
+  Dests: 
+1210 G(1210) (0 2) MAT PRINT B;
+  Origs: 320:gosub
+  Dests: 1290:auto
+1290 G(1210) (0 1) RETURN
+  Origs: 1210:auto
+  Dests: 
+1300 (0 1) REM calculate comfort, count people who move
+  Origs: 
+  Dests: 
+1302 G(1302) (0 3) MAT B1 = B
+  Origs: 520:gosub
+  Dests: 1304:auto
+1304 G(1302) (0 4) ARR M = ZER1()
+  Origs: 1302:auto
+  Dests: 1310:auto
+1310 G(1302) F(R:1310) (1 4) FOR R = 1 TO R0 - 1
+  Origs: 1304:auto
+  Dests: 1312:fornext, 1382:fornext
+1312 G(1302) F(R:1310,C:1312) (1 4) FOR C = 1 TO C0 - 1
+  Origs: 1310:fornext
+  Dests: 1314:fornext, 1380:fornext
+1314 G(1302) F(R:1310,C:1312) (1 4) IF B(R, C) = 0 THEN 1380
+  Origs: 1312:fornext
+  Dests: 1317:auto, 1380:ifthen
+1317 G(1302) F(R:1310,C:1312) (0 3) LET X7 = 0
+  Origs: 1314:auto
+  Dests: 1318:auto
+1318 G(1302) F(R:1310,C:1312) (0 3) LET X8 = 0
+  Origs: 1317:auto
+  Dests: 1320:auto
+1320 G(1302) F(R:1310,C:1312,I9:1320) (1 4) FOR I9 = -1 TO 1
+  Origs: 1318:auto
+  Dests: 1322:fornext, 1352:fornext
+1322 G(1302) F(R:1310,C:1312,I9:1320,J9:1322) (1 4) FOR J9 = -1 TO 1
+     WARNING: FOR/NEXT nesting exceeds limit 3
+  Origs: 1320:fornext
+  Dests: 1330:fornext, 1350:fornext
+1330 G(1302) F(R:1310,C:1312,I9:1320,J9:1322) (1 4) IF B(R + I9, C + J9) = 0 THEN 1340
+  Origs: 1322:fornext
+  Dests: 1332:auto, 1340:ifthen
+1332 G(1302) F(R:1310,C:1312,I9:1320,J9:1322) (1 4) IF B(R + I9, C + J9) = B(R, C) THEN 1340
+  Origs: 1330:auto
+  Dests: 1334:auto, 1340:ifthen
+1334 G(1302) F(R:1310,C:1312,I9:1320,J9:1322) (0 4) LET X8 = X8 + 1
+  Origs: 1332:auto
+  Dests: 1336:auto
+1336 G(1302) F(R:1310,C:1312,I9:1320,J9:1322) (0 2) GOTO 1350
+  Origs: 1334:auto
+  Dests: 1350:goto
+1340 G(1302) F(R:1310,C:1312,I9:1320,J9:1322) (0 4) LET X7 = X7 + 1
+  Origs: 1330:ifthen, 1332:ifthen
+  Dests: 1350:auto
+1350 G(1302) F(R:1310,C:1312,I9:1320,J9:1322) (0 1) NEXT J9
+  Origs: 1322:fornext, 1336:goto, 1340:auto
+  Dests: 1352:auto
+1352 G(1302) F(R:1310,C:1312,I9:1320) (0 1) NEXT I9
+  Origs: 1320:fornext, 1350:auto
+  Dests: 1360:auto
+1360 G(1302) F(R:1310,C:1312) (0 4) LET X = X8 / X7
+  Origs: 1352:auto
+  Dests: 1370:auto
+1370 G(1302) F(R:1310,C:1312) (1 4) IF X < D0 THEN 1380
+  Origs: 1360:auto
+  Dests: 1372:auto, 1380:ifthen
+1372 G(1302) F(R:1310,C:1312) (0 4) LET M(B(R, C)) = M(B(R, C)) + 1
+  Origs: 1370:auto
+  Dests: 1374:auto
+1374 G(1302) F(R:1310,C:1312) (0 4) LET B1(R, C) = -1
+  Origs: 1372:auto
+  Dests: 1380:auto
+1380 G(1302) F(R:1310,C:1312) (0 1) NEXT C
+  Origs: 1312:fornext, 1314:ifthen, 1370:ifthen, 1374:auto
+  Dests: 1382:auto
+1382 G(1302) F(R:1310) (0 1) NEXT R
+  Origs: 1310:fornext, 1380:auto
+  Dests: 1390:auto
+1390 G(1302) (0 1) RETURN
+  Origs: 1382:auto
+  Dests: 
+1400 (0 1) REM fill in new board
+  Origs: 
+  Dests: 
+1410 G(1410) F(R:1410) (1 4) FOR R = 1 TO R0 - 1
+  Origs: 620:gosub
+  Dests: 1412:fornext, 1452:fornext
+1412 G(1410) F(R:1410,C:1412) (1 4) FOR C = 1 TO C0 - 1
+  Origs: 1410:fornext
+  Dests: 1420:fornext, 1450:fornext
+1420 G(1410) F(R:1410,C:1412) (1 6) IF B1(R, C) <> -1 THEN 1450
+  Origs: 1412:fornext
+  Dests: 1430:auto, 1450:ifthen
+1430 G(1410) F(R:1410,C:1412) (0 4) LET P = INT(RND(N0) + 1)
+  Origs: 1420:auto, 1432:ifthen
+  Dests: 1432:auto
+1432 G(1410) F(R:1410,C:1412) (1 5) IF M(P) <= 0 THEN 1430
+  Origs: 1430:auto
+  Dests: 1430:ifthen, 1440:auto
+1440 G(1410) F(R:1410,C:1412) (0 3) LET B1(R, C) = P
+  Origs: 1432:auto
+  Dests: 1442:auto
+1442 G(1410) F(R:1410,C:1412) (0 4) LET M(P) = M(P) - 1
+  Origs: 1440:auto
+  Dests: 1450:auto
+1450 G(1410) F(R:1410,C:1412) (0 1) NEXT C
+  Origs: 1412:fornext, 1420:ifthen, 1442:auto
+  Dests: 1452:auto
+1452 G(1410) F(R:1410) (0 1) NEXT R
+  Origs: 1410:fornext, 1450:auto
+  Dests: 1490:auto
+1490 G(1410) (0 1) RETURN
+  Origs: 1452:auto
+  Dests: 
+3000 (0 1) REM NUMBER OF ROWS AND COLUMNS
+  Origs: 
+  Dests: 
+3005 (0 2) DATA 40, 40
+  Origs: 
+  Dests: 
+3010 (0 1) REM NUMBER OF POPULATION GROUPS
+  Origs: 
+  Dests: 
+3012 (0 2) DATA 3
+  Origs: 
+  Dests: 
+3020 (0 1) REM DISCOMFORT THRESHOLD, ITERATION THRESHOLD
+  Origs: 
+  Dests: 
+3022 (0 2) DATA 0.8, 0.1
+  Origs: 
+  Dests: 
+3030 (0 1) REM NUMBER OF ZERO-CELLS
+  Origs: 
+  Dests: 
+3032 (0 2) DATA 73
+  Origs: 
+  Dests: 
+3050 (0 1) REM COORDS FOR ZERO-CELLS
+  Origs: 
+  Dests: 
+3051 (0 2) DATA 1, 10, 2, 10, 3, 10, 4, 10, 5, 10
+  Origs: 
+  Dests: 
+3052 (0 2) DATA 39, 20, 38, 20, 37, 20, 36, 20, 35, 20, 34, 20, 33, 20, 32, 20, 31, 20, 30, 20
+  Origs: 
+  Dests: 
+3053 (0 2) DATA 29, 20, 28, 20, 27, 20, 26, 20, 25, 20
+  Origs: 
+  Dests: 
+3054 (0 2) DATA 6, 11, 7, 12, 8, 13, 9, 14, 10, 15, 11, 16, 12, 17, 13, 18
+  Origs: 
+  Dests: 
+3055 (0 2) DATA 12, 1, 12, 2, 12, 3, 12, 4, 12, 5, 12, 6
+  Origs: 
+  Dests: 
+3056 (0 2) DATA 18, 39, 18, 38, 18, 37, 18, 36, 18, 35, 18, 34
+  Origs: 
+  Dests: 
+3057 (0 2) DATA 24, 19, 23, 18, 22, 17, 21, 16, 20, 15, 19, 14, 18, 13, 17, 12, 16, 11
+  Origs: 
+  Dests: 
+3058 (0 2) DATA 24, 21, 23, 22, 22, 23, 21, 24, 20, 25, 19, 26, 18, 27, 17, 28, 16, 29, 16, 30, 16, 31, 16, 32, 17, 33
+  Origs: 
+  Dests: 
+3059 (0 2) DATA 24, 20, 23, 20, 22, 20, 21, 20, 20, 20, 19, 20, 18, 20, 17, 20, 16, 20, 15, 20, 14, 19, 13, 19
+  Origs: 
+  Dests: 
+4999 (0 1) END
+  Origs: 
+  Dests: :stop
 
 Unreachable code:
 
-All executable lines are reachable.
+4999: END
 

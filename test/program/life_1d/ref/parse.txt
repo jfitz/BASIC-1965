@@ -1,0 +1,143 @@
+10 LET M = 50
+ Variable:M -> .
+ NumericValue:50
+ AssignmentOperator:= =. -> .
+20 DIM X (M)
+ Variable:M -> .
+ Declaration:X() -> .()
+30 DIM Y (M)
+ Variable:M -> .
+ Declaration:Y() -> .()
+40 FOR I = 0 TO M
+ control: Variable:I -> .
+ start:   ["NumericValue:0"]
+ end:     ["Variable:M -> ."]
+50   IF RND(1) * 10 > 5 THEN 90
+ NumericValue:1
+ FunctionRnd:RND(.) -> .
+ NumericValue:10
+ BinaryOperatorMultiply:*(.,.) -> .
+ NumericValue:5
+ BinaryOperatorGreater:>(.,.) -> ?
+ LineNumber:90
+60   LET X(I) = 1
+ Variable:I -> .
+ Variable:X(.) -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+70   PRINT "*";
+ TextValue:"*"
+ CarriageControl:;
+80   GOTO 110
+ LineNumber:110
+90   LET X(I) = 0
+ Variable:I -> .
+ Variable:X(.) -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+100   PRINT " ";
+ TextValue:" "
+ CarriageControl:;
+110 NEXT I
+ Variable:I -> .
+120 PRINT
+ CarriageControl:NL
+130 FOR T = 0 TO 25
+ control: Variable:T -> .
+ start:   ["NumericValue:0"]
+ end:     ["NumericValue:25"]
+140   FOR I = 0 TO M
+ control: Variable:I -> .
+ start:   ["NumericValue:0"]
+ end:     ["Variable:M -> ."]
+150     LET C = 0
+ Variable:C -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+160     FOR Z = I-2 TO I+2
+ control: Variable:Z -> .
+ start:   ["Variable:I -> .", "NumericValue:2", "BinaryOperatorMinus:-(.,.) -> ."]
+ end:     ["Variable:I -> .", "NumericValue:2", "BinaryOperatorPlus:+(.,.) -> ."]
+170       IF Z < 0 THEN 200
+ Variable:Z -> .
+ NumericValue:0
+ BinaryOperatorLess:<(.,.) -> ?
+ LineNumber:200
+180       IF Z > M THEN 200
+ Variable:Z -> .
+ Variable:M -> .
+ BinaryOperatorGreater:>(.,.) -> ?
+ LineNumber:200
+190       LET C = C + X(Z)
+ Variable:C -> .
+ Variable:C -> .
+ Variable:Z -> .
+ Variable:X(.) -> .
+ BinaryOperatorPlus:+(.,.) -> .
+ AssignmentOperator:= . -> .
+200     NEXT Z
+ Variable:Z -> .
+210     IF C = 3 THEN 290 
+ Variable:C -> .
+ NumericValue:3
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:290
+220     IF X(I) = 0 THEN 250
+ Variable:I -> .
+ Variable:X(.) -> .
+ NumericValue:0
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:250
+230     IF C = 5 THEN 290
+ Variable:C -> .
+ NumericValue:5
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:290
+240     GOTO 260
+ LineNumber:260
+250     IF C = 2 THEN 290
+ Variable:C -> .
+ NumericValue:2
+ BinaryOperatorEqual:=(.,.) -> ?
+ LineNumber:290
+260     LET Y(I) = 0
+ Variable:I -> .
+ Variable:Y(.) -> .
+ NumericValue:0
+ AssignmentOperator:= =. -> .
+270     PRINT " ";
+ TextValue:" "
+ CarriageControl:;
+280     GOTO 310
+ LineNumber:310
+290     LET Y(I) = 1
+ Variable:I -> .
+ Variable:Y(.) -> .
+ NumericValue:1
+ AssignmentOperator:= =. -> .
+300     PRINT "*";
+ TextValue:"*"
+ CarriageControl:;
+310   NEXT I
+ Variable:I -> .
+320   PRINT
+ CarriageControl:NL
+330   FOR I = 0 TO M
+ control: Variable:I -> .
+ start:   ["NumericValue:0"]
+ end:     ["Variable:M -> ."]
+340     LET X(I) = Y(I)
+ Variable:I -> .
+ Variable:X(.) -> .
+ Variable:I -> .
+ Variable:Y(.) -> .
+ AssignmentOperator:= . -> .
+350   NEXT I
+ Variable:I -> .
+360 NEXT T
+ Variable:T -> .
+370 REM GOTO 40
+ Remark:GOTO 40
+999 END
+ 
+
