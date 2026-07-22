@@ -898,7 +898,13 @@ class Interpreter
   def dump_vars
     @variables.each do |name, dict|
       value = dict['value']
-      @console_io.print_line("#{name}: #{value}")
+      provenance = dict['provenance']
+      const = dict['const']
+      s = "#{name}: "
+      s += "(#{provenance}) " if provenance
+      s += "CONST " if const
+      s += "#{value}"
+      @console_io.print_line(s)
     end
 
     @console_io.newline
@@ -1117,13 +1123,15 @@ class Interpreter
         @variables[var] =
           {
             'provenance' => @current_line_stmt_mod,
-            'value' => default_value
+            'value' => default_value,
+            'const' => false
           }
       end
 
       dict = @variables[var]
       value = dict['value']
       provenance = dict['provenance']
+      const = dict['const']
     end
 
     seen = @get_value_seen.include?(variable)
@@ -1133,11 +1141,10 @@ class Interpreter
     if trace && !seen
       provenance_option = $options['provenance'].value
 
-      text = if provenance_option && !provenance.nil?
-               " #{variable}: (#{provenance}) #{value}"
-             else
-               " #{variable}: #{value}"
-             end
+      text = " #{variable}: "
+      text += "(#{provenance}) " if provenance_option && provenance
+      text += "CONST " if const
+      text += "#{value}"
 
       @trace_out.newline_when_needed
       @trace_out.print_line(text)
@@ -1177,6 +1184,7 @@ class Interpreter
       dict = @variables[var]
       old_value = dict['value']
       old_provenance = dict['provenance']
+      old_const = dict['const']
 
       # a different value resets 'infinite loop' check
       if value != old_value || @current_line_stmt_mod != old_provenance
@@ -1187,7 +1195,7 @@ class Interpreter
       clear_previous_lines
     end
 
-    dict = { 'provenance' => @current_line_stmt_mod, 'value' => value }
+    dict = { 'provenance' => @current_line_stmt_mod, 'value' => value, 'const' => false }
     @variables[var] = dict
 
     @trace_out.newline_when_needed
