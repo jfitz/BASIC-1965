@@ -739,6 +739,23 @@ Transfers control to the end of the active FOR/NEXT statement and terminates the
 Syntax: BREAK
 
 
+CONST
+~~~~~
+
+Assigns a value to a variable and marks the variable as constant.
+
+Syntax: CONST target variable = expression
+
+Examples:
+        10 CONST M = 65
+        20 CONST D3 = F * 35
+
+After the 'CONST' assignment, the variable may not be assigned a new value or forgotten with FORGET.
+
+Only scalar variables may be assigned as constant.
+Arrays and matricies may not be assigned as constant.
+Elements of arrays or matricies (e.g. B(4), C(3,4) ) may not be marked as constant.
+
 CONTINUE
 ~~~~~~~~
 

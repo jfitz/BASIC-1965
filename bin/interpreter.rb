@@ -55,7 +55,7 @@ class AbstractForControl < AbstractLoopControl
     interpreter.unlock_variable(@control_variable) if
       $options['lock_fornext'].value
 
-    interpreter.set_value(@control_variable, current_value)
+    interpreter.set_value(@control_variable, current_value, false)
 
     interpreter.lock_variable(@control_variable) if
       $options['lock_fornext'].value
@@ -1154,7 +1154,7 @@ class Interpreter
     value
   end
 
-  def set_value(variable, value)
+  def set_value(variable, value, constant)
     legals = %w[Variable UserFunctionSignature]
 
     unless legals.include?(variable.class.to_s)
@@ -1180,6 +1180,16 @@ class Interpreter
 
     var = variable.to_sw
 
+    # constant and already set?
+    if @variables.key?(var)
+      dict = @variables[var]
+      old_const = dict['const']
+      if old_const
+        raise BASICRuntimeError.new(:te_var_const, variable.to_s)
+      end
+    end
+
+    # clear infinite loop values?
     if @variables.key?(var)
       dict = @variables[var]
       old_value = dict['value']
@@ -1195,7 +1205,7 @@ class Interpreter
       clear_previous_lines
     end
 
-    dict = { 'provenance' => @current_line_stmt_mod, 'value' => value, 'const' => false }
+    dict = { 'provenance' => @current_line_stmt_mod, 'value' => value, 'const' => constant }
     @variables[var] = dict
 
     @trace_out.newline_when_needed
@@ -1208,8 +1218,8 @@ class Interpreter
       shape = :array if coords.size == 1
       shape = :matrix if coords.size == 2
       wcoords = wrap_subscripts(name, coords)
-      variable = Variable.new(name, shape, coords, wcoords)
-      set_value(variable, value)
+      variable = Variable.new(name, shape, coords, wcoords, false)
+      set_value(variable, value, false)
     end
   end
 
@@ -1291,7 +1301,7 @@ class Interpreter
         subscripts = [sub1]
         # don't wrap subscripts for FORGET
         wsubscripts = subscripts
-        variable = Variable.new(vname1, :scalar, subscripts, wsubscripts)
+        variable = Variable.new(vname1, :scalar, subscripts, wsubscripts, false)
         forget_value(variable)
       end
     end
@@ -1324,7 +1334,7 @@ class Interpreter
         subscripts = [sub1, sub2]
         # don't wrap subscripts for FORGET
         wsubscripts = subscripts
-        variable = Variable.new(vname1, :scalar, subscripts, wsubscripts)
+        variable = Variable.new(vname1, :scalar, subscripts, wsubscripts, false)
         forget_value(variable)
       end
     end
@@ -1428,7 +1438,7 @@ class Interpreter
     fornext_control.forget = !@variables.key?(v)
     @fornexts[control_variable] = fornext_control
     from = fornext_control.start
-    set_value(control_variable, from)
+    set_value(control_variable, from, false)
   end
 
   def retrieve_fornext(control_variable)

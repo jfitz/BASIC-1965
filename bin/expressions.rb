@@ -1524,7 +1524,7 @@ class Parser
     variable = if @shape_stack[-1] == :declaration
                  Declaration.new(element)
                else
-                 Variable.new(element, @shape_stack[-1], [], [])
+                 Variable.new(element, @shape_stack[-1], [], [], false)
                end
 
     @operator_stack.push(variable)
@@ -2391,7 +2391,7 @@ class Assignment
   attr_reader :warnings, :numerics, :strings, :booleans, :variables,
               :operators, :functions, :userfuncs, :comprehension_effort
 
-  def initialize(tokens, my_shape)
+  def initialize(tokens, my_shape, constant)
     # parse into variables, '=', expressions
     @token_lists = split_tokens(tokens)
 

@@ -2316,7 +2316,7 @@ class Variable < AbstractElement
   attr_writer :valref, :set_dims
   attr_reader :content_type, :shape, :subscripts, :warnings
 
-  def initialize(variable_name, my_shape, subscripts, wrapped_subscripts)
+  def initialize(variable_name, my_shape, subscripts, wrapped_subscripts, constant)
     super()
 
     raise(BASICSyntaxError, "'#{variable_name}' is not a variable name") unless
@@ -2325,7 +2325,7 @@ class Variable < AbstractElement
     @variable_name = variable_name
     @content_type = @variable_name.content_type
     @shape = my_shape
-    @constant = false
+    @constant = constant
     @warnings = []
     @valref = :value
     @subscripts = normalize_subscripts(subscripts)
@@ -2523,7 +2523,7 @@ class Variable < AbstractElement
     (base..n_cols).each do |col|
       coords = AbstractElement.make_coord(col)
       wcoords = interpreter.wrap_subscripts(@variable_name, coords)
-      variable = Variable.new(@variable_name, :array, coords, wcoords)
+      variable = Variable.new(@variable_name, :array, coords, wcoords, false)
       values[coords] = interpreter.get_value(variable)
     end
 
@@ -2564,7 +2564,7 @@ class Variable < AbstractElement
     (base..n_cols).each do |col|
       coords = AbstractElement.make_coord(col)
       wcoords = interpreter.wrap_subscripts(@variable_name, coords)
-      variable = Variable.new(@variable_name, :matrix, coords, wcoords)
+      variable = Variable.new(@variable_name, :matrix, coords, wcoords, false)
       values[coords] = interpreter.get_value(variable)
     end
 
@@ -2580,7 +2580,7 @@ class Variable < AbstractElement
       (base..n_cols).each do |col|
         coords = AbstractElement.make_coords(row, col)
         wcoords = interpreter.wrap_subscripts(@variable_name, coords)
-        variable = Variable.new(@variable_name, :matrix, coords, wcoords)
+        variable = Variable.new(@variable_name, :matrix, coords, wcoords, false)
         values[coords] = interpreter.get_value(variable)
       end
     end

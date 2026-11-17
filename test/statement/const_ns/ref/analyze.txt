@@ -1,0 +1,23 @@
+10 (0 1) REM This is a test
+  Origs: 
+  Dests: 
+20 (1 2) CONST A = 10
+  Origs: :start
+  Dests: 30:auto
+30 (0 3) LET B = 20
+  Origs: 20:auto
+  Dests: 40:auto
+40 (0 3) PRINT A, B
+  Origs: 30:auto
+  Dests: 90:auto
+90 (0 1) STOP
+  Origs: 40:auto
+  Dests: :stop
+99 (0 1) END
+  Origs: 
+  Dests: :stop
+
+Unreachable code:
+
+99: END
+

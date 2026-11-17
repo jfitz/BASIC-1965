@@ -1115,6 +1115,82 @@ class BreakStatement < AbstractStatement
   end
 end
 
+# CONST
+class ConstStatement < AbstractStatement
+  def initialize(_, keywords, tokens_lists)
+    super
+
+    template = [[3, '>=']]
+    
+    # CONST VariableName '=' Expression
+
+    if check_template(tokens_lists, template)
+      begin
+        tokens1, tokens2 = variable_and_expr(tokens_lists[0])
+        variable_name = VariableName.new(tokens1[0])
+        @variable = Variable.new(variable_name, :scalar, [], [], true)
+        @expression = ValueExpressionSet.new(tokens2, :scalar)
+          
+      rescue BASICExpressionError => e
+        @errors << e.message
+      end
+    else
+      @errors << 'Syntax error'
+    end
+
+    @mccabe = 1
+
+    xref = XrefEntry.new(@variable.to_s, nil, true)
+
+    @elements[:numerics] = []
+    @elements[:strings] = []
+    @elements[:booleans] = []
+    @elements[:variables] = []
+    @elements[:operators] = []
+    @elements[:functions] = []
+    @elements[:userfuncs] = []
+
+    @elements[:numerics] += @expression.numerics
+    @elements[:strings] += @expression.strings
+    @elements[:booleans] += @expression.booleans
+    @elements[:variables] += [xref] + @expression.variables
+    @elements[:operators] += @expression.operators
+    @elements[:functions] += @expression.functions
+    @elements[:userfuncs] += @expression.userfuncs
+
+    @comprehension_effort += @expression.comprehension_effort
+  end
+
+  def self.lead_keywords
+    [
+      [KeywordToken.new('CONST')]
+    ]
+  end
+
+  def execute_core(interpreter)
+    r_value = @expression.evaluate(interpreter)[0]
+
+    interpreter.set_value(@variable, r_value, true)
+  end
+
+  private
+
+  def variable_and_expr(tokens)
+    parts = split_on_token(tokens, '=')
+
+    raise(BASICSyntaxError, 'Incorrect initialization') if
+      parts.size != 3
+
+    raise(BASICSyntaxError, 'Missing "=" sign') if
+      parts[1].to_s != '='
+
+    @errors << 'Constant name must be a variable' unless
+      parts[0][0].variable?
+
+    [parts[0], parts[2]]
+  end
+end
+
 # CONTINUE
 class ContinueStatement < AbstractStatement
   def self.lead_keywords
@@ -1472,7 +1548,7 @@ class ForStatement < AbstractStatement
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
         variable_name = VariableName.new(tokens1[0])
-        @control_variable = Variable.new(variable_name, :scalar, [], [])
+        @control_variable = Variable.new(variable_name, :scalar, [], [], false)
         @start = ValueExpressionSet.new(tokens2, :scalar)
         @end = ValueExpressionSet.new(tokens_lists[2], :scalar)
         @step = nil
@@ -1483,7 +1559,7 @@ class ForStatement < AbstractStatement
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
         variable_name = VariableName.new(tokens1[0])
-        @control_variable = Variable.new(variable_name, :scalar, [], [])
+        @control_variable = Variable.new(variable_name, :scalar, [], [], false)
         @start = ValueExpressionSet.new(tokens2, :scalar)
         @end = ValueExpressionSet.new(tokens_lists[2], :scalar)
         @step = ValueExpressionSet.new(tokens_lists[4], :scalar)
@@ -1494,7 +1570,7 @@ class ForStatement < AbstractStatement
       begin
         tokens1, tokens2 = control_and_start(tokens_lists[0])
         variable_name = VariableName.new(tokens1[0])
-        @control_variable = Variable.new(variable_name, :scalar, [], [])
+        @control_variable = Variable.new(variable_name, :scalar, [], [], false)
         @start = ValueExpressionSet.new(tokens2, :scalar)
         @step = ValueExpressionSet.new(tokens_lists[2], :scalar)
         @end = ValueExpressionSet.new(tokens_lists[4], :scalar)
@@ -1667,8 +1743,10 @@ class ForStatement < AbstractStatement
 
   def control_and_start(tokens)
     parts = split_on_token(tokens, '=')
+
     raise(BASICSyntaxError, 'Incorrect initialization') if
       parts.size != 3
+
     raise(BASICSyntaxError, 'Missing "=" sign') if
       parts[1].to_s != '='
 
@@ -1712,7 +1790,7 @@ class ForgetStatement < AbstractStatement
         if tokens[0].variable?
           variable_name = VariableName.new(tokens[0])
           # FIX: parse subscripts
-          variable = Variable.new(variable_name, :scalar, [], [])
+          variable = Variable.new(variable_name, :scalar, [], [], false)
           @variables << variable
           variablex = XrefEntry.new(variable.to_s, nil, false)
           @elements[:variables] += [variablex]
@@ -2104,7 +2182,7 @@ class InputStatement < AbstractStatement
     name_value_pairs.each do |hash|
       variable = hash['name']
       value = hash['value']
-      interpreter.set_value(variable, value)
+      interpreter.set_value(variable, value, false)
     end
 
     interpreter.clear_previous_lines
@@ -2132,14 +2210,14 @@ end
 
 # common functions for scalar LET and LET-less statement
 class AbstractScalarLetStatement < AbstractLetStatement
-  def initialize(_, _, tokens_lists)
+  def initialize(line_number, keywords, tokens_lists)
     super
 
     template = [[3, '>=']]
 
     if check_template(tokens_lists, template)
       begin
-        @assignment = Assignment.new(tokens_lists[0], :scalar)
+        @assignment = Assignment.new(tokens_lists[0], :scalar, false)
 
         if @assignment.count_target.zero?
           @errors << 'Assignment must have left-hand value(s)'
@@ -2188,7 +2266,7 @@ class LetStatement < AbstractScalarLetStatement
       l_value = interpreter.current_user_function if
         l_value.class.to_s == 'UserFunction'
 
-      interpreter.set_value(l_value, r_value)
+      interpreter.set_value(l_value, r_value, false)
     end
   end
 end
@@ -2213,7 +2291,7 @@ class NextStatement < AbstractStatement
       @control_variable = nil
       if tokens_lists[0][0].variable?
         variable_name = VariableName.new(tokens_lists[0][0])
-        @control_variable = Variable.new(variable_name, :scalar, [], [])
+        @control_variable = Variable.new(variable_name, :scalar, [], [], false)
         xref = XrefEntry.new(@control_variable.to_s, nil, false)
         @elements[:variables] = [xref]
       else
@@ -2461,7 +2539,7 @@ class ReadStatement < AbstractStatement
       targets = item.evaluate(interpreter)
       targets.each do |target|
         value = ds.read
-        interpreter.set_value(target, value)
+        interpreter.set_value(target, value, false)
       end
     end
 
@@ -2635,7 +2713,7 @@ class ArrForgetStatement < AbstractStatement
       tokens_list.each do |tokens|
         if tokens[0].variable?
           variable_name = VariableName.new(tokens[0])
-          variable = Variable.new(variable_name, :array, [], [])
+          variable = Variable.new(variable_name, :array, [], [], false)
           @variables << variable
           variablex = XrefEntry.new(variable.to_s, nil, false)
           @elements[:variables] += [variablex]
@@ -2725,7 +2803,7 @@ class ArrInputStatement < AbstractStatement
         (base..dims[0].to_i).each do |col|
           coord = AbstractElement.make_coord(col)
           wcoord = interpreter.wrap_subscripts(name, coord)
-          variable = Variable.new(name, :array, coord, wcoord)
+          variable = Variable.new(name, :array, coord, wcoord, false)
           item_names << variable
         end
       end
@@ -2750,7 +2828,7 @@ class ArrInputStatement < AbstractStatement
     name_value_pairs.each do |hash|
       variable = hash['name']
       value = hash['value']
-      interpreter.set_value(variable, value)
+      interpreter.set_value(variable, value, false)
     end
 
     interpreter.clear_previous_lines
@@ -3002,7 +3080,7 @@ class ArrLetStatement < AbstractLetStatement
 
     if check_template(tokens_lists, template)
       begin
-        @assignment = Assignment.new(tokens_lists[0], :array)
+        @assignment = Assignment.new(tokens_lists[0], :array, false)
 
         if @assignment.count_target.zero?
           @errors << 'Assignment must have left-hand value(s)'
@@ -3089,7 +3167,7 @@ class MatForgetStatement < AbstractStatement
       tokens_list.each do |tokens|
         if tokens[0].variable?
           variable_name = VariableName.new(tokens[0])
-          variable = Variable.new(variable_name, :matrix, [], [])
+          variable = Variable.new(variable_name, :matrix, [], [], false)
           @variables << variable
           variablex = XrefEntry.new(variable.to_s, nil, false)
           @elements[:variables] += [variablex]
@@ -3181,7 +3259,7 @@ class MatInputStatement < AbstractStatement
           (base..dims[0].to_i).each do |col|
             coord = AbstractElement.make_coord(col)
             wcoord = interpreter.wrap_subscripts(name, coord)
-            variable = Variable.new(name, :matrix, coord, wcoord)
+            variable = Variable.new(name, :matrix, coord, wcoord, false)
             item_names << variable
           end
         end
@@ -3193,7 +3271,7 @@ class MatInputStatement < AbstractStatement
           (base..dims[1].to_i).each do |col|
             coords = AbstractElement.make_coords(row, col)
             wcoords = interpreter.wrap_subscripts(name, coords)
-            variable = Variable.new(name, :matrix, coords, wcoords)
+            variable = Variable.new(name, :matrix, coords, wcoords, false)
             item_names << variable
           end
         end
@@ -3219,7 +3297,7 @@ class MatInputStatement < AbstractStatement
     name_value_pairs.each do |hash|
       variable = hash['name']
       value = hash['value']
-      interpreter.set_value(variable, value)
+      interpreter.set_value(variable, value, false)
     end
 
     interpreter.clear_previous_lines
@@ -3511,7 +3589,7 @@ class MatLetStatement < AbstractLetStatement
 
     if check_template(tokens_lists, template)
       begin
-        @assignment = Assignment.new(tokens_lists[0], :matrix)
+        @assignment = Assignment.new(tokens_lists[0], :matrix, false)
 
         if @assignment.count_target.zero?
           @errors << 'Assignment must have left-hand value(s)'
@@ -3700,6 +3778,7 @@ class StatementFactory
       ArrWriteStatement,
       ArrLetStatement,
       BreakStatement,
+      ConstStatement,
       ContinueStatement,
       DataStatement,
       DefineFunctionStatement,
